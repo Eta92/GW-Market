@@ -1,0 +1,114 @@
+<div class="h-full w-full bg-white text-black">
+  <div class="sticky top-0 mx-auto flex justify-between bg-white font-semibold" [formGroup]="form">
+    <i class="fas fa-share-from-square cursor-pointer p-1 text-[40px]" (click)="goBack()"></i>
+    <div class="p-2 text-2xl">Tableau de contingences entre les antécédents et les prescriptions de psychotrope</div>
+    <div class="flex h-8 p-2">
+      <i class="fas fa-search p-1 text-[24px]"></i>
+      <input type="text" formControlName="search" class="bg-white" />
+    </div>
+  </div>
+  <div class="reltative mx-auto my-2 h-[calc(100%_-_48px)] overflow-y-auto">
+    <div
+      class="text m-8 w-fit flex-col border border-solid border-black p-8 text-center"
+      *ngFor="let contingency of filteredContingencies; let c = index"
+    >
+      <div class="sticky top-0 flex border-b-2 border-solid border-black bg-white">
+        <div class="w-80 text-left">{{ contingency.name }}</div>
+        <div class="flex-col">
+          <div class="">prescription de {{ contingency.test }}</div>
+          <div class="flex">
+            <div class="w-20">Non</div>
+            <div class="w-20">Oui</div>
+          </div>
+        </div>
+        <div class="flex-col">
+          <div class="">Molécule</div>
+          <div class="flex">
+            <div class="flex w-20 flex-col" *ngFor="let sub of contingency.subTests; let s = index">
+              <span>{{ sub.code }}</span>
+              <span class="text-xs">{{ sub.name }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="w-20">total</div>
+      </div>
+
+      <div
+        class="flex border-t border-solid border-black"
+        *ngFor="let category of contingency.categories; let a = index"
+      >
+        <div class="w-40 flex-col text-left">
+          <div class="">{{ category.name }}</div>
+          <div class="mt-6" [ngStyle]="{ opacity: pOpacity(category.pValue) }">
+            p value {{ fixed(category.pValue, 4) }}
+          </div>
+          <div class="text-red-600">{{ translateTestsToString(category.khi2Tests) }}</div>
+        </div>
+        <div class="w-40 flex-col border-r border-solid border-black text-left">
+          <div class="">Nombre</div>
+          <div class="">% dans la catégorie</div>
+          <div class="">% dans la prescription</div>
+          <div class="">% du total</div>
+        </div>
+        <div class="w-20 flex-col">
+          <div class="">{{ category.control.count }}</div>
+          <div class="">{{ toPercent(category.control.inCategory) }}</div>
+          <div class="">{{ toPercent(category.control.inTest) }}</div>
+          <div class="">{{ toPercent(category.control.total) }}</div>
+        </div>
+        <div class="w-20 flex-col border-r border-solid border-black">
+          <div class="">{{ category.test.count }}</div>
+          <div class="">{{ toPercent(category.test.inCategory) }}</div>
+          <div class="">{{ toPercent(category.test.inTest) }}</div>
+          <div class="">{{ toPercent(category.test.total) }}</div>
+        </div>
+        <div class="w-20 flex-col" *ngFor="let sub of category.subTests; let s = index">
+          <div class="">{{ sub.count }}</div>
+          <div class="">{{ toPercent(sub.inCategory) }}</div>
+          <div class="">{{ toPercent(sub.inTest) }}</div>
+          <div class="">{{ toPercent(sub.total) }}</div>
+        </div>
+        <div class="w-20 flex-col border-l border-solid border-black">
+          <div class="">{{ category.total.count }}</div>
+          <div class="">{{ toPercent(category.total.inCategory) }}</div>
+          <div class="">{{ toPercent(category.total.inTest) }}</div>
+          <div class="">{{ toPercent(category.total.total) }}</div>
+        </div>
+      </div>
+
+      <div class="sticky bottom-2 flex border-t-2 border-solid border-black bg-white">
+        <div class="w-40 text-left">total</div>
+        <div class="w-40 flex-col border-r border-solid border-black text-left">
+          <div class="">Nombre</div>
+          <div class="">% dans la catégorie</div>
+          <div class="">% dans la prescription</div>
+          <div class="">% du total</div>
+        </div>
+        <div class="w-20 flex-col">
+          <div class="">{{ contingency.total.control.count }}</div>
+          <div class="">{{ toPercent(contingency.total.control.inCategory) }}</div>
+          <div class="">{{ toPercent(contingency.total.control.inTest) }}</div>
+          <div class="">{{ toPercent(contingency.total.control.total) }}</div>
+        </div>
+        <div class="w-20 flex-col border-r border-solid border-black">
+          <div class="">{{ contingency.total.test.count }}</div>
+          <div class="">{{ toPercent(contingency.total.test.inCategory) }}</div>
+          <div class="">{{ toPercent(contingency.total.test.inTest) }}</div>
+          <div class="">{{ toPercent(contingency.total.test.total) }}</div>
+        </div>
+        <div class="w-20 flex-col" *ngFor="let sub of contingency.total.subTests; let s = index">
+          <div class="">{{ sub.count }}</div>
+          <div class="">{{ toPercent(sub.inCategory) }}</div>
+          <div class="">{{ toPercent(sub.inTest) }}</div>
+          <div class="">{{ toPercent(sub.total) }}</div>
+        </div>
+        <div class="w-20 flex-col border-l border-solid border-black">
+          <div class="">{{ contingency.total.total.count }}</div>
+          <div class="">{{ toPercent(contingency.total.total.inCategory) }}</div>
+          <div class="">{{ toPercent(contingency.total.total.inTest) }}</div>
+          <div class="">{{ toPercent(contingency.total.total.total) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

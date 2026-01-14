@@ -1,0 +1,11 @@
+.section-transition {
+  -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
+    url(../../../../../assets/img/transition.webp);
+  mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
+    url(../../../../../assets/img/transition.webp);
+  -webkit-mask-position: center, bottom;
+  mask-position: center, bottom;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  margin-bottom: calc(-120px);
+}

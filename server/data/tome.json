@@ -1,0 +1,94 @@
+[
+  {
+    "type": "Normal Skill Tome",
+    "description": "Tomes that allow characters to learn one Normal skill of the matching profession that is already unlocked on the account.",
+    "items": [
+      {
+        "name": "Warrior Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Warrior skill that is already unlocked on the account."
+      },
+      {
+        "name": "Ranger Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Ranger skill that is already unlocked on the account."
+      },
+      {
+        "name": "Monk Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Monk skill that is already unlocked on the account."
+      },
+      {
+        "name": "Necromancer Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Necromancer skill that is already unlocked on the account."
+      },
+      {
+        "name": "Mesmer Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Mesmer skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elementalist Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Elementalist skill that is already unlocked on the account."
+      },
+      {
+        "name": "Assassin Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Assassin skill that is already unlocked on the account."
+      },
+      {
+        "name": "Ritualist Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Ritualist skill that is already unlocked on the account."
+      },
+      {
+        "name": "Paragon Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Paragon skill that is already unlocked on the account."
+      },
+      {
+        "name": "Dervish Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Dervish skill that is already unlocked on the account."
+      }
+    ]
+  },
+  {
+    "type": "Elite Skill Tome",
+    "description": "Tomes that allow characters to learn one Elite skill of the matching profession that is already unlocked on the account.",
+    "items": [
+      {
+        "name": "Elite Warrior Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Warrior Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Ranger Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Ranger Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Monk Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Monk Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Necromancer Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Necromancer Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Mesmer Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Mesmer Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Elementalist Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Elementalist Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Assassin Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Assassin Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Ritualist Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Ritualist Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Paragon Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Paragon Elite skill that is already unlocked on the account."
+      },
+      {
+        "name": "Elite Dervish Tome",
+        "description": "This tome is a consumable that allows the character who reads it to learn one Dervish Elite skill that is already unlocked on the account."
+      }
+    ]
+  }
+]

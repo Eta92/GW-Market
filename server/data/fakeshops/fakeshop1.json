@@ -1,0 +1,332 @@
+{
+  "player": "A Cool Dev",
+  "items": [
+    {
+      "name": "Automaton Summoning Stone",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 12, "unit": 0.8 }],
+      "quantity": 15,
+      "description": "test"
+    },
+    {
+      "name": "Mercantile Summoning Stone",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 4, "unit": 0.4 }],
+      "quantity": 10,
+      "description": ""
+    },
+    {
+      "name": "Celestial Summoning Stone",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 4, "unit": 0.18181818181818182 }],
+      "quantity": 22,
+      "description": ""
+    },
+    {
+      "name": "Insightful Staff Head",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Focus Core of Endurance",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Wand Wrapping of Quickening",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Gift of the Traveler",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        { "type": 0, "price": 320, "unit": 16 },
+        { "type": 1, "price": 70, "unit": 3.5 }
+      ],
+      "quantity": 20,
+      "description": ""
+    },
+    {
+      "name": "Dance with Death",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 2, "unit": 1 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Brawn over Brains",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Don't Think Twice",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Bow Grip of the Dervish",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Sword Pommel of the Ranger",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Hammer Grip of the Monk",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Lockpick Key",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 25, "unit": 1.25 }],
+      "quantity": 20,
+      "description": ""
+    },
+    {
+      "name": "Ritualist Tome",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 5, "unit": 0.5 }],
+      "quantity": 10,
+      "description": ""
+    },
+    {
+      "name": "Dervish Tome",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 5, "unit": 0.5 }],
+      "quantity": 10,
+      "description": ""
+    },
+    {
+      "name": "Stygian Reaver",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 20, "unit": 20 }],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Axe Mastery",
+        "requirement": 12,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Guided by Fate",
+        "prefix": null,
+        "suffix": "Axe Grip of Shelter"
+      }
+    },
+    {
+      "name": "Focus Core of Devotion",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 2, "unit": 2 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Focus Core of Swiftness",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Focus Core of Fortitude",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 2, "unit": 2 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Focus Core of Aptitude",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Sundering Sword Hilt",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 4, "unit": 2 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Poisonous Sword Hilt",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Fiery Sword Hilt",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Sundering Bowstring",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 2, "unit": 2 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Dagger Handle of Defense",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Shocking Dagger Tang",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 2, "unit": 2 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Hammer Grip of the Necromancer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": "+4 only"
+    },
+    {
+      "name": "Wand Wrapping of Quickening",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 2, "unit": 1 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Heavy Spearhead",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Shocking Spearhead",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Droknar's Key",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 25, "unit": 25 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Amulet of the Mists",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Book of Secrets",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 16, "unit": 8 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Deldrimor Talisman",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 8, "unit": 8 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Claws of the Broodmother",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Primeval Armor Remnants",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 20, "unit": 10 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Rune of Superior Vigor",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 35, "unit": 35 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Zaishen Coin",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 50, "unit": 50 }],
+      "quantity": 1,
+      "description": ""
+    }
+  ],
+  "uuid": "42CB69GtCr",
+  "daybreakOnline": false,
+  "certified": null
+}

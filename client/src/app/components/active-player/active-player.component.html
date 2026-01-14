@@ -1,0 +1,77 @@
+<div
+  class="bg-rune relative z-50 flex h-screen w-screen flex-col overflow-y-auto px-2 py-2 md:h-fit md:w-[425px]"
+  (click)="$event.stopPropagation()"
+>
+  <i class="fa fa-close absolute right-2 top-0 z-50 cursor-pointer text-2xl text-white" (click)="closeEdit.emit()"></i>
+  <div class="-mt-4 flex w-full">
+    <div class="flex w-full flex-col gap-2 p-4" [formGroup]="form">
+      <div class="flex flex-col gap-2">
+        <div class="font-semibold text-white">Active player name</div>
+        <input
+          type="text"
+          class="h-12 w-full border-none bg-gwt-light p-2 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
+          placeholder="in-game character name"
+          formControlName="name"
+        />
+        <span class="text-sm italic text-white">To get the certified badge you need to certify your character(s)</span>
+        <!--span class="text-sm italic text-white">Certification is in sleep mode, please come back tomorrow</span-->
+      </div>
+      <button class="bg-button action mt-2 h-12 w-52 font-semibold text-white" (click)="addPlayer()">
+        Certify a new character
+      </button>
+      <div class="flex flex-col gap-2" *ngIf="secret">
+        <div class="font-semibold text-white">Copy this message in game to be certified</div>
+        <div class="flex gap-2">
+          <input
+            type="text"
+            class="h-8 w-full border-none bg-gwt-light p-2 text-gwt-brown placeholder-gwt-amber outline-none"
+            placeholder="in-game character name"
+            [value]="secret"
+            readonly
+          />
+          <i
+            class="fa fa-copy cursor-pointer rounded-lg bg-gwt-brown px-2 py-0.5 text-lg text-white"
+            title="copy to clipboard"
+            (click)="copySecret()"
+          ></i>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="font-semibold text-white">Certified character list</div>
+        <div *ngIf="!shop.certified?.length" class="text-sm italic text-white">
+          You do not have any certified character yet
+        </div>
+        <div class="flex w-full flex-wrap gap-6">
+          <button
+            *ngFor="let name of shop.certified"
+            class="h-12 w-44 text-gwt-brown"
+            [class.font-semibold]="form.get('name')?.value === name"
+            [class.bg-gwt-light]="form.get('name')?.value === name"
+            [class.bg-gwt-amber]="form.get('name')?.value !== name"
+            [class.text-gwt-light]="form.get('name')?.value !== name"
+            (click)="form.patchValue({ name: name })"
+          >
+            <i
+              class="fa self-center text-sm text-white"
+              [ngClass]="{
+                'fa-circle': form.get('name')?.value !== name,
+                'fa-circle-dot': form.get('name')?.value === name
+              }"
+            ></i>
+            {{ name }}
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-row-reverse gap-2 align-bottom">
+        <button class="bg-button action mt-8 h-16 w-40 font-semibold text-white" (click)="onConfirmPlayer()">
+          Confirm Player
+        </button>
+        <button class="bg-button action mt-16 h-8 w-24 font-semibold text-white" (click)="closeEdit.emit()">
+          Cancel
+        </button>
+      </div>
+      <div class="h-80 w-full md:h-0"></div>
+    </div>
+  </div>
+</div>

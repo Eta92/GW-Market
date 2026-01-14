@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="fr" class="ddkvoitz idc0_350">
+  <head>
+    <meta charset="utf-8" />
+    <title>GW Market</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!--link rel="manifest" href="manifest.webmanifest" /-->
+    <meta name="theme-color" content="#1976d2" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .section-transition[_ngcontent-ng-c206824616] {
+        -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
+          url('./media/transition.webp');
+        mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
+          url('./media/transition.webp');
+        -webkit-mask-position: center, bottom;
+        mask-position: center, bottom;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        margin-bottom: -120px;
+      }
+      /*# sourceMappingURL=footer.component.css.map */
+    </style>
+    <style>
+      .card-wrapper[_ngcontent-ng-c1611679977] {
+        display: flex;
+        border-radius: 8px;
+        align-items: flex-end;
+        transition: box-shadow 0.3s;
+        box-shadow: rgba(0, 0, 0, 0.4235294118) 9px 9px 10px;
+        background: linear-gradient(to top, hsl(31, 48%, 26%) 180px, transparent 250px);
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977] .card-img[_ngcontent-ng-c1611679977] {
+        border-radius: 8px;
+        display: block;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977] .card-text[_ngcontent-ng-c1611679977] {
+        position: relative;
+        z-index: 2;
+        height: 80%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977]
+        .card-text[_ngcontent-ng-c1611679977]
+        .card-header[_ngcontent-ng-c1611679977] {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977]
+        .card-text[_ngcontent-ng-c1611679977]
+        .card-header[_ngcontent-ng-c1611679977]::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: url('./media/fog-brown.png');
+        background-size: 100% auto;
+        background-repeat: repeat-x;
+        background-position: 0 100%;
+        -webkit-mask-image: url('./media/fog.png');
+        mask-image: url('./media/fog.png');
+        mask-mode: luminance;
+        -webkit-mask-size: 100% 110px;
+        mask-size: 100% 110px;
+        -webkit-mask-repeat: repeat-x;
+        mask-repeat: repeat-x;
+        animation:
+          _ngcontent-ng-c1611679977_anim_foglayer_move 18s linear infinite,
+          _ngcontent-ng-c1611679977_anim_bg_move 25s linear infinite;
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977]
+        .card-text[_ngcontent-ng-c1611679977]
+        .card-content[_ngcontent-ng-c1611679977] {
+        background: linear-gradient(to bottom, rgba(100, 68, 31, 0), #64441f);
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977] .card-text[_ngcontent-ng-c1611679977]::after {
+        content: '';
+        position: absolute;
+        bottom: -40px;
+        background-image: url('./media/footer.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 100%;
+      }
+      @keyframes _ngcontent-ng-c1611679977_anim_foglayer_move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 208px 0;
+        }
+      }
+      @keyframes _ngcontent-ng-c1611679977_anim_bg_move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 208px 0;
+        }
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977]:hover {
+        filter: brightness(1.2);
+        box-shadow: 0 10px 20px white;
+      }
+      /*# sourceMappingURL=new-order.component.css.map */
+    </style>
+    <style>
+      .unset[_ngcontent-ng-c396562454] {
+        background-position-y: unset;
+      }
+      .bg-slash[_ngcontent-ng-c396562454] {
+        background: linear-gradient(-45deg, transparent 48%, white 49%, white 52%, transparent 52%);
+      }
+      /*# sourceMappingURL=item.component.css.map */
+    </style>
+  </head>
+
+  <body class="limitbody">
+    <app-root ng-version="18.2.13"
+      ><router-outlet></router-outlet
+      ><app-item _nghost-ng-c396562454=""
+        ><div _ngcontent-ng-c396562454="" class="fritz-font scroll h-screen w-full overflow-y-auto text-white">
+          <div _ngcontent-ng-c396562454="" class="bg-header relative z-30">
+            <div _ngcontent-ng-c396562454="" class="flex flex-col gap-4 p-8">
+              <div _ngcontent-ng-c396562454="" class="flex w-full justify-between gap-8">
+                <img
+                  _ngcontent-ng-c396562454=""
+                  src="../../../assets/img/trading.svg"
+                  class="my-8 h-[80px] w-[320px]"
+                /><app-select-item
+                  _ngcontent-ng-c396562454=""
+                  class="ml-24"
+                  _nghost-ng-c364568707=""
+                  ng-reflect-width="800"
+                  ng-reflect-height="160"
+                  ng-reflect-offset-y="-48"
+                  ><div _ngcontent-ng-c364568707="" class="text-ems-blue noselect2 relative flex font-normal">
+                    <div
+                      _ngcontent-ng-c364568707=""
+                      class="bg-frame-clean z-20 flex justify-center gap-8 bg-cover p-8 text-xl uppercase"
+                      ng-reflect-ng-style="[object Object]"
+                      style="width: 800px; height: 160px"
+                    >
+                      <div _ngcontent-ng-c364568707="" class="typing flex h-fit w-full p-3.5">
+                        <input
+                          _ngcontent-ng-c364568707=""
+                          type="text"
+                          placeholder="Search..."
+                          class="ng-untouched ng-pristine ng-valid h-12 w-full border-none bg-transparent p-4 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
+                          ng-reflect-form="[object Object]"
+                        /><i
+                          _ngcontent-ng-c364568707=""
+                          class="fa fa-search mx-4 self-center text-2xl text-gwt-brown"
+                        ></i>
+                      </div>
+                    </div>
+                    <!--bindings={
+  "ng-reflect-ng-if": "false"
+}-->
+                  </div>
+                  <!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-select-item
+                >
+                <div _ngcontent-ng-c396562454="" class="my-2 flex w-[480px] gap-4">
+                  <div
+                    _ngcontent-ng-c396562454=""
+                    class="bg-gradient my-4 h-24 w-24 rounded-full border-2 border-gwt-brown shadow-xl"
+                  >
+                    <img
+                      _ngcontent-ng-c396562454=""
+                      class="h-full w-full py-3 pl-3"
+                      src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                    />
+                  </div>
+                  <div _ngcontent-ng-c396562454="" class="text-shadow flex w-[360px] flex-col">
+                    <div _ngcontent-ng-c396562454="" class="mb-2 text-xl">Birthday Cupcake</div>
+                    <div _ngcontent-ng-c396562454="" class="text-no-overflow text-sm" title="Family: consumable">
+                      Family: consumable
+                    </div>
+                    <div _ngcontent-ng-c396562454="" class="text-no-overflow text-sm" title="Duration (mins): 30">
+                      Duration (mins): 30
+                    </div>
+                    <div _ngcontent-ng-c396562454="" class="text-no-overflow text-sm" title="Applies to: User">
+                      Applies to: User
+                    </div>
+                    <!--bindings={
+  "ng-reflect-ng-for-of": "Family: consumable,Duration (m"
+}-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div _ngcontent-ng-c396562454="" class="h-12 w-full"></div>
+          </div>
+          <div _ngcontent-ng-c396562454="" class="bg-theme section-transition relative z-20 -mt-24 min-h-screen pt-16">
+            <div _ngcontent-ng-c396562454="" class="mt-8 flex w-full">
+              <div _ngcontent-ng-c396562454="" class="mx-auto flex flex-col px-16">
+                <div _ngcontent-ng-c396562454="" class="p-2 text-center text-2xl">Sell Orders</div>
+                <div _ngcontent-ng-c396562454="" class="flex w-full justify-center gap-4">
+                  <div _ngcontent-ng-c396562454="" class="frame flex flex-col gap-2 p-2">
+                    <div _ngcontent-ng-c396562454="" class="frame flex flex-col p-2">
+                      <div _ngcontent-ng-c396562454="" class="flex gap-1">
+                        <div _ngcontent-ng-c396562454="" class="flex flex-col gap-1">
+                          <img
+                            _ngcontent-ng-c396562454=""
+                            class="h-12 w-12"
+                            src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                          />
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="bg-slash relative -ml-2 flex h-12 w-12">
+                          <div _ngcontent-ng-c396562454="" class="absolute -left-1 top-0 w-8 text-center text-sm">
+                            2
+                          </div>
+                          <div _ngcontent-ng-c396562454="" class="absolute -right-1 bottom-0 w-8 text-center text-sm">
+                            3
+                          </div>
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="flex flex-col gap-1">
+                          <img
+                            _ngcontent-ng-c396562454=""
+                            class="h-12 w-12 p-1"
+                            src="../../../assets/items/currency/0.png"
+                          />
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="ml-1 flex w-36 flex-col gap-1">
+                          <div _ngcontent-ng-c396562454="" class="flex justify-between gap-2">
+                            <div _ngcontent-ng-c396562454="" class="-mt-1 flex flex-col">
+                              <div _ngcontent-ng-c396562454="" class="flex gap-1">
+                                <div _ngcontent-ng-c396562454="" class="text-xs">max:</div>
+                                <div _ngcontent-ng-c396562454="" class="text-xs">100</div>
+                                <img
+                                  _ngcontent-ng-c396562454=""
+                                  class="h-4 w-4"
+                                  src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                                />
+                              </div>
+                              <div _ngcontent-ng-c396562454="" class="-mb-1 flex gap-1">
+                                <div _ngcontent-ng-c396562454="" class="text-xs">for:</div>
+                                <div _ngcontent-ng-c396562454="" class="text-xs">150</div>
+                                <img
+                                  _ngcontent-ng-c396562454=""
+                                  class="h-4 w-4"
+                                  src="../../../assets/items/currency/0.png"
+                                />
+                              </div>
+                            </div>
+                            <div _ngcontent-ng-c396562454="" class="bg-button action p-1 text-xs">Whisper</div>
+                          </div>
+                          <div _ngcontent-ng-c396562454="" class="text-no-overflow text-right" title="Eta Kifaitmal">
+                            Eta Kifaitmal
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c396562454="" class="text-xs">A fake cupcake like in Portal</div>
+                    </div>
+                    <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                  </div>
+                  <div _ngcontent-ng-c396562454="" class="frame flex flex-col gap-2 p-2">
+                    <div _ngcontent-ng-c396562454="" class="frame flex flex-col p-2">
+                      <div _ngcontent-ng-c396562454="" class="flex gap-1">
+                        <div _ngcontent-ng-c396562454="" class="flex flex-col gap-1">
+                          <img
+                            _ngcontent-ng-c396562454=""
+                            class="h-12 w-12"
+                            src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                          />
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="bg-slash relative -ml-2 flex h-12 w-12">
+                          <div _ngcontent-ng-c396562454="" class="absolute -left-1 top-0 w-8 text-center text-sm">
+                            10
+                          </div>
+                          <div _ngcontent-ng-c396562454="" class="absolute -right-1 bottom-0 w-8 text-center text-sm">
+                            1
+                          </div>
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="flex flex-col gap-1">
+                          <img
+                            _ngcontent-ng-c396562454=""
+                            class="h-12 w-12 p-1"
+                            src="../../../assets/items/currency/1.png"
+                          />
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="ml-1 flex w-36 flex-col gap-1">
+                          <div _ngcontent-ng-c396562454="" class="flex justify-between gap-2">
+                            <div _ngcontent-ng-c396562454="" class="-mt-1 flex flex-col">
+                              <div _ngcontent-ng-c396562454="" class="flex gap-1">
+                                <div _ngcontent-ng-c396562454="" class="text-xs">max:</div>
+                                <div _ngcontent-ng-c396562454="" class="text-xs">100</div>
+                                <img
+                                  _ngcontent-ng-c396562454=""
+                                  class="h-4 w-4"
+                                  src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                                />
+                              </div>
+                              <div _ngcontent-ng-c396562454="" class="-mb-1 flex gap-1">
+                                <div _ngcontent-ng-c396562454="" class="text-xs">for:</div>
+                                <div _ngcontent-ng-c396562454="" class="text-xs">10</div>
+                                <img
+                                  _ngcontent-ng-c396562454=""
+                                  class="h-4 w-4"
+                                  src="../../../assets/items/currency/1.png"
+                                />
+                              </div>
+                            </div>
+                            <div _ngcontent-ng-c396562454="" class="bg-button action p-1 text-xs">Whisper</div>
+                          </div>
+                          <div _ngcontent-ng-c396562454="" class="text-no-overflow text-right" title="Punk Of War">
+                            Punk Of War
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c396562454="" class="text-xs">my cakes are cheapers</div>
+                    </div>
+                    <div _ngcontent-ng-c396562454="" class="frame flex flex-col p-2">
+                      <div _ngcontent-ng-c396562454="" class="flex gap-1">
+                        <div _ngcontent-ng-c396562454="" class="flex flex-col gap-1">
+                          <img
+                            _ngcontent-ng-c396562454=""
+                            class="h-12 w-12"
+                            src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                          />
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="bg-slash relative -ml-2 flex h-12 w-12">
+                          <div _ngcontent-ng-c396562454="" class="absolute -left-1 top-0 w-8 text-center text-sm">
+                            20
+                          </div>
+                          <div _ngcontent-ng-c396562454="" class="absolute -right-1 bottom-0 w-8 text-center text-sm">
+                            3
+                          </div>
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="flex flex-col gap-1">
+                          <img
+                            _ngcontent-ng-c396562454=""
+                            class="h-12 w-12 p-1"
+                            src="../../../assets/items/currency/1.png"
+                          />
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="ml-1 flex w-36 flex-col gap-1">
+                          <div _ngcontent-ng-c396562454="" class="flex justify-between gap-2">
+                            <div _ngcontent-ng-c396562454="" class="-mt-1 flex flex-col">
+                              <div _ngcontent-ng-c396562454="" class="flex gap-1">
+                                <div _ngcontent-ng-c396562454="" class="text-xs">max:</div>
+                                <div _ngcontent-ng-c396562454="" class="text-xs">100</div>
+                                <img
+                                  _ngcontent-ng-c396562454=""
+                                  class="h-4 w-4"
+                                  src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                                />
+                              </div>
+                              <div _ngcontent-ng-c396562454="" class="-mb-1 flex gap-1">
+                                <div _ngcontent-ng-c396562454="" class="text-xs">for:</div>
+                                <div _ngcontent-ng-c396562454="" class="text-xs">15</div>
+                                <img
+                                  _ngcontent-ng-c396562454=""
+                                  class="h-4 w-4"
+                                  src="../../../assets/items/currency/1.png"
+                                />
+                              </div>
+                            </div>
+                            <div _ngcontent-ng-c396562454="" class="bg-button action p-1 text-xs">Whisper</div>
+                          </div>
+                          <div _ngcontent-ng-c396562454="" class="text-no-overflow text-right" title="Eta Kifaitmal">
+                            Eta Kifaitmal
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c396562454="" class="text-xs">A fake cupcake like in Portal</div>
+                    </div>
+                    <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}-->
+                  </div>
+                  <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}-->
+                </div>
+              </div>
+              <div _ngcontent-ng-c396562454="" class="mx-auto flex flex-col px-16">
+                <div _ngcontent-ng-c396562454="" class="p-2 text-center text-2xl">Buy Orders</div>
+                <div _ngcontent-ng-c396562454="" class="flex w-full justify-center gap-4">
+                  <div _ngcontent-ng-c396562454="" class="frame flex flex-col gap-2 p-2">
+                    <div _ngcontent-ng-c396562454="" class="frame flex flex-col p-2">
+                      <div _ngcontent-ng-c396562454="" class="flex gap-1">
+                        <div _ngcontent-ng-c396562454="" class="flex flex-col gap-1">
+                          <img
+                            _ngcontent-ng-c396562454=""
+                            class="h-12 w-12 p-1"
+                            src="../../../assets/items/currency/1.png"
+                          />
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="bg-slash relative -ml-2 flex h-12 w-12">
+                          <div _ngcontent-ng-c396562454="" class="absolute -left-1 top-0 w-8 text-center text-sm">
+                            3
+                          </div>
+                          <div _ngcontent-ng-c396562454="" class="absolute -right-1 bottom-0 w-8 text-center text-sm">
+                            25
+                          </div>
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="flex flex-col gap-1">
+                          <img
+                            _ngcontent-ng-c396562454=""
+                            class="h-12 w-12"
+                            src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                          />
+                        </div>
+                        <div _ngcontent-ng-c396562454="" class="ml-1 flex w-36 flex-col gap-1">
+                          <div _ngcontent-ng-c396562454="" class="flex justify-between gap-2">
+                            <div _ngcontent-ng-c396562454="" class="-mt-1 flex flex-col">
+                              <div _ngcontent-ng-c396562454="" class="flex gap-1">
+                                <div _ngcontent-ng-c396562454="" class="text-xs">max:</div>
+                                <div _ngcontent-ng-c396562454="" class="text-xs">12</div>
+                                <img
+                                  _ngcontent-ng-c396562454=""
+                                  class="h-3 w-3"
+                                  src="../../../assets/items/currency/1.png"
+                                />
+                              </div>
+                              <div _ngcontent-ng-c396562454="" class="-mb-1 flex gap-1">
+                                <div _ngcontent-ng-c396562454="" class="text-xs">for:</div>
+                                <div _ngcontent-ng-c396562454="" class="text-xs">100</div>
+                                <img
+                                  _ngcontent-ng-c396562454=""
+                                  class="h-4 w-4"
+                                  src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                                />
+                              </div>
+                            </div>
+                            <div _ngcontent-ng-c396562454="" class="bg-button action p-1 text-xs">Whisper</div>
+                          </div>
+                          <div _ngcontent-ng-c396562454="" class="text-no-overflow text-right" title="Punk Of War">
+                            Punk Of War
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c396562454="" class="text-xs">But I have never enough</div>
+                    </div>
+                    <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                  </div>
+                  <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <app-footer _ngcontent-ng-c396562454="" _nghost-ng-c206824616=""
+            ><div _ngcontent-ng-c206824616="" class="fritz-font bg-rune w-full pt-28 text-white">
+              <div _ngcontent-ng-c206824616="" class="flex w-full justify-center">
+                <div
+                  _ngcontent-ng-c206824616=""
+                  class="hover:text-shadow cursor-pointer pl-[140px] text-xl transition-all hover:ml-4 hover:text-gwt-light hover:saturate-150"
+                >
+                  <i _ngcontent-ng-c206824616="" class="fa fa-chevron-right"></i
+                  ><i _ngcontent-ng-c206824616="" class="fa fa-chevron-right"></i> My Shop
+                </div>
+              </div>
+              <div _ngcontent-ng-c206824616="" class="w-full">
+                <div _ngcontent-ng-c206824616="" class="mx-auto flex w-[1200px]">
+                  <div _ngcontent-ng-c206824616="" class="flex w-1/2 p-4">
+                    <div _ngcontent-ng-c206824616="" class="flex flex-col gap-2">
+                      <div _ngcontent-ng-c206824616="" class="text-lg">DISCLAIMER</div>
+                      <div _ngcontent-ng-c206824616="" class="text-sm">
+                        ArenaNet LLC, Guild Wars and the logo and the backgrounds are registered trademarks. All rights
+                        are reserved worldwide. <br _ngcontent-ng-c206824616="" />
+                        This site has no official link with ArenaNet LLC or Guild Wars.
+                        <br _ngcontent-ng-c206824616="" />
+                        All artwork, screenshots, characters or other recognizable features of the intellectual property
+                        relating to these trademarks are likewise the intellectual property of ArenaNet LLC.
+                      </div>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c206824616="" class="flex w-1/2 p-4">
+                    <div _ngcontent-ng-c206824616="" class="flex flex-col gap-2">
+                      <div _ngcontent-ng-c206824616="" class="text-lg">Custom Policy</div>
+                      <div _ngcontent-ng-c206824616="" class="text-sm">
+                        Any attempt to circunvent the principle of the site will be fought without restrictions. There
+                        is no place for scams or RMT here.
+                      </div>
+                      <div _ngcontent-ng-c206824616="" class="text-lg">What is missing and will come next</div>
+                      <div _ngcontent-ng-c206824616="" class="text-sm">
+                        • Exploration of available items now<br _ngcontent-ng-c206824616="" />
+                        • More items available in the list <br _ngcontent-ng-c206824616="" />
+                        • Save shops in accounts <br _ngcontent-ng-c206824616="" />• Ability to register custom gold
+                        items <br _ngcontent-ng-c206824616="" />
+                        • Reputation system for shops
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div></app-footer
+          >
+        </div>
+        <!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-new-order _ngcontent-ng-c396562454="" _nghost-ng-c1611679977="" ng-reflect-preselect="[object Object]"
+          ><!--bindings={
+  "ng-reflect-ng-if": "false"
+}-->
+          <div _ngcontent-ng-c1611679977="" class="card-wrapper fixed bottom-10 right-8 z-40 h-32 w-52 cursor-pointer">
+            <img _ngcontent-ng-c1611679977="" src="../../../assets/img/rune.webp" class="card-img" />
+            <div _ngcontent-ng-c1611679977="" class="card-text">
+              <div _ngcontent-ng-c1611679977="" class="card-header text-xl leading-[0px]">Place Order</div>
+              <div _ngcontent-ng-c1611679977="" class="card-content mt-auto flex h-12 w-full justify-center">
+                <i _ngcontent-ng-c1611679977="" class="far fa-square-plus -mt-1 text-5xl text-white"></i>
+              </div>
+            </div></div></app-new-order></app-item
+      ><!--container--></app-root
+    >
+    <noscript>Merci d'activer JavaScript pour utiliser cette application.</noscript>
+    <script src="polyfills.js" type="module"></script>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,1221 @@
+[
+  {
+    "type": "In-town speed boosts",
+    "description": "These items provide a Sugar Rush or Sugar Jolt and can only be used in towns or outposts",
+    "items": [
+      {
+        "name": "Chocolate Bunny",
+        "speed_boost": 50,
+        "duration_(min)": 5,
+        "sweet_points": 2
+      },
+      {
+        "name": "Crème Brûlée",
+        "speed_boost": 25,
+        "duration_(min)": 10,
+        "sweet_points": 3
+      },
+      {
+        "name": "Delicious Cake",
+        "speed_boost": 50,
+        "duration_(min)": 2,
+        "sweet_points": 50
+      },
+      {
+        "name": "Fruitcake",
+        "speed_boost": 25,
+        "duration_(min)": 5,
+        "sweet_points": 1
+      },
+      {
+        "name": "Jar of Honey",
+        "speed_boost": 25,
+        "duration_(min)": 10,
+        "sweet_points": 2
+      },
+      {
+        "name": "Krytan Lokum",
+        "speed_boost": 25,
+        "duration_(min)": 10,
+        "sweet_points": 3
+      },
+      {
+        "name": "Mandragor Root Cake",
+        "speed_boost": 25,
+        "duration_(min)": 3,
+        "sweet_points": 1
+      },
+      {
+        "name": "Minis-treat of Purity",
+        "speed_boost": 50,
+        "duration_(min)": 2,
+        "sweet_points": 3
+      },
+      {
+        "name": "Red Bean Cake",
+        "speed_boost": 25,
+        "duration_(min)": 5,
+        "sweet_points": 2
+      },
+      {
+        "name": "Sugary Blue Drink",
+        "speed_boost": 50,
+        "duration_(min)": 2,
+        "sweet_points": 1
+      }
+    ]
+  },
+  {
+    "type": "Boost morale and/or reduce death penalty",
+    "description": "These items reduce Death Penalty or provide a Morale Boost",
+    "items": [
+      {
+        "name": "Elixir of Valor",
+        "applies_to...": "Party",
+        "morale": 10,
+        "death_penalty": "",
+        "notes": "Does not recharge skills.",
+        "sweet_points": ""
+      },
+      {
+        "name": "Four-Leaf Clover",
+        "applies_to...": "Party",
+        "morale": "",
+        "death_penalty": 5,
+        "notes": "If 15% DP removed, adds 4 Lucky points to user.",
+        "sweet_points": ""
+      },
+      {
+        "name": "Honeycomb",
+        "applies_to...": "Party",
+        "morale": 5,
+        "death_penalty": "",
+        "notes": "Does not recharge skills",
+        "sweet_points": 1
+      },
+      {
+        "name": "Oath of Purity",
+        "applies_to...": "Party",
+        "morale": "",
+        "death_penalty": 15,
+        "notes": "",
+        "sweet_points": ""
+      },
+      {
+        "name": "Peppermint Candy Cane",
+        "applies_to...": "User",
+        "morale": "",
+        "death_penalty": "Removes all DP",
+        "notes": "",
+        "sweet_points": 2
+      },
+      {
+        "name": "Powerstone of Courage",
+        "applies_to...": "Party",
+        "morale": 10,
+        "death_penalty": "Removes all DP",
+        "notes": "Recharges skills",
+        "sweet_points": ""
+      },
+      {
+        "name": "Pumpkin Cookie",
+        "applies_to...": "User",
+        "morale": 10,
+        "death_penalty": "",
+        "notes": "Does not recharge skills",
+        "sweet_points": 1
+      },
+      {
+        "name": "Rainbow Candy Cane",
+        "applies_to...": "Party",
+        "morale": 5,
+        "death_penalty": "",
+        "notes": "Does not recharge skills",
+        "sweet_points": 1
+      },
+      {
+        "name": "Refined Jelly",
+        "applies_to...": "User",
+        "morale": "",
+        "death_penalty": 15,
+        "notes": "",
+        "sweet_points": 1
+      },
+      {
+        "name": "Seal of the Dragon Empire",
+        "applies_to...": "User",
+        "morale": 10,
+        "death_penalty": "",
+        "notes": "Recharges skills",
+        "sweet_points": ""
+      },
+      {
+        "name": "Shining Blade Rations",
+        "applies_to...": "User",
+        "morale": "",
+        "death_penalty": 15,
+        "notes": "",
+        "sweet_points": ""
+      },
+      {
+        "name": "Wintergreen Candy Cane",
+        "applies_to...": "User",
+        "morale": "",
+        "death_penalty": 15,
+        "notes": "",
+        "sweet_points": 1
+      }
+    ]
+  },
+  {
+    "type": "Increase movement, attack speed, or rate of skill activation",
+    "description": "These items increase PvE Movement or Attack speed and/or reduce skill Activation times",
+    "items": [
+      {
+        "name": "Essence of Celerity",
+        "applies_to...": "Party",
+        "boosts...": "+ Movement speed, attack speed  - Skill activation time, recharge time",
+        "amount": 20,
+        "duration_(min)": 30,
+        "sweet_points": ""
+      },
+      {
+        "name": "Green Rock Candy",
+        "applies_to...": "User",
+        "boosts...": "+ Movement speed, attack speed  - Skill activation time",
+        "amount": 15,
+        "duration_(min)": 30,
+        "sweet_points": 3
+      },
+      {
+        "name": "Blue Rock Candy",
+        "applies_to...": "User",
+        "boosts...": "+ Movement speed, attack speed  - Skill activation time",
+        "amount": 25,
+        "duration_(min)": 30,
+        "sweet_points": 5
+      },
+      {
+        "name": "Red Rock Candy",
+        "applies_to...": "User",
+        "boosts...": "+ Movement speed, attack speed  - Skill activation time",
+        "amount": 33,
+        "duration_(min)": 30,
+        "sweet_points": 7
+      },
+      {
+        "name": "Slice of Pumpkin Pie",
+        "applies_to...": "User",
+        "boosts...": "+ Attack speed  - Skill activation time",
+        "amount": 25,
+        "duration_(min)": 30,
+        "sweet_points": 1
+      }
+    ]
+  },
+  {
+    "type": "Health, Energy, Armor, or Attributes",
+    "description": "These items increase maximum Health, Energy, Armor, or Attributes",
+    "items": [
+      {
+        "name": "Armor of Salvation",
+        "applies_to...": "Party",
+        "benefit": 10,
+        "duration_(min)": 30,
+        "sweet_points": ""
+      },
+      {
+        "name": "Birthday Cupcake",
+        "applies_to...": "User",
+        "benefit": 100,
+        "duration_(min)": 30,
+        "sweet_points": 1
+      },
+      {
+        "name": "Bowl of Skalefin Soup",
+        "applies_to...": "User",
+        "benefit": 1,
+        "duration_(min)": 30,
+        "sweet_points": ""
+      },
+      {
+        "name": "Candy Apple",
+        "applies_to...": "User",
+        "benefit": 100,
+        "duration_(min)": 30,
+        "sweet_points": 1
+      },
+      {
+        "name": "Candy Corn",
+        "applies_to...": "User",
+        "benefit": 1,
+        "duration_(min)": 30,
+        "sweet_points": 1
+      },
+      {
+        "name": "Drake Kabob",
+        "applies_to...": "User",
+        "benefit": "Armor +5",
+        "duration_(min)": 30,
+        "sweet_points": ""
+      },
+      {
+        "name": "Golden Egg",
+        "applies_to...": "User",
+        "benefit": 1,
+        "duration_(min)": 30,
+        "sweet_points": 1
+      },
+      {
+        "name": "Grail of Might",
+        "applies_to...": "Party",
+        "benefit": 100,
+        "duration_(min)": 30,
+        "sweet_points": ""
+      },
+      {
+        "name": "Pahnai Salad",
+        "applies_to...": "User",
+        "benefit": 20,
+        "duration_(min)": 30,
+        "sweet_points": ""
+      },
+      {
+        "name": "War Supplies",
+        "applies_to...": "User",
+        "benefit": 5,
+        "duration_(min)": 30,
+        "sweet_points": 1
+      },
+      {
+        "name": "Lunar Fortune",
+        "applies_to...": "User",
+        "benefit": "Lunar Blessing (chance)+1 all attributes",
+        "duration_(min)": "∞",
+        "sweet_points": ""
+      }
+    ]
+  },
+  {
+    "type": "Experience gain",
+    "description": "These items increase the amount of Experience gained from kills",
+    "items": [
+      {
+        "name": "Scroll of Adventurer's Insight",
+        "applies_to...": "Party",
+        "xp_bonus": 150,
+        "duration_(min)": 10
+      },
+      {
+        "name": "Scroll of Berserker's Insight",
+        "applies_to...": "Party",
+        "xp_bonus": 300,
+        "duration_(min)": 0.5
+      },
+      {
+        "name": "Scroll of Hero's Insight",
+        "applies_to...": "Party",
+        "xp_bonus": 200,
+        "duration_(min)": 10
+      },
+      {
+        "name": "Scroll of Hunter's Insight",
+        "applies_to...": "Party",
+        "xp_bonus": 175,
+        "duration_(min)": 5
+      },
+      {
+        "name": "Scroll of Rampager's Insight",
+        "applies_to...": "Party",
+        "xp_bonus": 200,
+        "duration_(min)": 0.5
+      },
+      {
+        "name": "Scroll of Slayer's Insight",
+        "applies_to...": "Party",
+        "xp_bonus": 250,
+        "duration_(min)": 5
+      },
+      {
+        "name": "Scroll of the Lightbringer",
+        "applies_to...": "Party",
+        "xp_bonus": 300,
+        "duration_(min)": 10
+      }
+    ]
+  },
+  {
+    "type": "Summoning stone",
+    "description": "These items are used to summon allies to assist the player",
+    "items": [
+      {
+        "name": "Amber Summoning Stone",
+        "summoned_ally": "Juggernaut",
+        "acquisition": "Crafted by Aiiane in Urgoz's Warren."
+      },
+      {
+        "name": "Arctic Summoning Stone",
+        "summoned_ally": "Kveldulf",
+        "acquisition": "Crafted by Eyja [Consumables] in Gunnar's Hold."
+      },
+      {
+        "name": "Automaton Summoning Stone",
+        "summoned_ally": "Golem",
+        "acquisition": "Quest reward for Zinn's Task."
+      },
+      {
+        "name": "Celestial Summoning Stone",
+        "summoned_ally": "Celestial Dog\n Celestial Dragon\n Celestial Horse\n Celestial Monkey\n Celestial Ox\n Celestial Pig\n Celestial Rabbit\n Celestial Rat\n Celestial Rooster\n Celestial Sheep\n Celestial Snake\n Celestial Tiger",
+        "acquisition": "Rewarded during Canthan New Year finales"
+      },
+      {
+        "name": "Chitinous Summoning Stone",
+        "summoned_ally": "Devourer",
+        "acquisition": "Crafted by Edwin [Consumables] in the Eye of the North."
+      },
+      {
+        "name": "Demonic Summoning Stone",
+        "summoned_ally": "Oni",
+        "acquisition": "Drops from Kanaxai's Chest."
+      },
+      {
+        "name": "Fossilized Summoning Stone",
+        "summoned_ally": "Raptor",
+        "acquisition": "Crafted by Kwat [Consumables] in Rata Sum."
+      },
+      {
+        "name": "Frosty Summoning Stone",
+        "summoned_ally": "Snowman",
+        "acquisition": "Wintersday only: crafted by Will Brockman in the Eye of the North or as a quest reward for The Three Wise Norn."
+      },
+      {
+        "name": "Gelatinous Summoning Stone",
+        "summoned_ally": "Ooze",
+        "acquisition": "Crafted by Alcus Nailbiter [Consumables] in the Central Transfer Chamber."
+      },
+      {
+        "name": "Ghastly Summoning Stone",
+        "summoned_ally": "Dream Rider",
+        "acquisition": "Drops from the Underworld Chest."
+      },
+      {
+        "name": "Igneous Summoning Stone",
+        "summoned_ally": "Fire Imp",
+        "acquisition": "Typing the /bonus command if your account meets certain requirements. 1"
+      },
+      {
+        "name": "Imperial Guard Reinforcement Order",
+        "summoned_ally": 3,
+        "acquisition": "Crafted by Zan Lei in Kaineng Center."
+      },
+      {
+        "name": "Jadeite Summoning Stone",
+        "summoned_ally": "Siege Turtle",
+        "acquisition": "Crafted by Alaris in The Deep."
+      },
+      {
+        "name": "Legionnaire Summoning Crystal",
+        "summoned_ally": "Legionnaire",
+        "acquisition": "Wayfarer's Reverie only: traded by Fylinn, Sworn to Winds."
+      },
+      {
+        "name": "Mercantile Summoning Stone",
+        "summoned_ally": "Merchant",
+        "acquisition": "Drops from Gift of the Traveler."
+      },
+      {
+        "name": "Mischievous Summoning Stone",
+        "summoned_ally": "Grentch",
+        "acquisition": "Wintersday only: crafted by Will Brockman in the Eye of the North or as a quest reward for Charr-broiled Plans."
+      },
+      {
+        "name": "Mysterious Summoning Stone",
+        "summoned_ally": "Black Beast ofAaaaarrrrrrggghhh\n Crystal Guardian\n Crystal Spider\n Devourer\n Fire Imp\n Gaki\n Golem\n Grentch\n Juggernaut\n Kveldulf\n Oni\n Ooze\n Raptor\n Restless Corpse\n Saltspray Dragon\n Siege Turtle\n Smoke Phantom\n Snowman\n Swarm of Bees\n White Rabbit",
+        "acquisition": "Drops from Gift of the Traveler."
+      },
+      {
+        "name": "Mystical Summoning Stone",
+        "summoned_ally": "Gaki",
+        "acquisition": "Drops from Urgoz's Chest."
+      },
+      {
+        "name": "Shining Blade War Horn",
+        "summoned_ally": 3,
+        "acquisition": "Drops from Royal Gift."
+      },
+      {
+        "name": "Tengu Support Flare",
+        "summoned_ally": 3,
+        "acquisition": "Drops from Imperial Guard Lockbox."
+      },
+      {
+        "name": "Zaishen Summoning Stone",
+        "summoned_ally": "Archer\n Priest of Balthazar\n Guild Lord\n Avatar of Balthazar\n Footman\n Champion of Balthazar",
+        "acquisition": "Traded by Pokhe in the Great Temple of Balthazar. Drops from Zaishen Strongboxes."
+      }
+    ]
+  },
+  {
+    "type": "Festive Items",
+    "description": "These items can contribute to the Party Animal title track",
+    "items": [
+      {
+        "name": "Bottle Rocket",
+        "points": 1,
+        "acquisition": "Red Gift Bag\nFire in the Sky\nThe Big Bang\nNubah Lao\nFarewell to Gaile\nTesla\nZaishen Strongbox"
+      },
+      {
+        "name": "Champagne Popper",
+        "points": 1,
+        "acquisition": "Red Gift Bag\nFire in the Sky\nThe Big Bang\nNubah Lao\nFarewell to Gaile\nTesla\nZaishen Strongbox"
+      },
+      {
+        "name": "Ghost-in-the-Box",
+        "points": 1,
+        "acquisition": "Halloween collectors\nTrick-or-Treat Bags"
+      },
+      {
+        "name": "Snowman Summoner",
+        "points": 1,
+        "acquisition": "Wintersday collectors\nChest of Wintersday Past"
+      },
+      {
+        "name": "Sparkler",
+        "points": 1,
+        "acquisition": "Red Gift Bag\nFire in the Sky\nThe Big Bang\nNubah Lao\nFarewell to Gaile\nTesla\nZaishen Strongbox"
+      },
+      {
+        "name": "Squash Serum",
+        "points": 1,
+        "acquisition": "Halloween collectors\nTrick-or-Treat Bags"
+      },
+      {
+        "name": "Beetle Juice Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest"
+      },
+      {
+        "name": "Cottontail Tonic",
+        "points": 2,
+        "acquisition": "Gift of the Traveler"
+      },
+      {
+        "name": "Frosty Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest"
+      },
+      {
+        "name": "Mischievous Tonic",
+        "points": 2,
+        "acquisition": "From Wintersday 2008 onward: Random drop and quest reward\nWintersday in July 2009: Random drop"
+      },
+      {
+        "name": "Sinister Automatonic",
+        "points": 2,
+        "acquisition": "Zinn's Task"
+      },
+      {
+        "name": "Transmogrifier Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest\nSomething Wicked This Way Comes\nSome Halloween collectors\nTrick-or-Treat Bags"
+      },
+      {
+        "name": "Yuletide Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest\nVarious Wintersday sources"
+      },
+      {
+        "name": "Cerebral Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in January)"
+      },
+      {
+        "name": "Searing Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in February)"
+      },
+      {
+        "name": "Abyssal Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in March)"
+      },
+      {
+        "name": "Unseen Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in April)"
+      },
+      {
+        "name": "Phantasmal Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in May)\nDon't Fear the Reapers"
+      },
+      {
+        "name": "Automatonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in June)"
+      },
+      {
+        "name": "Boreal Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in July)"
+      },
+      {
+        "name": "Trapdoor Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in August)"
+      },
+      {
+        "name": "Macabre Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in September)"
+      },
+      {
+        "name": "Skeletonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in October)"
+      },
+      {
+        "name": "Gelatinous Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in November)"
+      },
+      {
+        "name": "Abominable Tonic",
+        "points": 2,
+        "acquisition": "Zaishen Chest (Only in December)"
+      },
+      {
+        "name": "Crate of Fireworks",
+        "points": 3,
+        "acquisition": "Canthan New Year finales from 2008 onward\nGift of the Traveler\nTesla\nZaishen Strongbox"
+      },
+      {
+        "name": "Minutely Mad King Tonic",
+        "points": 3,
+        "acquisition": "Halloween finale"
+      },
+      {
+        "name": "Zaishen Tonic",
+        "points": 3,
+        "acquisition": "Pokhe\nZaishen Strongbox"
+      },
+      {
+        "name": "Mysterious Tonic",
+        "points": 5,
+        "acquisition": "Gift of the Traveler"
+      },
+      {
+        "name": "Disco Ball",
+        "points": 7,
+        "acquisition": "Gift of the Traveler"
+      },
+      {
+        "name": "Party Beacon",
+        "points": 50,
+        "acquisition": "Anniversary Celebration\nDragon Festival Grab Bag\nImperial Guard Lockbox\nLunar Festival Grab Bag\nWintersday Grab Bag\nZaishen Strongbox"
+      },
+      {
+        "name": "Spooky Tonic",
+        "points": 25,
+        "acquisition": "Ghoulish Grab Bag"
+      }
+    ]
+  },
+  {
+    "type": "Alcohol",
+    "description": "These items causes the character to become drunk. Each drink consumed contributes to the player's Drunkard title track, depending on the strength of the alcohol.",
+    "items": [
+      {
+        "name": "Bottle of Rice Wine",
+        "points": 1,
+        "acquisition": "Festival Prize\nMerchants in Cantha\nCollectors (Victory Tokens)\nJarimiya the Unmerciful"
+      },
+      {
+        "name": "Eggnog",
+        "points": 1,
+        "acquisition": "Wintersday\nChest of Wintersday Past"
+      },
+      {
+        "name": "Dwarven Ale",
+        "points": 1,
+        "acquisition": "Merchants in Embark Beach and Southern Shiverpeaks\nIrontoe's Chest"
+      },
+      {
+        "name": "Hard Apple Cider",
+        "points": 1,
+        "acquisition": "Special Treats Week\nAnniversary Celebration"
+      },
+      {
+        "name": "Hunter's Ale",
+        "points": 1,
+        "acquisition": "Nicholas Sandford (Gift of the Huntsman)\nNicholas the Traveler (Gift of the Traveler)\nCollectors\nThe Bear Hunters\nAnniversary Celebration"
+      },
+      {
+        "name": "Bottle of Juniberry Gin",
+        "points": 1,
+        "acquisition": "Collectors (Kournan Coins)"
+      },
+      {
+        "name": "Shamrock Ale",
+        "points": 1,
+        "acquisition": "Lucky Treats Week"
+      },
+      {
+        "name": "Bottle of Vabbian Wine",
+        "points": 1,
+        "acquisition": "Vabbi Trade Official (Trade Contracts)\nAhoj (Sentient Spores)\nJarimiya the Unmerciful drops one bottle each time he is killed."
+      },
+      {
+        "name": "Vial of Absinthe",
+        "points": 1,
+        "acquisition": "Halloween"
+      },
+      {
+        "name": "Witch's Brew",
+        "points": 1,
+        "acquisition": "Halloween"
+      },
+      {
+        "name": "Zehtuka's Jug",
+        "points": 1,
+        "acquisition": "On the ground in The Desolation"
+      },
+      {
+        "name": "Aged Dwarven Ale",
+        "points": 3,
+        "acquisition": "Hagwin Ironskull (collector)\nIrontoe's Chest"
+      },
+      {
+        "name": "Aged Hunter's Ale",
+        "points": 3,
+        "acquisition": "Nicholas Sandford (Gift of the Huntsman)\nNicholas the Traveler (Gift of the Traveler)"
+      },
+      {
+        "name": "Bottle of Grog",
+        "points": 3,
+        "acquisition": "Pirate Week"
+      },
+      {
+        "name": "Flask of Firewater",
+        "points": 3,
+        "acquisition": "Collectors (Victory Tokens)\nZaishen Chest"
+      },
+      {
+        "name": "Keg of Aged Hunter's Ale",
+        "points": 3,
+        "acquisition": "Nicholas the Traveler (Gift of the Traveler)"
+      },
+      {
+        "name": "Krytan Brandy",
+        "points": 3,
+        "acquisition": "Zadok or Elder Rabne (Royal Gift)\nAnniversary Celebration"
+      },
+      {
+        "name": "Spiked Eggnog",
+        "points": 3,
+        "acquisition": "Wintersday\nChest of Wintersday Past"
+      },
+      {
+        "name": "Battle Isle Iced Tea",
+        "points": 50,
+        "acquisition": "Anniversary Celebration\nDragon Festival Grab Bag\nImperial Guard Lockbox\nLunar Festival Grab Bag\nWintersday Grab Bag\nZaishen Strongbox"
+      }
+    ]
+  },
+  {
+    "type": "Sweet",
+    "description": "These items are used to reach the Sweet Tooth title. Most sweets also have other advantages",
+    "items": [
+      {
+        "name": "Candy Apple",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": 100,
+        "acquisition": "Trick-or-Treat Bags"
+      },
+      {
+        "name": "Candy Corn",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": 1,
+        "acquisition": "Trick-or-Treat Bags"
+      },
+      {
+        "name": "Fruitcake",
+        "points": 1,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 5,
+        "effect": "Run 25% faster",
+        "acquisition": "Wintersday\nChest of Wintersday Past\nWintersday in July"
+      },
+      {
+        "name": "Golden Egg",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": 1,
+        "acquisition": "Sweet Treats Week"
+      },
+      {
+        "name": "Honeycomb",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": "",
+        "duration_(mins)": 0,
+        "effect": 5,
+        "acquisition": "Galton Franks in Sacnoth Valley\nHogni Truthseeker's quest reward\nEye of the North Special Event\nFarewell to Gaile\nGift of the Huntsman\nGift of the Traveler"
+      },
+      {
+        "name": "Mandragor Root Cake",
+        "points": 1,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 3,
+        "effect": "Run 25% faster",
+        "acquisition": "Collector Yajide in Yohlon Haven\nCollector Kazuma in Great Temple of Balthazar\nFarewell to Gaile"
+      },
+      {
+        "name": "Pumpkin Cookie",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": "",
+        "duration_(mins)": 0,
+        "effect": 10,
+        "acquisition": "Trick-or-Treat Bags"
+      },
+      {
+        "name": "Refined Jelly",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": "",
+        "duration_(mins)": 0,
+        "effect": "Remove 15% death penalty",
+        "acquisition": "Collector Thecos Bellyshaker in Ooze Pit"
+      },
+      {
+        "name": "Slice of Pumpkin Pie",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": "Attack speed +25%, reduce skill activation time by 15%",
+        "acquisition": "Special Treats Week"
+      },
+      {
+        "name": "Sugary Blue Drink",
+        "points": 1,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 2,
+        "effect": "Run 50% faster",
+        "acquisition": "Canthan New Year\nDragon Festival (from 2007 onward)\nFarewell to Gaile\nAnniversary Celebration\nWayfarer's Reverie"
+      },
+      {
+        "name": "War Supplies",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": 5,
+        "acquisition": "Shining Blade Bounties\nConfessor's Orders\nCourier Falken\nAuspicious Beginnings, A Vengeance of Blades, Shadows in the Jungle, or Rise"
+      },
+      {
+        "name": "Wintergreen Candy Cane",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": "",
+        "duration_(mins)": 0,
+        "effect": "Remove 15% death penalty",
+        "acquisition": "Wintersday\nChest of Wintersday Past\nWintersday in July"
+      },
+      {
+        "name": "Rainbow Candy Cane",
+        "points": 1,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": "",
+        "duration_(mins)": 0,
+        "effect": 5,
+        "acquisition": "Wintersday (from 2006 onward)\nChest of Wintersday Past\nWintersday in July"
+      },
+      {
+        "name": "Peppermint Candy Cane",
+        "points": 2,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": "",
+        "duration_(mins)": 0,
+        "effect": "Remove all death penalty",
+        "acquisition": "Wintersday (from 2006 onward)\nChest of Wintersday Past\nWintersday in July"
+      },
+      {
+        "name": "Birthday Cupcake",
+        "points": 2,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": "Run 25% faster, +100 max health, +10 max energy",
+        "acquisition": "Anniversary Celebration\nDragon Festival 20091\nCanthan New Year 2010\nDragon Festival 2010"
+      },
+      {
+        "name": "Chocolate Bunny",
+        "points": 2,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 5,
+        "effect": "Run 50% faster",
+        "acquisition": "Sweet Treats Week"
+      },
+      {
+        "name": "Red Bean Cake",
+        "points": 2,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 5,
+        "effect": "Run 25% faster",
+        "acquisition": "Dragon Festival\nMerchants in Kaineng City\nCollector Kazuma in Great Temple of Balthazar\nAnniversary Celebration"
+      },
+      {
+        "name": "Jar of Honey",
+        "points": 2,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 10,
+        "effect": "Run 25% faster",
+        "acquisition": "Gift of the Huntsman\nGift of the Traveler"
+      },
+      {
+        "name": "Crème Brûlée",
+        "points": 3,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 10,
+        "effect": "Run 25% faster",
+        "acquisition": "Dragon Festival\nAnniversary Celebration\nZaishen Chest\nNightfall PvP Preview Event"
+      },
+      {
+        "name": "Krytan Lokum",
+        "points": 3,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 10,
+        "effect": "Run 25% faster",
+        "acquisition": "Royal Gift"
+      },
+      {
+        "name": "Minis-treat of Purity",
+        "points": 3,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 2,
+        "effect": "Run 50% faster",
+        "acquisition": "Collector Zha Ku in Kaineng Center"
+      },
+      {
+        "name": "Green Rock Candy",
+        "points": 3,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": "Run 15% faster, attack speed +15%, reduce skill activation time by 15%",
+        "acquisition": "Gift of the Traveler"
+      },
+      {
+        "name": "Blue Rock Candy",
+        "points": 5,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": "Run 25% faster, attack speed +25%, reduce skill activation time by 20%",
+        "acquisition": "Gift of the Traveler"
+      },
+      {
+        "name": "Red Rock Candy",
+        "points": 7,
+        "consumption_area": "PvE explorable areas",
+        "spam-mable": true,
+        "duration_(mins)": 30,
+        "effect": "Run 33% faster, attack speed +33%, reduce skill activation time by 25%",
+        "acquisition": "Gift of the Traveler"
+      },
+      {
+        "name": "Delicious Cake",
+        "points": 50,
+        "consumption_area": "Outposts",
+        "spam-mable": true,
+        "duration_(mins)": 2,
+        "effect": "Run 50% faster",
+        "acquisition": "Anniversary Celebration\nKazuma in Great Temple of Balthazar\nDragon Festival Grab Bag\nImperial Guard Lockbox\nLunar Festival Grab Bag\nWintersday Grab Bag\nZaishen Strongbox"
+      }
+    ]
+  },
+  {
+    "type": "Presents",
+    "description": "Presents are consumable items that can be opened to gain a random drop, including other items, gold, or blessings. Each present has its own set of possible rewards",
+    "items": [
+      {
+        "name": "Birthday Present",
+        "description": "Birthday Present Happy <Nth> birthday!"
+      },
+      {
+        "name": "Gift of the Huntsman",
+        "description": "\"These are a few of my favorite things.\" - Nicholas"
+      },
+      {
+        "name": "Wintersday Grab Bag",
+        "description": "Contains a random selection of festival items. (Bag cannot be worn as a hat.)"
+      },
+      {
+        "name": "Lunar Fortune",
+        "description": "Lunar Fortune [Year of the <Animal>]Double-click to use while in an explorable area."
+      },
+      {
+        "name": "Imperial Guard Lockbox",
+        "description": "Contains various items confiscated by the Imperial Guard. Double-click to open."
+      },
+      {
+        "name": "Gift of the Traveler",
+        "description": "\"Remember, it's the thought that counts.\" -NicholasDouble-click to open."
+      },
+      {
+        "name": "Lunar Fortune",
+        "description": "Lunar Fortune [Year of the <Animal>]Double-click to use while in an explorable area."
+      },
+      {
+        "name": "Hero's Strongbox",
+        "description": "Awarded for achievements in Heroes' Ascent. Double-click to open."
+      },
+      {
+        "name": "Champion's Zaishen Strongbox",
+        "description": "* Denotes an item unique to this gift."
+      },
+      {
+        "name": "Reverie Gift",
+        "description": " A gift from Fylinn, Sworn to Winds. Double-click to open. This item cannot be traded or sold."
+      },
+      {
+        "name": "Ghoulish Grab Bag",
+        "description": "Contains a batch of spine-chilling tonics. (Bag cannot be worn as a hat.)"
+      },
+      {
+        "name": "Wintersday Gift",
+        "description": "Double-click to open."
+      },
+      {
+        "name": "Legion Loot Bag",
+        "description": " A gift from Fylinn, Sworn to Winds. Double-click to open. This item cannot be traded or sold."
+      },
+      {
+        "name": "Coffer of Whispers",
+        "description": "A Coffer of Whispers is an item that, when opened, randomly drops one of the items below. It can only be used in a town or outpost."
+      },
+      {
+        "name": "Dragon Festival Grab Bag",
+        "description": "Contains a random selection of festival items. (Bag cannot be worn as a hat.)"
+      },
+      {
+        "name": "Ghoulish Grab Bag",
+        "description": "Contains a batch of spine-chilling tonics. (Bag cannot be worn as a hat.)"
+      },
+      {
+        "name": "Trick-or-Treat Bag",
+        "description": "Double-click to open."
+      },
+      {
+        "name": "Gladiator's Zaishen Strongbox",
+        "description": "Awarded for achievements in Random Arena. [sic] Double-click to open."
+      },
+      {
+        "name": "Decade Zaishen Honor Chest",
+        "description": "Contains a large number of Flames of Balthazar. Double-click to open."
+      },
+      {
+        "name": "Lunar Festival Grab Bag",
+        "description": "Contains a random selection of festive items. (Bag cannot be deployed as a miniature.)"
+      },
+      {
+        "name": "Decade Zaishen Tribute Chest",
+        "description": "Contains a random selection of party items, alcohol, or sweets. Double-click to open."
+      },
+      {
+        "name": "Decade Zaishen War Chest",
+        "description": "Contains a number of Zaishen Keys. Double-click to open."
+      },
+      {
+        "name": "Strategist's Zaishen Strongbox",
+        "description": "* Denotes an item unique to this gift."
+      },
+      {
+        "name": "Festival Prize",
+        "description": "Double-click to open."
+      },
+      {
+        "name": "Red Gift Bag",
+        "description": "Double-click to open."
+      },
+      {
+        "name": "Paper Wrapped Parcel",
+        "description": "\"Lieutenant Thackeray traded this for the perfect touch.\"Double-click to open."
+      },
+      {
+        "name": "Sack of Random Junk",
+        "description": "\"A token reward from Lieutenant Thackeray for giving it a good shot.\"Double-click to open."
+      },
+      {
+        "name": "Royal Gift",
+        "description": "A gift from the Krytan royal coffers. Double-click to open."
+      },
+      {
+        "name": "Nightfall Collector's Edition Present",
+        "description": "Double-click to open."
+      },
+      {
+        "name": "Wintersday Grab Bag",
+        "description": "Contains a random selection of festival items. (Bag cannot be worn as a hat.)"
+      },
+      {
+        "name": "Factions Collector's Edition Present",
+        "description": "Double-click to open."
+      },
+      {
+        "name": "Winter Gift",
+        "description": "This page contains information about a Guild Wars component or feature that has been removed or replaced. The information on this page does not apply to the game as it currently exists."
+      }
+    ]
+  },
+  {
+    "type": "Keys",
+    "description": "A key is an item that can be used to unlock a chest. With the exception of Lockpicks, keys can be used only once to open chests with a matching name. They can be purchased from merchants, obtained as loot, or (in some cases) obtained from reward trophy collectors (e.g. Equipment Requisitions).",
+    "items": [
+      {
+        "name": "Ascalonian Key",
+        "cost": 50,
+        "region": "Ascalon"
+      },
+      {
+        "name": "Steel Key",
+        "cost": 80,
+        "region": "Northern Shiverpeaks"
+      },
+      {
+        "name": "Krytan Key",
+        "cost": 200,
+        "region": "Kryta"
+      },
+      {
+        "name": "Maguuma Key",
+        "cost": 300,
+        "region": "Maguuma Jungle"
+      },
+      {
+        "name": "Elonian Key",
+        "cost": 450,
+        "region": "Crystal Desert"
+      },
+      {
+        "name": "Shiverpeak Key",
+        "cost": 600,
+        "region": "Southern Shiverpeaks(except: Sorrow's Furnace)"
+      },
+      {
+        "name": "Darkstone Key",
+        "cost": 600,
+        "region": "Ring of Fire Island Chain"
+      },
+      {
+        "name": "Miner's Key",
+        "cost": 750,
+        "region": "Sorrow's Furnace"
+      },
+      {
+        "name": "Shing Jea Key",
+        "cost": 80,
+        "region": "Shing Jea Island"
+      },
+      {
+        "name": "Canthan Key",
+        "cost": 450,
+        "region": "Kaineng City(except: Raisu Palace mission and explorable area)"
+      },
+      {
+        "name": "Kurzick Key",
+        "cost": 600,
+        "region": "Echovald Forest(except: Urgoz's Warren)"
+      },
+      {
+        "name": "Stoneroot Key",
+        "cost": 1,
+        "region": "Urgoz's Warren"
+      },
+      {
+        "name": "Luxon Key",
+        "cost": 600,
+        "region": "The Jade Sea(except: The Deep)"
+      },
+      {
+        "name": "Deep Jade Key",
+        "cost": 1,
+        "region": "The Deep"
+      },
+      {
+        "name": "Forbidden Key",
+        "cost": 600,
+        "region": "Raisu PalaceRaisu Palace (explorable area)"
+      },
+      {
+        "name": "Istani Key",
+        "cost": 80,
+        "region": "Istan"
+      },
+      {
+        "name": "Kournan Key",
+        "cost": 450,
+        "region": "Kourna"
+      },
+      {
+        "name": "Vabbian Key",
+        "cost": 600,
+        "region": "Vabbi"
+      },
+      {
+        "name": "Ancient Elonian Key",
+        "cost": 600,
+        "region": "The Desolation"
+      },
+      {
+        "name": "Margonite Key",
+        "cost": 750,
+        "region": "Realm of Torment(except: Domain of Anguish)"
+      },
+      {
+        "name": "Demonic Key",
+        "cost": 1000,
+        "region": "Domain of Anguish"
+      },
+      {
+        "name": "Phantom Key",
+        "cost": 750,
+        "region": "The UnderworldScarred EarthThe CourtyardThe Hall of Heroes"
+      },
+      {
+        "name": "Obsidian Key",
+        "cost": 1000,
+        "region": "The Fissure of Woe"
+      },
+      {
+        "name": "Lockpick Key",
+        "cost": 1500,
+        "region": "Charr HomelandsDepths of TyriaFar ShiverpeaksTarnished Coast"
+      },
+      {
+        "name": "Zaishen Key",
+        "cost": 5000,
+        "region": "The Battle Isles"
+      }
+    ]
+  }
+]

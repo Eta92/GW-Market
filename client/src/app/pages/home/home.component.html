@@ -1,0 +1,267 @@
+<div class="fritz-font scroll h-screen w-full overflow-y-auto text-white" (click)="searchOpen = false">
+  <div class="bg-main bg-base section-transition relative z-30 md:min-h-[calc(100vh-40px)]">
+    <div class="flex flex-col gap-4 p-2 md:p-8">
+      <div class="flex justify-between md:justify-start md:gap-8">
+        <img class="h-12 w-48 md:h-24 md:w-96 lg:h-[128px] lg:w-[520px]" src="../../../assets/img/trading.svg" />
+        <div class="text-xs sm:text-sm md:text-lg lg:mt-2 lg:text-xl">
+          • Player to player economy<br />
+          • Buy stuff instantly<br />
+          • Set up your personal shop<br />
+          • No account needed
+        </div>
+      </div>
+    </div>
+    <div class="-mt-8 w-full lg:mx-8 lg:my-4 lg:mt-0 lg:w-[840px]">
+      <app-select-item
+        class="ml-24"
+        [width]="800"
+        [height]="160"
+        [offsetY]="-48"
+        (selectItem)="goToItem($event)"
+      ></app-select-item>
+      <!--div class="flex justify-center w-full h-40 gap-8 p-8 text-xl uppercase bg-cover bg-frame-clean">
+        <div class="typing flex h-fit w-full p-3.5" (click)="searchOpen = true" (click)="$event.stopPropagation()">
+          <input
+            class="h-12 w-full border-none bg-transparent p-4 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
+            type="text"
+            [formControl]="searchControl"
+            placeholder="Search..."
+          />
+          <i class="self-center mx-4 text-2xl fa fa-search text-gwt-brown"></i>
+        </div>
+      </div-->
+      <!--div class="w-full h-80">
+        <div
+          *ngIf="searchedItems.length > 0 && searchOpen"
+          class="-mt-12 ml-8 w-[776px] border border-gwt-brown bg-gwt-light"
+        >
+          <div
+            class="flex justify-between h-12 px-4 text-left transition-all full hover:brightness-120 hover:cursor-pointer"
+            [title]="item.name"
+            (click)="goToItem(item)"
+            *ngFor="let item of searchedItems"
+          >
+            <div class="p-3 overflow-hidden text-ellipsis whitespace-nowrap text-gwt-brown">
+              <b>{{ item.name.substring(0, item.match) }}</b
+              >{{ item.name.substring(item.match) }}
+            </div>
+            <img class="w-12 h-12 p-2" [src]="getImageSource(item)" />
+          </div>
+        </div>
+      </div-->
+      <div *ngIf="searchedItems.length === 0" class="text-shadow px-4 text-xs md:text-sm lg:ml-5 lg:mt-4">
+        Here is a marketplace to list items offered by player to be bought or sold. <br />
+        To do so players have to set up a shop and declare all the items they want to offer.<br />
+        The shops can be stored in the browser's cache or in files or linked to your character name.<br />
+        You can explore the list of items bellow, we try to recommend most recent offers first.<br />
+      </div>
+      <div class="h-60 w-full"></div>
+    </div>
+  </div>
+  <div class="bg-sky bg-base section-transition relative z-10 pb-96 pt-28">
+    <div class="hidden w-full justify-center lg:flex">
+      <div
+        class="hover:text-shadow cursor-pointer text-xl transition-all hover:-mb-2 hover:pt-2 hover:text-gwt-light hover:saturate-150"
+        (click)="scroll(list)"
+      >
+        <i class="fa fa-chevron-down"></i>
+        List of Items
+      </div>
+      <div
+        class="hover:text-shadow ml-[140px] cursor-pointer text-xl transition-all hover:-mr-4 hover:pl-4 hover:text-gwt-light hover:saturate-150"
+        (click)="goToShop()"
+      >
+        <i class="fa fa-chevron-right"></i>
+        <i class="fa fa-chevron-right"></i>
+        My Shop
+      </div>
+    </div>
+    <div class="mt-8 w-full">
+      <div #list class="flex w-full flex-col px-4">
+        <div class="flex flex-col lg:flex-row lg:justify-between">
+          <div class="flex gap-1">
+            <div
+              class="whitespace-nowrap text-xl"
+              [ngClass]="{
+                'cursor-pointer underline hover:brightness-125': availableList !== 'family'
+              }"
+              (click)="goToAll()"
+            >
+              List of items
+            </div>
+            <div
+              class="whitespace-nowrap text-xl"
+              [ngClass]="{
+                'cursor-pointer underline hover:brightness-125': availableList !== 'category'
+              }"
+              *ngIf="availableList !== 'family'"
+              (click)="goToFamily(availableFamily)"
+            >
+              / {{ availableFamily.name }}
+            </div>
+            <div
+              class="text-no-overflow text-xl lg:max-w-80"
+              [ngClass]="{
+                'cursor-pointer underline hover:brightness-125': availableList !== 'item'
+              }"
+              *ngIf="availableList === 'item'"
+            >
+              / {{ availableCategory.name }}
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="h-8 w-28 border border-gwt-brown text-gwt-brown hover:brightness-125"
+              [ngClass]="{
+                'bg-gwt-light font-semibold': availableMode === 'everything',
+                'bg-gwt-amber': availableMode !== 'everything'
+              }"
+              (click)="availableMode = 'everything'"
+            >
+              everything
+            </button>
+            <button
+              class="h-8 w-20 border border-gwt-brown text-gwt-brown hover:brightness-125"
+              [ngClass]="{
+                'bg-gwt-light font-semibold': availableMode === 'active',
+                'bg-gwt-amber': availableMode !== 'active'
+              }"
+              (click)="availableMode = 'active'"
+            >
+              active
+            </button>
+            <button
+              class="h-8 w-20 border border-gwt-brown text-gwt-brown hover:brightness-125"
+              [ngClass]="{
+                'bg-gwt-light font-semibold': availableMode === 'sold',
+                'bg-gwt-amber': availableMode !== 'sold'
+              }"
+              (click)="availableMode = 'sold'"
+            >
+              sold
+            </button>
+            <button
+              class="h-8 w-20 border border-gwt-brown text-gwt-brown hover:brightness-125"
+              [ngClass]="{
+                'bg-gwt-light font-semibold': availableMode === 'bought',
+                'bg-gwt-amber': availableMode !== 'bought'
+              }"
+              (click)="availableMode = 'bought'"
+            >
+              bought
+            </button>
+          </div>
+        </div>
+        <div *ngIf="availableList === 'family'" class="flex flex-wrap justify-center">
+          <div
+            *ngFor="let family of active(availableTree.families)"
+            class="frame m-2 flex flex-col p-2 hover:cursor-pointer hover:brightness-125"
+            (click)="goToFamily(family)"
+          >
+            <div class="mb-2 text-center text-lg uppercase">{{ family.name }}</div>
+            <div class="m-1 flex h-32 w-32 flex-wrap">
+              <div *ngFor="let preview of family.previews">
+                <img class="h-16 w-16 object-contain" [src]="getPreviewSource(preview)" [title]="preview" />
+              </div>
+            </div>
+            <div class="flex justify-between gap-2 text-sm">
+              <div>sells: {{ family.sellOrders }}</div>
+              <div>buys: {{ family.buyOrders }}</div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="availableList === 'category'" class="flex flex-wrap justify-center">
+          <div
+            *ngFor="let category of active(availableFamily.categories)"
+            class="frame m-2 flex flex-col p-2 hover:cursor-pointer hover:brightness-125"
+            (click)="goToCategory(category)"
+          >
+            <div class="mb-2 w-32 text-center">{{ category.name }}</div>
+            <div class="mx-1 my-auto flex h-32 w-32 flex-wrap">
+              <div *ngFor="let preview of category.previews">
+                <img class="h-16 w-16 object-contain" [src]="getPreviewSource(preview)" [title]="preview" />
+              </div>
+            </div>
+            <div class="flex justify-between gap-2 text-sm">
+              <div>sells: {{ category.sellOrders }}</div>
+              <div>buys: {{ category.buyOrders }}</div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="availableList === 'item'" class="flex flex-wrap justify-center">
+          <div
+            *ngFor="let item of active(availableCategory.items)"
+            class="frame m-2 flex flex-col p-2 hover:cursor-pointer hover:brightness-125"
+            (click)="goToItem(item)"
+          >
+            <div class="mt-2 w-32 text-center text-sm">{{ item.name }}</div>
+            <img
+              class="mx-1 my-auto h-32 w-32 object-contain"
+              [src]="getPreviewSource(item.name)"
+              [title]="item.name"
+            />
+            <div class="flex justify-between text-sm">
+              <div>sells: {{ item.sellOrders }}</div>
+              <div>buys: {{ item.buyOrders }}</div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="lastItems.length > 0" class="mt-8 w-full">
+          <div class="my-2 text-2xl">Last refreshed items</div>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div
+              *ngFor="let shopItem of lastItems"
+              [ngClass]="getOldOpacity(shopItem)"
+              class="frame relative flex flex-col p-2 pb-1 hover:cursor-pointer hover:brightness-125"
+              (click)="goToItem(shopItem)"
+            >
+              <div class="flex gap-2">
+                <div
+                  title="Want To Sell"
+                  class="-ml-1 -mt-1 rounded bg-gwt-light p-1 text-sm font-semibold text-gwt-brown"
+                  *ngIf="shopItem.orderType === OrderType.SELL"
+                >
+                  WTS
+                </div>
+                <div
+                  title="Want To Buy"
+                  class="-ml-1 -mt-1 rounded bg-gwt-amber p-1 text-sm font-semibold text-gwt-brown"
+                  *ngIf="shopItem.orderType === OrderType.BUY"
+                >
+                  WTB
+                </div>
+                <div class="text-no-overflow w-48 text-sm" [title]="shopItem.name">{{ shopItem.name }}</div>
+              </div>
+              <div class="flex">
+                <div class="flex flex-col">
+                  <img
+                    class="h-16 w-16 object-contain"
+                    [src]="getPreviewSource(shopItem.name)"
+                    [title]="shopItem.name"
+                  />
+                  <span class="w-16 text-center">x {{ shopItem.quantity }}</span>
+                </div>
+                <div class="flex flex-col" *ngFor="let price of shopItem.prices">
+                  <img
+                    class="mx-1 mt-1 h-12 w-12"
+                    [src]="getCurrencySource(price.type)"
+                    [title]="priceToString(price.type)"
+                  />
+                  <span class="w-14 text-center text-xs"
+                    >{{ price.price.toFixed(2) }}<span class="text-[10px]">/ea</span></span
+                  >
+                  <span class="w-14 text-center text-xs">(x {{ price.quantity }})</span>
+                </div>
+              </div>
+              <div *ngIf="shopItem.prices.length < 3" class="absolute bottom-0 right-0 text-xs">
+                {{ formatLastUpdate(shopItem.lastRefresh) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+  <app-new-order (createOrder)="onCreateOrder($event)"></app-new-order>
+</div>

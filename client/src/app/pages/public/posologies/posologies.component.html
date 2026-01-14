@@ -1,0 +1,76 @@
+<div class="h-full w-full bg-white text-black">
+  <div class="sticky top-0 mx-auto flex justify-between bg-white font-semibold" [formGroup]="form">
+    <i class="fas fa-share-from-square cursor-pointer p-1 text-[40px]" (click)="goBack()"></i>
+    <div class="p-2 text-2xl">Statistiques des prescriptions par type de psychotrope</div>
+    <div class="flex h-8 p-2">
+      <i class="fas fa-search p-1 text-[24px]"></i>
+      <input type="text" formControlName="search" class="bg-white" />
+    </div>
+  </div>
+  <div class="reltative mx-auto my-2 h-[calc(100%_-_48px)] w-[1280px] overflow-y-auto">
+    <div class="sticky top-0 z-10 mx-auto flex bg-white text-center">
+      <div class="border-cell w-40 text-left">Type de psychotrope</div>
+      <div class="border-cell w-[480px]">Prise du médicament</div>
+      <div class="border-cell w-40">Prise systématique</div>
+      <div class="border-cell w-[480px]">Durée de prescription (en semaines)</div>
+    </div>
+    <div class="sticky top-6 z-10 mx-auto flex bg-white text-center">
+      <div class="border-cell w-40 text-left"></div>
+      <div class="border-cell flex">
+        <div class="w-20 text-sm">matin</div>
+        <div class="w-20 text-sm">matinée</div>
+        <div class="w-20 text-sm">midi</div>
+        <div class="w-20 text-sm">apres-midi</div>
+        <div class="w-20 text-sm">soir</div>
+        <div class="mr-[-2px] w-20 text-sm">coucher</div>
+      </div>
+      <div class="border-cell w-40 text-left"></div>
+      <div class="border-cell flex">
+        <div class="w-20 text-sm">moyenne</div>
+        <div class="w-20 text-sm">min</div>
+        <div class="w-20 text-sm">1quart</div>
+        <div class="w-20 text-sm">mediane</div>
+        <div class="w-20 text-sm">3quart</div>
+        <div class="mr-[-2px] w-20 text-sm">max</div>
+      </div>
+    </div>
+    <ng-container *ngFor="let posology of filteredPosologies; let p = index">
+      <div class="text flex text-center">
+        <div class="border-cell w-40 cursor-pointer pl-2 text-left" (click)="posology.open = !posology.open">
+          <i class="fa-solid fa-arrow-up" [ngClass]="{ 'rotate-180': !posology.open }"></i> {{ posology.type }} ({{
+            posology.count
+          }})
+        </div>
+        <div class="border-cell flex w-20" *ngFor="let amount of posology.amounts; let a = index">
+          <div class="w-20">{{ fixed(amount.mean) }}</div>
+          <!--div class="w-8 text-sm leading-7">± {{ fixed(amount.sigma) }}</div-->
+        </div>
+        <div class="border-cell w-40">{{ fixed(posology.systematic.mean * 100) }} %</div>
+        <!-- ± {{ fixed(posology.systematic.sigma) }} -->
+        <div class="border-cell w-20">{{ fixed(posology.duration.mean) }}</div>
+        <div class="border-cell w-20">{{ fixed(posology.duration.min) }}</div>
+        <div class="border-cell w-20">{{ fixed(posology.duration.firstQ) }}</div>
+        <div class="border-cell w-20">{{ fixed(posology.duration.mediane) }}</div>
+        <div class="border-cell w-20">{{ fixed(posology.duration.lastQ) }}</div>
+        <div class="border-cell w-20">{{ fixed(posology.duration.max) }}</div>
+      </div>
+      <ng-container *ngIf="posology.open">
+        <div class="text flex bg-slate-100 text-center" *ngFor="let molecule of posology.molecules; let m = index">
+          <div class="border-cell w-40 pl-6 text-left">{{ molecule.type }} ({{ molecule.count }})</div>
+          <div class="border-cell flex w-20" *ngFor="let amount of molecule.amounts; let a = index">
+            <div class="w-20">{{ fixed(amount.mean) }}</div>
+            <!--div class="w-8 text-sm leading-7">± {{ fixed(amount.sigma) }}</div-->
+          </div>
+          <div class="border-cell w-40">{{ fixed(molecule.systematic.mean * 100) }} %</div>
+          <!-- ± {{ fixed(posology.systematic.sigma) }} -->
+          <div class="border-cell w-20">{{ fixed(molecule.duration.mean) }}</div>
+          <div class="border-cell w-20">{{ fixed(molecule.duration.min) }}</div>
+          <div class="border-cell w-20">{{ fixed(molecule.duration.firstQ) }}</div>
+          <div class="border-cell w-20">{{ fixed(molecule.duration.mediane) }}</div>
+          <div class="border-cell w-20">{{ fixed(molecule.duration.lastQ) }}</div>
+          <div class="border-cell w-20">{{ fixed(molecule.duration.max) }}</div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

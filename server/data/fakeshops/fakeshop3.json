@@ -1,0 +1,822 @@
+{
+  "player": "Nice Kikono",
+  "items": [
+    {
+      "name": "Strength and Honor",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 12, "unit": 3 }],
+      "quantity": 4,
+      "description": ""
+    },
+    {
+      "name": "Dance with Death",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Guided by Fate",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Don't Think Twice",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 9, "unit": 3 }],
+      "quantity": 3,
+      "description": ""
+    },
+    {
+      "name": "Seize the Day",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 9, "unit": 3 }],
+      "quantity": 3,
+      "description": ""
+    },
+    {
+      "name": "Live for Today",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Not the face!",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "I have the power!",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Inspired Shadow Staff",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Tain's Corruption",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Scepter of the Keeper",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Brrne's Recurve Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Kole's Torment",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Law and Order",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 3, "price": 1, "unit": 1 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Siska's Staff",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Jayne's Staff",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Havok's Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Shakor's Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Blisterbark's Staff",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Stygian Recurve Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Furious Hammer Haft",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Hammer Grip of Enchanting",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Hammer Grip of the Necromancer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Axe Grip of Fortitude",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Axe Grip of Demonslaying",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Axe Grip of the Assassin",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Furious Sword Hilt",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Vampiric Sword Hilt",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Zealous Sword Hilt",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Sword Pommel of Defense",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Sword Pommel of the Assassin",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Furious Dagger Tang",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Vampiric Dagger Tang",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Dagger Handle of Enchanting",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Dagger Handle of Fortitude",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Dagger Handle of the Ritualist",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Zealous Bowstring",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 12, "unit": 3 }],
+      "quantity": 4,
+      "description": ""
+    },
+    {
+      "name": "Vampiric Bowstring",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Bow Grip of Fortitude",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Bow Grip of Deathbane",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Bow Grip of the Assassin",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Spear Grip of Fortitude",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Furious Scythe Snathe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Zealous Scythe Snathe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Shield Handle of Fortitude",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Shield Handle of Devotion",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Focus Core of Fortitude",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Focus Core of Swiftness",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Focus Core of Endurance",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Wand Wrapping of Memory",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 15, "unit": 3 }],
+      "quantity": 5,
+      "description": ""
+    },
+    {
+      "name": "Wand Wrapping of the Elementalist",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Wand Wrapping of the Ritualist",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Wand Wrapping of the Mesmer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Defensive Staff Head",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 3 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Hale Staff Head",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Insightful Staff Head",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Staff Wrapping of Enchanting",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 9, "unit": 3 }],
+      "quantity": 3,
+      "description": ""
+    },
+    {
+      "name": "Staff Wrapping of Endurance,",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Gift of the Traveler",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 60, "unit": 4 }],
+      "quantity": 15,
+      "description": ""
+    },
+    {
+      "name": "Wood Plank",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 2.5, "unit": 0.005 }],
+      "quantity": 500,
+      "description": ""
+    },
+    {
+      "name": "Tanned Hide Square",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 2, "unit": 0.004 }],
+      "quantity": 500,
+      "description": ""
+    },
+    {
+      "name": "Zaishen Key",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 60, "unit": 2.4 }],
+      "quantity": 25,
+      "description": ""
+    },
+    {
+      "name": "Bolt of Cloth",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 2, "unit": 0.004 }],
+      "quantity": 500,
+      "description": ""
+    },
+    {
+      "name": "Bone",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 2, "unit": 0.004 }],
+      "quantity": 500,
+      "description": ""
+    },
+    {
+      "name": "Through Thick and Thin",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Miniature Shiro",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": "unded"
+    },
+    {
+      "name": "Book of Secrets",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 5 }],
+      "quantity": 2,
+      "description": ""
+    },
+    {
+      "name": "Droknar's Key",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 25, "unit": 25 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Deldrimor Talisman",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Amulet of the Mists",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Dragon Kamas",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Dragon Kamas",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "OS 15^50",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Celestial Daggers",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": "15^50",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 11,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Celestial Daggers",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "15^Stance",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 10,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Celestial Daggers",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "15^-5e",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 10,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Sai",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "5e",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 10,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Aureate Daggers",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "15^hexed",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Aureate Daggers",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "15^Stance",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Celestial Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": "15^50",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 11,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Oni Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 30, "unit": 30 }],
+      "quantity": 1,
+      "description": "15^ench",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Jitte",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 30, "unit": 30 }],
+      "quantity": 1,
+      "description": "15^50",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 10,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Celestial Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 30, "unit": 30 }],
+      "quantity": 1,
+      "description": "15^50",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Celestial Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 15, "unit": 15 }],
+      "quantity": 1,
+      "description": "15^50",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 10,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Celestial Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": "15^50",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 12,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Wand Wrapping of the Necromancer",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": ""
+    },
+    {
+      "name": "Adept Staff Head",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": ""
+    }
+  ],
+  "uuid": "GZ869-qAxs",
+  "daybreakCertified": false,
+  "certified": null
+}

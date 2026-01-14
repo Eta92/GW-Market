@@ -1,0 +1,323 @@
+[
+  {
+    "type": "Currencies",
+    "description": "All items commonly used as currency",
+    "items": [
+      {
+        "name": "Platinium",
+        "description": "Pack of 1000 gold, use to trade with most merchant NPCs."
+      },
+      {
+        "name": "Ectoplasm",
+        "description": "Rare material from Underwold, common player currency, used to craft fissure armor."
+      },
+      {
+        "name": "Zaishen Key",
+        "description": "Only PvP key, rare player currency, used to open the Zaishen Chest on the Isle of the Nameless."
+      },
+      {
+        "name": "Armbrace",
+        "description": "High end player currency, collectible item that can be traded for Tormented weapons"
+      },
+      {
+        "name": "Black Dye",
+        "description": "Rarest dye, rare player currency, can be use to taint armor and weapons"
+      },
+      {
+        "name": "Silver Zaishen Coin",
+        "description": "Zaishen quest reward, rare player currency, can be traded for basic tool and tomes."
+      },
+      {
+        "name": "Gold Zaishen Coin",
+        "description": "Zaishen quest reward, rare player currency, can be traded for bag expansions and rare weapons."
+      }
+    ]
+  },
+  {
+    "type": "End Game Trophys",
+    "description": "Unique reward trophy that each character may obtain once when they finish each campaign. Allows to excehange for a unique item of your choice.",
+    "items": [
+      {
+        "name": "Deldrimor Talisman",
+        "description": "The Deldrimor Talisman is a unique reward trophy that each character may obtain once from King Jalis Ironhammer in Droknar's Forge explorable area after completing Hell's Precipice. Exchange it with one of the Artisans (listed below) located in Droknar's Forge explorable area for a unique item."
+      },
+      {
+        "name": "Amulet of the Mists",
+        "description": "The Amulet of the Mists is a unique reward trophy that each character may obtain once from Suun in the Divine Path after completing Imperial Sanctum. Exchange it with one of the Adepts (listed below) located in the Divine Path for a unique item."
+      },
+      {
+        "name": "Book of Secrets",
+        "description": "The Book of Secrets is a unique reward trophy that each character may obtain once from the Keeper of Secrets in the Throne of Secrets after completing Abaddon's Gate. Exchange it with one of the Keepers (listed below) located in the Throne of Secrets for a unique item."
+      },
+      {
+        "name": "Droknar's Key",
+        "description": "The Droknar's Key is a unique reward trophy that each character may obtain once from Droknar in the Epilogue after completing A Time for Heroes. Exchange it with one of the Chests (listed below) located in the Epilogue for a unique item."
+      },
+      {
+        "name": "Imperial Dragon's Tear",
+        "description": "The Imperial Dragon's Tear is the end-game reward trophy obtained from Miku after completing The Final Confrontation, the last quest in Winds of Change. Each character can receive up to three: one from the normal mode version and two from hard mode. They cannot be traded to other players, but Azume will exchange them for a unique Imperial Dragon weapon."
+      }
+    ]
+  },
+  {
+    "type": "Hero Armors",
+    "description": "Each hero comes with a default armor model unique to the hero. Players may upgrade the hero armor with runes and/or insignias. Players can also update most hero armor to one of two other models; this has no effect on the the hero's armor rating or on the applied upgrades.",
+    "items": [
+      {
+        "name": "Stolen Sunspear Armor",
+        "description": "A Stolen Sunspear Armor can be used to change a single hero's armor set to a hero version of Elite Sunspear armor. To change a hero's armor, speak to Bahldasareh in Dajkah Inlet while that hero is in your party.",
+        "applies_to": "Koss, Dunkoro, Melonni, Acolyte Jin, and Acolyte Sousuke."
+      },
+      {
+        "name": "Ancient Armor Remnants",
+        "description": "Ancient Armor Remnants can be used to change a single hero's armor set to a hero version of Ancient armor. To change a hero's armor, speak to Johe in Remains of Sahlahja while that hero is in your party.",
+        "applies_to": "Tahlkora, Zhed Shadowhoof, Margrid the Sly, Master of Whispers, and Razah."
+      },
+      {
+        "name": "Mysterious Armor Pieces",
+        "description": "Mysterious Armor Pieces can be used to change a single hero's armor set to the hero-only Mysterious armor. To change a hero's armor, speak to Mureh in The Shadow Nexus while that hero is in your party.",
+        "applies_to": "Norgu, Goren, General Morgahn, Zenmai, and Olias."
+      },
+      {
+        "name": "Primeval Armor Remnants",
+        "description": "Primeval Armor Remnants can be used to change a single hero's armor set to a hero version of Primeval armor. To change a hero's armor, speak to the Armorsmith of Whispers in the Gate of Anguish while that hero is in your party.",
+        "applies_to": "All Nightfall heroes."
+      },
+      {
+        "name": "Deldrimor Armor Remnant",
+        "description": "A Deldrimor Armor Remnant can be used to change a single hero's armor set to a hero version of Deldrimor armor. To change a hero's armor, speak to Gunnar Poundfist in Gunnar's Hold while that hero is in your party.",
+        "applies_to": "All Eye of the North heroes."
+      },
+      {
+        "name": "Cloth of the Brotherhood",
+        "description": "A Cloth of the Brotherhood can be used to change a single hero's armor set to the hero-only Brotherhood armor. To change a hero's armor, speak to Master Armorer Kor in Central Transfer Chamber while that hero is in your party.",
+        "applies_to": "All Eye of the North heroes."
+      }
+    ]
+  },
+  {
+    "type": "Everlasting Tonics",
+    "description": "Tonics with infinite use to change a character's appearance in town but not giving festive points.",
+    "items": [
+      {
+        "name": "Everlasting Beetle Juice Tonic"
+      },
+      {
+        "name": "Everlasting Cottontail Tonic"
+      },
+      {
+        "name": "Everlasting Frosty Tonic"
+      },
+      {
+        "name": "Everlasting Mischievous Tonic"
+      },
+      {
+        "name": "Everlasting Sinister Automatonic"
+      },
+      {
+        "name": "Everlasting Transmogrifier Tonic"
+      },
+      {
+        "name": "Everlasting Yuletide Tonic"
+      },
+      {
+        "name": "Everlasting Avatar of Balthazar Tonic"
+      },
+      {
+        "name": "Everlasting Balthazar's Champion Tonic"
+      },
+      {
+        "name": "Everlasting Henchman Tonic"
+      },
+      {
+        "name": "Everlasting Flame Sentinel Tonic"
+      },
+      {
+        "name": "Everlasting Ghostly Hero Tonic"
+      },
+      {
+        "name": "Everlasting Ghostly Priest Tonic"
+      },
+      {
+        "name": "Everlasting Guild Lord Tonic"
+      },
+      {
+        "name": "Everlasting Knight Tonic"
+      },
+      {
+        "name": "Everlasting Legionnaire Tonic"
+      },
+      {
+        "name": "Everlasting Priest of Balthazar Tonic"
+      },
+      {
+        "name": "Everlasting Reindeer Tonic"
+      },
+      {
+        "name": "Everlasting Cerebral Tonic"
+      },
+      {
+        "name": "Everlasting Searing Tonic"
+      },
+      {
+        "name": "Everlasting Abyssal Tonic"
+      },
+      {
+        "name": "Everlasting Unseen Tonic"
+      },
+      {
+        "name": "Everlasting Phantasmal Tonic"
+      },
+      {
+        "name": "Everlasting Automatonic"
+      },
+      {
+        "name": "Everlasting Boreal Tonic"
+      },
+      {
+        "name": "Everlasting Trapdoor Tonic"
+      },
+      {
+        "name": "Everlasting Macabre Tonic"
+      },
+      {
+        "name": "Everlasting Skeletonic"
+      },
+      {
+        "name": "Everlasting Gelatinous Tonic"
+      },
+      {
+        "name": "Everlasting Abominable Tonic"
+      },
+      {
+        "name": "Everlasting Acolyte Jin Tonic"
+      },
+      {
+        "name": "Everlasting Acolyte Sousuke Tonic"
+      },
+      {
+        "name": "Everlasting Dunkoro Tonic"
+      },
+      {
+        "name": "Everlasting Goren Tonic"
+      },
+      {
+        "name": "Everlasting Hayda Tonic"
+      },
+      {
+        "name": "Everlasting Kahmu Tonic"
+      },
+      {
+        "name": "Everlasting Livia Tonic"
+      },
+      {
+        "name": "Everlasting Margrid the Sly Tonic"
+      },
+      {
+        "name": "Everlasting Melonni Tonic"
+      },
+      {
+        "name": "Everlasting Morgahn Tonic"
+      },
+      {
+        "name": "Everlasting Norgu Tonic"
+      },
+      {
+        "name": "Everlasting Olias Tonic"
+      },
+      {
+        "name": "Everlasting Tahlkora Tonic"
+      },
+      {
+        "name": "Everlasting Vekk Tonic"
+      },
+      {
+        "name": "Everlasting Xandra Tonic"
+      },
+      {
+        "name": "Everlasting Zenmai Tonic"
+      },
+      {
+        "name": "Everlasting Anton Tonic"
+      },
+      {
+        "name": "Everlasting Jora Tonic"
+      },
+      {
+        "name": "Everlasting Koss Tonic"
+      },
+      {
+        "name": "Everlasting M.O.X. Tonic"
+      },
+      {
+        "name": "Everlasting Master of Whispers Tonic"
+      },
+      {
+        "name": "Everlasting Ogden Stonehealer Tonic"
+      },
+      {
+        "name": "Everlasting Pyre Fierceshot Tonic"
+      },
+      {
+        "name": "Everlasting Queen Salma Tonic"
+      },
+      {
+        "name": "Everlasting Razah Tonic"
+      },
+      {
+        "name": "Everlasting Zhed Shadowhoof Tonic"
+      },
+      {
+        "name": "Everlasting Gwen Tonic"
+      },
+      {
+        "name": "Everlasting Keiran Thackeray Tonic"
+      },
+      {
+        "name": "Everlasting Miku Tonic"
+      },
+      {
+        "name": "Everlasting Shiro Tonic"
+      },
+      {
+        "name": "Everlasting Prince Rurik Tonic"
+      },
+      {
+        "name": "Everlasting Destroyer Tonic"
+      },
+      {
+        "name": "Everlasting Kuunavang Tonic"
+      },
+      {
+        "name": "Everlasting Margonite Tonic"
+      },
+      {
+        "name": "Everlasting Slightly Mad King Tonic"
+      }
+    ]
+  },
+  {
+    "type": "Nick Sets",
+    "description": "The full set of collector items needed to trade for the 5 Gifts of the traveler of the week.",
+    "items": [
+      {
+        "name": "Current Nick Set",
+        "description": "The full set of collector items needed to trade for the 5 Gifts of the traveler of the current week."
+      },
+      {
+        "name": "Next Nick Set",
+        "description": "The full set of collector items needed to trade for the 5 Gifts of the traveler of the next week."
+      }
+    ]
+  },
+  {
+    "type": "Very Special",
+    "description": "A sub Category of items too unique to fit anywhere else.",
+    "items": [
+      {
+        "name": "Unid Gold",
+        "description": "Gold non-identified item, used to increase the Wisdom tile progression and get weapon upgrades."
+      }
+    ]
+  }
+]

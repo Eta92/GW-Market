@@ -1,0 +1,391 @@
+<div class="fritz-font scroll h-screen w-full overflow-y-auto text-white">
+  <div class="bg-header relative z-30" *ngIf="!pro">
+    <div class="flex flex-col gap-4 p-8">
+      <div class="flex w-full flex-col justify-between md:flex-row md:gap-8">
+        <a [href]="homeBaseUrl()">
+          <img class="hidden md:flex md:h-24 md:w-96" src="../../../assets/img/trading.svg" (click)="onHome()"
+        /></a>
+        <div class="my-2 flex w-auto flex-col">
+          <div class="w-full text-center text-2xl">
+            <span class="hidden md:inline-block">Personal shop of </span>{{ ' ' + shop?.player || 'nobody' }}
+            <img
+              class="inline h-8 w-8"
+              src="../../../assets/img/online.png"
+              title="Shop online with Daybreak"
+              *ngIf="shop?.daybreakOnline"
+            />
+            <img
+              class="inline h-8 w-8"
+              src="../../../assets/img/certified.png"
+              title="Shop player name certified"
+              *ngIf="shop?.authCertified"
+            />
+          </div>
+          <div class="relative my-2 flex flex-wrap justify-center gap-4 text-sm md:flex-nowrap">
+            <div class="import action bg-button" (click)="openPlayer()" [ngClass]="{ warning: playerWarning }">
+              <i class="fa fa-user self-center text-sm text-white"></i>Change active player
+            </div>
+            <div class="import action bg-button" (click)="import.click()">
+              <i class="fa fa-upload self-center text-sm text-white"></i>Import shop from file
+            </div>
+            <input id="matching-file" #import class="hidden" type="file" accept=".json" (change)="onImport($event)" />
+            <div class="import action bg-button" (click)="exportShop()">
+              <i class="fa fa-download self-center text-sm text-white"></i>Export shop to file
+            </div>
+            <div class="import action bg-button !md:flex !hidden" (click)="clearShop = true">
+              <i class="fa fa-fire self-center text-sm text-white"></i>Create a new shop
+            </div>
+            <!--div
+              class="absolute top-0 left-0 flex flex-col w-full h-24 gap-4 bg-gwt-back md:h-10 md:flex-row"
+              *ngIf="playerEdit"
+            >
+              <div class="mx-auto import action bg-button md:mx-0" (click)="playerConfirm()">
+                <i class="self-center text-sm text-white fa fa-user"></i>Confirm Player name
+              </div>
+              <input
+                class="h-10 w-full rounded border-none bg-gwt-light p-2 !text-sm font-semibold text-gwt-brown placeholder-gwt-amber outline-none md:w-[calc(100%_-_196px)]"
+                #player
+                type="text"
+                [formControl]="playerControl"
+                (keydown)="playerInput($event)"
+                placeholder="InGameName"
+              />
+            </div-->
+            <div class="absolute left-0 top-0 flex h-10 w-full gap-4 bg-gwt-back" *ngIf="clearShop">
+              <div
+                class="h-10 w-[calc(100%_-_392px)] rounded border-none bg-red-600 p-3 text-center !text-sm font-semibold text-white"
+              >
+                Warning: All orders will be destroyed
+              </div>
+              <div class="import action bg-button" (click)="onClearShop()">
+                <i class="fa fa-fire self-center text-sm text-white"></i>Confirm new shop
+              </div>
+              <div class="import action bg-button" (click)="clearShop = false">
+                <i class="fa fa-times self-center text-sm text-white"></i>Cancel
+              </div>
+            </div>
+          </div>
+          <div class="text-center text-sm">
+            The shop is automaticaly saved in the browser's cache, but it is <br />
+            not really safe for long term usage, so better save it regularly in a file.
+          </div>
+        </div>
+        <div class="my-2 hidden w-[320px] gap-4 md:flex">
+          <div class="import action bg-button ml-auto mt-9" (click)="togglePro()">
+            <i class="fa fa-gear self-center text-sm text-white"></i>Pro Mode
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="h-12 w-full"></div>
+  </div>
+  <div
+    class="bg-theme bg-base relative z-20 min-h-screen pb-32 md:pb-0"
+    [ngClass]="{ 'section-transition -mt-24 pt-24': !pro }"
+  >
+    <div class="relative z-30 px-4" *ngIf="pro">
+      <div class="flex flex-col">
+        <div class="my-2 flex w-full justify-start gap-8">
+          <a [href]="homeBaseUrl()"
+            ><img class="h-[40px] w-[160px] cursor-pointer" src="../../../assets/img/trading.svg" (click)="onHome()"
+          /></a>
+          <div class="text-center text-2xl leading-10">
+            Active: {{ shop?.player || 'nobody' }}
+            <img
+              class="inline h-8 w-8"
+              src="../../../assets/img/online.png"
+              title="Shop online with Daybreak"
+              *ngIf="shop?.daybreakOnline"
+            />
+            <img
+              class="inline h-8 w-8"
+              src="../../../assets/img/certified.png"
+              title="Shop player name certified"
+              *ngIf="shop?.authCertified"
+            />
+          </div>
+          <div class="relative flex justify-center gap-4 text-sm">
+            <div class="import action bg-button" (click)="openPlayer()" [ngClass]="{ warning: playerWarning }">
+              <i class="fa fa-user self-center text-sm text-white"></i>Change active player
+            </div>
+            <div class="import action bg-button" (click)="import.click()">
+              <i class="fa fa-upload self-center text-sm text-white"></i>Import shop from file
+            </div>
+            <input id="matching-file" #import class="hidden" type="file" accept=".json" (change)="onImport($event)" />
+            <div class="import action bg-button" (click)="exportShop()">
+              <i class="fa fa-download self-center text-sm text-white"></i>Export shop to file
+            </div>
+            <div class="import action bg-button" (click)="clearShop = true">
+              <i class="fa fa-fire self-center text-sm text-white"></i>Create a new shop
+            </div>
+            <!--div class="absolute top-0 left-0 flex w-full h-10 gap-4 bg-gwt-back" *ngIf="playerEdit">
+              <div class="import action bg-button" (click)="playerConfirm()">
+                <i class="self-center text-sm text-white fa fa-user"></i>Confirm Player name
+              </div>
+              <input
+                class="h-10 w-[calc(100%_-_196px)] rounded border-none bg-gwt-light p-2 !text-sm font-semibold text-gwt-brown placeholder-gwt-amber outline-none"
+                #player
+                type="text"
+                [formControl]="playerControl"
+                (keydown)="playerInput($event)"
+                placeholder="InGameName"
+              />
+            </div-->
+            <div class="absolute left-0 top-0 flex h-10 w-full gap-4 bg-gwt-back" *ngIf="clearShop">
+              <div
+                class="h-10 w-[calc(100%_-_392px)] rounded border-none bg-red-600 p-3 text-center !text-sm font-semibold text-white"
+              >
+                Warning: All orders will be destroyed
+              </div>
+              <div class="import action bg-button" (click)="onClearShop()">
+                <i class="fa fa-fire self-center text-sm text-white"></i>Confirm new shop
+              </div>
+              <div class="import action bg-button" (click)="clearShop = false">
+                <i class="fa fa-times self-center text-sm text-white"></i>Cancel
+              </div>
+            </div>
+          </div>
+          <div class="import action bg-button ml-auto" (click)="togglePro()">
+            <i class="fa fa-gear self-center text-sm text-white"></i>Casual Mode
+          </div>
+        </div>
+        <div #timer class="my-2 flex w-full justify-start gap-4">
+          <div class="action bg-button h-10 w-36" (click)="refreshShop()">
+            <i class="fa fa-refresh self-center text-sm text-white"></i>Enable Shop
+          </div>
+          <div class="action bg-button h-10 w-36" (click)="stopShop()" [ngClass]="{ 'opacity-0': !showCandle }">
+            <i class="fa fa-circle-stop self-center text-sm text-white"></i>Stop Shop
+          </div>
+          <div class="h-10 w-44 text-sm leading-10" [ngClass]="{ 'opacity-0': !showCandle }">
+            <i class="fa fa-clock self-center text-sm text-white"></i>
+            {{ 'Active for : ' + formatTime(timeLeft) }}
+          </div>
+          <div class="frame relative my-2 h-6 w-[calc(100vw_-_540px)]">
+            <div
+              class="absolute left-0 top-0 h-full bg-gwt-light"
+              [style.width.%]="(timeLeft / (15 * 60 * 1000)) * 100"
+            ></div>
+          </div>
+        </div>
+        <app-filter-order (updateFilter)="onFilterChange($event)"></app-filter-order>
+      </div>
+    </div>
+    <div class="relative flex w-full flex-col pt-12 md:flex-row md:pt-4">
+      <div
+        class="flex flex-col px-8"
+        [ngClass]="{
+          'w-full md:w-1/2': !pro || this.orderFilter.orderType === null,
+          'w-full': pro && this.orderFilter.orderType === 'WTS',
+          hidden: pro && this.orderFilter.orderType === 'WTB'
+        }"
+      >
+        <div *ngIf="!pro" class="p-2 text-center text-2xl">Sell Orders</div>
+        <div
+          class="mx-auto flex flex-wrap content-start items-center gap-4 overflow-y-auto"
+          [ngClass]="{ 'h-[calc(100vh-320px)] justify-center': !pro, 'h-[calc(100vh-170px)] justify-start': pro }"
+        >
+          <div class="frame flex h-fit w-96 gap-2 p-2" *ngFor="let order of sellOrders; let so = index">
+            <div class="flex flex-col">
+              <div class="flex gap-4">
+                <div class="flex flex-col gap-1">
+                  <div
+                    class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                    (click)="goToItem(order.name)"
+                  >
+                    <img class="h-full w-full object-contain py-2 pl-2" [src]="getImageSource(order.name)" />
+                  </div>
+                  <div class="text-center text-xs">x{{ order.quantity }}</div>
+                </div>
+                <div class="flex flex-col">
+                  <div class="text-no-overflow w-48 text-lg" [title]="order.name">{{ order.name }}</div>
+                  <div class="flex">
+                    <div *ngFor="let price of order.prices" class="flex flex-col">
+                      <img class="h-10 w-12 object-contain px-1" [src]="getCurrencySource(price.type)" />
+                      <div class="text-center text-xs">x{{ price.price }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="isWeapon(order.item) && order.weaponDetails" class="text-xs">
+                Req.{{ order.weaponDetails.requirement }} {{ order.weaponDetails.attribute || '' }}
+                {{ order.weaponDetails.oldschool ? ' (OS)' : '' }}
+                {{ order.weaponDetails.core ? ', core: ' + order.weaponDetails.core : '' }}
+                {{ order.weaponDetails.inscription ? ' (insc.)' : '' }}
+                {{ order.weaponDetails.prefix ? ', prefix: ' + order.weaponDetails.prefix : '' }}
+                {{ order.weaponDetails.suffix ? ', suffix: ' + order.weaponDetails.suffix : '' }}
+              </div>
+              <div class="px-2 pt-2 text-xs">{{ order.description }}</div>
+            </div>
+            <div class="ml-1 flex flex-col gap-1">
+              <button class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown" (click)="editOrder(order)">
+                <i class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                Edit
+              </button>
+              <button
+                class="h-6 w-20 text-sm text-gwt-brown"
+                [ngClass]="order.hidden ? 'bg-gwt-amber' : 'bg-gwt-light'"
+                (click)="onHideOrder(order)"
+              >
+                <i
+                  [ngClass]="order.hidden ? 'fa-eye-slash' : 'fa-eye'"
+                  class="fa self-center text-sm text-gwt-brown"
+                ></i>
+                {{ order.hidden ? 'Hidden' : 'Visible' }}
+              </button>
+              <button
+                class="h-6 w-20 text-sm text-gwt-brown transition-colors"
+                [ngClass]="{ 'bg-gwt-amber': !order.completed, 'bg-gwt-light': order.completed }"
+                (mouseleave)="onCompleteLeave(order)"
+                (click)="onCompleteOrder(order)"
+              >
+                <i class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                {{ order.completed ? 'Confirm' : order.orderType === OrderType.SELL ? 'Sold' : 'Bought' }}
+              </button>
+              <button
+                class="h-6 w-20 text-sm text-gwt-brown transition-colors"
+                [ngClass]="{ 'bg-gwt-amber': !order.removed, 'bg-gwt-light': order.removed }"
+                (mouseleave)="onCompleteLeave(order)"
+                (click)="onRemoveOrder(order)"
+              >
+                <i class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                {{ order.removed ? 'Confirm' : 'Remove' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-15 flex flex-col md:relative" *ngIf="!pro">
+        <div class="absolute flex gap-4 pl-2 max-md:top-0" [ngClass]="showCandle ? 'ml-4 md:-ml-32' : 'ml-4 md:-ml-20'">
+          <div class="action bg-button h-10 w-36" (click)="refreshShop()">
+            <i class="fa fa-refresh self-center text-sm text-white"></i>Enable Shop
+          </div>
+          <div class="action bg-button h-10 w-36" (click)="stopShop()" *ngIf="showCandle">
+            <i class="fa fa-circle-stop self-center text-sm text-white"></i>Stop Shop
+          </div>
+        </div>
+
+        <!-- <div class="relative h-[calc(100vh-300px)] w-12 bg-gwt-back">
+          <div class="absolute top-0 left-0 w-12"></div>
+        </div> -->
+        <div class="w-15 relative mt-10 hidden h-[calc(100vh-350px)] md:flex">
+          <div class="scene fixed mt-10">
+            <!--  style="animation: melt 15s linear forwards" -->
+            <div class="candle" #candle [hidden]="!showCandle">
+              <div class="flame"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col px-8"
+        [ngClass]="{
+          'w-full md:w-1/2': !pro || this.orderFilter.orderType === null,
+          'w-full': pro && this.orderFilter.orderType === 'WTB',
+          hidden: pro && this.orderFilter.orderType === 'WTS'
+        }"
+      >
+        <div *ngIf="!pro" class="p-2 text-center text-2xl">Buy Orders</div>
+        <div
+          class="mx-auto flex flex-wrap content-start items-center gap-4 overflow-y-auto"
+          [ngClass]="{ 'h-[calc(100vh-320px)] justify-center': !pro, 'h-[calc(100vh-170px)] justify-start': pro }"
+        >
+          <div class="frame flex h-fit w-96 gap-2 p-2" *ngFor="let order of buyOrders; let bo = index">
+            <div class="flex flex-col">
+              <div class="flex gap-4">
+                <div class="flex flex-col gap-1">
+                  <div
+                    class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                    (click)="goToItem(order.name)"
+                  >
+                    <img class="h-full w-full object-contain py-2 pl-2" [src]="getImageSource(order.name)" />
+                  </div>
+                  <div class="text-center text-xs">x{{ order.quantity }}</div>
+                </div>
+                <div class="flex flex-col">
+                  <div class="text-no-overflow w-48 text-lg" [title]="order.name">{{ order.name }}</div>
+                  <div class="flex">
+                    <div *ngFor="let price of order.prices" class="flex flex-col">
+                      <img class="h-10 w-12 object-contain px-1" [src]="getCurrencySource(price.type)" />
+                      <div class="text-center text-xs">x{{ price.price }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="isWeapon(order.item) && order.weaponDetails" class="text-xs">
+                Req.{{ order.weaponDetails.requirement }} {{ order.weaponDetails.attribute || '' }}
+                {{ order.weaponDetails.oldschool ? ' (OS)' : '' }}
+                {{ order.weaponDetails.core ? ', core: ' + order.weaponDetails.core : '' }}
+                {{ order.weaponDetails.inscription ? ' (insc.)' : '' }}
+                {{ order.weaponDetails.prefix ? ', prefix: ' + order.weaponDetails.prefix : '' }}
+                {{ order.weaponDetails.suffix ? ', suffix: ' + order.weaponDetails.suffix : '' }}
+              </div>
+              <div class="px-2 pt-2 text-xs">{{ order.description }}</div>
+            </div>
+            <div class="ml-1 flex flex-col gap-1">
+              <button class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown" (click)="editOrder(order)">
+                <i class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                Edit
+              </button>
+              <button
+                class="h-6 w-20 text-sm text-gwt-brown"
+                [ngClass]="order.hidden ? 'bg-gwt-amber' : 'bg-gwt-light'"
+                (click)="onHideOrder(order)"
+              >
+                <i
+                  [ngClass]="order.hidden ? 'fa-eye-slash' : 'fa-eye'"
+                  class="fa self-center text-sm text-gwt-brown"
+                ></i>
+                {{ order.hidden ? 'Hidden' : 'Visible' }}
+              </button>
+              <button
+                class="h-6 w-20 text-sm text-gwt-brown transition-colors"
+                [ngClass]="{ 'bg-gwt-amber': !order.completed, 'bg-gwt-light': order.completed }"
+                (mouseleave)="onCompleteLeave(order)"
+                (click)="onCompleteOrder(order)"
+              >
+                <i class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                {{ order.completed ? 'Confirm' : order.orderType === OrderType.SELL ? 'Sold' : 'Bought' }}
+              </button>
+              <button
+                class="h-6 w-20 text-sm text-gwt-brown transition-colors"
+                [ngClass]="{ 'bg-gwt-amber': !order.removed, 'bg-gwt-light': order.removed }"
+                (mouseleave)="onCompleteLeave(order)"
+                (click)="onRemoveOrder(order)"
+              >
+                <i class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                {{ order.removed ? 'Confirm' : 'Remove' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer *ngIf="!pro"></app-footer>
+</div>
+
+<div
+  class="fixed left-0 top-0 z-40 flex h-screen w-screen items-center justify-center bg-gwt-back"
+  *ngIf="orderEdit"
+  (click)="orderEdit = null"
+>
+  <app-edit-order
+    [original]="orderEdit"
+    [confirm]="'Edit Order'"
+    [maskSearch]="true"
+    (closeEdit)="orderEdit = null"
+    (confirmOrder)="onEditOrder($event)"
+  ></app-edit-order>
+</div>
+<app-new-order [warning]="orderWarning" (createOrder)="onCreateOrder($event)"></app-new-order>
+<div
+  class="fixed left-0 top-0 z-40 flex h-screen w-screen items-center justify-center bg-gwt-back"
+  *ngIf="playerOpen"
+  (click)="playerOpen = false"
+>
+  <app-active-player
+    [shop]="shop"
+    (closeEdit)="playerOpen = false"
+    (confirmPlayer)="onConfirmPlayer($event)"
+  ></app-active-player>
+</div>

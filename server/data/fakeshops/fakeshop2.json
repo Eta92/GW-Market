@@ -1,0 +1,4292 @@
+{
+  "player": "Lovely Fake Name",
+  "items": [
+    {
+      "name": "Oni Daggers",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 75,
+          "unit": 75
+        }
+      ],
+      "quantity": 1,
+      "description": "Oni daggers q9 os 15^50",
+      "weaponDetails": {
+        "attribute": "Dagger Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Zodiac Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 40,
+          "unit": 40
+        }
+      ],
+      "quantity": 1,
+      "description": "zodiac hammer q9 os 15^ench",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": "Guided by Fate",
+        "prefix": "Furious Hammer Haft",
+        "suffix": "Hammer Grip of Enchanting"
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Desolation Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 4,
+          "unit": 4
+        }
+      ],
+      "quantity": 1,
+      "description": "q11 purple (rare) desolation sword",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 11,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Sword Pommel of Tenguslaying",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 15,
+          "unit": 15
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Clouded Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 40,
+          "unit": 40
+        }
+      ],
+      "quantity": 1,
+      "description": "clouded maul os q9 15^stance",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": "Dance with Death",
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Armbrace",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 5000,
+          "unit": 20
+        }
+      ],
+      "quantity": 250,
+      "description": "",
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ironwing Flatbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 75,
+          "unit": 75
+        }
+      ],
+      "quantity": 1,
+      "description": "q9 ironwing os 15^50",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": "Strength and Honor",
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ironwing Flatbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 30,
+          "unit": 30
+        }
+      ],
+      "quantity": 1,
+      "description": "q9 ironwing inscr ",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "War Hammer (spiked)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 45,
+          "unit": 15
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "War Hammer (Krytan)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 10,
+          "unit": 10
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Archaic Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 90,
+          "unit": 15
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Twin Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 120,
+          "unit": 15
+        }
+      ],
+      "quantity": 8,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Break Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 48,
+          "unit": 8
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Platinum Broadsword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Golden Machete",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 100,
+          "unit": 20
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Steel Broadsword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 120,
+          "unit": 40
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Lesser Highlander Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 20
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Sunqua Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 300,
+          "unit": 50
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Colossal Scimitar",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 100,
+          "unit": 20
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Flamberge",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 250,
+          "unit": 50
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ornate Scimitar",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 40,
+          "unit": 20
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Platinum Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 200,
+          "unit": 40
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Golden Phoenix Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 175,
+          "unit": 25
+        }
+      ],
+      "quantity": 7,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Jade Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 60,
+          "unit": 15
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Broadblade Scimitar",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 280,
+          "unit": 40
+        }
+      ],
+      "quantity": 7,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ripper Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 100,
+          "unit": 25
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Salient Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 175,
+          "unit": 35
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Adamantine Falchion",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 30
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Igneous Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 20
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Brute Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 40,
+          "unit": 40
+        }
+      ],
+      "quantity": 1,
+      "description": "q9 brute sword inscr 300g value",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ancient Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 175,
+          "unit": 25
+        }
+      ],
+      "quantity": 7,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Stygian Reaver",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 30,
+          "unit": 15
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Hand Axe (Canthan)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 120,
+          "unit": 20
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Hand Axe (Tyrian)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 25
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Fiery Blade Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 210,
+          "unit": 35
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Gemstone Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 240,
+          "unit": 40
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Grinning Dragon Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 120,
+          "unit": 20
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Dragoncrest Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 300,
+          "unit": 50
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Morning Star Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 180,
+          "unit": 30
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Battle Axe (hatchet)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 75,
+          "unit": 25
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ceremonial Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Zodiac Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 120,
+          "unit": 60
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Greater Dark Scimitar",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 25,
+          "unit": 25
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Gavel of the Nephilim",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 30,
+          "unit": 10
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Stone Crusher",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 105,
+          "unit": 35
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Zodiac Staff",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 50,
+          "unit": 50
+        }
+      ],
+      "quantity": 1,
+      "description": "q9 earth zodiac staff os 10% ",
+      "weaponDetails": {
+        "attribute": "Earth Magic",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": "Don't Think Twice",
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Balthazar's Staff",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 750,
+          "unit": 5
+        }
+      ],
+      "quantity": 150,
+      "description": "any attribute needed",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Guardian Branch",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 30,
+          "unit": 15
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Earth Magic",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Golden Pillar",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 200,
+          "unit": 50
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Earth Magic",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Blazing Wing Wand",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 25
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Whalekin Wand",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 105,
+          "unit": 35
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Water Spirit Rod",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 15
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Baneful Scepter",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 120,
+          "unit": 40
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Spawning Wand (claw)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 100,
+          "unit": 20
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Spawning Wand (claw)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 90,
+          "unit": 30
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Platinum Wand",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 225,
+          "unit": 15
+        }
+      ],
+      "quantity": 15,
+      "description": "any main attr - let me know",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Igneous Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 75,
+          "unit": 15
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Hawkeye Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ruby Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 100,
+          "unit": 25
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Copper Crusher",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 100,
+          "unit": 20
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Magmas Arm",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 120,
+          "unit": 40
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Spiked Club",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Wolf Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 300,
+          "unit": 50
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Foehammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 90,
+          "unit": 30
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ivory Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 20
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ivory Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 20
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Clouded Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Summit Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 50
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Mursaat Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 240,
+          "unit": 40
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Bronze Crusher",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 120,
+          "unit": 20
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Barrel Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 30
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Supreme Bludgeoner",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 120,
+          "unit": 30
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Bludgeoner",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 75,
+          "unit": 25
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Glowing Runic Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 40,
+          "unit": 20
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ram's Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Golden Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 100,
+          "unit": 50
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Melon Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 75,
+          "unit": 25
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Iron Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 25
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Stonehead Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 25
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Crab Claw Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 20,
+          "unit": 20
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Greater Glyphic Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 120,
+          "unit": 40
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Grim Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 40
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Gazing Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 30
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ornate Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 125,
+          "unit": 25
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Embossed Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 40
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Razorclaw Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 180,
+          "unit": 45
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Hooked Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 90,
+          "unit": 30
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Crenellated Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 100,
+          "unit": 25
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Briarwood Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 180,
+          "unit": 45
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Oroku's Slicers",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 105,
+          "unit": 15
+        }
+      ],
+      "quantity": 7,
+      "description": "",
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Duskblade Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 100,
+          "unit": 25
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Aureate Longbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 60,
+          "unit": 12
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Dragon Hornbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 160,
+          "unit": 40
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Turtle Shell Longbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 40
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Hornbow (Mursaat)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 40
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Bramble Longbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 40
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Bramble Recurve Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 105,
+          "unit": 35
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Skull Longbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 25
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Skull Recurve Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 75,
+          "unit": 25
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Platinum Longbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 175,
+          "unit": 25
+        }
+      ],
+      "quantity": 7,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Celestial Longbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 20,
+          "unit": 20
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Caged Shortbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 75,
+          "unit": 25
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Half Moon",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 25
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Bladed Recurve Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 30
+        }
+      ],
+      "quantity": 5,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Azure Recurve Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 135,
+          "unit": 45
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Composite Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 30,
+          "unit": 30
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Composite Shortbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 30,
+          "unit": 30
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Stoneshard Hornbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 90,
+          "unit": 30
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Grinning Recurve Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 45,
+          "unit": 15
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Feathered Longbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 30
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Wooden Longbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 40,
+          "unit": 20
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Vabbian Flatbow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 50,
+          "unit": 50
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Clouded Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 90,
+          "unit": 30
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Sunburst Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 90,
+          "unit": 45
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Spiraling Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 70,
+          "unit": 35
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Broadhead Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 75,
+          "unit": 25
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Skull Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 25
+        }
+      ],
+      "quantity": 6,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Pronged Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 140,
+          "unit": 35
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Lesser Guardian Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 15
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Guardian Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 50
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Banded Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 20
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Bronzehead Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 25
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Crenellated Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 30,
+          "unit": 30
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Tribal Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 50
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Gift of the Traveler",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 3,
+          "price": 40,
+          "unit": 0.16
+        }
+      ],
+      "quantity": 250,
+      "description": "Gott stack 40a/ea (x8)",
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Tattooed Scimitar",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 60,
+          "unit": 20
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Elemental Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 100,
+          "unit": 25
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Spatha",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 45,
+          "unit": 15
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Shinobi Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 75,
+          "unit": 25
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Wicked Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 60,
+          "unit": 20
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Fiery Embersteel Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 120,
+          "unit": 40
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Dadao Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 45,
+          "unit": 15
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Greater Sage Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Fellblade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 20,
+          "unit": 20
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Fiery Dragon Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 40,
+          "unit": 20
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Dusk Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 70,
+          "unit": 35
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Wingblade Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Piranha Hammer",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 75,
+          "unit": 25
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Righteous Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 25
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Shining Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 30
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Shadow Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 50
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Gothic Dual Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 90,
+          "unit": 30
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Sickle (crescent)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 150,
+          "unit": 50
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ungula Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 20
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Winged Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 25
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Dual Winged Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 30
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Crescent Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 25,
+          "unit": 25
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Mammoth Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 30
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Zodiac Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 40
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Gothic Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 60,
+          "unit": 30
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Dwarven Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 80,
+          "unit": 40
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Sephis Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 70,
+          "unit": 35
+        }
+      ],
+      "quantity": 2,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Jagged Reaver",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 15,
+          "unit": 15
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Battle Axe (cleaver)",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 15,
+          "unit": 15
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Hooked Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 25,
+          "unit": 25
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Crested Machete",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 120,
+          "unit": 40
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Ascalon Razor",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 1,
+          "price": 30,
+          "unit": 10
+        }
+      ],
+      "quantity": 3,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Dead Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 40,
+          "unit": 40
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Crenellated Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 160,
+          "unit": 40
+        }
+      ],
+      "quantity": 4,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    },
+    {
+      "name": "Aerowind Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        {
+          "type": 0,
+          "price": 50,
+          "unit": 50
+        }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "any",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      },
+      "player": "Lovely Fake Name",
+      "daybreakOnline": false,
+      "authCertified": true,
+      "lastRefresh": 1768340817105.0
+    }
+  ],
+  "uuid": "420XiuGtCr",
+  "daybreakOnline": false,
+  "certified": null
+}

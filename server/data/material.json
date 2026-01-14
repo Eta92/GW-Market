@@ -1,0 +1,158 @@
+[
+  {
+    "type": "Common Materials",
+    "description": "Common crafting materials are crafting materials that are frequently available in the game. They form the basis for crafting most items in the game and can be salvaged easily from monster drops. All Salvage Kits can be used to produce common crafting materials. Note that when using an Expert Salvage Kit or a Superior Salvage Kit there is a chance the salvaged item will produce rare crafting material instead. Common materials can also be purchased at any material trader in a town.",
+    "items": [
+      {
+        "name": "Bolt of Cloth",
+        "description": "Bolts of Cloth are common crafting materials used in the creation of many types of caster armor.  It is typically found as salvage from existing cloth armor or dropped by enemies that wear clothes."
+      },
+      {
+        "name": "Scale",
+        "description": "Scale is categorized as a common crafting material, though it is on the rare side of the common materials. Scales should not be confused with Skale, which is a monster species."
+      },
+      {
+        "name": "Pile of Glittering Dust",
+        "description": "Piles of Glittering Dust are a common crafting material used to make armor and rare crafting materials."
+      },
+      {
+        "name": "Plant Fiber",
+        "description": "Plant Fiber is a common crafting material used in armor and weapon crafting."
+      },
+      {
+        "name": "Granite Slab",
+        "description": "Granite Slabs are crafting materials used in the construction of certain weapons and armor.  They are usually found as salvage from crude weapons, or as pieces of stone-fleshed enemies."
+      },
+      {
+        "name": "Wood Plank",
+        "description": "Wood Planks are a common crafting material which can be used to craft weapons and armor."
+      },
+      {
+        "name": "Feather",
+        "description": "Feathers are a common crafting material used in armor and weapon crafting. They are almost exclusively obtained as drops from griffons, harpies and tengus and from salvaging their trophies."
+      },
+      {
+        "name": "Iron Ingot",
+        "description": "Iron Ingots are a common crafting material used in many warrior armor sets and for crafting weapons."
+      },
+      {
+        "name": "Chitin Fragment",
+        "description": "Chitin Fragment is a common crafting material used in armor crafting."
+      },
+      {
+        "name": "Bone",
+        "description": "Bone is a common crafting material. It is used for crafting armor and weapons."
+      }
+    ]
+  },
+  {
+    "type": "Rare Materials",
+    "description": "Rare crafting materials are items used in the creation of equipment, such as armor or weapons. While cheaper early-campaign items are often craftable using only common materials, almost all craftable top-level \"max\" items and elite items require rare materials. Rare crafting materials can be purchased from rare material traders, created by artisans, obtained as loot or salvaged from items.",
+    "items": [
+      {
+        "name": "Glob of Ectoplasm",
+        "description": "A Glob of Ectoplasm is a rare crafting material. It is used in the crafting of  Obsidian armor and Chaos Gloves."
+      },
+      {
+        "name": "Obsidian Shard",
+        "description": "An Obsidian Shard is a rare crafting  material. It is used in the crafting of  Obsidian armor."
+      },
+      {
+        "name": "Diamond",
+        "description": "A Diamond is a rare crafting material introduced in Nightfall.  They are one of the required materials needed to craft Destroyer weapons, which are crafted by Balthor Coalforge in the Slavers' Exile dungeon."
+      },
+      {
+        "name": "Sapphire",
+        "description": "A Sapphire is a rare crafting material.  They are used in the crafting of Vabbian armor."
+      },
+      {
+        "name": "Ruby",
+        "description": "A Ruby is a rare crafting material used in the crafting of Vabbian armor."
+      },
+      {
+        "name": "Steel Ingot",
+        "description": "A Steel Ingot is a rare crafting material which can be used to craft some types of armor."
+      },
+      {
+        "name": "Roll of Parchment",
+        "description": "A Roll of Parchment is a rare crafting material. It is used in the crafting of armor."
+      },
+      {
+        "name": "Elonian Leather Square",
+        "description": "Elonian Leather Squares are a rare crafting material used in the crafting of a number of armor sets."
+      },
+      {
+        "name": "Roll of Vellum",
+        "description": "A Roll of Vellum is a rare crafting material.  It is used in the crafting of certain armor sets."
+      },
+      {
+        "name": "Fur Square",
+        "description": "Fur Squares are a rare crafting material used in the crafting of a number of armor sets."
+      },
+      {
+        "name": "Tanned Hide Square",
+        "description": "Tanned Hide Square is a common crafting material. It is used for crafting armor for most professions."
+      },
+      {
+        "name": "Vial of Ink",
+        "description": "Vials of Ink are a rare crafting material used in the crafting of armor, particularly Monk, Necromancer, and Ritualist."
+      },
+      {
+        "name": "Deldrimor Steel Ingot",
+        "description": "Deldrimor Steel Ingots are a rare crafting material used in the crafting of some armor sets."
+      },
+      {
+        "name": "Jadeite Shard",
+        "description": "A Jadeite Shard is a rare crafting material.  It is used in the crafting of Luxon armors and Jadeite Summoning Stones."
+      },
+      {
+        "name": "Bolt of Damask",
+        "description": "A Bolt of Damask is a rare crafting material. It is used in the crafting of armor."
+      },
+      {
+        "name": "Monstrous Claw",
+        "description": "A Monstrous Claw is a rare crafting material that can be used in the crafting of certain armor sets."
+      },
+      {
+        "name": "Amber Chunk",
+        "description": "An Amber Chunk is a rare crafting material.  It is used in the crafting of Kurzick armor and Amber Summoning Stones."
+      },
+      {
+        "name": "Onyx Gemstone",
+        "description": "Onyx Gemstones are one of the rewards for defeating a dungeon in Guild Wars Eye of the North. They are one of the required materials needed to craft Destroyer Weapons, which are crafted by Balthor Coalforge in the Slavers' Exile dungeon."
+      },
+      {
+        "name": "Bolt of Silk",
+        "description": "A Bolt of Silk is a rare crafting material used in the crafting of a number of armor sets."
+      },
+      {
+        "name": "Spiritwood Plank",
+        "description": "A Spiritwood Plank is a rare crafting material. Nicholas the Traveler was once told that a fire that burns Spiritwood Planks is capable of comforting spirits."
+      },
+      {
+        "name": "Lump of Charcoal",
+        "description": "A Lump of Charcoal is a rare crafting material.  It is used in the crafting of other rare crafting materials, including Steel Ingots and Deldrimor Steel Ingots."
+      },
+      {
+        "name": "Monstrous Eye",
+        "description": "A Monstrous Eye is a rare crafting material."
+      },
+      {
+        "name": "Monstrous Fang",
+        "description": "A Monstrous Fang is a rare crafting material."
+      },
+      {
+        "name": "Tempered Glass Vial",
+        "description": "Tempered Glass Vials are a rare crafting material used in the crafting of Canthan elementalist auras, spectacles and Vials of Ink."
+      },
+      {
+        "name": "Bolt of Linen",
+        "description": "A Bolt of Linen is a rare crafting material.  It is used in the crafting of a number of armor sets."
+      },
+      {
+        "name": "Leather Square",
+        "description": "Leather Squares are a rare crafting material used in the crafting of a number of armor sets."
+      }
+    ]
+  }
+]

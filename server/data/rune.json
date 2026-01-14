@@ -1,0 +1,746 @@
+[
+  {
+    "type": "Runes",
+    "description": "A rune is a type of upgrade component for armor",
+    "items": [
+      {
+        "name": "Rune of Vitae",
+        "description": "A Rune of Vitae is a common (blue) rune that provides a small +10 health bonus"
+      },
+      {
+        "name": "Rune of Attunement",
+        "description": "A Rune of Attunement is a common (blue) rune that provides a small +2 energy bonus. "
+      },
+      {
+        "name": "Rune of Restoration",
+        "description": "A Rune of Restoration is an uncommon (purple) rune that reduces the duration of the Bleeding and Crippled conditions by 20%. "
+      },
+      {
+        "name": "Rune of Recovery",
+        "description": "A Rune of Recovery is an uncommon (purple) rune that reduces the duration of the Dazed and Deep Wound conditions by 20%"
+      },
+      {
+        "name": "Rune of Purity",
+        "description": "A Rune of Purity is an uncommon (purple) rune that reduces the duration of the Disease and Poison conditions by 20%. "
+      },
+      {
+        "name": "Rune of Clarity",
+        "description": "A Rune of Clarity is an uncommon (purple) rune that reduces the duration of the Blind and Weakness conditions by 20%."
+      },
+      {
+        "name": "Warrior Rune of Minor Absorption",
+        "description": "A Warrior Rune of Minor Absorption reduces physical damage by 1."
+      },
+      {
+        "name": "Warrior Rune of Minor Strength",
+        "description": "A Warrior Rune of Minor Strength provides a bonus of +1 Strength."
+      },
+      {
+        "name": "Warrior Rune of Minor Tactics",
+        "description": "A Warrior Rune of Minor Tactics provides a bonus of +1 Tactics."
+      },
+      {
+        "name": "Warrior Rune of Minor Axe Mastery",
+        "description": "A Warrior Rune of Minor Axe Mastery provides a bonus of +1 Axe Mastery."
+      },
+      {
+        "name": "Warrior Rune of Minor Hammer Mastery",
+        "description": "A Warrior Rune of Minor Hammer Mastery provides a bonus of +1 Hammer Mastery."
+      },
+      {
+        "name": "Necromancer Rune of Minor Soul Reaping",
+        "description": "A Necromancer Rune of Minor Soul Reaping provides a bonus of +1 Soul Reaping."
+      },
+      {
+        "name": "Mesmer Rune of Minor Inspiration Magic",
+        "description": "A Mesmer Rune of Minor Inspiration Magic provides a bonus of +1 Inspiration Magic."
+      },
+      {
+        "name": "Elementalist Rune of Minor Water Magic",
+        "description": "A Elementalist Rune of Minor Water Magic provides a bonus of +1 Water Magic."
+      },
+      {
+        "name": "Elementalist Rune of Minor Energy Storage",
+        "description": "A Elementalist Rune of Minor Energy Storage provides a bonus of +1 Energy Storage."
+      },
+      {
+        "name": "Monk Rune of Minor Healing Prayers",
+        "description": "A Monk Rune of Minor Healing Prayers provides a bonus of +1 Healing Prayers."
+      },
+      {
+        "name": "Monk Rune of Minor Smiting Prayers",
+        "description": "A Monk Rune of Minor Smiting Prayers provides a bonus of +1 Smiting Prayers."
+      },
+      {
+        "name": "Elementalist Rune of Minor Air Magic",
+        "description": "A Elementalist Rune of Minor Air Magic provides a bonus of +1 Air Magic."
+      },
+      {
+        "name": "Ranger Rune of Minor Marksmanship",
+        "description": "A Ranger Rune of Minor Marksmanship provides a bonus of +1 Marksmanship."
+      },
+      {
+        "name": "Ranger Rune of Minor Expertise",
+        "description": "A Ranger Rune of Minor Expertise provides a bonus of +1 Expertise."
+      },
+      {
+        "name": "Monk Rune of Minor Divine Favor",
+        "description": "A Monk Rune of Minor Divine Favor provides a bonus of +1 Divine Favor."
+      },
+      {
+        "name": "Ritualist Rune of Minor Spawning Power",
+        "description": "A Ritualist Rune of Minor Spawning Power provides a bonus of +1 Spawning Power."
+      },
+      {
+        "name": "Mesmer Rune of Minor Illusion Magic",
+        "description": "A Mesmer Rune of Minor Illusion Magic provides a bonus of +1 Illusion Magic."
+      },
+      {
+        "name": "Necromancer Rune of Minor Curses",
+        "description": "A Necromancer Rune of Minor Curses provides a bonus of +1 Curses."
+      },
+      {
+        "name": "Paragon Rune of Minor Spear Mastery",
+        "description": "A Paragon Rune of Minor Spear Mastery provides a bonus of +1 Spear Mastery."
+      },
+      {
+        "name": "Ranger Rune of Minor Wilderness Survival",
+        "description": "A Ranger Rune of Minor Wilderness Survival provides a bonus of +1 Wilderness Survival."
+      },
+      {
+        "name": "Mesmer Rune of Minor Domination Magic",
+        "description": "A Mesmer Rune of Minor Domination Magic provides a bonus of +1 Domination Magic."
+      },
+      {
+        "name": "Ritualist Rune of Minor Restoration Magic",
+        "description": "A Ritualist Rune of Minor Restoration Magic provides a bonus of +1 Restoration Magic."
+      },
+      {
+        "name": "Ritualist Rune of Minor Communing",
+        "description": "A Ritualist Rune of Minor Communing provides a bonus of +1 Communing."
+      },
+      {
+        "name": "Rune of Minor Vigor",
+        "description": "A Rune of Minor Vigor provides a bonus of +30 health."
+      },
+      {
+        "name": "Warrior Rune of Minor Swordsmanship",
+        "description": "A Warrior Rune of Minor Swordsmanship provides a bonus of +1 Swordsmanship."
+      },
+      {
+        "name": "Assassin Rune of Minor Dagger Mastery",
+        "description": "An Assassin Rune of Minor Dagger Mastery provides a bonus of +1 Dagger Mastery."
+      },
+      {
+        "name": "Necromancer Rune of Minor Death Magic",
+        "description": "A Necromancer Rune of Minor Death Magic provides a bonus of +1 Death Magic."
+      },
+      {
+        "name": "Dervish Rune of Minor Scythe Mastery",
+        "description": "A Dervish Rune of Minor Scythe Mastery provides a bonus of +1 Scythe Mastery."
+      },
+      {
+        "name": "Assassin Rune of Minor Deadly Arts",
+        "description": "An Assassin Rune of Minor Deadly Arts provides a bonus of +1 Deadly Arts."
+      },
+      {
+        "name": "Monk Rune of Minor Protection Prayers",
+        "description": "A Monk Rune of Minor Protection Prayers provides a bonus of +1 Protection Prayers."
+      },
+      {
+        "name": "Assassin Rune of Minor Critical Strikes",
+        "description": "An Assassin Rune of Minor Critical Strikes provides a bonus of +1 Critical Strikes."
+      },
+      {
+        "name": "Paragon Rune of Minor Motivation",
+        "description": "A Paragon Rune of Minor Motivation provides a bonus of +1 Motivation."
+      },
+      {
+        "name": "Paragon Rune of Minor Command",
+        "description": "A Paragon Rune of Minor Command provides a bonus of +1 Command."
+      },
+      {
+        "name": "Elementalist Rune of Minor Fire Magic",
+        "description": "A Elementalist Rune of Minor Fire Magic provides a bonus of +1 Fire Magic."
+      },
+      {
+        "name": "Ritualist Rune of Minor Channeling Magic",
+        "description": "A Ritualist Rune of Minor Channeling Magic provides a bonus of +1 Channeling Magic."
+      },
+      {
+        "name": "Dervish Rune of Minor Mysticism",
+        "description": "A Dervish Rune of Minor Mysticism provides a bonus of +1 Mysticism."
+      },
+      {
+        "name": "Warrior Rune of Major Absorption",
+        "description": "A Warrior Rune of Major Absorption reduces physical damage by 2."
+      },
+      {
+        "name": "Elementalist Rune of Minor Earth Magic",
+        "description": "A Elementalist Rune of Minor Earth Magic provides a bonus of +1 Earth Magic."
+      },
+      {
+        "name": "Ranger Rune of Minor Beast Mastery",
+        "description": "A Ranger Rune of Minor Beast Mastery provides a bonus of +1 Beast Mastery."
+      },
+      {
+        "name": "Assassin Rune of Minor Shadow Arts",
+        "description": "An Assassin Rune of Minor Shadow Arts provides a bonus of +1 Shadow Arts."
+      },
+      {
+        "name": "Paragon Rune of Minor Leadership",
+        "description": "A Paragon Rune of Minor Leadership provides a bonus of +1 Leadership."
+      },
+      {
+        "name": "Necromancer Rune of Minor Blood Magic",
+        "description": "A Necromancer Rune of Minor Blood Magic provides a bonus of +1 Blood Magic."
+      },
+      {
+        "name": "Dervish Rune of Minor Wind Prayers",
+        "description": "A Dervish Rune of Minor Wind Prayers provides a bonus of +1 Wind Prayers."
+      },
+      {
+        "name": "Warrior Rune of Major Tactics",
+        "description": "A Warrior Rune of Major Tactics provides a bonus of +2 Tactics and a penalty of -35 health."
+      },
+      {
+        "name": "Warrior Rune of Major Strength",
+        "description": "A Warrior Rune of Major Strength provides a bonus of +2 Strength and a penalty of -35 health."
+      },
+      {
+        "name": "Dervish Rune of Minor Earth Prayers",
+        "description": "A Dervish Rune of Minor Earth Prayers provides a bonus of +1 Earth Prayers."
+      },
+      {
+        "name": "Mesmer Rune of Minor Fast Casting",
+        "description": "A Mesmer Rune of Minor Fast Casting provides a bonus of +1 Fast Casting."
+      },
+      {
+        "name": "Warrior Rune of Major Hammer Mastery",
+        "description": "A Warrior Rune of Major Hammer Mastery provides a bonus of +2 Hammer Mastery and a penalty of -35 health."
+      },
+      {
+        "name": "Warrior Rune of Major Axe Mastery",
+        "description": "A Warrior Rune of Major Axe Mastery provides a bonus of +2 Axe Mastery and a penalty of -35 health."
+      },
+      {
+        "name": "Necromancer Rune of Major Soul Reaping",
+        "description": "A Necromancer Rune of Major Soul Reaping provides a bonus of +2 Soul Reaping and a penalty of -35 health."
+      },
+      {
+        "name": "Mesmer Rune of Major Inspiration Magic",
+        "description": "A Mesmer Rune of Major Inspiration Magic provides a bonus of +2 Inspiration Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Elementalist Rune of Major Water Magic",
+        "description": "A Elementalist Rune of Major Water Magic provides a bonus of +2 Water Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Elementalist Rune of Major Energy Storage",
+        "description": "A Elementalist Rune of Major Energy Storage provides a bonus of +2 Energy Storage and a penalty of -35 health."
+      },
+      {
+        "name": "Monk Rune of Major Healing Prayers",
+        "description": "A Monk Rune of Major Healing Prayers provides a bonus of +2 Healing Prayers and a penalty of -35 health."
+      },
+      {
+        "name": "Monk Rune of Major Smiting Prayers",
+        "description": "A Monk Rune of Major Smiting Prayers provides a bonus of +2 Smiting Prayers and a penalty of -35 health."
+      },
+      {
+        "name": "Ranger Rune of Major Marksmanship",
+        "description": "A Ranger Rune of Major Marksmanship provides a bonus of +2 Marksmanship and a penalty of -35 health."
+      },
+      {
+        "name": "Ranger Rune of Major Expertise",
+        "description": "A Ranger Rune of Major Expertise provides a bonus of +2 Expertise and a penalty of -35 health."
+      },
+      {
+        "name": "Monk Rune of Major Divine Favor",
+        "description": "A Monk Rune of Major Divine Favor provides a bonus of +2 Divine Favor and a penalty of -35 health."
+      },
+      {
+        "name": "Ritualist Rune of Major Spawning Power",
+        "description": "A Ritualist Rune of Major Spawning Power provides a bonus of +2 Spawning Power and a penalty of -35 health."
+      },
+      {
+        "name": "Mesmer Rune of Major Illusion Magic",
+        "description": "A Mesmer Rune of Major Illusion Magic provides a bonus of +2 Illusion Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Elementalist Rune of Major Air Magic",
+        "description": "A Elementalist Rune of Major Air Magic provides a bonus of +2 Air Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Necromancer Rune of Major Curses",
+        "description": "A Necromancer Rune of Major Curses provides a bonus of +2 Curses and a penalty of -35 health."
+      },
+      {
+        "name": "Paragon Rune of Major Spear Mastery",
+        "description": "A Paragon Rune of Major Spear Mastery provides a bonus of +2 Spear Mastery and a penalty of -35 health."
+      },
+      {
+        "name": "Ranger Rune of Major Wilderness Survival",
+        "description": "A Ranger Rune of Major Wilderness Survival provides a bonus of +2 Wilderness Survival and a penalty of -35 health."
+      },
+      {
+        "name": "Mesmer Rune of Major Domination Magic",
+        "description": "A Mesmer Rune of Major Domination Magic provides a bonus of +2 Domination Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Ritualist Rune of Major Restoration Magic",
+        "description": "A Ritualist Rune of Major Restoration Magic provides a bonus of +2 Restoration Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Ritualist Rune of Major Communing",
+        "description": "A Ritualist Rune of Major Communing provides a bonus of +2 Communing and a penalty of -35 health."
+      },
+      {
+        "name": "Rune of Major Vigor",
+        "description": "A Rune of Major Vigor provides a bonus of +41 health."
+      },
+      {
+        "name": "Warrior Rune of Major Swordsmanship",
+        "description": "A Warrior Rune of Major Swordsmanship provides a bonus of +2 Swordsmanship and a penalty of -35 health."
+      },
+      {
+        "name": "Assassin Rune of Major Dagger Mastery",
+        "description": "An Assassin Rune of Major Dagger Mastery provides a bonus of +2 Dagger Mastery and a penalty of -35 health."
+      },
+      {
+        "name": "Necromancer Rune of Major Death Magic",
+        "description": "A Necromancer Rune of Major Death Magic provides a bonus of +2 Death Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Dervish Rune of Major Scythe Mastery",
+        "description": "A Dervish Rune of Major Scythe Mastery provides a bonus of +2 Scythe Mastery and a penalty of -35 health."
+      },
+      {
+        "name": "Assassin Rune of Major Deadly Arts",
+        "description": "An Assassin Rune of Major Deadly Arts provides a bonus of +2 Deadly Arts and a penalty of -35 health."
+      },
+      {
+        "name": "Monk Rune of Major Protection Prayers",
+        "description": "A Monk Rune of Major Protection Prayers provides a bonus of +2 Protection Prayers and a penalty of -35 health."
+      },
+      {
+        "name": "Assassin Rune of Major Critical Strikes",
+        "description": "An Assassin Rune of Major Critical Strikes provides a bonus of +2 Critical Strikes and a penalty of -35 health."
+      },
+      {
+        "name": "Paragon Rune of Major Motivation",
+        "description": "A Paragon Rune of Major Motivation provides a bonus of +2 Motivation and a penalty of -35 health."
+      },
+      {
+        "name": "Paragon Rune of Major Command",
+        "description": "A Paragon Rune of Major Command provides a bonus of +2 Command and a penalty of -35 health."
+      },
+      {
+        "name": "Elementalist Rune of Major Fire Magic",
+        "description": "A Elementalist Rune of Major Fire Magic provides a bonus of +2 Fire Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Ritualist Rune of Major Channeling Magic",
+        "description": "A Ritualist Rune of Major Channeling Magic provides a bonus of +2 Channeling Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Dervish Rune of Major Mysticism",
+        "description": "A Dervish Rune of Major Mysticism provides a bonus of +2 Mysticism and a penalty of -35 health."
+      },
+      {
+        "name": "Warrior Rune of Superior Absorption",
+        "description": "A Warrior Rune of Superior Absorption reduces physical damage by 3."
+      },
+      {
+        "name": "Elementalist Rune of Major Earth Magic",
+        "description": "A Elementalist Rune of Major Earth Magic provides a bonus of +2 Earth Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Ranger Rune of Major Beast Mastery",
+        "description": "A Ranger Rune of Major Beast Mastery provides a bonus of +2 Beast Mastery and a penalty of -35 health."
+      },
+      {
+        "name": "Assassin Rune of Major Shadow Arts",
+        "description": "An Assassin Rune of Major Shadow Arts provides a bonus of +2 Shadow Arts and a penalty of -35 health."
+      },
+      {
+        "name": "Paragon Rune of Major Leadership",
+        "description": "A Paragon Rune of Major Leadership provides a bonus of +2 Leadership and a penalty of -35 health."
+      },
+      {
+        "name": "Necromancer Rune of Major Blood Magic",
+        "description": "A Necromancer Rune of Major Blood Magic provides a bonus of +2 Blood Magic and a penalty of -35 health."
+      },
+      {
+        "name": "Dervish Rune of Major Wind Prayers",
+        "description": "A Dervish Rune of Major Wind Prayers provides a bonus of +2 Wind Prayers and a penalty of -35 health."
+      },
+      {
+        "name": "Warrior Rune of Superior Tactics",
+        "description": "A Warrior Rune of Superior Tactics provides a bonus of +3 Tactics and a penalty of -75 health."
+      },
+      {
+        "name": "Warrior Rune of Superior Strength",
+        "description": "A Warrior Rune of Superior Strength provides a bonus of +3 Strength and a penalty of -75 health."
+      },
+      {
+        "name": "Dervish Rune of Major Earth Prayers",
+        "description": "A Dervish Rune of Major Earth Prayers provides a bonus of +2 Earth Prayers and a penalty of -35 health."
+      },
+      {
+        "name": "Mesmer Rune of Major Fast Casting",
+        "description": "A Mesmer Rune of Major Fast Casting provides a bonus of +2 Fast Casting and a penalty of -35 health."
+      },
+      {
+        "name": "Warrior Rune of Superior Hammer Mastery",
+        "description": "A Warrior Rune of Superior Hammer Mastery provides a bonus of +3 Hammer Mastery and a penalty of -75 health."
+      },
+      {
+        "name": "Warrior Rune of Superior Axe Mastery",
+        "description": "A Warrior Rune of Superior Axe Mastery provides a bonus of +3 Axe Mastery and a penalty of -75 health."
+      },
+      {
+        "name": "Mesmer Rune of Superior Inspiration Magic",
+        "description": "A Mesmer Rune of Superior Inspiration Magic provides a bonus of +3 Inspiration Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Necromancer Rune of Superior Soul Reaping",
+        "description": "A Necromancer Rune of Superior Soul Reaping provides a bonus of +3 Soul Reaping and a penalty of -75 health."
+      },
+      {
+        "name": "Elementalist Rune of Superior Water Magic",
+        "description": "A Elementalist Rune of Superior Water Magic provides a bonus of +3 Water Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Elementalist Rune of Superior Energy Storage",
+        "description": "A Elementalist Rune of Superior Energy Storage provides a bonus of +3 Energy Storage and a penalty of -75 health."
+      },
+      {
+        "name": "Monk Rune of Superior Smiting Prayers",
+        "description": "A Monk Rune of Superior Smiting Prayers provides a bonus of +3 Smiting Prayers and a penalty of -75 health."
+      },
+      {
+        "name": "Monk Rune of Superior Healing Prayers",
+        "description": "A Monk Rune of Superior Healing Prayers provides a bonus of +3 Healing Prayers and a penalty of -75 health."
+      },
+      {
+        "name": "Ranger Rune of Superior Expertise",
+        "description": "A Ranger Rune of Superior Expertise provides a bonus of +3 Expertise and a penalty of -75 health."
+      },
+      {
+        "name": "Ritualist Rune of Superior Spawning Power",
+        "description": "A Ritualist Rune of Superior Spawning Power provides a bonus of +3 Spawning Power and a penalty of -75 health."
+      },
+      {
+        "name": "Ranger Rune of Superior Marksmanship",
+        "description": "A Ranger Rune of Superior Marksmanship provides a bonus of +3 Marksmanship and a penalty of -75 health."
+      },
+      {
+        "name": "Monk Rune of Superior Divine Favor",
+        "description": "A Monk Rune of Superior Divine Favor provides a bonus of +3 Divine Favor and a penalty of -75 health."
+      },
+      {
+        "name": "Necromancer Rune of Superior Curses",
+        "description": "A Necromancer Rune of Superior Curses provides a bonus of +3 Curses and a penalty of -75 health."
+      },
+      {
+        "name": "Elementalist Rune of Superior Air Magic",
+        "description": "A Elementalist Rune of Superior Air Magic provides a bonus of +3 Air Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Mesmer Rune of Superior Illusion Magic",
+        "description": "A Mesmer Rune of Superior Illusion Magic provides a bonus of +3 Illusion Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Paragon Rune of Superior Spear Mastery",
+        "description": "A Paragon Rune of Superior Spear Mastery provides a bonus of +3 Spear Mastery and a penalty of -75 health."
+      },
+      {
+        "name": "Ranger Rune of Superior Wilderness Survival",
+        "description": "A Ranger Rune of Superior Wilderness Survival provides a bonus of +3 Wilderness Survival and a penalty of -75 health."
+      },
+      {
+        "name": "Mesmer Rune of Superior Domination Magic",
+        "description": "A Mesmer Rune of Superior Domination Magic provides a bonus of +3 Domination Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Ritualist Rune of Superior Communing",
+        "description": "A Ritualist Rune of Superior Communing provides a bonus of +3 Communing and a penalty of -75 health."
+      },
+      {
+        "name": "Ritualist Rune of Superior Restoration Magic",
+        "description": "A Ritualist Rune of Superior Restoration Magic provides a bonus of +3 Restoration Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Rune of Superior Vigor",
+        "description": "A Rune of Superior Vigor provides a bonus of +50 health."
+      },
+      {
+        "name": "Warrior Rune of Superior Swordsmanship",
+        "description": "A Warrior Rune of Superior Swordsmanship provides a bonus of +3 Swordsmanship and a penalty of -75 health."
+      },
+      {
+        "name": "Assassin Rune of Superior Dagger Mastery",
+        "description": "An Assassin Rune of Superior Dagger Mastery provides a bonus of +3 Dagger Mastery and a penalty of -75 health."
+      },
+      {
+        "name": "Necromancer Rune of Superior Death Magic",
+        "description": "A Necromancer Rune of Superior Death Magic provides a bonus of +3 Death Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Dervish Rune of Superior Scythe Mastery",
+        "description": "A Dervish Rune of Superior Scythe Mastery provides a bonus of +3 Scythe Mastery and a penalty of -75 health."
+      },
+      {
+        "name": "Assassin Rune of Superior Deadly Arts",
+        "description": "An Assassin Rune of Superior Deadly Arts provides a bonus of +3 Deadly Arts and a penalty of -75 health."
+      },
+      {
+        "name": "Monk Rune of Superior Protection Prayers",
+        "description": "A Monk Rune of Superior Protection Prayers provides a bonus of +3 Protection Prayers and a penalty of -75 health."
+      },
+      {
+        "name": "Assassin Rune of Superior Critical Strikes",
+        "description": "An Assassin Rune of Superior Critical Strikes provides a bonus of +3 Critical Strikes and a penalty of -75 health."
+      },
+      {
+        "name": "Paragon Rune of Superior Motivation",
+        "description": "A Paragon Rune of Superior Motivation provides a bonus of +3 Motivation and a penalty of -75 health."
+      },
+      {
+        "name": "Paragon Rune of Superior Command",
+        "description": "A Paragon Rune of Superior Command provides a bonus of +3 Command and a penalty of -75 health."
+      },
+      {
+        "name": "Elementalist Rune of Superior Fire Magic",
+        "description": "A Elementalist Rune of Superior Fire Magic provides a bonus of +3 Fire Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Ritualist Rune of Superior Channeling Magic",
+        "description": "A Ritualist Rune of Superior Channeling Magic provides a bonus of +3 Channeling Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Dervish Rune of Superior Mysticism",
+        "description": "A Dervish Rune of Superior Mysticism provides a bonus of +3 Mysticism and a penalty of -75 health."
+      },
+      {
+        "name": "Elementalist Rune of Superior Earth Magic",
+        "description": "A Elementalist Rune of Superior Earth Magic provides a bonus of +3 Earth Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Ranger Rune of Superior Beast Mastery",
+        "description": "A Ranger Rune of Superior Beast Mastery provides a bonus of +3 Beast Mastery and a penalty of -75 health."
+      },
+      {
+        "name": "Assassin Rune of Superior Shadow Arts",
+        "description": "An Assassin Rune of Superior Shadow Arts provides a bonus of +3 Shadow Arts and a penalty of -75 health."
+      },
+      {
+        "name": "Paragon Rune of Superior Leadership",
+        "description": "A Paragon Rune of Superior Leadership provides a bonus of +3 Leadership and a penalty of -75 health."
+      },
+      {
+        "name": "Necromancer Rune of Superior Blood Magic",
+        "description": "A Necromancer Rune of Superior Blood Magic provides a bonus of +3 Blood Magic and a penalty of -75 health."
+      },
+      {
+        "name": "Dervish Rune of Superior Wind Prayers",
+        "description": "A Dervish Rune of Superior Wind Prayers provides a bonus of +3 Wind Prayers and a penalty of -75 health."
+      },
+      {
+        "name": "Dervish Rune of Superior Earth Prayers",
+        "description": "A Dervish Rune of Superior Earth Prayers provides a bonus of +3 Earth Prayers and a penalty of -75 health."
+      },
+      {
+        "name": "Mesmer Rune of Superior Fast Casting",
+        "description": "A Mesmer Rune of Superior Fast Casting provides a bonus of +3 Fast Casting and a penalty of -75 health."
+      }
+    ]
+  },
+  {
+    "type": "Insignias",
+    "description": "An insignia is a type of upgrade component for armor",
+    "items": [
+      {
+        "name": "Survivor Insignia",
+        "description": "A Survivor Insignia is an upgrade component that provides extra health."
+      },
+      {
+        "name": "Ghost Forge Insignia",
+        "description": "A Ghost Forge Insignia is a ritualist specific upgrade component that provides an armor bonus of 15 extra armor rating while you are affected by a Weapon Spell. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Centurion's Insignia",
+        "description": "A Centurion's Insignia is a paragon specific upgrade component that provides an armor bonus of 10 extra armor rating while you are affected by a shout, echo, or chant. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Tormentor's Insignia",
+        "description": "A Tormentor's Insignia is a necromancer specific upgrade component that provides an armor bonus of 10 extra armor but increases holy damage you receive. The armor bonus is not global and applies only to the armor piece equipped with the insignia. The holy damage vulnerability is global and stacking."
+      },
+      {
+        "name": "Sentry's Insignia",
+        "description": "A Sentry's Insignia is an upgrade component that provides an armor bonus of 10 extra armor while you are in a stance. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Bloodstained Insignia",
+        "description": "A Bloodstained Insignia is a necromancer specific upgrade component that reduces the casting time of corpse exploitation spells. This bonus is global."
+      },
+      {
+        "name": "Artificer's Insignia",
+        "description": "An Artificer's Insignia is a mesmer specific upgrade component that provides an armor bonus of 3 extra armor rating for each signet you have equipped on your skill bar. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Brawler's Insignia",
+        "description": "A Brawler's Insignia is an upgrade component that provides an armor bonus of 10 extra armor while you are attacking. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Pyromancer Insignia",
+        "description": "The Pyromancer Insignia is an elementalist specific upgrade component that provides an armor bonus of 10 extra armor rating against elemental damage and 10 extra armor rating against fire damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Herald's Insignia",
+        "description": "A Herald's Insignia is an upgrade component that provides an armor bonus of 10 extra armor rating while you are holding a bundle. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Prodigy's Insignia",
+        "description": "A Prodigy's Insignia is a mesmer specific upgrade component that provides an armor bonus of up to 15 extra armor rating while skills are recharging. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Beastmaster's Insignia",
+        "description": "A Beastmaster's Insignia is a ranger specific upgrade component that provides an armor bonus of 10 extra armor while your pet is alive. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Blessed Insignia",
+        "description": "A Blessed Insignia is an upgrade component that provides an armor bonus of 10 extra armor rating while you are affected by an enchantment spell. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Anchorite's Insignia",
+        "description": "An Anchorite's Insignia is a monk specific upgrade component that provides an armor bonus of up to 15 extra armor rating while skills are recharging. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Aeromancer Insignia",
+        "description": "The Aeromancer Insignia is an elementalist specific upgrade component that provides an armor bonus of 10 extra armor rating against elemental damage and 10 extra armor rating against lightning damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Bonelace Insignia",
+        "description": "A Bonelace Insignia is a necromancer specific upgrade component that provides an armor bonus of 15 extra armor rating against piercing damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Infiltrator's Insignia",
+        "description": "An Infiltrator's Insignia is an assassin specific upgrade component that provides an armor bonus of 10 extra armor rating against physical damage and 10 extra armor rating against piercing damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Minion Master's Insignia",
+        "description": "A Minion Master's Insignia is a necromancer specific upgrade component that provides an armor bonus of 5 extra armor rating while controlling 1 or more minions, 10 extra armor rating while controlling 3 or more minions, or 15 extra armor rating while controlling 5 or more minions. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Stalwart Insignia",
+        "description": "A Stalwart Insignia is an upgrade component that provides an armor bonus of 10 extra armor against physical damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Forsaken Insignia",
+        "description": "A Forsaken Insignia is a dervish specific upgrade component that provides an armor bonus of 10 extra armor rating while you are not under the effect of an enchantment spell. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Pyrebound Insignia",
+        "description": "A Pyrebound Insignia is a ranger specific upgrade component that provides an armor bonus of 15 extra armor rating against fire damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Undertaker's Insignia",
+        "description": "An Undertaker's Insignia is a necromancer specific upgrade component that provides an armor bonus of up to 20 extra armor depending on how much health one has. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Geomancer Insignia",
+        "description": "The Geomancer Insignia is an elementalist specific upgrade component that provides an armor bonus of 10 extra armor rating against elemental damage and 10 extra armor rating against earth damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Disciple's Insignia",
+        "description": "A Disciple's Insignia is a monk specific upgrade component that provides an armor bonus of 15 extra armor while you are affected by a condition. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Lieutenant's Insignia",
+        "description": "The Lieutenant's Insignia is a warrior-specific upgrade component that reduces the duration of hexes cast on you, but causes you to deal less damage and suffer a reduction in armor rating. The damage reduction applies to all types of damage you deal, but the armor penalty only applies to the piece to which it is applied."
+      },
+      {
+        "name": "Shaman's Insignia",
+        "description": "A Shaman's Insignia is a ritualist specific upgrade component that provides an armor bonus of 5 extra armor rating for each spirit you control (maximum 15 extra armor rating). This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Dreadnought Insignia",
+        "description": "A Dreadnought Insignia is a warrior specific upgrade component that provides an armor bonus of 10 extra armor rating against elemental damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Nightstalker's Insignia",
+        "description": "A Nightstalker's Insignia is an assassin specific upgrade component that provides an armor bonus of 15 extra armor rating while you are attacking. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Frostbound Insignia",
+        "description": "A Frostbound Insignia is a ranger specific upgrade component that provides an armor bonus of 15 extra armor rating against cold damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Prismatic Insignia",
+        "description": "The Prismatic Insignia is an elementalist specific upgrade component that provides an armor bonus of 5 extra armor for each attribute rank requirement you meet. It is possible to have the required 9 ranks in all four attributes at once, giving a total of 20 extra armor. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Earthbound Insignia",
+        "description": "An Earthbound Insignia is a ranger specific upgrade component that provides an armor bonus of 15 extra armor rating against earth damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Scout's Insignia",
+        "description": "A Scout's Insignia is a ranger specific upgrade component that provides an armor bonus of 10 extra armor while using a preparation. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Saboteur's Insignia",
+        "description": "A Saboteur's Insignia is an assassin specific upgrade component that provides an armor bonus of 10 extra armor rating against physical damage and 10 extra armor rating against slashing damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Virtuoso's Insignia",
+        "description": "A Virtuoso's Insignia is a mesmer specific upgrade component that provides an armor bonus of 15 extra armor rating while activating skills. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Stonefist Insignia",
+        "description": "A Stonefist Insignia is a Warrior-specific upgrade component that increases the duration of knockdown on foes. This bonus is global."
+      },
+      {
+        "name": "Knight's Insignia",
+        "description": "A Knight's Insignia is a Warrior-specific upgrade component that provides reduction of physical damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Windwalker Insignia",
+        "description": "A Windwalker Insignia is a dervish specific upgrade component that provides an armor bonus of 5 extra armor rating for each enchantment spell on you (maximum 20 extra armor rating). This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Sentinel's Insignia",
+        "description": "A Sentinel's Insignia is a warrior specific upgrade component that provides an armor bonus of extra armor rating against elemental damage, it requires the wearer to have an attribute rank of 13 or more in the Strength attribute. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Radiant Insignia",
+        "description": "A Radiant Insignia is an upgrade component that provides extra energy."
+      },
+      {
+        "name": "Wanderer's Insignia",
+        "description": "A Wanderer's Insignia is a monk specific upgrade component that provides an armor bonus of 10 extra armor rating against elemental damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Mystic's Insignia",
+        "description": "A Mystic's Insignia is a ritualist specific upgrade component that provides an armor bonus of 15 extra armor rating while you are activating skills. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Stormbound Insignia",
+        "description": "A Stormbound Insignia is a ranger specific upgrade component that provides an armor bonus of 15 extra armor rating against lightning damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Vanguard's Insignia",
+        "description": "A Vanguard's Insignia is an assassin specific upgrade component that provides an armor bonus of 10 extra armor against physical damage and 10 extra armor against blunt damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Blighter's Insignia",
+        "description": "A Blighter's Insignia is a necromancer specific upgrade component that provides an armor bonus of 20 extra armor while you are affected by a hex. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      },
+      {
+        "name": "Hydromancer Insignia",
+        "description": "The Hydromancer Insignia is an elementalist specific upgrade component that provides an armor bonus of 10 extra armor rating against elemental damage and 10 extra armor rating against cold damage. This bonus is not global and applies only to the armor piece equipped with the insignia."
+      }
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+<div class="h-full w-full bg-white text-black">
+  <div class="sticky top-0 mx-auto flex justify-between bg-white font-semibold" [formGroup]="form">
+    <i class="fas fa-share-from-square cursor-pointer p-1 text-[40px]" (click)="goBack()"></i>
+    <div class="p-2 text-2xl">Occurences de non respect des critères Remedies</div>
+    <div class="flex h-8 p-2">
+      <i class="fas fa-search p-1 text-[24px]"></i>
+      <input type="text" formControlName="search" class="bg-white" />
+    </div>
+  </div>
+  <div class="reltative mx-auto my-2 flex h-[calc(100%_-_48px)] w-full flex-wrap overflow-y-auto">
+    <div
+      class="text m-8 h-min w-fit flex-col border border-solid border-black p-8 text-center"
+      *ngFor="let criteria of filteredRemedies; let c = index"
+    >
+      <div class="flex w-[624px] flex-col bg-white">
+        <div class="text-left"><b>Critère :</b> {{ criteria.name }}</div>
+        <div class="text-left"><b>Description :</b> {{ criteria.description }}</div>
+        <div class="text-left"><b>Patients concernés : </b>{{ criteria.patients.length }}</div>
+        <div class="-mt-6 cursor-pointer text-right" (click)="criteria.details = !criteria.details">
+          <i class="fa-solid fa-arrow-up" [ngClass]="{ 'rotate-180': !criteria.details }"></i> Details
+        </div>
+      </div>
+
+      <div *ngIf="criteria.details" class="flex flex-col gap-2">
+        <div *ngFor="let patient of criteria.patients; let p = index" class="flex border-b border-solid border-black">
+          <div class="w-20">patient {{ patient.id }}</div>
+          <div class="flex flex-col">
+            <div *ngFor="let prescription of patient.prescriptions; let m = index" class="flex">
+              <div class="w-20">{{ getDrugCode(prescription.name) }}</div>
+              <div class="w-52 text-sm">{{ prescription.name }}</div>
+              <div class="w-32">{{ prescription.posology }}</div>
+              <!--div class="" *ngFor="let posology of prescription.posology; let s = index">{{ posology }}</div   -->
+              <div class="w-12">{{ prescription.systematic ? 'syst.' : 'cond.' }}</div>
+              <div class="w-20">{{ prescription.start * 1000 | date: 'dd/MM/yyyy' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

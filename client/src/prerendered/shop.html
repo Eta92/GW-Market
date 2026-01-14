@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="fr" class="ddkvoitz idc0_350">
+  <head>
+    <meta charset="utf-8" />
+    <title>GW Market</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!--link rel="manifest" href="manifest.webmanifest" /-->
+    <meta name="theme-color" content="#1976d2" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .scene[_ngcontent-ng-c820972458] {
+        position: relative;
+        height: 100%;
+      }
+      .candle[_ngcontent-ng-c820972458] {
+        position: absolute;
+        bottom: 0;
+        width: 60px;
+        height: 100%;
+        background: #d4ba77;
+        border-radius: 10px;
+        transform-origin: bottom;
+      }
+      .candle[_ngcontent-ng-c820972458]::before,
+      .candle[_ngcontent-ng-c820972458]::after {
+        content: '';
+        position: absolute;
+        background: rgba(133, 66, 27, 0.5333333333);
+        width: 14px;
+        border-radius: 50%;
+        top: 40px;
+      }
+      .candle[_ngcontent-ng-c820972458]::before {
+        left: 8px;
+        height: 40px;
+        animation: drip 6s infinite ease-in-out;
+      }
+      .candle[_ngcontent-ng-c820972458]::after {
+        right: 10px;
+        height: 55px;
+        animation: drip 8s infinite ease-in-out;
+      }
+      .flame[_ngcontent-ng-c820972458] {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 40px;
+        background: radial-gradient(circle, #ffd700 40%, orange 70%);
+        border-radius: 50% 50% 50% 50%;
+        animation: flicker 0.15s infinite alternate;
+        z-index: 10;
+        filter: drop-shadow(0 0 10px orange);
+      }
+      /*# sourceMappingURL=shop.component.css.map */
+    </style>
+    <style>
+      .section-transition[_ngcontent-ng-c206824616] {
+        -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
+          url('./media/transition.webp');
+        mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
+          url('./media/transition.webp');
+        -webkit-mask-position: center, bottom;
+        mask-position: center, bottom;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        margin-bottom: -120px;
+      }
+      /*# sourceMappingURL=footer.component.css.map */
+    </style>
+    <style>
+      .card-wrapper[_ngcontent-ng-c1611679977] {
+        display: flex;
+        border-radius: 8px;
+        align-items: flex-end;
+        transition: box-shadow 0.3s;
+        box-shadow: rgba(0, 0, 0, 0.4235294118) 9px 9px 10px;
+        background: linear-gradient(to top, hsl(31, 48%, 26%) 180px, transparent 250px);
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977] .card-img[_ngcontent-ng-c1611679977] {
+        border-radius: 8px;
+        display: block;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977] .card-text[_ngcontent-ng-c1611679977] {
+        position: relative;
+        z-index: 2;
+        height: 80%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977]
+        .card-text[_ngcontent-ng-c1611679977]
+        .card-header[_ngcontent-ng-c1611679977] {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977]
+        .card-text[_ngcontent-ng-c1611679977]
+        .card-header[_ngcontent-ng-c1611679977]::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: url('./media/fog-brown.png');
+        background-size: 100% auto;
+        background-repeat: repeat-x;
+        background-position: 0 100%;
+        -webkit-mask-image: url('./media/fog.png');
+        mask-image: url('./media/fog.png');
+        mask-mode: luminance;
+        -webkit-mask-size: 100% 110px;
+        mask-size: 100% 110px;
+        -webkit-mask-repeat: repeat-x;
+        mask-repeat: repeat-x;
+        animation:
+          _ngcontent-ng-c1611679977_anim_foglayer_move 18s linear infinite,
+          _ngcontent-ng-c1611679977_anim_bg_move 25s linear infinite;
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977]
+        .card-text[_ngcontent-ng-c1611679977]
+        .card-content[_ngcontent-ng-c1611679977] {
+        background: linear-gradient(to bottom, rgba(100, 68, 31, 0), #64441f);
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977] .card-text[_ngcontent-ng-c1611679977]::after {
+        content: '';
+        position: absolute;
+        bottom: -40px;
+        background-image: url('./media/footer.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 100%;
+      }
+      @keyframes _ngcontent-ng-c1611679977_anim_foglayer_move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 208px 0;
+        }
+      }
+      @keyframes _ngcontent-ng-c1611679977_anim_bg_move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 208px 0;
+        }
+      }
+      .card-wrapper[_ngcontent-ng-c1611679977]:hover {
+        filter: brightness(1.2);
+        box-shadow: 0 10px 20px white;
+      }
+      /*# sourceMappingURL=new-order.component.css.map */
+    </style>
+  </head>
+
+  <body class="limitbody">
+    <app-root ng-version="18.2.13"
+      ><router-outlet></router-outlet
+      ><app-shop _nghost-ng-c820972458=""
+        ><div _ngcontent-ng-c820972458="" class="fritz-font scroll h-screen w-full overflow-y-auto text-white">
+          <div _ngcontent-ng-c820972458="" class="bg-header relative z-30">
+            <div _ngcontent-ng-c820972458="" class="flex flex-col gap-4 p-8">
+              <div _ngcontent-ng-c820972458="" class="flex w-full justify-between gap-8">
+                <img
+                  _ngcontent-ng-c820972458=""
+                  src="../../../assets/img/trading.svg"
+                  class="my-8 h-[80px] w-[320px]"
+                />
+                <div _ngcontent-ng-c820972458="" class="my-2 flex w-auto flex-col">
+                  <div _ngcontent-ng-c820972458="" class="w-full text-center text-2xl">
+                    Personal shop of Eta Kifaitmal
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="relative my-2 flex justify-center gap-4 text-sm">
+                    <div _ngcontent-ng-c820972458="" class="import action bg-button">
+                      <i _ngcontent-ng-c820972458="" class="fa fa-user self-center text-sm text-white"></i>Change active
+                      player
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="import action bg-button">
+                      <i _ngcontent-ng-c820972458="" class="fa fa-upload self-center text-sm text-white"></i>Import shop
+                      from file
+                    </div>
+                    <input _ngcontent-ng-c820972458="" id="matching-file" type="file" accept=".json" class="hidden" />
+                    <div _ngcontent-ng-c820972458="" class="import action bg-button">
+                      <i _ngcontent-ng-c820972458="" class="fa fa-download self-center text-sm text-white"></i>Export
+                      shop to file
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="import action bg-button">
+                      <i _ngcontent-ng-c820972458="" class="fa fa-fire self-center text-sm text-white"></i>Create a new
+                      shop
+                    </div>
+                    <!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}-->
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="text-center text-sm">
+                    The shop is automaticaly saved in the browser's cache, but it is <br _ngcontent-ng-c820972458="" />
+                    not really safe for long term usage, so better save it regularly in a file.
+                  </div>
+                </div>
+                <div _ngcontent-ng-c820972458="" class="my-2 flex w-[320px] gap-4"></div>
+              </div>
+            </div>
+            <div _ngcontent-ng-c820972458="" class="h-12 w-full"></div>
+          </div>
+          <div _ngcontent-ng-c820972458="" class="bg-theme section-transition relative z-20 -mt-24 min-h-screen pt-16">
+            <div _ngcontent-ng-c820972458="" class="mt-8 flex w-full">
+              <div _ngcontent-ng-c820972458="" class="flex w-1/2 flex-col px-16">
+                <div _ngcontent-ng-c820972458="" class="p-2 text-center text-2xl">Sell Orders</div>
+                <div
+                  _ngcontent-ng-c820972458=""
+                  class="mx-auto flex h-[calc(100vh-320px)] flex-col gap-4 overflow-y-auto"
+                >
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x250</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">Birthday Cupcake</div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/1.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x15</div>
+                            </div>
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/0.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x50</div>
+                            </div>
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/2.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x8</div>
+                            </div>
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/3.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x1</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs">sell cake again</div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-amber"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye-slash self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye-slash"
+                        ></i>
+                        Hidden</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Sold</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/consumable/Red_Rock_Candy.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x5</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">Red Rock Candy</div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/1.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x25</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs">i need strength</div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-light"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye"
+                        ></i>
+                        Visible</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Sold</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/consumable/Arctic_Summoning_Stone.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x10</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">
+                            Arctic Summoning Stone
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/0.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x5</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs">still working ?</div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-light"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye"
+                        ></i>
+                        Visible</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Sold</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/consumable/Red_Bean_Cake.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x100</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">Red Bean Cake</div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/0.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x10</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs">Direct Caking</div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-light"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye"
+                        ></i>
+                        Visible</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Sold</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/consumable/Birthday_Cupcake.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x100</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">Birthday Cupcake</div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/0.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x1</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs">longer</div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-light"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye"
+                        ></i>
+                        Visible</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Sold</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}-->
+                </div>
+              </div>
+              <div _ngcontent-ng-c820972458="" class="w-15 flex flex-col">
+                <div _ngcontent-ng-c820972458="" class="action bg-button -ml-11 h-10 w-36">
+                  <i _ngcontent-ng-c820972458="" class="fa fa-refresh self-center text-sm text-white"></i>Enable Shop
+                </div>
+                <div _ngcontent-ng-c820972458="" class="w-15 relative h-[calc(100vh-350px)]">
+                  <div _ngcontent-ng-c820972458="" class="scene fixed mt-10">
+                    <div _ngcontent-ng-c820972458="" class="candle" hidden="">
+                      <div _ngcontent-ng-c820972458="" class="flame"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div _ngcontent-ng-c820972458="" class="flex w-1/2 flex-col px-16">
+                <div _ngcontent-ng-c820972458="" class="p-2 text-center text-2xl">Buy Orders</div>
+                <div
+                  _ngcontent-ng-c820972458=""
+                  class="mx-auto flex h-[calc(100vh-320px)] flex-col gap-4 overflow-y-auto"
+                >
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/consumable/Green_Rock_Candy.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x5</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">Green Rock Candy</div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/0.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x4</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs">Let Me buy ?</div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-light"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye"
+                        ></i>
+                        Visible</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Bought</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/tome/Elite_Ritualist_Tome.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x1</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">
+                            Elite Ritualist Tome
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/1.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x3</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs"></div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-light"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye"
+                        ></i>
+                        Visible</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Bought</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/consumable/Amber_Summoning_Stone.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x5</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">
+                            Amber Summoning Stone
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/0.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x5</div>
+                            </div>
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/2.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x1</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs"></div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-light"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye"
+                        ></i>
+                        Visible</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Bought</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c820972458="" class="frame flex w-96 gap-2 p-2">
+                    <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                      <div _ngcontent-ng-c820972458="" class="flex gap-4">
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col gap-1">
+                          <div
+                            _ngcontent-ng-c820972458=""
+                            class="bg-gradient h-16 w-16 cursor-pointer rounded-full border-2 border-gwt-brown shadow-xl"
+                          >
+                            <img
+                              _ngcontent-ng-c820972458=""
+                              class="h-full w-full py-2 pl-2"
+                              src="../../../assets/items/consumable/Blue_Rock_Candy.png"
+                            />
+                          </div>
+                          <div _ngcontent-ng-c820972458="" class="text-center text-xs">x1</div>
+                        </div>
+                        <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                          <div _ngcontent-ng-c820972458="" class="text-no-overflow w-48 text-lg">Blue Rock Candy</div>
+                          <div _ngcontent-ng-c820972458="" class="flex">
+                            <div _ngcontent-ng-c820972458="" class="flex flex-col">
+                              <img
+                                _ngcontent-ng-c820972458=""
+                                class="h-10 w-12 px-1"
+                                src="../../../assets/items/currency/0.png"
+                              />
+                              <div _ngcontent-ng-c820972458="" class="text-center text-xs">x10</div>
+                            </div>
+                            <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}-->
+                          </div>
+                        </div>
+                      </div>
+                      <div _ngcontent-ng-c820972458="" class="px-2 pt-2 text-xs">test</div>
+                    </div>
+                    <div _ngcontent-ng-c820972458="" class="ml-1 flex flex-col gap-1">
+                      <button _ngcontent-ng-c820972458="" class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown">
+                        <i _ngcontent-ng-c820972458="" class="fa fa-pen self-center text-sm text-gwt-brown"></i>
+                        Edit</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown"
+                        ng-reflect-ng-class="bg-gwt-light"
+                      >
+                        <i
+                          _ngcontent-ng-c820972458=""
+                          class="fa fa-eye self-center text-sm text-gwt-brown"
+                          ng-reflect-ng-class="fa-eye"
+                        ></i>
+                        Visible</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-dollar-sign self-center text-sm text-gwt-brown"></i>
+                        Bought</button
+                      ><button
+                        _ngcontent-ng-c820972458=""
+                        class="h-6 w-20 bg-gwt-amber text-sm text-gwt-brown transition-colors"
+                        ng-reflect-ng-class="[object Object]"
+                      >
+                        <i _ngcontent-ng-c820972458="" class="fa fa-trash self-center text-sm text-gwt-brown"></i>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-footer _ngcontent-ng-c820972458="" _nghost-ng-c206824616=""
+            ><div _ngcontent-ng-c206824616="" class="fritz-font bg-rune w-full pt-28 text-white">
+              <div _ngcontent-ng-c206824616="" class="flex w-full justify-center">
+                <div
+                  _ngcontent-ng-c206824616=""
+                  class="hover:text-shadow cursor-pointer pl-[140px] text-xl transition-all hover:ml-4 hover:text-gwt-light hover:saturate-150"
+                >
+                  <i _ngcontent-ng-c206824616="" class="fa fa-chevron-right"></i
+                  ><i _ngcontent-ng-c206824616="" class="fa fa-chevron-right"></i> My Shop
+                </div>
+              </div>
+              <div _ngcontent-ng-c206824616="" class="w-full">
+                <div _ngcontent-ng-c206824616="" class="mx-auto flex w-[1200px]">
+                  <div _ngcontent-ng-c206824616="" class="flex w-1/2 p-4">
+                    <div _ngcontent-ng-c206824616="" class="flex flex-col gap-2">
+                      <div _ngcontent-ng-c206824616="" class="text-lg">DISCLAIMER</div>
+                      <div _ngcontent-ng-c206824616="" class="text-sm">
+                        ArenaNet LLC, Guild Wars and the logo and the backgrounds are registered trademarks. All rights
+                        are reserved worldwide. <br _ngcontent-ng-c206824616="" />
+                        This site has no official link with ArenaNet LLC or Guild Wars.
+                        <br _ngcontent-ng-c206824616="" />
+                        All artwork, screenshots, characters or other recognizable features of the intellectual property
+                        relating to these trademarks are likewise the intellectual property of ArenaNet LLC.
+                      </div>
+                    </div>
+                  </div>
+                  <div _ngcontent-ng-c206824616="" class="flex w-1/2 p-4">
+                    <div _ngcontent-ng-c206824616="" class="flex flex-col gap-2">
+                      <div _ngcontent-ng-c206824616="" class="text-lg">Custom Policy</div>
+                      <div _ngcontent-ng-c206824616="" class="text-sm">
+                        Any attempt to circunvent the principle of the site will be fought without restrictions. There
+                        is no place for scams or RMT here.
+                      </div>
+                      <div _ngcontent-ng-c206824616="" class="text-lg">What is missing and will come next</div>
+                      <div _ngcontent-ng-c206824616="" class="text-sm">
+                        • Exploration of available items now<br _ngcontent-ng-c206824616="" />
+                        • More items available in the list <br _ngcontent-ng-c206824616="" />
+                        • Save shops in accounts <br _ngcontent-ng-c206824616="" />• Ability to register custom gold
+                        items <br _ngcontent-ng-c206824616="" />
+                        • Reputation system for shops
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div></app-footer
+          >
+        </div>
+        <!--bindings={
+  "ng-reflect-ng-if": null
+}--><app-new-order _ngcontent-ng-c820972458="" _nghost-ng-c1611679977=""
+          ><!--bindings={
+  "ng-reflect-ng-if": "false"
+}-->
+          <div _ngcontent-ng-c1611679977="" class="card-wrapper fixed bottom-10 right-8 z-40 h-32 w-52 cursor-pointer">
+            <img _ngcontent-ng-c1611679977="" src="../../../assets/img/rune.webp" class="card-img" />
+            <div _ngcontent-ng-c1611679977="" class="card-text">
+              <div _ngcontent-ng-c1611679977="" class="card-header text-xl leading-[0px]">Place Order</div>
+              <div _ngcontent-ng-c1611679977="" class="card-content mt-auto flex h-12 w-full justify-center">
+                <i _ngcontent-ng-c1611679977="" class="far fa-square-plus -mt-1 text-5xl text-white"></i>
+              </div>
+            </div></div></app-new-order></app-shop
+      ><!--container--></app-root
+    >
+    <noscript>Merci d'activer JavaScript pour utiliser cette application.</noscript>
+    <script src="polyfills.js" type="module"></script>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+.scene {
+  position: relative;
+  height: 100%;
+}
+
+/* Candle */
+.candle {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 100%;
+  background: #d4ba77;
+  //background: #e3d9af;
+  //background: #f5f5dc;
+  border-radius: 10px;
+  transform-origin: bottom;
+}
+
+/* Wax drips */
+.candle::before,
+.candle::after {
+  content: '';
+  position: absolute;
+  background: #85421b88;
+  //background: #dbba84;
+  //background: #eee8c9;
+  width: 14px;
+  border-radius: 50%;
+  top: 40px;
+}
+
+.candle::before {
+  left: 8px;
+  height: 40px;
+  animation: drip 6s infinite ease-in-out;
+}
+
+.candle::after {
+  right: 10px;
+  height: 55px;
+  animation: drip 8s infinite ease-in-out;
+}
+
+/* Flame */
+.flame {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 40px;
+  background: radial-gradient(circle, #ffd700 40%, orange 70%);
+  border-radius: 50% 50% 50% 50%;
+  animation: flicker 0.15s infinite alternate;
+  z-index: 10;
+  filter: drop-shadow(0 0 10px orange);
+}
+
+.warning {
+  box-shadow: 0 10px 20px red;
+}

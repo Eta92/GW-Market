@@ -1,0 +1,105 @@
+.card-wrapper {
+  border-radius: 8px;
+  align-items: flex-end;
+  transition: box-shadow 0.3s;
+  box-shadow: #0000006c 9px 9px 10px;
+  background: linear-gradient(to top, hsl(31 48% 26% / 1) 180px, transparent 250px);
+
+  .card-img {
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .card-text {
+    position: relative;
+    z-index: 2;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+
+    .card-header {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image: url(../../../../../assets/img/fog-brown.png);
+      background-size: 100% auto;
+      background-repeat: repeat-x;
+      background-position: 0 100%;
+      -webkit-mask-image: url(../../../../../assets/img/fog.png);
+      mask-image: url(../../../../../assets/img/fog.png);
+      mask-mode: luminance;
+      -webkit-mask-size: 100% 110px;
+      mask-size: 100% 110px;
+      -webkit-mask-repeat: repeat-x;
+      mask-repeat: repeat-x;
+      animation:
+        anim_foglayer_move 18s linear infinite,
+        anim_bg_move 25s linear infinite;
+    }
+
+    .card-content {
+      background: linear-gradient(to bottom, #64441f00, #64441f);
+    }
+  }
+
+  .card-text::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    background-image: url(.././../../../../assets/img/footer.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 100%;
+  }
+}
+
+@keyframes anim_foglayer_move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 208px 0;
+  }
+}
+
+@keyframes anim_bg_move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 208px 0;
+  }
+}
+
+.card-wrapper:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 10px 20px white;
+}
+
+.card-wrapper.warning {
+  box-shadow: 0 10px 20px red;
+}
+
+@media (min-width: 1920px) {
+  .card-wrapper {
+    right: calc((100vw - 1920px) / 2 + 32px);
+  }
+}

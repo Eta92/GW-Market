@@ -1,0 +1,74 @@
+<div class="fritz-font bg-rune bg-base w-full pt-28 text-white">
+  <div class="hidden w-full justify-center lg:flex">
+    <div
+      class="hover:text-shadow cursor-pointer pl-[140px] text-xl transition-all hover:ml-4 hover:text-gwt-light hover:saturate-150"
+      (click)="goTo('shop')"
+    >
+      <i class="fa fa-chevron-right"></i>
+      <i class="fa fa-chevron-right"></i>
+      My Shop
+    </div>
+  </div>
+  <div class="fixed bottom-0 right-24 z-40 flex h-6 bg-[#212121] p-1 font-sans text-white lg:hidden">
+    <div class="flex w-20 cursor-pointer gap-1 px-2" (click)="goTo('')">
+      <i class="fa fa-home text-sm"></i>
+      <div class="text-center text-sm font-semibold">Home</div>
+    </div>
+    <div class="flex w-20 cursor-pointer gap-1" (click)="goTo('shop')">
+      <i class="fa fa-basket-shopping text-sm"></i>
+      <div class="text-center text-sm font-semibold">My Shop</div>
+    </div>
+  </div>
+
+  <div class="w-full">
+    <div class="mx-auto flex w-full flex-col lg:flex-row xl:w-[1200px]">
+      <div class="flex w-full p-4 lg:w-1/2">
+        <div class="flex flex-col">
+          <div class="text-lg">DISCLAIMER</div>
+          <div class="text-sm">
+            ArenaNet LLC, Guild Wars and the logo and the backgrounds are registered trademarks. All rights are reserved
+            worldwide. <br />
+            This site has no official link with ArenaNet LLC or Guild Wars. <br />
+            All artwork, screenshots, characters or other recognizable features of the intellectual property relating to
+            these trademarks are likewise the intellectual property of ArenaNet LLC.
+          </div>
+          <div class="mt-4 text-lg">Customer Support & Feedbacks</div>
+          <div class="text-sm">
+            For assistance or to help us join the Discord :
+            <a href="https://discord.gg/a4pPyJ3paN" (click)="joinDiscord()" class="text-gwt-light"
+              >https://discord.gg/a4pPyJ3paN</a
+            >
+          </div>
+          <div class="mt-4 text-lg">Friends and Partners</div>
+          <div class="text-sm">
+            Daybreak Launcher adding features connected to the market :
+            <a href="https://github.com/gwdevhub/Daybreak" (click)="joinDaybreak()" class="text-gwt-light">Github</a>
+          </div>
+          <div class="text-sm">
+            GW ToolBox with their in-game tool and providing pricing APIs:
+            <a href="https://www.gwtoolbox.com/" (click)="joinGwToolbox()" class="text-gwt-light">Website</a>
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full p-4 lg:w-1/2">
+        <div class="flex flex-col">
+          <div class="text-lg">Custom Policy</div>
+          <div class="text-sm">
+            Any attempt to circunvent the principle of the site will be fought without restrictions. There is no place
+            for scams or RMT here.
+          </div>
+          <div class="mt-4 text-lg">What is missing and will come next</div>
+          <div class="text-sm">
+            • Retrieve shop using player<br />
+            • Reputation system for shops<br />
+            • Advanced search filters<br />
+            • Dump complete inventory with Daybreak<br />
+            • Make a list display for items on home page<br />
+            • Add a pre-formatted message service<br />
+            • Link GW toolbox trader quotes<br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4396 @@
+[
+  {
+    "type": "Unique Axes",
+    "description": "Unique axes are fixed-stat weapon droped by specific bosses.",
+    "items": [
+      {
+        "name": "Morrob's Axe",
+        "stats": ["Cold Dmg: 7-20 (Requires 5 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +20"]
+      },
+      {
+        "name": "Chaklin's Axe",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Chor's Axe",
+        "stats": ["Earth Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Dragoncrest Axe (unique)",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Forgotten Axe",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ironclaw",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15%\nEnergy -5\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kanaxai's Axe",
+        "stats": [
+          "Slashing Dmg 6-28 (Requires  9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Mallyx's Reaver",
+        "stats": [
+          "Slashing Dmg 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Razorfin's Axe",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Razorstone",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nAxe Mastery +1 (20% chance while using skills)\nDouble adrenaline on hit (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Robah's Axe",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Tanzit's Cleaver",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30\nLengthens Deep Wound duration on foes by 33%"
+        ]
+      },
+      {
+        "name": "Totem Axe",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer\nEnergy +5"
+        ]
+      },
+      {
+        "name": "Victo's Battle Axe",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Wing's Axe",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Cho Wei's Axe",
+        "stats": [
+          "Slashing Dmg: 6-15 (Requires 5 Axe Mastery)\nDamage +10% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nAxe Mastery +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Axe of the Kinslayer",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Axe",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Murakai's Reaver",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Byndliss' Reaver",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Bonehewer",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15%\nEnergy -5\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Axe of the Hierophant",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Stonebreaker (axe)",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while in a Stance)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Shons' Reaver",
+        "stats": ["Fire damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Deldrimor Axe (unique)",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Peacekeeper",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Axe of the Firstwatch",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline gain (Chance: 10%)\nArmor +5"
+        ]
+      },
+      {
+        "name": "Torivos' Rage",
+        "stats": [
+          "Slashing damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline gain (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Axe",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nLife draining: 3\nHealth regeneration: -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Conviction (weapon)",
+        "stats": ["Lightning Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
+      },
+      {
+        "name": "Decade Axes Rival Skies",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nHealth +30\nCrafted in tribute to an enduring legend.\nHides off-hand items."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique daggers",
+    "description": "Unique daggers are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Ceremonial Daggers (unique)",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kenshi's Butterfly Daggers",
+        "stats": [
+          "Slashing damage 7-17 (Requires 9 Dagger Mastery)\nDamage +15%\nEnergy -5\nEnergy gain on hit: 1\nEnergy regeneration -1\nArmor +7 (vs. Physical damage)"
+        ]
+      },
+      {
+        "name": "Everthorn's Chakrams",
+        "stats": [
+          "Slashing damage 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ungues of the Forgotten",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Arius' Sai",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nEnergy +5\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Lou's Karambits",
+        "stats": [
+          "Slashing damage: 7-17 (requires 9 Dagger Mastery)\nDamage +15% (while in a Stance)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ssaresh's Kris Daggers",
+        "stats": ["Lightning damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (vs. Hexed foes)\nHealth +30"]
+      },
+      {
+        "name": "Achor's Daggers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nArmor +7 (vs. Physical damage)"
+        ]
+      },
+      {
+        "name": "Chimor's Daggers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nEnergy +5\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Chkkr's Pincers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kaolin Daggers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15%\nEnergy -5\nLengthens Dazed duration on foes by 33% (Stacking)\nArmor +7 (vs. Physical damage)"
+        ]
+      },
+      {
+        "name": "Ravaging Daggers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Shrouded Oni Daggers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15%\nEnergy -5\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Faveo's Daggers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Stygian Daggers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Falaharn's Split Chakrams",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Hanchor's Daggers",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Jarimiya's Daggers",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kaya's Daggers",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (vs. Hexed foes)\nLengthens Crippled duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Mallyx's Zeal",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Razorfang's Claws",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15%\nArmor -10 (while attacking)\nLengthens Dazed duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Split Chakrams of the Forgotten",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ungues of the Oni",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15%\nEnergy -5\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Urkal's Kamas",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nLife Draining: 3\nHealth regeneration -1\nDagger Mastery +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Pei's Blades",
+        "stats": [
+          "Piercing damage: 5-10 (Requires 5 Dagger Mastery)\nDamage +15% (vs. Hexed foes)\nLengthens Bleeding duration on foes by 33% (Stacking)\nDagger Mastery +1 (20% Chance while using skills)"
+        ]
+      },
+      {
+        "name": "Tahkayun's Pincers",
+        "stats": [
+          "Piercing damage: 5-10 (Requires 5 Dagger Mastery)\nDamage +10% (while Health is above 50%)\nArmor penetration 10% (Chance: 10%)\nDagger Mastery +1 (20% Chance while using skills)"
+        ]
+      },
+      {
+        "name": "Nihil's Daggers",
+        "stats": ["Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nEnergy +5\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Talons of the Forgotten",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Lunto's Pincers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ardeh's Daggers",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration 20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Darkroot's Daggers",
+        "stats": [
+          "Piercing damage 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnergy gain on hit:1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Blades",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Knives",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Daggers",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Hidesplitter's Daggers",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Claws of the Broodmother",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Pywatt's Talons",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnergy gain on hit: 1\nEnergy regeneration -1\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Claws of the Kinslayer",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Daggers of the Hierophant",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration: -1\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Daggers of Xuekao",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Deldrimor Daggers (unique)",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Knives",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Shreader's Talons",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage + 15% (vs. Hexed foes)\nLengthens Bleeding duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Shiro's Blades",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 13 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Onata's Shards",
+        "stats": [
+          "Piercing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (vs. Hexed foes)\nLengthens Crippled duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Alari's Double Blades",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Resolve",
+        "stats": [
+          "Slashing damage 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while in a Stance)\nArmor +5\nEnergy gain on hit: 1\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Dagger",
+        "stats": ["Fire damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
+      },
+      {
+        "name": "Gesshoku",
+        "stats": [
+          "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nDamage +10% (while in a Stance)\nEnergy gain on hit: 1\nEnergy regeneration -1\nArmor +5\nDamage +20%\nCustomized for <character name>"
+        ]
+      },
+      {
+        "name": "Law and Order",
+        "stats": ["Cold damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
+      },
+      {
+        "name": "Oroku's Slicers",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnergy gain on hit: 1\nEnergy regeneration -1\nArmor +5"
+        ]
+      },
+      {
+        "name": "Decade Daggers High Noon",
+        "stats": [
+          "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Deldrimor Blades",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration: -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Decade Dagger Dragon's Restraint",
+        "stats": [
+          "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nEnergy gain on hit: 1\nEnergy regeneration -1\nExpertise: 5 (if your rank is lower. No effect in PvP.)\nBoth hands\nCrafted in tribute to an enduring legend."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique focus items",
+    "description": "Unique focus items are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Chiossen's Wind",
+        "stats": [
+          "Energy +12 (Requires 9 Healing Prayers)\nHealing Prayers +1 (20% chance while using skills)\nHalves casting time of Healing Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Ivor's Icon",
+        "stats": [
+          "Energy +12 (Requires 9 Divine Favor)\nSmiting Prayers +1 (20% chance while using skills)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Hamlen's Artifact",
+        "stats": [
+          "Energy +12 (Requires 9 Smiting Prayers)\nSmiting Prayers +1 (20% chance while using skills)\nHealth +45 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Kalwameh's Focus",
+        "stats": ["Energy +6 (Requires 3 Healing Prayers)\nHealing Prayers +1 (Chance: 20%)\nHealth +15"]
+      },
+      {
+        "name": "The Rockmolder",
+        "stats": [
+          "Energy +12 (Requires 9 Illusion Magic)\nIllusion Magic +1 (20% chance while using skills)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Wroth's Icon",
+        "stats": [
+          "Energy +12 (Requires 9 Protection Prayers)\nProtection Prayers +1 (20% chance while using skills)\nHalves skill recharge using Protection Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Amiresh's Piety",
+        "stats": ["Energy +12 (Requires 9 Protection Prayers)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Byzzr's Benediction",
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Ajamahn's Artifact",
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance 10%)\nHealth +30"]
+      },
+      {
+        "name": "Josinq's Whisper",
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nReduces Dazed duration on you by 20% (stacking)\nHealth +30"]
+      },
+      {
+        "name": "Chan's Greed",
+        "stats": ["Energy +12 (Requires 9 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Sourbeak's Taint",
+        "stats": ["Energy +12 (Requires 9 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +60 (while Hexed)"]
+      },
+      {
+        "name": "The Shadestone",
+        "stats": ["Energy +12 (Requires 9 Blood Magic)\nHalves casting time of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Incetol's Focus",
+        "stats": ["Energy +12 (Requires 9 Healing Prayers)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Noss' Artifact",
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nDivine Favor + 1 (20% chance while using skills)\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Shen's Censure",
+        "stats": [
+          "Energy +12 (Requires 9 Smiting Prayers)\nSmiting Prayers +1 (20% chance while using skills)\nHalves skill recharge of Smiting Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Fondalz's Artifact",
+        "stats": ["Energy +12 (Requires 9 Curses)\nCurses +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Buhon's Prism",
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Korrub's Vision",
+        "stats": ["Energy +12 (Requires 9 Domination Magic)\nDomination Magic +1 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Ky's Chalice",
+        "stats": [
+          "Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of Divine Favor spells (Chance: 20%)\nHealth +45 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Galigord's Stone Scroll",
+        "stats": ["Energy +12 (Requires 9 Earth Magic)\nEarth Magic +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "The Purifier",
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nReduces Dazed duration on you by 20% (Stacking)\nHealth +60 (while Hexed)"]
+      },
+      {
+        "name": "The Stonehart",
+        "stats": [
+          "Energy +12 (Requires 9 Healing Prayers)\nHealing Prayers +1 (20% chance while using skills)\nHalves skill recharge of Healing Prayers spells (20% chance)"
+        ]
+      },
+      {
+        "name": "Nehpek's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Curses)\nCurses +1 (20% chance while using skills)\nHalves casting time of Curses spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Plaguebinder",
+        "stats": ["Energy +12 (Requires 9 Curses)\nCurses +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Armind's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (20% chance while using skills)\nHalves casting time of Death Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Marobeh's Chill",
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nReduces Dazed duration on you by 20%\nHealth +30"]
+      },
+      {
+        "name": "Yammiron's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Domination Magic)\nHalves casting time of Domination Magic spells (Chance: 20%)\nDomination Magic +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Rot's Putrescence",
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth + 30"]
+      },
+      {
+        "name": "Kormab's Prism",
+        "stats": ["Energy +12 (Requires 9 Fire Magic)\nHalves skill recharge of Fire Magic spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Korr's Focus",
+        "stats": ["Energy +12 (Requires 9 Fire Magic)\nFire Magic +1 (Chance: 20%)\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Milius' Eye",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nReduces Dazed duration on you by 20% (Stacking)\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Chichor's Conundrum",
+        "stats": [
+          "Energy +12 (Requires 9 Domination Magic)\nDomination Magic +1 (20% chance while using skills)\nHalves casting time of Domination Magic spells (Chance 20%)"
+        ]
+      },
+      {
+        "name": "The Kindlerock",
+        "stats": [
+          "Energy +12 (Requires 9 Fire Magic)\nFire Magic +1 (20% chance while using skills)\nHalves skill recharge of Fire Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Flint's Artifact",
+        "stats": [
+          "Energy +12 (Requires 9 Water Magic)\nWater Magic +1 (20% chance while using skills)\nHalves skill recharge of Water Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Mekir's Prism",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of Energy Storage spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Hautoh's Ambition",
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Kayin's Focus",
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nChanneling Magic +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Tattered Fan",
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nArmor +5\nEnergy -5\nHealth +30"]
+      },
+      {
+        "name": "Nehjab's Thirst",
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nSpawning Power +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Quansong's Focus",
+        "stats": ["Energy +12 (Requires 9 Communing)\nCommuning +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Sseer's Wish",
+        "stats": [
+          "Energy +12 (Requires 9 Communing)\nHalves skill recharge of Communing spells (Chance: 20%)\nCommuning +1 (20% Chance while using skills)"
+        ]
+      },
+      {
+        "name": "Jedeh's Artifact",
+        "stats": ["Energy +12 (Requires 9 Communing)\nCommuning +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Soulwhisper's Guardian",
+        "stats": ["Energy +12 (Requires 9 Restoration Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Cho's Vice",
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nHealth +45 (while Enchanted)\nEnergy +15\nEnergy regeneration -1"]
+      },
+      {
+        "name": "The Brimstone",
+        "stats": [
+          "Energy +12 (Requires 9 Air Magic)\nAir Magic +1 (20% chance while using skills)\nHalves skill recharge of Air Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Demented Artifact",
+        "stats": ["Energy +12 (Requires 9 Illusion Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Olunoss' Focus",
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nFast Casting +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Lushivahr's Prism",
+        "stats": ["Energy +12 (Requires 9 Air Magic)\nHalves skill recharge of Air Magic spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Bizzr's Fury",
+        "stats": [
+          "Energy +12 (Requires 9 Earth Magic)\nHalves skill recharge of Earth Magic spells (Chance: 20%)\nArmor +5 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Droajam's Storm",
+        "stats": [
+          "Energy +12 (Requires 9 Earth Magic)\nEarth Magic +1 (20% chance while using skills)\nHalves casting time of Earth Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Mallyx's Perpetuity",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Tarlok's Flagon",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Bosun's Focus",
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nArmor +10 (vs. Cold damage)\nHealth +30"]
+      },
+      {
+        "name": "Vokur's Chakram",
+        "stats": [
+          "Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHalves casting time of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Hanaku's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Domination Magic)\nHalves casting time of Domination Magic spells (Chance: 20%)\nHalves skill recharge of Domination Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Korvald's Chakram",
+        "stats": ["Energy +12 (Requires 9 Domination Magic)\nDomination Magic +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Mohby's Artifact",
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Deeproot's Sorrow",
+        "stats": [
+          "Energy +12 (Requires 9 Illusion Magic)\nHalves skill recharge of Illusion Magic spells (Chance: 20%)\nIllusion Magic +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Garbok's Chalice",
+        "stats": [
+          "Energy +12 (Requires 9 Inspiration Magic)\nInspiration Magic +1 (20% chance while using skills)\nHalves skill recharge of Inspiration Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Makdeh's Focus",
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Neoli's Contagion",
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nInspiration Magic +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Rual's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Inspiration Magic)\nInspiration Magic +1 (20% chance while using skills)\nHealth +45 (while in a stance)"
+        ]
+      },
+      {
+        "name": "The Time Eater",
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "The Skill Eater",
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "The Brainfreezer",
+        "stats": [
+          "Energy +12 (Requires 9 Water Magic)\nHalves casting time of Water Magic spells (Chance: 20%)\nHalves skill recharge of Water Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Antiquated Focus",
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Joffs' Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Earth Magic)\nHalves casting time of Earth Magic spells (Chance: 20%)\nHalves skill recharge of Earth Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Zoldark's Focus",
+        "stats": [
+          "Energy +12 (requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nEnergy +15\nEnergy regeneration - 1"
+        ]
+      },
+      {
+        "name": "The Mindsquall",
+        "stats": [
+          "Energy +12 (Requires 9 Domination Magic)\nHalves casting time of Domination Magic spells (Chance: 20%)\nHalves skill recharge of Domination Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Focus of the Master",
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of Soul Reaping spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Prismatic Focus",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of Energy Storage spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Fendi's Focus",
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Crystal Focus",
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Cyndr's Heart",
+        "stats": ["Energy +12 (Requires 9 Fire Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Alitta's Focus",
+        "stats": ["Energy +12 (Requires 9 Illusion Magic)\nHalves skill recharge of Illusion Magic spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Oola's Focus",
+        "stats": ["Energy +12 (Requires 9 Restoration Magic)\nHalves skill recharge of Restoration Magic spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Snapjaw's Powerstone",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy Regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Kkraz's Indulgence",
+        "stats": [
+          "Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of Soul Reaping spells (Chance: 20%)\nArmor +10 (vs. Slashing damage)"
+        ]
+      },
+      {
+        "name": "Destructive Focus",
+        "stats": ["Energy +12 (Requires 9 Curses)\nHalves skill recharge of Curses spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Ilsundur's Focus",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Villnar's Glove",
+        "stats": [
+          "Energy +12 (Requires 9 Curses)\nCurses + 1 (20% chance while using skills)\nHalves skill recharge time of Curses spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Focus of the Hierophant",
+        "stats": ["Energy +12 (requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Wenslauss' Chalice",
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nReduces Crippled duration on you by 20%\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Foulfist's Focus",
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nReduces Disease duration on you by 20% (Stacking)\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Edielh's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Air Magic)\nHalves skill recharge of Air Magic spells (Chance: 20%)\nHalves casting time of Air Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Gloop's Focus",
+        "stats": ["Energy +12 (Requires 9 Air Magic)\nHalves skill recharge of Air Magic spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Gwen's Flute (unique)",
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Straw Effigy (unique)",
+        "stats": ["Energy +12 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Kole's Gauntlet",
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nReduces Poison duration on you by 20%\nHealth + 30"]
+      },
+      {
+        "name": "Forgotten Fan",
+        "stats": ["Energy +12 (Requires 9 Illusion Magic)\nArmor +5\nEnergy -5\nHealth +30"]
+      },
+      {
+        "name": "Deldrimor Focus (unique)",
+        "stats": ["Energy +12 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Frozen Fan",
+        "stats": ["Energy +12 (Requires 9 Curses)\nArmor +5\nEnergy -5\nHealth +30"]
+      },
+      {
+        "name": "Whiteout's Focus",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Feng's Focus",
+        "stats": ["Energy +7 (Requires 4 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +10"]
+      },
+      {
+        "name": "Sehden's Mark",
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Lian's Lantern",
+        "stats": ["Energy +12 (Requires 9 Fire Magic)\nFire Magic +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Mallyx's Divinity",
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (10%)\nHealth +30"]
+      },
+      {
+        "name": "Mallyx's Inspiration",
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Mallyx's Creation",
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "The Lifedrinker",
+        "stats": ["Energy +7 (Requires 4 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +20"]
+      },
+      {
+        "name": "The Pain Eater",
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nArmor +10 (vs. Slashing damage)\nHealth +30"]
+      },
+      {
+        "name": "The Skinflayer",
+        "stats": ["Energy +12 (Requires 9 Smiting Prayers)\nSmiting Prayers +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "The Windcatcher",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Miella's Focus",
+        "stats": ["Energy +12 (Requires 9 Protection Prayers)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Chung's Focus",
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy regeneration -1\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Hajok's Prism",
+        "stats": ["Energy +12 (Requires 9 Earth Magic)\nHalves skill recharge of Earth Magic spells (chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Illyana's Mirror",
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nReduces Deep Wound duration on you by 20% (Stacking)\nHealth +30"]
+      },
+      {
+        "name": "Rien's Sacrifice",
+        "stats": ["Energy +12 (Requires 9 Healing Prayers)\nHealing Prayers +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Zehtuka's Horn",
+        "stats": [
+          "Energy +6\nReceived physical damage -5 (Chance: 20%)\nEnergy +6 (Requires 9 Divine Favor)\nEnergy +6 (Requires 9 Energy Storage)\nEnergy +6 (Requires 9 Fast Casting)\nEnergy +6 (Requires 9 Soul Reaping)\nEnergy +6 (Requires 9 Spawning Power)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Heart of the Kinslayer",
+        "stats": ["Energy +12 (requires 9 Divine Favor)\nHalves skill recharge of Divine Favor spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Spiriteater",
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Stormborn Artifact",
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nWater Magic +1 (20% chance while using skills)\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Harmony",
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Beacon of the Unseen",
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nArmor +5 (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Bauer's Intimidation",
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (Chance: 20% while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Gloomy Artifact",
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Bogroot Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Channeling Magic)\nHalves casting time of Channeling Magic spells (Chance: 20%)\nHalves skill recharge of Channeling Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "The Soulstone",
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nDivine Favor + 1 (20% chance while using skills)\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Shelboh's Gaze",
+        "stats": ["Energy +12 (requires 9 Blood Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Konrru's Fervor",
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (20% chance while using skills)\nEnergy +15\nEnergy regeneration -1"]
+      },
+      {
+        "name": "Mallyx's Spite",
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Modoss' Focus",
+        "stats": ["Energy +6 (Requires 3 Energy Storage)\nEnergy +12\nEnergy regeneration -1\nHealth +20"]
+      },
+      {
+        "name": "Rose Focus",
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nHalves casting time of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Kurg's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Illusion Magic)\nHalves casting time of Illusion Magic spells (Chance: 20%)\nHalves skill recharge of Illusion Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Gordac's Hook Blood",
+        "stats": [
+          "Energy +12 (Requires 9 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHalves skill recharge of Blood Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Kaykitt's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Healing Prayers)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nHalves skill recharge of Healing Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Droknar's Focus",
+        "stats": [
+          "Energy +12 (Requires 9 <attribute>)\nHalves casting time of <attribute> spells (Chance: 20%)\nHalves skill recharge of <attribute> spells (Chance: 20%)\n(In the case of a primary attribute version the modifiers both become 10% generic mods)"
+        ]
+      },
+      {
+        "name": "The People's Resolve",
+        "stats": [
+          "Energy +12 (Requires 9 Divine Favor)\nEnergy +12 (Requires 9 Fast Casting)\nEnergy +12 (Requires 9 Soul Reaping)\nEnergy +12 (Requires 9 Energy Storage)\nEnergy +12 (Requires 9 Spawning Power)\nHalves casting time of spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Bortak's Bone Cesta",
+        "stats": [
+          "Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (20% chance while using skills)\nHalves casting time of Death Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Claw of the Whispered",
+        "stats": [
+          "Energy +12 (Requires 9 Death Magic)\nHalves casting time of spells. (Chance: 10%)\nHalves skill recharge of Death Magic spells. (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Focus",
+        "stats": [
+          "Energy +12 (Requires 9 Divine Favor)\nEnergy +12 (Requires 9 Fast Casting)\nEnergy +12 (Requires 9 Soul Reaping)\nEnergy +12 (Requires 9 Energy Storage)\nEnergy +12 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ganshu's Record",
+        "stats": ["Energy +12 (Requires 9 Protection Prayers)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"]
+      }
+    ]
+  },
+  {
+    "type": "Unique Hammers",
+    "description": "Unique hammers are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Hanjuu's Bludgeoner",
+        "stats": [
+          "Blunt damage: 13-19 (Requires 6 Hammer Mastery)\nDamage +10% (while Health is above 50%)\nDouble adrenaline gain (Chance: 10%)\nHealth +20"
+        ]
+      },
+      {
+        "name": "Saevio's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15%\nEnergy -5\nDouble adrenaline on hit (Chance 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Bludgeoner (unique)",
+        "stats": [
+          "Blunt damage 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Enchanted)\nArmor penetration 20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Churrta's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Forgotten Hammer",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Gavel of the Nephilim (unique)",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration: -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Grabthar's Hammer",
+        "stats": ["Earth damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Kanaxai's Mallet",
+        "stats": [
+          "Blunt damage 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Malinon's Malign Hammer",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while in a stance)\nHealth +30\nLengthens Deep Wound duration on foes by 33%"
+        ]
+      },
+      {
+        "name": "Mallyx's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Riktund's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Sentasi's Jade Hammer",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15%\nEnergy -5\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Ice Breaker",
+        "stats": ["Cold damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "The Stonebreaker (hammer)",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15%\nEnergy -5\nLengthens Weakness duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Ugly Stick",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15%\nArmor -10 (while attacking)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Thorgall's Stone Smasher",
+        "stats": [
+          "Blunt damage 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while in a Stance)\nArmor +7 (vs. physical damage)\nDouble adrenaline on hit (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Vera",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Victo's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Rockbreaker",
+        "stats": [
+          "Blunt Dmg: 10-15 (Requires 3 Hammer Mastery)\nDamage +15%\nEnergy -5\nLengthens Weakness duration on foes by 33%\nHealth +20"
+        ]
+      },
+      {
+        "name": "Maul of the Kinslayer",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration: -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Murakai's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration: -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Havok's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Durgon's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Cobleri's Hammer",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Enchanted)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Eldritch Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Grelk's Hammer",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while in a Stance)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ettin Club",
+        "stats": [
+          "Blunt damage 19-35 (Requires 9 Hammer Mastery)\nDamage +15%\nEnergy -5\nDouble adrenaline on hit (Chance 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Hodat's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15%\nEnergy -5\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Crystal Core Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Enchanted)\nArmor penetration 20% (Chance 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Jormungand's Thunder",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Maul of the Hierophant",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Maul (unique)",
+        "stats": [
+          "Blunt damage 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Malinon's Skull Crusher",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Weakness duration on foes by 33%\nHammer Mastery +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Baglorag's Maul",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while in a Stance)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Hammer of Justice",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline gain (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Righteous Hand",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while in a Stance)\nDouble adrenaline gain (Chance: 10%)\nArmor +5"
+        ]
+      },
+      {
+        "name": "Xun Rao's Absolution",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while in a Stance)\nDouble Adrenaline gain (Chance: 10%)\nHammer Mastery +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Hammer",
+        "stats": [
+          "Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Decade Hammer Roaring Earth",
+        "stats": [
+          "Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Hammer Bear's Roar",
+        "stats": [
+          "Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nDouble adrenaline gain (Chance: 10%)\nLeadership: 5 (if your rank is lower. No effect in PvP.)\nTwo-handed\nCrafted in tribute to an enduring legend."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique Scythes",
+    "description": "Unique scythes are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Bubahl's Grasp",
+        "stats": [
+          "Earth damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor +7 (vs. physical damage)\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Claw of the Forgotten",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Eshekibeh's Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nLife Draining: 5\nHealth regeneration -1\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Fahralon's Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nArmor penetration: +20% (Chance: 20%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Leilon's Vow",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Lyssa's Bedlam",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration 20% (Chance: 20%)\nScythe Mastery +1 (20% chance while using skills)\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Mallyx's Hatred",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Mallyx's Savagery",
+        "stats": [
+          "Earth damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Melandru's Grip",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (stacking)\nArmor +7 vs. Elemental damage\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Scythe of Corruption",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration: -1\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Sehlon's Vow",
+        "stats": ["Fire damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30\nTwo-handed"]
+      },
+      {
+        "name": "Shezel's Reaper",
+        "stats": [
+          "Slashing damage: 9-41(Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Crippled duration on foes by 33%.\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Stygian Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Terror Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Haioss' Blessing",
+        "stats": [
+          "Slashing Damage: 9-29 (Requires 6 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration 20% (Chance: 20%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Mhedi's Vow",
+        "stats": ["Slashing damage 9-41 (Requires 9 Scythe Mastery)\nEnergy +5\nEnergy gain on hit: 1\nEnergy regeneration: -1\nHealth +30"]
+      },
+      {
+        "name": "Dwayna's Grace",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage: +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Suli's Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nScythe Mastery +1 (20% chance while using skills)\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Vahlen's Vow",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Bleeding duration on foes by 33% (Stacking)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "The Soulwailer",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Asterius' Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration: -1\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Droknar's Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Droknar's Edge",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Scythe of the Kinslayer",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "The Deathbringer",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15%\nArmor -10 (while attacking)\nArmor penetration +20% (Chance: 20%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Scythe of the Hierophant",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (20% chance)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Taameh's Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15%\nEnergy -5\nArmor penetration +20% (20% chance)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Arachni's Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration 20% (Chance: 20%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Brynn's Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nArmor penetration 20% (Chance: 20%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Balthazar's Fury",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15%\nArmor -10 (while attacking)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Deldrimor Reaper",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Scythe (unique)",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Deldrimor Shear",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Draconic Scythe (unique)",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Droknar's Reaper",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration: -1\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Grenth's Grasp (scythe)",
+        "stats": ["Cold damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30\nTwo-handed"]
+      },
+      {
+        "name": "Myish's Scythe",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Eyes of the Forgotten",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Long Arm of the Law",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nEnergy on hit +1\nEnergy regeneration -1\nEnchantments last 20% longer",
+          "Two Handed"
+        ]
+      },
+      {
+        "name": "Hand of the Forgotten",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Vetaura's Harbinger",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Temperance",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nDouble adrenaline on hit (Chance: 10%)\nArmor +5\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Xun Rao's Command",
+        "stats": [
+          "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Scythe",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline gain (Chance: 10%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Decade Scythe Funeral Fang",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nEnchantments last 20% longer\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Scythe Soul's Repentance",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nLife Draining: 5\nHealth regeneration -1\nSoul Reaping: 5 (if your rank is lower. No effect in PvP.)\nTwo-handed\nCrafted in tribute to an enduring legend."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique Shields",
+    "description": "Unique shields are fixed-stat armor dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Strongroot's Shelter",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"]
+      },
+      {
+        "name": "Tanzit's Defender",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReduces Blind duration on you by 20%\nReceived physical damage -2 (while in a Stance)"]
+      },
+      {
+        "name": "Reefclaw's Refuge",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nStrength +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Victo's Bulwark",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"]
+      },
+      {
+        "name": "Thorgall's Shield",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while Enchanted)\nReduces Weakness duration on you by 20%"]
+      },
+      {
+        "name": "Grognar's Defender",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nHealth +45 (while in a Stance)\nReceived Physical damage -2 (while in a Stance)"]
+      },
+      {
+        "name": "Malinon's Shield",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nHealth  +45 (while Enchanted)\nReceived Physical damage -2 (while Enchanted)"]
+      },
+      {
+        "name": "Eye of Argon",
+        "stats": ["Armor: 16 (Requires 9 Command)\nReduces Blind duration on you by 20% (Stacking)\nHealth +30"]
+      },
+      {
+        "name": "Onwan's Aegis",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReduces Poison duration on you by 20%\nHealth +30"]
+      },
+      {
+        "name": "Keht's Aegis",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Slashing damage)\nHealth +30"]
+      },
+      {
+        "name": "Briahn's Guidance",
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived Physical damage -2 (while Enchanted)\nHealth +45 (while Enchanted)"]
+      },
+      {
+        "name": "Kunan's Bastion",
+        "stats": ["Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Piercing damage)\nHealth +30"]
+      },
+      {
+        "name": "Churkeh's Defiance",
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -3 (while Hexed)\nHealth +60 (while Hexed)"]
+      },
+      {
+        "name": "Mallyx's Supremacy",
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Shagu's Anthem",
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Stygian Defender",
+        "stats": ["Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Demons)\nHealth +30"]
+      },
+      {
+        "name": "Stygian Aegis",
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nArmor +10 (vs. Demons)\nHealth +30"]
+      },
+      {
+        "name": "Wandalz's Refuge",
+        "stats": ["Armor: 16 (requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Arrahhsh's Aegis",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -2 (while in a Stance)\nHealth +45 (while in a Stance)"]
+      },
+      {
+        "name": "Jacqui's Aegis",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"]
+      },
+      {
+        "name": "Sharptooth's Shield",
+        "stats": [
+          "Armor: 16 (Requires 9 Tactics)\nInscription: \"Master of My Domain\"\nTactics +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Aegis of Aaaaarrrrrrggghhh",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Demons)\nHealth +30"]
+      },
+      {
+        "name": "Aegis of Terror",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nArmor +10 (vs. Demons)\nHealth +30"]
+      },
+      {
+        "name": "Geoffer's Bulwark",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Piercing damage)\nHealth +30"]
+      },
+      {
+        "name": "Merki's Gaze",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"]
+      },
+      {
+        "name": "Baubao's Shell",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -3 (while Hexed)\nHealth +60 (while Hexed)"]
+      },
+      {
+        "name": "Chumab's Pride",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Blunt damage)\nHealth +30"]
+      },
+      {
+        "name": "Mallyx's Defense",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Sunreach's Shield",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Tarnen's Shield",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nTactics +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Longtooth's Shield",
+        "stats": ["Armor: 12 (Requires 7 Strength)\nHealth +30"]
+      },
+      {
+        "name": "Destructive Shield",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"]
+      },
+      {
+        "name": "Fenrir's Bastion",
+        "stats": ["Armor 16 (Requires 9 Motivation)\nReceived physical damage -2 (while Enchanted)\nHealth +30"]
+      },
+      {
+        "name": "Shield of the Kinslayer",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Droknar's Strength Shield",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Droknar's Tactics Shield",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Droknar's Motivation Shield",
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Droknar's Command Shield",
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Shield of the Hierophant",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Aegis of the Condemned",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Shield of the Condemned",
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Bastion of the Condemned",
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Deldrimor Shield (unique)",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Exalted Aegis (unique)",
+        "stats": ["Armor: 16 (Requires 9 Strength, Tactics, Command or Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Mallyx's Courage",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Cyndr's Aegis",
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Enadiz's Defender",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReduces Crippled duration on you by 20% (Stacking)\nHealth +30"]
+      },
+      {
+        "name": "Mallyx's Motivation",
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Hassin's Shell",
+        "stats": ["Armor: 8\nHealth +20"]
+      },
+      {
+        "name": "Havok's Shield",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"]
+      },
+      {
+        "name": "Arneh's Fury",
+        "stats": ["Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Blunt damage)\nHealth +30"]
+      },
+      {
+        "name": "Hidesplitter's Shield",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"]
+      },
+      {
+        "name": "Forgotten Shield",
+        "stats": [
+          "Armor: 16 (Requires 9 <Strength, Tactics, Command or Motivation>)\nArmor +10 (vs. Earth damage) Strength variant only\nArmor +10 (vs. Cold damage) Tactics variant only\nArmor +10 (vs. Lightning damage) Command variant only\nArmor +10 (vs. Fire damage) Motivation variant only\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Interdictor",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReduces Blind duration on you by 20%\nHealth +30"]
+      },
+      {
+        "name": "Fanatical Devotion",
+        "stats": ["Armor: 16 (Requires 9 Command)\nCommand +1 (20% chance while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Bartholos' Bulwark",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Langmar's Defender",
+        "stats": ["Armor +16  (Requires 9 Tactics)\nTactics  +1 (Chance: 20% while using skills)\nHealth +30"]
+      },
+      {
+        "name": "Aegis of Clarity",
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -2 (while in a Stance)\nHealth +45 (while in a Stance)"]
+      },
+      {
+        "name": "Xun Rao's Quill",
+        "stats": [
+          "Armor: 16 (Requires 9 Strength)\nHealth +45 (while in a Stance)\nReceived Physical damage -2 (while in a Stance)\nParrying Dagger"
+        ]
+      },
+      {
+        "name": "Bei Chi's Bulwark",
+        "stats": ["Armor: 16 (Requires 9 Command)\nReduces Blind duration on you by 20%\nHealth +30"]
+      },
+      {
+        "name": "Imperial Dragon Shield",
+        "stats": [
+          "Armor: 16 (Requires 9 <Command or Tactics>)\nReceived physical damage -2 (while in a Stance) Tactics variant only\nReceived physical damage -5 (Chance: 20%) Command variant only\nHealth +30"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique Spears",
+    "description": "Unique spears are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Eshau's Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15%\nEnergy -5\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Courage of the Forgotten",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration 20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Mallyx's Cruelty",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Mallyx's Strife",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration 20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Oathbound Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15%\nArmor -10 (while attacking)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Pehnsed's Voice",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Prayer of the Forgotten",
+        "stats": ["Piercing damage: 14-27 (Requires 9 Spear Mastery)\nEnergy +5\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Shakor's Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Shrieking Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Spirit of the Forgotten",
+        "stats": ["Lightning damage: 14-27 (Requires 9 Spear Mastery)\nEnchantments last 20% longer\nEnergy +5"]
+      },
+      {
+        "name": "Stygian Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Bloodspear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Darksong",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Bleeding duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Toshau's Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Tureksin's Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Turep's Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Spear of the Kinslayer",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Courage",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Strength",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Jadam's Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Spear of the Hierophant",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ceremonial Spear (unique)",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Impaler",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Javelin",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Spear (unique)",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Erasklion's Spear",
+        "stats": [
+          "Piercing damage 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Deep Wound duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Matriarch's Stinger",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed durations on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Luluh's Spear",
+        "stats": ["Fire damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Righteous Fury",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline gain (Chance 10%)\nArmor +5"
+        ]
+      },
+      {
+        "name": "Hidesplitter's Spear",
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Diligence",
+        "stats": ["Energy +5\nPiercing damage: 14-27 (Requires 9 Spear Mastery)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"]
+      },
+      {
+        "name": "Imperial Dragon Spear",
+        "stats": ["Cold Dmg: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
+      },
+      {
+        "name": "Decade Spear Mist Piercer",
+        "stats": [
+          "Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nDouble adrenaline gain (Chance: 10%)\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Spear Sun's Revolution",
+        "stats": [
+          "Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nEnergy gain on hit: 1\nEnergy regeneration -1\nCritical Strikes: 5 (if your rank is lower. No effect in PvP.)\nCrafted in tribute to an enduring legend."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique staves",
+    "description": "Unique staves are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Goldhorn Staff",
+        "stats": []
+      },
+      {
+        "name": "Alem's Remedy",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Restoration Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Modti's Depravation",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Curses)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Curses spells (Chance: 20%)\nHalves casting time of Curses spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Wenslauss' Faith",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nHealth +30\nEnergy +5"
+        ]
+      },
+      {
+        "name": "Ghial's Staff",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Death Magic)\nHalves casting time of Death Magic spells (Chance: 20%)\nHalves skill recharge of spells (Chance: 20%)\nDeath Magic +1 (20% chance while using skills)\nEnergy +5"
+        ]
+      },
+      {
+        "name": "Staff of the Forgotten (unique)",
+        "stats": [
+          "Energy +15\n<Damage type>: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Vanahk's Staff",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "The Yakslapper",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nReduces Deep Wound duration on you by 20% (Stacking)\nEnchantments last 20% longer\nEnergy +5"
+        ]
+      },
+      {
+        "name": "The Mindclouder",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ivor's Staff",
+        "stats": [
+          "Energy +10\nHoly damage: 11-22 (Requires 9 Smiting Prayers)\nHalves skill recharge of spells (Chance: 20%)\nReduces Dazed duration on you by 20% (Stacking)\nEnchantments last 20% longer\nArmor +5\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Brohn's Staff",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nHealth +30\nHealth +30\nReduces Bleeding duration on you by 20%"
+        ]
+      },
+      {
+        "name": "Ziinjuu's Sanctuary",
+        "stats": [
+          "Energy +5\nHoly Dmg: 7-10 (Requires 5 Smiting Prayers)\nHalves casting time of Smiting Prayers spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 20%)\nHealth +10"
+        ]
+      },
+      {
+        "name": "Fleshweaver",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Blood Magic)\nReduces Deep Wound duration on you by 20%\nHalves skill recharge of spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Kaswa's Gluttony",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nEnchantments last 20% longer\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kole's Torment",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kyril's Fervor",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nEnchantments last 20% longer\nHealth +30"
+        ]
+      },
+      {
+        "name": "Milthuran's Staff",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nBlood Magic +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "The Darkwish",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Hahan's Oath",
+        "stats": [
+          "Energy +10\nHoly damage: 11-22 (Requires 9 Healing Prayers)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +30\nHalves casting time of Healing Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Galigord's Stone Staff",
+        "stats": [
+          "Energy +15\nEarth damage: 11-22 (Requires 9 Earth Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Earth Magic spells (Chance: 20%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Keshel's Staff",
+        "stats": [
+          "Energy +10\nHoly Dmg: 8-12 (Requires 4 Protection Prayers)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Enchanted)\nHealth +20"
+        ]
+      },
+      {
+        "name": "Bortak's Bone Staff",
+        "stats": [
+          "Energy +15\nCold damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Death Magic spells (Chance: 20%)\nArmor +7 (vs. physical damage)"
+        ]
+      },
+      {
+        "name": "Morgriff's Staff",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nArmor +10"
+        ]
+      },
+      {
+        "name": "Bohdabi's Spire",
+        "stats": [
+          "Energy +15\nCold damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kepkhet's Refuge",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves casting time of Protection Prayers spells (Chance: 20%)\nHalves skill recharge of spells (Chance: 20%)\nEnchantments last 20% longer\nEnergy +5"
+        ]
+      },
+      {
+        "name": "Scourgewind's Branch",
+        "stats": [
+          "Energy +10\nHoly damage: 11-22 (Requires 9 Smiting Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Smiting Prayers spells (Chance: 20%)\nSmiting Prayers +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kaolin Accursed Staff",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Curses)\nHalves casting time of Curses spells (Chance: 20%)\nHalves skill recharge of spells (Chance: 20%)\nCurses +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Stonereaper",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Curses)\nHalves casting time of Curses spells (Chance: 20%)\nHalves skill recharge of spells (Chance: 20%)\nCurses +1 (20% chance while using skills)\nEnergy +5"
+        ]
+      },
+      {
+        "name": "Flint's Fleshcleaver",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of spells (20% chance)\nHalves casting time of Water Magic spells (20% chance)\nEnergy +5\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Stormbringer",
+        "stats": ["Energy +10\nChaos damage: 6-9 (Requires 3 Energy Storage)\nHalves skill recharge of spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Villnar's Staff",
+        "stats": [
+          "Energy +15\nCold damage: 11-22 (Requires 9 Curses)\nHalves casting time of Curses spells (20% chance)\nReduces Bleeding duration on you by 20%\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Nightbringer",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of spells (20% chance)\nHalves casting time of Death Magic spells (20% chance)\nHalves casting time of Death Magic spells (20% chance)\nHealth +30\nTwo-handed"
+        ]
+      },
+      {
+        "name": "The Skybringer",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Air Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Air Magic spells (Chance: 20%)\nHealth +30\nHalves casting time of Air Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Exuro's Will",
+        "stats": [
+          "Energy +10\nFire damage 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Spiritgarden's Repose",
+        "stats": [
+          "Energy +15\nLightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Restoration Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ssyn's Staff",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Channeling Magic)\nHalves casting time of Channeling Magic spells (Chance: 20%)\nHalves skill recharge of spells (Chance 20%)\nHealth +30\nHealth +30"
+        ]
+      },
+      {
+        "name": "Stoneweaver",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Protection Prayers spells (Chance: 20%)\nEnchantments last 20% longer\nArmor +5"
+        ]
+      },
+      {
+        "name": "Milius' Pillar",
+        "stats": [
+          "Energy +15\nEarth damage: 11-22 (Requires 9 Earth Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Grim Ghostly Staff",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Grim Shadow Staff",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Divine Ghostly Staff",
+        "stats": [
+          "Energy +15\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nEnchantments last 20% longer\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Inspired Ghostly Staff",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Gardock's Staff",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nReduces Poison duration on you by 20%\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Milefaun's Staff",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Domination Magic spells (Chance: 20%)\nDomination Magic +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Morolah's Staff",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Domination Magic spells (Chance: 20%)\nHalves casting time of Domination Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Illyana's Staff",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves casting time of spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Moteh's Lightning Spire",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Air Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Kaolin Water Staff",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Water Magic spells (Chance: 20%)\nWater Magic +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Koosun's Fire Staff",
+        "stats": [
+          "Energy +10\nFire Damage: 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Fire Magic spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Willcrusher",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nReduces Dazed duration on you by 20% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kunvie's Air Staff",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Air Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Air Magic spells (Chance: 20%)\nAir Magic +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kaolin Domination Staff",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Domination Magic spells (Chance: 20%)\nDomination Magic +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Vokur's Staff",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Illusion Magic spells (Chance: 20%)\nArmor +7 (vs. physical damage)"
+        ]
+      },
+      {
+        "name": "Staff of Ruin",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Communing)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Alsin's Walking Stick",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Bazzr's Staff",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Restoration Magic spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Orosen's Staff",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Restoration Magic spells (Chance: 20%)\nArmor +5\nArmor +5"
+        ]
+      },
+      {
+        "name": "Ritual Lord's Staff",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Spawning Power spells (Chance: 20%)\nHealth +30\nHealth +30"
+        ]
+      },
+      {
+        "name": "Miki's Staff",
+        "stats": [
+          "Energy +5\nLightning Dmg: 8-13 (Requires 5 Channeling Magic)\nHalves casting time of spells (Chance: 5%)\nHalves skill recharge of spells (Chance: 10%)\nHealth +10\nArmor +5"
+        ]
+      },
+      {
+        "name": "Tin Dao's Staff",
+        "stats": [
+          "Energy +5\nLightning Dmg: 8-13 (Requires 6 Channeling Magic)\nHalves casting time of Channeling Magic spells (Chance: 10%)\nHalves skill recharge of Channeling Magic spells (Chance: 10%)\nHealth +15\nEnergy +3"
+        ]
+      },
+      {
+        "name": "Rago's Flame Staff",
+        "stats": [
+          "Energy +15\nFire damage: 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Fire Magic spells (Chance: 20%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Everlasting Ghostly Staff",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Ritualistic Ghostly Staff",
+        "stats": [
+          "Energy +15\nLightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nEnchantments last 20% longer\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Ritualistic Shadow Staff",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Inspired Shadow Staff",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Amadis' Air Staff",
+        "stats": [
+          "Energy +10\nLightning damage: 11-22 (Requires 9 Air Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Air Magic spells (Chance: 20%)\nHealth +30\nHealth +30"
+        ]
+      },
+      {
+        "name": "Runar's Brimstone Staff",
+        "stats": [
+          "Energy +15\nLightning damage: 11-22 (Requires 9 Air Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Air Magic spells (Chance: 20%)\nArmor +7 (vs. Elemental damage)"
+        ]
+      },
+      {
+        "name": "Shekoss' Staff",
+        "stats": [
+          "Energy +10\nEarth damage: 11-22 (Requires 9 Earth Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Kantoh's Walking Stick",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nEnergy +5 (while Enchanted)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ajamduk's Staff",
+        "stats": [
+          "Energy +8\nEarth Dmg: 9-15 (Requires 5 Earth Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +3 (while Health is above 50%)\nHealth +20"
+        ]
+      },
+      {
+        "name": "Sanhan's Staff",
+        "stats": [
+          "Energy +5\nEarth damage: 8-13 (Requires 6 Earth Magic)\nHalves casting time of Earth Magic spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 20%)\nHealth +15"
+        ]
+      },
+      {
+        "name": "Lonolun's Staff",
+        "stats": ["Energy +10\nCold damage: 9-15 (Requires 5 Water Magic)\nHalves skill recharge of spells (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Handsmasher",
+        "stats": [
+          "Energy +15\nChaos Damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Inspiration Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Staff of Despair",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nEnergy +5\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kenrii's Sorrow",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Illusion Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Siska's Staff",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Inspiration Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Talous' Staff",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Illusion Magic spells (Chance: 20%)\nIllusion Magic +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Rahti's Staff",
+        "stats": [
+          "Energy +7\nChaos damage: 7-10 (Requires 4 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +25"
+        ]
+      },
+      {
+        "name": "Sulmeng's Staff",
+        "stats": [
+          "Energy +5\nChaos damage: 7-11 (Requires 5 Illusion Magic)\nHalves casting time of Illusion Magic spells (Chance: 10%)\nHalves skill recharge of Illusion Magic spells (Chance: 10%)\nArmor +5 (vs. physical damage)\nEnergy +3"
+        ]
+      },
+      {
+        "name": "Gorrel's Staff",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves casting time of spells (Chance: 10%)\nHealth +30\nHealth +30\nReduces Deep Wound duration on you by 20% (Stacking)"
+        ]
+      },
+      {
+        "name": "Kaolin Protection Staff",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Protection Prayers spells (Chance: 20%)\nProtection Prayers +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Hukhrah's Staff",
+        "stats": [
+          "Energy +15\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Divine Favor spells (Chance: 20%)\nDivine Favor +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Staff of the Kinslayer",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Antiquated Staff",
+        "stats": [
+          "Energy +15\nCold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of spells (20% chance)\nHalves casting time of Water Magic spells (20% chance)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Blisterbark's Staff",
+        "stats": [
+          "Energy +15\nFire damage: 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Fire Magic spells (Chance: 20%)\nEnchantments last 20% longer\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Bredyss' Staff",
+        "stats": [
+          "Energy +15\nCold damage: 11-22 (Requires 9 Curses)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Curses spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Trickster",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (20% chance)\nHalves casting time of Domination Magic spells (20% chance)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Flesheater",
+        "stats": [
+          "Energy +15\nCold damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Death Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Magmus' Staff",
+        "stats": [
+          "Energy +15\nChaos damage 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Fozzy's Staff",
+        "stats": [
+          "Energy +10\nLightning Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "The Maneater",
+        "stats": [
+          "Energy +15\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Divine Favor spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Magekiller",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Domination Magic spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Bogroot Staff",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Restoration Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Restoration Magic spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Nifling's Staff",
+        "stats": [
+          "Energy +15\nHoly damage: 11-22 (Requires 9 Smiting Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Smiting Prayers spells (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Ilsundur's Staff",
+        "stats": [
+          "Energy +10\nFire damage 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Fire Magic spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Oola's Staff",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Restoration Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Restoration Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Thundermaw",
+        "stats": [
+          "Energy +15\nLightning damage 11-22 (Requires 9 Air Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Air Magic spells (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "The Wingshielder",
+        "stats": [
+          "Energy +15\nHoly damage: 11-22 (Requires 9 Healing Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Zoldark's Staff",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Jacado's Staff",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Death Magic spells (Chance: 20%)\nDeath Magic +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Lord Glacius' Staff",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Enchanted)\nEnchantments last 20% longer\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Bloodburner",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Banor's Sacred Branch",
+        "stats": [
+          "Energy +10\nHoly damage: 11-22 (Requires 9 Protection Prayers)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Bellok's Staff",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Fendi's Staff",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Staff of the Wanderer",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Communing)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Communing spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "The Skullflayer",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Illusion Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Arachni's Staff",
+        "stats": [
+          "Energy +15\nDark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Blood Magic spells (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Staff of the Hierophant",
+        "stats": [
+          "Energy +10\nDark damage 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Ssuns' Staff",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Divine Favor spells (Chance: 20%)\nEnchantments last 20% longer\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Scar Eater",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nHalves skill recharge of spells (Chance: 20%)\nHealth +30\nHealth +30"
+        ]
+      },
+      {
+        "name": "Iceblood's Warstaff",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Water Magic spells (Chance: 20%)\nHalves casting time of Water Magic spells (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Jayne's Staff",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Protection Prayers spells (Chance: 20%)\nEnchantments last 20% longer\nHealth +30"
+        ]
+      },
+      {
+        "name": "Woe Spreader",
+        "stats": [
+          "Energy +10\nDark damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Death Magic spells (Chance: 20%)\nHealth +30\nHealth +30"
+        ]
+      },
+      {
+        "name": "Swiftspell's Staff",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nFast Casting +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Arbor's Earth Staff",
+        "stats": [
+          "Energy +10\nEarth damage: 11-22 (Requires 9 Earth Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Earth Magic spells (Chance: 20%)\nEarth Magic +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Chaelse's Staff",
+        "stats": [
+          "Energy +15\nHoly damage: 11-22 (Requires 9 Protection Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Protection Prayers spells (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Everlasting Shadow Staff",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Elsnil's Frigidheart",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Water Magic spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Eldritch Staff",
+        "stats": [
+          "Energy +15\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Droknar's Staff",
+        "stats": [
+          "Energy +10\n<Type> damage: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of <attribute> spells (Chance: 20%) (if secondary attribute)\nHalves casting time of spells (Chance 10%) (if primary attribute)\nEnchantments last 20% longer\nHealth +30"
+        ]
+      },
+      {
+        "name": "Bohdalz's Fury",
+        "stats": [
+          "Energy +15\nLightning damage: 11-22 (Requires 9 Channeling Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Sadi's Benediction",
+        "stats": [
+          "Energy +15\nHoly Dmg: 11-22 (Requires 9 Protection Prayers)\nHalves skill recharge of spells (Chance: 20%)\nEnchantments last 20% longer\nEnergy +5 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Deldrimor Staff (unique)",
+        "stats": [
+          "<Type> damage: 11-22 (Requires 9 <attribute>)\nEnergy +10\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Fervorborn Staff",
+        "stats": [
+          "Energy +15\nHoly damage: 11-22 (Requires 9 Smiting Prayers)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Kerrsh's Staff",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nFire damage: 11-22 (Requires 9 Fast Casting)\nFire damage: 11-22 (Requires 9 Soul Reaping)\nFire damage: 11-22 (Requires 9 Energy Storage)\nFire damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "The Mindstealer",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Traveler's Bo Staff",
+        "stats": [
+          "Energy +15\nFire damage: 11-22 (Requires 9 Divine Favor)\nFire damage: 11-22 (Requires 9 Fast Casting)\nFire damage: 11-22 (Requires 9 Soul Reaping)\nFire damage: 11-22 (Requires 9 Energy Storage)\nFire damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Traveler's Walking Stick",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nFire damage: 11-22 (Requires 9 Fast Casting)\nFire damage: 11-22 (Requires 9 Soul Reaping)\nFire damage: 11-22 (Requires 9 Energy Storage)\nFire damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Earthbound Staff",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Inspiration Magic spells (Chance: 20%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Divine Shadow Staff",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Prismatic Staff",
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Firebrand",
+        "stats": [
+          "Energy +10\nFire damage 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHalves casting time of Fire Magic spells (Chance: 20%)\nFire Magic +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "The Rapture",
+        "stats": [
+          "Energy +10\nChaos damage 11-22 (Requires 9 Fast Casting)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nEnergy +5\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Soul Reaper",
+        "stats": [
+          "Energy +10\nDark damage 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nHealth +60"
+        ]
+      },
+      {
+        "name": "Lovisa's Love",
+        "stats": [
+          "Energy +10\nHoly damage: 11-22 (Requires 9 Healing Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nEnergy +5\nHealing Prayers +1 (Chance: 20% while using skills)"
+        ]
+      },
+      {
+        "name": "Toriimo's Torch",
+        "stats": [
+          "Energy +10\nFire damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)\nEnergy +5\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "Heleyne's Insight",
+        "stats": [
+          "Energy +15\nFire damage: 11-22 (Requires 9 Divine Favor)\nFire damage: 11-22 (Requires 9 Fast Casting)\nFire damage: 11-22 (Requires 9 Soul Reaping)\nFire damage: 11-22 (Requires 9 Energy Storage)\nFire damage: 11-22 (Requires 9 Spawning Power)\nEnergy +5 (while Health is above 50%)\nHalves casting time of spells (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Lifegiver",
+        "stats": [
+          "Energy +8\nHoly damage: 8-12 (Requires 4 Smiting Prayers)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +3 (while health is above 50%)\nHealth +20"
+        ]
+      },
+      {
+        "name": "Faith",
+        "stats": [
+          "Energy +15\nHalves skill recharge of spells (Chance: 20%)\nLightning Dmg 11-22 (Requires 9 Divine Favor)\nLightning Dmg 11-22 (Requires 9 Fast Casting)\nLightning Dmg 11-22 (Requires 9 Soul Reaping)\nLightning Dmg 11-22 (Requires 9 Energy Storage)\nLightning Dmg 11-22 (Requires 9 Spawning Power)\nEnergy +5 (while Enchanted)\nHealth +45 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Vision of Purity",
+        "stats": [
+          "Energy +15\nChaos Dmg: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nIllusion Magic +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Phoenix's Retribution",
+        "stats": [
+          "Energy +10\nLightning Dmg: 11-22 (Requires 9 Channeling Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nChanneling Magic +1 (20% chance while using skills)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Unending Night's Grasp",
+        "stats": [
+          "Energy +10\nCold damage: 11-22 (Requires 9 Water Magic)\nEnergy +5 (while Enchanted)\nHalves skill recharge of spells (Chance: 20%)\nEnchantments last 20% longer\nHealth +30"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Staff",
+        "stats": [
+          "Energy +10\nLightning Dmg: 11-22 (Requires 9 Divine Favor)\nLightning Dmg: 11-22 (Requires 9 Fast Casting)\nLightning Dmg: 11-22 (Requires 9 Soul Reaping)\nLightning Dmg: 11-22 (Requires 9 Energy Storage)\nLightning Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)\nEnchantments last 20% longer\nHealth +30"
+        ]
+      },
+      {
+        "name": "Xan Hei's Resolve",
+        "stats": [
+          "Energy +10\nLightning Dmg: 11-22 (Requires 9 Restoration Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Enchanted)\nHealth +30\nDamage +20%\nCustomized for <character name>"
+        ]
+      },
+      {
+        "name": "Decade Staff Underworld Pillar",
+        "stats": [
+          "Energy +10\nDark Dmg: 11-22 (Requires 9 Communing)\nDark Dmg: 11-22 (Requires 9 Restoration Magic)\nDark Dmg: 11-22 (Requires 9 Channeling Magic)\nDark Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nEnchantments last 20% longer\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Staff Astral Pillar",
+        "stats": [
+          "Energy +10\nHoly Dmg: 11-22 (Requires 9 Divine Favor)\nHoly Dmg: 11-22 (Requires 9 Healing Prayers)\nHoly Dmg: 11-22 (Requires 9 Smiting Prayers)\nHoly Dmg: 11-22 (Requires 9 Protection Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nEnchantments last 20% longer\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Staff Hourglass's Patience",
+        "stats": [
+          "Energy +10\nFire Dmg: 11-22 (Requires 9 Fast Casting)\nFire Dmg: 11-22 (Requires 9 Illusion Magic)\nFire Dmg: 11-22 (Requires 9 Domination Magic)\nFire Dmg: 11-22 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves casting time of Energy Storage spells (Chance: 20%)\nEnergy Storage: 5 (if your rank is lower. No effect in PvP.)\nTwo-handed\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Staff Snake's Lineage",
+        "stats": [
+          "Energy +10\nChaos Dmg: 11-22 (Requires 9 Soul Reaping)\nChaos Dmg: 11-22 (Requires 9 Blood Magic)\nChaos Dmg: 11-22 (Requires 9 Death Magic)\nChaos Dmg: 11-22 (Requires 9 Curses)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves casting time of Spawning Power spells (Chance: 20%)\nSpawning Power: 5 (if your rank is lower. No effect in PvP.)\nTwo-handed\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Staff Dragon's Inheritance",
+        "stats": [
+          "Energy +10\nHoly Dmg: 11-22 (Requires 9 Energy Storage)\nHoly Dmg: 11-22 (Requires 9 Air Magic)\nHoly Dmg: 11-22 (Requires 9 Earth Magic)\nHoly Dmg: 11-22 (Requires 9 Fire Magic)\nHoly Dmg: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves casting time of Mysticism spells (Chance: 20%)\nMysticism: 5 (if your rank is lower. No effect in PvP.)\nTwo-handed\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Staff Spirit's Absolution",
+        "stats": [
+          "Energy +10\nHoly Dmg: 11-22 (Requires 9 Communing)\nHoly Dmg: 11-22 (Requires 9 Restoration Magic)\nHoly Dmg: 11-22 (Requires 9 Channeling Magic)\nHoly Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves casting time of Divine Favor spells (Chance: 20%)\nDivine Favor: 5 (if your rank is lower. No effect in PvP.)\nTwo-handed\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Shelkeh's Hex Eater",
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nEnergy +5 (while Enchanted)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Mallyx's Edge",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Rajazan's Fervor",
+        "stats": ["Cold damage: 15-22 (Requires 9 Swordsmanship)\nEnchantments last 20% longer\nEnergy +5"]
+      },
+      {
+        "name": "Wahli's Blade",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique Swords",
+    "description": "Unique swords are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Lord Onrah's Sword",
+        "stats": [
+          "Slashing damage: 10-13 (Requires 4 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +20"
+        ]
+      },
+      {
+        "name": "Reaper's Blade",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance:20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Quivering Blade (weapon)",
+        "stats": ["Cold damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (vs. Hexed foes)\nHealth +30"]
+      },
+      {
+        "name": "Grognar's Blade",
+        "stats": [
+          "Slashing damage 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while in a Stance)\nLengthens Crippled duration on foes by 33%\nSwordsmanship +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Grognar's Sword",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Enchanted)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kai's Sword",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15%\nArmor -10 (while attacking)\nLengthens Crippled duration on foes by 33%\nArmor +7 (vs. elemental damage)"
+        ]
+      },
+      {
+        "name": "Kanaxai's Edge",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kaolin Blade",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nArmor +7 (vs. physical damage)"
+        ]
+      },
+      {
+        "name": "Shak-Jarin's Sword",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Shiro's Sword",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 13 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Sskai's Sword",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Victo's Blade",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Windcutter",
+        "stats": [
+          "Slashing Dmg: 11-15 (Requires 5 Swordsmanship)\nDamage +15% (while Enchanted)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +20"
+        ]
+      },
+      {
+        "name": "Droknar's Sword",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Cyndr's Edge",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Murakai's Blade",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Eldritch Sword",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Blade of the Hierophant",
+        "stats": ["Fire damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Destructive Blade",
+        "stats": ["Earth damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Rocktail's Stinger",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while in a Stance)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Mobrin's Blade",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15%\nEnergy -5\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Forgotten Sword",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Sword of the Kinslayer",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Sword (unique)",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Lissah's Edge",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "The Holy Avenger",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Bartholos' Shining Blade",
+        "stats": [
+          "Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nDouble adrenaline gain (Chance: 10%)\nSwordsmanship +1 (Chance: 20% while using skills)"
+        ]
+      },
+      {
+        "name": "Snakebite's Fang",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Demrikov's Judgement",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLengthens Crippled duration by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Judgment",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Sword",
+        "stats": ["Lightning Dmg: 15-22 (Requires 9 Sword Mastery)\nDamage +15% (while Enchanted)\nHealth +30"]
+      },
+      {
+        "name": "Decade Sword Distant Horizon",
+        "stats": [
+          "Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Silver Edge",
+        "stats": [
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique Wands",
+    "description": "Unique wands are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Dunshek's Purifier",
+        "stats": [
+          "Holy damage: 11-22 (Requires 9 Healing Prayers)\nHalves skill recharge of Healing Prayers spells (Chance: 20%)\nHalves casting time of Healing Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Golden Boar Scepter",
+        "stats": [
+          "<Type> damage: 11-22 (Requires 9 <attribute>)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of <attribute> spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Wioli's Artifact",
+        "stats": [
+          "Dark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of Blood Magic spells (20%)\nEnergy +15\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "Gorrel's Cane",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves casting time of spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Chidehkir's Deliverance",
+        "stats": [
+          "Holy damage: 11-22 (Requires 9 Healing Prayers)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Riseh's Wand",
+        "stats": [
+          "Holy damage: 11-22 (Requires 9 Smiting Prayers)\nEnergy +5 (while Enchanted)\nHalves skill recharge of Smiting Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Brohn's Holy Rod",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of Healing Prayers spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Topo's Promise",
+        "stats": [
+          "Fire damage: 11-22 (requires 9 Divine Favor)\nHalves skill recharge of Divine Favor spells (Chance: 20%)\nEnergy +5 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Tain's Corruption",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Curses)\nHalves skill recharge of Curses spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Villnar's Claw",
+        "stats": ["Cold damage: 11-22 (Requires 9 Curses)\nEnergy +5 (while Hexed)\nHalves casting time of Curses spells (Chance: 20%)"]
+      },
+      {
+        "name": "Vulnero's Curse",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Curses)\nHalves skill recharge of spells (Chance: 10%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Bazzr's Wail",
+        "stats": [
+          "Dark Dmg: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of Death Magic spells (Chance: 20%)\nEnergy +15\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "Zarnas' Wrath",
+        "stats": [
+          "Earth Dmg: 11-22 (Requires 9 Earth Magic)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of Earth Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Mossbeard's Wand",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of Spawning Power spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Yamesh's Anguish",
+        "stats": [
+          "Chaos damage 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of Illusion Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Hajkor's Flame",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of Fire Magic spells (Chance: 20%)\nHalves casting time of Fire Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Terob's Wand",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of spells (Chance: 10%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Menzes' Influence",
+        "stats": [
+          "Dark damage: 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHalves casting time of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "The Deathkeeper",
+        "stats": [
+          "Dark Dmg: 7-10 (Requires 5 Death Magic)\nHalves casting time of spells (Chance: 10%)\nEnergy +3 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Gordac's Holy Rod",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Divine Favor)\nHalves casting time of spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Brimstone Wand",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Air Magic)\nHalves casting time of Air Magic spells (Chance: 20%)\nEnergy +5 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Korvald's Cane",
+        "stats": [
+          "Chaos damage 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of Domination Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Wingstorm",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of Domination Magic spells (Chance: 20%)\nHalves casting time of Domination Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Rago's Flame Wand",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of Fire Magic spells (Chance: 20%)\nHalves casting time of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Galigord's Rod",
+        "stats": [
+          "Earth damage: 11-22 (Requires 9 Earth Magic)\nHalves casting time of Earth Magic spells (Chance: 20%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Podaltur's Fury",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Channeling Magic)\nHalves skill recharge of Channeling Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Shakahm's Striker",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Channeling Magic)\nHalves skill recharge of Channeling Magic spells (Chance: 20%)\nEnergy +15\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "Spiritspeaker",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Channeling Magic)\nHalves skill recharge of Channeling Magic spells (Chance: 20%)\nEnergy +15\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "Flint's Wand",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (20% chance)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Vengeance Seeker",
+        "stats": [
+          "Dark damage: 11-22 (Requires 9 Communing)\nHalves skill recharge of Communing spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Eshwe's Wand",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of Domination Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Brightclaw",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Spawning Power)\nHalves casting time of Restoration Magic spells (Chance: 20%)\nHalves skill recharge time of Restoration Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Stygian Scepter",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nHalves casting time of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Wieshur's Inspiration",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Inspiration Magic)\nHalves skill recharge of Inspiration Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Bahnba's Scepter",
+        "stats": [
+          "Earth damage: 11-22 (Requires 9 Earth Magic)\nHalves casting time of Earth Magic spells (Chance: 20%)\nEnergy +15\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "The Earthturner",
+        "stats": [
+          "Earth damage: 11-22 (Requires 9 Earth Magic)\nHalves skill recharge of Earth Magic spells (Chance: 20%)\nEnergy +5 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Whyk's Wand",
+        "stats": [
+          "Earth damage: 11-22 (Requires 9 Earth Magic)\nHalves skill recharge of Earth Magic spells (Chance: 20%)\nEnergy +5 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Menzes' Ambition",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHalves casting time of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Setikor's Scepter",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of Energy Storage spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Korshek's Scepter",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of Fire Magic spells (Chance: 20%)\nEnergy +5 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Auri's Wand",
+        "stats": [
+          "Lightning damage: 7-11 (Requires 5 Air Magic)\nHalves casting time of Air Magic spells (Chance: 10%)\nHalves skill recharge time of Air Magic spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Garbok's Cane",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of Inspiration Magic spells (Chance: 20%)\nHalves casting time of Inspiration Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Phi's Wisdom",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Domination Magic)\nHalves casting time of Fast Casting spells (Chance: 20%)\nHalves skill recharge of Fast Casting spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "The Dream Haunter",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of Illusion Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Vokur's Cane",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Illusion Magic)\nHalves skill recharge of Illusion Magic spells (Chance: 20%)\nHalves casting time of Illusion Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Baozo's Wand",
+        "stats": [
+          "Chaos Dmg: 8-13 (Requires 6 Domination Magic)\nHalves casting time of spells (Chance: 10%)\nEnergy +3 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Stormray",
+        "stats": [
+          "Holy damage: 11-22 (Requires 9 Divine Favor)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Mallyx's Endurance",
+        "stats": [
+          "Earth damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of spells (10% chance)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Mallyx's Faith",
+        "stats": [
+          "Fire Dmg: 11-22 (Requires 9 Divine Favor)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Mallyx's Making",
+        "stats": [
+          "Lightning damage: 11-22 (requires 9 Spawning Power)\nHalves skill recharge of spells (10% chance)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Mallyx's Whim",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (10% chance)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Scepter of the Kinslayer",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Divine Favor)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of Divine Favor spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Antiquated Rod",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Avarr's Scepter",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Death Magic)\nHalves casting time of Death Magic spells (Chance: 20%)\nHalves skill recharge of Death Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Prismatic Rod",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Energy Storage)\nHalves skill recharge of Energy Storage spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Drikard's Rod",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHalves casting time of Water Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Fendi's Rod",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of Death Magic spells (Chance: 20%)\nEnergy +15\nEnergy Regeneration -1"
+        ]
+      },
+      {
+        "name": "Lok's Scepter",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of Fire Magic spells (Chance: 20%)\nEnergy +5 (while Enchanted)"
+        ]
+      },
+      {
+        "name": "Kemil's Scepter",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Domination Magic)\nHalves casting time of Domination Magic spells (Chance: 20%)\nHalves skill recharge of Domination Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Bogroot Rod",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Inspiration Magic)\nHalves skill recharge of Inspiration Magic spells (Chance: 20%)\nHalves casting time of Inspiration Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Zoldark's Rod",
+        "stats": [
+          "Dark damage: 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nEnergy +15\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "Ilsundur's Rod",
+        "stats": [
+          "Fire damage 11-22 (Requires 9 Fire Magic)\nHalves skill recharge of Fire Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Droknar's Scepter",
+        "stats": [
+          "<Damage type> damage: 11-22 (Requires 9 <attribute>)\nHalves casting time of <attribute>  spells (Chance: 20%)\nHalves skill recharge of <attribute> spells (Chance: 20%)\n(For primary attribute versions, both modifiers become 10% generic mods)"
+        ]
+      },
+      {
+        "name": "Flannuss' Rod",
+        "stats": [
+          "Holy damage: 11-22 (Requires 9 Protection Prayers)\nHalves casting time of Protection Prayers spells (Chance: 20%)\nHalves skill recharge of Protection Prayers (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Shaunur's Scepter",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHalves casting time of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Wilderm's Wand",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Illusion Magic)\nHalves recharge time of Illusion Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Morgriff's Scepter",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Death Magic)\nHalves casting time of spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Mabah's Scepter",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Death Magic)\nHalves skill recharge of Death Magic spells (Chance: 20%)\nEnergy +15\nEnergy Regeneration -1"
+        ]
+      },
+      {
+        "name": "Mina's Gaze",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 10%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Shatterstone (unique)",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Wayward Wand (unique)",
+        "stats": [
+          "<Type> damage: 11-22 (Requires 9 <attribute>)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of <attribute> spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Bortak's Bone Claw",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Death Magic)\nHalves casting time of Death Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Stygian Wand",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHalves casting time of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Deceitful Scepter",
+        "stats": [
+          "Holy damage: 11-22 (Requires 9 Healing Prayers)\nEnergy +15\nEnergy regeneration -1\nHalves skill recharge of Healing Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Yammirvu's Scepter",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Domination Magic)\nEnergy +15\nEnergy regeneration -1\nHalves skill recharge of Domination Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Mallyx's Malice",
+        "stats": [
+          "Dark damage: 11-22 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (10% chance)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Oola's Wand",
+        "stats": [
+          "Dark damage: 11-22 (Requires 9 Restoration Magic)\nHalves skill recharge of Restoration Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Scepter of the Keeper",
+        "stats": [
+          "Dark damage: 11-22 (Requires 9 Blood Magic)\nHalves casting time of Blood Magic spells (Chance: 20%)\nHalves skill recharge of Blood Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Seacrash's Influence",
+        "stats": [
+          "Earth damage: 11-22 (Requires 9 Earth Magic)\nHalves skill recharge of Earth Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Kaolin Wand",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Spawning Power)\nHalves casting time of spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Peace",
+        "stats": [
+          "Fire Dmg: 11-22 (Requires 9 Divine Favor)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Promise of the Unseen",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Channeling Magic)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Spectral Wand",
+        "stats": [
+          "Chaos damage: 11-22 (Requires 9 Fast Casting)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Churahm's Wand",
+        "stats": [
+          "Lightning damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of Spawning Power spells (Chance: 20%)\nEnergy +15\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "Gordac's Needle",
+        "stats": [
+          "Dark damage: 11-22 (Requires 9 Blood Magic)\nHalves skill recharge of Blood Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Ziinfaun's Belief",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Divine Favor)\nHalves casting time of spells (Chance: 10%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Mungri's Flame",
+        "stats": [
+          "Fire damage: 11-22 (Requires 9 Divine Favor)\nEnergy +5 (while Enchanted)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Ivor's Smiting Rod",
+        "stats": [
+          "Holy damage: 11-22 (Requires 9 Smiting Prayers)\nEnergy +5 (while Enchanted)\nHalves skill recharge of Smiting Prayers spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Wroth's Holy Rod",
+        "stats": [
+          "Versions of this item that dropped since the 2006 update have the following stats:",
+          "Holy damage: 11-22 (Requires 9 Smiting Prayers)\nHalves skill recharge of Smiting Prayers spells (Chance: 20%)\nEnergy +5 (while Enchanted)",
+          "Versions of this item that dropped before the 2006 update have the following stats:",
+          "Holy damage: 11-22 (Requires 9 Smiting Prayers)\nHalves skill recharge of Protection Prayers spells (Chance:20%)\nHalves casting time of Protection Prayers spells (Chance:20%)"
+        ]
+      },
+      {
+        "name": "Yingko's Claw",
+        "stats": [
+          "Dark Dmg: 7-11 (Requires 5 Curses)\nHalves skill recharge of Curses spells (Chance: 15%)\nEnergy +10\nEnergy regeneration -1"
+        ]
+      },
+      {
+        "name": "The Stonebreaker (wand)",
+        "stats": [
+          "Cold damage: 11-22 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Scepter of the Hierophant",
+        "stats": [
+          "Dark Damage: 11-22 (Requires 9 Soul Reaping)\nHalves Skill recharge of spells (Chance 10%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "The People's Will",
+        "stats": [
+          "Fire Dmg: 11-22 (Requires 9 Divine Favor)\nFire Dmg: 11-22 (Requires 9 Fast Casting)\nFire Dmg: 11-22 (Requires 9 Soul Reaping)\nFire Dmg: 11-22 (Requires 9 Energy Storage)\nFire Dmg: 11-22 (Requires 9 Spawning Power)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Plague-Soaked Stave",
+        "stats": [
+          "Dark Dmg: 11-22 (Requires 9 Divine Favor)\nDark Dmg: 11-22 (Requires 9 Fast Casting)\nDark Dmg: 11-22 (Requires 9 Soul Reaping)\nDark Dmg: 11-22 (Requires 9 Energy Storage)\nDark Dmg: 11-22 (Requires 9 Spawning Power)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Shattered Illusion",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Domination Magic)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of Domination Magic spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Xun Rao's Justice",
+        "stats": [
+          "Fire Dmg: 11-22 (Requires 9 Divine Favor)\nFire Dmg: 11-22 (Requires 9 Fast Casting)\nFire Dmg: 11-22 (Requires 9 Soul Reaping)\nFire Dmg: 11-22 (Requires 9 Energy Storage)\nFire Dmg: 11-22 (Requires 9 Spawning Power)\nEnergy +5 (while Health is above 50%)\nHalves skill recharge of spells (Chance: 10%)"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Wand",
+        "stats": [
+          "Fire Dmg: 11-22 (Requires 9 Divine Favor)\nFire Dmg: 11-22 (Requires 9 Fast Casting)\nFire Dmg: 11-22 (Requires 9 Soul Reaping)\nFire Dmg: 11-22 (Requires 9 Energy Storage)\nFire Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Decade Rod All the World",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Fast Casting)\nChaos Dmg: 11-22 (Requires 9 Illusion Magic)\nChaos Dmg: 11-22 (Requires 9 Domination Magic)\nChaos Dmg: 11-22 (Requires 9 Inspiration Magic)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Rod Undying Service",
+        "stats": [
+          "Dark Dmg: 11-22 (Requires 9 Soul Reaping)\nDark Dmg: 11-22 (Requires 9 Blood Magic)\nDark Dmg: 11-22 (Requires 9 Death Magic)\nDark Dmg: 11-22 (Requires 9 Curses)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Rod Antipode Alloy",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Energy Storage)\nChaos Dmg: 11-22 (Requires 9 Air Magic)\nChaos Dmg: 11-22 (Requires 9 Earth Magic)\nChaos Dmg: 11-22 (Requires 9 Fire Magic)\nChaos Dmg: 11-22 (Requires 9 Water Magic)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Deldrimor Scepter (unique)",
+        "stats": [
+          "<Type> damage: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Decade Rod Unicorn's Valor",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Divine Favor)\nChaos Dmg: 11-22 (Requires 9 Healing Prayers)\nChaos Dmg: 11-22 (Requires 9 Smiting Prayers)\nChaos Dmg: 11-22 (Requires 9 Protection Prayers)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nFast Casting: 5 (if your rank is lower. No effect in PvP.)\nCrafted in tribute to an enduring legend."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Unique Bows",
+    "description": "Unique bows are fixed-stat weapon dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Chkkr's Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nArmor -10 (while attacking)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Decade Bow Falling Star",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Decade Bow Scorpion's Clutch",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nStrength: 5 (if your rank is lower. No effect in PvP.)\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Deldrimor Flatbow (unique)",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Drago's Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Drago's Vampiric Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while in a Stance)\nLife Draining: 5\nHealth regeneration: -1\nArmor +5"
+        ]
+      },
+      {
+        "name": "Droknar's Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Forgotten Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Guidance",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Imperial Dragon Bow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ironwing Flatbow (unique)",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Koahm's Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nLengthens Crippled duration on foes by 33% (Stacking)\nEnergy +5\nHealth +30"
+        ]
+      },
+      {
+        "name": "Nooseknitter's Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Seedborn Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Stoneherder's Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Urgoz's Flatbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Custo's Hornbow",
+        "stats": [
+          "Piercing damage 15-28 (Requires 9 Marksmanship)\nDamage +15%\nArmor -10 (while attacking)\nArmor penetration +20% (Chance: 20%)\nMarksmanship +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Deldrimor Hornbow (unique)",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration: -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Destructive Hornbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Hornbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Dzabel's Hornbow",
+        "stats": [
+          "Piercing Dmg 15-28 (Requires 9 Marksmanship)\nDamage +15%\nEnergy -5\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Forgotten Hornbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Inallay's Hornbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Jin's Hornbow",
+        "stats": [
+          "Piercing damage: 10-16 (Requires 5 Marksmanship)\nDamage +10%\nArmor -10 (while attacking)\nLengthens Bleeding duration on foes by 33% (Stacking)\nHealth +15"
+        ]
+      },
+      {
+        "name": "Koren's Hornbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Razorjaw's Hornbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nEnergy +5\nArmor penetration +20% (Chance: 20%)\nMarksmanship +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Royen's Hornbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while in a Stance)\nArmor penetration +20% (Chance: 20%)\nMarksmanship +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Stinger",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while in a stance)\nMarksmanship +1 (20% chance while using skills)\nLengthens Poison duration on foes by 33%"
+        ]
+      },
+      {
+        "name": "Thornbeard's Horned Bow",
+        "stats": ["Lightning damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Enchanted)\nArmor +7 (vs. physical damage)"]
+      },
+      {
+        "name": "Vah's Hornbow",
+        "stats": [
+          "Piercing damage 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ahvha's Longbow",
+        "stats": [
+          "Piercing damage: 11-17 (Requires 6 Marksmanship)\nDamage +10% (while Health is above 50%)\nArmor penetration +10% (Chance:10%)\nMarksmanship +1 (20% Chance while using skills)"
+        ]
+      },
+      {
+        "name": "Arachni's Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration 20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Bansheh's Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Bearer's Longbow",
+        "stats": ["Earth damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Chehbaba's Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nArmor -10 (while attacking)\nLengthens Crippled duration on foes by 33% (Stacking)\nArmor +7 (vs. physical damage)"
+        ]
+      },
+      {
+        "name": "Deatheater Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nLengthens Crippled duration on foes by 33% (Stacking)\nEnergy +5\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Longbow (unique)",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Elswyth's Longbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Emeju's Longbow",
+        "stats": [
+          "Piercing damage: 12-21 (Requires 6 Marksmanship)\nDamage +10% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +20"
+        ]
+      },
+      {
+        "name": "Forgerunner",
+        "stats": ["Fire damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while in a Stance)\nHealth +30"]
+      },
+      {
+        "name": "Forgotten Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Ironwing Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Johon's Longbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Kaolin Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nArmor -10 (while attacking)\nLengthens Dazed duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Lorelle's Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nArmor +7 (vs. physical damage)"
+        ]
+      },
+      {
+        "name": "Mallyx's Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Meynsang's Longbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nArmor -10 (while attacking)\nLengthens Bleeding duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Tarnok's Longbow",
+        "stats": ["Cold damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor +7 (vs. elemental damage)"]
+      },
+      {
+        "name": "Urgoz's Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Zelnehlun's Longbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nArmor -10 (while attacking)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Benwah's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage  +15%\nArmor -10 (while attacking)\nArmor penetration  20% (Chance: 20%)\nMarksmanship  +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Bolten's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nLengthens Crippled duration on foes by 33% (Stacking)\nEnergy +5\nHealth +30"
+        ]
+      },
+      {
+        "name": "Bow of the Hierophant",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Bow of the Kinslayer",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Brrne's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nArmor -10 (while attacking)\nLengthens Crippled duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Recurve Bow (unique)",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Crippled duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Elswyth's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Forgotten Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Crippled duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Gargash's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while enchanted)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Isaiah's Balance (weapon)",
+        "stats": [
+          "Piercing damage: 15-28  (Requires 9 Marksmanship)\nDamage +15% (while health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Keiran's Bow",
+        "stats": ["Piercing damage: 15-28 (Requires 9 Marksmanship)"]
+      },
+      {
+        "name": "Keiran's Bow (Rotwing)",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None\nDamage +20%\nCustomized for <character name>"]
+      },
+      {
+        "name": "Korg's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Mallyx's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Nandet's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nArmor -10 (while attacking)\nLengthens Crippled duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Nundak's Recurve Bow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Petraj's Recurve Bow",
+        "stats": [
+          "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Crippled duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Razortongue's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nEnergy -5\nLife Draining: 5\nHealth regeneration -1\nMarksmanship +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Rotwing Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30\nEnergy +5"
+        ]
+      },
+      {
+        "name": "Saushali's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nLengthens Dazed duration on foes by 33% (Stacking)\nEnergy +5\nHealth +30"
+        ]
+      },
+      {
+        "name": "Stygian Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Tarnok's Recurve Bow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage  15% (while Enchanted)\nArmor penetration  20% (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
+        "name": "The Adjudicator",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (stacking)\nMarksmanship +1 (20% chance while using skills)"
+        ]
+      },
+      {
+        "name": "Ashlyn's Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Boulderbeard's Shortbow",
+        "stats": ["Lightning damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"]
+      },
+      {
+        "name": "Chiggen's Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15%\nEnergy -5\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Deldrimor Shortbow (unique)",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Bleeding duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Droknar's Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Forgotten Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Bleeding duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Graygore's Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nMarksmanship +1 (20% Chance while using skills)"
+        ]
+      },
+      {
+        "name": "Graygore's Zealous Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nArmor +5"
+        ]
+      },
+      {
+        "name": "Ryver's Shortbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Crippled duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Swiftscale's Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while in a Stance)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Tenezel's Shortbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foes by 33% (Stacking)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Tenshek's Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nLengthens Bleeding duration on foes by 33% (Stacking)\nEnergy +5\nHealth +30"
+        ]
+      },
+      {
+        "name": "Tundoss' Shortbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 5\nHealth regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Uhiwi's Shortbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Urgoz's Shortbow",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+        ]
+      },
+      {
+        "name": "Xalnax's Destiny",
+        "stats": [
+          "Piercing damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      }
+    ]
+  }
+]

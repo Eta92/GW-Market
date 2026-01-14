@@ -1,0 +1,9 @@
+<router-outlet></router-outlet>
+<div
+  *ngIf="isWrongDomain"
+  (click)="goToNewDomain()"
+  class="fixed left-0 top-0 z-50 w-screen cursor-pointer bg-red-600 text-center text-lg font-semibold text-white"
+>
+  Warning ! This domain will be removed soon, please click here to go to the new domain name (don't forget to
+  export/import your shop)
+</div>
