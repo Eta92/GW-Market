@@ -17,7 +17,10 @@ export class AppComponent implements OnInit {
     this.utilService.start();
   }
 
-  public isWrongDomain = window.location.hostname !== 'gwmarket.net' && window.location.hostname !== 'www.gwmarket.net';
+  public isWrongDomain =
+    window.location.hostname !== 'gwmarket.net' &&
+    window.location.hostname !== 'www.gwmarket.net' &&
+    window.location.hostname !== 'localhost';
 
   goToNewDomain(): void {
     window.location.href = 'https://gwmarket.net';
