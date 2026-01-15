@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Item, ShopItem } from '@app/models/shop.model';
 
@@ -19,5 +19,13 @@ export class NewOrderComponent {
   onCreateOrder(order: ShopItem): void {
     this.createOrder.emit(order);
     this.orderOpen = false;
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent): void {
+    if (event.ctrlKey && event.key.toLowerCase() === 'm') {
+      event.preventDefault(); // stops browser behavior
+      this.orderOpen = true;
+    }
   }
 }

@@ -54,37 +54,37 @@
           ]
         },
         {
-          "name": "End Game Trophys",
+          "name": "End Game Trophies",
           "items": [
             {
               "name": "Deldrimor Talisman",
               "description": "The Deldrimor Talisman is a unique reward trophy that each character may obtain once from King Jalis Ironhammer in Droknar's Forge explorable area after completing Hell's Precipice. Exchange it with one of the Artisans (listed below) located in Droknar's Forge explorable area for a unique item.",
               "family": "special",
-              "category": "End Game Trophys"
+              "category": "End Game Trophies"
             },
             {
               "name": "Amulet of the Mists",
               "description": "The Amulet of the Mists is a unique reward trophy that each character may obtain once from Suun in the Divine Path after completing Imperial Sanctum. Exchange it with one of the Adepts (listed below) located in the Divine Path for a unique item.",
               "family": "special",
-              "category": "End Game Trophys"
+              "category": "End Game Trophies"
             },
             {
               "name": "Book of Secrets",
               "description": "The Book of Secrets is a unique reward trophy that each character may obtain once from the Keeper of Secrets in the Throne of Secrets after completing Abaddon's Gate. Exchange it with one of the Keepers (listed below) located in the Throne of Secrets for a unique item.",
               "family": "special",
-              "category": "End Game Trophys"
+              "category": "End Game Trophies"
             },
             {
               "name": "Droknar's Key",
               "description": "The Droknar's Key is a unique reward trophy that each character may obtain once from Droknar in the Epilogue after completing A Time for Heroes. Exchange it with one of the Chests (listed below) located in the Epilogue for a unique item.",
               "family": "special",
-              "category": "End Game Trophys"
+              "category": "End Game Trophies"
             },
             {
               "name": "Imperial Dragon's Tear",
               "description": "The Imperial Dragon's Tear is the end-game reward trophy obtained from Miku after completing The Final Confrontation, the last quest in Winds of Change. Each character can receive up to three: one from the normal mode version and two from hard mode. They cannot be traded to other players, but Azume will exchange them for a unique Imperial Dragon weapon.",
               "family": "special",
-              "category": "End Game Trophys"
+              "category": "End Game Trophies"
             }
           ]
         },
@@ -499,153 +499,46 @@
       "name": "consumable",
       "categories": [
         {
-          "name": "In-town speed boosts",
+          "name": "CONS",
           "items": [
             {
-              "name": "Chocolate Bunny",
-              "points": 2,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 5,
-              "effect": "Run 50% faster",
-              "acquisition": "Sweet Treats Week",
+              "name": "Armor of Salvation",
+              "applies_to...": "Party",
+              "benefit": 10,
+              "duration_(min)": 30,
+              "sweet_points": "",
               "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 50,
-              "duration_(min)": 5,
-              "sweet_points": 2
+              "category": "CONS"
             },
             {
-              "name": "Crème Brûlée",
-              "points": 3,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 10,
-              "effect": "Run 25% faster",
-              "acquisition": "Dragon Festival\nAnniversary Celebration\nZaishen Chest\nNightfall PvP Preview Event",
+              "name": "Grail of Might",
+              "applies_to...": "Party",
+              "benefit": 100,
+              "duration_(min)": 30,
+              "sweet_points": "",
               "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 25,
-              "duration_(min)": 10,
-              "sweet_points": 3
+              "category": "CONS"
             },
             {
-              "name": "Delicious Cake",
-              "points": 50,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 2,
-              "effect": "Run 50% faster",
-              "acquisition": "Anniversary Celebration\nKazuma in Great Temple of Balthazar\nDragon Festival Grab Bag\nImperial Guard Lockbox\nLunar Festival Grab Bag\nWintersday Grab Bag\nZaishen Strongbox",
+              "name": "Essence of Celerity",
+              "applies_to...": "Party",
+              "boosts...": "+ Movement speed, attack speed  - Skill activation time, recharge time",
+              "amount": 20,
+              "duration_(min)": 30,
+              "sweet_points": "",
               "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 50,
-              "duration_(min)": 2,
-              "sweet_points": 50
+              "category": "CONS"
             },
             {
-              "name": "Fruitcake",
-              "points": 1,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 5,
-              "effect": "Run 25% faster",
-              "acquisition": "Wintersday\nChest of Wintersday Past\nWintersday in July",
+              "name": "Powerstone of Courage",
+              "applies_to...": "Party",
+              "morale": 10,
+              "death_penalty": "Removes all DP",
+              "notes": "Recharges skills",
+              "sweet_points": "",
               "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 25,
-              "duration_(min)": 5,
-              "sweet_points": 1
+              "category": "CONS"
             },
-            {
-              "name": "Jar of Honey",
-              "points": 2,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 10,
-              "effect": "Run 25% faster",
-              "acquisition": "Gift of the Huntsman\nGift of the Traveler",
-              "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 25,
-              "duration_(min)": 10,
-              "sweet_points": 2
-            },
-            {
-              "name": "Krytan Lokum",
-              "points": 3,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 10,
-              "effect": "Run 25% faster",
-              "acquisition": "Royal Gift",
-              "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 25,
-              "duration_(min)": 10,
-              "sweet_points": 3
-            },
-            {
-              "name": "Mandragor Root Cake",
-              "points": 1,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 3,
-              "effect": "Run 25% faster",
-              "acquisition": "Collector Yajide in Yohlon Haven\nCollector Kazuma in Great Temple of Balthazar\nFarewell to Gaile",
-              "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 25,
-              "duration_(min)": 3,
-              "sweet_points": 1
-            },
-            {
-              "name": "Minis-treat of Purity",
-              "points": 3,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 2,
-              "effect": "Run 50% faster",
-              "acquisition": "Collector Zha Ku in Kaineng Center",
-              "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 50,
-              "duration_(min)": 2,
-              "sweet_points": 3
-            },
-            {
-              "name": "Red Bean Cake",
-              "points": 2,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 5,
-              "effect": "Run 25% faster",
-              "acquisition": "Dragon Festival\nMerchants in Kaineng City\nCollector Kazuma in Great Temple of Balthazar\nAnniversary Celebration",
-              "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 25,
-              "duration_(min)": 5,
-              "sweet_points": 2
-            },
-            {
-              "name": "Sugary Blue Drink",
-              "points": 1,
-              "consumption_area": "Outposts",
-              "spam-mable": true,
-              "duration_(mins)": 2,
-              "effect": "Run 50% faster",
-              "acquisition": "Canthan New Year\nDragon Festival (from 2007 onward)\nFarewell to Gaile\nAnniversary Celebration\nWayfarer's Reverie",
-              "family": "consumable",
-              "category": "In-town speed boosts",
-              "speed_boost": 50,
-              "duration_(min)": 2,
-              "sweet_points": 1
-            }
-          ]
-        },
-        {
-          "name": "Boost morale and/or reduce death penalty",
-          "items": [
             {
               "name": "Elixir of Valor",
               "applies_to...": "Party",
@@ -654,7 +547,7 @@
               "notes": "Does not recharge skills.",
               "sweet_points": "",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty"
+              "category": "CONS"
             },
             {
               "name": "Four-Leaf Clover",
@@ -664,7 +557,7 @@
               "notes": "If 15% DP removed, adds 4 Lucky points to user.",
               "sweet_points": "",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty"
+              "category": "CONS"
             },
             {
               "name": "Honeycomb",
@@ -675,7 +568,7 @@
               "effect": 5,
               "acquisition": "Galton Franks in Sacnoth Valley\nHogni Truthseeker's quest reward\nEye of the North Special Event\nFarewell to Gaile\nGift of the Huntsman\nGift of the Traveler",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty",
+              "category": "CONS",
               "applies_to...": "Party",
               "morale": 5,
               "death_penalty": "",
@@ -690,49 +583,7 @@
               "notes": "",
               "sweet_points": "",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty"
-            },
-            {
-              "name": "Peppermint Candy Cane",
-              "points": 2,
-              "consumption_area": "PvE explorable areas",
-              "spam-mable": "",
-              "duration_(mins)": 0,
-              "effect": "Remove all death penalty",
-              "acquisition": "Wintersday (from 2006 onward)\nChest of Wintersday Past\nWintersday in July",
-              "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty",
-              "applies_to...": "User",
-              "morale": "",
-              "death_penalty": "Removes all DP",
-              "notes": "",
-              "sweet_points": 2
-            },
-            {
-              "name": "Powerstone of Courage",
-              "applies_to...": "Party",
-              "morale": 10,
-              "death_penalty": "Removes all DP",
-              "notes": "Recharges skills",
-              "sweet_points": "",
-              "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty"
-            },
-            {
-              "name": "Pumpkin Cookie",
-              "points": 1,
-              "consumption_area": "PvE explorable areas",
-              "spam-mable": "",
-              "duration_(mins)": 0,
-              "effect": 10,
-              "acquisition": "Trick-or-Treat Bags",
-              "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty",
-              "applies_to...": "User",
-              "morale": 10,
-              "death_penalty": "",
-              "notes": "Does not recharge skills",
-              "sweet_points": 1
+              "category": "CONS"
             },
             {
               "name": "Rainbow Candy Cane",
@@ -743,9 +594,46 @@
               "effect": 5,
               "acquisition": "Wintersday (from 2006 onward)\nChest of Wintersday Past\nWintersday in July",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty",
+              "category": "CONS",
               "applies_to...": "Party",
               "morale": 5,
+              "death_penalty": "",
+              "notes": "Does not recharge skills",
+              "sweet_points": 1
+            }
+          ]
+        },
+        {
+          "name": "PCONS",
+          "items": [
+            {
+              "name": "Peppermint Candy Cane",
+              "points": 2,
+              "consumption_area": "PvE explorable areas",
+              "spam-mable": "",
+              "duration_(mins)": 0,
+              "effect": "Remove all death penalty",
+              "acquisition": "Wintersday (from 2006 onward)\nChest of Wintersday Past\nWintersday in July",
+              "family": "consumable",
+              "category": "PCONS",
+              "applies_to...": "User",
+              "morale": "",
+              "death_penalty": "Removes all DP",
+              "notes": "",
+              "sweet_points": 2
+            },
+            {
+              "name": "Pumpkin Cookie",
+              "points": 1,
+              "consumption_area": "PvE explorable areas",
+              "spam-mable": "",
+              "duration_(mins)": 0,
+              "effect": 10,
+              "acquisition": "Trick-or-Treat Bags",
+              "family": "consumable",
+              "category": "PCONS",
+              "applies_to...": "User",
+              "morale": 10,
               "death_penalty": "",
               "notes": "Does not recharge skills",
               "sweet_points": 1
@@ -759,7 +647,7 @@
               "effect": "Remove 15% death penalty",
               "acquisition": "Collector Thecos Bellyshaker in Ooze Pit",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty",
+              "category": "PCONS",
               "applies_to...": "User",
               "morale": "",
               "death_penalty": 15,
@@ -774,7 +662,7 @@
               "notes": "Recharges skills",
               "sweet_points": "",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty"
+              "category": "PCONS"
             },
             {
               "name": "Shining Blade Rations",
@@ -784,7 +672,7 @@
               "notes": "",
               "sweet_points": "",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty"
+              "category": "PCONS"
             },
             {
               "name": "Wintergreen Candy Cane",
@@ -795,27 +683,12 @@
               "effect": "Remove 15% death penalty",
               "acquisition": "Wintersday\nChest of Wintersday Past\nWintersday in July",
               "family": "consumable",
-              "category": "Boost morale and/or reduce death penalty",
+              "category": "PCONS",
               "applies_to...": "User",
               "morale": "",
               "death_penalty": 15,
               "notes": "",
               "sweet_points": 1
-            }
-          ]
-        },
-        {
-          "name": "Increase movement, attack speed, or rate of skill activation",
-          "items": [
-            {
-              "name": "Essence of Celerity",
-              "applies_to...": "Party",
-              "boosts...": "+ Movement speed, attack speed  - Skill activation time, recharge time",
-              "amount": 20,
-              "duration_(min)": 30,
-              "sweet_points": "",
-              "family": "consumable",
-              "category": "Increase movement, attack speed, or rate of skill activation"
             },
             {
               "name": "Green Rock Candy",
@@ -826,7 +699,7 @@
               "effect": "Run 15% faster, attack speed +15%, reduce skill activation time by 15%",
               "acquisition": "Gift of the Traveler",
               "family": "consumable",
-              "category": "Increase movement, attack speed, or rate of skill activation",
+              "category": "PCONS",
               "applies_to...": "User",
               "boosts...": "+ Movement speed, attack speed  - Skill activation time",
               "amount": 15,
@@ -842,7 +715,7 @@
               "effect": "Run 25% faster, attack speed +25%, reduce skill activation time by 20%",
               "acquisition": "Gift of the Traveler",
               "family": "consumable",
-              "category": "Increase movement, attack speed, or rate of skill activation",
+              "category": "PCONS",
               "applies_to...": "User",
               "boosts...": "+ Movement speed, attack speed  - Skill activation time",
               "amount": 25,
@@ -858,7 +731,7 @@
               "effect": "Run 33% faster, attack speed +33%, reduce skill activation time by 25%",
               "acquisition": "Gift of the Traveler",
               "family": "consumable",
-              "category": "Increase movement, attack speed, or rate of skill activation",
+              "category": "PCONS",
               "applies_to...": "User",
               "boosts...": "+ Movement speed, attack speed  - Skill activation time",
               "amount": 33,
@@ -874,26 +747,12 @@
               "effect": "Attack speed +25%, reduce skill activation time by 15%",
               "acquisition": "Special Treats Week",
               "family": "consumable",
-              "category": "Increase movement, attack speed, or rate of skill activation",
+              "category": "PCONS",
               "applies_to...": "User",
               "boosts...": "+ Attack speed  - Skill activation time",
               "amount": 25,
               "duration_(min)": 30,
               "sweet_points": 1
-            }
-          ]
-        },
-        {
-          "name": "Health, Energy, Armor, or Attributes",
-          "items": [
-            {
-              "name": "Armor of Salvation",
-              "applies_to...": "Party",
-              "benefit": 10,
-              "duration_(min)": 30,
-              "sweet_points": "",
-              "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes"
             },
             {
               "name": "Birthday Cupcake",
@@ -904,7 +763,7 @@
               "effect": "Run 25% faster, +100 max health, +10 max energy",
               "acquisition": "Anniversary Celebration\nDragon Festival 20091\nCanthan New Year 2010\nDragon Festival 2010",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes",
+              "category": "PCONS",
               "applies_to...": "User",
               "benefit": 100,
               "duration_(min)": 30,
@@ -917,7 +776,7 @@
               "duration_(min)": 30,
               "sweet_points": "",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes"
+              "category": "PCONS"
             },
             {
               "name": "Candy Apple",
@@ -928,7 +787,7 @@
               "effect": 100,
               "acquisition": "Trick-or-Treat Bags",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes",
+              "category": "PCONS",
               "applies_to...": "User",
               "benefit": 100,
               "duration_(min)": 30,
@@ -943,7 +802,7 @@
               "effect": 1,
               "acquisition": "Trick-or-Treat Bags",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes",
+              "category": "PCONS",
               "applies_to...": "User",
               "benefit": 1,
               "duration_(min)": 30,
@@ -956,7 +815,7 @@
               "duration_(min)": 30,
               "sweet_points": "",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes"
+              "category": "PCONS"
             },
             {
               "name": "Golden Egg",
@@ -967,20 +826,11 @@
               "effect": 1,
               "acquisition": "Sweet Treats Week",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes",
+              "category": "PCONS",
               "applies_to...": "User",
               "benefit": 1,
               "duration_(min)": 30,
               "sweet_points": 1
-            },
-            {
-              "name": "Grail of Might",
-              "applies_to...": "Party",
-              "benefit": 100,
-              "duration_(min)": 30,
-              "sweet_points": "",
-              "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes"
             },
             {
               "name": "Pahnai Salad",
@@ -989,7 +839,7 @@
               "duration_(min)": 30,
               "sweet_points": "",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes"
+              "category": "PCONS"
             },
             {
               "name": "War Supplies",
@@ -1000,7 +850,7 @@
               "effect": 5,
               "acquisition": "Shining Blade Bounties\nConfessor's Orders\nCourier Falken\nAuspicious Beginnings, A Vengeance of Blades, Shadows in the Jungle, or Rise",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes",
+              "category": "PCONS",
               "applies_to...": "User",
               "benefit": 5,
               "duration_(min)": 30,
@@ -1010,11 +860,44 @@
               "name": "Lunar Fortune",
               "description": "Lunar Fortune [Year of the <Animal>]Double-click to use while in an explorable area.",
               "family": "consumable",
-              "category": "Health, Energy, Armor, or Attributes",
+              "category": "PCONS",
               "applies_to...": "User",
               "benefit": "Lunar Blessing (chance)+1 all attributes",
               "duration_(min)": "∞",
               "sweet_points": ""
+            }
+          ]
+        },
+        {
+          "name": "Bundles",
+          "items": [
+            {
+              "name": "Cons Set",
+              "applies_to...": "Party",
+              "benefit": "Provides all party complete PVE power ups",
+              "family": "consumable",
+              "category": "Bundles"
+            },
+            {
+              "name": "Alcohol Bundle",
+              "applies_to...": "User",
+              "benefit": "Let you reach maximum drunkard title",
+              "family": "consumable",
+              "category": "Bundles"
+            },
+            {
+              "name": "Festive Bundle",
+              "applies_to...": "User",
+              "benefit": "Let you reach maximum party animal title",
+              "family": "consumable",
+              "category": "Bundles"
+            },
+            {
+              "name": "Sweet Bundle",
+              "applies_to...": "User",
+              "benefit": "Let you reach maximum sweet tooth title",
+              "family": "consumable",
+              "category": "Bundles"
             }
           ]
         },
@@ -1595,6 +1478,121 @@
               "acquisition": "Anniversary Celebration\nDragon Festival Grab Bag\nImperial Guard Lockbox\nLunar Festival Grab Bag\nWintersday Grab Bag\nZaishen Strongbox",
               "family": "consumable",
               "category": "Alcohol"
+            }
+          ]
+        },
+        {
+          "name": "Sweet",
+          "items": [
+            {
+              "name": "Fruitcake",
+              "points": 1,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 5,
+              "effect": "Run 25% faster",
+              "acquisition": "Wintersday\nChest of Wintersday Past\nWintersday in July",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Mandragor Root Cake",
+              "points": 1,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 3,
+              "effect": "Run 25% faster",
+              "acquisition": "Collector Yajide in Yohlon Haven\nCollector Kazuma in Great Temple of Balthazar\nFarewell to Gaile",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Sugary Blue Drink",
+              "points": 1,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 2,
+              "effect": "Run 50% faster",
+              "acquisition": "Canthan New Year\nDragon Festival (from 2007 onward)\nFarewell to Gaile\nAnniversary Celebration\nWayfarer's Reverie",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Chocolate Bunny",
+              "points": 2,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 5,
+              "effect": "Run 50% faster",
+              "acquisition": "Sweet Treats Week",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Red Bean Cake",
+              "points": 2,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 5,
+              "effect": "Run 25% faster",
+              "acquisition": "Dragon Festival\nMerchants in Kaineng City\nCollector Kazuma in Great Temple of Balthazar\nAnniversary Celebration",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Jar of Honey",
+              "points": 2,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 10,
+              "effect": "Run 25% faster",
+              "acquisition": "Gift of the Huntsman\nGift of the Traveler",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Crème Brûlée",
+              "points": 3,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 10,
+              "effect": "Run 25% faster",
+              "acquisition": "Dragon Festival\nAnniversary Celebration\nZaishen Chest\nNightfall PvP Preview Event",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Krytan Lokum",
+              "points": 3,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 10,
+              "effect": "Run 25% faster",
+              "acquisition": "Royal Gift",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Minis-treat of Purity",
+              "points": 3,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 2,
+              "effect": "Run 50% faster",
+              "acquisition": "Collector Zha Ku in Kaineng Center",
+              "family": "consumable",
+              "category": "Sweet"
+            },
+            {
+              "name": "Delicious Cake",
+              "points": 50,
+              "consumption_area": "Outposts",
+              "spam-mable": true,
+              "duration_(mins)": 2,
+              "effect": "Run 50% faster",
+              "acquisition": "Anniversary Celebration\nKazuma in Great Temple of Balthazar\nDragon Festival Grab Bag\nImperial Guard Lockbox\nLunar Festival Grab Bag\nWintersday Grab Bag\nZaishen Strongbox",
+              "family": "consumable",
+              "category": "Sweet"
             }
           ]
         },
@@ -6066,6 +6064,18 @@
           "name": "Rare Axes",
           "items": [
             {
+              "name": "Piercing Axe",
+              "stats": [],
+              "family": "weapon",
+              "category": "Rare Axes"
+            },
+            {
+              "name": "War Axe",
+              "stats": [],
+              "family": "weapon",
+              "category": "Rare Axes"
+            },
+            {
               "name": "Great Axe",
               "stats": [],
               "family": "weapon",
@@ -7271,6 +7281,12 @@
             },
             {
               "name": "Golden Chalice",
+              "stats": [],
+              "family": "weapon",
+              "category": "Rare focus items"
+            },
+            {
+              "name": "Flame Artifact (eye)",
               "stats": [],
               "family": "weapon",
               "category": "Rare focus items"

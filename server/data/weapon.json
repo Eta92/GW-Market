@@ -4,6 +4,14 @@
     "description": "Rare axes are random-stat weapon dropped by random mobs or chests.",
     "items": [
       {
+        "name": "Piercing Axe",
+        "stats": []
+      },
+      {
+        "name": "War Axe",
+        "stats": []
+      },
+      {
         "name": "Great Axe",
         "stats": []
       },
@@ -775,6 +783,10 @@
       },
       {
         "name": "Golden Chalice",
+        "stats": []
+      },
+      {
+        "name": "Flame Artifact (eye)",
         "stats": []
       },
       {

@@ -1,74 +1,38 @@
 [
   {
-    "type": "In-town speed boosts",
-    "description": "These items provide a Sugar Rush or Sugar Jolt and can only be used in towns or outposts",
+    "type": "CONS",
+    "description": "Consumable items that provide bonus to the whole party",
     "items": [
       {
-        "name": "Chocolate Bunny",
-        "speed_boost": 50,
-        "duration_(min)": 5,
-        "sweet_points": 2
+        "name": "Armor of Salvation",
+        "applies_to...": "Party",
+        "benefit": 10,
+        "duration_(min)": 30,
+        "sweet_points": ""
       },
       {
-        "name": "Crème Brûlée",
-        "speed_boost": 25,
-        "duration_(min)": 10,
-        "sweet_points": 3
+        "name": "Grail of Might",
+        "applies_to...": "Party",
+        "benefit": 100,
+        "duration_(min)": 30,
+        "sweet_points": ""
       },
       {
-        "name": "Delicious Cake",
-        "speed_boost": 50,
-        "duration_(min)": 2,
-        "sweet_points": 50
+        "name": "Essence of Celerity",
+        "applies_to...": "Party",
+        "boosts...": "+ Movement speed, attack speed  - Skill activation time, recharge time",
+        "amount": 20,
+        "duration_(min)": 30,
+        "sweet_points": ""
       },
       {
-        "name": "Fruitcake",
-        "speed_boost": 25,
-        "duration_(min)": 5,
-        "sweet_points": 1
+        "name": "Powerstone of Courage",
+        "applies_to...": "Party",
+        "morale": 10,
+        "death_penalty": "Removes all DP",
+        "notes": "Recharges skills",
+        "sweet_points": ""
       },
-      {
-        "name": "Jar of Honey",
-        "speed_boost": 25,
-        "duration_(min)": 10,
-        "sweet_points": 2
-      },
-      {
-        "name": "Krytan Lokum",
-        "speed_boost": 25,
-        "duration_(min)": 10,
-        "sweet_points": 3
-      },
-      {
-        "name": "Mandragor Root Cake",
-        "speed_boost": 25,
-        "duration_(min)": 3,
-        "sweet_points": 1
-      },
-      {
-        "name": "Minis-treat of Purity",
-        "speed_boost": 50,
-        "duration_(min)": 2,
-        "sweet_points": 3
-      },
-      {
-        "name": "Red Bean Cake",
-        "speed_boost": 25,
-        "duration_(min)": 5,
-        "sweet_points": 2
-      },
-      {
-        "name": "Sugary Blue Drink",
-        "speed_boost": 50,
-        "duration_(min)": 2,
-        "sweet_points": 1
-      }
-    ]
-  },
-  {
-    "type": "Boost morale and/or reduce death penalty",
-    "description": "These items reduce Death Penalty or provide a Morale Boost",
-    "items": [
       {
         "name": "Elixir of Valor",
         "applies_to...": "Party",
@@ -102,6 +66,20 @@
         "sweet_points": ""
       },
       {
+        "name": "Rainbow Candy Cane",
+        "applies_to...": "Party",
+        "morale": 5,
+        "death_penalty": "",
+        "notes": "Does not recharge skills",
+        "sweet_points": 1
+      }
+    ]
+  },
+  {
+    "type": "PCONS",
+    "description": "Consumable items that provide bonus only to the player character",
+    "items": [
+      {
         "name": "Peppermint Candy Cane",
         "applies_to...": "User",
         "morale": "",
@@ -110,25 +88,9 @@
         "sweet_points": 2
       },
       {
-        "name": "Powerstone of Courage",
-        "applies_to...": "Party",
-        "morale": 10,
-        "death_penalty": "Removes all DP",
-        "notes": "Recharges skills",
-        "sweet_points": ""
-      },
-      {
         "name": "Pumpkin Cookie",
         "applies_to...": "User",
         "morale": 10,
-        "death_penalty": "",
-        "notes": "Does not recharge skills",
-        "sweet_points": 1
-      },
-      {
-        "name": "Rainbow Candy Cane",
-        "applies_to...": "Party",
-        "morale": 5,
         "death_penalty": "",
         "notes": "Does not recharge skills",
         "sweet_points": 1
@@ -149,6 +111,7 @@
         "notes": "Recharges skills",
         "sweet_points": ""
       },
+
       {
         "name": "Shining Blade Rations",
         "applies_to...": "User",
@@ -164,20 +127,6 @@
         "death_penalty": 15,
         "notes": "",
         "sweet_points": 1
-      }
-    ]
-  },
-  {
-    "type": "Increase movement, attack speed, or rate of skill activation",
-    "description": "These items increase PvE Movement or Attack speed and/or reduce skill Activation times",
-    "items": [
-      {
-        "name": "Essence of Celerity",
-        "applies_to...": "Party",
-        "boosts...": "+ Movement speed, attack speed  - Skill activation time, recharge time",
-        "amount": 20,
-        "duration_(min)": 30,
-        "sweet_points": ""
       },
       {
         "name": "Green Rock Candy",
@@ -210,19 +159,6 @@
         "amount": 25,
         "duration_(min)": 30,
         "sweet_points": 1
-      }
-    ]
-  },
-  {
-    "type": "Health, Energy, Armor, or Attributes",
-    "description": "These items increase maximum Health, Energy, Armor, or Attributes",
-    "items": [
-      {
-        "name": "Armor of Salvation",
-        "applies_to...": "Party",
-        "benefit": 10,
-        "duration_(min)": 30,
-        "sweet_points": ""
       },
       {
         "name": "Birthday Cupcake",
@@ -267,13 +203,6 @@
         "sweet_points": 1
       },
       {
-        "name": "Grail of Might",
-        "applies_to...": "Party",
-        "benefit": 100,
-        "duration_(min)": 30,
-        "sweet_points": ""
-      },
-      {
         "name": "Pahnai Salad",
         "applies_to...": "User",
         "benefit": 20,
@@ -293,6 +222,32 @@
         "benefit": "Lunar Blessing (chance)+1 all attributes",
         "duration_(min)": "∞",
         "sweet_points": ""
+      }
+    ]
+  },
+  {
+    "type": "Bundles",
+    "description": "Pack of multiple consumables sold together for a specific need",
+    "items": [
+      {
+        "name": "Cons Set",
+        "applies_to...": "Party",
+        "benefit": "Provides all party complete PVE power ups"
+      },
+      {
+        "name": "Alcohol Bundle",
+        "applies_to...": "User",
+        "benefit": "Let you reach maximum drunkard title"
+      },
+      {
+        "name": "Festive Bundle",
+        "applies_to...": "User",
+        "benefit": "Let you reach maximum party animal title"
+      },
+      {
+        "name": "Sweet Bundle",
+        "applies_to...": "User",
+        "benefit": "Let you reach maximum sweet tooth title"
       }
     ]
   },

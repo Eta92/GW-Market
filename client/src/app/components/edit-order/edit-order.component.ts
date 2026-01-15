@@ -57,7 +57,7 @@ const attributes = [
   'Deadly Arts',
   'Shadow Arts',
   // Ritualist
-  'Ritualist	Spawning',
+  'Spawning power',
   'Channeling Magic',
   'Communing',
   'Restoration Magic',
