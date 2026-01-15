@@ -5,6 +5,7 @@ import { createServer } from 'http';
 import path from 'path';
 //const path = require('path');
 import * as geoipLite from 'geoip-lite';
+import helmet from 'helmet';
 import { SocketService } from './src/services/socket.service';
 import { ItemService } from './src/services/item.service';
 import { ShopService } from './src/services/shop.service';
@@ -22,6 +23,27 @@ function isCrawler(userAgent) {
 
 // core init
 const app = express();
+
+// Security headers using helmet
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Angular requires unsafe-eval for JIT
+        styleSrc: ["'self'", "'unsafe-inline'"], // Angular material requires inline styles
+        imgSrc: ["'self'", 'data:', 'blob:'],
+        connectSrc: ["'self'", 'wss:', 'ws:'], // WebSocket connections
+        fontSrc: ["'self'", 'data:'],
+        objectSrc: ["'none'"],
+        frameAncestors: ["'self'"],
+        baseUri: ["'self'"],
+        formAction: ["'self'"],
+      },
+    },
+    crossOriginEmbedderPolicy: false, // Disable for compatibility with Angular
+  })
+);
 
 app.get('/', (req, res) => {
   //console.log('bis', req.path, req.headers['user-agent'], isCrawler(req.headers['user-agent']));
