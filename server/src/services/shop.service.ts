@@ -20,6 +20,8 @@ export class ShopService {
   public static shopCertificationPending: { [key: string]: { uuid: string; player: string; socket: any; secret: string } } = {};
   public static certifiedPlayers: { [key: string]: string } = {};
   public static io: SocketServer;
+  // Track shop ownership: maps shop UUID to socket ID for authorization
+  public static shopOwnership: { [shopUuid: string]: string } = {};
 
   public static Init(io: SocketServer): void {
     this.io = io;
@@ -51,6 +53,7 @@ export class ShopService {
 
   public static refreshShop(rawShop: Shop, socket: any): void {
     const ip = socket.data.ip;
+    const socketId = socket.id;
     if (rawShop) {
       // control shop validity
       if (
@@ -68,6 +71,12 @@ export class ShopService {
         socket.emit('ToasterError', 'This player name is certified in another shop. Please use your own character or contact the support.');
         return;
       }
+      // Verify shop ownership - if shop exists, only the owner can modify it
+      if (rawShop.uuid && this.shopOwnership[rawShop.uuid] && this.shopOwnership[rawShop.uuid] !== socketId) {
+        console.log('Unauthorized shop modification attempt from IP ' + ip + ' for shop ' + rawShop.uuid);
+        socket.emit('ToasterError', 'You are not authorized to modify this shop.');
+        return;
+      }
       // build a shop myself to prevent fields injection
       const shop: Shop = {
         uuid: rawShop.uuid,
@@ -79,6 +88,8 @@ export class ShopService {
       if (!shop.uuid) {
         shop.uuid = nanoid(10);
       }
+      // Track shop ownership - associate this shop with the current socket
+      this.shopOwnership[shop.uuid] = socketId;
       // update and save data in ram and in database
       shop.lastRefresh = Date.now();
       const shopToSave = this.allShopMap[shop.uuid] ? { ...this.allShopMap[shop.uuid], ...shop } : shop;
@@ -90,15 +101,27 @@ export class ShopService {
     }
   }
 
-  public static closeShop(uuid: string): void {
+  public static closeShop(uuid: string, socket?: any): boolean {
+    // Verify shop ownership - only the owner can close their shop
+    if (socket) {
+      const socketId = socket.id;
+      if (this.shopOwnership[uuid] && this.shopOwnership[uuid] !== socketId) {
+        console.log('Unauthorized shop close attempt from socket ' + socketId + ' for shop ' + uuid);
+        socket.emit('ToasterError', 'You are not authorized to close this shop.');
+        return false;
+      }
+    }
     if (this.allShopMap[uuid]) {
       this.allShopMap[uuid].lastRefresh = Date.now() - 1000 * 60 * 15;
     }
     if (this.activeShopMap[uuid]) {
       this.activeShopMap[uuid].items.forEach((item) => this.itemToRefresh.add(item.name));
       delete this.activeShopMap[uuid];
+      // Clean up ownership tracking when shop is closed
+      delete this.shopOwnership[uuid];
       this.refreshShops(true);
     }
+    return true;
   }
 
   private static refreshShops(update = false): void {

@@ -65,7 +65,7 @@ export class SocketService {
       });
 
       socket.on('closeShop', (uuid: string) => {
-        ShopService.closeShop(uuid);
+        ShopService.closeShop(uuid, socket);
       });
 
       socket.on('getLastItemsByFamily', (family: string) => {
