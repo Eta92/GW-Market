@@ -4,6 +4,43 @@ import { ItemService } from './item.service';
 import { Shop } from '../models/shop.model';
 import { ShopService } from './shop.service';
 
+// Socket rate limiting configuration
+interface RateLimitEntry {
+  count: number;
+  resetTime: number;
+}
+
+const socketRateLimits = new Map<string, RateLimitEntry>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 60; // 60 events per minute per IP
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = socketRateLimits.get(ip);
+
+  if (!entry || now >= entry.resetTime) {
+    socketRateLimits.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return true;
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return false;
+  }
+
+  entry.count++;
+  return true;
+}
+
+// Clean up old rate limit entries periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of socketRateLimits) {
+    if (now >= entry.resetTime) {
+      socketRateLimits.delete(ip);
+    }
+  }
+}, 60 * 1000);
+
 export class SocketService {
   public static io: SocketServer;
   public static password = process.env.dataPassword;
@@ -22,6 +59,16 @@ export class SocketService {
         ''
       );
       console.log('═╦═ IP ' + socket.data.ip + ' has connected to the server');
+
+      // Rate limiting middleware for socket events
+      socket.use((event, next) => {
+        if (!checkRateLimit(socket.data.ip)) {
+          console.log('Rate limit exceeded for IP ' + socket.data.ip);
+          socket.emit('ToasterError', 'Too many requests. Please slow down.');
+          return next(new Error('Rate limit exceeded'));
+        }
+        next();
+      });
 
       socket.on('SocketStarted', () => {
         socket.emit('ClientInit');

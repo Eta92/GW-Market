@@ -5,6 +5,7 @@ import { createServer } from 'http';
 import path from 'path';
 //const path = require('path');
 import * as geoipLite from 'geoip-lite';
+import rateLimit from 'express-rate-limit';
 import { SocketService } from './src/services/socket.service';
 import { ItemService } from './src/services/item.service';
 import { ShopService } from './src/services/shop.service';
@@ -22,6 +23,19 @@ function isCrawler(userAgent) {
 
 // core init
 const app = express();
+
+// Rate limiting to prevent DoS and brute force attacks
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  skip: (req) => isCrawler(req.headers['user-agent']), // Allow search engine bots
+});
+
+// Apply rate limiting to all requests
+app.use(limiter);
 
 app.get('/', (req, res) => {
   //console.log('bis', req.path, req.headers['user-agent'], isCrawler(req.headers['user-agent']));
