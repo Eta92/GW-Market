@@ -50,8 +50,17 @@ const server = createServer(app);
 SocketService.init(server);
 
 app.get('/assets/*', function (req, res) {
-  var reqpath = req.url.toString().split('?')[0].split('/').slice(2).join('/');
-  res.sendFile(path.join(process.cwd(), '../assets', reqpath));
+  const requestedPath = req.params[0];
+  // Sanitize path to prevent path traversal attacks
+  const safePath = path.normalize(requestedPath).replace(/^(\.\.(\/|\\|$))+/, '');
+  const fullPath = path.resolve(process.cwd(), '../assets', safePath);
+  const assetsDir = path.resolve(process.cwd(), '../assets');
+
+  // Ensure the resolved path is within the assets directory
+  if (!fullPath.startsWith(assetsDir + path.sep) && fullPath !== assetsDir) {
+    return res.status(403).send('Forbidden');
+  }
+  res.sendFile(fullPath);
 });
 
 app.get('*', function (req, res) {
