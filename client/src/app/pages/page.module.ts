@@ -10,9 +10,11 @@ import { EditOrderComponent } from '@app/components/edit-order/edit-order.compon
 import { FooterComponent } from '@app/components/footer/footer.component';
 import { FilterOrderComponent } from '@app/components/filter-order/filter-order.component';
 import { ActivePlayerComponent } from '@app/components/active-player/active-player.component';
+import { CustomToggleComponent } from '@app/components/custom-toggle/custom-toggle.component';
 
 @NgModule({
   declarations: [
+    CustomToggleComponent,
     ActivePlayerComponent,
     EditOrderComponent,
     FilterOrderComponent,

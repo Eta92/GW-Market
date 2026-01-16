@@ -1,0 +1,36 @@
+<div class="flex" [ngClass]="size">
+  <button
+    class="h-12 w-32 text-gwt-brown"
+    [class.font-semibold]="form.get(field)?.value"
+    [class.bg-gwt-light]="form.get(field)?.value"
+    [class.bg-gwt-amber]="!form.get(field)?.value"
+    [class.text-gwt-light]="!form.get(field)?.value"
+    (click)="setValue(true)"
+  >
+    <i
+      class="fa self-center text-sm text-white"
+      [ngClass]="{
+        'fa-circle': !form.get(field)?.value,
+        'fa-circle-dot': form.get(field)?.value
+      }"
+    ></i>
+    {{ labelTrue }}
+  </button>
+  <button
+    class="h-12 w-32 text-gwt-brown"
+    [class.font-semibold]="!form.get(field)?.value"
+    [class.bg-gwt-light]="!form.get(field)?.value"
+    [class.bg-gwt-amber]="form.get(field)?.value"
+    [class.text-gwt-light]="form.get(field)?.value"
+    (click)="setValue(false)"
+  >
+    <i
+      class="fa self-center text-sm text-white"
+      [ngClass]="{
+        'fa-circle': form.get(field)?.value,
+        'fa-circle-dot': !form.get(field)?.value
+      }"
+    ></i>
+    {{ labelFalse }}
+  </button>
+</div>

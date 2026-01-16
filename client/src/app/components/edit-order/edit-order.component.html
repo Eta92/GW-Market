@@ -131,45 +131,6 @@
               max="13"
             />
           </div>
-          <div class="flex flex-col gap-2">
-            <div class="font-semibold text-white">Legacy Item</div>
-            <div class="flex">
-              <button
-                class="h-12 w-32 text-gwt-brown"
-                [class.font-semibold]="!formWeapon.get('oldschool')?.value"
-                [class.bg-gwt-light]="!formWeapon.get('oldschool')?.value"
-                [class.bg-gwt-amber]="formWeapon.get('oldschool')?.value"
-                [class.text-gwt-light]="formWeapon.get('oldschool')?.value"
-                (click)="formWeapon.patchValue({ oldschool: false })"
-              >
-                <i
-                  class="fa self-center text-sm text-white"
-                  [ngClass]="{
-                    'fa-circle': formWeapon.get('oldschool')?.value,
-                    'fa-circle-dot': !formWeapon.get('oldschool')?.value
-                  }"
-                ></i>
-                Modern
-              </button>
-              <button
-                class="h-12 w-32 text-gwt-brown"
-                [class.font-semibold]="formWeapon.get('oldschool')?.value"
-                [class.bg-gwt-light]="formWeapon.get('oldschool')?.value"
-                [class.bg-gwt-amber]="!formWeapon.get('oldschool')?.value"
-                [class.text-gwt-light]="!formWeapon.get('oldschool')?.value"
-                (click)="formWeapon.patchValue({ oldschool: true })"
-              >
-                <i
-                  class="fa self-center text-sm text-white"
-                  [ngClass]="{
-                    'fa-circle': !formWeapon.get('oldschool')?.value,
-                    'fa-circle-dot': formWeapon.get('oldschool')?.value
-                  }"
-                ></i>
-                Old School
-              </button>
-            </div>
-          </div>
         </div>
         <div class="flex flex-wrap gap-4 md:flex-nowrap">
           <div class="flex flex-col gap-2">
@@ -245,13 +206,87 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-2">
-        <div class="font-semibold text-white">Description</div>
-        <textarea
-          class="h-12 w-full border-none bg-gwt-light p-2 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
-          placeholder="Optional"
-          formControlName="description"
-        ></textarea>
+      <div *ngIf="isMiniature">
+        <div class="flex w-full flex-col gap-2">
+          <div class="font-semibold text-white">Dedication</div>
+          <app-custom-toggle
+            [form]="formOther"
+            field="dedicated"
+            labelTrue="Dedicated"
+            labelFalse="Undedicated"
+            size="w-64"
+          ></app-custom-toggle>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex w-full flex-col gap-2">
+          <div class="font-semibold text-white">Description</div>
+          <textarea
+            class="h-12 w-full border-none bg-gwt-light p-2 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
+            placeholder="Optional"
+            formControlName="description"
+          ></textarea>
+        </div>
+        <div class="flex w-[52px] flex-col gap-2">
+          <div class="font-semibold text-white">Adv.</div>
+          <i
+            class="fa fa-gear cursor-pointer py-2 text-3xl text-white hover:text-gwt-light"
+            title="Advanced order options"
+            (click)="isAdvanced = !isAdvanced"
+          ></i>
+        </div>
+      </div>
+      <div *ngIf="isAdvanced" class="flex gap-4">
+        <div class="flex flex-col gap-2">
+          <div class="font-semibold text-white">Pre-Searing</div>
+          <app-custom-toggle
+            [form]="formOther"
+            field="pre"
+            labelTrue="Old-Ascalon"
+            labelFalse="Normal"
+            size="w-64"
+          ></app-custom-toggle>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <div class="font-semibold text-white">Legacy Item</div>
+          <div class="flex">
+            <button
+              class="h-12 w-32 text-gwt-brown"
+              [class.font-semibold]="!formWeapon.get('oldschool')?.value"
+              [class.bg-gwt-light]="!formWeapon.get('oldschool')?.value"
+              [class.bg-gwt-amber]="formWeapon.get('oldschool')?.value"
+              [class.text-gwt-light]="formWeapon.get('oldschool')?.value"
+              (click)="formWeapon.patchValue({ oldschool: false })"
+            >
+              <i
+                class="fa self-center text-sm text-white"
+                [ngClass]="{
+                  'fa-circle': formWeapon.get('oldschool')?.value,
+                  'fa-circle-dot': !formWeapon.get('oldschool')?.value
+                }"
+              ></i>
+              Modern
+            </button>
+            <button
+              class="h-12 w-32 text-gwt-brown"
+              [class.font-semibold]="formWeapon.get('oldschool')?.value"
+              [class.bg-gwt-light]="formWeapon.get('oldschool')?.value"
+              [class.bg-gwt-amber]="!formWeapon.get('oldschool')?.value"
+              [class.text-gwt-light]="!formWeapon.get('oldschool')?.value"
+              (click)="formWeapon.patchValue({ oldschool: true })"
+            >
+              <i
+                class="fa self-center text-sm text-white"
+                [ngClass]="{
+                  'fa-circle': !formWeapon.get('oldschool')?.value,
+                  'fa-circle-dot': formWeapon.get('oldschool')?.value
+                }"
+              ></i>
+              Old School
+            </button>
+          </div>
+        </div>
       </div>
       <div class="flex flex-col gap-2">
         <div class="flex gap-4 font-semibold text-white">

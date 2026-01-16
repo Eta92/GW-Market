@@ -29,6 +29,7 @@ export interface ShopItem {
   prices: Array<ShopPrice>;
   description: string;
   quantity: number;
+  orderDetails?: OrderDetails;
   weaponDetails?: WeaponDetails;
   // front only
   item?: Item;
@@ -46,6 +47,11 @@ export interface WeaponDetails {
   core: string;
   prefix: string;
   suffix: string;
+}
+
+export interface OrderDetails {
+  dedicated: boolean;
+  pre: boolean;
 }
 
 export interface ShopPrice {
@@ -72,11 +78,9 @@ export interface Item {
   img: string;
   family: string;
   category: string;
-  type: string;
-  rarity: string;
-  level: number;
   // front only
   match?: number;
+  orderDetails?: OrderDetails;
   weaponDetails?: WeaponDetails;
 }
 

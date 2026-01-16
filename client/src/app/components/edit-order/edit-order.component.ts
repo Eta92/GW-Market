@@ -89,12 +89,15 @@ export class EditOrderComponent implements OnInit, OnChanges {
 
   public form: UntypedFormGroup;
   public formWeapon: UntypedFormGroup;
+  public formOther: UntypedFormGroup;
   public item: Item;
   public bindPrices: Array<Subscription> = [];
 
   public allItems: AvailableTree;
   public OrderType = OrderType;
   public Price = Price;
+  public isMiniature = false;
+  public isAdvanced = false;
   // weapons
   public isWeapon = false;
   public attributes = attributes;
@@ -133,6 +136,10 @@ export class EditOrderComponent implements OnInit, OnChanges {
       prefix: [null],
       suffix: [null]
     });
+    this.formOther = this.fb.group({
+      dedicated: [false],
+      pre: [false]
+    });
     if (this.original) {
       this.loadOrder(this.original);
     }
@@ -167,7 +174,10 @@ export class EditOrderComponent implements OnInit, OnChanges {
         this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })
       );
     }
+    order.item = this.itemService.getItemBase(order.name);
     this.form.patchValue(order);
+    this.formOther.patchValue(order.orderDetails || {});
+    this.isMiniature = WeaponHelper.isMiniature(order.item);
     if (WeaponHelper.isWeapon(order.item) && this.allItems) {
       this.isWeapon = true;
       this.weaponLists = WeaponHelper.getItemList(order.item, this.allItems);
@@ -183,6 +193,7 @@ export class EditOrderComponent implements OnInit, OnChanges {
       this.isWeapon = true;
       this.weaponLists = WeaponHelper.getItemList(item, this.allItems);
     }
+    this.isMiniature = WeaponHelper.isMiniature(item);
   }
 
   getImageSource(item: Item): string {
@@ -240,6 +251,7 @@ export class EditOrderComponent implements OnInit, OnChanges {
       if (this.isWeapon) {
         order.weaponDetails = this.formWeapon.value;
       }
+      order.orderDetails = this.formOther.value;
       this.confirmOrder.emit(order);
       while (this.getprices()?.value.length > 1) {
         this.getprices().removeAt(1);

@@ -40,12 +40,15 @@ export class ShopService {
   shopInit(): void {
     // sockets
     this.socket.on('RefreshShop', (shop: Shop) => {
-      const activeShop = this.activeShopSubject.value;
-      activeShop.uuid = shop.uuid;
-      activeShop.lastRefresh = shop.lastRefresh;
-      activeShop.daybreakOnline = shop.daybreakOnline;
-      activeShop.authCertified = shop.certified?.includes(activeShop.player);
-      activeShop.certified = shop.certified;
+      const activeShop = {
+        ...this.activeShopSubject.value,
+        uuid: shop.uuid,
+        lastRefresh: shop.lastRefresh,
+        daybreakOnline: shop.daybreakOnline,
+        authCertified: shop.certified?.includes(this.activeShopSubject.value.player),
+        certified: shop.certified,
+        items: shop.items
+      };
       this.activeShopSubject.set(activeShop);
       this.saveShop();
       this.toastrService.success('Shop registration updated', '', {

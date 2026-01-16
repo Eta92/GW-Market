@@ -5,6 +5,9 @@ export class WeaponHelper {
   static isWeapon(item: Item): any {
     return item?.family === 'weapon';
   }
+  static isMiniature(item: Item): any {
+    return item?.family === 'miniature';
+  }
 
   static getItemList(
     item: Item,

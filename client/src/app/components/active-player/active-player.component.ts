@@ -1,13 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Shop } from '@app/models/shop.model';
 import { StoreService } from '@app/services/store.service';
@@ -18,8 +9,21 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './active-player.component.html',
   styleUrls: ['./active-player.component.scss']
 })
-export class ActivePlayerComponent implements OnInit, OnChanges {
-  @Input() shop: Shop;
+export class ActivePlayerComponent implements OnInit {
+  private _shop: Shop;
+
+  @Input()
+  set shop(value: Shop) {
+    this._shop = value;
+    if (this.form) {
+      this.form.patchValue({ name: value?.player });
+    }
+    this.secret = '';
+  }
+
+  get shop(): Shop {
+    return this._shop;
+  }
 
   @Output() closeEdit = new EventEmitter<void>();
   @Output() confirmPlayer = new EventEmitter<string>();
@@ -47,12 +51,12 @@ export class ActivePlayerComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['shop'] && this.shop && this.form) {
-      this.form.patchValue({ name: this.shop.player });
-      this.secret = '';
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes['shop'] && this.shop && this.form) {
+  //     this.form.patchValue({ name: this.shop.player });
+  //     this.secret = '';
+  //   }
+  // }
 
   copySecret(): void {
     if (this.secret) {
