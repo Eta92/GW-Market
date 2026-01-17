@@ -1,0 +1,15 @@
+<div *ngIf="item" class="-mb-1 mt-1 flex flex-wrap gap-2 text-xs">
+  <ng-container *ngIf="isWeapon(details) && item.weaponDetails">
+    <span *ngIf="item.weaponDetails.requirement">Req.{{ item.weaponDetails.requirement }}</span>
+    <span *ngIf="item.weaponDetails.attribute">{{ item.weaponDetails.attribute }}</span>
+    <span *ngIf="item.weaponDetails.oldschool">OS</span>
+    <span *ngIf="item.weaponDetails.core">Core: {{ item.weaponDetails.core }}</span>
+    <span *ngIf="item.weaponDetails.inscription">Insc.</span>
+    <span *ngIf="item.weaponDetails.prefix">Prefix: {{ item.weaponDetails.prefix }}</span>
+    <span *ngIf="item.weaponDetails.suffix">Suffix: {{ item.weaponDetails.suffix }}</span>
+  </ng-container>
+  <span *ngIf="isMiniature(details)">{{
+    item.orderDetails?.dedicated ? 'dedicated to the monument' : 'Non-Dedicated'
+  }}</span>
+  <span *ngIf="item.orderDetails?.pre">pre-searing</span>
+</div>

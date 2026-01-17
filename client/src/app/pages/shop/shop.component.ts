@@ -116,15 +116,6 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  addDetails(item: Item): void {
-    this.details = [];
-    for (const key in ItemDetailMap) {
-      if (item[key as keyof Item]) {
-        this.details.push(`${ItemDetailMap[key]}: ${item[key as keyof Item]}`);
-      }
-    }
-  }
-
   stopClick(event): void {
     event.stopPropagation();
   }
@@ -134,6 +125,7 @@ export class ShopComponent implements OnInit {
   }
 
   onEditOrder(order: ShopItem): void {
+    order.item = this.itemService.getItemBase(order.name);
     const editIndex = this.shop.items.indexOf(this.orderEdit);
     this.shopService.updateShopItem(editIndex, order);
     this.orderEdit = null;
@@ -315,6 +307,10 @@ export class ShopComponent implements OnInit {
 
   isWeapon(item: Item): boolean {
     return WeaponHelper.isWeapon(item);
+  }
+
+  isMiniature(item: Item): boolean {
+    return WeaponHelper.isMiniature(item);
   }
 
   togglePro(): void {

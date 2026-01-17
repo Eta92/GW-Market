@@ -206,15 +206,8 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="isWeapon(order.item) && order.weaponDetails" class="text-xs">
-                Req.{{ order.weaponDetails.requirement }} {{ order.weaponDetails.attribute || '' }}
-                {{ order.weaponDetails.oldschool ? ' (OS)' : '' }}
-                {{ order.weaponDetails.core ? ', core: ' + order.weaponDetails.core : '' }}
-                {{ order.weaponDetails.inscription ? ' (insc.)' : '' }}
-                {{ order.weaponDetails.prefix ? ', prefix: ' + order.weaponDetails.prefix : '' }}
-                {{ order.weaponDetails.suffix ? ', suffix: ' + order.weaponDetails.suffix : '' }}
-              </div>
-              <div class="px-2 pt-2 text-xs">{{ order.description }}</div>
+              <app-item-details [item]="order" [details]="order.item"></app-item-details>
+              <div class="px-1 pt-2 text-xs">{{ order.description }}</div>
             </div>
             <div class="ml-1 flex flex-col gap-1">
               <button class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown" (click)="editOrder(order)">
@@ -311,15 +304,8 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="isWeapon(order.item) && order.weaponDetails" class="text-xs">
-                Req.{{ order.weaponDetails.requirement }} {{ order.weaponDetails.attribute || '' }}
-                {{ order.weaponDetails.oldschool ? ' (OS)' : '' }}
-                {{ order.weaponDetails.core ? ', core: ' + order.weaponDetails.core : '' }}
-                {{ order.weaponDetails.inscription ? ' (insc.)' : '' }}
-                {{ order.weaponDetails.prefix ? ', prefix: ' + order.weaponDetails.prefix : '' }}
-                {{ order.weaponDetails.suffix ? ', suffix: ' + order.weaponDetails.suffix : '' }}
-              </div>
-              <div class="px-2 pt-2 text-xs">{{ order.description }}</div>
+              <app-item-details [item]="order" [details]="order.item"></app-item-details>
+              <div class="px-1 pt-2 text-xs">{{ order.description }}</div>
             </div>
             <div class="ml-1 flex flex-col gap-1">
               <button class="h-6 w-20 bg-gwt-light text-sm text-gwt-brown" (click)="editOrder(order)">

@@ -144,16 +144,9 @@
                     </div>
                   </div>
                 </div>
-                <div *ngIf="isWeapon(item, order) && order.item.weaponDetails" class="text-xs">
-                  Req.{{ order.item.weaponDetails.requirement }} {{ order.item.weaponDetails.attribute }}
-                  {{ order.item.weaponDetails.oldschool ? '(OS)' : '' }}, core:
-                  {{ order.item.weaponDetails.core || 'none' }}
-                  {{ order.item.weaponDetails.inscription ? ' (insc.)' : '' }}, prefix:
-                  {{ order.item.weaponDetails.prefix || 'none' }}, suffix:
-                  {{ order.item.weaponDetails.suffix || 'none' }}
-                </div>
+                <app-item-details class="-mt-1 mb-1" [item]="order.item" [details]="order.details"></app-item-details>
                 <div class="relative flex min-h-4 pr-12 text-xs">
-                  <span>{{ order.description }}</span>
+                  <span class="px-1">{{ order.description }}</span>
                   <div class="absolute bottom-0 right-0 -mb-1 mt-1 flex">
                     <span>{{ formatLastUpdate(order.lastRefresh) }}</span>
                   </div>
@@ -238,16 +231,9 @@
                     </div>
                   </div>
                 </div>
-                <div *ngIf="isWeapon(item, order) && order.item.weaponDetails" class="text-xs">
-                  Req.{{ order.item.weaponDetails.requirement }} {{ order.item.weaponDetails.attribute || '' }}
-                  {{ order.item.weaponDetails.oldschool ? ' (OS)' : '' }}
-                  {{ order.item.weaponDetails.core ? ', core: ' + order.item.weaponDetails.core : '' }}
-                  {{ order.item.weaponDetails.inscription ? ' (insc.)' : '' }}
-                  {{ order.item.weaponDetails.prefix ? ', prefix: ' + order.item.weaponDetails.prefix : '' }}
-                  {{ order.item.weaponDetails.suffix ? ', suffix: ' + order.item.weaponDetails.suffix : '' }}
-                </div>
+                <app-item-details class="-mt-1 mb-1" [item]="order.item" [details]="order.details"></app-item-details>
                 <div class="relative flex min-h-4 pr-12 text-xs">
-                  <span>{{ order.description }}</span>
+                  <span class="px-1">{{ order.description }}</span>
                   <div class="absolute bottom-0 right-0 -mb-1 mt-1 flex">
                     <span>{{ formatLastUpdate(order.lastRefresh) }}</span>
                   </div>

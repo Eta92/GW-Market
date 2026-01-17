@@ -11,14 +11,16 @@ import { FooterComponent } from '@app/components/footer/footer.component';
 import { FilterOrderComponent } from '@app/components/filter-order/filter-order.component';
 import { ActivePlayerComponent } from '@app/components/active-player/active-player.component';
 import { CustomToggleComponent } from '@app/components/custom-toggle/custom-toggle.component';
+import { ItemDetailsComponent } from '@app/components/item-details/item-details.component';
 
 @NgModule({
   declarations: [
-    CustomToggleComponent,
     ActivePlayerComponent,
+    CustomToggleComponent,
     EditOrderComponent,
     FilterOrderComponent,
     FooterComponent,
+    ItemDetailsComponent,
     NewOrderComponent,
     SelectItemComponent,
     HomeComponent,

@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { ItemOrder, ItemOrders, ItemPriceList, Time } from '@app/models/order.model';
 import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
 
@@ -37,6 +37,7 @@ export class ItemComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private itemService: ItemService,
     private shopService: ShopService,
     private storeService: StoreService,
     private cdr: ChangeDetectorRef
@@ -48,15 +49,17 @@ export class ItemComponent implements OnInit {
       //const name = this.router.url.split('/').pop() || '';
       const decodedName = decodeURIComponent(this.name);
       this.storeService.getItemOrders().subscribe((items: Array<ShopItem>) => {
-        this.allOrders.sellOrders = this.parseOrders(
-          items.filter(si => si.orderType === OrderType.SELL),
-          true
-        );
-        this.allOrders.buyOrders = this.parseOrders(
-          items.filter(si => si.orderType === OrderType.BUY),
-          false
-        );
-        this.cdr.detectChanges();
+        this.itemService.getReady().subscribe(ready => {
+          this.allOrders.sellOrders = this.parseOrders(
+            items.filter(si => si.orderType === OrderType.SELL),
+            true
+          );
+          this.allOrders.buyOrders = this.parseOrders(
+            items.filter(si => si.orderType === OrderType.BUY),
+            false
+          );
+          this.cdr.detectChanges();
+        });
       });
       this.storeService.getItemDetails().subscribe((item: Item) => {
         this.item = item;
@@ -107,12 +110,14 @@ export class ItemComponent implements OnInit {
         }
         const itemTimeList = itemPriceList?.orders.find(tl => tl.time === time);
         const pgcd = UtilityHelper.egcd(price.price, item.quantity);
+        const itemBase = this.itemService.getItemBase(item.name);
         itemTimeList?.orders.push({
           player: item.player,
           daybreakOnline: item.daybreakOnline,
           authCertified: item.authCertified,
           lastRefresh: item.lastRefresh,
-          item: item as any,
+          item: item,
+          details: itemBase,
           orderType: item.orderType,
           price: price,
           description: item.description,
@@ -186,9 +191,5 @@ export class ItemComponent implements OnInit {
   onCreateOrder(order): void {
     this.shopService.addShopItem(order);
     this.router.navigate(['shop']);
-  }
-
-  isWeapon(item: Item, check?): boolean {
-    return WeaponHelper.isWeapon(item);
   }
 }

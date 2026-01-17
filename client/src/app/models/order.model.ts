@@ -1,4 +1,4 @@
-import { Item, OrderType, Price, ShopPrice } from './shop.model';
+import { Item, OrderType, Price, ShopItem, ShopPrice } from './shop.model';
 
 export interface ItemOrders {
   sellOrders: Array<ItemPriceList>;
@@ -19,7 +19,8 @@ export interface ItemOrder {
   player: string;
   daybreakOnline: boolean;
   authCertified: boolean;
-  item: Item;
+  item: ShopItem;
+  details: Item;
   orderType: OrderType;
   price: ShopPrice;
   description: string;

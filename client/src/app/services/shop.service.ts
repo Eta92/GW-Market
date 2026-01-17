@@ -49,6 +49,9 @@ export class ShopService {
         certified: shop.certified,
         items: shop.items
       };
+      activeShop.items.forEach(item => {
+        item.item = this.itemService.getItemBase(item.name);
+      });
       this.activeShopSubject.set(activeShop);
       this.saveShop();
       this.toastrService.success('Shop registration updated', '', {
@@ -60,17 +63,22 @@ export class ShopService {
       }
     });
     // rest of init
-    const shopString = localStorage.getItem('personalShop');
-    if (shopString) {
-      const shop = JSON.parse(shopString) as Shop;
-      this.activeShopSubject.set(shop);
-    } else {
-      const shop: Shop = {
-        player: 'GWTrader',
-        items: []
-      };
-      this.activeShopSubject.set(shop);
-    }
+    this.itemService.getReady().subscribe(ready => {
+      const shopString = localStorage.getItem('personalShop');
+      if (shopString) {
+        const shop = JSON.parse(shopString) as Shop;
+        shop.items.forEach(item => {
+          item.item = this.itemService.getItemBase(item.name);
+        });
+        this.activeShopSubject.set(shop);
+      } else {
+        const shop: Shop = {
+          player: 'GWTrader',
+          items: []
+        };
+        this.activeShopSubject.set(shop);
+      }
+    });
   }
 
   addShopItem(item: ShopItem): void {
