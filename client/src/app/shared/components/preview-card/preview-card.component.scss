@@ -1,0 +1,152 @@
+// Variables
+$gold: #d4a855;
+$gold-bright: #f0c674;
+$parchment: #e8dcc4;
+
+:host {
+  display: contents;
+}
+
+// Item Card - UNIFORM SIZE
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  min-height: 210px;
+  position: relative;
+
+  // Frame styles (matching .frame class)
+  background: linear-gradient(145deg, rgba(42, 36, 31, 0.8) 0%, rgba(26, 20, 16, 0.9) 100%);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 8px;
+
+  &:hover {
+    border-color: rgba($gold, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba($gold, 0.08);
+    background: linear-gradient(145deg, rgba($gold, 0.08) 0%, transparent 50%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      box-shadow: 0 0 15px rgba($gold, 0.25);
+      pointer-events: none;
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    box-shadow: 0 0 15px rgba($gold, 0);
+    pointer-events: none;
+    opacity: 0;
+    transition: all 200ms ease;
+  }
+
+  &.single-item {
+    min-height: 175px;
+    text-align: center;
+  }
+}
+
+// 2x2 Grid for category previews - UNIFORM SIZING
+.card-images.grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 64px);
+  grid-template-rows: repeat(2, 64px);
+  gap: 4px;
+  width: 136px;
+  height: 136px;
+  margin: 0 auto 10px;
+  justify-content: center;
+  align-content: center;
+
+  img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    display: block;
+    vertical-align: top;
+  }
+}
+
+// Single item image - FIXED SIZE
+.single-image {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  display: block;
+  vertical-align: top;
+}
+
+.card-label {
+  font-size: 13px;
+  color: $parchment;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 140px;
+
+  &.small {
+    font-size: 11px;
+    text-transform: none;
+  }
+}
+
+// Responsive
+@media (max-width: 375px) {
+  .item-card {
+    padding: 8px;
+    min-height: 180px;
+
+    &.single-item {
+      min-height: 150px;
+    }
+  }
+
+  .card-images.grid-2x2 {
+    grid-template-columns: repeat(2, 52px);
+    grid-template-rows: repeat(2, 52px);
+    width: 108px;
+    height: 108px;
+    gap: 3px;
+    margin-bottom: 8px;
+
+    img {
+      width: 52px;
+      height: 52px;
+    }
+  }
+
+  .single-image {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    margin-bottom: 8px;
+  }
+
+  .card-label {
+    font-size: 11px;
+    max-width: 110px;
+    margin: 6px 0;
+  }
+}

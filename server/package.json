@@ -6,7 +6,9 @@
   "scripts": {
     "debug": "nodemon --exec \"node --inspect-brk=0.0.0.0:9229 --require ts-node/register app.ts\"",
     "start": "nodemon app.ts",
-    "export": "mongoexport --host=\"localhost\" --port=27017 --db=HIDDEN --collection=players --out=players.json"
+    "export": "mongoexport --host=\"localhost\" --port=27017 --db=HIDDEN --collection=players --out=players.json",
+    "generate-history": "ts-node scripts/generate-history.ts",
+    "emit-orders": "ts-node scripts/socket-order-emitter.ts"
   },
   "nodemonConfig": {
     "watch": [
@@ -37,7 +39,8 @@
     "mongodb": "5.3.0",
     "nanoid": "3.3.11",
     "node-fetch": "3.3.1",
-    "socket.io": "4.6.1"
+    "socket.io": "4.6.1",
+    "socket.io-client": "4.6.1"
   },
   "devDependencies": {
     "@types/express": "4.17.17",

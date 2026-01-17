@@ -1,37 +1,9 @@
-<div
-  class="fixed left-0 top-0 z-40 flex h-screen w-screen items-center justify-center bg-gwt-back"
-  *ngIf="orderOpen"
-  (click)="orderOpen = false"
->
+<!-- Place Order Modal -->
+<app-modal [isOpen]="orderOpen" (closed)="onClose()">
   <app-edit-order
     [preselect]="preselect"
     [confirm]="'Create Order'"
-    (closeEdit)="orderOpen = false"
+    (closeEdit)="onClose()"
     (confirmOrder)="onCreateOrder($event)"
   ></app-edit-order>
-</div>
-<div
-  class="card-wrapper bottom-10 right-8 z-40 hidden h-32 w-52 cursor-pointer lg:fixed lg:flex"
-  [ngClass]="{ warning: warning }"
-  (click)="orderOpen = true"
->
-  <img class="card-img" src="../../../../../assets/img/rune.webp" />
-  <div class="card-text">
-    <div class="card-header text-xl leading-[0px]">Place Order</div>
-    <div class="card-content mt-auto flex h-12 w-full justify-center">
-      <i class="far fa-square-plus -mt-1 text-5xl text-white"></i>
-    </div>
-  </div>
-</div>
-<div
-  class="fixed bottom-0 right-0 z-40 flex h-11 w-24 cursor-pointer rounded-tl bg-[#212121] lg:hidden"
-  [ngClass]="{ warning: warning }"
-  (click)="orderOpen = true"
->
-  <div class="flex flex-col text-white">
-    <div class="flex w-full justify-center">
-      <i class="far fa-square-plus -mb-1 text-lg"></i>
-    </div>
-    <div class="w-full text-center text-sm font-semibold">Place Order</div>
-  </div>
-</div>
+</app-modal>

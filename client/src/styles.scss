@@ -3,192 +3,598 @@
 @tailwind utilities;
 @import '../../assets/fontawesome/css/all.css';
 
-html,
-body {
+// ============================================
+// CSS CUSTOM PROPERTIES
+// ============================================
+:root {
+  --gwt-void: #0a0a0b;
+  --gwt-obsidian: #121214;
+  --gwt-stone: #242428;
+  --gwt-gold: #d4a855;
+  --gwt-gold-bright: #f0c674;
+  --gwt-gold-dim: #8b7355;
+  --gwt-parchment: #e8dcc4;
+  --gwt-amber: #c9873a;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease-out;
+}
+
+// ============================================
+// BASE STYLES
+// ============================================
+html, body {
   height: 100%;
-  overflow-y: hidden;
-  max-width: 1920px;
-  margin: 0 auto;
-  background-color: #212121;
+  overflow: hidden;
+  background-color: var(--gwt-void);
+  color: var(--gwt-parchment);
+
+  // Allow page scroll on mobile/tablet
+  @media (max-width: 1024px) {
+    height: auto;
+    min-height: 100%;
+    overflow: visible;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 body {
   margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ============================================
+// FONTS
+// ============================================
+@font-face {
+  font-family: 'Frtzquad';
+  src: url('../../assets/font/FRIZQUAD.TTF') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'centuryGhotic';
-  src: url('../../assets/font/CenturyGothic.ttf');
+  src: url('../../assets/font/CenturyGothic.ttf') format('truetype');
+  font-display: swap;
 }
 
-.text-no-overflow {
-  @apply overflow-hidden text-ellipsis whitespace-nowrap;
+.font-fritz {
+  font-family: 'Frtzquad', Georgia, serif;
 }
 
-.filter-blue {
-  filter: invert(55%) sepia(30%) saturate(7000%) hue-rotate(165deg) brightness(95%) contrast(100%);
+// ============================================
+// SCROLLBAR
+// ============================================
+.scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gwt-stone) var(--gwt-obsidian);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--gwt-obsidian);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gwt-stone);
+    border-radius: 4px;
+
+    &:hover {
+      background: #3a3a40;
+    }
+  }
 }
 
-.main-container {
-  @apply relative block;
-}
-
-// USED NOW
-
+// ============================================
+// BACKGROUND IMAGES
+// ============================================
 .bg-base {
   background-position: center;
   background-size: cover;
-  background-color: black;
 }
 
 .bg-main {
   background-image: url('/assets/img/main.webp');
 }
 
-.bg-rune {
-  background-image: url('/assets/img/rune.webp');
-}
-
-.bg-theme {
-  background-image: url('/assets/img/theme.jpg');
-}
-
 .bg-sky {
   background-image: url('/assets/img/sky.webp');
-}
-
-.bg-frame {
-  background: url('/assets/img/frame.webp') no-repeat center center / cover;
-}
-
-.bg-header {
-  background: url('/assets/img/header3.webp') no-repeat center center / cover;
-}
-
-.bg-button {
-  background: url('/assets/img/button.jpeg') no-repeat center / cover;
 }
 
 .bg-frame-clean {
   background: url('/assets/img/clean.webp') no-repeat center center / cover;
 }
 
-.section-transition {
-  -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
-    url(../../assets/img/transition.webp);
-  mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
-    url(../../assets/img/transition.webp);
-  -webkit-mask-position: center, bottom;
-  mask-position: center, bottom;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  margin-bottom: calc(-120px);
-}
-
-.fritz-font {
-  font-family: 'Frtzquad', serif;
-}
-
-@font-face {
-  font-family: Frtzquad;
-  src: url('../../assets/font/FRIZQUAD.TTF');
-}
-
-.frame {
-  @apply border border-solid border-gwt-semi bg-gwt-back;
-}
-
-.typing {
-  @apply border-2 border-solid border-gwt-brown bg-gwt-light;
+// ============================================
+// UTILITY CLASSES
+// ============================================
+.text-no-overflow {
+  @apply overflow-hidden text-ellipsis whitespace-nowrap;
 }
 
 .text-shadow {
-  text-shadow: 0.08em 0.08em 0.2em var(--color-text-shadow, rgba(0, 0, 0, 0.9));
-  filter: drop-shadow(0 0 0.4em var(--color-text-shadow, rgba(0, 0, 0, 0.4)));
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.call-to {
-  padding: 0.6em 1.6em;
-  width: 200px;
-  height: 80px;
+.text-shadow-glow {
+  text-shadow: 0 0 10px rgba(212, 168, 85, 0.5);
 }
 
-.import {
-  width: 180px;
-  height: 40px;
+// ============================================
+// CARD SYSTEM
+// ============================================
+.card {
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 30, 0.95) 0%,
+    rgba(18, 18, 20, 0.98) 100%
+  );
+  border: 1px solid rgba(212, 168, 85, 0.15);
+  border-radius: 4px;
+  transition: all var(--transition-base);
+
+  &:hover {
+    border-color: rgba(212, 168, 85, 0.35);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(212, 168, 85, 0.08);
+  }
 }
 
-.action {
+.card-interactive {
+  @extend .card;
   cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 1px solid white;
-  border-radius: 5px;
-  transition: box-shadow 0.3s;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-}
-.action:hover {
-  filter: brightness(1.2);
-  box-shadow: 0 0 10px white;
-}
 
-.bg-gradient {
-  background-image: linear-gradient(to bottom right, grey, black);
-}
-
-.full {
-  @apply h-full w-full;
-}
-
-.central-text {
-  @apply absolute left-0 top-0 flex h-full w-full items-center justify-center;
-}
-
-/* Animations */
-@keyframes flicker {
-  from {
-    transform: translateX(-50%) scaleY(1);
+  &:hover {
+    transform: translateY(-2px);
   }
-  to {
-    transform: translateX(-50%) scaleY(1.15);
-  }
-}
 
-@keyframes melt {
-  to {
-    transform: scaleY(0);
-  }
-}
-
-@keyframes drip {
-  0%,
-  100% {
+  &:active {
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(12px);
+}
+
+// ============================================
+// BUTTON SYSTEM
+// ============================================
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
-.scroll {
-  scrollbar-width: thin;
-  scrollbar-color: #444 #222;
+.btn-primary {
+  @extend .btn;
+  background: linear-gradient(135deg, var(--gwt-gold) 0%, var(--gwt-amber) 100%);
+  color: var(--gwt-void);
+  border-color: var(--gwt-gold);
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px rgba(212, 168, 85, 0.3);
+  }
 }
 
-.scroll::-webkit-scrollbar-track {
-  border-radius: 8px;
-  background-color: #222;
+.btn-ghost {
+  @extend .btn;
+  background: transparent;
+  color: var(--gwt-parchment);
+  border-color: rgba(212, 168, 85, 0.3);
+
+  &:hover:not(:disabled) {
+    background: rgba(212, 168, 85, 0.1);
+    border-color: rgba(212, 168, 85, 0.5);
+  }
 }
 
-.scroll::-webkit-scrollbar {
-  width: 10px;
-  background-color: #222;
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8rem;
 }
 
-.scroll::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background-color: #444;
+// ============================================
+// CHIP/TAG SYSTEM
+// ============================================
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8rem;
+  background: var(--gwt-stone);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  color: var(--gwt-parchment);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(212, 168, 85, 0.15);
+    border-color: rgba(212, 168, 85, 0.3);
+  }
+
+  &.active {
+    background: linear-gradient(135deg, rgba(212, 168, 85, 0.2) 0%, rgba(201, 135, 58, 0.15) 100%);
+    border-color: var(--gwt-gold);
+    color: var(--gwt-gold-bright);
+  }
+}
+
+// ============================================
+// BADGE SYSTEM
+// ============================================
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 3px;
+}
+
+.badge-sell {
+  @extend .badge;
+  background: linear-gradient(135deg, #166534 0%, #22c55e 100%);
+  color: white;
+}
+
+.badge-buy {
+  @extend .badge;
+  background: linear-gradient(135deg, #9a3412 0%, #f97316 100%);
+  color: white;
+}
+
+// ============================================
+// INPUT SYSTEM
+// ============================================
+.input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  background: var(--gwt-obsidian);
+  border: 1px solid var(--gwt-stone);
+  border-radius: 4px;
+  color: var(--gwt-parchment);
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+
+  &::placeholder {
+    color: var(--gwt-gold-dim);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--gwt-gold);
+    box-shadow: 0 0 0 3px rgba(212, 168, 85, 0.1);
+  }
+}
+
+// ============================================
+// DIVIDER
+// ============================================
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 168, 85, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+// ============================================
+// SECTION TRANSITION (for hero area)
+// ============================================
+.section-transition {
+  -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 80px), transparent 100%);
+  mask-image: linear-gradient(to bottom, black, black calc(100% - 80px), transparent 100%);
+}
+
+// ============================================
+// LEGACY COMPATIBILITY
+// ============================================
+.frame {
+  @apply border border-solid bg-gwt-back;
+  border-color: rgba(136, 136, 136, 0.5);
+}
+
+.typing {
+  @apply border-2 border-solid border-gwt-gold-dim bg-gwt-obsidian;
+}
+
+// ============================================
+// ANIMATION UTILITIES
+// ============================================
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-stagger > * {
+  animation: slideUp 0.3s ease-out both;
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 30}ms;
+    }
+  }
+}
+
+// ============================================
+// MODAL OVERLAY GLOBAL STYLES
+// ============================================
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+    align-items: stretch;
+  }
+}
+
+// ============================================
+// RESPONSIVE UTILITIES
+// ============================================
+// Hide on small screens
+.hide-on-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+// Hide on extra small screens
+.hide-on-small-mobile {
+  @media (max-width: 375px) {
+    display: none !important;
+  }
+}
+
+// Show only on mobile
+.show-on-mobile {
+  display: none !important;
+  @media (max-width: 768px) {
+    display: block !important;
+  }
+}
+
+// ============================================
+// SMALL PHONE GLOBAL ADJUSTMENTS (375px)
+// ============================================
+@media (max-width: 375px) {
+  // Reduce base font size slightly
+  body {
+    font-size: 13px;
+  }
+
+  // Tighter scrollbar
+  .scroll {
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  // Smaller cards
+  .card {
+    border-radius: 3px;
+  }
+
+  // Smaller buttons
+  .btn {
+    padding: 0.4rem 0.875rem;
+    font-size: 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .btn-sm {
+    padding: 0.3rem 0.625rem;
+    font-size: 0.75rem;
+  }
+
+  // Smaller chips
+  .chip {
+    padding: 0.3rem 0.625rem;
+    font-size: 0.75rem;
+    gap: 0.3rem;
+  }
+
+  // Smaller badges
+  .badge {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.65rem;
+  }
+
+  // Smaller inputs
+  .input {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+// ============================================
+// TOAST NOTIFICATIONS (ngx-toastr overrides)
+// ============================================
+.toast-container {
+  .ngx-toastr {
+    background-color: #1a1a1e !important;
+    background-image: none !important;
+    border: 1px solid #3a3a40 !important;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    padding: 1rem 1.25rem 1rem 1rem;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+    &:hover {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    }
+
+    .toast-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #e8dcc4;
+    }
+
+    .toast-message {
+      font-size: 0.85rem;
+      color: #c4b8a0;
+      line-height: 1.4;
+    }
+
+    .toast-close-button {
+      color: #8b7355;
+      font-size: 1.25rem;
+      font-weight: 300;
+      text-shadow: none;
+      opacity: 1;
+      top: 0.5rem;
+      right: 0.75rem;
+
+      &:hover {
+        color: #d4a855;
+      }
+    }
+
+    // Progress bar
+    .toast-progress {
+      height: 3px;
+      background: #d4a855;
+      opacity: 1;
+    }
+  }
+
+  // Success toast - Green accent
+  .toast-success {
+    border-left: 4px solid #22c55e !important;
+    background-color: #1a1a1e !important;
+
+    .toast-title {
+      color: #4ade80;
+    }
+
+    .toast-progress {
+      background: #22c55e;
+    }
+  }
+
+  // Error toast - Red accent
+  .toast-error {
+    border-left: 4px solid #e74c3c !important;
+    background-color: #1a1a1e !important;
+
+    .toast-title {
+      color: #f87171;
+    }
+
+    .toast-progress {
+      background: #e74c3c;
+    }
+  }
+
+  // Warning toast - Orange/Amber accent
+  .toast-warning {
+    border-left: 4px solid #f97316 !important;
+    background-color: #1a1a1e !important;
+
+    .toast-title {
+      color: #fb923c;
+    }
+
+    .toast-progress {
+      background: #f97316;
+    }
+  }
+
+  // Info toast - Gold accent (matching site theme)
+  .toast-info {
+    border-left: 4px solid #d4a855 !important;
+    background-color: #1a1a1e !important;
+
+    .toast-title {
+      color: #f0c674;
+    }
+
+    .toast-progress {
+      background: #d4a855;
+    }
+  }
+}
+
+// Toast positioning and z-index
+.toast-container {
+  z-index: 9999 !important;
+}
+
+.toast-top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+// Mobile toast adjustments
+@media (max-width: 480px) {
+  .toast-container {
+    .ngx-toastr {
+      width: calc(100vw - 2rem);
+      margin: 0.5rem 1rem;
+      padding: 0.875rem 1rem;
+
+      .toast-title {
+        font-size: 0.85rem;
+      }
+
+      .toast-message {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .toast-top-right {
+    top: 0.5rem;
+    right: 0;
+    width: 100%;
+  }
 }

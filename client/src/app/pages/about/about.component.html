@@ -1,0 +1,154 @@
+<div class="about-page font-fritz scroll">
+  <!-- Header -->
+  <app-header
+    [showSearch]="true"
+    [showFeatures]="false"
+    [compact]="true"
+  ></app-header>
+
+  <!-- Page Title -->
+  <div class="page-title-section">
+    <h1 class="page-title">About GW Market</h1>
+  </div>
+
+  <!-- Main Content -->
+  <main class="page-content">
+    <div class="content-grid">
+      <!-- Left Column -->
+      <div class="content-column">
+        <!-- Disclaimer Section -->
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-shield-halved"></i>
+            <h2>Disclaimer</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              ArenaNet LLC, Guild Wars and the logo and the backgrounds are registered trademarks.
+              All rights are reserved worldwide.
+            </p>
+            <p>
+              This site has no official link with ArenaNet LLC or Guild Wars.
+            </p>
+            <p>
+              All artwork, screenshots, characters or other recognizable features of the intellectual
+              property relating to these trademarks are likewise the intellectual property of ArenaNet LLC.
+            </p>
+          </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-headset"></i>
+            <h2>Customer Support & Feedback</h2>
+          </div>
+          <div class="card-body">
+            <p>For assistance or to help us improve, join our Discord community:</p>
+            <a class="link-btn discord" href="https://discord.gg/a4pPyJ3paN" target="_blank">
+              <i class="fab fa-discord"></i>
+              <span>Join Discord Server</span>
+              <i class="fa fa-external-link"></i>
+            </a>
+          </div>
+        </section>
+
+        <!-- Policy Section -->
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-gavel"></i>
+            <h2>Custom Policy</h2>
+          </div>
+          <div class="card-body">
+            <p class="policy-text">
+              Any attempt to circumvent the principle of the site will be fought without restrictions.
+            </p>
+            <div class="policy-warning">
+              <i class="fa fa-ban"></i>
+              <span>There is no place for scams or RMT here.</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column -->
+      <div class="content-column">
+        <!-- Partners Section -->
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-handshake"></i>
+            <h2>Friends & Partners</h2>
+          </div>
+          <div class="card-body">
+            <div class="partner">
+              <div class="partner-info">
+                <h3>Daybreak Launcher</h3>
+                <p>Adding features connected to the market</p>
+              </div>
+              <a class="link-btn github" href="https://github.com/gwdevhub/Daybreak" target="_blank">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+                <i class="fa fa-external-link"></i>
+              </a>
+            </div>
+            <div class="partner">
+              <div class="partner-info">
+                <h3>GW ToolBox</h3>
+                <p>In-game tools and pricing APIs</p>
+              </div>
+              <a class="link-btn toolbox" href="https://www.gwtoolbox.com/" target="_blank">
+                <i class="fa fa-toolbox"></i>
+                <span>Website</span>
+                <i class="fa fa-external-link"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section class="info-card roadmap">
+          <div class="card-header">
+            <i class="fa fa-road"></i>
+            <h2>Roadmap</h2>
+          </div>
+          <div class="card-body">
+            <p class="roadmap-intro">Features we're working on:</p>
+            <ul class="roadmap-list">
+              <li>
+                <i class="fa fa-circle-dot"></i>
+                <span>Retrieve shop using player name</span>
+              </li>
+              <li>
+                <i class="fa fa-circle-dot"></i>
+                <span>Reputation system for shops</span>
+              </li>
+              <li>
+                <i class="fa fa-circle-dot"></i>
+                <span>Advanced search filters</span>
+              </li>
+              <li>
+                <i class="fa fa-circle-dot"></i>
+                <span>Dump complete inventory with Daybreak</span>
+              </li>
+              <li>
+                <i class="fa fa-circle-dot"></i>
+                <span>List display for items on home page</span>
+              </li>
+              <li>
+                <i class="fa fa-circle-dot"></i>
+                <span>Pre-formatted message service</span>
+              </li>
+              <li>
+                <i class="fa fa-circle-dot"></i>
+                <span>Link GW ToolBox trader quotes</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+</div>

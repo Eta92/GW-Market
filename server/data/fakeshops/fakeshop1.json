@@ -2,6 +2,489 @@
   "player": "A Cool Dev",
   "items": [
     {
+      "name": "Gift of the Traveler",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [
+        { "type": 0, "price": 240, "unit": 12 },
+        { "type": 2, "price": 15, "unit": 0.75 }
+      ],
+      "quantity": 20,
+      "description": "WTB - Gold or Zkeys"
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 100, "unit": 100 }],
+      "quantity": 1,
+      "description": "Perfect stats!",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Strength and Honor",
+        "prefix": "Sundering Bowstring",
+        "suffix": "Bow Grip of Fortitude"
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": "OS Collector",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": "Vampiric Bowstring",
+        "suffix": "Bow Grip of Defense"
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        { "type": 0, "price": 150, "unit": 150 },
+        { "type": 1, "price": 8, "unit": 8 }
+      ],
+      "quantity": 1,
+      "description": "r13 Inscr",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 13,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Guided by Fate",
+        "prefix": "Zealous Bowstring",
+        "suffix": "Bow Grip of Shelter"
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 2, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "Zkeys only",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 10,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Don't Think Twice",
+        "prefix": "Fiery Bowstring",
+        "suffix": null
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 80, "unit": 80 }],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 12,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Brawn over Brains",
+        "prefix": "Ebon Bowstring",
+        "suffix": "Bow Grip of Enchanting"
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 50, "unit": 50 }],
+      "quantity": 1,
+      "description": "WTB any req",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 3, "unit": 3 }],
+      "quantity": 1,
+      "description": "WTB OS only",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [
+        { "type": 0, "price": 200, "unit": 200 },
+        { "type": 1, "price": 10, "unit": 10 },
+        { "type": 2, "price": 12, "unit": 12 }
+      ],
+      "quantity": 1,
+      "description": "WTB Perfect r9 Inscr",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Strength and Honor",
+        "prefix": "Sundering Bowstring",
+        "suffix": "Bow Grip of Fortitude"
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 15, "unit": 15 }],
+      "quantity": 1,
+      "description": "Rare OS version",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": "Vampiric Bowstring",
+        "suffix": "Bow Grip of Fortitude"
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 60, "unit": 60 }],
+      "quantity": 1,
+      "description": "Clean skin",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 11,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Dead Bow",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 2, "price": 8, "unit": 8 }],
+      "quantity": 1,
+      "description": "WTB r9 any mods",
+      "weaponDetails": {
+        "attribute": "Marksmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Stygian Reaver",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 20, "unit": 20 }],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Axe Mastery",
+        "requirement": 12,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Guided by Fate",
+        "prefix": null,
+        "suffix": "Axe Grip of Shelter"
+      }
+    },
+    {
+      "name": "Stygian Reaver",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 12, "unit": 12 }],
+      "quantity": 1,
+      "description": "Perfect OS",
+      "weaponDetails": {
+        "attribute": "Axe Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": "Sundering Axe Haft",
+        "suffix": "Axe Grip of Fortitude"
+      }
+    },
+    {
+      "name": "Crystalline Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 100, "unit": 100 }],
+      "quantity": 1,
+      "description": "Rare q9!",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": "Vampiric Sword Hilt",
+        "suffix": "Sword Pommel of Fortitude"
+      }
+    },
+    {
+      "name": "Crystalline Sword",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [
+        { "type": 0, "price": 500, "unit": 500 },
+        { "type": 1, "price": 50, "unit": 50 }
+      ],
+      "quantity": 1,
+      "description": "WTB any q9",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Voltaic Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 200, "unit": 200 }],
+      "quantity": 1,
+      "description": "Rare drop",
+      "weaponDetails": {
+        "attribute": "Spear Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Strength and Honor",
+        "prefix": "Sundering Spearhead",
+        "suffix": "Spear Grip of Fortitude"
+      }
+    },
+    {
+      "name": "Emerald Blade",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 75, "unit": 75 }],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 10,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Dance with Death",
+        "prefix": "Zealous Sword Hilt",
+        "suffix": "Sword Pommel of Shelter"
+      }
+    },
+    {
+      "name": "Emerald Blade",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 5, "unit": 5 }],
+      "quantity": 1,
+      "description": "WTB clean",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Tormented Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 25, "unit": 25 }],
+      "quantity": 1,
+      "description": "Crafted",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Guided by Fate",
+        "prefix": "Ebon Sword Hilt",
+        "suffix": "Sword Pommel of Fortitude"
+      }
+    },
+    {
+      "name": "Tormented Shield",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 20, "unit": 20 }],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Tactics",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Luck of the Draw",
+        "prefix": null,
+        "suffix": "Shield Handle of Fortitude"
+      }
+    },
+    {
+      "name": "Destroyer Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        { "type": 0, "price": 40, "unit": 40 },
+        { "type": 1, "price": 2, "unit": 2 }
+      ],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Axe Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Brawn over Brains",
+        "prefix": "Furious Axe Haft",
+        "suffix": "Axe Grip of Defense"
+      }
+    },
+    {
+      "name": "Chaos Axe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 35, "unit": 35 }],
+      "quantity": 1,
+      "description": "OS Max",
+      "weaponDetails": {
+        "attribute": "Axe Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": "Sundering Axe Haft",
+        "suffix": "Axe Grip of Fortitude"
+      }
+    },
+    {
+      "name": "Chaos Axe",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 20, "unit": 20 }],
+      "quantity": 1,
+      "description": "WTB q9 OS",
+      "weaponDetails": {
+        "attribute": "Axe Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Bone Dragon Staff",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 8, "unit": 8 }],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Death Magic",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Hale and Hearty",
+        "prefix": "Insightful Staff Head",
+        "suffix": "Staff Wrapping of Fortitude"
+      }
+    },
+    {
+      "name": "Victo's Maul",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 300, "unit": 300 }],
+      "quantity": 1,
+      "description": "Green unique",
+      "weaponDetails": {
+        "attribute": "Hammer Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": false,
+        "core": null,
+        "prefix": null,
+        "suffix": null
+      }
+    },
+    {
+      "name": "Draconic Scythe",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 6, "unit": 6 }],
+      "quantity": 1,
+      "description": "",
+      "weaponDetails": {
+        "attribute": "Scythe Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": "Guided by Fate",
+        "prefix": "Zealous Scythe Snathe",
+        "suffix": "Scythe Grip of Fortitude"
+      }
+    },
+    {
+      "name": "Draconic Scythe",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 80, "unit": 80 }],
+      "quantity": 1,
+      "description": "WTB modded",
+      "weaponDetails": {
+        "attribute": "Scythe Mastery",
+        "requirement": 9,
+        "inscription": true,
+        "oldschool": false,
+        "core": null,
+        "prefix": "Zealous Scythe Snathe",
+        "suffix": null
+      }
+    },
+    {
       "name": "Automaton Summoning Stone",
       "orderType": 0,
       "hidden": false,
@@ -55,10 +538,11 @@
       "hidden": false,
       "prices": [
         { "type": 0, "price": 320, "unit": 16 },
-        { "type": 1, "price": 70, "unit": 3.5 }
+        { "type": 1, "price": 70, "unit": 3.5 },
+        { "type": 2, "price": 18, "unit": 0.9 }
       ],
       "quantity": 20,
-      "description": ""
+      "description": "Also accepting Zkeys!"
     },
     {
       "name": "Dance with Death",
@@ -131,23 +615,6 @@
       "prices": [{ "type": 0, "price": 5, "unit": 0.5 }],
       "quantity": 10,
       "description": ""
-    },
-    {
-      "name": "Stygian Reaver",
-      "orderType": 0,
-      "hidden": false,
-      "prices": [{ "type": 0, "price": 20, "unit": 20 }],
-      "quantity": 1,
-      "description": "",
-      "weaponDetails": {
-        "attribute": "Axe Mastery",
-        "requirement": 12,
-        "inscription": true,
-        "oldschool": false,
-        "core": "Guided by Fate",
-        "prefix": null,
-        "suffix": "Axe Grip of Shelter"
-      }
     },
     {
       "name": "Focus Core of Devotion",

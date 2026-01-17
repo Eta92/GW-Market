@@ -10,6 +10,24 @@ export interface ItemPriceList {
   orders: Array<ItemTimeList>;
 }
 
+// New structures for currency-based grouping
+export interface CurrencyOrders {
+  currencies: Array<CurrencyGroup>;
+}
+
+export interface CurrencyGroup {
+  currency: Price;
+  currencyName: string;
+  timeBuckets: Array<TimeBucket>;
+  totalOrders: number;
+}
+
+export interface TimeBucket {
+  time: Time;
+  sellOrders: Array<ItemOrder>;
+  buyOrders: Array<ItemOrder>;
+}
+
 export interface ItemTimeList {
   time: Time;
   orders: Array<ItemOrder>;

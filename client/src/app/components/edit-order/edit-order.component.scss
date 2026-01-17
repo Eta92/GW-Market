@@ -1,96 +1,1054 @@
-.card-wrapper {
-  display: flex;
-  border-radius: 8px;
-  align-items: flex-end;
-  transition: box-shadow 0.3s;
-  box-shadow: #0000006c 9px 9px 10px;
-  background: linear-gradient(to top, hsl(31 48% 26% / 1) 180px, transparent 250px);
+// Import shared design system
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/form-controls';
 
-  .card-img {
-    border-radius: 8px;
-    display: block;
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+// Modal Container
+.order-modal {
+  position: relative;
+  width: 100%;
+  max-width: min(90vw, 750px);
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: visible;
+  background: linear-gradient(
+    145deg,
+    rgba($obsidian, 0.98) 0%,
+    rgba($obsidian-light, 0.98) 100%
+  );
+  border: 2px solid rgba($gold, 0.6);
+  border-radius: 16px;
+  box-shadow:
+    0 0 80px rgba($gold, 0.2),
+    0 30px 60px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba($gold, 0.15);
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba($gold, 0.4);
+    border-radius: 3px;
+    &:hover {
+      background: $gold;
+    }
+  }
+}
+
+// Modal Header
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(
+    180deg,
+    rgba($obsidian, 1) 0%,
+    rgba($obsidian, 0.98) 100%
+  );
+  border-bottom: 1px solid rgba($gold, 0.25);
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
-  .card-text {
-    position: relative;
-    z-index: 2;
-    height: 80%;
-    width: 100%;
+  .item-preview {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(145deg, $obsidian-light 0%, $obsidian 100%);
+    border: 2px solid rgba($gold, 0.4);
+    border-radius: 10px;
+    padding: 6px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
     align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 
-    .card-header {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #fff;
-      text-align: center;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
     }
 
-    .card-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background-image: url(../../../../../assets/img/fog-brown.png);
-      background-size: 100% auto;
-      background-repeat: repeat-x;
-      background-position: 0 100%;
-      -webkit-mask-image: url(../../../../../assets/img/fog.png);
-      mask-image: url(../../../../../assets/img/fog.png);
-      mask-mode: luminance;
-      -webkit-mask-size: 100% 110px;
-      mask-size: 100% 110px;
-      -webkit-mask-repeat: repeat-x;
-      mask-repeat: repeat-x;
-      animation:
-        anim_foglayer_move 18s linear infinite,
-        anim_bg_move 25s linear infinite;
+    i {
+      font-size: 1.5rem;
+      color: $sepia;
+    }
+
+    &.empty {
+      border-style: dashed;
+      border-color: rgba($sepia, 0.5);
+    }
+
+    &.has-item {
+      border-color: $gold;
+      box-shadow: 0 0 20px rgba($gold, 0.2);
+    }
+  }
+
+  .header-title {
+    h2 {
+      font-family: inherit;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: $gold;
+      margin: 0;
+      letter-spacing: 0.03em;
+    }
+    .item-name {
+      font-size: 0.9rem;
+      color: $parchment;
+      margin-top: 0.2rem;
+      max-width: 280px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &.empty {
+        color: $sepia;
+        font-style: italic;
+      }
+    }
+  }
+
+  .close-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba($parchment, 0.2);
+    border-radius: 8px;
+    color: rgba($parchment, 0.6);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba($parchment, 0.1);
+      border-color: rgba($parchment, 0.4);
+      color: $parchment;
+    }
+  }
+}
+
+// Search Section
+.search-section {
+  padding: 1rem 1.5rem;
+  background: rgba($obsidian-light, 0.3);
+  border-bottom: 1px solid rgba($gold, 0.1);
+
+  app-select-item {
+    width: 100%;
+    display: block;
+  }
+}
+
+// Modal Body
+.modal-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+// Section Labels
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba($parchment, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+// Order Type Cards
+.order-type-section {
+  .order-type-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .order-type-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba($obsidian-light, 0.6);
+    border: 2px solid rgba($gold, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba($gold, 0.1);
+      border-radius: 10px;
+      font-size: 1.1rem;
+      color: rgba($parchment, 0.5);
+      transition: all 0.25s ease;
     }
 
     .card-content {
-      background: linear-gradient(to bottom, #64441f00, #64441f);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+
+      .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: $parchment;
+      }
+
+      .card-desc {
+        font-size: 0.75rem;
+        color: rgba($parchment, 0.5);
+      }
+    }
+
+    .card-check {
+      font-size: 1.1rem;
+      color: rgba($parchment, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    &:hover:not(.active) {
+      background: rgba($obsidian-light, 0.8);
+      border-color: rgba($gold, 0.35);
+
+      .card-icon {
+        background: rgba($gold, 0.15);
+        color: rgba($parchment, 0.7);
+      }
+    }
+
+    // Sell Card Active
+    &.sell.active {
+      background: rgba($sell-color, 0.12);
+      border-color: rgba($sell-color, 0.5);
+
+      .card-icon {
+        background: rgba($sell-color, 0.2);
+        color: $sell-color;
+      }
+
+      .card-content .card-title {
+        color: $sell-color;
+      }
+
+      .card-check {
+        color: $sell-color;
+      }
+    }
+
+    // Buy Card Active
+    &.buy.active {
+      background: rgba($buy-color, 0.12);
+      border-color: rgba($buy-color, 0.5);
+
+      .card-icon {
+        background: rgba($buy-color, 0.2);
+        color: $buy-color;
+      }
+
+      .card-content .card-title {
+        color: $buy-color;
+      }
+
+      .card-check {
+        color: $buy-color;
+      }
+    }
+  }
+}
+
+// Details Row (Quantity + Visibility)
+.details-row {
+  display: flex;
+  gap: 1.5rem;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba($parchment, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
   }
 
-  .card-text::after {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    background-image: url(../../../../../assets/img/footer.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 40px;
+  .quantity-group {
+    flex: 1;
+    max-width: 200px;
+  }
+
+  .visibility-group {
+    flex: 1;
+  }
+}
+
+// Quantity Input
+.quantity-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 46px;
+  background: rgba($obsidian-light, 0.6);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: 10px;
+  overflow: visible;
+
+  .qty-btn {
+    width: 46px;
+    height: 100%;
+    min-width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($gold, 0.1);
+    border: none;
+    color: $gold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+
+    i {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    &:first-child {
+      border-radius: 9px 0 0 9px;
+    }
+
+    &:last-child {
+      border-radius: 0 9px 9px 0;
+    }
+
+    &:hover {
+      background: rgba($gold, 0.25);
+      color: $gold-light;
+    }
+
+    &:active {
+      background: rgba($gold, 0.35);
+    }
+  }
+
+  .qty-input {
+    flex: 1;
+    height: 100%;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-left: 1px solid rgba($gold, 0.15);
+    border-right: 1px solid rgba($gold, 0.15);
+    color: $parchment;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 60px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+// Visibility Toggle
+.visibility-toggle {
+  display: flex;
+  gap: 0;
+  height: 46px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba($gold, 0.25);
+
+  .vis-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 100%;
+    padding: 0 1rem;
+    background: rgba($obsidian-light, 0.6);
+    border: none;
+    color: rgba($parchment, 0.5);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:first-child {
+      border-right: 1px solid rgba($gold, 0.15);
+    }
+
+    i {
+      font-size: 0.9rem;
+    }
+
+    &:hover:not(.active) {
+      background: rgba($gold, 0.1);
+      color: rgba($parchment, 0.7);
+    }
+
+    &.active {
+      background: rgba($gold, 0.2);
+      color: $gold-light;
+    }
+  }
+}
+
+// Pricing Section
+.pricing-section {
+  .prices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .price-card {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: rgba($obsidian-light, 0.5);
+    border: 1px solid rgba($gold, 0.15);
+    border-radius: 10px;
+    overflow: visible;
+    max-width: 100%;
+
+    .currency-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-shrink: 0;
+
+      label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: rgba($gold, 0.7);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding-left: 2px;
+      }
+    }
+
+    .currency-dropdown {
+      position: relative;
+      flex-shrink: 0;
+
+      .currency-selected {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 46px;
+        padding: 0 0.75rem;
+        background: rgba($obsidian, 0.6);
+        border: 1px solid rgba($gold, 0.25);
+        border-radius: 8px;
+        color: $parchment;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 150px;
+
+        .currency-icon {
+          width: 24px;
+          height: 24px;
+          object-fit: contain;
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        .currency-name {
+          flex: 1;
+          text-align: left;
+        }
+
+        i {
+          font-size: 0.7rem;
+          color: $gold;
+          transition: transform 0.2s ease;
+        }
+
+        &:hover {
+          border-color: $gold;
+          background: rgba($obsidian, 0.8);
+        }
+      }
+
+      &.open .currency-selected {
+        border-color: $gold;
+        border-radius: 8px 8px 0 0;
+
+        i {
+          transform: rotate(180deg);
+        }
+      }
+
+      .currency-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba($obsidian, 0.98);
+        border: 1px solid $gold;
+        border-top: none;
+        border-radius: 0 0 8px 8px;
+        overflow: hidden;
+        z-index: 100;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+        .currency-option {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          width: 100%;
+          padding: 0.6rem 0.75rem;
+          background: transparent;
+          border: none;
+          color: $parchment;
+          font-size: 0.85rem;
+          cursor: pointer;
+          transition: all 0.15s ease;
+          text-align: left;
+
+          img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+          }
+
+          &:hover {
+            background: rgba($gold, 0.2);
+            color: $gold-light;
+          }
+
+          &:not(:last-child) {
+            border-bottom: 1px solid rgba($gold, 0.1);
+          }
+        }
+      }
+    }
+
+    .price-inputs {
+      flex: 1;
+      display: flex;
+      gap: 0.75rem;
+      min-width: 0;
+      overflow: hidden;
+
+      .price-field {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: 0;
+        max-width: 50%;
+
+        label {
+          font-size: 0.7rem;
+          font-weight: 700;
+          color: rgba($gold, 0.7);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          padding-left: 2px;
+        }
+
+        .input-with-icon {
+          position: relative;
+          display: flex;
+          align-items: center;
+          height: 46px;
+          background: rgba($obsidian, 0.7);
+          border: 1px solid rgba($gold, 0.25);
+          border-radius: 8px;
+          transition: all 0.2s ease;
+
+          &:focus-within {
+            border-color: $gold;
+            box-shadow: 0 0 0 2px rgba($gold, 0.15);
+          }
+
+          .input-currency-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            margin-left: 0.75rem;
+            flex-shrink: 0;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+          }
+
+          .price-input {
+            flex: 1;
+            height: 100%;
+            padding: 0 0.75rem;
+            background: transparent;
+            border: none;
+            color: $gold-light;
+            font-size: 1.1rem;
+            font-weight: 600;
+            min-width: 50px;
+
+            &::placeholder {
+              color: $sepia;
+            }
+
+            &:focus {
+              outline: none;
+            }
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+          }
+        }
+
+      }
+    }
+
+    .remove-price-btn {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(#e74c3c, 0.1);
+      border: 1px solid rgba(#e74c3c, 0.4);
+      border-radius: 8px;
+      color: rgba(#e74c3c, 0.8);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+
+      &:hover {
+        background: rgba(#e74c3c, 0.2);
+        border-color: #e74c3c;
+        color: #e74c3c;
+      }
+    }
+  }
+
+  .add-price-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: 1px dashed rgba($gold, 0.3);
+    border-radius: 10px;
+    color: rgba($gold, 0.7);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    i {
+      font-size: 0.75rem;
+    }
+
+    &:hover {
+      background: rgba($gold, 0.08);
+      border-color: $gold;
+      border-style: solid;
+      color: $gold;
+    }
+  }
+}
+
+// Description Section
+.description-section {
+  .form-textarea {
     width: 100%;
+    min-height: 80px;
+    padding: 0.875rem 1rem;
+    background: rgba($obsidian-light, 0.5);
+    border: 1px solid rgba($gold, 0.2);
+    border-radius: 10px;
+    color: $parchment;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+      color: $sepia;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $gold;
+      box-shadow: 0 0 0 2px rgba($gold, 0.1);
+    }
   }
 }
 
-@keyframes anim_foglayer_move {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 208px 0;
+// Weapon Section
+.weapon-section,
+.miniature-section {
+  padding: 1.25rem;
+  background: rgba($obsidian-light, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 12px;
+
+  .weapon-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba($gold, 0.1);
+
+    i {
+      color: $gold;
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $parchment;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
   }
 }
 
-@keyframes anim_bg_move {
-  0% {
-    background-position: 0 0;
+// Advanced Section
+.advanced-section {
+  .advanced-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+    background: rgba($obsidian-light, 0.3);
+    border: 1px solid rgba($gold, 0.15);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    i {
+      color: $gold;
+      font-size: 0.9rem;
+    }
+
+    span {
+      flex: 1;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba($parchment, 0.7);
+    }
+
+    &:hover {
+      background: rgba($obsidian-light, 0.5);
+      border-color: rgba($gold, 0.3);
+    }
   }
-  100% {
-    background-position: 208px 0;
+
+  .advanced-content {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba($obsidian-light, 0.3);
+    border: 1px solid rgba($gold, 0.1);
+    border-radius: 10px;
   }
 }
 
-.card-wrapper:hover {
-  filter: brightness(1.2);
-  box-shadow: 0 10px 20px white;
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-group {
+  @extend %form-group;
+  flex: 1;
+  min-width: 120px;
+}
+
+.form-input {
+  @extend %form-input;
+}
+
+.form-select {
+  @extend %form-select;
+}
+
+.toggle-group {
+  @extend %toggle-group;
+
+  .toggle-btn {
+    @extend %toggle-btn;
+  }
+}
+
+// Modal Footer
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba($gold, 0.15);
+  background: linear-gradient(
+    180deg,
+    rgba($obsidian, 0.95) 0%,
+    rgba($obsidian, 1) 100%
+  );
+}
+
+.cancel-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid rgba($parchment, 0.25);
+  border-radius: 10px;
+  color: rgba($parchment, 0.7);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  i {
+    font-size: 0.8rem;
+  }
+
+  &:hover {
+    background: rgba($parchment, 0.08);
+    border-color: rgba($parchment, 0.4);
+    color: $parchment;
+  }
+}
+
+.confirm-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, $gold-dark 0%, $gold 100%);
+  border: none;
+  border-radius: 10px;
+  color: $obsidian;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba($gold, 0.25);
+
+  i {
+    font-size: 0.85rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba($gold, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  // Sell variant
+  &.sell,
+  &.buy {
+    background: linear-gradient(135deg, $gold-dark 0%, $gold 100%);
+    color: $obsidian;
+    box-shadow: 0 4px 16px rgba($gold, 0.3);
+
+    &:hover {
+      background: linear-gradient(135deg, $gold 0%, $gold-light 100%);
+      box-shadow: 0 6px 24px rgba($gold, 0.45);
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 700px) {
+  .order-modal {
+    max-width: 100%;
+    max-height: 100vh;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .modal-header {
+    padding: 1rem;
+
+    .item-preview {
+      width: 48px;
+      height: 48px;
+    }
+
+    .header-title h2 {
+      font-size: 1.15rem;
+    }
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .order-type-section .order-type-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .details-row {
+    flex-direction: column;
+    gap: 1rem;
+
+    .quantity-group {
+      max-width: none;
+    }
+  }
+
+  .pricing-section .price-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+
+    .currency-dropdown {
+      width: 100%;
+
+      .currency-selected {
+        width: 100%;
+      }
+    }
+
+    .price-inputs {
+      flex-direction: row;
+    }
+
+    .remove-price-btn {
+      width: 100%;
+      height: 36px;
+    }
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+
+    .cancel-btn,
+    .confirm-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+// Extra small phones
+@media (max-width: 375px) {
+  .modal-header {
+    padding: 0.875rem;
+
+    .header-left {
+      gap: 0.75rem;
+    }
+
+    .item-preview {
+      width: 42px;
+      height: 42px;
+      padding: 4px;
+    }
+
+    .header-title h2 {
+      font-size: 1rem;
+    }
+
+    .header-title .item-name {
+      max-width: 180px;
+      font-size: 0.8rem;
+    }
+  }
+
+  .modal-body {
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+
+  .search-section {
+    padding: 0.875rem;
+  }
+
+  .order-type-section .order-type-card {
+    padding: 0.875rem 1rem;
+    gap: 0.75rem;
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      font-size: 1rem;
+    }
+
+    .card-content .card-title {
+      font-size: 0.9rem;
+    }
+
+    .card-content .card-desc {
+      font-size: 0.7rem;
+    }
+  }
+
+  .pricing-section .price-card {
+    padding: 0.875rem 1rem;
+
+    .price-inputs .price-field .input-with-icon .price-input {
+      font-size: 1rem;
+    }
+  }
+
+  .modal-footer {
+    padding: 1rem;
+  }
+
+  .confirm-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
 }

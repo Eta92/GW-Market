@@ -1,0 +1,87 @@
+@import '../../styles/variables';
+
+.qty-input-wrapper {
+  display: flex;
+  align-items: stretch;
+  height: 46px;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: all $transition-base;
+
+  &:focus-within {
+    border-color: $gold;
+    box-shadow: 0 0 0 2px rgba($gold, 0.1);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.qty-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  padding: $spacing-sm 0;
+  background: rgba($gold, 0.1);
+  border: none;
+  color: $gold;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  i {
+    font-size: 0.75rem;
+  }
+
+  &:hover:not(:disabled) {
+    background: rgba($gold, 0.2);
+    color: $gold-light;
+  }
+
+  &:active:not(:disabled) {
+    background: rgba($gold, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &.decrement {
+    border-right: 1px solid rgba($gold, 0.15);
+  }
+
+  &.increment {
+    border-left: 1px solid rgba($gold, 0.15);
+  }
+}
+
+.qty-input {
+  flex: 1;
+  min-width: 50px;
+  padding: $spacing-sm 0;
+  background: transparent;
+  border: none;
+  color: $parchment;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+
+  // Hide number input spinners
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  -moz-appearance: textfield;
+
+  &:disabled {
+    color: rgba($parchment, 0.5);
+  }
+}

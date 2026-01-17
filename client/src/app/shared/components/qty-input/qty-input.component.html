@@ -1,0 +1,28 @@
+<div class="qty-input-wrapper" [class.disabled]="disabled">
+  <button
+    type="button"
+    class="qty-btn decrement"
+    [disabled]="disabled || value <= min"
+    (click)="decrement($event)"
+  >
+    <i class="fa fa-minus"></i>
+  </button>
+  <input
+    type="number"
+    class="qty-input"
+    [value]="value"
+    [min]="min"
+    [max]="max"
+    [disabled]="disabled"
+    (input)="onInputChange($event)"
+    (blur)="onBlur()"
+  />
+  <button
+    type="button"
+    class="qty-btn increment"
+    [disabled]="disabled || value >= max"
+    (click)="increment($event)"
+  >
+    <i class="fa fa-plus"></i>
+  </button>
+</div>

@@ -1,9 +1,12 @@
 import { OrderType, Price, Shop, ShopItem } from '../models/shop.model';
-import { AvailableFamily, AvailableTree } from '../models/tree.model';
+import { TimeOrderCounts } from '../models/tree.model';
 import { ItemService } from './item.service';
 import { Server as SocketServer } from 'socket.io';
 import { nanoid } from 'nanoid';
-import { Console } from 'console';
+
+// Time thresholds in milliseconds
+const TIME_ONLINE = 1000 * 60 * 15;       // 15 minutes
+const TIME_TODAY = 1000 * 60 * 60 * 12;   // 12 hours
 
 export class ShopService {
   public static shopInit = false;
@@ -13,9 +16,8 @@ export class ShopService {
   public static activeShops: Array<Shop> = [];
   public static activeShopMap: { [key: string]: Shop } = {};
   public static activeItemMap: { [key: string]: Array<ShopItem> } = {};
-  public static activeOrderMap: { [key: string]: { name: string; sellOrders: number; buyOrders: number } } = {};
+  public static activeOrderMap: { [key: string]: { name: string } & TimeOrderCounts } = {};
   public static lastItemMap: { [key: string]: Array<ShopItem> } = {};
-  //   public static activeItemTree: AvailableTree;
   public static itemToRefresh: Set<string> = new Set<string>();
   public static shopCertificationPending: { [key: string]: { uuid: string; player: string; socket: any; secret: string } } = {};
   public static certifiedPlayers: { [key: string]: string } = {};
@@ -156,16 +158,45 @@ export class ShopService {
 
   private static refreshAvailableOrders(): void {
     this.activeOrderMap = {};
-    Object.keys(this.activeItemMap).forEach((itemName) => {
-      const shopItems = this.activeItemMap[itemName];
-      const sellOrders = shopItems.filter((i) => i.orderType === OrderType.SELL).length;
-      const buyOrders = shopItems.filter((i) => i.orderType === OrderType.BUY).length;
-      this.activeOrderMap[itemName] = {
-        name: itemName,
-        sellOrders: sellOrders,
-        buyOrders: buyOrders,
+    const now = Date.now();
+
+    Object.keys(this.allItemMap).forEach((itemName) => {
+      const shopItems = this.allItemMap[itemName];
+      const counts: TimeOrderCounts = {
+        sellOrders: 0,
+        buyOrders: 0,
+        sellOrdersOnline: 0,
+        buyOrdersOnline: 0,
+        sellOrdersToday: 0,
+        buyOrdersToday: 0,
+        sellOrdersWeek: 0,
+        buyOrdersWeek: 0,
       };
+
+      shopItems.forEach((item) => {
+        const age = now - (item.lastRefresh || 0);
+        const isSell = item.orderType === OrderType.SELL;
+
+        // Total counts
+        if (isSell) counts.sellOrders++;
+        else counts.buyOrders++;
+
+        // Time-bucketed counts
+        if (age < TIME_ONLINE) {
+          if (isSell) counts.sellOrdersOnline++;
+          else counts.buyOrdersOnline++;
+        } else if (age < TIME_TODAY) {
+          if (isSell) counts.sellOrdersToday++;
+          else counts.buyOrdersToday++;
+        } else {
+          if (isSell) counts.sellOrdersWeek++;
+          else counts.buyOrdersWeek++;
+        }
+      });
+
+      this.activeOrderMap[itemName] = { name: itemName, ...counts };
     });
+
     if (this.io) {
       this.io.emit('GetAvailableOrders', this.activeOrderMap);
     }

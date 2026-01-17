@@ -111,6 +111,25 @@ export class UtilityHelper {
     }
   }
 
+  public static getCurrencySource(price: Price): string {
+    return '../../../assets/items/currency/' + price.toString() + '.png';
+  }
+
+  public static getCurrencyName(price: Price): string {
+    switch (price) {
+      case Price.PLAT:
+        return 'Platinum';
+      case Price.ECTO:
+        return 'Ectoplasm';
+      case Price.ZKEY:
+        return 'Zaishen Key';
+      case Price.ARM:
+        return 'Armbraces';
+      default:
+        return 'Currency';
+    }
+  }
+
   public static timeToString(time: Time): string {
     switch (time) {
       case Time.ONLINE:
@@ -145,6 +164,39 @@ export class UtilityHelper {
     } else {
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       return `${days} day${days > 1 ? 's' : ''}`;
+    }
+  }
+
+  /**
+   * Calculate unit price with proper decimal formatting.
+   * Shows 2 decimal places but trims trailing zeros.
+   */
+  public static getDecimalUnitPrice(price: number, quantity: number): string {
+    if (!quantity) return '0';
+    const unitPrice = price / quantity;
+    if (unitPrice === Math.floor(unitPrice)) {
+      return unitPrice.toString();
+    }
+    return unitPrice.toFixed(2).replace(/\.?0+$/, '');
+  }
+
+  /**
+   * Get time category based on lastRefresh timestamp.
+   * - ONLINE: < 15 minutes ago
+   * - TODAY: < 12 hours ago
+   * - WEEK: older than 12 hours or no timestamp
+   */
+  public static getTimeCategory(lastRefresh: number | undefined): Time {
+    if (!lastRefresh) {
+      return Time.WEEK;
+    }
+    const diff = Date.now() - lastRefresh;
+    if (diff < 1000 * 60 * 15) {
+      return Time.ONLINE;
+    } else if (diff < 1000 * 60 * 60 * 12) {
+      return Time.TODAY;
+    } else {
+      return Time.WEEK;
     }
   }
 }

@@ -1,0 +1,147 @@
+@import '../../styles/variables';
+
+.item-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.detail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background: rgba($gold, 0.1);
+  color: rgba($gold, 0.9);
+  border: 1px solid rgba($gold, 0.15);
+  transition: all 0.15s ease;
+
+  i {
+    font-size: 0.55rem;
+    opacity: 0.8;
+  }
+
+  .attr {
+    color: rgba($parchment, 0.7);
+    font-weight: 400;
+  }
+
+  // Requirement badge
+  &.req {
+    background: rgba($gold, 0.12);
+    border-color: rgba($gold, 0.2);
+  }
+
+  // Old School badge
+  &.os {
+    background: rgba(#b8860b, 0.15);
+    color: #d4a853;
+    border-color: rgba(#b8860b, 0.25);
+
+    i {
+      color: #c9a227;
+    }
+  }
+
+  // Inscribable badge
+  &.insc {
+    background: rgba(#9370db, 0.12);
+    color: #b19cd9;
+    border-color: rgba(#9370db, 0.2);
+
+    i {
+      color: #a587d4;
+    }
+  }
+
+  // Core skin badge
+  &.core {
+    background: rgba($parchment, 0.08);
+    color: rgba($parchment, 0.75);
+    border-color: rgba($parchment, 0.15);
+    font-style: italic;
+  }
+
+  // Mod badges (prefix/suffix)
+  &.mod {
+    background: rgba(#4a90a4, 0.12);
+    color: #7eb8c9;
+    border-color: rgba(#4a90a4, 0.2);
+
+    &.prefix {
+      border-left: 2px solid rgba(#4a90a4, 0.5);
+    }
+
+    &.suffix {
+      border-right: 2px solid rgba(#4a90a4, 0.5);
+    }
+  }
+
+  // Miniature badges
+  &.mini {
+    &.dedicated {
+      background: rgba($sell-color, 0.12);
+      color: $sell-color;
+      border-color: rgba($sell-color, 0.25);
+
+      i {
+        color: $sell-color;
+      }
+    }
+
+    &.undedicated {
+      background: rgba($parchment, 0.08);
+      color: rgba($parchment, 0.65);
+      border-color: rgba($parchment, 0.15);
+
+      i {
+        color: rgba($parchment, 0.5);
+      }
+    }
+  }
+
+  // Pre-Searing badge
+  &.presearing {
+    background: rgba(#ffd700, 0.12);
+    color: #ffd700;
+    border-color: rgba(#ffd700, 0.25);
+
+    i {
+      color: #ffcc00;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .item-details {
+    gap: 0.25rem;
+  }
+
+  .detail-badge {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+
+    i {
+      font-size: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-badge {
+    font-size: 0.55rem;
+    padding: 0.1rem 0.25rem;
+    gap: 0.15rem;
+
+    // Hide some less important badges on very small screens
+    &.core,
+    &.mod {
+      display: none;
+    }
+  }
+}

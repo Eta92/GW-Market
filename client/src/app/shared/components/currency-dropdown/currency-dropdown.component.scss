@@ -1,0 +1,98 @@
+@import '../../styles/variables';
+
+.currency-dropdown {
+  position: relative;
+}
+
+.currency-selected {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 46px;
+  padding: 0 $spacing-md;
+  background: rgba($obsidian, 0.6);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: $radius-md;
+  color: $parchment;
+  cursor: pointer;
+  transition: all $transition-base;
+  width: 100%;
+
+  &:hover {
+    border-color: rgba($gold, 0.4);
+    background: rgba($obsidian, 0.8);
+  }
+
+  .currency-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .currency-name {
+    flex: 1;
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  i {
+    font-size: 0.75rem;
+    color: rgba($parchment, 0.5);
+    transition: transform $transition-base;
+  }
+}
+
+.currency-dropdown.open {
+  .currency-selected {
+    border-color: $gold;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    i {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.currency-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba($obsidian, 0.95);
+  border: 1px solid $gold;
+  border-top: none;
+  border-radius: 0 0 $radius-md $radius-md;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.currency-option {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: $parchment;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    font-size: 0.875rem;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.1);
+  }
+
+  &.selected {
+    background: rgba($gold, 0.2);
+    color: $gold-light;
+  }
+}

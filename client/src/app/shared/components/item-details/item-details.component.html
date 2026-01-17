@@ -1,0 +1,39 @@
+<div class="item-details" *ngIf="hasDetails">
+  <!-- Weapon Details -->
+  <ng-container *ngIf="isWeapon(details) && shopItem?.weaponDetails as wd">
+    <span class="detail-badge req" *ngIf="wd.requirement">
+      <i class="fa fa-shield-alt"></i>
+      Req.{{ wd.requirement }}
+      <span class="attr" *ngIf="wd.attribute">{{ wd.attribute }}</span>
+    </span>
+    <span class="detail-badge os" *ngIf="wd.oldschool">
+      <i class="fa fa-scroll"></i> OS
+    </span>
+    <span class="detail-badge insc" *ngIf="wd.inscription">
+      <i class="fa fa-pen-fancy"></i> Insc.
+    </span>
+    <span class="detail-badge core" *ngIf="wd.core">
+      {{ wd.core }}
+    </span>
+    <span class="detail-badge mod prefix" *ngIf="wd.prefix">
+      {{ wd.prefix }}
+    </span>
+    <span class="detail-badge mod suffix" *ngIf="wd.suffix">
+      {{ wd.suffix }}
+    </span>
+  </ng-container>
+
+  <!-- Miniature Details -->
+  <span class="detail-badge mini" *ngIf="isMiniature(details)"
+        [class.dedicated]="shopItem?.orderDetails?.dedicated"
+        [class.undedicated]="!shopItem?.orderDetails?.dedicated">
+    <i class="fa" [class.fa-star]="shopItem?.orderDetails?.dedicated"
+                  [class.fa-star-half-alt]="!shopItem?.orderDetails?.dedicated"></i>
+    {{ shopItem?.orderDetails?.dedicated ? 'Dedicated' : 'Undedicated' }}
+  </span>
+
+  <!-- Pre-Searing Flag -->
+  <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.pre">
+    <i class="fa fa-sun"></i> Pre-Searing
+  </span>
+</div>
