@@ -1,349 +1,288 @@
-<div
-  class="bg-rune relative z-50 flex h-screen w-screen flex-col overflow-y-auto px-4 py-2 md:h-fit md:w-[800px]"
-  (click)="$event.stopPropagation()"
->
-  <app-select-item
-    class="!w-full"
-    [width]="760"
-    [height]="160"
-    [offsetY]="-48"
-    *ngIf="!maskSearch"
-    (selectItem)="onSelectItem($event)"
-  ></app-select-item>
-  <i class="fa fa-close absolute right-2 top-0 z-50 cursor-pointer text-2xl text-white" (click)="closeEdit.emit()"></i>
-  <div class="-mt-4 flex w-full">
-    <div class="hidden items-center p-2 md:flex">
-      <div class="bg-gradient my-4 h-24 w-24 rounded-full border-2 border-gwt-brown shadow-xl">
-        <img *ngIf="item" class="h-full w-full object-contain py-3 pl-3" [src]="getImageSource(item)" />
+<div class="order-modal font-fritz" (click)="$event.stopPropagation()">
+  <!-- Modal Header -->
+  <div class="modal-header">
+    <div class="header-left">
+      <div class="item-preview" [class.empty]="!item" [class.has-item]="item">
+        <img *ngIf="item" [src]="getImageSource(item)" [alt]="item?.name" />
+        <i *ngIf="!item" class="fa fa-cube"></i>
+      </div>
+      <div class="header-title">
+        <h2>{{ confirm || 'Place Order' }}</h2>
+        <div class="item-name" *ngIf="item">{{ item.name }}</div>
+        <div class="item-name empty" *ngIf="!item">Select an item below</div>
       </div>
     </div>
-    <div class="flex flex-col gap-2 p-4" [formGroup]="form">
-      <div class="flex flex-wrap gap-4 md:flex-nowrap">
-        <div class="flex flex-col gap-2">
-          <div class="font-semibold text-white">Order Type</div>
-          <div class="flex">
-            <button
-              class="h-12 w-32 text-gwt-brown"
-              [class.font-semibold]="form.get('orderType')?.value === OrderType.SELL"
-              [class.bg-gwt-light]="form.get('orderType')?.value === OrderType.SELL"
-              [class.bg-gwt-amber]="form.get('orderType')?.value !== OrderType.SELL"
-              [class.text-gwt-light]="form.get('orderType')?.value !== OrderType.SELL"
-              (click)="form.patchValue({ orderType: OrderType.SELL })"
-            >
-              <i
-                class="fa self-center text-sm text-white"
-                [ngClass]="{
-                  'fa-circle': form.get('orderType')?.value !== OrderType.SELL,
-                  'fa-circle-dot': form.get('orderType')?.value === OrderType.SELL
-                }"
-              ></i>
-              Want To Sell
-            </button>
-            <button
-              class="h-12 w-32 text-gwt-brown"
-              [class.font-semibold]="form.get('orderType')?.value === OrderType.BUY"
-              [class.bg-gwt-light]="form.get('orderType')?.value === OrderType.BUY"
-              [class.bg-gwt-amber]="form.get('orderType')?.value !== OrderType.BUY"
-              [class.text-gwt-light]="form.get('orderType')?.value !== OrderType.BUY"
-              (click)="form.patchValue({ orderType: OrderType.BUY })"
-            >
-              <i
-                class="fa self-center text-sm text-white"
-                [ngClass]="{
-                  'fa-circle': form.get('orderType')?.value !== OrderType.BUY,
-                  'fa-circle-dot': form.get('orderType')?.value === OrderType.BUY
-                }"
-              ></i>
-              Want To Buy
-            </button>
-          </div>
-        </div>
-        <div class="flex flex-col gap-2">
-          <div class="font-semibold text-white">Quantity</div>
-          <div class="flex">
-            <input
-              class="h-12 w-24 border-none bg-gwt-light p-4 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
-              type="number"
-              formControlName="quantity"
-              min="1"
-            />
-          </div>
-        </div>
-        <div class="flex flex-col gap-2">
-          <div class="font-semibold text-white">Visibility</div>
-          <div class="flex">
-            <button
-              class="h-12 w-32 text-gwt-brown"
-              [class.font-semibold]="!form.get('hidden')?.value"
-              [class.bg-gwt-light]="!form.get('hidden')?.value"
-              [class.bg-gwt-amber]="form.get('hidden')?.value"
-              [class.text-gwt-light]="form.get('hidden')?.value"
-              (click)="form.patchValue({ hidden: false })"
-            >
-              <i
-                class="fa self-center text-sm text-white"
-                [ngClass]="{
-                  'fa-circle': form.get('hidden')?.value,
-                  'fa-circle-dot': !form.get('hidden')?.value
-                }"
-              ></i>
-              Visible
-            </button>
-            <button
-              class="h-12 w-32 text-gwt-brown"
-              [class.font-semibold]="form.get('hidden')?.value"
-              [class.bg-gwt-light]="form.get('hidden')?.value"
-              [class.bg-gwt-amber]="!form.get('hidden')?.value"
-              [class.text-gwt-light]="!form.get('hidden')?.value"
-              (click)="form.patchValue({ hidden: true })"
-            >
-              <i
-                class="fa self-center text-sm text-white"
-                [ngClass]="{
-                  'fa-circle': !form.get('hidden')?.value,
-                  'fa-circle-dot': form.get('hidden')?.value
-                }"
-              ></i>
-              Hidden
-            </button>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="isWeapon && formWeapon" class="flex flex-col gap-2" [formGroup]="formWeapon">
-        <div class="flex flex-wrap gap-4 md:flex-nowrap">
-          <div class="flex flex-col gap-2">
-            <div class="font-semibold text-white">Attribute</div>
-            <select
-              class="h-12 w-64 border-none bg-gwt-light px-3 !text-xl text-gwt-brown outline-none"
-              formControlName="attribute"
-            >
-              <option ngDisabled [ngValue]="'any'">Any/Default</option>
-              <option *ngFor="let req of attributes" [ngValue]="req">{{ req }}</option>
-            </select>
-          </div>
-          <div class="flex flex-col gap-2">
-            <div class="font-semibold text-white">Req.</div>
-            <input
-              class="h-12 w-24 border-none bg-gwt-light p-4 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
-              type="number"
-              formControlName="requirement"
-              min="0"
-              max="13"
-            />
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-4 md:flex-nowrap">
-          <div class="flex flex-col gap-2">
-            <div class="font-semibold text-white">Core</div>
-            <select
-              class="h-12 w-[368px] border-none bg-gwt-light px-3 !text-xl text-gwt-brown outline-none"
-              formControlName="core"
-            >
-              <option ngDisabled [ngValue]="null">None</option>
-              <option *ngFor="let core of weaponLists.core" [ngValue]="core">{{ core }}</option>
-            </select>
-          </div>
-          <div class="flex flex-col gap-2">
-            <div class="font-semibold text-white">Inscriptible Item</div>
-            <div class="flex">
-              <button
-                class="h-12 w-32 text-gwt-brown"
-                [class.font-semibold]="formWeapon.get('inscription')?.value"
-                [class.bg-gwt-light]="formWeapon.get('inscription')?.value"
-                [class.bg-gwt-amber]="!formWeapon.get('inscription')?.value"
-                [class.text-gwt-light]="!formWeapon.get('inscription')?.value"
-                (click)="formWeapon.patchValue({ inscription: true })"
-              >
-                <i
-                  class="fa self-center text-sm text-white"
-                  [ngClass]="{
-                    'fa-circle': !formWeapon.get('inscription')?.value,
-                    'fa-circle-dot': formWeapon.get('inscription')?.value
-                  }"
-                ></i>
-                Inscription
-              </button>
-              <button
-                class="h-12 w-32 text-gwt-brown"
-                [class.font-semibold]="!formWeapon.get('inscription')?.value"
-                [class.bg-gwt-light]="!formWeapon.get('inscription')?.value"
-                [class.bg-gwt-amber]="formWeapon.get('inscription')?.value"
-                [class.text-gwt-light]="formWeapon.get('inscription')?.value"
-                (click)="formWeapon.patchValue({ inscription: false })"
-              >
-                <i
-                  class="fa self-center text-sm text-white"
-                  [ngClass]="{
-                    'fa-circle': formWeapon.get('inscription')?.value,
-                    'fa-circle-dot': !formWeapon.get('inscription')?.value
-                  }"
-                ></i>
-                Classic
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-4 md:flex-nowrap">
-          <div class="flex flex-col gap-2">
-            <div class="font-semibold text-white">Prefix</div>
-            <select
-              class="h-12 w-64 border-none bg-gwt-light px-3 !text-xl text-gwt-brown outline-none"
-              formControlName="prefix"
-            >
-              <option ngDisabled [ngValue]="null">None</option>
-              <option *ngFor="let prefix of weaponLists.prefix" [ngValue]="prefix">{{ prefix }}</option>
-            </select>
-          </div>
-          <div class="flex flex-col gap-2">
-            <div class="font-semibold text-white">Suffix</div>
-            <select
-              class="h-12 w-[368px] border-none bg-gwt-light px-3 !text-xl text-gwt-brown outline-none"
-              formControlName="suffix"
-            >
-              <option ngDisabled [ngValue]="null">None</option>
-              <option *ngFor="let suffix of weaponLists.suffix" [ngValue]="suffix">{{ suffix }}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="isMiniature">
-        <div class="flex w-full flex-col gap-2">
-          <div class="font-semibold text-white">Dedication</div>
-          <app-custom-toggle
-            [form]="formOther"
-            field="dedicated"
-            labelTrue="Dedicated"
-            labelFalse="Undedicated"
-            size="w-64"
-          ></app-custom-toggle>
-        </div>
-      </div>
-      <div class="flex gap-4">
-        <div class="flex w-full flex-col gap-2">
-          <div class="font-semibold text-white">Description</div>
-          <textarea
-            class="h-12 w-full border-none bg-gwt-light p-2 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
-            placeholder="Optional"
-            formControlName="description"
-          ></textarea>
-        </div>
-        <div class="flex w-[52px] flex-col gap-2">
-          <div class="font-semibold text-white">Adv.</div>
-          <i
-            class="fa fa-gear cursor-pointer py-2 text-3xl text-white hover:text-gwt-light"
-            title="Advanced order options"
-            (click)="isAdvanced = !isAdvanced"
-          ></i>
-        </div>
-      </div>
-      <div *ngIf="isAdvanced" class="flex gap-4">
-        <div class="flex flex-col gap-2">
-          <div class="font-semibold text-white">Pre-Searing</div>
-          <app-custom-toggle
-            [form]="formOther"
-            field="pre"
-            labelTrue="Old-Ascalon"
-            labelFalse="Normal"
-            size="w-64"
-          ></app-custom-toggle>
-        </div>
+    <button class="close-btn" (click)="closeEdit.emit()" title="Close">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
 
-        <div class="flex flex-col gap-2">
-          <div class="font-semibold text-white">Legacy Item</div>
-          <div class="flex">
-            <button
-              class="h-12 w-32 text-gwt-brown"
-              [class.font-semibold]="!formWeapon.get('oldschool')?.value"
-              [class.bg-gwt-light]="!formWeapon.get('oldschool')?.value"
-              [class.bg-gwt-amber]="formWeapon.get('oldschool')?.value"
-              [class.text-gwt-light]="formWeapon.get('oldschool')?.value"
-              (click)="formWeapon.patchValue({ oldschool: false })"
-            >
-              <i
-                class="fa self-center text-sm text-white"
-                [ngClass]="{
-                  'fa-circle': formWeapon.get('oldschool')?.value,
-                  'fa-circle-dot': !formWeapon.get('oldschool')?.value
-                }"
-              ></i>
-              Modern
-            </button>
-            <button
-              class="h-12 w-32 text-gwt-brown"
-              [class.font-semibold]="formWeapon.get('oldschool')?.value"
-              [class.bg-gwt-light]="formWeapon.get('oldschool')?.value"
-              [class.bg-gwt-amber]="!formWeapon.get('oldschool')?.value"
-              [class.text-gwt-light]="!formWeapon.get('oldschool')?.value"
-              (click)="formWeapon.patchValue({ oldschool: true })"
-            >
-              <i
-                class="fa self-center text-sm text-white"
-                [ngClass]="{
-                  'fa-circle': !formWeapon.get('oldschool')?.value,
-                  'fa-circle-dot': formWeapon.get('oldschool')?.value
-                }"
-              ></i>
-              Old School
-            </button>
+  <!-- Search Section -->
+  <div class="search-section" *ngIf="!maskSearch">
+    <app-select-item
+      [width]="800"
+      [height]="160"
+      [offsetY]="-48"
+      (selectItem)="onSelectItem($event)"
+    ></app-select-item>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal-body" [formGroup]="form">
+    <!-- Order Type Selection - Card Style -->
+    <div class="order-type-section">
+      <div class="section-label">What do you want to do?</div>
+      <div class="order-type-cards">
+        <button
+          class="order-type-card sell"
+          [class.active]="form.get('orderType')?.value === OrderType.SELL"
+          (click)="form.patchValue({ orderType: OrderType.SELL })"
+        >
+          <div class="card-icon">
+            <i class="fa fa-arrow-up"></i>
           </div>
-        </div>
-      </div>
-      <div class="flex flex-col gap-2">
-        <div class="flex gap-4 font-semibold text-white">
-          <div class="w-52">Currency</div>
-          <div class="w-20 md:w-36">Price per unit</div>
-          <div class="w-20 md:w-40">Price for bundle</div>
-        </div>
-        <div class="flex flex-col gap-2" formArrayName="prices">
-          <div
-            class="flex items-center gap-4"
-            *ngFor="let price of getprices().controls; let i = index"
-            [formGroupName]="i"
-          >
-            <select
-              class="h-12 w-52 border-none bg-gwt-light px-3 !text-xl text-gwt-brown outline-none"
-              formControlName="type"
-            >
-              <option [ngValue]="Price.PLAT">Platinum</option>
-              <option [ngValue]="Price.ECTO">Ectoplasm</option>
-              <option [ngValue]="Price.ZKEY">Zaishen Key</option>
-              <option [ngValue]="Price.ARM">Ambrace</option>
-            </select>
-            <input
-              class="h-12 w-20 border-none bg-gwt-light p-4 !text-xl text-gwt-brown placeholder-gwt-amber outline-none md:w-36"
-              type="number"
-              formControlName="unit"
-              min="0"
-            />
-            <input
-              class="h-12 w-20 border-none bg-gwt-light p-4 !text-xl text-gwt-brown placeholder-gwt-amber outline-none md:w-48"
-              type="number"
-              formControlName="price"
-              min="0"
-            />
-            <button
-              class="h-12 w-12 bg-gwt-brown text-white"
-              (click)="removePrice(i)"
-              *ngIf="getprices().controls.length > 1"
-            >
-              <i class="fa fa-trash"></i>
-            </button>
+          <div class="card-content">
+            <span class="card-title">Sell Item</span>
+            <span class="card-desc">List an item for sale</span>
           </div>
-        </div>
-      </div>
-      <div class="relative flex justify-between">
-        <button class="h-12 w-52 bg-gwt-amber p-2 text-white" (click)="addPrice()">Add Another Currency</button>
-        <button class="bg-button action mt-8 h-16 w-40 font-semibold text-white" (click)="validateOrder()">
-          {{ confirm }}
+          <div class="card-check">
+            <i class="fa" [class.fa-circle]="form.get('orderType')?.value !== OrderType.SELL" [class.fa-check-circle]="form.get('orderType')?.value === OrderType.SELL"></i>
+          </div>
         </button>
         <button
-          class="bg-button action absolute bottom-0 right-44 h-8 w-24 font-semibold text-white"
-          (click)="closeEdit.emit()"
+          class="order-type-card buy"
+          [class.active]="form.get('orderType')?.value === OrderType.BUY"
+          (click)="form.patchValue({ orderType: OrderType.BUY })"
         >
-          Cancel
+          <div class="card-icon">
+            <i class="fa fa-arrow-down"></i>
+          </div>
+          <div class="card-content">
+            <span class="card-title">Buy Item</span>
+            <span class="card-desc">Post a buy request</span>
+          </div>
+          <div class="card-check">
+            <i class="fa" [class.fa-circle]="form.get('orderType')?.value !== OrderType.BUY" [class.fa-check-circle]="form.get('orderType')?.value === OrderType.BUY"></i>
+          </div>
         </button>
       </div>
-      <div class="h-80 w-full md:h-0"></div>
     </div>
+
+    <!-- Quantity & Visibility Row -->
+    <div class="details-row">
+      <div class="form-group quantity-group">
+        <label>Quantity</label>
+        <app-qty-input
+          formControlName="quantity"
+          [min]="1"
+          [max]="9999"
+        ></app-qty-input>
+      </div>
+
+      <div class="form-group visibility-group">
+        <label>Visibility</label>
+        <app-toggle-group
+          [options]="visibilityOptions"
+          [value]="form.get('hidden')?.value"
+          (valueChange)="form.patchValue({ hidden: $event })"
+        ></app-toggle-group>
+      </div>
+    </div>
+
+    <!-- Weapon Details (conditional) -->
+    <div class="weapon-section" *ngIf="isWeapon && formWeapon" [formGroup]="formWeapon">
+      <div class="weapon-header">
+        <i class="fa fa-shield-halved"></i>
+        <span>Weapon Specifications</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="flex: 2;">
+          <label>Attribute</label>
+          <select class="form-select" formControlName="attribute">
+            <option [ngValue]="'any'">Any / Default</option>
+            <option *ngFor="let attr of attributes" [ngValue]="attr">{{ attr }}</option>
+          </select>
+        </div>
+        <div class="form-group" style="flex: 1;">
+          <label>Requirement</label>
+          <input
+            type="number"
+            class="form-input"
+            formControlName="requirement"
+            min="0"
+            max="13"
+          />
+        </div>
+        <div class="form-group" style="flex: 2;">
+          <label>Legacy</label>
+          <app-toggle-group
+            [options]="[{value: false, label: 'Modern'}, {value: true, label: 'Old School'}]"
+            [value]="formWeapon.get('oldschool')?.value"
+            (valueChange)="formWeapon.patchValue({ oldschool: $event })"
+          ></app-toggle-group>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="flex: 2;">
+          <label>Core Modification</label>
+          <select class="form-select" formControlName="core">
+            <option [ngValue]="null">None</option>
+            <option *ngFor="let core of weaponLists.core" [ngValue]="core">{{ core }}</option>
+          </select>
+        </div>
+        <div class="form-group" style="flex: 2;">
+          <label>Inscription</label>
+          <app-toggle-group
+            [options]="[{value: true, label: 'Inscribable', icon: 'fa-scroll'}, {value: false, label: 'Classic'}]"
+            [value]="formWeapon.get('inscription')?.value"
+            (valueChange)="formWeapon.patchValue({ inscription: $event })"
+          ></app-toggle-group>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prefix</label>
+          <select class="form-select" formControlName="prefix">
+            <option [ngValue]="null">None</option>
+            <option *ngFor="let prefix of weaponLists.prefix" [ngValue]="prefix">{{ prefix }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Suffix</label>
+          <select class="form-select" formControlName="suffix">
+            <option [ngValue]="null">None</option>
+            <option *ngFor="let suffix of weaponLists.suffix" [ngValue]="suffix">{{ suffix }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Miniature Details (conditional) -->
+    <div class="miniature-section" *ngIf="isMiniature" [formGroup]="formOther">
+      <div class="weapon-header">
+        <i class="fa fa-star"></i>
+        <span>Miniature Details</span>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Dedication Status</label>
+          <app-toggle-group
+            [options]="[{value: false, label: 'Undedicated'}, {value: true, label: 'Dedicated'}]"
+            [value]="formOther.get('dedicated')?.value"
+            (valueChange)="formOther.patchValue({ dedicated: $event })"
+          ></app-toggle-group>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Settings -->
+    <div class="advanced-section" [formGroup]="formOther">
+      <div class="advanced-toggle" (click)="isAdvanced = !isAdvanced">
+        <i class="fa fa-gear"></i>
+        <span>Advanced Options</span>
+        <i class="fa" [class.fa-chevron-down]="!isAdvanced" [class.fa-chevron-up]="isAdvanced"></i>
+      </div>
+      <div class="advanced-content" *ngIf="isAdvanced">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Pre-Searing Item</label>
+            <app-toggle-group
+              [options]="[{value: false, label: 'Normal'}, {value: true, label: 'Pre-Searing'}]"
+              [value]="formOther.get('pre')?.value"
+              (valueChange)="formOther.patchValue({ pre: $event })"
+            ></app-toggle-group>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="pricing-section">
+      <div class="section-label">
+        <span>{{ form.get('orderType')?.value === OrderType.SELL ? 'Asking Price' : 'Willing to Pay' }}</span>
+      </div>
+      <div class="prices-container" formArrayName="prices">
+        <div
+          class="price-card"
+          *ngFor="let price of getprices().controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div class="price-field currency-field">
+            <label>Currency</label>
+            <app-currency-dropdown
+              [selectedCurrency]="price.get('type')?.value"
+              (currencyChange)="selectCurrency(i, $event)"
+            ></app-currency-dropdown>
+          </div>
+          <div class="price-inputs">
+            <div class="price-field">
+              <label>Per Unit</label>
+              <div class="input-with-icon">
+                <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
+                <input
+                  type="number"
+                  class="form-input price-input"
+                  formControlName="unit"
+                  min="0"
+                  placeholder="0"
+                />
+              </div>
+            </div>
+            <div class="price-field">
+              <label>Total</label>
+              <div class="input-with-icon">
+                <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
+                <input
+                  type="number"
+                  class="form-input price-input"
+                  formControlName="price"
+                  min="0"
+                  placeholder="0"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="remove-price-btn"
+            *ngIf="getprices().controls.length > 1"
+            (click)="removePrice(i)"
+            title="Remove"
+          >
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+        <button type="button" class="add-price-btn" (click)="addPrice()">
+          <i class="fa fa-plus"></i>
+          <span>Add Currency</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="description-section">
+      <div class="section-label">Additional Notes</div>
+      <textarea
+        class="form-textarea"
+        formControlName="description"
+        placeholder="Add any extra details about your order..."
+        rows="3"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button class="cancel-btn" (click)="closeEdit.emit()">
+      <i class="fa fa-times"></i>
+      Cancel
+    </button>
+    <button class="confirm-btn" [class.sell]="form.get('orderType')?.value === OrderType.SELL" [class.buy]="form.get('orderType')?.value === OrderType.BUY" (click)="validateOrder()">
+      <i class="fa" [class.fa-arrow-up]="form.get('orderType')?.value === OrderType.SELL" [class.fa-arrow-down]="form.get('orderType')?.value === OrderType.BUY"></i>
+      {{ confirm || 'Create Order' }}
+    </button>
   </div>
 </div>

@@ -1,0 +1,422 @@
+// ============================================
+// ABOUT PAGE - GUILD WARS AESTHETIC
+// ============================================
+
+$gold: #d4a855;
+$gold-bright: #f0c674;
+$gold-dim: #8b7355;
+$parchment: #e8dcc4;
+$obsidian: #121214;
+$slate: #1a1a1e;
+
+.about-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $obsidian;
+  color: $parchment;
+}
+
+// ============================================
+// PAGE TITLE SECTION
+// ============================================
+.page-title-section {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  padding: 48px 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba($gold, 0.15);
+}
+
+.page-title {
+  font-size: 42px;
+  font-weight: normal;
+  color: $parchment;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  text-align: center;
+}
+
+// ============================================
+// MAIN CONTENT
+// ============================================
+.page-content {
+  flex: 1;
+  padding: 40px 24px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+// ============================================
+// INFO CARDS
+// ============================================
+.info-card {
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 30, 0.95) 0%,
+    rgba(18, 18, 20, 0.98) 100%
+  );
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 300ms ease;
+
+  &:hover {
+    border-color: rgba($gold, 0.35);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba($gold, 0.05);
+  }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  background: rgba($gold, 0.08);
+  border-bottom: 1px solid rgba($gold, 0.15);
+
+  i {
+    color: $gold;
+    font-size: 20px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+    color: $gold-bright;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.card-body {
+  padding: 24px;
+
+  p {
+    margin: 0 0 12px;
+    line-height: 1.7;
+    color: rgba($parchment, 0.85);
+    font-size: 14px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ============================================
+// LINK BUTTONS
+// ============================================
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  margin-top: 8px;
+
+  i:last-child {
+    font-size: 11px;
+    opacity: 0.6;
+  }
+
+  &.discord {
+    background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+    color: white;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.github {
+    background: linear-gradient(135deg, #333 0%, #24292e 100%);
+    color: white;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.toolbox {
+    background: linear-gradient(135deg, $gold 0%, $gold-dim 100%);
+    color: $obsidian;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba($gold, 0.4);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ============================================
+// POLICY SECTION
+// ============================================
+.policy-text {
+  font-style: italic;
+}
+
+.policy-warning {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: rgba(#dc2626, 0.1);
+  border: 1px solid rgba(#dc2626, 0.3);
+  border-radius: 6px;
+  color: #fca5a5;
+  font-weight: 500;
+
+  i {
+    color: #f87171;
+    font-size: 18px;
+  }
+}
+
+// ============================================
+// PARTNERS SECTION
+// ============================================
+.partner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.partner-info {
+  h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: normal;
+    color: $parchment;
+  }
+
+  p {
+    margin: 0 !important;
+    font-size: 13px !important;
+    color: rgba($parchment, 0.6) !important;
+  }
+}
+
+// ============================================
+// ROADMAP SECTION
+// ============================================
+.roadmap {
+  .card-body {
+    padding-bottom: 20px;
+  }
+}
+
+.roadmap-intro {
+  color: rgba($parchment, 0.7) !important;
+  font-style: italic;
+}
+
+.roadmap-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 14px;
+    color: rgba($parchment, 0.85);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    i {
+      color: $gold-dim;
+      font-size: 8px;
+    }
+  }
+}
+
+// ============================================
+// FOOTER
+// ============================================
+.page-footer {
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid rgba($gold, 0.15);
+  text-align: center;
+  font-size: 13px;
+  color: rgba($parchment, 0.5);
+
+  .separator {
+    margin: 0 12px;
+    color: rgba($parchment, 0.3);
+  }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 32px;
+  }
+
+  .page-title-section {
+    padding: 36px 20px;
+  }
+
+  .page-content {
+    padding: 32px 20px;
+  }
+
+  .back-btn {
+    position: static;
+    margin-bottom: 16px;
+  }
+
+  .header-overlay {
+    min-height: 180px;
+  }
+
+  .partner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .card-header h2 {
+    font-size: 16px;
+  }
+}
+
+// Extra small phones
+@media (max-width: 375px) {
+  .page-title-section {
+    padding: 28px 16px;
+  }
+
+  .page-title {
+    font-size: 26px;
+  }
+
+  .page-content {
+    padding: 24px 14px;
+  }
+
+  .content-grid {
+    gap: 18px;
+  }
+
+  .content-column {
+    gap: 18px;
+  }
+
+  .info-card {
+    border-radius: 6px;
+  }
+
+  .card-header {
+    padding: 14px 18px;
+    gap: 10px;
+
+    i {
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .card-body {
+    padding: 18px;
+
+    p {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+  }
+
+  .link-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .policy-warning {
+    padding: 12px 14px;
+    gap: 10px;
+    font-size: 13px;
+
+    i {
+      font-size: 16px;
+    }
+  }
+
+  .partner-info {
+    h3 {
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 12px !important;
+    }
+  }
+
+  .roadmap-list li {
+    padding: 8px 0;
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .page-footer {
+    padding: 16px 14px;
+    font-size: 12px;
+
+    .separator {
+      margin: 0 8px;
+    }
+  }
+}

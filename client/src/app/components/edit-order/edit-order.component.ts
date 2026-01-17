@@ -15,63 +15,10 @@ import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
+import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
+import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-
-const attributes = [
-  // Warrior
-  'Strength',
-  'Axe Mastery',
-  'Hammer Mastery',
-  'Swordsmanship',
-  'Tactics',
-  // Ranger
-  'Expertise',
-  'Beast Mastery',
-  'Marksmanship',
-  'Wilderness Survival',
-  // Monk
-  'Divine Favor',
-  'Healing Prayers',
-  'Protection Prayers',
-  'Smiting Prayers',
-  // Necromancer
-  'Soul Reaping',
-  'Blood Magic',
-  'Curses',
-  'Death Magic',
-  // Mesmer
-  'Fast Casting',
-  'Domination Magic',
-  'Illusion Magic',
-  'Inspiration Magic',
-  // Elementalist
-  'Energy Storage',
-  'Air Magic',
-  'Earth Magic',
-  'Fire Magic',
-  'Water Magic',
-  // Assassin
-  'Critical Strikes',
-  'Dagger Mastery',
-  'Deadly Arts',
-  'Shadow Arts',
-  // Ritualist
-  'Spawning power',
-  'Channeling Magic',
-  'Communing',
-  'Restoration Magic',
-  // Paragon
-  'Leadership',
-  'Command',
-  'Motivation',
-  'Spear Mastery',
-  // Dervish
-  'Mysticism',
-  'Earth Prayers',
-  'Scythe Mastery',
-  'Wind Prayers'
-];
 
 @Component({
   selector: 'app-edit-order',
@@ -100,12 +47,17 @@ export class EditOrderComponent implements OnInit, OnChanges {
   public isAdvanced = false;
   // weapons
   public isWeapon = false;
-  public attributes = attributes;
+  public attributes = WEAPON_ATTRIBUTES;
   public weaponLists: { core: Array<string>; prefix: Array<string>; suffix: Array<string> } = {
     core: [],
     prefix: [],
     suffix: []
   };
+
+  public visibilityOptions: ToggleOption[] = [
+    { value: false, label: 'Visible', icon: 'fa-eye' },
+    { value: true, label: 'Hidden', icon: 'fa-eye-slash' }
+  ];
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -189,15 +141,24 @@ export class EditOrderComponent implements OnInit, OnChanges {
   onSelectItem(item: Item): void {
     this.item = item;
     this.form.patchValue({ name: item.name });
+    // Reset flags for new item
+    this.isWeapon = false;
+    this.isMiniature = false;
+    // Set weapon flag if applicable
     if (WeaponHelper.isWeapon(item)) {
       this.isWeapon = true;
       this.weaponLists = WeaponHelper.getItemList(item, this.allItems);
     }
+    // Set miniature flag if applicable
     this.isMiniature = WeaponHelper.isMiniature(item);
   }
 
   getImageSource(item: Item): string {
     return UtilityHelper.getImage(item);
+  }
+
+  selectCurrency(index: number, currency: Price): void {
+    this.getprices().at(index).patchValue({ type: currency });
   }
 
   getprices(): UntypedFormArray {
@@ -214,6 +175,18 @@ export class EditOrderComponent implements OnInit, OnChanges {
   removePrice(index: number): void {
     this.getprices().removeAt(index);
     this.refreshBindPrices();
+  }
+
+  incrementQty(): void {
+    const current = this.form.get('quantity')?.value || 1;
+    this.form.patchValue({ quantity: current + 1 });
+  }
+
+  decrementQty(): void {
+    const current = this.form.get('quantity')?.value || 1;
+    if (current > 1) {
+      this.form.patchValue({ quantity: current - 1 });
+    }
   }
 
   refreshBindPrices(): void {

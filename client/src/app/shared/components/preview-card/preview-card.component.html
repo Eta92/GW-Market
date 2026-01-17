@@ -1,0 +1,16 @@
+<div
+  class="item-card frame"
+  [class.single-item]="isSingleImage"
+  (click)="onClick()"
+>
+  <ng-container *ngIf="!isSingleImage">
+    <div class="card-images grid-2x2">
+      <img *ngFor="let preview of displayPreviews" [src]="preview" [alt]="label" />
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isSingleImage">
+    <img class="single-image" [src]="previews?.[0]" [alt]="label" />
+  </ng-container>
+  <div class="card-label" [class.small]="smallLabel">{{ label }}</div>
+  <app-stats-display [mode]="statsMode" [stats]="stats"></app-stats-display>
+</div>

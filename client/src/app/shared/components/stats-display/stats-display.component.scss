@@ -1,0 +1,108 @@
+@import '../../styles/variables';
+
+:host {
+  display: contents;
+}
+
+.card-stats,
+.explorer-stats {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  font-size: 12px;
+  margin-top: auto;
+}
+
+.explorer-stats {
+  gap: 8px;
+  margin-left: 8px;
+  margin-top: 0;
+}
+
+.stat-sell,
+.stat-buy {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba($parchment, 0.7);
+
+  i {
+    font-size: 10px;
+  }
+}
+
+.stat-sell i {
+  color: $sell-color;
+}
+
+.stat-buy i {
+  color: #fb923c;
+}
+
+// Combined mode - color arrows by time category
+.stat-sell.online i,
+.stat-buy.online i {
+  color: $sell-color;  // green for live
+}
+
+.stat-sell.today i,
+.stat-buy.today i {
+  color: #fbbf24;  // yellow for today
+}
+
+.stat-sell.week i,
+.stat-buy.week i {
+  color: #60a5fa;  // blue for week
+}
+
+// Combined stats layout for cards
+.card-stats.combined {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 4px 12px;
+  font-size: 11px;
+
+  .stat-sell,
+  .stat-buy {
+    gap: 2px;
+  }
+}
+
+// Combined stats layout for explorer list
+.explorer-stats.combined {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 2px 10px;
+  font-size: 11px;
+
+  .stat-sell,
+  .stat-buy {
+    min-width: 35px;
+    gap: 2px;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .explorer-stats {
+    gap: 10px;
+    font-size: 11px;
+
+    .stat-sell,
+    .stat-buy {
+      min-width: 40px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .card-stats {
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  .explorer-stats {
+    gap: 6px;
+    font-size: 10px;
+  }
+}

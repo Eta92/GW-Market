@@ -1,11 +1,130 @@
-.section-transition {
-  -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
-    url(../../../../../assets/img/transition.webp);
-  mask-image: linear-gradient(to bottom, black, black calc(100% - 162px), transparent calc(100% - 160px)),
-    url(../../../../../assets/img/transition.webp);
-  -webkit-mask-position: center, bottom;
-  mask-position: center, bottom;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  margin-bottom: calc(-120px);
+// Design System Variables
+$gold: #d4a855;
+$gold-bright: #f0c674;
+$parchment: #e8dcc4;
+
+.site-footer {
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba($gold, 0.2);
+  padding: 12px 24px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: rgba($parchment, 0.6);
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.copyright {
+  color: $parchment;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.separator {
+  color: rgba($parchment, 0.3);
+  font-size: 10px;
+}
+
+.footer-link {
+  color: $gold;
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 150ms ease;
+
+  &:hover {
+    color: $gold-bright;
+    text-decoration: underline;
+  }
+}
+
+.legal {
+  color: rgba($parchment, 0.5);
+  font-size: 11px;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.footer-right {
+  display: flex;
+  gap: 16px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: 6px;
+  color: $gold;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 200ms ease;
+
+  &:hover {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+    color: $gold-bright;
+    transform: translateY(-2px);
+  }
+}
+
+// Extra small phones
+@media (max-width: 375px) {
+  .site-footer {
+    padding: 10px 14px;
+  }
+
+  .footer-content {
+    gap: 0.75rem;
+  }
+
+  .footer-left {
+    font-size: 11px;
+    gap: 8px;
+  }
+
+  .copyright {
+    font-size: 11px;
+  }
+
+  .footer-link {
+    font-size: 11px;
+  }
+
+  .footer-right {
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
 }

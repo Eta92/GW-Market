@@ -2,6 +2,16 @@
   "player": "Nice Kikono",
   "items": [
     {
+      "name": "Gift of the Traveler",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [
+        { "type": 1, "price": 50, "unit": 2.5 }
+      ],
+      "quantity": 20,
+      "description": "WTB Ecto only"
+    },
+    {
       "name": "Strength and Honor",
       "orderType": 0,
       "hidden": false,
@@ -527,7 +537,26 @@
       "hidden": false,
       "prices": [{ "type": 1, "price": 3, "unit": 3 }],
       "quantity": 1,
-      "description": "unded"
+      "description": "unded",
+      "orderDetails": { "dedicated": false, "pre": false }
+    },
+    {
+      "name": "Miniature Gwen",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 10, "unit": 10 }],
+      "quantity": 1,
+      "description": "ded",
+      "orderDetails": { "dedicated": true, "pre": false }
+    },
+    {
+      "name": "Charr Bag",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 50, "unit": 50 }],
+      "quantity": 1,
+      "description": "Pre item!",
+      "orderDetails": { "dedicated": false, "pre": true }
     },
     {
       "name": "Book of Secrets",

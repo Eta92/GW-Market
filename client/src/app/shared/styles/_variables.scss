@@ -1,0 +1,93 @@
+// ============================================
+// GW MARKET - SHARED DESIGN SYSTEM VARIABLES
+// ============================================
+
+// Primary Gold Palette
+$gold: #d4a853;
+$gold-light: #e8c778;
+$gold-bright: #f0c674;
+$gold-dark: #b8923f;
+$gold-dim: #8b7355;
+
+// Parchment/Background Tones
+$parchment: #f4e8c1;
+$parchment-dark: #d4c8a1;
+$parchment-muted: #e8dcc4;
+
+// Dark/Obsidian Palette
+$obsidian: #1a1410;
+$obsidian-light: #2a241f;
+$charcoal: #3a3430;
+
+// Sepia Accent
+$sepia: #8b7355;
+$sepia-light: #a08060;
+
+// Semantic Colors - Actions
+$sell-color: #22c55e;
+$sell-dark: #166534;
+$buy-color: #f97316;
+$buy-dark: #9a3412;
+$danger-color: #e74c3c;
+$danger-dark: #c0392b;
+$warning-color: #f39c12;
+$warning-dark: #d68910;
+
+// Status Colors
+$live-color: #22c55e;
+$offline-color: #95a5a6;
+$hidden-color: #7f8c8d;
+
+// ============================================
+// SPACING
+// ============================================
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+
+// ============================================
+// BORDER RADIUS
+// ============================================
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-round: 50%;
+
+// ============================================
+// TRANSITIONS
+// ============================================
+$transition-fast: 0.15s ease;
+$transition-base: 0.2s ease;
+$transition-slow: 0.3s ease;
+
+// ============================================
+// Z-INDEX LAYERS
+// ============================================
+$z-dropdown: 100;
+$z-sticky: 200;
+$z-fixed: 300;
+$z-modal-backdrop: 400;
+$z-modal: 500;
+$z-tooltip: 600;
+
+// ============================================
+// SHADOWS
+// ============================================
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+$shadow-gold: 0 0 20px rgba($gold, 0.15);
+$shadow-gold-lg: 0 0 40px rgba($gold, 0.2);
+
+// ============================================
+// BREAKPOINTS
+// ============================================
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;

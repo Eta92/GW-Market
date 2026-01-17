@@ -1,0 +1,84 @@
+<!-- Hero Mode: Full background with overlay -->
+<header *ngIf="hero" class="hero-header bg-main bg-base">
+  <div class="header-overlay">
+    <div class="header-top">
+      <a class="logo-link" (click)="goToHome()">
+        <img class="logo" src="/assets/img/trading.svg" alt="GW Market" />
+      </a>
+
+      <div class="search-wrapper" *ngIf="showSearch">
+        <app-select-item (selectItem)="onSelectItem($event)"></app-select-item>
+      </div>
+
+      <div class="header-actions">
+        <button class="nav-btn place-order-btn" (click)="onPlaceOrder()">
+          <i class="fa fa-plus"></i>
+          <span>Place Order</span>
+        </button>
+        <button class="nav-btn" (click)="goToShop()">
+          <i class="fa fa-store"></i>
+          <span>My Shop</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Features Row -->
+    <div class="features-row" *ngIf="showFeatures">
+      <div class="feature">
+        <i class="fa fa-users"></i>
+        <span>Player to player economy</span>
+      </div>
+      <div class="feature">
+        <i class="fa fa-bolt"></i>
+        <span>Buy stuff instantly</span>
+      </div>
+      <div class="feature">
+        <i class="fa fa-store"></i>
+        <span>Set up your personal shop</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Standard Mode: Simple dark header -->
+<header *ngIf="!hero" class="site-header" [class.compact]="compact">
+  <div class="header-content">
+    <!-- Logo -->
+    <a class="logo-link" (click)="goToHome()">
+      <img class="logo" src="/assets/img/trading.svg" alt="GW Market" />
+    </a>
+
+    <!-- Search -->
+    <div class="search-wrapper" *ngIf="showSearch">
+      <app-select-item (selectItem)="onSelectItem($event)"></app-select-item>
+    </div>
+
+    <!-- Actions -->
+    <div class="header-actions">
+      <button class="nav-btn place-order-btn" (click)="onPlaceOrder()">
+        <i class="fa fa-plus"></i>
+        <span>Place Order</span>
+      </button>
+      <button class="nav-btn" (click)="goToShop()">
+        <i class="fa fa-store"></i>
+        <span>My Shop</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Features Row (optional) -->
+  <div class="features-row" *ngIf="showFeatures">
+    <div class="feature">
+      <i class="fa fa-users"></i>
+      <span>Player to player economy</span>
+    </div>
+    <div class="feature">
+      <i class="fa fa-bolt"></i>
+      <span>Buy stuff instantly</span>
+    </div>
+    <div class="feature">
+      <i class="fa fa-store"></i>
+      <span>Set up your personal shop</span>
+    </div>
+  </div>
+</header>

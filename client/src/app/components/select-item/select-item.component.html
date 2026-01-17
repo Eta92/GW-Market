@@ -1,46 +1,45 @@
-<div class="text-ems-blue noselect2 relative flex font-normal" #main>
-  <div
-    class="bg-frame-clean z-20 flex justify-center gap-8 bg-cover p-8 text-xl uppercase"
-    [ngStyle]="{ width: width + 'px', height: height + 'px' }"
-  >
-    <div class="typing flex h-fit w-full p-3.5" (click)="inputClick()" (click)="$event.stopPropagation()">
-      <input
-        #search
-        class="h-12 w-full border-none bg-transparent p-4 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
-        type="text"
-        [formControl]="searchControl"
-        placeholder="Search..."
-        (keydown)="manualTargeting($event)"
-      />
-      <i class="fa fa-search mx-4 self-center text-2xl text-gwt-brown"></i>
-    </div>
-    <!-- <div class="call-to action bg-button">Search for items</div>
-        <div class="call-to action bg-button">Build my shop</div>
-        <div class="call-to action bg-button">Explore categories</div> -->
+<div class="search-container relative" #main>
+  <!-- Search Input -->
+  <div class="search-input-wrapper">
+    <i class="fa fa-search search-icon"></i>
+    <input
+      #search
+      class="search-input"
+      type="text"
+      [formControl]="searchControl"
+      placeholder="Search items..."
+      (keydown)="manualTargeting($event)"
+      (click)="inputClick(); $event.stopPropagation()"
+    />
+    <span *ngIf="searchControl.value" class="search-hint">
+      Press Enter to search
+    </span>
   </div>
+
+  <!-- Dropdown Results - Positioned relative to container -->
   <div
     *ngIf="searchedItems.length > 0 && searchOpen"
-    class="fixed z-50 ml-8 flex flex-col border border-gwt-brown bg-gwt-light"
-    [ngStyle]="{
-      top: position.top + (position.offset || 0) + (offsetY || 0) + 'px',
-      left: position.left + 'px',
-      height: position.height + 'px',
-      width: inputSize + 'px'
-    }"
+    class="search-dropdown"
   >
     <div
-      class="full flex h-12 justify-between px-4 text-left text-gwt-brown transition-all hover:cursor-pointer hover:bg-gwt-back hover:text-gwt-amber"
-      [ngClass]="{ 'bg-gwt-back text-gwt-amber': manualTarget === i + 1 }"
-      [title]="item.name"
-      (click)="onClick(item)"
+      class="search-result"
+      [class.highlighted]="manualTarget === i + 1"
       *ngFor="let item of searchedItems; let i = index"
+      (click)="onClick(item)"
     >
-      <div class="overflow-hidden text-ellipsis whitespace-nowrap p-3">
-        <b>{{ item.name.substring(0, item.match) }}</b
-        >{{ item.name.substring(item.match) }}
+      <div class="result-info">
+        <span class="result-name">
+          <b>{{ item.name.substring(0, item.match) }}</b>{{ item.name.substring(item.match) }}
+        </span>
       </div>
-      <img class="h-12 w-12 object-contain p-2" [src]="getImageSource(item)" />
+      <img class="result-image" [src]="getImageSource(item)" [alt]="item.name" />
     </div>
   </div>
 </div>
-<div *ngIf="searchOpen" class="fixed left-0 top-0 z-10 h-screen w-screen" (click)="close()" (scroll)="close()"></div>
+
+<!-- Backdrop to close dropdown -->
+<div
+  *ngIf="searchOpen"
+  class="search-backdrop"
+  (click)="close()"
+></div>

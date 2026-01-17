@@ -1,77 +1,113 @@
-<div
-  class="bg-rune relative z-50 flex h-screen w-screen flex-col overflow-y-auto px-2 py-2 md:h-fit md:w-[425px]"
-  (click)="$event.stopPropagation()"
->
-  <i class="fa fa-close absolute right-2 top-0 z-50 cursor-pointer text-2xl text-white" (click)="closeEdit.emit()"></i>
-  <div class="-mt-4 flex w-full">
-    <div class="flex w-full flex-col gap-2 p-4" [formGroup]="form">
-      <div class="flex flex-col gap-2">
-        <div class="font-semibold text-white">Active player name</div>
+<div class="player-modal font-fritz" (click)="$event.stopPropagation()">
+  <!-- Modal Header -->
+  <div class="modal-header">
+    <div class="header-content">
+      <div class="header-icon">
+        <i class="fa fa-user-shield"></i>
+      </div>
+      <div class="header-title">
+        <h2>Change Player</h2>
+        <span class="header-subtitle">Set your active trading character</span>
+      </div>
+    </div>
+    <button class="close-btn" (click)="closeEdit.emit()" title="Close">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal-body" [formGroup]="form">
+    <!-- Player Name Input -->
+    <div class="form-section">
+      <label class="section-label">Active Player Name</label>
+      <div class="input-wrapper">
+        <i class="fa fa-user input-icon"></i>
         <input
           type="text"
-          class="h-12 w-full border-none bg-gwt-light p-2 !text-xl text-gwt-brown placeholder-gwt-amber outline-none"
-          placeholder="in-game character name"
+          class="form-input"
+          placeholder="Enter your in-game character name"
           formControlName="name"
         />
-        <span class="text-sm italic text-white">To get the certified badge you need to certify your character(s)</span>
-        <!--span class="text-sm italic text-white">Certification is in sleep mode, please come back tomorrow</span-->
       </div>
-      <button class="bg-button action mt-2 h-12 w-52 font-semibold text-white" (click)="addPlayer()">
-        Certify a new character
+      <p class="input-hint">
+        <i class="fa fa-info-circle"></i>
+        To get the certified badge, verify your character below
+      </p>
+    </div>
+
+    <!-- Certification Section -->
+    <div class="cert-section">
+      <div class="cert-header">
+        <i class="fa fa-certificate"></i>
+        <span>Character Certification</span>
+      </div>
+
+      <!-- Certify Button -->
+      <button class="cert-btn" (click)="addPlayer()">
+        <i class="fa fa-plus-circle"></i>
+        <span>Certify a New Character</span>
       </button>
-      <div class="flex flex-col gap-2" *ngIf="secret">
-        <div class="font-semibold text-white">Copy this message in game to be certified</div>
-        <div class="flex gap-2">
+
+      <!-- Secret Code Display -->
+      <div class="secret-display" *ngIf="secret">
+        <label class="secret-label">
+          <i class="fa fa-key"></i>
+          Copy this whisper command in-game to verify
+        </label>
+        <div class="secret-input-group">
           <input
             type="text"
-            class="h-8 w-full border-none bg-gwt-light p-2 text-gwt-brown placeholder-gwt-amber outline-none"
-            placeholder="in-game character name"
+            class="secret-input"
             [value]="secret"
             readonly
           />
-          <i
-            class="fa fa-copy cursor-pointer rounded-lg bg-gwt-brown px-2 py-0.5 text-lg text-white"
-            title="copy to clipboard"
-            (click)="copySecret()"
-          ></i>
-        </div>
-      </div>
-      <div class="flex flex-col gap-2">
-        <div class="font-semibold text-white">Certified character list</div>
-        <div *ngIf="!shop.certified?.length" class="text-sm italic text-white">
-          You do not have any certified character yet
-        </div>
-        <div class="flex w-full flex-wrap gap-6">
-          <button
-            *ngFor="let name of shop.certified"
-            class="h-12 w-44 text-gwt-brown"
-            [class.font-semibold]="form.get('name')?.value === name"
-            [class.bg-gwt-light]="form.get('name')?.value === name"
-            [class.bg-gwt-amber]="form.get('name')?.value !== name"
-            [class.text-gwt-light]="form.get('name')?.value !== name"
-            (click)="form.patchValue({ name: name })"
-          >
-            <i
-              class="fa self-center text-sm text-white"
-              [ngClass]="{
-                'fa-circle': form.get('name')?.value !== name,
-                'fa-circle-dot': form.get('name')?.value === name
-              }"
-            ></i>
-            {{ name }}
+          <button class="copy-btn" (click)="copySecret()" title="Copy to clipboard">
+            <i class="fa fa-copy"></i>
           </button>
         </div>
       </div>
+    </div>
 
-      <div class="flex flex-row-reverse gap-2 align-bottom">
-        <button class="bg-button action mt-8 h-16 w-40 font-semibold text-white" (click)="onConfirmPlayer()">
-          Confirm Player
-        </button>
-        <button class="bg-button action mt-16 h-8 w-24 font-semibold text-white" (click)="closeEdit.emit()">
-          Cancel
+    <!-- Certified Characters -->
+    <div class="certified-section">
+      <div class="certified-header">
+        <i class="fa fa-shield-check"></i>
+        <span>Certified Characters</span>
+        <span class="char-count" *ngIf="shop?.certified?.length">({{ shop?.certified.length }})</span>
+      </div>
+
+      <div class="empty-state" *ngIf="!shop?.certified?.length">
+        <i class="fa fa-user-slash"></i>
+        <p>You haven't certified any characters yet</p>
+        <span>Click "Certify a New Character" above to get started</span>
+      </div>
+
+      <div class="char-grid" *ngIf="shop?.certified?.length">
+        <button
+          class="char-btn"
+          *ngFor="let name of shop?.certified"
+          [class.active]="form.get('name')?.value === name"
+          (click)="form.patchValue({ name: name })"
+        >
+          <div class="char-radio">
+            <i class="fa" [class.fa-circle]="form.get('name')?.value !== name" [class.fa-circle-dot]="form.get('name')?.value === name"></i>
+          </div>
+          <span class="char-name">{{ name }}</span>
+          <i class="fa fa-certificate char-badge"></i>
         </button>
       </div>
-      <div class="h-80 w-full md:h-0"></div>
     </div>
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button class="cancel-btn" (click)="closeEdit.emit()">
+      <i class="fa fa-times"></i>
+      Cancel
+    </button>
+    <button class="confirm-btn" (click)="onConfirmPlayer()">
+      <i class="fa fa-check"></i>
+      Confirm Player
+    </button>
   </div>
 </div>

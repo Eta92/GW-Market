@@ -1,0 +1,1144 @@
+// ============================================
+// GW MARKET - GUILD WARS FANTASY AESTHETIC
+// ============================================
+
+// Import shared design system
+@import '../../shared/styles/variables';
+
+// ============================================
+// LAYOUT
+// ============================================
+.marketplace-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+
+  @media (max-width: 1024px) {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+// ============================================
+// MAIN CONTENT
+// ============================================
+.main-content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+
+  @media (max-width: 1024px) {
+    flex: none;
+    overflow: visible;
+  }
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 720px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+
+  @media (max-width: 1600px) {
+    grid-template-columns: 1fr 660px;
+  }
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 1fr 600px;
+  }
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr 520px;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+// ============================================
+// CATEGORIES SECTION
+// ============================================
+.categories-section {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+
+  @media (max-width: 1024px) {
+    overflow: visible;
+  }
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+// Title Row - always on first line
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: normal;
+  color: $parchment;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  text-transform: capitalize;
+
+  i {
+    color: $gold-dim;
+    font-size: 18px;
+  }
+}
+
+// Breadcrumb
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+
+  .crumb {
+    color: rgba($parchment, 0.7);
+    text-transform: capitalize;
+
+    &.clickable {
+      color: $gold;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        color: $gold-bright;
+      }
+    }
+
+    &.current {
+      color: $parchment;
+    }
+  }
+
+  .sep {
+    color: $gold-dim;
+    font-size: 10px;
+  }
+}
+
+// Filter Row - responsive 3-state layout
+.filter-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+}
+
+// View Toggle Buttons
+.view-toggle {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.view-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: rgba($parchment, 0.6);
+  cursor: pointer;
+  transition: all 150ms ease;
+
+  &:hover {
+    background: rgba($gold, 0.1);
+    border-color: rgba($gold, 0.3);
+    color: $parchment;
+  }
+
+  &.active {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+    color: $gold-bright;
+  }
+
+  i {
+    font-size: 14px;
+  }
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: rgba($parchment, 0.8);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 150ms ease;
+
+  &:hover {
+    background: rgba($gold, 0.1);
+    border-color: rgba($gold, 0.3);
+  }
+
+  &.active {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+    color: $gold-bright;
+  }
+
+  &.sell i {
+    color: $sell-color;
+  }
+  &.buy i {
+    color: #fb923c;
+  }
+
+  i {
+    margin-right: 4px;
+    font-size: 11px;
+  }
+
+  // Time filter specific styles
+  &.time {
+    i {
+      font-size: 10px;
+    }
+
+    &.online i {
+      color: $sell-color;
+    }
+
+    &.today i {
+      color: #fbbf24;
+    }
+
+    &.week i {
+      color: #60a5fa;
+    }
+
+    &.active.online {
+      border-color: $sell-color;
+      i { color: $sell-color; }
+    }
+
+    &.active.today {
+      border-color: #fbbf24;
+      i { color: #fbbf24; }
+    }
+
+    &.active.week {
+      border-color: #60a5fa;
+      i { color: #60a5fa; }
+    }
+
+    &.combined i {
+      color: #a78bfa;  // purple for combined
+    }
+
+    &.active.combined {
+      border-color: #a78bfa;
+      i { color: #a78bfa; }
+    }
+  }
+}
+
+.time-filter {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 12px;
+  margin-left: 4px;
+}
+
+// ============================================
+// FILTER ROW RESPONSIVE - 3 STATE LAYOUT
+// ============================================
+
+// Medium: Compact mode (icon-only for buttons with icons) - still 1 row
+// Homepage needs earlier breakpoint due to listings sidebar taking space
+@media (max-width: 1500px) {
+  .filter-row {
+    gap: 8px;
+
+    app-toggle-group {
+      ::ng-deep .toggle-group {
+        padding: 3px;
+        gap: 3px;
+
+        .toggle-btn {
+          padding: 0 0.5rem;
+          gap: 0.25rem;
+          font-size: 0.75rem;
+
+          i {
+            font-size: 0.7rem;
+          }
+
+          .toggle-img {
+            width: 14px;
+            height: 14px;
+          }
+
+          // Only hide label when button has an icon or image
+          &.has-icon {
+            flex: 0 0 auto;
+            min-width: 38px;
+            padding: 0;
+            justify-content: center;
+
+            span {
+              display: none;
+            }
+
+            i, .toggle-img {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .time-filter {
+    padding-left: 8px;
+    margin-left: 0;
+  }
+}
+
+// Narrow: 3 rows vertical layout
+@media (max-width: 750px) {
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+
+    app-toggle-group {
+      width: 100%;
+
+      ::ng-deep .toggle-group {
+        width: 100%;
+
+        .toggle-btn {
+          flex: 1;
+
+          // Show labels again in stacked mode
+          &.has-icon {
+            flex: 1;
+            min-width: auto;
+            padding: 0 0.5rem;
+
+            span {
+              display: inline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .time-filter {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+
+// ============================================
+// CARDS GRID
+// ============================================
+.cards-container {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @media (max-width: 1024px) {
+    overflow-y: visible;
+    flex: none;
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+
+  &.items {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+// Item Card - UNIFORM SIZE
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  min-height: 210px;
+  position: relative;
+
+  &:hover {
+    border-color: rgba($gold, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba($gold, 0.08);
+    background: linear-gradient(145deg, rgba($gold, 0.08) 0%, transparent 50%);
+
+    // Inner glow effect that doesn't clip
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      box-shadow: 0 0 15px rgba($gold, 0.25);
+      pointer-events: none;
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    box-shadow: 0 0 15px rgba($gold, 0);
+    pointer-events: none;
+    opacity: 0;
+    transition: all 200ms ease;
+  }
+
+  &.single-item {
+    min-height: 175px;
+    text-align: center;
+  }
+}
+
+// 2x2 Grid for category previews - UNIFORM SIZING
+.card-images.grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 64px);
+  grid-template-rows: repeat(2, 64px);
+  gap: 4px;
+  width: 136px;
+  height: 136px;
+  margin: 0 auto 10px;
+  justify-content: center;
+  align-content: center;
+
+  img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    // Safari fix - prevent vertical shift
+    display: block;
+    vertical-align: top;
+  }
+}
+
+// Single item image - FIXED SIZE
+.single-image {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  // Safari fix
+  display: block;
+  vertical-align: top;
+}
+
+.card-label {
+  font-size: 13px;
+  color: $parchment;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 140px;
+
+  &.small {
+    font-size: 11px;
+    text-transform: none;
+  }
+}
+
+.card-stats {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  font-size: 12px;
+  margin-top: auto;
+}
+
+.stat-sell,
+.stat-buy {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba($parchment, 0.7);
+
+  i {
+    font-size: 10px;
+  }
+}
+
+.stat-sell i {
+  color: $sell-color;
+}
+.stat-buy i {
+  color: #fb923c;
+}
+
+// Combined mode - color arrows by time category
+.stat-sell.online i,
+.stat-buy.online i {
+  color: $sell-color;  // green for live
+}
+.stat-sell.today i,
+.stat-buy.today i {
+  color: #fbbf24;  // yellow for today
+}
+.stat-sell.week i,
+.stat-buy.week i {
+  color: #60a5fa;  // blue for week
+}
+
+// Combined stats layout
+.card-stats.combined {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 4px 12px;
+  font-size: 11px;
+
+  .stat-sell,
+  .stat-buy {
+    gap: 2px;
+  }
+}
+
+.explorer-stats.combined {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 2px 10px;
+  font-size: 11px;
+
+  .stat-sell,
+  .stat-buy {
+    min-width: 35px;
+    gap: 2px;
+  }
+}
+
+// ============================================
+// EXPLORER LIST VIEW
+// ============================================
+
+.explorer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.explorer-item {
+  display: grid;
+  grid-template-columns: 48px 1fr auto auto 20px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  position: relative;
+  border-radius: 8px;
+
+  // Glow effect pseudo-element (matching grid view)
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    box-shadow: 0 0 15px rgba($gold, 0);
+    pointer-events: none;
+    opacity: 0;
+    transition: all 200ms ease;
+  }
+
+  &:hover {
+    border-color: rgba($gold, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba($gold, 0.08);
+    background: linear-gradient(145deg, rgba($gold, 0.08) 0%, transparent 50%);
+
+    &::after {
+      box-shadow: 0 0 15px rgba($gold, 0.25);
+      opacity: 1;
+    }
+
+    .nav-arrow {
+      opacity: 1;
+      color: $gold;
+    }
+  }
+}
+
+.explorer-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.explorer-name {
+  font-size: 14px;
+  color: $parchment;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.explorer-count {
+  font-size: 12px;
+  color: rgba($parchment, 0.5);
+  white-space: nowrap;
+}
+
+.explorer-stats {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  margin-left: 8px;
+
+  .stat-sell,
+  .stat-buy {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: rgba($parchment, 0.7);
+    min-width: 45px;
+  }
+}
+
+.nav-arrow {
+  font-size: 12px;
+  color: rgba($parchment, 0.3);
+  opacity: 0.5;
+  transition: all 150ms ease;
+}
+
+// ============================================
+// LISTINGS SECTION - Vertical Card Design
+// ============================================
+.listings-section {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.35);
+  border-left: 1px solid rgba($gold, 0.15);
+  padding: 20px;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    border-left: none;
+    border-top: 1px solid rgba($gold, 0.15);
+    overflow: visible;
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+
+  .section-header {
+    margin-bottom: 14px;
+  }
+
+  .count {
+    font-size: 13px;
+    color: $gold-dim;
+    margin-left: auto;
+  }
+}
+
+.listings-container {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 4px;
+
+  @media (max-width: 1024px) {
+    overflow-y: visible;
+    flex: none;
+    padding-right: 0;
+  }
+}
+
+// Listing Card - Compact Horizontal Layout
+.listing-card {
+  display: grid;
+  grid-template-columns: auto 56px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  min-height: auto;
+  cursor: pointer;
+  transition: all 150ms ease;
+  border-radius: 5px;
+
+  &:hover {
+    border-color: rgba($gold, 0.6);
+    background: rgba($gold, 0.06);
+    transform: translateX(3px);
+  }
+
+  &.faded {
+    opacity: 0.5;
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  // Accent border based on type
+  &.selling {
+    border-left: 4px solid $sell-color;
+  }
+  &.buying {
+    border-left: 4px solid $buy-color;
+  }
+}
+
+// Header: Badge + Time (now a column)
+.listing-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 50px;
+}
+
+.order-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+
+  &.sell {
+    background: linear-gradient(135deg, $sell-dark, $sell-color);
+    color: white;
+  }
+
+  &.buy {
+    background: linear-gradient(135deg, $buy-dark, $buy-color);
+    color: white;
+  }
+}
+
+.listing-time {
+  font-size: 10px;
+  color: rgba($parchment, 0.5);
+  white-space: nowrap;
+}
+
+// Item image
+.item-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  padding: 3px;
+}
+
+// Item details
+.listing-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.item-details {
+  display: contents;
+}
+
+.item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: $parchment;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-qty {
+  font-size: 12px;
+  color: rgba($parchment, 0.6);
+
+  strong {
+    color: rgba($parchment, 0.8);
+    font-weight: 600;
+  }
+}
+
+// Price Section: Compact right-aligned
+.listing-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  min-width: 140px;
+}
+
+.price-header {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: $gold-dim;
+}
+
+.price-rows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px 10px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.currency-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.price-amount {
+  font-size: 15px;
+  font-weight: 700;
+  color: $gold-bright;
+}
+
+.price-per {
+  font-size: 10px;
+  color: rgba($parchment, 0.4);
+}
+
+// Empty State
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: $gold-dim;
+  text-align: center;
+
+  i {
+    font-size: 32px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+  }
+
+  p {
+    margin: 0;
+    font-size: 15px;
+  }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+  .section-header {
+    gap: 10px;
+  }
+
+  .title-row {
+    gap: 12px;
+  }
+
+  .categories-section {
+    position: relative;
+  }
+
+  .filter-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+
+  // List view responsive
+  .explorer-item {
+    grid-template-columns: 40px 1fr auto 16px;
+    gap: 8px;
+    padding: 8px 10px;
+
+    .explorer-count {
+      display: none;
+    }
+  }
+
+  .explorer-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .explorer-name {
+    font-size: 13px;
+  }
+
+  .explorer-stats {
+    gap: 10px;
+    font-size: 11px;
+
+    .stat-sell,
+    .stat-buy {
+      min-width: 40px;
+    }
+  }
+
+  // Listing cards responsive
+  .listing-card {
+    grid-template-columns: auto 48px 1fr auto;
+    gap: 10px;
+    padding: 8px 12px;
+  }
+
+  .item-img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .listing-price {
+    min-width: 110px;
+  }
+
+  .price-amount {
+    font-size: 14px;
+  }
+
+  .currency-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .item-name {
+    font-size: 13px;
+  }
+}
+
+// Extra small phones
+@media (max-width: 375px) {
+  .categories-section {
+    padding: 14px;
+  }
+
+  .section-header {
+    gap: 8px;
+  }
+
+  .title-row {
+    gap: 10px;
+  }
+
+  .section-title {
+    font-size: 16px;
+    gap: 8px;
+
+    i {
+      font-size: 14px;
+    }
+  }
+
+  .filter-row {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+
+    i {
+      margin-right: 3px;
+      font-size: 9px;
+    }
+  }
+
+  .breadcrumb {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .item-card {
+    padding: 8px;
+    min-height: 180px;
+
+    &.single-item {
+      min-height: 150px;
+    }
+  }
+
+  .card-images.grid-2x2 {
+    grid-template-columns: repeat(2, 52px);
+    grid-template-rows: repeat(2, 52px);
+    width: 108px;
+    height: 108px;
+    gap: 3px;
+    margin-bottom: 8px;
+
+    img {
+      width: 52px;
+      height: 52px;
+    }
+  }
+
+  .single-image {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    margin-bottom: 8px;
+  }
+
+  .card-label {
+    font-size: 11px;
+    max-width: 110px;
+    margin: 6px 0;
+  }
+
+  .card-stats {
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  // List view extra small
+  .explorer-item {
+    grid-template-columns: 36px 1fr auto 14px;
+    gap: 6px;
+    padding: 6px 8px;
+  }
+
+  .explorer-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .explorer-name {
+    font-size: 12px;
+  }
+
+  .explorer-stats {
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  // Listings section small
+  .listings-section {
+    padding: 12px;
+  }
+
+  .listing-card {
+    grid-template-columns: auto 40px 1fr;
+    gap: 6px;
+    padding: 6px 10px;
+  }
+
+  .listing-header {
+    min-width: 44px;
+    gap: 3px;
+  }
+
+  .order-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  .listing-time {
+    font-size: 8px;
+  }
+
+  .item-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .item-name {
+    font-size: 12px;
+  }
+
+  .item-qty {
+    font-size: 11px;
+  }
+
+  .listing-price {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: auto;
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px solid rgba($gold, 0.1);
+  }
+
+  .price-header {
+    margin-right: 6px;
+    font-size: 8px;
+  }
+
+  .price-amount {
+    font-size: 13px;
+  }
+
+  .currency-icon {
+    width: 14px;
+    height: 14px;
+  }
+}

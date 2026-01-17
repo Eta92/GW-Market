@@ -1,0 +1,373 @@
+// ============================================
+// GW MARKET - SHARED SCSS MIXINS
+// ============================================
+
+@import 'variables';
+
+// ============================================
+// FORM ELEMENTS
+// ============================================
+
+@mixin form-element-base {
+  height: 44px;
+  padding: 0 $spacing-md;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: $radius-md;
+  color: $parchment;
+  font-size: 0.95rem;
+  transition: all $transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: $gold;
+    box-shadow: 0 0 0 2px rgba($gold, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: rgba($parchment, 0.4);
+  }
+}
+
+@mixin form-select {
+  @include form-element-base;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4a853' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+// ============================================
+// BUTTONS
+// ============================================
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid transparent;
+  border-radius: $radius-md;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  i {
+    font-size: 0.85em;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: linear-gradient(180deg, $gold 0%, $gold-dark 100%);
+  border-color: $gold;
+  color: $obsidian;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(180deg, $gold-light 0%, $gold 100%);
+    box-shadow: $shadow-gold;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: rgba($gold, 0.1);
+  border-color: rgba($gold, 0.4);
+  color: $gold-light;
+
+  &:hover:not(:disabled) {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+    color: $parchment;
+  }
+}
+
+@mixin button-success {
+  @include button-base;
+  background: rgba($sell-color, 0.15);
+  border-color: rgba($sell-color, 0.4);
+  color: $sell-color;
+
+  &:hover:not(:disabled) {
+    background: rgba($sell-color, 0.25);
+    border-color: $sell-color;
+  }
+}
+
+@mixin button-danger {
+  @include button-base;
+  background: rgba($danger-color, 0.15);
+  border-color: rgba($danger-color, 0.4);
+  color: $danger-color;
+
+  &:hover:not(:disabled) {
+    background: rgba($danger-color, 0.25);
+    border-color: $danger-color;
+  }
+}
+
+// ============================================
+// CARDS
+// ============================================
+
+@mixin card-base {
+  background: linear-gradient(145deg, rgba($obsidian-light, 0.8) 0%, rgba($obsidian, 0.9) 100%);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: $radius-lg;
+  transition: all $transition-base;
+}
+
+@mixin card-hover {
+  &:hover {
+    border-color: rgba($gold, 0.4);
+    box-shadow: $shadow-gold;
+  }
+}
+
+// ============================================
+// MODAL
+// ============================================
+
+@mixin modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal-backdrop;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+@mixin modal-content {
+  position: relative;
+  max-width: min(90vw, 750px);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(145deg, rgba($obsidian, 0.98) 0%, rgba($obsidian-light, 0.98) 100%);
+  border: 2px solid rgba($gold, 0.6);
+  border-radius: $radius-xl;
+  box-shadow: $shadow-gold-lg, $shadow-lg;
+}
+
+// ============================================
+// SCROLLBAR
+// ============================================
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba($gold, 0.4);
+    border-radius: 3px;
+
+    &:hover {
+      background: $gold;
+    }
+  }
+}
+
+// ============================================
+// TOGGLE GROUP
+// ============================================
+
+@mixin toggle-group {
+  display: flex;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: $radius-md;
+  padding: 2px;
+  gap: 2px;
+}
+
+@mixin toggle-button {
+  flex: 1;
+  padding: $spacing-sm $spacing-md;
+  background: transparent;
+  border: none;
+  border-radius: calc($radius-md - 2px);
+  color: rgba($parchment, 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover:not(.active) {
+    color: $parchment;
+    background: rgba($gold, 0.1);
+  }
+
+  &.active {
+    background: rgba($gold, 0.2);
+    color: $gold-light;
+    box-shadow: inset 0 0 0 1px rgba($gold, 0.3);
+  }
+}
+
+// ============================================
+// RESPONSIVE HELPERS
+// ============================================
+
+// Max-width breakpoints (mobile-first approach)
+@mixin xs-down {
+  @media (max-width: #{$breakpoint-sm - 1}) {
+    @content;
+  }
+}
+
+@mixin sm-down {
+  @media (max-width: #{$breakpoint-md - 1}) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  @media (max-width: #{$breakpoint-lg - 1}) {
+    @content;
+  }
+}
+
+@mixin lg-down {
+  @media (max-width: #{$breakpoint-xl - 1}) {
+    @content;
+  }
+}
+
+@mixin xl-down {
+  @media (max-width: #{$breakpoint-2xl - 1}) {
+    @content;
+  }
+}
+
+// Min-width breakpoints (desktop-first approach)
+@mixin sm-up {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl-up {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin xxl-up {
+  @media (min-width: $breakpoint-2xl) {
+    @content;
+  }
+}
+
+// Semantic aliases for common use cases
+@mixin mobile {
+  @media (max-width: #{$breakpoint-md - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$breakpoint-lg - 1}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: #{$breakpoint-sm - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: $breakpoint-sm) and (max-width: #{$breakpoint-lg - 1}) {
+    @content;
+  }
+}
+
+// Touch device helper
+@mixin touch-device {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+// ============================================
+// RESPONSIVE UTILITIES
+// ============================================
+
+// Responsive spacing
+@mixin responsive-padding($mobile, $desktop) {
+  padding: $mobile;
+  @include desktop {
+    padding: $desktop;
+  }
+}
+
+@mixin responsive-margin($mobile, $desktop) {
+  margin: $mobile;
+  @include desktop {
+    margin: $desktop;
+  }
+}
+
+// Responsive font size
+@mixin responsive-font($mobile, $desktop) {
+  font-size: $mobile;
+  @include desktop {
+    font-size: $desktop;
+  }
+}
+
+// Hide on specific breakpoints
+@mixin hide-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+@mixin hide-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+// Touch-friendly sizing
+@mixin touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}

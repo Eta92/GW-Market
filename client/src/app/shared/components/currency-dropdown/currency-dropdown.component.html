@@ -1,0 +1,19 @@
+<div class="currency-dropdown" [class.open]="isOpen">
+  <button type="button" class="currency-selected" (click)="toggleDropdown($event)">
+    <img class="currency-icon" [src]="selectedCurrency | currencySource" alt="" />
+    <span class="currency-name">{{ selectedCurrency | currencyName }}</span>
+    <i class="fa fa-chevron-down"></i>
+  </button>
+  <div class="currency-options" *ngIf="isOpen">
+    <button
+      type="button"
+      class="currency-option"
+      *ngFor="let currency of currencies"
+      [class.selected]="currency.value === selectedCurrency"
+      (click)="selectCurrency(currency.value, $event)"
+    >
+      <img [src]="currency.value | currencySource" alt="" />
+      <span>{{ currency.name }}</span>
+    </button>
+  </div>
+</div>

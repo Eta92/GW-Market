@@ -1,0 +1,479 @@
+@import '../../styles/variables';
+
+:host {
+  display: block;
+  container-type: inline-size;
+  container-name: order-row;
+}
+
+// ============================================
+// ORDER ROW - Main Container
+// ============================================
+.order-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba($obsidian-light, 0.4);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  border-left: 3px solid transparent;
+  transition: all 0.15s ease;
+  flex-wrap: wrap;
+
+  &:hover {
+    background: rgba($obsidian-light, 0.6);
+  }
+
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateX(2px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &.sell-row {
+    border-left-color: rgba($sell-color, 0.6);
+
+    &:hover {
+      border-left-color: $sell-color;
+    }
+  }
+
+  &.buy-row {
+    border-left-color: rgba($buy-color, 0.6);
+
+    &:hover {
+      border-left-color: $buy-color;
+    }
+  }
+
+  &.faded {
+    opacity: 0.5;
+  }
+}
+
+// ============================================
+// INFO GROUP - Fixed width, doesn't grow
+// ============================================
+.info-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto; // Don't grow or shrink
+}
+
+// ============================================
+// INFO BOXES - Fixed width boxes
+// ============================================
+.info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.35);
+  border-radius: 5px;
+  flex: 0 0 auto; // Fixed size
+  width: 90px; // Fixed width for consistency
+
+  .box-label {
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: rgba($gold, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 0.125rem;
+  }
+
+  .box-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $parchment;
+    line-height: 1;
+  }
+
+  .box-value-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .currency-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+}
+
+// Quantity Box
+.qty-box {
+  .box-value {
+    color: $parchment;
+  }
+}
+
+// Price Box - gold emphasis
+.price-box {
+  border-color: rgba($gold, 0.5);
+  background: rgba($gold, 0.08);
+
+  .box-label {
+    color: rgba($gold, 0.85);
+  }
+
+  .box-value {
+    color: $gold-light;
+  }
+}
+
+// Unit Box - secondary
+.unit-box {
+  .box-label {
+    color: rgba($parchment, 0.5);
+  }
+
+  .box-value {
+    font-size: 0.9rem;
+    color: rgba($parchment, 0.85);
+  }
+}
+
+// ============================================
+// BADGES & WHISPER
+// ============================================
+.badges {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  min-width: 34px;
+  flex-shrink: 0;
+  margin-left: auto; // Push to right edge
+}
+
+.badge-icon {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+
+.whisper-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: 4px;
+  color: rgba($parchment, 0.6);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+
+  i {
+    font-size: 0.75rem;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.15);
+    border-color: rgba($gold, 0.5);
+    color: $gold-light;
+    transform: scale(1.05);
+  }
+}
+
+// ============================================
+// ITEM DETAILS (weapon, miniature, pre-searing)
+// ============================================
+::ng-deep app-item-details {
+  flex: 0 0 100%;
+  padding-top: 0.5rem;
+  margin-top: 0.125rem;
+  border-top: 1px solid rgba($gold, 0.15);
+
+  .item-details {
+    gap: 0.5rem;
+  }
+
+  .detail-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+
+    i {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+// ============================================
+// COMPACT MODE
+// ============================================
+.order-row.compact {
+  gap: 0.4rem;
+  padding: 0.4rem 0.5rem;
+
+  .info-group {
+    gap: 0.625rem;
+  }
+
+  .info-box {
+    width: 75px;
+    padding: 0.35rem 0.625rem;
+
+    .box-label {
+      font-size: 0.5rem;
+    }
+
+    .box-value {
+      font-size: 0.95rem;
+    }
+
+    .currency-icon {
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  .unit-box {
+    display: none;
+  }
+
+  .badges {
+    min-width: 28px;
+    gap: 0.2rem;
+  }
+
+  .badge-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .whisper-btn {
+    width: 26px;
+    height: 26px;
+
+    i {
+      font-size: 0.65rem;
+    }
+  }
+
+  ::ng-deep app-item-details {
+    padding-top: 0.375rem;
+
+    .item-details {
+      gap: 0.375rem;
+    }
+
+    .detail-badge {
+      font-size: 0.6rem;
+      padding: 0.15rem 0.375rem;
+    }
+  }
+}
+
+// ============================================
+// CONTAINER QUERIES - Adaptive Layout
+// ============================================
+
+// Large container - bigger boxes
+@container order-row (min-width: 450px) {
+  .order-row:not(.compact) {
+    .info-group {
+      gap: 1rem;
+    }
+
+    .info-box {
+      width: 110px;
+      padding: 0.6rem 1.25rem;
+
+      .box-label {
+        font-size: 0.6rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .box-value {
+        font-size: 1.2rem;
+      }
+
+      .currency-icon {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+// Medium container - hide unit box
+@container order-row (max-width: 320px) {
+  .order-row:not(.compact) {
+    .info-group {
+      gap: 0.625rem;
+    }
+
+    .unit-box {
+      display: none;
+    }
+
+    .info-box {
+      width: 80px;
+      padding: 0.4rem 0.625rem;
+
+      .box-label {
+        font-size: 0.5rem;
+      }
+
+      .box-value {
+        font-size: 1rem;
+      }
+
+      .currency-icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}
+
+// Narrow container - smaller sizing
+@container order-row (max-width: 240px) {
+  .order-row {
+    gap: 0.4rem;
+    padding: 0.4rem 0.5rem;
+
+    .info-group {
+      gap: 0.5rem;
+    }
+
+    .unit-box {
+      display: none;
+    }
+
+    .info-box {
+      width: 65px;
+      padding: 0.3rem 0.5rem;
+
+      .box-label {
+        font-size: 0.45rem;
+      }
+
+      .box-value {
+        font-size: 0.9rem;
+      }
+
+      .currency-icon {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    .badges {
+      min-width: 0;
+    }
+
+    .badge-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    .whisper-btn {
+      width: 26px;
+      height: 26px;
+
+      i {
+        font-size: 0.6rem;
+      }
+    }
+
+    ::ng-deep app-item-details {
+      padding-top: 0.3rem;
+
+      .item-details {
+        gap: 0.3rem;
+      }
+
+      .detail-badge {
+        font-size: 0.55rem;
+        padding: 0.125rem 0.3rem;
+      }
+    }
+  }
+}
+
+// Very narrow - hide badges
+@container order-row (max-width: 180px) {
+  .order-row {
+    .badges {
+      display: none;
+    }
+  }
+}
+
+// ============================================
+// RESPONSIVE MEDIA QUERIES
+// ============================================
+@media (max-width: 768px) {
+  .order-row:not(.compact) {
+    padding: 0.4rem 0.625rem;
+    gap: 0.4rem;
+  }
+
+  .whisper-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .info-box {
+    .box-value {
+      font-size: 0.95rem;
+    }
+  }
+
+  ::ng-deep app-item-details .detail-badge {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-row:not(.compact) {
+    padding: 0.4rem 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .info-group {
+    gap: 0.625rem;
+  }
+
+  .info-box {
+    width: 78px;
+    padding: 0.4rem 0.625rem;
+
+    .box-label {
+      font-size: 0.5rem;
+    }
+
+    .box-value {
+      font-size: 1rem;
+    }
+
+    .currency-icon {
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  .whisper-btn {
+    width: 28px;
+    height: 28px;
+
+    i {
+      font-size: 0.7rem;
+    }
+  }
+}

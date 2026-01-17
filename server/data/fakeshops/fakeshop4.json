@@ -1,0 +1,128 @@
+{
+  "player": "Certified Test Player",
+  "items": [
+    {
+      "name": "Gift of the Traveler",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [
+        { "type": 0, "price": 280, "unit": 14 },
+        { "type": 1, "price": 65, "unit": 3.25 }
+      ],
+      "quantity": 20,
+      "description": "Best price! Certified seller",
+      "player": "Certified Test Player",
+      "daybreakOnline": true,
+      "authCertified": true,
+      "lastRefresh": 1768540817105
+    },
+    {
+      "name": "Gift of the Traveler",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [
+        { "type": 0, "price": 250, "unit": 12.5 },
+        { "type": 1, "price": 55, "unit": 2.75 }
+      ],
+      "quantity": 50,
+      "description": "WTB bulk - paying well!",
+      "player": "Certified Test Player",
+      "daybreakOnline": true,
+      "authCertified": true,
+      "lastRefresh": 1768540817105
+    },
+    {
+      "name": "Voltaic Spear",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 150, "unit": 150 }],
+      "quantity": 1,
+      "description": "q9 OS 15^50 - Certified seller!",
+      "weaponDetails": {
+        "attribute": "Spear Mastery",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": "Guided by Fate",
+        "prefix": "Furious Spearhead",
+        "suffix": "Spear Grip of Fortitude"
+      },
+      "player": "Certified Test Player",
+      "daybreakOnline": true,
+      "authCertified": true,
+      "lastRefresh": 1768540817105
+    },
+    {
+      "name": "Crystalline Sword",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 80, "unit": 80 }],
+      "quantity": 1,
+      "description": "q9 OS 15^50",
+      "weaponDetails": {
+        "attribute": "Swordsmanship",
+        "requirement": 9,
+        "inscription": false,
+        "oldschool": true,
+        "core": null,
+        "prefix": "Zealous Sword Hilt",
+        "suffix": "Sword Pommel of Fortitude"
+      },
+      "player": "Certified Test Player",
+      "daybreakOnline": true,
+      "authCertified": true,
+      "lastRefresh": 1768540817105
+    },
+    {
+      "name": "Obby Armor",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 200, "unit": 200 }],
+      "quantity": 1,
+      "description": "Full set",
+      "player": "Certified Test Player",
+      "daybreakOnline": true,
+      "authCertified": true,
+      "lastRefresh": 1768540817105
+    },
+    {
+      "name": "Ecto",
+      "orderType": 0,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 4, "unit": 4 }],
+      "quantity": 250,
+      "description": "Bulk stock",
+      "player": "Certified Test Player",
+      "daybreakOnline": true,
+      "authCertified": true,
+      "lastRefresh": 1768540817105
+    },
+    {
+      "name": "Armbraces of Truth",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 1, "price": 45, "unit": 45 }],
+      "quantity": 5,
+      "description": "WTB any amount",
+      "player": "Certified Test Player",
+      "daybreakOnline": true,
+      "authCertified": true,
+      "lastRefresh": 1768540817105
+    },
+    {
+      "name": "Zaishen Key",
+      "orderType": 1,
+      "hidden": false,
+      "prices": [{ "type": 0, "price": 4, "unit": 4 }],
+      "quantity": 100,
+      "description": "Buying all your ZKeys",
+      "player": "Certified Test Player",
+      "daybreakOnline": true,
+      "authCertified": true,
+      "lastRefresh": 1768540817105
+    }
+  ],
+  "uuid": "CertTest123",
+  "daybreakOnline": true,
+  "certified": ["Certified Test Player"]
+}

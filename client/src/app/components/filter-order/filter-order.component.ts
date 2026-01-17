@@ -3,61 +3,8 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { OrderFilter } from '@app/models/order.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
-
-const attributes = [
-  // Warrior
-  'Strength',
-  'Axe Mastery',
-  'Hammer Mastery',
-  'Swordsmanship',
-  'Tactics',
-  // Ranger
-  'Expertise',
-  'Beast Mastery',
-  'Marksmanship',
-  'Wilderness Survival',
-  // Monk
-  'Divine Favor',
-  'Healing Prayers',
-  'Protection Prayers',
-  'Smiting Prayers',
-  // Necromancer
-  'Soul Reaping',
-  'Blood Magic',
-  'Curses',
-  'Death Magic',
-  // Mesmer
-  'Fast Casting',
-  'Domination Magic',
-  'Illusion Magic',
-  'Inspiration Magic',
-  // Elementalist
-  'Energy Storage',
-  'Air Magic',
-  'Earth Magic',
-  'Fire Magic',
-  'Water Magic',
-  // Assassin
-  'Critical Strikes',
-  'Dagger Mastery',
-  'Deadly Arts',
-  'Shadow Arts',
-  // Ritualist
-  'Spawning power',
-  'Channeling Magic',
-  'Communing',
-  'Restoration Magic',
-  // Paragon
-  'Leadership',
-  'Command',
-  'Motivation',
-  'Spear Mastery',
-  // Dervish
-  'Mysticism',
-  'Earth Prayers',
-  'Scythe Mastery',
-  'Wind Prayers'
-];
+import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
+import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 
 @Component({
   selector: 'app-filter-order',
@@ -69,7 +16,13 @@ export class FilterOrderComponent implements OnInit {
 
   public form: UntypedFormGroup;
   public allItems: AvailableTree;
-  public attributes = attributes;
+  public attributes = WEAPON_ATTRIBUTES;
+
+  public orderTypeOptions: ToggleOption[] = [
+    { value: null, label: 'All' },
+    { value: 'sell', label: 'Sell', icon: 'fa-arrow-up', styleClass: 'sell' },
+    { value: 'buy', label: 'Buy', icon: 'fa-arrow-down', styleClass: 'buy' }
+  ];
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -101,6 +54,31 @@ export class FilterOrderComponent implements OnInit {
 
   getFamilies(): Array<string> {
     return this.allItems?.families.map(f => f.name) || [];
+  }
+
+  // Contextual filter helpers
+  get selectedFamily(): string | null {
+    return this.form?.get('family')?.value;
+  }
+
+  get isWeaponFamily(): boolean {
+    return this.selectedFamily === 'weapon';
+  }
+
+  get isUpgradeFamily(): boolean {
+    return this.selectedFamily === 'upgrade';
+  }
+
+  get showAttributeFilter(): boolean {
+    return this.isWeaponFamily;
+  }
+
+  get showReqFilter(): boolean {
+    return this.isWeaponFamily || this.selectedFamily === 'unique';
+  }
+
+  get showUpgradeFilters(): boolean {
+    return this.isUpgradeFamily;
   }
 
   getCategories(): Array<string> {
