@@ -483,6 +483,107 @@
           ]
         },
         {
+          "name": "Pre-Searing",
+          "items": [
+            {
+              "name": "Charr Salvage Kit",
+              "description": "A Charr Salvage Kit is a type of kit that provides the only method for pre-Searing characters to obtain upgrade components. They look and work the same as Expert Salvage Kits; however, they have only five uses and they can only be obtained as drops from one of the four Charr bosses.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Charr Bag",
+              "description": "A Charr Bag is an equippable item that provides 10 additional inventory spaces. Because they already hold 10 items, they cannot be upgraded by using a Rune of Holding.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Gift of the Huntsman",
+              "description": "In pre-Searing, a Gift of the Huntsman is given out by Nicholas Sandford in the secret garden in exchange for 5 of the collector items he is collecting for that day",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Baked Husk",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Charr Carving",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Dull Carapace",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Enchanted Lodestone",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Gargoyle Skull",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Grawl Necklace",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Icy Lodestone",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Red Iris Flower",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Skale Fin (pre-Searing)",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Skeletal Limb",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Spider Leg",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Unnatural Seed",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            },
+            {
+              "name": "Worn Belt",
+              "description": "Pre-searing collector item that can be traded to Nicholas Sandford for a Gift of the Huntsman.",
+              "family": "special",
+              "category": "Pre-Searing"
+            }
+          ]
+        },
+        {
           "name": "Very Special",
           "items": [
             {
@@ -1602,12 +1703,6 @@
             {
               "name": "Birthday Present",
               "description": "Birthday Present Happy <Nth> birthday!",
-              "family": "consumable",
-              "category": "Presents"
-            },
-            {
-              "name": "Gift of the Huntsman",
-              "description": "\"These are a few of my favorite things.\" - Nicholas",
               "family": "consumable",
               "category": "Presents"
             },
