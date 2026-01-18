@@ -4,9 +4,9 @@
 </div>
 <div [class]="containerClass + ' combined'" *ngIf="mode === 'combined'">
   <span class="stat-sell online"><i class="fa fa-arrow-up"></i> {{ stats.sellOnline || 0 }}</span>
-  <span class="stat-buy online"><i class="fa fa-arrow-down"></i> {{ stats.buyOnline || 0 }}</span>
   <span class="stat-sell today"><i class="fa fa-arrow-up"></i> {{ stats.sellToday || 0 }}</span>
-  <span class="stat-buy today"><i class="fa fa-arrow-down"></i> {{ stats.buyToday || 0 }}</span>
   <span class="stat-sell week"><i class="fa fa-arrow-up"></i> {{ stats.sellWeek || 0 }}</span>
+  <span class="stat-buy online"><i class="fa fa-arrow-down"></i> {{ stats.buyOnline || 0 }}</span>
+  <span class="stat-buy today"><i class="fa fa-arrow-down"></i> {{ stats.buyToday || 0 }}</span>
   <span class="stat-buy week"><i class="fa fa-arrow-down"></i> {{ stats.buyWeek || 0 }}</span>
 </div>

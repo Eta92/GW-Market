@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   public isWrongDomain =
     window.location.hostname !== 'gwmarket.net' &&
     window.location.hostname !== 'www.gwmarket.net' &&
+    window.location.hostname !== 'v2.gwmarket.net' &&
     window.location.hostname !== 'localhost';
 
   goToNewDomain(): void {

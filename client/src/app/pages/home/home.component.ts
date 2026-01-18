@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@an
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { Item, OrderType, ShopItem } from '@app/models/shop.model';
 import { AvailableCategory, AvailableFamily, AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
@@ -146,11 +146,12 @@ export class HomeComponent implements OnInit {
 
   getSellCount(item: any): number {
     switch (this.timeMode) {
-      case 'online':  // < 15 min
+      case 'online': // < 15 min
         return item.sellOrdersOnline || 0;
-      case 'today':   // < 12 hrs (online + today)
-        return (item.sellOrdersOnline || 0) + (item.sellOrdersToday || 0);
-      case 'week':    // all time
+      case 'today': // < 12 hrs (online + today)
+        return item.sellOrdersToday || 0;
+      case 'week': // all time
+        return item.sellOrdersWeek || 0;
       case 'combined': // use total for filtering
         return item.sellOrders || 0;
       default:
@@ -160,11 +161,12 @@ export class HomeComponent implements OnInit {
 
   getBuyCount(item: any): number {
     switch (this.timeMode) {
-      case 'online':  // < 15 min
+      case 'online': // < 15 min
         return item.buyOrdersOnline || 0;
-      case 'today':   // < 12 hrs (online + today)
-        return (item.buyOrdersOnline || 0) + (item.buyOrdersToday || 0);
-      case 'week':    // all time
+      case 'today': // < 12 hrs (online + today)
+        return item.buyOrdersToday || 0;
+      case 'week': // all time
+        return item.buyOrdersWeek || 0;
       case 'combined': // use total for filtering
         return item.buyOrders || 0;
       default:
