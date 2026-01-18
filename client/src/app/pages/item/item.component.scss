@@ -23,7 +23,7 @@
 }
 
 // ============================================
-// ITEM SIDEBAR (Left panel on desktop)
+// ITEM SIDEBAR (Original desktop: 200px)
 // ============================================
 .item-sidebar {
   flex: 0 0 200px;
@@ -174,7 +174,7 @@
 }
 
 // ============================================
-// FILTER BAR
+// FILTER BAR (Original desktop: 36px height controls)
 // ============================================
 .filter-bar {
   display: flex;
@@ -306,7 +306,6 @@
 // ============================================
 // TIME BUCKET STYLES - Visual Hierarchy
 // ============================================
-
 .time-bucket-mini {
   margin-bottom: 0.5rem;
   border-radius: 6px;
@@ -325,7 +324,7 @@
   padding-left: 0.25rem;
 }
 
-// ONLINE BUCKET - Darkest (max contrast)
+// ONLINE BUCKET
 .time-bucket-mini.online-bucket {
   background: rgba(#252120, 0.7);
   border: 1px solid rgba($gold, 0.5);
@@ -360,7 +359,7 @@
   }
 }
 
-// THIS WEEK BUCKET (same as TODAY)
+// THIS WEEK BUCKET
 .time-bucket-mini.week-bucket {
   background: rgba($obsidian-light, 0.4);
 
@@ -445,7 +444,6 @@
   border-radius: 8px;
   padding: 0.875rem;
 
-  // ONLINE BUCKET - Darkest (max contrast)
   &.online-bucket {
     background: rgba(#252120, 0.7);
     border: 1px solid rgba($gold, 0.5);
@@ -469,7 +467,6 @@
     }
   }
 
-  // TODAY BUCKET
   &.today-bucket {
     background: rgba($obsidian-light, 0.4);
 
@@ -488,7 +485,6 @@
     }
   }
 
-  // THIS WEEK BUCKET (same as TODAY)
   &.week-bucket {
     background: rgba($obsidian-light, 0.4);
 
@@ -1065,23 +1061,23 @@
   }
 
   .sidebar-inner {
-    padding: 0.875rem;
-    gap: 0.75rem;
+    padding: 0.75rem;
+    gap: 0.625rem;
   }
 
   .item-frame {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     padding: 0.375rem;
   }
 
   .item-name {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .meta-tag {
-    font-size: 0.6rem;
-    padding: 0.125rem 0.3rem;
+    font-size: 0.7rem;
+    padding: 0.175rem 0.4rem;
   }
 
   .sidebar-stats {
@@ -1089,22 +1085,38 @@
   }
 
   .stat-icon {
-    width: 18px;
-    height: 18px;
-    font-size: 0.55rem;
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
   }
 
   .stat-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   .stat-value {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .filter-bar {
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+
+    ::ng-deep .toggle-group {
+      height: 40px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 34px;
+      padding: 0 0.65rem;
+      font-size: 0.8rem;
+      min-width: 48px;
+    }
   }
 }
 
 // ============================================
-// RESPONSIVE - Tablet/Small screens (stacked layout)
+// RESPONSIVE - Tablet (horizontal sidebar)
 // ============================================
 @media (max-width: 900px) {
   .page-layout {
@@ -1119,10 +1131,10 @@
 
   .sidebar-inner {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
-    padding: 0.875rem 1rem;
+    justify-content: flex-start;
+    padding: 0.625rem 1rem;
     gap: 0.875rem;
   }
 
@@ -1131,51 +1143,86 @@
   }
 
   .item-frame {
-    width: 70px;
-    height: 70px;
+    width: 64px;
+    height: 64px;
     padding: 0.375rem;
   }
 
   .item-info {
-    flex: 1;
+    flex: 1 1 auto;
     text-align: left;
-    min-width: 150px;
+    min-width: 120px;
+    max-width: 240px;
   }
 
   .item-name {
     font-size: 1rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .item-meta {
     justify-content: flex-start;
+    gap: 0.375rem;
+  }
+
+  .meta-tag {
+    font-size: 0.7rem;
+    padding: 0.175rem 0.4rem;
   }
 
   .sidebar-stats {
+    flex: 0 0 auto;
     flex-direction: row;
-    gap: 0.875rem;
+    gap: 0.75rem;
     padding: 0.5rem 0.75rem;
   }
 
   .stat-row {
     flex: 0 0 auto;
+    gap: 0.375rem;
+  }
+
+  .stat-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .stat-label {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
+  }
+
+  .filter-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .filter-summary {
+    margin-left: auto;
+  }
+
+  .order-total {
+    font-size: 0.8rem;
   }
 
   .split-columns-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.75rem;
     height: auto;
   }
 
   .split-section {
     max-height: 50vh;
     min-height: 200px;
-  }
-
-  .split-orders-list {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
   }
 
   .currency-grid {
@@ -1188,10 +1235,8 @@
     min-height: 200px;
   }
 
-  .currency-orders-list {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
+  .orders-section {
+    padding: 0.625rem;
   }
 }
 
@@ -1200,78 +1245,99 @@
 // ============================================
 @media (max-width: 750px) {
   .sidebar-inner {
-    flex-direction: column;
+    padding: 0.625rem 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0.75rem;
-    gap: 0.5rem;
   }
 
   .item-visual {
     order: 0;
+    flex: 0 0 auto;
   }
 
   .item-frame {
     width: 60px;
     height: 60px;
+    padding: 0.375rem;
   }
 
   .item-info {
     order: 1;
-    text-align: center;
-    min-width: auto;
-    width: 100%;
+    flex: 1 1 auto;
+    text-align: left;
+    min-width: 120px;
+    max-width: 220px;
+  }
+
+  .item-name {
+    font-size: 1.05rem;
+    margin-bottom: 0.375rem;
   }
 
   .item-meta {
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 0.375rem;
+  }
+
+  .meta-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.45rem;
+    font-weight: 500;
   }
 
   .sidebar-stats {
     order: 2;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
+    padding: 0.5rem 0.625rem;
+    gap: 0.625rem;
+  }
+
+  .stat-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
   }
 
   .filter-bar {
-    flex-direction: column;
-    align-items: stretch;
+    padding: 0.5rem 0.625rem;
     gap: 0.5rem;
-    padding: 0.625rem 0.875rem;
-  }
+    flex-wrap: wrap;
 
-  .filter-group {
-    width: 100%;
-  }
+    ::ng-deep .toggle-group {
+      height: 42px;
+    }
 
-  .filter-summary {
-    margin-left: 0;
-    text-align: center;
-    padding-top: 0.375rem;
-    border-top: 1px solid rgba($gold, 0.15);
-  }
+    ::ng-deep .toggle-btn {
+      height: 36px;
+      padding: 0 0.75rem;
+      font-size: 0.85rem;
+      min-width: 50px;
 
-  ::ng-deep app-toggle-group {
-    width: 100%;
-  }
-
-  ::ng-deep .toggle-group {
-    width: 100%;
-    display: flex;
-
-    .toggle-btn {
-      flex: 1 1 0%;
-      width: 0;
-      min-width: 0;
-      max-width: none;
-      font-size: 0.75rem;
-      padding: 0 0.5rem;
-      justify-content: center;
+      i {
+        font-size: 0.75rem;
+      }
     }
   }
 
+  .filter-group {
+    width: auto;
+  }
+
+  .order-total {
+    font-size: 0.8rem;
+  }
+
   .orders-section {
-    padding: 0.75rem;
+    padding: 0.625rem;
   }
 
   .section-title {
@@ -1280,8 +1346,8 @@
   }
 
   .split-orders-list {
-    padding: 0.375rem;
-    gap: 0.25rem;
+    padding: 0.4rem;
+    gap: 0.3rem;
   }
 }
 
@@ -1289,40 +1355,88 @@
 // RESPONSIVE - Extra small
 // ============================================
 @media (max-width: 480px) {
+  .sidebar-inner {
+    padding: 0.5rem 0.625rem;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
   .item-frame {
-    width: 55px;
-    height: 55px;
+    width: 54px;
+    height: 54px;
+    padding: 0.3rem;
+  }
+
+  .item-info {
+    max-width: 160px;
+    min-width: 100px;
   }
 
   .item-name {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
   }
 
   .meta-tag {
-    font-size: 0.55rem;
-    padding: 0.1rem 0.25rem;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.375rem;
   }
 
   .sidebar-stats {
-    padding: 0.375rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     gap: 0.5rem;
   }
 
   .stat-icon {
-    width: 16px;
-    height: 16px;
-    font-size: 0.5rem;
-  }
-
-  .stat-label {
-    font-size: 0.65rem;
+    width: 20px;
+    height: 20px;
+    font-size: 0.55rem;
   }
 
   .stat-value {
+    font-size: 0.85rem;
+  }
+
+  .filter-bar {
+    padding: 0.5rem 0.5rem;
+    flex-wrap: wrap;
+
+    ::ng-deep .toggle-group {
+      height: 40px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 34px;
+      padding: 0 0.625rem;
+      font-size: 0.8rem;
+      min-width: 45px;
+
+      i {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .order-total {
     font-size: 0.75rem;
   }
 
   .orders-section {
     padding: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    padding: 0.35rem;
+
+    i {
+      font-size: 0.65rem;
+    }
+  }
+
+  .split-orders-list {
+    padding: 0.35rem;
+    gap: 0.25rem;
   }
 }

@@ -10,11 +10,18 @@ $obsidian: #121214;
 $slate: #1a1a1e;
 
 .about-page {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background: $obsidian;
   color: $parchment;
+  overflow-y: auto;
+
+  @media (max-width: 1024px) {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: visible;
+  }
 }
 
 // ============================================

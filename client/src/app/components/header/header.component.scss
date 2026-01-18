@@ -292,7 +292,7 @@ $parchment: #e8dcc4;
   align-items: center;
   gap: 10px;
   padding: 14px 22px;
-  background: linear-gradient(135deg, rgba($gold, 0.18) 0%, rgba($gold, 0.08) 100%);
+  background: linear-gradient(135deg, rgba($gold, 0.6) 0%, rgba($gold, 0.4) 100%);
   border: 1px solid rgba($gold, 0.5);
   border-radius: 8px;
   color: $parchment;
@@ -307,7 +307,7 @@ $parchment: #e8dcc4;
   backdrop-filter: blur(4px);
 
   &:hover {
-    background: linear-gradient(135deg, rgba($gold, 0.35) 0%, rgba($gold, 0.18) 100%);
+    background: linear-gradient(135deg, rgba($gold, 0.75) 0%, rgba($gold, 0.55) 100%);
     border-color: $gold-bright;
     box-shadow: 0 4px 25px rgba($gold, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
@@ -352,11 +352,11 @@ $parchment: #e8dcc4;
 }
 
 .place-order-btn {
-  background: linear-gradient(135deg, rgba(#4a7c59, 0.6) 0%, rgba(#4a7c59, 0.3) 100%);
-  border-color: rgba(#5d9a6e, 0.7);
+  background: linear-gradient(135deg, rgba(#4a7c59, 0.9) 0%, rgba(#4a7c59, 0.7) 100%);
+  border-color: rgba(#5d9a6e, 0.95);
 
   &:hover {
-    background: linear-gradient(135deg, rgba(#4a7c59, 0.8) 0%, rgba(#4a7c59, 0.5) 100%);
+    background: linear-gradient(135deg, #4a7c59 0%, rgba(#4a7c59, 0.85) 100%);
     border-color: #5d9a6e;
   }
 

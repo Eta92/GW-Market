@@ -1,5 +1,6 @@
 @import '../../styles/variables';
 
+// Original desktop sizing - readable and comfortable
 .toggle-group {
   display: flex;
   height: 46px;
@@ -122,14 +123,17 @@
   }
 }
 
-// Medium: Compact mode (icon-only for buttons with icons) - still 1 row
+// ============================================
+// RESPONSIVE - Medium (1100px): Compact icon-only
+// ============================================
 @media (max-width: 1100px) {
   .toggle-group {
-    // Keep same height as default
+    height: 38px;
     padding: 3px;
     gap: 3px;
 
     .toggle-btn {
+      height: 32px;
       padding: 0 0.5rem;
       gap: 0.25rem;
       font-size: 0.75rem;
@@ -146,7 +150,7 @@
       // Only hide label when button has an icon or image
       &.has-icon {
         flex: 1 1 0;
-        min-width: 38px;
+        min-width: 32px;
         padding: 0;
         justify-content: center;
 
@@ -162,18 +166,57 @@
   }
 }
 
-// Narrow: phone mode - equal width buttons
+// ============================================
+// RESPONSIVE - Mobile (750px): Larger readable buttons
+// ============================================
 @media (max-width: 750px) {
   .toggle-group {
+    height: 42px;
+
     .toggle-btn {
+      height: 36px;
       flex: 1 1 0;
-      min-width: 0;
-      font-size: 0.75rem;
-      padding: 0 0.5rem;
+      min-width: 50px;
+      font-size: 0.85rem;
+      padding: 0 0.75rem;
+
+      i {
+        font-size: 0.75rem;
+      }
+
+      .toggle-img {
+        width: 16px;
+        height: 16px;
+      }
 
       &.has-icon {
         flex: 1 1 0;
-        min-width: 0;
+        min-width: 40px;
+      }
+    }
+  }
+}
+
+// ============================================
+// RESPONSIVE - Extra small (480px): Still large & readable
+// ============================================
+@media (max-width: 480px) {
+  .toggle-group {
+    height: 40px;
+
+    .toggle-btn {
+      height: 34px;
+      font-size: 0.8rem;
+      padding: 0 0.625rem;
+      min-width: 45px;
+
+      i {
+        font-size: 0.7rem;
+      }
+
+      .toggle-img {
+        width: 15px;
+        height: 15px;
       }
     }
   }

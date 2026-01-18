@@ -23,7 +23,7 @@
 }
 
 // ============================================
-// SHOP SIDEBAR (Left panel on desktop)
+// SHOP SIDEBAR (Original desktop: 200px)
 // ============================================
 .shop-sidebar {
   flex: 0 0 200px;
@@ -222,7 +222,7 @@
 }
 
 .timer-value {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: $live-color;
   text-align: center;
@@ -261,7 +261,7 @@
   transition: all 0.2s ease;
 
   i {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   &:hover {
@@ -332,33 +332,32 @@
   color: $parchment;
 }
 
-// Sidebar Actions
+// Sidebar Actions - 2x2 grid
 .sidebar-actions {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.375rem;
 }
 
 .sidebar-action-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.375rem;
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.625rem;
   background: rgba($gold, 0.1);
   border: 1px solid rgba($gold, 0.25);
-  border-radius: 4px;
+  border-radius: 5px;
   color: $gold-light;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 
   i {
     font-size: 0.7rem;
-    width: 16px;
-    text-align: center;
   }
 
   &:hover {
@@ -385,9 +384,10 @@
 // Confirm Inline
 .confirm-inline {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   gap: 0.5rem;
-  padding: 0.625rem;
+  padding: 0.5rem 0.625rem;
   background: rgba($danger-color, 0.1);
   border: 1px solid rgba($danger-color, 0.3);
   border-radius: 6px;
@@ -396,28 +396,27 @@
 .confirm-warning {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
+  gap: 0.375rem;
   color: $danger-color;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  flex: 1;
 
   i {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 }
 
 .confirm-buttons {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .confirm-btn {
-  flex: 1;
-  padding: 0.375rem 0.5rem;
+  padding: 0.375rem 0.625rem;
   border: 1px solid;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
@@ -456,7 +455,7 @@
 }
 
 // ============================================
-// FILTER BAR
+// FILTER BAR (Original desktop: 36px height controls)
 // ============================================
 .filter-bar {
   display: flex;
@@ -468,12 +467,10 @@
   border-bottom: 1px solid rgba($gold, 0.2);
   flex-shrink: 0;
 
-  // Remove border from app-filter-order and integrate seamlessly
   ::ng-deep app-filter-order {
     display: contents;
   }
 
-  // Style the inner filter-bar from filter-order component
   ::ng-deep .filter-bar {
     padding: 0;
     gap: 0.75rem;
@@ -510,10 +507,10 @@
   ::ng-deep .filter-input {
     height: 36px;
     width: 160px;
-    padding: 0 12px 0 36px;
+    padding: 0 12px 0 34px;
     background: rgba($obsidian-light, 0.8);
     border: 1px solid rgba($gold, 0.25);
-    border-radius: 4px;
+    border-radius: 5px;
     color: $parchment;
     font-size: 0.8rem;
     font-family: inherit;
@@ -537,19 +534,19 @@
   ::ng-deep .filter-select {
     height: 36px;
     min-width: 100px;
-    padding: 0 24px 0 10px;
+    padding: 0 26px 0 12px;
     background: rgba($obsidian-light, 0.8);
     border: 1px solid rgba($gold, 0.25);
-    border-radius: 4px;
+    border-radius: 5px;
     color: $parchment;
     font-size: 0.8rem;
     font-family: inherit;
     cursor: pointer;
     outline: none;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4a853' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4a853' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 8px center;
+    background-position: right 10px center;
     transition: all 0.2s ease;
 
     &:hover {
@@ -565,11 +562,11 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 0 8px;
+    padding: 0 10px;
     height: 36px;
     background: rgba($obsidian-light, 0.6);
     border: 1px solid rgba($gold, 0.2);
-    border-radius: 4px;
+    border-radius: 5px;
   }
 
   ::ng-deep .req-label {
@@ -581,12 +578,12 @@
   }
 
   ::ng-deep .filter-input-small {
-    width: 38px;
+    width: 40px;
     height: 24px;
     padding: 0 6px;
     background: rgba($obsidian, 0.5);
     border: 1px solid rgba($gold, 0.2);
-    border-radius: 3px;
+    border-radius: 4px;
     color: $parchment;
     font-size: 0.8rem;
     font-family: inherit;
@@ -599,24 +596,23 @@
     }
   }
 
-  // Toggle group styling to match item page filter buttons
   ::ng-deep .toggle-group {
     height: 36px;
     padding: 3px;
     gap: 3px;
     background: rgba($obsidian, 0.5);
     border: 1px solid rgba($gold, 0.25);
-    border-radius: 4px;
+    border-radius: 5px;
   }
 
   ::ng-deep .toggle-btn {
     height: 30px;
     padding: 0 0.625rem;
     font-size: 0.8rem;
-    border-radius: 3px;
+    border-radius: 4px;
 
     i {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
     }
   }
 }
@@ -671,17 +667,17 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   padding: 0.5rem;
   margin: 0 0 0.5rem 0;
-  border-radius: 4px;
+  border-radius: 5px;
   background: rgba($gold, 0.1);
   border: 1px solid rgba($gold, 0.25);
   color: $parchment;
 
   i {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
   .order-count {
@@ -740,7 +736,7 @@
   }
 
   p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin: 0;
   }
 }
@@ -765,34 +761,7 @@
 }
 
 // ============================================
-// RESPONSIVE - Large screens (wider sidebar)
-// ============================================
-@media (min-width: 1400px) {
-  .shop-sidebar {
-    flex: 0 0 220px;
-  }
-
-  .player-frame {
-    width: 110px;
-    height: 110px;
-  }
-
-  .player-avatar {
-    width: 60px;
-    height: 60px;
-
-    i {
-      font-size: 1.5rem;
-    }
-  }
-
-  .player-name {
-    font-size: 1.25rem;
-  }
-}
-
-// ============================================
-// RESPONSIVE - Medium screens
+// RESPONSIVE - Medium screens (sidebar slightly smaller)
 // ============================================
 @media (max-width: 1100px) {
   .shop-sidebar {
@@ -800,7 +769,7 @@
   }
 
   .sidebar-inner {
-    padding: 0.875rem;
+    padding: 0.75rem;
     gap: 0.625rem;
   }
 
@@ -810,68 +779,56 @@
   }
 
   .player-avatar {
-    width: 45px;
-    height: 45px;
+    width: 46px;
+    height: 46px;
 
     i {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
     }
   }
 
+  .player-label {
+    font-size: 0.6rem;
+  }
+
   .player-name {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
   }
 
   .player-badges .badge {
-    font-size: 0.55rem;
-    padding: 0.1rem 0.3rem;
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
+    font-weight: 600;
 
     img {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
     }
   }
 
   .sidebar-stats {
-    padding: 0.5rem;
+    padding: 0.625rem;
   }
 
   .stat-icon {
-    width: 18px;
-    height: 18px;
-    font-size: 0.55rem;
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
   }
 
   .stat-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   .stat-value {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
-  .shop-toggle-btn {
-    padding: 0.5rem;
-    font-size: 0.75rem;
-
-    i {
-      font-size: 0.8rem;
-    }
-  }
-
-  .sidebar-action-btn {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.7rem;
-
-    i {
-      font-size: 0.65rem;
-    }
-  }
-
-  // Filter bar wrapping
   .filter-bar {
     flex-wrap: wrap;
     gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
 
     ::ng-deep .filter-bar {
       flex-wrap: wrap;
@@ -880,16 +837,29 @@
 
     ::ng-deep .filter-input {
       width: 140px;
+      height: 38px;
+      font-size: 0.8rem;
     }
 
     ::ng-deep .filter-select {
-      min-width: 90px;
+      height: 38px;
+      font-size: 0.8rem;
+    }
+
+    ::ng-deep .toggle-group {
+      height: 40px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 34px;
+      font-size: 0.8rem;
+      min-width: 48px;
     }
   }
 }
 
 // ============================================
-// RESPONSIVE - Tablet/Small screens (horizontal bar)
+// RESPONSIVE - Tablet (horizontal sidebar)
 // ============================================
 @media (max-width: 900px) {
   .page-layout {
@@ -904,11 +874,12 @@
 
   .sidebar-inner {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
-    padding: 0.875rem 1rem;
+    justify-content: flex-start;
+    padding: 0.625rem 1rem;
     gap: 0.875rem;
+    overflow-x: auto;
   }
 
   .player-visual {
@@ -916,80 +887,136 @@
   }
 
   .player-frame {
-    width: 70px;
-    height: 70px;
+    width: 64px;
+    height: 64px;
   }
 
   .player-avatar {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
 
     i {
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
   }
 
   .player-info {
-    flex: 1;
+    flex: 0 1 auto;
     text-align: left;
     min-width: 120px;
+    max-width: 200px;
+  }
+
+  .player-label {
+    font-size: 0.6rem;
+    margin-bottom: 0.2rem;
   }
 
   .player-name {
     font-size: 1rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .player-badges {
     justify-content: flex-start;
   }
 
+  .player-badges .badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    font-weight: 600;
+
+    img {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
   .sidebar-timer {
     flex: 0 0 auto;
-    min-width: 100px;
+    min-width: 110px;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+
+    .timer-header {
+      display: none;
+    }
+
+    .timer-value {
+      font-size: 1rem;
+      flex: 0 0 auto;
+    }
+
+    .timer-bar {
+      flex: 1;
+      min-width: 50px;
+    }
   }
 
   .shop-toggle-btn {
     flex: 0 0 auto;
     width: auto;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8rem;
   }
 
   .sidebar-stats {
     flex-direction: row;
-    gap: 0.875rem;
+    gap: 0.75rem;
     padding: 0.5rem 0.75rem;
   }
 
   .stat-row {
     flex: 0 0 auto;
+    gap: 0.4rem;
+  }
+
+  .stat-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 0.65rem;
+  }
+
+  .stat-label {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
   }
 
   .sidebar-actions {
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     gap: 0.375rem;
   }
 
   .sidebar-action-btn {
     flex: 0 0 auto;
     width: auto;
-    padding: 0.4rem 0.75rem;
+    padding: 0.4rem 0.625rem;
+
+    span {
+      display: none;
+    }
+
+    i {
+      font-size: 0.8rem;
+    }
   }
 
   .confirm-inline {
-    flex-direction: row;
-    align-items: center;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .confirm-buttons {
-    flex: 0 0 auto;
+    padding: 0.5rem 0.625rem;
   }
 
   .orders-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.75rem;
     height: auto;
   }
 
@@ -998,173 +1025,181 @@
     min-height: 200px;
   }
 
-  .orders-list {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-  }
-
-  // Filter bar stacked
   .filter-bar {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 0.5rem;
-    padding: 0.625rem 1rem;
-
-    ::ng-deep .filter-bar {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.5rem;
-    }
-
-    ::ng-deep .filter-group {
-      width: 100%;
-    }
-
-    ::ng-deep .filter-input-wrapper {
-      flex: 1;
-    }
-
-    ::ng-deep .filter-input {
-      width: 100%;
-      height: 38px;
-    }
-
-    ::ng-deep .filter-select {
-      height: 38px;
-      flex: 1;
-    }
-
-    ::ng-deep app-toggle-group {
-      width: 100%;
-    }
-
-    ::ng-deep .toggle-group {
-      width: 100%;
-      height: 38px;
-
-      .toggle-btn {
-        flex: 1 1 0%;
-        width: 0;
-        min-width: 0;
-        max-width: none;
-        height: 32px;
-        padding: 0 0.5rem;
-        font-size: 0.75rem;
-        justify-content: center;
-      }
-    }
+    padding: 0.5rem 0.75rem;
   }
 
   .filter-summary {
-    margin-left: 0;
-    text-align: center;
-    padding-top: 0.375rem;
-    border-top: 1px solid rgba($gold, 0.15);
-  }
-}
-
-// ============================================
-// RESPONSIVE - Mobile (vertical stack)
-// ============================================
-@media (max-width: 750px) {
-  .sidebar-inner {
-    flex-direction: column;
-    align-items: center;
-    padding: 0.75rem;
-    gap: 0.5rem;
-  }
-
-  .player-visual {
-    order: 0;
-  }
-
-  .player-frame {
-    width: 60px;
-    height: 60px;
-  }
-
-  .player-avatar {
-    width: 35px;
-    height: 35px;
-
-    i {
-      font-size: 0.9rem;
-    }
-  }
-
-  .player-info {
-    order: 1;
-    text-align: center;
-    min-width: auto;
-    width: 100%;
-  }
-
-  .player-badges {
-    justify-content: center;
-  }
-
-  .sidebar-timer {
-    order: 2;
-    width: 100%;
-  }
-
-  .shop-toggle-btn {
-    order: 3;
-    width: 100%;
-  }
-
-  .sidebar-stats {
-    order: 4;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .sidebar-actions {
-    order: 5;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.375rem;
-  }
-
-  .sidebar-action-btn {
-    justify-content: center;
-    padding: 0.5rem;
-
-    span {
-      display: none;
-    }
-
-    i {
-      font-size: 0.85rem;
-      width: auto;
-    }
-  }
-
-  .confirm-inline {
-    order: 6;
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .filter-bar {
-    padding: 0.625rem 0.875rem;
+    margin-left: auto;
   }
 
   .orders-section {
     padding: 0.75rem;
   }
+}
+
+// ============================================
+// RESPONSIVE - Mobile
+// ============================================
+@media (max-width: 750px) {
+  .sidebar-inner {
+    padding: 0.625rem 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .player-visual {
+    order: 0;
+    flex: 0 0 auto;
+  }
+
+  .player-frame {
+    width: 58px;
+    height: 58px;
+  }
+
+  .player-avatar {
+    width: 36px;
+    height: 36px;
+
+    i {
+      font-size: 1rem;
+    }
+  }
+
+  .player-info {
+    order: 1;
+    flex: 1 1 auto;
+    text-align: left;
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  .player-label {
+    font-size: 0.65rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .player-name {
+    font-size: 1rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .player-badges {
+    justify-content: flex-start;
+  }
+
+  .player-badges .badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    font-weight: 600;
+
+    img {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .sidebar-timer {
+    order: 2;
+    min-width: 100px;
+    padding: 0.5rem 0.625rem;
+
+    .timer-value {
+      font-size: 1rem;
+    }
+  }
+
+  .shop-toggle-btn {
+    order: 3;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+
+    i {
+      font-size: 0.85rem;
+    }
+  }
+
+  .sidebar-stats {
+    order: 4;
+    padding: 0.5rem 0.625rem;
+    gap: 0.625rem;
+  }
+
+  .stat-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
+  }
+
+  .sidebar-actions {
+    order: 5;
+  }
+
+  .sidebar-action-btn {
+    padding: 0.4rem 0.625rem;
+
+    i {
+      font-size: 0.75rem;
+    }
+  }
+
+  .filter-bar {
+    padding: 0.5rem 0.625rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    ::ng-deep .filter-input {
+      width: 120px;
+      height: 38px;
+      font-size: 0.8rem;
+      padding-left: 32px;
+    }
+
+    ::ng-deep .filter-input-wrapper i {
+      font-size: 0.8rem;
+      left: 10px;
+    }
+
+    ::ng-deep .filter-select {
+      height: 38px;
+      min-width: 90px;
+      font-size: 0.8rem;
+    }
+
+    ::ng-deep .toggle-group {
+      height: 42px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 36px;
+      font-size: 0.85rem;
+      padding: 0 0.75rem;
+      min-width: 50px;
+    }
+  }
+
+  .orders-section {
+    padding: 0.625rem;
+  }
 
   .column-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     padding: 0.4rem;
   }
 
   .orders-list {
-    padding: 0.375rem;
-    gap: 0.25rem;
+    padding: 0.4rem;
+    gap: 0.3rem;
   }
 }
 
@@ -1172,9 +1207,16 @@
 // RESPONSIVE - Extra small
 // ============================================
 @media (max-width: 480px) {
+  .sidebar-inner {
+    padding: 0.5rem 0.625rem;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
   .player-frame {
-    width: 55px;
-    height: 55px;
+    width: 52px;
+    height: 52px;
   }
 
   .player-avatar {
@@ -1182,52 +1224,106 @@
     height: 32px;
 
     i {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
   }
 
+  .player-info {
+    max-width: 150px;
+    min-width: 100px;
+  }
+
+  .player-label {
+    font-size: 0.6rem;
+  }
+
   .player-name {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .player-badges .badge {
-    font-size: 0.5rem;
-    padding: 0.1rem 0.25rem;
+    font-size: 0.6rem;
+    padding: 0.125rem 0.35rem;
+    font-weight: 600;
+
+    img {
+      width: 11px;
+      height: 11px;
+    }
+  }
+
+  .sidebar-timer {
+    min-width: 90px;
+
+    .timer-value {
+      font-size: 0.95rem;
+    }
+  }
+
+  .shop-toggle-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.625rem;
   }
 
   .sidebar-stats {
-    padding: 0.375rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     gap: 0.5rem;
   }
 
   .stat-icon {
-    width: 16px;
-    height: 16px;
-    font-size: 0.5rem;
-  }
-
-  .stat-label {
-    font-size: 0.65rem;
+    width: 20px;
+    height: 20px;
+    font-size: 0.55rem;
   }
 
   .stat-value {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 
-  .shop-toggle-btn {
-    padding: 0.4rem;
-    font-size: 0.7rem;
-  }
+  .filter-bar {
+    padding: 0.5rem 0.5rem;
+    flex-wrap: wrap;
 
-  .sidebar-action-btn {
-    padding: 0.4rem;
+    ::ng-deep .filter-input {
+      width: 110px;
+      height: 36px;
+      font-size: 0.75rem;
+      padding-left: 30px;
+    }
 
-    i {
+    ::ng-deep .filter-input-wrapper i {
+      font-size: 0.75rem;
+      left: 10px;
+    }
+
+    ::ng-deep .filter-select {
+      height: 36px;
+      min-width: 80px;
+      font-size: 0.75rem;
+    }
+
+    ::ng-deep .toggle-group {
+      height: 40px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 34px;
       font-size: 0.8rem;
+      padding: 0 0.625rem;
+      min-width: 45px;
     }
   }
 
   .orders-section {
     padding: 0.5rem;
+  }
+
+  .column-title {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+
+    i {
+      font-size: 0.7rem;
+    }
   }
 }
