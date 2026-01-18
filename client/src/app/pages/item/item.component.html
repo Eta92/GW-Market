@@ -94,7 +94,7 @@
         </h2>
         <div class="split-orders-list scroll">
           <ng-container *ngFor="let timeBucket of getAllSellOrdersByTime()">
-            <div class="time-bucket-mini" [class.online-bucket]="timeBucket.time === 0">
+            <div class="time-bucket-mini" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2">
               <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
               <app-order-row
                 *ngFor="let order of timeBucket.orders"
@@ -123,7 +123,7 @@
         </h2>
         <div class="split-orders-list scroll">
           <ng-container *ngFor="let timeBucket of getAllBuyOrdersByTime()">
-            <div class="time-bucket-mini" [class.online-bucket]="timeBucket.time === 0">
+            <div class="time-bucket-mini" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2">
               <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
               <app-order-row
                 *ngFor="let order of timeBucket.orders"
@@ -156,7 +156,7 @@
 
         <div class="currency-orders-list scroll" *ngIf="currency.totalOrders > 0">
           <ng-container *ngFor="let timeBucket of currency.timeBuckets">
-            <div class="time-bucket" [class.online-bucket]="timeBucket.time === 0" *ngIf="hasOrdersInTimeBucket(timeBucket)">
+            <div class="time-bucket" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2" *ngIf="hasOrdersInTimeBucket(timeBucket)">
               <div class="time-bucket-header">
                 <span class="time-bucket-label">{{ timeToString(timeBucket.time) }}</span>
                 <span class="time-bucket-count">

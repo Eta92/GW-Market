@@ -303,9 +303,16 @@
   }
 }
 
-// Time bucket styles
+// ============================================
+// TIME BUCKET STYLES - Visual Hierarchy
+// ============================================
+
 .time-bucket-mini {
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  padding: 0.5rem;
+  background: rgba($obsidian-light, 0.5);
+  border: 1px solid rgba($gold, 0.15);
 }
 
 .time-bucket-label-mini {
@@ -313,25 +320,62 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba($gold, 0.6);
-  margin-bottom: 0.25rem;
+  color: $gold;
+  margin-bottom: 0.375rem;
   padding-left: 0.25rem;
 }
 
-// Online bucket highlight
-.online-bucket {
-  ::ng-deep app-order-row .order-row {
-    background: $obsidian-light;
-    border: 1px solid rgba($gold, 0.4);
-
-    &:hover {
-      background: lighten($obsidian-light, 5%);
-      border-color: rgba($gold, 0.6);
-    }
-  }
+// ONLINE BUCKET - Darkest (max contrast)
+.time-bucket-mini.online-bucket {
+  background: rgba(#252120, 0.7);
+  border: 1px solid rgba($gold, 0.5);
 
   .time-bucket-label-mini {
-    color: rgba($sell-color, 0.9);
+    color: $gold-light;
+  }
+
+  ::ng-deep app-order-row .order-row {
+    background: rgba(#2d2925, 0.8);
+    border: 1px solid rgba($gold, 0.3);
+
+    &:hover {
+      background: rgba(#363230, 0.9);
+      border-color: rgba($gold, 0.5);
+    }
+  }
+}
+
+// TODAY BUCKET
+.time-bucket-mini.today-bucket {
+  background: rgba($obsidian-light, 0.4);
+
+  ::ng-deep app-order-row .order-row {
+    background: rgba(#343029, 0.6);
+    border: 1px solid rgba($gold, 0.18);
+
+    &:hover {
+      background: rgba(#3a352e, 0.8);
+      border-color: rgba($gold, 0.35);
+    }
+  }
+}
+
+// THIS WEEK BUCKET (same as TODAY)
+.time-bucket-mini.week-bucket {
+  background: rgba($obsidian-light, 0.4);
+
+  .time-bucket-label-mini {
+    color: rgba($gold, 0.75);
+  }
+
+  ::ng-deep app-order-row .order-row {
+    background: rgba(#343029, 0.6);
+    border: 1px solid rgba($gold, 0.15);
+
+    &:hover {
+      background: rgba(#3a352e, 0.8);
+      border-color: rgba($gold, 0.3);
+    }
   }
 }
 
@@ -340,6 +384,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.5rem;
+  height: 100%;
 
   &.single-currency {
     max-width: 700px;
@@ -350,6 +395,8 @@
 .currency-column {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-height: 0;
 }
 
 .column-title {
@@ -385,30 +432,77 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  max-height: 600px;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding-right: 0.375rem;
 }
 
 // Time bucket in currency view
 .time-bucket {
-  background: rgba($obsidian-light, 0.3);
+  background: rgba($obsidian-light, 0.5);
   border: 1px solid rgba($gold, 0.15);
   border-radius: 8px;
   padding: 0.875rem;
 
+  // ONLINE BUCKET - Darkest (max contrast)
   &.online-bucket {
+    background: rgba(#252120, 0.7);
+    border: 1px solid rgba($gold, 0.5);
+
     .time-bucket-label {
-      color: rgba($sell-color, 0.9);
+      color: $gold-light;
+    }
+
+    .time-bucket-header {
+      border-bottom-color: rgba($gold, 0.25);
     }
 
     ::ng-deep app-order-row .order-row {
-      background: $obsidian-light;
-      border: 1px solid rgba($gold, 0.4);
+      background: rgba(#2d2925, 0.8);
+      border: 1px solid rgba($gold, 0.3);
 
       &:hover {
-        background: lighten($obsidian-light, 5%);
-        border-color: rgba($gold, 0.6);
+        background: rgba(#363230, 0.9);
+        border-color: rgba($gold, 0.5);
+      }
+    }
+  }
+
+  // TODAY BUCKET
+  &.today-bucket {
+    background: rgba($obsidian-light, 0.4);
+
+    .time-bucket-label {
+      color: $gold;
+    }
+
+    ::ng-deep app-order-row .order-row {
+      background: rgba(#343029, 0.6);
+      border: 1px solid rgba($gold, 0.18);
+
+      &:hover {
+        background: rgba(#3a352e, 0.8);
+        border-color: rgba($gold, 0.35);
+      }
+    }
+  }
+
+  // THIS WEEK BUCKET (same as TODAY)
+  &.week-bucket {
+    background: rgba($obsidian-light, 0.4);
+
+    .time-bucket-label {
+      color: rgba($gold, 0.75);
+    }
+
+    ::ng-deep app-order-row .order-row {
+      background: rgba(#343029, 0.6);
+      border: 1px solid rgba($gold, 0.15);
+
+      &:hover {
+        background: rgba(#3a352e, 0.8);
+        border-color: rgba($gold, 0.3);
       }
     }
   }
@@ -1070,10 +1164,34 @@
   .split-columns-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    height: auto;
+  }
+
+  .split-section {
+    max-height: 50vh;
+    min-height: 200px;
+  }
+
+  .split-orders-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
   }
 
   .currency-grid {
     grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .currency-column {
+    max-height: 50vh;
+    min-height: 200px;
+  }
+
+  .currency-orders-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
   }
 }
 

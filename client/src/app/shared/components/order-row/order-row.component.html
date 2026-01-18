@@ -32,6 +32,12 @@
     </div>
   </div>
 
+  <!-- Player Info Section -->
+  <div class="player-info">
+    <span class="player-name">{{ order.player }}</span>
+    <span class="player-time" *ngIf="order.lastRefresh">{{ order.lastRefresh | formatLastUpdate }}</span>
+  </div>
+
   <!-- Badges (fixed width container for alignment) -->
   <div class="badges">
     <img class="badge-icon" src="/assets/img/online.png" title="Online" *ngIf="order.daybreakOnline" />

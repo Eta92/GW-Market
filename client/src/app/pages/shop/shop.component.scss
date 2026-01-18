@@ -990,6 +990,18 @@
   .orders-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    height: auto;
+  }
+
+  .orders-column {
+    max-height: 50vh;
+    min-height: 200px;
+  }
+
+  .orders-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
   }
 
   // Filter bar stacked
