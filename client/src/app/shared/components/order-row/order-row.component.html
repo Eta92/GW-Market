@@ -3,7 +3,7 @@
   [class.sell-row]="type === 'sell'"
   [class.buy-row]="type === 'buy'"
   [class.clickable]="clickable"
-  [class.faded]="isFaded"
+  [style.opacity]="fade"
   [class.has-note]="hasNote"
   [class.compact]="compact"
   (click)="onClick()"
@@ -28,7 +28,7 @@
     <!-- Unit Price Box -->
     <div class="info-box unit-box">
       <span class="box-label">EACH</span>
-      <span class="box-value">{{ order.price.price | decimalUnitPrice:order.quantity }}</span>
+      <span class="box-value">{{ order.price.price | decimalUnitPrice: order.quantity }}</span>
     </div>
   </div>
 
@@ -50,9 +50,5 @@
   </button>
 
   <!-- Item Details (weapon, miniature, pre-searing) -->
-  <app-item-details
-    *ngIf="showWeaponDetails"
-    [item]="order.item"
-    [details]="order.details"
-  ></app-item-details>
+  <app-item-details *ngIf="showWeaponDetails" [item]="order.item" [details]="order.details"></app-item-details>
 </div>

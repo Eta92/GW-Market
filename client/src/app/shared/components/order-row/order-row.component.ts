@@ -18,8 +18,8 @@ export class OrderRowComponent {
   @Output() rowClick = new EventEmitter<ItemOrder>();
   @Output() whisperClick = new EventEmitter<ItemOrder>();
 
-  get isFaded(): boolean {
-    return UtilityHelper.getOldOpacity(this.order) !== '';
+  get fade(): string {
+    return UtilityHelper.getOldOpacity(this.order);
   }
 
   onClick(): void {
