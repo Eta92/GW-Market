@@ -4,12 +4,10 @@
   "compilerOptions": {
     "outDir": "./out-tsc/worker",
     "lib": [
-      "es2018",
-      "dom", // should be "webworker" but we need DOM in order to compile with GoJS
+      "es2019",
+      "dom" // should be "webworker" but we need DOM in order to compile with GoJS
     ],
     "types": []
   },
-  "include": [
-    "src/**/*.worker.ts",
-  ],
+  "include": ["src/**/*.worker.ts"]
 }

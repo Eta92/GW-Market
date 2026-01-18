@@ -14,23 +14,12 @@
     "module": "es2022",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2019", "dom"],
     "paths": {
-      "@shared/*": [
-        "src/app/shared/*"
-      ],
-      "@core/*": [
-        "src/app/core/*"
-      ],
-      "@app/*": [
-        "src/app/*"
-      ],
-      "@env/*": [
-        "src/environments/*"
-      ]
+      "@shared/*": ["src/app/shared/*"],
+      "@core/*": ["src/app/core/*"],
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"]
     },
     "useDefineForClassFields": false
   },

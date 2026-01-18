@@ -2,7 +2,15 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { CurrencyGroup, CurrencyOrders, ItemOrder, ItemOrders, ItemPriceList, Time, TimeBucket } from '@app/models/order.model';
+import {
+  CurrencyGroup,
+  CurrencyOrders,
+  ItemOrder,
+  ItemOrders,
+  ItemPriceList,
+  Time,
+  TimeBucket
+} from '@app/models/order.model';
 import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
@@ -86,7 +94,7 @@ export class ItemComponent implements OnInit {
           ...this.currencyOrders.currencies.map(c => ({
             value: c.currency,
             label: c.currencyName,
-            imgSrc: this.getCurrencySource(c.currency)
+            imgSrc: UtilityHelper.getCurrencySource(c.currency)
           }))
         ];
         this.cdr.detectChanges();
@@ -209,12 +217,12 @@ export class ItemComponent implements OnInit {
     currencyMap.forEach(currencyGroup => {
       currencyGroup.timeBuckets.forEach(timeBucket => {
         // Sell orders: lowest price first (best deal for buyer)
-        timeBucket.sellOrders.sort((a, b) =>
-          a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh
+        timeBucket.sellOrders.sort(
+          (a, b) => a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh
         );
         // Buy orders: highest price first (best deal for seller)
-        timeBucket.buyOrders.sort((a, b) =>
-          b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh
+        timeBucket.buyOrders.sort(
+          (a, b) => b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh
         );
       });
     });
@@ -232,9 +240,7 @@ export class ItemComponent implements OnInit {
   }
 
   countCurrencyOrders(currency: CurrencyGroup): number {
-    return currency.timeBuckets.reduce((sum, bucket) =>
-      sum + bucket.sellOrders.length + bucket.buyOrders.length, 0
-    );
+    return currency.timeBuckets.reduce((sum, bucket) => sum + bucket.sellOrders.length + bucket.buyOrders.length, 0);
   }
 
   // Filter methods
@@ -404,13 +410,17 @@ export class ItemComponent implements OnInit {
   }
 
   getTotalSellOrders(): number {
-    return this.filteredCurrencies.reduce((sum, c) =>
-      sum + c.timeBuckets.reduce((s, b) => s + b.sellOrders.length, 0), 0);
+    return this.filteredCurrencies.reduce(
+      (sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.sellOrders.length, 0),
+      0
+    );
   }
 
   getTotalBuyOrders(): number {
-    return this.filteredCurrencies.reduce((sum, c) =>
-      sum + c.timeBuckets.reduce((s, b) => s + b.buyOrders.length, 0), 0);
+    return this.filteredCurrencies.reduce(
+      (sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.buyOrders.length, 0),
+      0
+    );
   }
 
   openOrderDetail(order: ItemOrder): void {
