@@ -297,8 +297,8 @@
     ]
   },
   {
-    "type": "Nick Sets",
-    "description": "The full set of collector items needed to trade for the 5 Gifts of the traveler of the week.",
+    "type": "Special Trophies",
+    "description": "The full set of trophies items needed to trade for special rewards",
     "items": [
       {
         "name": "Current Nick Set",
@@ -307,6 +307,46 @@
       {
         "name": "Next Nick Set",
         "description": "The full set of collector items needed to trade for the 5 Gifts of the traveler of the next week."
+      },
+      {
+        "name": "Margonite Gemstone",
+        "description": "The Margonite Gemstone is one of a set of 4 gemstones used to obtain either a Coffer of Whispers or Armbrace of Truth."
+      },
+      {
+        "name": "Stygian Gemstone",
+        "description": "The Stygian Gemstone is one of a set of 4 gemstones used to obtain either a Coffer of Whispers or Armbrace of Truth."
+      },
+      {
+        "name": "Titan Gemstone",
+        "description": "The Titan Gemstone is one of a set of 4 gemstones used to obtain either a Coffer of Whispers or Armbrace of Truth."
+      },
+      {
+        "name": "Torment Gemstone",
+        "description": "The Torment Gemstone is one of a set of 4 gemstones used to obtain either a Coffer of Whispers or Armbrace of Truth."
+      },
+      {
+        "name": "Destroyer Core",
+        "description": "250 Destroyer Cores can be traded for the Destroyer Gauntlets"
+      },
+      {
+        "name": "Superb Charr Carving",
+        "description": "250 Superb Charr Carvings can be traded for the Mask of the Mo Zing"
+      },
+      {
+        "name": "Golden Rin Relic",
+        "description": " 25 Golden Rin Relics can be traded for the  Dread Mask"
+      },
+      {
+        "name": "Diessa Chalice",
+        "description": "50 Diessa Chalices can be traded for the Blindfold"
+      },
+      {
+        "name": "Glacial Stone",
+        "description": "100 Glacial Stones can be traded for the Glacial Gauntlets"
+      },
+      {
+        "name": "Hammer of Kathandrax",
+        "description": "The Hammer of Kathandrax, also called Kathandrax's Crusher, is the required quest item for completing Kathandrax's Crusher. Can be use to rush the maximize a character's rank in the Survivor title track."
       }
     ]
   },
