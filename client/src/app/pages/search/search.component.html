@@ -1,0 +1,387 @@
+<div class="search-page font-fritz scroll">
+  <!-- HEADER -->
+  <app-header [showSearch]="false" [compact]="true"></app-header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content bg-sky bg-base">
+    <form [formGroup]="form" (ngSubmit)="onSearch()" class="search-container">
+
+      <!-- TOP BAR: Search + Sort -->
+      <div class="search-topbar">
+        <!-- Search Group -->
+        <div class="topbar-search">
+          <div class="search-input-wrapper">
+            <i class="fa fa-search search-icon"></i>
+            <input
+              type="text"
+              formControlName="query"
+              placeholder="Search items by name..."
+              class="search-input"
+            />
+          </div>
+          <button type="submit" class="search-btn" [disabled]="loading">
+            <i class="fa" [class.fa-search]="!loading" [class.fa-spinner]="loading" [class.fa-spin]="loading"></i>
+            <span>Search</span>
+          </button>
+        </div>
+
+        <!-- Filter Toggle (Mobile Only) -->
+        <button type="button" class="filter-toggle-btn" (click)="toggleSidebar()">
+          <i class="fa fa-sliders-h"></i>
+          <span>Filters</span>
+          <span class="filter-count" *ngIf="activeFilterCount > 0">{{ activeFilterCount }}</span>
+        </button>
+
+        <!-- Divider -->
+        <div class="topbar-divider"></div>
+
+        <!-- Sort Group -->
+        <div class="topbar-sort">
+          <span class="sort-label">Sort:</span>
+          <app-toggle-group
+            [options]="sortByOptions"
+            [value]="form.get('sortBy')?.value"
+            (valueChange)="form.patchValue({ sortBy: $event })"
+          ></app-toggle-group>
+          <button
+            type="button"
+            class="sort-order-btn"
+            (click)="form.patchValue({ sortOrder: form.get('sortOrder')?.value === 'asc' ? 'desc' : 'asc' })"
+            [title]="form.get('sortOrder')?.value === 'asc' ? 'Ascending' : 'Descending'"
+          >
+            <i class="fa" [class.fa-sort-amount-up]="form.get('sortOrder')?.value === 'asc'" [class.fa-sort-amount-down]="form.get('sortOrder')?.value === 'desc'"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- MAIN LAYOUT: Sidebar + Results -->
+      <div class="search-main">
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay" [class.open]="sidebarOpen" (click)="closeSidebar()"></div>
+
+        <!-- LEFT SIDEBAR - Filters Only -->
+        <aside class="filters-sidebar" [class.open]="sidebarOpen">
+          <!-- Sidebar Header (Mobile) -->
+          <div class="sidebar-header">
+            <h3>Filters</h3>
+            <button type="button" class="sidebar-close-btn" (click)="closeSidebar()">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+
+          <!-- Order Type -->
+          <div class="sidebar-section">
+            <label class="section-label">Order Type</label>
+            <app-toggle-group
+              [options]="orderTypeOptions"
+              [value]="form.get('orderType')?.value"
+              (valueChange)="form.patchValue({ orderType: $event })"
+            ></app-toggle-group>
+          </div>
+
+          <!-- Activity / Time Range -->
+          <div class="sidebar-section">
+            <label class="section-label">Activity</label>
+            <app-toggle-group
+              [options]="timeRangeOptions"
+              [value]="form.get('timeRange')?.value"
+              (valueChange)="form.patchValue({ timeRange: $event })"
+            ></app-toggle-group>
+          </div>
+
+          <!-- Family -->
+          <div class="sidebar-section">
+            <label class="section-label">Family</label>
+            <select class="filter-select" formControlName="family">
+              <option [ngValue]="null">All families...</option>
+              <option *ngFor="let family of getFamilies()" [ngValue]="family">{{ family }}</option>
+            </select>
+          </div>
+
+          <!-- Category (conditional) -->
+          <div class="sidebar-section" *ngIf="selectedFamily">
+            <label class="section-label">Category</label>
+            <select class="filter-select" formControlName="category">
+              <option [ngValue]="null">All categories...</option>
+              <option *ngFor="let category of getCategories()" [ngValue]="category">{{ category }}</option>
+            </select>
+          </div>
+
+          <!-- Weapon Filters (conditional) -->
+          <ng-container *ngIf="showWeaponFilters">
+            <div class="section-divider">
+              <span>Weapon Filters</span>
+            </div>
+
+            <!-- Attribute -->
+            <div class="sidebar-section">
+              <label class="section-label">Attribute</label>
+              <select class="filter-select" formControlName="attribute">
+                <option [ngValue]="null">Any attribute...</option>
+                <option *ngFor="let attr of attributes" [ngValue]="attr">{{ attr }}</option>
+              </select>
+            </div>
+
+            <!-- Requirement -->
+            <div class="sidebar-section">
+              <label class="section-label">Requirement</label>
+              <div class="range-inputs">
+                <input
+                  type="number"
+                  formControlName="reqMin"
+                  class="filter-input"
+                  min="0"
+                  max="13"
+                  placeholder="0"
+                />
+                <span class="range-separator">to</span>
+                <input
+                  type="number"
+                  formControlName="reqMax"
+                  class="filter-input"
+                  min="0"
+                  max="13"
+                  placeholder="13"
+                />
+              </div>
+            </div>
+
+            <!-- Inscription Type -->
+            <div class="sidebar-section">
+              <label class="section-label">Type</label>
+              <select class="filter-select" formControlName="inscription">
+                <option [ngValue]="null">Any type...</option>
+                <option [ngValue]="'true'">Inscription</option>
+                <option [ngValue]="'false'">Old School (OS)</option>
+              </select>
+            </div>
+          </ng-container>
+
+          <!-- Miniature Filters (conditional) -->
+          <ng-container *ngIf="showMiniatureFilters">
+            <div class="section-divider">
+              <span>Miniature Filters</span>
+            </div>
+
+            <!-- Dedicated -->
+            <div class="sidebar-section">
+              <label class="section-label">Dedication</label>
+              <app-toggle-group
+                [options]="miniDedicatedOptions"
+                [value]="form.get('miniDedicated')?.value"
+                (valueChange)="form.patchValue({ miniDedicated: $event })"
+              ></app-toggle-group>
+            </div>
+          </ng-container>
+
+          <!-- Pre-Searing -->
+          <div class="sidebar-section">
+            <label class="section-label">Pre-Searing</label>
+            <app-toggle-group
+              [options]="preSearingOptions"
+              [value]="form.get('preSearing')?.value"
+              (valueChange)="form.patchValue({ preSearing: $event })"
+            ></app-toggle-group>
+          </div>
+
+          <!-- Currency -->
+          <div class="sidebar-section">
+            <label class="section-label">Currency</label>
+            <app-toggle-group
+              [options]="currencyOptions"
+              [value]="form.get('currency')?.value"
+              (valueChange)="form.patchValue({ currency: $event })"
+            ></app-toggle-group>
+          </div>
+
+          <!-- Price Range (Total) -->
+          <div class="sidebar-section">
+            <label class="section-label">Price Total</label>
+            <div class="range-inputs">
+              <input
+                type="number"
+                formControlName="priceMin"
+                placeholder="Min"
+                class="filter-input"
+                min="0"
+              />
+              <span class="range-separator">to</span>
+              <input
+                type="number"
+                formControlName="priceMax"
+                placeholder="Max"
+                class="filter-input"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <!-- Price Range (Each) -->
+          <div class="sidebar-section">
+            <label class="section-label">Price Each</label>
+            <div class="range-inputs">
+              <input
+                type="number"
+                formControlName="priceEachMin"
+                placeholder="Min"
+                class="filter-input"
+                min="0"
+              />
+              <span class="range-separator">to</span>
+              <input
+                type="number"
+                formControlName="priceEachMax"
+                placeholder="Max"
+                class="filter-input"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <!-- Status Checkboxes -->
+          <div class="sidebar-section">
+            <label class="section-label">Status</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" formControlName="onlineOnly" />
+                <span class="custom-checkbox"></span>
+                <span>Online Only</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" formControlName="certifiedOnly" />
+                <span class="custom-checkbox"></span>
+                <span>Certified Only</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Clear Button -->
+          <div class="sidebar-actions">
+            <button type="button" class="clear-btn" (click)="onClear()">
+              <i class="fa fa-times"></i>
+              <span>Clear Filters</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- RIGHT CONTENT - Results -->
+        <div class="results-area">
+          <!-- Results Section -->
+          <section class="results-section" *ngIf="hasSearched">
+            <!-- Results Header -->
+            <div class="results-header">
+              <h2 class="results-title">
+                <span *ngIf="searchResult?.total">{{ searchResult.total }} results found</span>
+                <span *ngIf="!searchResult?.total">No results found</span>
+              </h2>
+              <div class="results-meta" *ngIf="searchResult?.aggregations">
+                <span class="meta-item" *ngIf="searchResult.aggregations.totalSellers">
+                  <i class="fa fa-users"></i> {{ searchResult.aggregations.totalSellers }} sellers
+                </span>
+                <span class="meta-item sell">
+                  <i class="fa fa-arrow-up"></i> {{ searchResult.aggregations.byOrderType.sell }} selling
+                </span>
+                <span class="meta-item buy">
+                  <i class="fa fa-arrow-down"></i> {{ searchResult.aggregations.byOrderType.buy }} buying
+                </span>
+              </div>
+            </div>
+
+            <!-- Results Grid -->
+            <div class="results-grid" *ngIf="searchResult?.orders?.length">
+              <div
+                class="result-card frame"
+                *ngFor="let order of searchResult.orders"
+                [class.selling]="order.orderType === OrderType.SELL"
+                [class.buying]="order.orderType === OrderType.BUY"
+                [class.online]="getTimeCategory(order.lastRefresh) === 0"
+                (click)="goToItem(order)"
+              >
+                <!-- Order Badge -->
+                <div class="card-badge" [class.sell]="order.orderType === OrderType.SELL" [class.buy]="order.orderType === OrderType.BUY">
+                  {{ order.orderType === OrderType.SELL ? 'WTS' : 'WTB' }}
+                </div>
+
+                <!-- Item Image -->
+                <div class="card-image">
+                  <img [src]="getImageSource(order)" [alt]="order.name" />
+                </div>
+
+                <!-- Item Info -->
+                <div class="card-info">
+                  <h3 class="card-name">{{ order.name }}</h3>
+                  <div class="card-meta">
+                    <span class="meta-family">{{ order.family }}</span>
+                    <span class="meta-qty">x{{ order.quantity }}</span>
+                  </div>
+                </div>
+
+                <!-- Weapon Details -->
+                <div class="card-weapon-details" *ngIf="order.weaponDetails">
+                  <span class="weapon-attr">{{ order.weaponDetails.attribute }}</span>
+                  <span class="weapon-req">Q{{ order.weaponDetails.requirement }}</span>
+                  <span class="weapon-type" *ngIf="order.weaponDetails.oldschool">OS</span>
+                  <span class="weapon-type" *ngIf="order.weaponDetails.inscription">Inscr</span>
+                </div>
+
+                <!-- Special Flags (Pre-Searing, Dedicated) -->
+                <div class="card-special-flags" *ngIf="order.preSearing || order.dedicated !== undefined">
+                  <span class="flag-pre" *ngIf="order.preSearing">Pre-Searing</span>
+                  <span class="flag-ded" *ngIf="order.dedicated === true">Dedicated</span>
+                  <span class="flag-unded" *ngIf="order.dedicated === false">Undedicated</span>
+                </div>
+
+                <!-- Prices -->
+                <div class="card-prices">
+                  <div class="price-row" *ngFor="let price of order.prices">
+                    <img class="currency-icon" [src]="getCurrencySource(price.type)" [alt]="priceToString(price.type)" />
+                    <span class="price-amount">{{ price.price }}</span>
+                    <span class="price-each" *ngIf="getUnitPrice(price.price, order.quantity) as unitPrice">
+                      · {{ unitPrice }} ea
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Player & Time -->
+                <div class="card-footer">
+                  <span class="player-name">
+                    <i class="fa fa-user"></i>
+                    {{ order.player }}
+                    <span class="online-dot" *ngIf="order.daybreakOnline"></span>
+                  </span>
+                  <span class="card-time">{{ formatLastUpdate(order.lastRefresh) }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" *ngIf="hasSearched && !searchResult?.orders?.length">
+              <i class="fa fa-search"></i>
+              <h3>No results found</h3>
+              <p>Try adjusting your filters or search terms</p>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more" *ngIf="hasMore">
+              <button type="button" class="load-more-btn" (click)="loadMore()" [disabled]="loading">
+                <i class="fa" [class.fa-plus]="!loading" [class.fa-spinner]="loading" [class.fa-spin]="loading"></i>
+                Load More ({{ searchResult.orders.length }} of {{ searchResult.total }})
+              </button>
+            </div>
+          </section>
+
+          <!-- Initial State -->
+          <section class="initial-state" *ngIf="!hasSearched">
+            <div class="initial-content">
+              <i class="fa fa-search"></i>
+              <h1>Advanced Search</h1>
+              <p>Use the filters and search to find exactly what you're looking for</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <app-footer></app-footer>
+</div>

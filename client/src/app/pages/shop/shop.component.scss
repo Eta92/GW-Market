@@ -1,61 +1,1329 @@
-.scene {
+// Import shared design system
+@import '../../shared/styles/variables';
+
+// ============================================
+// SHOP PAGE - Main Container
+// ============================================
+.shop-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $obsidian;
+  overflow: hidden;
+}
+
+// ============================================
+// PAGE LAYOUT - Sidebar + Content
+// ============================================
+.page-layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+// ============================================
+// SHOP SIDEBAR (Original desktop: 200px)
+// ============================================
+.shop-sidebar {
+  flex: 0 0 200px;
+  background: linear-gradient(180deg, rgba($gold, 0.06) 0%, rgba($obsidian-light, 0.95) 100%);
+  border-right: 1px solid rgba($gold, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.75rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+// Player Visual
+.player-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.player-frame {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($obsidian, 0.6);
+  border: 2px solid rgba($gold, 0.4);
+  border-radius: 6px;
   position: relative;
-  height: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba($gold, 0.15);
+    border-radius: 5px;
+    pointer-events: none;
+  }
+
+  &.live {
+    border-color: rgba($live-color, 0.6);
+    box-shadow: 0 0 15px rgba($live-color, 0.2);
+    animation: pulse-live 2s ease-in-out infinite;
+  }
 }
 
-/* Candle */
-.candle {
-  position: absolute;
-  bottom: 0;
-  width: 60px;
-  height: 100%;
-  background: #d4ba77;
-  //background: #e3d9af;
-  //background: #f5f5dc;
-  border-radius: 10px;
-  transform-origin: bottom;
-}
-
-/* Wax drips */
-.candle::before,
-.candle::after {
-  content: '';
-  position: absolute;
-  background: #85421b88;
-  //background: #dbba84;
-  //background: #eee8c9;
-  width: 14px;
+.player-avatar {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba($gold, 0.2), rgba($gold, 0.1));
+  border: 1px solid rgba($gold, 0.3);
   border-radius: 50%;
-  top: 40px;
+
+  i {
+    font-size: 1.25rem;
+    color: $gold-light;
+  }
 }
 
-.candle::before {
-  left: 8px;
-  height: 40px;
-  animation: drip 6s infinite ease-in-out;
-}
-
-.candle::after {
-  right: 10px;
-  height: 55px;
-  animation: drip 8s infinite ease-in-out;
-}
-
-/* Flame */
-.flame {
+.live-indicator {
   position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 40px;
-  background: radial-gradient(circle, #ffd700 40%, orange 70%);
-  border-radius: 50% 50% 50% 50%;
-  animation: flicker 0.15s infinite alternate;
-  z-index: 10;
-  filter: drop-shadow(0 0 10px orange);
+  top: 6px;
+  right: 6px;
 }
 
-.warning {
-  box-shadow: 0 10px 20px red;
+.live-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: $live-color;
+  border-radius: 50%;
+  box-shadow: 0 0 8px $live-color;
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse-live {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba($live-color, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba($live-color, 0.4);
+  }
+}
+
+// Player Info
+.player-info {
+  text-align: center;
+}
+
+.player-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba($gold, 0.7);
+  margin-bottom: 0.25rem;
+
+  .shop-sidebar.live & {
+    color: $live-color;
+  }
+}
+
+.player-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $parchment;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  word-break: break-word;
+}
+
+.player-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.player-badges .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  font-weight: 500;
+
+  img {
+    width: 12px;
+    height: 12px;
+  }
+
+  &.online {
+    background: rgba($sell-color, 0.15);
+    border: 1px solid rgba($sell-color, 0.4);
+    color: $sell-color;
+  }
+
+  &.certified {
+    background: rgba($gold, 0.15);
+    border: 1px solid rgba($gold, 0.4);
+    color: $gold-light;
+  }
+}
+
+// Sidebar Timer
+.sidebar-timer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 0.625rem;
+  background: rgba($live-color, 0.1);
+  border: 1px solid rgba($live-color, 0.3);
+  border-radius: 6px;
+}
+
+.timer-header {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+
+  i {
+    font-size: 0.65rem;
+    color: $live-color;
+  }
+
+  .timer-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba($live-color, 0.8);
+  }
+}
+
+.timer-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $live-color;
+  text-align: center;
+}
+
+.timer-bar {
+  height: 4px;
+  background: rgba($obsidian, 0.6);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.timer-fill {
+  height: 100%;
+  background: linear-gradient(90deg, $sell-dark, $live-color);
+  border-radius: 2px;
+  transition: width 1s linear;
+}
+
+// Shop Toggle Button
+.shop-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.625rem;
+  background: rgba($live-color, 0.15);
+  border: 1px solid rgba($live-color, 0.4);
+  border-radius: 6px;
+  color: $live-color;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  i {
+    font-size: 0.85rem;
+  }
+
+  &:hover {
+    background: rgba($live-color, 0.25);
+    border-color: $live-color;
+  }
+
+  &.active {
+    background: rgba($danger-color, 0.15);
+    border-color: rgba($danger-color, 0.4);
+    color: $danger-color;
+
+    &:hover {
+      background: rgba($danger-color, 0.25);
+      border-color: $danger-color;
+    }
+  }
+}
+
+// Sidebar Stats
+.sidebar-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 6px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.65rem;
+
+  &.sell {
+    background: rgba($sell-color, 0.15);
+    border: 1px solid rgba($sell-color, 0.4);
+    color: $sell-color;
+  }
+
+  &.buy {
+    background: rgba($buy-color, 0.15);
+    border: 1px solid rgba($buy-color, 0.4);
+    color: $buy-color;
+  }
+}
+
+.stat-label {
+  flex: 1;
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.7);
+}
+
+.stat-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $parchment;
+}
+
+// Sidebar Actions - 2x2 grid
+.sidebar-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.375rem;
+}
+
+.sidebar-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: 5px;
+  color: $gold-light;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  i {
+    font-size: 0.7rem;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.2);
+    border-color: rgba($gold, 0.4);
+  }
+
+  &.warning {
+    border-color: $danger-color;
+    animation: pulse-warning 2s infinite;
+  }
+
+  &.danger {
+    color: rgba($danger-color, 0.9);
+    border-color: rgba($danger-color, 0.3);
+
+    &:hover {
+      background: rgba($danger-color, 0.15);
+      border-color: rgba($danger-color, 0.5);
+    }
+  }
+}
+
+// Confirm Inline
+.confirm-inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.625rem;
+  background: rgba($danger-color, 0.1);
+  border: 1px solid rgba($danger-color, 0.3);
+  border-radius: 6px;
+}
+
+.confirm-warning {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: $danger-color;
+  font-size: 0.75rem;
+  font-weight: 500;
+  flex: 1;
+
+  i {
+    font-size: 0.7rem;
+  }
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 0.375rem;
+}
+
+.confirm-btn {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &.yes {
+    background: $danger-color;
+    border-color: $danger-color;
+    color: white;
+
+    &:hover {
+      background: darken($danger-color, 8%);
+    }
+  }
+
+  &.no {
+    background: transparent;
+    border-color: rgba($parchment, 0.3);
+    color: $parchment;
+
+    &:hover {
+      background: rgba($parchment, 0.1);
+    }
+  }
+}
+
+// ============================================
+// CONTENT AREA
+// ============================================
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+// ============================================
+// FILTER BAR (Original desktop: 36px height controls)
+// ============================================
+.filter-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  background: rgba($obsidian-light, 0.6);
+  border-bottom: 1px solid rgba($gold, 0.2);
+  flex-shrink: 0;
+
+  ::ng-deep app-filter-order {
+    display: contents;
+  }
+
+  ::ng-deep .filter-bar {
+    padding: 0;
+    gap: 0.75rem;
+    background: transparent;
+    flex-wrap: nowrap;
+  }
+
+  ::ng-deep .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  ::ng-deep .filter-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    i {
+      position: absolute;
+      left: 12px;
+      color: rgba($gold, 0.5);
+      font-size: 0.8rem;
+      pointer-events: none;
+      transition: color 0.2s ease;
+    }
+
+    &:focus-within i {
+      color: $gold;
+    }
+  }
+
+  ::ng-deep .filter-input {
+    height: 36px;
+    width: 160px;
+    padding: 0 12px 0 34px;
+    background: rgba($obsidian-light, 0.8);
+    border: 1px solid rgba($gold, 0.25);
+    border-radius: 5px;
+    color: $parchment;
+    font-size: 0.8rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+      color: rgba($parchment, 0.4);
+    }
+
+    &:hover {
+      border-color: rgba($gold, 0.4);
+    }
+
+    &:focus {
+      border-color: $gold;
+      background: rgba($obsidian-light, 1);
+    }
+  }
+
+  ::ng-deep .filter-select {
+    height: 36px;
+    min-width: 100px;
+    padding: 0 26px 0 12px;
+    background: rgba($obsidian-light, 0.8);
+    border: 1px solid rgba($gold, 0.25);
+    border-radius: 5px;
+    color: $parchment;
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4a853' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: rgba($gold, 0.4);
+    }
+
+    &:focus {
+      border-color: $gold;
+    }
+  }
+
+  ::ng-deep .req-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    height: 36px;
+    background: rgba($obsidian-light, 0.6);
+    border: 1px solid rgba($gold, 0.2);
+    border-radius: 5px;
+  }
+
+  ::ng-deep .req-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba($gold, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  ::ng-deep .filter-input-small {
+    width: 40px;
+    height: 24px;
+    padding: 0 6px;
+    background: rgba($obsidian, 0.5);
+    border: 1px solid rgba($gold, 0.2);
+    border-radius: 4px;
+    color: $parchment;
+    font-size: 0.8rem;
+    font-family: inherit;
+    text-align: center;
+    outline: none;
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: $gold;
+    }
+  }
+
+  ::ng-deep .toggle-group {
+    height: 36px;
+    padding: 3px;
+    gap: 3px;
+    background: rgba($obsidian, 0.5);
+    border: 1px solid rgba($gold, 0.25);
+    border-radius: 5px;
+  }
+
+  ::ng-deep .toggle-btn {
+    height: 30px;
+    padding: 0 0.625rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+
+    i {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.filter-summary {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.order-total {
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.5);
+  font-weight: 500;
+}
+
+// ============================================
+// ORDERS SECTION
+// ============================================
+.orders-section {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.orders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  height: 100%;
+}
+
+// ============================================
+// ORDERS COLUMN
+// ============================================
+.orders-column {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  &.hidden {
+    display: none;
+  }
+
+  &.full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+.column-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin: 0 0 0.5rem 0;
+  border-radius: 5px;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.25);
+  color: $parchment;
+
+  i {
+    font-size: 0.8rem;
+  }
+
+  .order-count {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba($parchment, 0.5);
+    margin-left: auto;
+  }
+}
+
+.sell-column .column-title {
+  background: rgba($sell-color, 0.12);
+  border: 1px solid rgba($sell-color, 0.35);
+  color: $sell-color;
+}
+
+.buy-column .column-title {
+  background: rgba($buy-color, 0.12);
+  border: 1px solid rgba($buy-color, 0.35);
+  color: $buy-color;
+}
+
+// ============================================
+// ORDERS LIST
+// ============================================
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: rgba($obsidian-light, 0.2);
+  border: 1px solid rgba($gold, 0.1);
+  border-radius: 6px;
+}
+
+// ============================================
+// EMPTY STATE
+// ============================================
+.empty-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  color: rgba($parchment, 0.4);
+  background: rgba($obsidian-light, 0.2);
+  border: 1px dashed rgba($gold, 0.15);
+  border-radius: 6px;
+  flex: 1;
+  gap: 0.5rem;
+
+  i {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+}
+
+// ============================================
+// UTILITIES
+// ============================================
+.hidden {
+  display: none !important;
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+@keyframes pulse-warning {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba($danger-color, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba($danger-color, 0.5);
+  }
+}
+
+// ============================================
+// RESPONSIVE - Medium screens (sidebar slightly smaller)
+// ============================================
+@media (max-width: 1100px) {
+  .shop-sidebar {
+    flex: 0 0 180px;
+  }
+
+  .sidebar-inner {
+    padding: 0.75rem;
+    gap: 0.625rem;
+  }
+
+  .player-frame {
+    width: 80px;
+    height: 80px;
+  }
+
+  .player-avatar {
+    width: 46px;
+    height: 46px;
+
+    i {
+      font-size: 1.15rem;
+    }
+  }
+
+  .player-label {
+    font-size: 0.6rem;
+  }
+
+  .player-name {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .player-badges .badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
+    font-weight: 600;
+
+    img {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .sidebar-stats {
+    padding: 0.625rem;
+  }
+
+  .stat-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-value {
+    font-size: 0.85rem;
+  }
+
+  .filter-bar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+
+    ::ng-deep .filter-bar {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    ::ng-deep .filter-input {
+      width: 140px;
+      height: 38px;
+      font-size: 0.8rem;
+    }
+
+    ::ng-deep .filter-select {
+      height: 38px;
+      font-size: 0.8rem;
+    }
+
+    ::ng-deep .toggle-group {
+      height: 40px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 34px;
+      font-size: 0.8rem;
+      min-width: 48px;
+    }
+  }
+}
+
+// ============================================
+// RESPONSIVE - Tablet (horizontal sidebar)
+// ============================================
+@media (max-width: 900px) {
+  .page-layout {
+    flex-direction: column;
+  }
+
+  .shop-sidebar {
+    flex: 0 0 auto;
+    border-right: none;
+    border-bottom: 1px solid rgba($gold, 0.25);
+  }
+
+  .sidebar-inner {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.625rem 1rem;
+    gap: 0.875rem;
+    overflow-x: auto;
+  }
+
+  .player-visual {
+    flex: 0 0 auto;
+  }
+
+  .player-frame {
+    width: 64px;
+    height: 64px;
+  }
+
+  .player-avatar {
+    width: 38px;
+    height: 38px;
+
+    i {
+      font-size: 1.05rem;
+    }
+  }
+
+  .player-info {
+    flex: 0 1 auto;
+    text-align: left;
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  .player-label {
+    font-size: 0.6rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .player-name {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .player-badges {
+    justify-content: flex-start;
+  }
+
+  .player-badges .badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    font-weight: 600;
+
+    img {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .sidebar-timer {
+    flex: 0 0 auto;
+    min-width: 110px;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+
+    .timer-header {
+      display: none;
+    }
+
+    .timer-value {
+      font-size: 1rem;
+      flex: 0 0 auto;
+    }
+
+    .timer-bar {
+      flex: 1;
+      min-width: 50px;
+    }
+  }
+
+  .shop-toggle-btn {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8rem;
+  }
+
+  .sidebar-stats {
+    flex-direction: row;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .stat-row {
+    flex: 0 0 auto;
+    gap: 0.4rem;
+  }
+
+  .stat-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 0.65rem;
+  }
+
+  .stat-label {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
+  }
+
+  .sidebar-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 0.375rem;
+  }
+
+  .sidebar-action-btn {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0.4rem 0.625rem;
+
+    span {
+      display: none;
+    }
+
+    i {
+      font-size: 0.8rem;
+    }
+  }
+
+  .confirm-inline {
+    padding: 0.5rem 0.625rem;
+  }
+
+  .orders-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    height: auto;
+  }
+
+  .orders-column {
+    max-height: 50vh;
+    min-height: 200px;
+  }
+
+  .filter-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .filter-summary {
+    margin-left: auto;
+  }
+
+  .orders-section {
+    padding: 0.75rem;
+  }
+}
+
+// ============================================
+// RESPONSIVE - Mobile
+// ============================================
+@media (max-width: 750px) {
+  .sidebar-inner {
+    padding: 0.625rem 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .player-visual {
+    order: 0;
+    flex: 0 0 auto;
+  }
+
+  .player-frame {
+    width: 58px;
+    height: 58px;
+  }
+
+  .player-avatar {
+    width: 36px;
+    height: 36px;
+
+    i {
+      font-size: 1rem;
+    }
+  }
+
+  .player-info {
+    order: 1;
+    flex: 1 1 auto;
+    text-align: left;
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  .player-label {
+    font-size: 0.65rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .player-name {
+    font-size: 1rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .player-badges {
+    justify-content: flex-start;
+  }
+
+  .player-badges .badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    font-weight: 600;
+
+    img {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .sidebar-timer {
+    order: 2;
+    min-width: 100px;
+    padding: 0.5rem 0.625rem;
+
+    .timer-value {
+      font-size: 1rem;
+    }
+  }
+
+  .shop-toggle-btn {
+    order: 3;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+
+    i {
+      font-size: 0.85rem;
+    }
+  }
+
+  .sidebar-stats {
+    order: 4;
+    padding: 0.5rem 0.625rem;
+    gap: 0.625rem;
+  }
+
+  .stat-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
+  }
+
+  .sidebar-actions {
+    order: 5;
+  }
+
+  .sidebar-action-btn {
+    padding: 0.4rem 0.625rem;
+
+    i {
+      font-size: 0.75rem;
+    }
+  }
+
+  .filter-bar {
+    padding: 0.5rem 0.625rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    ::ng-deep .filter-input {
+      width: 120px;
+      height: 38px;
+      font-size: 0.8rem;
+      padding-left: 32px;
+    }
+
+    ::ng-deep .filter-input-wrapper i {
+      font-size: 0.8rem;
+      left: 10px;
+    }
+
+    ::ng-deep .filter-select {
+      height: 38px;
+      min-width: 90px;
+      font-size: 0.8rem;
+    }
+
+    ::ng-deep .toggle-group {
+      height: 42px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 36px;
+      font-size: 0.85rem;
+      padding: 0 0.75rem;
+      min-width: 50px;
+    }
+  }
+
+  .orders-section {
+    padding: 0.625rem;
+  }
+
+  .column-title {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
+
+  .orders-list {
+    padding: 0.4rem;
+    gap: 0.3rem;
+  }
+}
+
+// ============================================
+// RESPONSIVE - Extra small
+// ============================================
+@media (max-width: 480px) {
+  .sidebar-inner {
+    padding: 0.5rem 0.625rem;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .player-frame {
+    width: 52px;
+    height: 52px;
+  }
+
+  .player-avatar {
+    width: 32px;
+    height: 32px;
+
+    i {
+      font-size: 0.9rem;
+    }
+  }
+
+  .player-info {
+    max-width: 150px;
+    min-width: 100px;
+  }
+
+  .player-label {
+    font-size: 0.6rem;
+  }
+
+  .player-name {
+    font-size: 0.95rem;
+  }
+
+  .player-badges .badge {
+    font-size: 0.6rem;
+    padding: 0.125rem 0.35rem;
+    font-weight: 600;
+
+    img {
+      width: 11px;
+      height: 11px;
+    }
+  }
+
+  .sidebar-timer {
+    min-width: 90px;
+
+    .timer-value {
+      font-size: 0.95rem;
+    }
+  }
+
+  .shop-toggle-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.625rem;
+  }
+
+  .sidebar-stats {
+    padding: 0.4rem 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .stat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.55rem;
+  }
+
+  .stat-value {
+    font-size: 0.85rem;
+  }
+
+  .filter-bar {
+    padding: 0.5rem 0.5rem;
+    flex-wrap: wrap;
+
+    ::ng-deep .filter-input {
+      width: 110px;
+      height: 36px;
+      font-size: 0.75rem;
+      padding-left: 30px;
+    }
+
+    ::ng-deep .filter-input-wrapper i {
+      font-size: 0.75rem;
+      left: 10px;
+    }
+
+    ::ng-deep .filter-select {
+      height: 36px;
+      min-width: 80px;
+      font-size: 0.75rem;
+    }
+
+    ::ng-deep .toggle-group {
+      height: 40px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 34px;
+      font-size: 0.8rem;
+      padding: 0 0.625rem;
+      min-width: 45px;
+    }
+  }
+
+  .orders-section {
+    padding: 0.5rem;
+  }
+
+  .column-title {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+
+    i {
+      font-size: 0.7rem;
+    }
+  }
 }

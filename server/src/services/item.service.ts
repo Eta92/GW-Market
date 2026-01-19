@@ -1,4 +1,4 @@
-import { Index, Document, Encoder, Charset, Resolver, Worker } from 'flexsearch';
+import { Index } from 'flexsearch';
 import { Item } from '../models/shop.model';
 import { ShopService } from './shop.service';
 
@@ -191,18 +191,35 @@ export class ItemService {
   };
 
   public static searchItems = (search: string): Array<Item> => {
-    const resultsIndex = this.searchIndex.search(search);
+    // Pass limit to Flexsearch to get enough results
+    const resultsIndex = this.searchIndex.search(search, { limit: 100 });
     const results = resultsIndex.map((i) => this.allItems[i]);
     return results.slice(0, 6);
+  };
+
+  public static searchItemsWithLimit = (search: string, limit: number = 50): Array<Item> => {
+    // Pass higher limit to Flexsearch to ensure we get all matching items
+    const resultsIndex = this.searchIndex.search(search, { limit: 1000 });
+    const results = resultsIndex.map((i) => this.allItems[i]);
+    return results.slice(0, limit);
   };
 
   public static generateFakeShops = () => {
     const fakeShopFiles = fs.readdirSync('./data/fakeshops/');
     const fakeShops = [];
-    fakeShopFiles.forEach((file) => {
+    const now = Date.now();
+    // Time offsets for the 3 buckets: online, today, week
+    const timeOffsets = [
+      1000 * 60 * 5,              // online (5 min ago, < 15 min)
+      1000 * 60 * 60 * 2,         // today (2 hours ago, < 12 hrs)
+      1000 * 60 * 60 * 24,        // week (1 day ago, >= 12 hrs)
+    ];
+    fakeShopFiles.forEach((file, index) => {
       const jsonData = fs.readFileSync(`./data/fakeshops/${file}`);
       const shopData = JSON.parse(jsonData);
-      shopData.lastRefresh = Date.now();
+      // Distribute shops across the 3 time buckets
+      const offsetIndex = index % 3;
+      shopData.lastRefresh = now - timeOffsets[offsetIndex];
       fakeShops.push(shopData);
     });
     ShopService.initShops(fakeShops);

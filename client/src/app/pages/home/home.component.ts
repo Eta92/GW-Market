@@ -3,11 +3,13 @@ import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@an
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { Item, OrderType, ShopItem } from '@app/models/shop.model';
 import { AvailableCategory, AvailableFamily, AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
+import { StatsData } from '@app/shared/components/stats-display/stats-display.component';
+import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 
 @Component({
   selector: 'app-home',
@@ -19,8 +21,21 @@ export class HomeComponent implements OnInit {
   public searchedItems: Array<Item> = [];
   public searchOpen = false;
   public lastItems: Array<ShopItem> = [];
+  public orderOpen = false;
   public availableMode: 'everything' | 'active' | 'sold' | 'bought' = 'everything';
-  public availableTree: AvailableTree = { families: [], sellOrders: 0, buyOrders: 0 };
+  public timeMode: 'online' | 'today' | 'week' | 'combined' = 'online';
+  public viewMode: 'grid' | 'list' = 'grid';
+  public availableTree: AvailableTree = {
+    families: [],
+    sellOrders: 0,
+    buyOrders: 0,
+    sellOrdersOnline: 0,
+    buyOrdersOnline: 0,
+    sellOrdersToday: 0,
+    buyOrdersToday: 0,
+    sellOrdersWeek: 0,
+    buyOrdersWeek: 0
+  };
   public availableFamily: AvailableFamily;
   public availableCategory: AvailableCategory;
   public availableList = 'family';
@@ -28,7 +43,26 @@ export class HomeComponent implements OnInit {
   public queryCategory: string;
 
   public OrderType = OrderType;
-  public priceToString = UtilityHelper.priceToString;
+
+  // Toggle options for filter buttons
+  public availableModeOptions: ToggleOption[] = [
+    { value: 'everything', label: 'All' },
+    { value: 'active', label: 'Active' },
+    { value: 'sold', label: 'Selling', icon: 'fa-arrow-up', styleClass: 'sell' },
+    { value: 'bought', label: 'Buying', icon: 'fa-arrow-down', styleClass: 'buy' }
+  ];
+
+  public timeModeOptions: ToggleOption[] = [
+    { value: 'online', label: 'Live', icon: 'fa-circle', styleClass: 'online' },
+    { value: 'today', label: 'Today', icon: 'fa-sun', styleClass: 'today' },
+    { value: 'week', label: 'This Week', icon: 'fa-calendar', styleClass: 'week' },
+    { value: 'combined', label: 'Combined', icon: 'fa-layer-group', styleClass: 'combined' }
+  ];
+
+  public viewModeOptions: ToggleOption[] = [
+    { value: 'grid', label: '', icon: 'fa-th-large' },
+    { value: 'list', label: '', icon: 'fa-list' }
+  ];
 
   @ViewChild('list') private listRef: ElementRef<HTMLElement>;
 
@@ -88,31 +122,69 @@ export class HomeComponent implements OnInit {
     return this.itemService?.getItemImage(name) || '';
   }
 
-  getCurrencySource(price: Price): string {
-    return '../../../assets/items/currency/' + price.toString() + '.png';
+  getPreviewSources(previews: string[]): string[] {
+    return (previews || []).map(name => this.getPreviewSource(name));
   }
 
   active(list: any[]): typeof list {
+    const getSell = (i: any) => this.getSellCount(i);
+    const getBuy = (i: any) => this.getBuyCount(i);
+
     switch (this.availableMode) {
       case 'everything':
         return list;
       case 'active':
-        return list.filter(i => i.sellOrders > 0 || i.buyOrders > 0);
+        return list.filter(i => getSell(i) > 0 || getBuy(i) > 0);
       case 'sold':
-        return list.filter(i => i.sellOrders > 0);
+        return list.filter(i => getSell(i) > 0);
       case 'bought':
-        return list.filter(i => i.buyOrders > 0);
+        return list.filter(i => getBuy(i) > 0);
       default:
         return list;
     }
   }
 
-  getOldOpacity(item: ShopItem): string {
-    return UtilityHelper.getOldOpacity(item);
+  getSellCount(item: any): number {
+    switch (this.timeMode) {
+      case 'online': // < 15 min
+        return item.sellOrdersOnline || 0;
+      case 'today': // < 12 hrs (online + today)
+        return item.sellOrdersToday || 0;
+      case 'week': // all time
+        return item.sellOrdersWeek || 0;
+      case 'combined': // use total for filtering
+        return item.sellOrders || 0;
+      default:
+        return item.sellOrdersOnline || 0;
+    }
   }
 
-  formatLastUpdate(timestamp: number): string {
-    return UtilityHelper.formatLastUpdate(timestamp);
+  getBuyCount(item: any): number {
+    switch (this.timeMode) {
+      case 'online': // < 15 min
+        return item.buyOrdersOnline || 0;
+      case 'today': // < 12 hrs (online + today)
+        return item.buyOrdersToday || 0;
+      case 'week': // all time
+        return item.buyOrdersWeek || 0;
+      case 'combined': // use total for filtering
+        return item.buyOrders || 0;
+      default:
+        return item.buyOrdersOnline || 0;
+    }
+  }
+
+  getStats(item: any): StatsData {
+    return {
+      sellCount: this.getSellCount(item),
+      buyCount: this.getBuyCount(item),
+      sellOnline: item.sellOrdersOnline || 0,
+      buyOnline: item.buyOrdersOnline || 0,
+      sellToday: item.sellOrdersToday || 0,
+      buyToday: item.buyOrdersToday || 0,
+      sellWeek: item.sellOrdersWeek || 0,
+      buyWeek: item.buyOrdersWeek || 0
+    };
   }
 
   goToAll(): void {

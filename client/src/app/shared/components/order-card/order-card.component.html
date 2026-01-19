@@ -1,0 +1,48 @@
+<div class="order-card"
+     [class.hidden-order]="order?.hidden"
+     [class.sell-card]="isSelling"
+     [class.buy-card]="!isSelling">
+  <!-- Main Row: Item + Qty + Price -->
+  <div class="order-main">
+    <!-- Item Thumbnail & Qty -->
+    <div class="order-item" (click)="onItemClick()">
+      <img class="order-img" [src]="imageSource" [alt]="order?.name" />
+    </div>
+
+    <div class="order-qty">
+      <span class="qty-value">{{ order?.quantity }}</span>
+      <span class="qty-label">qty</span>
+    </div>
+
+    <!-- Item Info -->
+    <div class="order-info">
+      <span class="order-name" [title]="order?.name" (click)="onItemClick()">{{ order?.name }}</span>
+      <app-item-details [item]="order" [details]="order?.item"></app-item-details>
+      <span class="desc-preview" *ngIf="order?.description">{{ order.description }}</span>
+    </div>
+
+    <!-- Price -->
+    <div class="order-price">
+      <div class="price-row" *ngFor="let price of order?.prices">
+        <img class="price-icon" [src]="price.type | currencySource" />
+        <span class="price-amount">{{ price.price }}</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="order-actions">
+      <button class="action-btn edit" (click)="onEditClick()" title="Edit">
+        <i class="fa fa-pen"></i>
+      </button>
+      <button class="action-btn visibility" [class.active]="order?.hidden" (click)="onHideClick()" [title]="order?.hidden ? 'Show' : 'Hide'">
+        <i class="fa" [class.fa-eye]="!order?.hidden" [class.fa-eye-slash]="order?.hidden"></i>
+      </button>
+      <button class="action-btn success" [class.confirm]="order?.completed" (click)="onCompleteClick()" (mouseleave)="onCompleteLeave()" [title]="completeTitle">
+        <i class="fa fa-check"></i>
+      </button>
+      <button class="action-btn danger" [class.confirm]="order?.removed" (click)="onRemoveClick()" (mouseleave)="onCompleteLeave()" title="Remove">
+        <i class="fa fa-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>

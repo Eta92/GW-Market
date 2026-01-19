@@ -3,11 +3,8 @@ import 'dotenv/config';
 import express from 'express';
 import { createServer } from 'http';
 import path from 'path';
-//const path = require('path');
 import * as geoipLite from 'geoip-lite';
 import { SocketService } from './src/services/socket.service';
-import { ItemService } from './src/services/item.service';
-import { ShopService } from './src/services/shop.service';
 
 // Hey folks, let me promote the new player to player marketplace, ez sell your stashes and buy stuff on gwmarket dot net !
 // I am not a bot so feel free to ask any question :)
@@ -24,7 +21,6 @@ function isCrawler(userAgent) {
 const app = express();
 
 app.get('/', (req, res) => {
-  //console.log('bis', req.path, req.headers['user-agent'], isCrawler(req.headers['user-agent']));
   if (isCrawler(req.headers['user-agent'])) {
     console.log('bot detected on home page');
     res.sendFile(path.join(process.cwd(), '..', 'client', 'dist', 'GWTrade', 'prerendered', 'index.html'));
@@ -36,15 +32,6 @@ app.get('/', (req, res) => {
 app.use(express.static(process.cwd() + '/../client/dist/GWTrade/browser/'));
 app.set('trust proxy', true);
 const server = createServer(app);
-
-// disable server cache in dev
-// app.use((req, res, next) => {
-//   if (process.env.development) {
-//     console.log('no cache');
-//     res.set('Cache-Control', 'no-store');
-//   }
-//   next();
-// });
 
 // services init
 SocketService.init(server);

@@ -1,7 +1,1442 @@
-.unset {
-  background-position-y: unset;
+// Import shared design system
+@import '../../shared/styles/variables';
+
+// ============================================
+// ITEM PAGE - Main Container
+// ============================================
+.item-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $obsidian;
+  overflow: hidden;
 }
 
-.bg-slash {
-  background: linear-gradient(-45deg, transparent 48%, white 49%, white 52%, transparent 52%);
+// ============================================
+// PAGE LAYOUT - Sidebar + Content
+// ============================================
+.page-layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+// ============================================
+// ITEM SIDEBAR (Original desktop: 200px)
+// ============================================
+.item-sidebar {
+  flex: 0 0 200px;
+  background: linear-gradient(180deg, rgba($gold, 0.06) 0%, rgba($obsidian-light, 0.95) 100%);
+  border-right: 1px solid rgba($gold, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.75rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+// Item Visual
+.item-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.item-frame {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($obsidian, 0.6);
+  border: 2px solid rgba($gold, 0.4);
+  border-radius: 6px;
+  padding: 0.5rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba($gold, 0.15);
+    border-radius: 5px;
+    pointer-events: none;
+  }
+}
+
+.item-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+// Item Info
+.item-info {
+  text-align: center;
+}
+
+.item-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $parchment;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  color: rgba($parchment, 0.75);
+}
+
+// Sidebar Stats
+.sidebar-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 6px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.65rem;
+
+  &.sell {
+    background: rgba($sell-color, 0.15);
+    border: 1px solid rgba($sell-color, 0.4);
+    color: $sell-color;
+  }
+
+  &.buy {
+    background: rgba($buy-color, 0.15);
+    border: 1px solid rgba($buy-color, 0.4);
+    color: $buy-color;
+  }
+}
+
+.stat-label {
+  flex: 1;
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.7);
+}
+
+.stat-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $parchment;
+}
+
+// ============================================
+// CONTENT AREA
+// ============================================
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+// ============================================
+// FILTER BAR (Original desktop: 36px height controls)
+// ============================================
+.filter-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  background: rgba($obsidian-light, 0.6);
+  border-bottom: 1px solid rgba($gold, 0.2);
+  flex-shrink: 0;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.filter-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba($parchment, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.filter-summary {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.order-total {
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.5);
+  font-weight: 500;
+}
+
+// ============================================
+// ORDERS SECTION
+// ============================================
+.orders-section {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+// Split Sell/Buy columns layout
+.split-columns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  height: 100%;
+}
+
+.split-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin: 0 0 0.5rem 0;
+  border-radius: 4px;
+
+  i {
+    font-size: 0.75rem;
+  }
+}
+
+.sell-section .section-title {
+  background: rgba($sell-color, 0.12);
+  border: 1px solid rgba($sell-color, 0.35);
+  color: $sell-color;
+}
+
+.buy-section .section-title {
+  background: rgba($buy-color, 0.12);
+  border: 1px solid rgba($buy-color, 0.35);
+  color: $buy-color;
+}
+
+.section-count {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.5);
+  margin-left: auto;
+}
+
+.split-orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: rgba($obsidian-light, 0.2);
+  border: 1px solid rgba($gold, 0.1);
+  border-radius: 6px;
+}
+
+.empty-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  color: rgba($parchment, 0.4);
+  gap: 0.5rem;
+
+  i {
+    font-size: 1.25rem;
+  }
+
+  span {
+    font-size: 0.8rem;
+  }
+}
+
+// ============================================
+// TIME BUCKET STYLES - Visual Hierarchy
+// ============================================
+.time-bucket-mini {
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  padding: 0.5rem;
+  background: rgba($obsidian-light, 0.5);
+  border: 1px solid rgba($gold, 0.15);
+}
+
+.time-bucket-label-mini {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $gold;
+  margin-bottom: 0.375rem;
+  padding-left: 0.25rem;
+}
+
+// ONLINE BUCKET
+.time-bucket-mini.online-bucket {
+  background: rgba(#252120, 0.7);
+  border: 1px solid rgba($gold, 0.5);
+
+  .time-bucket-label-mini {
+    color: $gold-light;
+  }
+
+  ::ng-deep app-order-row .order-row {
+    background: rgba(#2d2925, 0.8);
+    border: 1px solid rgba($gold, 0.3);
+
+    &:hover {
+      background: rgba(#363230, 0.9);
+      border-color: rgba($gold, 0.5);
+    }
+  }
+}
+
+// TODAY BUCKET
+.time-bucket-mini.today-bucket {
+  background: rgba($obsidian-light, 0.4);
+
+  ::ng-deep app-order-row .order-row {
+    background: rgba(#343029, 0.6);
+    border: 1px solid rgba($gold, 0.18);
+
+    &:hover {
+      background: rgba(#3a352e, 0.8);
+      border-color: rgba($gold, 0.35);
+    }
+  }
+}
+
+// THIS WEEK BUCKET
+.time-bucket-mini.week-bucket {
+  background: rgba($obsidian-light, 0.4);
+
+  .time-bucket-label-mini {
+    color: rgba($gold, 0.75);
+  }
+
+  ::ng-deep app-order-row .order-row {
+    background: rgba(#343029, 0.6);
+    border: 1px solid rgba($gold, 0.15);
+
+    &:hover {
+      background: rgba(#3a352e, 0.8);
+      border-color: rgba($gold, 0.3);
+    }
+  }
+}
+
+// Currency-based grid layout
+.currency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  height: 100%;
+
+  &.single-currency {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.currency-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.column-title {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $parchment;
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.625rem;
+  border-bottom: 2px solid rgba($gold, 0.3);
+
+  .order-count {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba($parchment, 0.6);
+  }
+}
+
+.currency-title {
+  color: $gold-light;
+  border-color: rgba($gold, 0.5);
+
+  .currency-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+}
+
+.currency-orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.375rem;
+}
+
+// Time bucket in currency view
+.time-bucket {
+  background: rgba($obsidian-light, 0.5);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 8px;
+  padding: 0.875rem;
+
+  &.online-bucket {
+    background: rgba(#252120, 0.7);
+    border: 1px solid rgba($gold, 0.5);
+
+    .time-bucket-label {
+      color: $gold-light;
+    }
+
+    .time-bucket-header {
+      border-bottom-color: rgba($gold, 0.25);
+    }
+
+    ::ng-deep app-order-row .order-row {
+      background: rgba(#2d2925, 0.8);
+      border: 1px solid rgba($gold, 0.3);
+
+      &:hover {
+        background: rgba(#363230, 0.9);
+        border-color: rgba($gold, 0.5);
+      }
+    }
+  }
+
+  &.today-bucket {
+    background: rgba($obsidian-light, 0.4);
+
+    .time-bucket-label {
+      color: $gold;
+    }
+
+    ::ng-deep app-order-row .order-row {
+      background: rgba(#343029, 0.6);
+      border: 1px solid rgba($gold, 0.18);
+
+      &:hover {
+        background: rgba(#3a352e, 0.8);
+        border-color: rgba($gold, 0.35);
+      }
+    }
+  }
+
+  &.week-bucket {
+    background: rgba($obsidian-light, 0.4);
+
+    .time-bucket-label {
+      color: rgba($gold, 0.75);
+    }
+
+    ::ng-deep app-order-row .order-row {
+      background: rgba(#343029, 0.6);
+      border: 1px solid rgba($gold, 0.15);
+
+      &:hover {
+        background: rgba(#3a352e, 0.8);
+        border-color: rgba($gold, 0.3);
+      }
+    }
+  }
+}
+
+.time-bucket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.625rem;
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid rgba($gold, 0.2);
+}
+
+.time-bucket-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $gold;
+}
+
+.time-bucket-count {
+  font-size: 0.7rem;
+  color: rgba($parchment, 0.5);
+}
+
+// Order type groups
+.order-type-group {
+  margin-bottom: 0.625rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.order-type-label {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.375rem;
+  padding-left: 0.25rem;
+
+  i {
+    font-size: 0.6rem;
+  }
+
+  &.sell-label {
+    color: $sell-color;
+  }
+
+  &.buy-label {
+    color: $buy-color;
+  }
+}
+
+// Empty states
+.empty-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  color: rgba($parchment, 0.4);
+
+  i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  &.full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+// ============================================
+// POPUP STYLES
+// ============================================
+.popup-content {
+  background: $obsidian-light;
+  border: 2px solid rgba($gold, 0.4);
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba($gold, 0.1);
+  border-bottom: 1px solid rgba($gold, 0.2);
+}
+
+.popup-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: rgba($obsidian, 0.5);
+  padding: 4px;
+}
+
+.popup-title {
+  flex: 1;
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $parchment;
+  }
+
+  p {
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+    color: rgba($parchment, 0.6);
+  }
+}
+
+.popup-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: 4px;
+  color: $gold-light;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+  }
+}
+
+.popup-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  background: rgba($obsidian, 0.5);
+  border: none;
+  color: $parchment;
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  resize: vertical;
+
+  &:focus {
+    outline: none;
+    background: rgba($obsidian, 0.7);
+  }
+}
+
+// ============================================
+// ORDER DETAIL MODAL
+// ============================================
+.order-detail-content {
+  background: $obsidian-light;
+  border: 2px solid rgba($gold, 0.4);
+  border-radius: 12px;
+  max-width: 420px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.2s ease;
+
+  &.sell-order {
+    border-color: rgba($sell-color, 0.5);
+  }
+
+  &.buy-order {
+    border-color: rgba($buy-color, 0.5);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: rgba($obsidian, 0.5);
+  border-bottom: 1px solid rgba($gold, 0.2);
+}
+
+.order-type-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+
+  i {
+    font-size: 0.75rem;
+  }
+
+  &.sell {
+    background: rgba($sell-color, 0.2);
+    border: 1px solid rgba($sell-color, 0.5);
+    color: $sell-color;
+  }
+
+  &.buy {
+    background: rgba($buy-color, 0.2);
+    border: 1px solid rgba($buy-color, 0.5);
+    color: $buy-color;
+  }
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: 50%;
+  color: $gold-light;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+  }
+}
+
+.order-detail-body {
+  padding: 1.25rem;
+}
+
+.detail-item-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba($gold, 0.15);
+}
+
+.detail-item-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: rgba($obsidian, 0.5);
+  padding: 6px;
+  border: 1px solid rgba($gold, 0.2);
+}
+
+.detail-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-item-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $parchment;
+}
+
+.detail-item-qty {
+  font-size: 0.875rem;
+  color: rgba($parchment, 0.7);
+
+  strong {
+    color: $parchment;
+    font-size: 1rem;
+  }
+}
+
+.detail-price-section {
+  background: rgba($gold, 0.08);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detail-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px dashed rgba($gold, 0.15);
+  }
+
+  &.unit-price {
+    .detail-price-value {
+      color: rgba($gold-light, 0.85);
+    }
+  }
+}
+
+.detail-price-label {
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.detail-price-value {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-currency-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.detail-price-amount {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: $gold-light;
+}
+
+.detail-currency-name {
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.6);
+}
+
+.detail-price-decimal {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $gold-light;
+}
+
+.detail-price-fraction {
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.5);
+  font-style: italic;
+}
+
+.detail-seller-section {
+  margin-bottom: 1rem;
+}
+
+.detail-seller-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px dashed rgba($gold, 0.1);
+  }
+}
+
+.detail-seller-label {
+  font-size: 0.75rem;
+  color: rgba($parchment, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.detail-seller-value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.375rem;
+}
+
+.detail-seller-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: $parchment;
+}
+
+.detail-seller-badges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.detail-seller-badges .badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  img {
+    width: 14px;
+    height: 14px;
+  }
+
+  &.online {
+    background: rgba($sell-color, 0.15);
+    border: 1px solid rgba($sell-color, 0.4);
+    color: $sell-color;
+  }
+
+  &.certified {
+    background: rgba($gold, 0.15);
+    border: 1px solid rgba($gold, 0.4);
+    color: $gold-light;
+  }
+}
+
+.detail-seller-time {
+  font-size: 0.875rem;
+  color: rgba($parchment, 0.7);
+}
+
+// Item Details section
+.detail-item-details-section {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba($gold, 0.06);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 6px;
+
+  ::ng-deep app-item-details {
+    display: block;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+
+    .item-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-start;
+      margin-top: 0;
+    }
+
+    .detail-badge {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.75rem;
+    }
+  }
+}
+
+.detail-notes-section {
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 6px;
+  padding: 0.875rem;
+}
+
+.detail-notes-label {
+  display: block;
+  font-size: 0.7rem;
+  color: rgba($parchment, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-notes-content {
+  font-size: 0.875rem;
+  color: rgba($parchment, 0.8);
+}
+
+.detail-description {
+  margin: 0;
+  font-style: italic;
+}
+
+.order-detail-footer {
+  padding: 1rem 1.25rem;
+  background: rgba($obsidian, 0.5);
+  border-top: 1px solid rgba($gold, 0.2);
+}
+
+.detail-whisper-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.25rem;
+  background: linear-gradient(135deg, rgba($gold, 0.2), rgba($gold, 0.1));
+  border: 1px solid rgba($gold, 0.5);
+  border-radius: 6px;
+  color: $gold-light;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  i {
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($gold, 0.3), rgba($gold, 0.2));
+    border-color: $gold;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($gold, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ============================================
+// RESPONSIVE - Large screens (wider sidebar)
+// ============================================
+@media (min-width: 1400px) {
+  .item-sidebar {
+    flex: 0 0 220px;
+  }
+
+  .item-frame {
+    width: 110px;
+    height: 110px;
+  }
+
+  .item-name {
+    font-size: 1.125rem;
+  }
+}
+
+// ============================================
+// RESPONSIVE - Medium screens
+// ============================================
+@media (max-width: 1100px) {
+  .item-sidebar {
+    flex: 0 0 180px;
+  }
+
+  .sidebar-inner {
+    padding: 0.75rem;
+    gap: 0.625rem;
+  }
+
+  .item-frame {
+    width: 75px;
+    height: 75px;
+    padding: 0.375rem;
+  }
+
+  .item-name {
+    font-size: 1rem;
+  }
+
+  .meta-tag {
+    font-size: 0.7rem;
+    padding: 0.175rem 0.4rem;
+  }
+
+  .sidebar-stats {
+    padding: 0.5rem;
+  }
+
+  .stat-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-value {
+    font-size: 0.85rem;
+  }
+
+  .filter-bar {
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+
+    ::ng-deep .toggle-group {
+      height: 40px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 34px;
+      padding: 0 0.65rem;
+      font-size: 0.8rem;
+      min-width: 48px;
+    }
+  }
+}
+
+// ============================================
+// RESPONSIVE - Tablet (horizontal sidebar)
+// ============================================
+@media (max-width: 900px) {
+  .page-layout {
+    flex-direction: column;
+  }
+
+  .item-sidebar {
+    flex: 0 0 auto;
+    border-right: none;
+    border-bottom: 1px solid rgba($gold, 0.25);
+  }
+
+  .sidebar-inner {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.625rem 1rem;
+    gap: 0.875rem;
+  }
+
+  .item-visual {
+    flex: 0 0 auto;
+  }
+
+  .item-frame {
+    width: 64px;
+    height: 64px;
+    padding: 0.375rem;
+  }
+
+  .item-info {
+    flex: 1 1 auto;
+    text-align: left;
+    min-width: 120px;
+    max-width: 240px;
+  }
+
+  .item-name {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .item-meta {
+    justify-content: flex-start;
+    gap: 0.375rem;
+  }
+
+  .meta-tag {
+    font-size: 0.7rem;
+    padding: 0.175rem 0.4rem;
+  }
+
+  .sidebar-stats {
+    flex: 0 0 auto;
+    flex-direction: row;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .stat-row {
+    flex: 0 0 auto;
+    gap: 0.375rem;
+  }
+
+  .stat-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .stat-label {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
+  }
+
+  .filter-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .filter-summary {
+    margin-left: auto;
+  }
+
+  .order-total {
+    font-size: 0.8rem;
+  }
+
+  .split-columns-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    height: auto;
+  }
+
+  .split-section {
+    max-height: 50vh;
+    min-height: 200px;
+  }
+
+  .currency-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .currency-column {
+    max-height: 50vh;
+    min-height: 200px;
+  }
+
+  .orders-section {
+    padding: 0.625rem;
+  }
+}
+
+// ============================================
+// RESPONSIVE - Mobile
+// ============================================
+@media (max-width: 750px) {
+  .sidebar-inner {
+    padding: 0.625rem 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .item-visual {
+    order: 0;
+    flex: 0 0 auto;
+  }
+
+  .item-frame {
+    width: 60px;
+    height: 60px;
+    padding: 0.375rem;
+  }
+
+  .item-info {
+    order: 1;
+    flex: 1 1 auto;
+    text-align: left;
+    min-width: 120px;
+    max-width: 220px;
+  }
+
+  .item-name {
+    font-size: 1.05rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .item-meta {
+    justify-content: flex-start;
+    gap: 0.375rem;
+  }
+
+  .meta-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.45rem;
+    font-weight: 500;
+  }
+
+  .sidebar-stats {
+    order: 2;
+    padding: 0.5rem 0.625rem;
+    gap: 0.625rem;
+  }
+
+  .stat-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-value {
+    font-size: 0.9rem;
+  }
+
+  .filter-bar {
+    padding: 0.5rem 0.625rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    ::ng-deep .toggle-group {
+      height: 42px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 36px;
+      padding: 0 0.75rem;
+      font-size: 0.85rem;
+      min-width: 50px;
+
+      i {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .filter-group {
+    width: auto;
+  }
+
+  .order-total {
+    font-size: 0.8rem;
+  }
+
+  .orders-section {
+    padding: 0.625rem;
+  }
+
+  .section-title {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
+
+  .split-orders-list {
+    padding: 0.4rem;
+    gap: 0.3rem;
+  }
+}
+
+// ============================================
+// RESPONSIVE - Extra small
+// ============================================
+@media (max-width: 480px) {
+  .sidebar-inner {
+    padding: 0.5rem 0.625rem;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .item-frame {
+    width: 54px;
+    height: 54px;
+    padding: 0.3rem;
+  }
+
+  .item-info {
+    max-width: 160px;
+    min-width: 100px;
+  }
+
+  .item-name {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .meta-tag {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.375rem;
+  }
+
+  .sidebar-stats {
+    padding: 0.4rem 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .stat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.55rem;
+  }
+
+  .stat-value {
+    font-size: 0.85rem;
+  }
+
+  .filter-bar {
+    padding: 0.5rem 0.5rem;
+    flex-wrap: wrap;
+
+    ::ng-deep .toggle-group {
+      height: 40px;
+    }
+
+    ::ng-deep .toggle-btn {
+      height: 34px;
+      padding: 0 0.625rem;
+      font-size: 0.8rem;
+      min-width: 45px;
+
+      i {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .order-total {
+    font-size: 0.75rem;
+  }
+
+  .orders-section {
+    padding: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    padding: 0.35rem;
+
+    i {
+      font-size: 0.65rem;
+    }
+  }
+
+  .split-orders-list {
+    padding: 0.35rem;
+    gap: 0.25rem;
+  }
 }

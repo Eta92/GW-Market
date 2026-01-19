@@ -1,0 +1,15 @@
+<div class="toggle-group" [ngClass]="styleClass">
+  <button
+    *ngFor="let option of options"
+    type="button"
+    class="toggle-btn"
+    [class.active]="isSelected(option.value)"
+    [class.has-icon]="option.icon || option.imgSrc"
+    [ngClass]="option.styleClass"
+    (click)="select(option.value)"
+  >
+    <img *ngIf="option.imgSrc" class="toggle-img" [src]="option.imgSrc" alt="" />
+    <i *ngIf="getIcon(option) && !option.imgSrc" class="fa" [ngClass]="getIcon(option)"></i>
+    <span>{{ option.label }}</span>
+  </button>
+</div>

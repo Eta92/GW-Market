@@ -1,0 +1,223 @@
+@import '../../styles/variables';
+
+// Original desktop sizing - readable and comfortable
+.toggle-group {
+  display: flex;
+  height: 46px;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: $radius-md;
+  padding: 3px;
+  gap: 3px;
+}
+
+.toggle-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: 0 0.75rem;
+  height: 38px;
+  background: transparent;
+  border: none;
+  border-radius: calc($radius-md - 3px);
+  color: rgba($parchment, 0.6);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-base;
+  white-space: nowrap;
+
+  i {
+    font-size: 0.75rem;
+  }
+
+  .toggle-img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  &:hover:not(.active) {
+    color: $parchment;
+    background: rgba($gold, 0.1);
+  }
+
+  &.active {
+    background: rgba($gold, 0.2);
+    color: $gold-light;
+    box-shadow: inset 0 0 0 1px rgba($gold, 0.3);
+  }
+
+  // Style variants
+  &.sell {
+    &.active {
+      background: rgba($sell-color, 0.2);
+      color: $sell-color;
+      box-shadow: inset 0 0 0 1px rgba($sell-color, 0.3);
+    }
+
+    &:hover:not(.active) {
+      background: rgba($sell-color, 0.1);
+      color: $sell-color;
+    }
+  }
+
+  &.buy {
+    &.active {
+      background: rgba($buy-color, 0.2);
+      color: $buy-color;
+      box-shadow: inset 0 0 0 1px rgba($buy-color, 0.3);
+    }
+
+    &:hover:not(.active) {
+      background: rgba($buy-color, 0.1);
+      color: $buy-color;
+    }
+  }
+
+  &.danger {
+    &.active {
+      background: rgba($danger-color, 0.2);
+      color: $danger-color;
+      box-shadow: inset 0 0 0 1px rgba($danger-color, 0.3);
+    }
+
+    &:hover:not(.active) {
+      background: rgba($danger-color, 0.1);
+      color: $danger-color;
+    }
+  }
+}
+
+// Compact variant - same height as regular, icon-only buttons
+.toggle-group.compact {
+  .toggle-btn {
+    flex: 0 0 auto;
+    width: 38px;
+    padding: 0;
+    gap: 0;
+
+    span {
+      display: none;
+    }
+
+    i {
+      margin: 0;
+      line-height: 38px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+// Large variant
+.toggle-group.large {
+  padding: 4px;
+  gap: 4px;
+
+  .toggle-btn {
+    padding: $spacing-md $spacing-lg;
+    font-size: 1rem;
+  }
+}
+
+// ============================================
+// RESPONSIVE - Medium (1100px): Compact icon-only
+// ============================================
+@media (max-width: 1100px) {
+  .toggle-group {
+    height: 38px;
+    padding: 3px;
+    gap: 3px;
+
+    .toggle-btn {
+      height: 32px;
+      padding: 0 0.5rem;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+
+      i {
+        font-size: 0.7rem;
+      }
+
+      .toggle-img {
+        width: 14px;
+        height: 14px;
+      }
+
+      // Only hide label when button has an icon or image
+      &.has-icon {
+        flex: 1 1 0;
+        min-width: 32px;
+        padding: 0;
+        justify-content: center;
+
+        span {
+          display: none;
+        }
+
+        i, .toggle-img {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// RESPONSIVE - Mobile (750px): Larger readable buttons
+// ============================================
+@media (max-width: 750px) {
+  .toggle-group {
+    height: 42px;
+
+    .toggle-btn {
+      height: 36px;
+      flex: 1 1 0;
+      min-width: 50px;
+      font-size: 0.85rem;
+      padding: 0 0.75rem;
+
+      i {
+        font-size: 0.75rem;
+      }
+
+      .toggle-img {
+        width: 16px;
+        height: 16px;
+      }
+
+      &.has-icon {
+        flex: 1 1 0;
+        min-width: 40px;
+      }
+    }
+  }
+}
+
+// ============================================
+// RESPONSIVE - Extra small (480px): Still large & readable
+// ============================================
+@media (max-width: 480px) {
+  .toggle-group {
+    height: 40px;
+
+    .toggle-btn {
+      height: 34px;
+      font-size: 0.8rem;
+      padding: 0 0.625rem;
+      min-width: 45px;
+
+      i {
+        font-size: 0.7rem;
+      }
+
+      .toggle-img {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}

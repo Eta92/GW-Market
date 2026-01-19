@@ -1,0 +1,54 @@
+<div
+  class="order-row"
+  [class.sell-row]="type === 'sell'"
+  [class.buy-row]="type === 'buy'"
+  [class.clickable]="clickable"
+  [style.opacity]="fade"
+  [class.has-note]="hasNote"
+  [class.compact]="compact"
+  (click)="onClick()"
+>
+  <!-- Info Boxes Group (expands together) -->
+  <div class="info-group">
+    <!-- Quantity Box -->
+    <div class="info-box qty-box">
+      <span class="box-label">QTY</span>
+      <span class="box-value">{{ order.quantity }}</span>
+    </div>
+
+    <!-- Total Price Box with Currency -->
+    <div class="info-box price-box">
+      <span class="box-label">TOTAL</span>
+      <div class="box-value-row">
+        <img class="currency-icon" [src]="order.price.type | currencySource" alt="" />
+        <span class="box-value">{{ order.price.price }}</span>
+      </div>
+    </div>
+
+    <!-- Unit Price Box -->
+    <div class="info-box unit-box">
+      <span class="box-label">EACH</span>
+      <span class="box-value">{{ order.price.price | decimalUnitPrice: order.quantity }}</span>
+    </div>
+  </div>
+
+  <!-- Player Info Section -->
+  <div class="player-info">
+    <span class="player-name">{{ order.player }}</span>
+    <span class="player-time" *ngIf="order.lastRefresh">{{ order.lastRefresh | formatLastUpdate }}</span>
+  </div>
+
+  <!-- Badges (fixed width container for alignment) -->
+  <div class="badges">
+    <img class="badge-icon" src="/assets/img/online.png" title="Online" *ngIf="order.daybreakOnline" />
+    <img class="badge-icon" src="/assets/img/certified.png" title="Certified" *ngIf="order.authCertified" />
+  </div>
+
+  <!-- Whisper Button -->
+  <button class="whisper-btn" (click)="onWhisper($event)" title="Contact {{ order.player }}">
+    <i class="fa fa-comment"></i>
+  </button>
+
+  <!-- Item Details (weapon, miniature, pre-searing) -->
+  <app-item-details *ngIf="showWeaponDetails" [item]="order.item" [details]="order.details"></app-item-details>
+</div>

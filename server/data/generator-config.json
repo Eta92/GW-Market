@@ -1,0 +1,280 @@
+{
+  "weaponAttributes": [
+    "Strength", "Axe Mastery", "Hammer Mastery", "Swordsmanship", "Tactics",
+    "Expertise", "Beast Mastery", "Marksmanship", "Wilderness Survival",
+    "Divine Favor", "Healing Prayers", "Protection Prayers", "Smiting Prayers",
+    "Soul Reaping", "Blood Magic", "Curses", "Death Magic",
+    "Fast Casting", "Domination Magic", "Illusion Magic", "Inspiration Magic",
+    "Energy Storage", "Air Magic", "Earth Magic", "Fire Magic", "Water Magic",
+    "Critical Strikes", "Dagger Mastery", "Deadly Arts", "Shadow Arts",
+    "Spawning Power", "Channeling Magic", "Communing", "Restoration Magic",
+    "Leadership", "Command", "Motivation", "Spear Mastery",
+    "Mysticism", "Earth Prayers", "Scythe Mastery", "Wind Prayers"
+  ],
+
+  "professions": [
+    "Warrior", "Ranger", "Monk", "Necromancer", "Mesmer", "Elementalist",
+    "Assassin", "Ritualist", "Paragon", "Dervish"
+  ],
+
+  "weaponPrefixes": [
+    "Barbed", "Cruel", "Crippling", "Heavy", "Poisonous", "Silencing",
+    "Ebon", "Fiery", "Icy", "Shocking",
+    "Furious", "Sundering", "Vampiric", "Zealous",
+    null
+  ],
+
+  "weaponSuffixes": [
+    "of Fortitude", "of Defense", "of Shelter", "of Warding",
+    "of Enchanting", "of Mastery", "of Charrslaying", "of Pruning",
+    "of Deathbane", "of Demonslaying", "of Valor",
+    null
+  ],
+
+  "inscriptions": [
+    "Guided by Fate", "Dance with Death", "Brawn over Brains",
+    "Don't Think Twice", "Hale and Hearty", "I Have the Power!",
+    "Strength and Honor", "Sheltered by Faith", "Aptitude not Attitude",
+    "Seize the Day", "To the Pain!", "Vengeance is Mine",
+    "Faith and Power", "Let the Memory Live Again", "Live for Today",
+    "Leaf on the Wind", "Sleep Now in the Fire", "Not the Face!",
+    "Knowing is Half the Battle", "Cast Out the Unclean",
+    "Down With Madness!", "Fear Cuts Deeper", "Forget Me Not",
+    "Have Faith", "Like a Rolling Stone", "Pure of Heart",
+    "The Riddle of Steel", "Run For Your Life", "Only the Strong Survive",
+    "Luck of the Draw", "Fortune Favors the Bold", "Be Just and Fear Not"
+  ],
+
+  "damageTypes": [
+    "Slashing Dmg", "Piercing Dmg", "Blunt Dmg",
+    "Fire Dmg", "Cold Dmg", "Lightning Dmg", "Earth Dmg",
+    "Chaos Dmg", "Dark Dmg", "Holy Dmg"
+  ],
+
+  "runeGrades": ["Minor", "Major", "Superior"],
+
+  "insignias": [
+    "Survivor Insignia", "Radiant Insignia", "Stalwart Insignia",
+    "Brawler's Insignia", "Blessed Insignia", "Herald's Insignia",
+    "Sentry's Insignia", "Knight's Insignia", "Stonefist Insignia",
+    "Dreadnought Insignia", "Sentinel's Insignia", "Lieutenant's Insignia",
+    "Scout's Insignia", "Frostbound Insignia", "Pyrebound Insignia",
+    "Stormbound Insignia", "Earthbound Insignia", "Beastmaster's Insignia",
+    "Wanderer's Insignia", "Disciple's Insignia", "Anchorite's Insignia",
+    "Tormentor's Insignia", "Bloodstained Insignia", "Minion Master's Insignia",
+    "Blighter's Insignia", "Bonelace Insignia", "Undertaker's Insignia",
+    "Prodigy's Insignia", "Virtuoso's Insignia", "Artificer's Insignia",
+    "Prismatic Insignia", "Pyromancer Insignia", "Aeromancer Insignia",
+    "Geomancer Insignia", "Hydromancer Insignia",
+    "Infiltrator's Insignia", "Saboteur's Insignia", "Nightstalker's Insignia", "Vanguard's Insignia",
+    "Shaman's Insignia", "Ghost Forge Insignia", "Mystic's Insignia",
+    "Centurion's Insignia",
+    "Windwalker Insignia", "Forsaken Insignia"
+  ],
+
+  "commonMaterials": [
+    "Bolt of Cloth", "Scale", "Pile of Glittering Dust", "Plant Fiber",
+    "Granite Slab", "Wood Plank", "Feather", "Iron Ingot",
+    "Chitin Fragment", "Bone", "Tanned Hide Square"
+  ],
+
+  "rareMaterials": [
+    "Glob of Ectoplasm", "Obsidian Shard", "Diamond", "Sapphire", "Ruby",
+    "Steel Ingot", "Roll of Parchment", "Elonian Leather Square",
+    "Roll of Vellum", "Fur Square", "Vial of Ink",
+    "Deldrimor Steel Ingot", "Jadeite Shard", "Bolt of Damask",
+    "Monstrous Claw", "Amber Chunk", "Onyx Gemstone",
+    "Bolt of Silk", "Spiritwood Plank", "Lump of Charcoal",
+    "Monstrous Eye", "Monstrous Fang", "Tempered Glass Vial",
+    "Bolt of Linen", "Leather Square"
+  ],
+
+  "currencies": [
+    "Platinium", "Ectoplasm", "Zaishen Key", "Armbrace",
+    "Black Dye", "Silver Zaishen Coin", "Gold Zaishen Coin"
+  ],
+
+  "consumableTypes": [
+    "In-town speed boosts", "Boost morale and/or reduce death penalty",
+    "Increase movement, attack speed, or rate of skill activation",
+    "Health, Energy, Armor, or Attributes", "Experience gain",
+    "Summoning stone", "Festive Items", "Alcohol", "Sweet", "Presents", "Keys"
+  ],
+
+  "summoningStones": [
+    "Amber Summoning Stone", "Arctic Summoning Stone", "Automaton Summoning Stone",
+    "Celestial Summoning Stone", "Chitinous Summoning Stone", "Demonic Summoning Stone",
+    "Fossilized Summoning Stone", "Frosty Summoning Stone", "Gelatinous Summoning Stone",
+    "Ghastly Summoning Stone", "Igneous Summoning Stone", "Imperial Guard Reinforcement Order",
+    "Jadeite Summoning Stone", "Legionnaire Summoning Crystal", "Mercantile Summoning Stone",
+    "Mischievous Summoning Stone", "Mysterious Summoning Stone", "Mystical Summoning Stone",
+    "Shining Blade War Horn", "Tengu Support Flare", "Zaishen Summoning Stone"
+  ],
+
+  "alcoholItems": [
+    "Bottle of Rice Wine", "Eggnog", "Dwarven Ale", "Hard Apple Cider",
+    "Hunter's Ale", "Bottle of Juniberry Gin", "Shamrock Ale",
+    "Bottle of Vabbian Wine", "Vial of Absinthe", "Witch's Brew",
+    "Zehtuka's Jug", "Aged Dwarven Ale", "Aged Hunter's Ale",
+    "Bottle of Grog", "Flask of Firewater", "Keg of Aged Hunter's Ale",
+    "Krytan Brandy", "Spiked Eggnog", "Battle Isle Iced Tea"
+  ],
+
+  "sweetItems": [
+    "Candy Apple", "Candy Corn", "Fruitcake", "Golden Egg", "Honeycomb",
+    "Mandragor Root Cake", "Pumpkin Cookie", "Refined Jelly",
+    "Slice of Pumpkin Pie", "Sugary Blue Drink", "War Supplies",
+    "Wintergreen Candy Cane", "Rainbow Candy Cane", "Peppermint Candy Cane",
+    "Birthday Cupcake", "Chocolate Bunny", "Red Bean Cake", "Jar of Honey",
+    "Crème Brûlée", "Krytan Lokum", "Minis-treat of Purity",
+    "Green Rock Candy", "Blue Rock Candy", "Red Rock Candy", "Delicious Cake"
+  ],
+
+  "festiveTonics": [
+    "Beetle Juice Tonic", "Cottontail Tonic", "Frosty Tonic", "Mischievous Tonic",
+    "Sinister Automatonic", "Transmogrifier Tonic", "Yuletide Tonic",
+    "Cerebral Tonic", "Searing Tonic", "Abyssal Tonic", "Unseen Tonic",
+    "Phantasmal Tonic", "Automatonic", "Boreal Tonic", "Trapdoor Tonic",
+    "Macabre Tonic", "Skeletonic", "Gelatinous Tonic", "Abominable Tonic",
+    "Minutely Mad King Tonic", "Zaishen Tonic", "Mysterious Tonic", "Spooky Tonic"
+  ],
+
+  "everlastingTonics": [
+    "Everlasting Beetle Juice Tonic", "Everlasting Cottontail Tonic",
+    "Everlasting Frosty Tonic", "Everlasting Mischievous Tonic",
+    "Everlasting Sinister Automatonic", "Everlasting Transmogrifier Tonic",
+    "Everlasting Yuletide Tonic", "Everlasting Avatar of Balthazar Tonic",
+    "Everlasting Balthazar's Champion Tonic", "Everlasting Henchman Tonic",
+    "Everlasting Ghostly Hero Tonic", "Everlasting Guild Lord Tonic",
+    "Everlasting Shiro Tonic", "Everlasting Prince Rurik Tonic",
+    "Everlasting Destroyer Tonic", "Everlasting Kuunavang Tonic",
+    "Everlasting Slightly Mad King Tonic"
+  ],
+
+  "heroArmors": [
+    "Stolen Sunspear Armor", "Ancient Armor Remnants", "Mysterious Armor Pieces",
+    "Primeval Armor Remnants", "Deldrimor Armor Remnant", "Cloth of the Brotherhood"
+  ],
+
+  "endgameTrophies": [
+    "Deldrimor Talisman", "Amulet of the Mists", "Book of Secrets",
+    "Droknar's Key", "Imperial Dragon's Tear"
+  ],
+
+  "keys": [
+    "Ascalonian Key", "Steel Key", "Krytan Key", "Maguuma Key", "Elonian Key",
+    "Shiverpeak Key", "Darkstone Key", "Miner's Key", "Shing Jea Key",
+    "Canthan Key", "Kurzick Key", "Stoneroot Key", "Luxon Key", "Deep Jade Key",
+    "Forbidden Key", "Istani Key", "Kournan Key", "Vabbian Key",
+    "Ancient Elonian Key", "Margonite Key", "Demonic Key", "Phantom Key",
+    "Obsidian Key", "Lockpick", "Zaishen Key"
+  ],
+
+  "presents": [
+    "Birthday Present", "Gift of the Huntsman", "Gift of the Traveler",
+    "Wintersday Gift", "Wintersday Grab Bag", "Lunar Fortune",
+    "Imperial Guard Lockbox", "Hero's Strongbox", "Champion's Zaishen Strongbox",
+    "Gladiator's Zaishen Strongbox", "Strategist's Zaishen Strongbox",
+    "Reverie Gift", "Ghoulish Grab Bag", "Dragon Festival Grab Bag",
+    "Lunar Festival Grab Bag", "Trick-or-Treat Bag", "Royal Gift",
+    "Coffer of Whispers", "Festival Prize", "Red Gift Bag"
+  ],
+
+  "serviceTypes": [
+    "Prophecies Normal", "Prophecies Hard", "Factions Normal", "Factions Hard",
+    "Nightfall Normal", "Nightfall Hard", "EotN Normal", "EotN Hard",
+    "Dungeon Normal", "Dungeon Hard",
+    "Vanquisher XS", "Vanquisher S", "Vanquisher M", "Vanquisher L", "Vanquisher XL",
+    "Lion's Arch", "Ascalon City", "Sanctum Cay", "Temple of the Ages",
+    "Droknar's Forge", "Crystal Desert tour", "Kaineng City tour",
+    "Prophecies Rush", "Factions Rush", "Nightfall Rush", "Eye of the North Rush",
+    "Fissure of Woe", "Underworld", "Urgoz's Warren", "The Deep", "DoA / Mallyx",
+    "Obsidian armor", "Infusion"
+  ],
+
+  "campaigns": ["Prophecies", "Factions", "Nightfall", "Eye of the North"],
+
+  "regions": [
+    "Ascalon", "Northern Shiverpeaks", "Kryta", "Maguuma Jungle", "Crystal Desert",
+    "Southern Shiverpeaks", "Ring of Fire Island Chain", "Sorrow's Furnace",
+    "Shing Jea Island", "Kaineng City", "Echovald Forest", "Jade Sea",
+    "Istan", "Kourna", "Vabbi", "The Desolation", "Realm of Torment",
+    "Domain of Anguish", "The Underworld", "The Fissure of Woe",
+    "Charr Homelands", "Depths of Tyria", "Far Shiverpeaks", "Tarnished Coast"
+  ],
+
+  "playerPrefixes": [
+    "Shadow", "Flame", "Storm", "Dark", "Light", "Golden", "Silver",
+    "Iron", "Steel", "Crystal", "Blood", "Frost", "Thunder", "Ancient",
+    "Mystic", "Noble", "Swift", "Silent", "Brave", "Fierce", "Crimson",
+    "Azure", "Emerald", "Obsidian", "Ivory", "Scarlet", "Jade", "Phantom",
+    "Burning", "Frozen", "Cursed", "Holy", "Chaos", "Eternal", "Lost",
+    "Wild", "Feral", "Vengeful", "Devoted", "Fallen", "Rising", "Hidden"
+  ],
+
+  "playerSuffixes": [
+    "Walker", "Blade", "Heart", "Soul", "Spirit", "Hand", "Eye",
+    "Knight", "Mage", "Hunter", "Priest", "Warrior", "Assassin",
+    "Ranger", "Monk", "Necro", "Mesmer", "Ele", "Rit", "Para", "Derv",
+    "Slayer", "Guardian", "Seeker", "Warden", "Champion", "Herald",
+    "Bringer", "Weaver", "Singer", "Dancer", "Caller", "Keeper",
+    "Master", "Lord", "Lady", "King", "Queen", "Prince", "Princess"
+  ],
+
+  "descriptions": [
+    "Quick trade!", "PM me", "Negotiable", "Firm price", "Looking for quick trade",
+    "Online now", "Best offer", "No lowballs", "Rare item", "Perfect stats",
+    "Clean", "Modded", "Req 9", "Req 8", "Inscribable", "OS", "Max damage"
+  ],
+
+  "priceTypes": {
+    "PLAT": 0,
+    "ECTO": 1,
+    "ZKEY": 2,
+    "ARM": 3
+  },
+
+  "itemFamilies": [
+    "weapon", "unique", "upgrade", "consumable",
+    "rune", "material", "tome", "special",
+    "miniature", "service"
+  ],
+
+  "weaponCategories": [
+    "Axes", "Hammers", "Swords", "Daggers", "Scythes",
+    "Bows", "Spears",
+    "Wands", "Staves", "Foci", "Shields"
+  ],
+
+  "rarities": ["Common", "Uncommon", "Rare", "Unique", "Green"],
+
+  "priceRanges": {
+    "PLAT": { "min": 1, "max": 1000 },
+    "ECTO": { "min": 1, "max": 500 },
+    "ZKEY": { "min": 1, "max": 100 },
+    "ARM": { "min": 1, "max": 50 }
+  },
+
+  "quantityRanges": {
+    "default": { "min": 1, "max": 100 },
+    "material": { "min": 1, "max": 250 },
+    "consumable": { "min": 1, "max": 250 },
+    "weapon": { "min": 1, "max": 10 },
+    "unique": { "min": 1, "max": 5 },
+    "miniature": { "min": 1, "max": 5 }
+  },
+
+  "requirementRange": { "min": 0, "max": 13, "default": 9 },
+
+  "weaponDamageRanges": {
+    "axe": "6-28",
+    "hammer": "19-35",
+    "sword": "15-22",
+    "dagger": "7-17",
+    "scythe": "9-41",
+    "bow": "15-28",
+    "spear": "14-27",
+    "wand": "11-22",
+    "staff": "11-22"
+  }
+}

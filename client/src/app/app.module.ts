@@ -30,7 +30,8 @@ const configIo: SocketIoConfig = { url: window.location.origin, options: {} };
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production === true,
-      registrationStrategy: 'registerImmediately'
+      registrationStrategy: 'registerImmediately',
+      scope: '/v2/'
     }),
     SocketIoModule.forRoot(configIo),
     ToastrModule.forRoot(),

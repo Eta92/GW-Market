@@ -1,0 +1,329 @@
+@import '../../styles/variables';
+
+.order-card {
+  display: flex;
+  align-items: center;
+  background: rgba($obsidian-light, 0.35);
+  border-radius: 6px;
+  border-left: 3px solid transparent;
+  transition: all 0.15s ease;
+  position: relative;
+
+  &:hover {
+    background: rgba($obsidian-light, 0.6);
+    transform: translateX(3px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &.sell-card {
+    border-left-color: rgba($sell-color, 0.6);
+
+    &:hover {
+      border-left-color: $sell-color;
+    }
+  }
+
+  &.buy-card {
+    border-left-color: rgba($buy-color, 0.6);
+
+    &:hover {
+      border-left-color: $buy-color;
+    }
+  }
+
+  &.hidden-order {
+    opacity: 0.5;
+    border-left-style: dashed;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
+.order-main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  width: 100%;
+}
+
+.order-item {
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.order-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  padding: 3px;
+}
+
+.order-qty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 36px;
+
+  .qty-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $parchment;
+    line-height: 1;
+  }
+
+  .qty-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: rgba($parchment, 0.5);
+    text-transform: lowercase;
+  }
+}
+
+.order-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.order-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $parchment;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $gold-light;
+  }
+}
+
+.desc-preview {
+  font-size: 0.7rem;
+  color: rgba($parchment, 0.55);
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
+.order-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.125rem;
+  min-width: 60px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.price-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.price-amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $gold-light;
+}
+
+.order-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba($gold, 0.15);
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 4px;
+  color: rgba($parchment, 0.6);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  i {
+    font-size: 0.7rem;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.15);
+    border-color: rgba($gold, 0.4);
+    color: $parchment;
+    transform: translateY(-1px);
+  }
+
+  &.edit:hover {
+    color: $gold;
+    border-color: rgba($gold, 0.5);
+  }
+
+  &.visibility {
+    &.active {
+      background: rgba($warning-color, 0.15);
+      color: $warning-color;
+      border-color: rgba($warning-color, 0.3);
+    }
+
+    &:hover {
+      color: $warning-color;
+      border-color: rgba($warning-color, 0.4);
+    }
+  }
+
+  &.success {
+    &:hover {
+      background: rgba($sell-color, 0.15);
+      color: $sell-color;
+      border-color: rgba($sell-color, 0.4);
+    }
+
+    &.confirm {
+      background: rgba($sell-color, 0.25);
+      color: $sell-color;
+      border-color: rgba($sell-color, 0.6);
+    }
+  }
+
+  &.danger {
+    &:hover {
+      background: rgba($danger-color, 0.15);
+      color: $danger-color;
+      border-color: rgba($danger-color, 0.4);
+    }
+
+    &.confirm {
+      background: rgba($danger-color, 0.25);
+      color: $danger-color;
+      border-color: rgba($danger-color, 0.6);
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .order-main {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .order-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .order-qty .qty-value {
+    font-size: 1rem;
+  }
+
+  .order-name {
+    font-size: 0.8rem;
+  }
+
+  .desc-preview {
+    display: none;
+  }
+
+  .price-amount {
+    font-size: 0.9rem;
+  }
+
+  .price-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .order-actions {
+    margin-left: 0.25rem;
+    padding-left: 0.5rem;
+  }
+
+  .action-btn {
+    width: 26px;
+    height: 26px;
+
+    i {
+      font-size: 0.65rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .order-main {
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .order-item {
+    order: 1;
+  }
+
+  .order-qty {
+    order: 2;
+    flex-direction: row;
+    gap: 0.25rem;
+    min-width: auto;
+
+    .qty-value {
+      font-size: 0.95rem;
+    }
+  }
+
+  .order-price {
+    order: 3;
+    margin-left: auto;
+    min-width: auto;
+  }
+
+  .order-info {
+    order: 4;
+    flex-basis: 100%;
+    padding-top: 0.375rem;
+    border-top: 1px dashed rgba($gold, 0.1);
+  }
+
+  .order-actions {
+    order: 5;
+    flex-basis: 100%;
+    justify-content: flex-end;
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 0.375rem;
+    border-left: none;
+    border-top: 1px dashed rgba($gold, 0.1);
+  }
+
+  .action-btn {
+    width: 32px;
+    height: 32px;
+  }
+}

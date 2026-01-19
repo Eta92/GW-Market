@@ -6,6 +6,7 @@ import { UtilService } from './util.service';
 
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { Item, ShopItem } from '@app/models/shop.model';
+import { SearchFilter, SearchResult } from '@app/models/order.model';
 
 @Injectable()
 export class StoreService {
@@ -17,6 +18,7 @@ export class StoreService {
   private itemOrdersSubject = new CurrentSubject<Array<ShopItem>>();
   private lastItemsSubject = new CurrentSubject<Array<ShopItem>>();
   private shopSecretSubject = new CurrentSubject<{ uuid: string; secret: string }>();
+  private searchOrdersSubject = new CurrentSubject<SearchResult>();
 
   constructor(
     private utilService: UtilService,
@@ -50,6 +52,9 @@ export class StoreService {
     });
     this.socket.on('ShopCertificationSecret', (certificate: { uuid: string; secret: string }) => {
       this.shopSecretSubject.set(certificate);
+    });
+    this.socket.on('SearchOrdersResult', (data: SearchResult) => {
+      this.searchOrdersSubject.set(data);
     });
   }
 
@@ -104,5 +109,27 @@ export class StoreService {
 
   getShopSecret(): Observable<{ uuid: string; secret: string }> {
     return this.shopSecretSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  // ================================
+  // GLOBAL SEARCH
+  // ================================
+
+  searchOrders(filter: SearchFilter): void {
+    if (this.init) {
+      this.socket.emit('searchOrders', filter);
+    } else {
+      this.utilService.getReady().subscribe(() => {
+        this.socket.emit('searchOrders', filter);
+      });
+    }
+  }
+
+  getSearchOrders(): Observable<SearchResult> {
+    return this.searchOrdersSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  resetSearchOrders(): void {
+    this.searchOrdersSubject.set(null);
   }
 }

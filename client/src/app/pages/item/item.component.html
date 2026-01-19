@@ -1,269 +1,340 @@
-<div class="fritz-font scroll h-screen w-full overflow-y-auto text-white">
-  <div class="bg-header relative z-30">
-    <div class="p2 flex flex-col gap-4 lg:p-8">
-      <div class="hidden w-full justify-between gap-8 lg:flex">
-        <a [href]="homeBaseUrl()"
-          ><img class="my-8 h-[80px] w-[320px] cursor-pointer" src="../../../assets/img/trading.svg" (click)="onHome()"
-        /></a>
-        <app-select-item
-          class="xl:ml-24"
-          [width]="800"
-          [height]="160"
-          [offsetY]="-48"
-          (selectItem)="onSelectItem($event)"
-        ></app-select-item>
-        <div class="my-2 flex w-[480px] gap-4">
-          <div class="bg-gradient my-4 h-24 w-24 rounded-full border-2 border-gwt-brown shadow-xl">
-            <img class="h-full w-full py-3 pl-3" [src]="getImageSource(item)" />
-          </div>
-          <div class="text-shadow flex w-[360px] flex-col">
-            <div class="mb-2 text-xl">{{ item?.name || 'loading' }}</div>
-            <div class="text-no-overflow text-sm" [title]="detail" *ngFor="let detail of details">{{ detail }}</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex w-full flex-col justify-between gap-2 lg:hidden">
-        <app-select-item
-          class="full"
-          [width]="800"
-          [height]="160"
-          [offsetY]="-48"
-          (selectItem)="onSelectItem($event)"
-        ></app-select-item>
-        <div class="-mt-8 flex w-full justify-between p-2">
-          <a [href]="homeBaseUrl()"
-            ><img
-              class="my-4 h-10 w-40 cursor-pointer md:my-8 md:h-[80px] md:w-[320px]"
-              src="../../../assets/img/trading.svg"
-              (click)="onHome()"
-          /></a>
-          <div class="my-2 flex w-60 gap-2 md:w-[480px] md:gap-4">
-            <div
-              class="bg-gradient my-2 h-12 w-12 rounded-full border-2 border-gwt-brown shadow-xl md:my-4 md:h-24 md:w-24"
-            >
-              <img class="h-full w-full object-contain py-1.5 pl-1.5 md:py-3 md:pl-3" [src]="getImageSource(item)" />
-            </div>
-            <div class="text-shadow flex w-44 flex-col md:w-[360px]">
-              <div class="mb-2 text-base md:text-xl">{{ item?.name || 'loading' }}</div>
-              <div class="text-no-overflow text-xs md:text-sm" [title]="detail" *ngFor="let detail of details">
-                {{ detail }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="h-12 w-full"></div>
-  </div>
-  <div
-    class="bg-theme bg-base section-transition relative z-20 -mt-24 h-fit pb-32 pt-16 md:h-full md:min-h-screen md:pb-0"
-  >
-    <!-- <div class="mx-auto w-[1000px]">
-      <div class="mt-8 text-2xl text-shadow">Item details</div>
-      <div class="mt-8 text-lg text-shadow">
-        <pre>{{ displayRawItem() }}</pre>
-      </div>
-    </div> -->
-    <div class="mt-8 flex h-full w-full flex-col md:flex-row">
-      <div class="mx-auto flex h-full flex-col px-16">
-        <div class="p-2 text-center text-2xl">Sell Orders</div>
-        <div class="flex h-fit w-full flex-col justify-center gap-4 md:max-h-full md:flex-row">
-          <div
-            class="frame flex max-h-[calc(100vh_-_250px)] flex-col overflow-y-auto p-2"
-            *ngFor="let itemPriceLists of allOrders.sellOrders; let sl = index"
-          >
-            <div class="flex flex-col gap-2 p-2" *ngFor="let itemTimeList of itemPriceLists.orders; let so = index">
-              <div class="text-center text-sm underline">{{ timeToString(itemTimeList.time) }}</div>
-              <div
-                class="frame flex w-80 flex-col p-2"
-                [ngClass]="getOldOpacity(order)"
-                *ngFor="let order of itemTimeList.orders; let so = index"
-              >
-                <div class="flex gap-1">
-                  <div class="flex flex-col gap-1">
-                    <img class="h-12 w-12 object-contain" [src]="getImageSource(item)" />
-                  </div>
-                  <div class="bg-slash relative -ml-2 flex h-12 w-12">
-                    <div class="absolute -left-1 top-0 w-8 text-center text-sm">{{ order.div_quantity }}</div>
-                    <div class="absolute -right-1 bottom-0 w-8 text-center text-sm">{{ order.div_price }}</div>
-                  </div>
-                  <!-- <div class="flex flex-col w-12 h-12 -ml-2">
-                  <div class="flex justify-start w-full h-3 gap-1" *ngIf="order.div_quantity !== order.quantity">
-                    <div class="text-xs">{{ order.div_quantity }}</div>
-                    <i class="self-center h-3 text-xs text-white fa fa-arrow-right"></i>
-                  </div>
-                  <div class="flex justify-end w-full h-3 gap-1" *ngIf="order.div_quantity !== order.quantity">
-                    <i class="self-center h-3 text-xs text-white fa fa-arrow-left"></i>
-                    <div class="text-xs">{{ order.div_price }}</div>
-                  </div>
-                  <div class="flex justify-start w-full h-3 gap-1">
-                    <div class="text-xs">{{ order.quantity }}</div>
-                    <i class="self-center h-3 text-xs text-white fa fa-arrow-right"></i>
-                  </div>
-                  <div class="flex justify-end w-full h-3 gap-1">
-                    <i class="self-center h-3 text-xs text-white fa fa-arrow-left"></i>
-                    <div class="text-xs">{{ order.price.price }}</div>
-                  </div>
-                </div> -->
-                  <div class="flex flex-col gap-1">
-                    <img class="h-12 w-12 object-contain p-1" [src]="getCurrencySource(order.price.type)" />
-                  </div>
-                  <div class="flex w-[154px] flex-col gap-1">
-                    <div class="ml-1 flex justify-between gap-2">
-                      <!-- <div class="text-sm">stock: {{ order.quantity }}</div> -->
-                      <div class="-mt-1 flex flex-col">
-                        <div class="flex gap-1">
-                          <div class="text-xs">max:</div>
-                          <div class="text-xs">{{ order.quantity }}</div>
-                          <img class="h-4 w-4 object-contain" [src]="getImageSource(item)" />
-                        </div>
-                        <div class="-mb-1 flex gap-1">
-                          <div class="text-xs">for:</div>
-                          <div class="text-xs">{{ order.price.price }}</div>
-                          <img class="h-4 w-4 object-contain" [src]="getCurrencySource(order.price.type)" />
-                        </div>
-                      </div>
-                      <div class="bg-button action p-1 text-xs" (click)="whisper(order)">Whisper</div>
-                    </div>
-                    <div class="flex justify-end" [title]="order.player">
-                      <div class="text-no-overflow text-right">{{ order.player }}</div>
-                      <div class="relative h-6 w-6" *ngIf="order.daybreakOnline">
-                        <img
-                          class="absolute left-1 top-0.5 h-6 w-6"
-                          src="../../../assets/img/online.png"
-                          title="Player online with Daybreak"
-                        />
-                      </div>
-                      <div class="relative h-6 w-6" *ngIf="order.authCertified">
-                        <img
-                          class="absolute left-1 top-0.5 h-6 w-6"
-                          src="../../../assets/img/certified.png"
-                          title="Player name certified"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <app-item-details class="-mt-1 mb-1" [item]="order.item" [details]="order.details"></app-item-details>
-                <div class="relative flex min-h-4 pr-12 text-xs">
-                  <span class="px-1">{{ order.description }}</span>
-                  <div class="absolute bottom-0 right-0 -mb-1 mt-1 flex">
-                    <span>{{ formatLastUpdate(order.lastRefresh) }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mx-auto flex h-full flex-col px-16">
-        <div class="p-2 text-center text-2xl">Buy Orders</div>
-        <div class="flex w-full flex-col justify-center gap-4 md:max-h-full md:flex-row">
-          <div
-            class="frame flex max-h-[calc(100vh_-_250px)] flex-col p-2"
-            *ngFor="let itemPriceLists of allOrders.buyOrders; let sl = index"
-          >
-            <div class="flex flex-col gap-2 p-2" *ngFor="let itemTimeList of itemPriceLists.orders; let so = index">
-              <div class="text-center text-sm underline">{{ timeToString(itemTimeList.time) }}</div>
-              <div class="frame flex w-80 flex-col p-2" *ngFor="let order of itemTimeList.orders; let so = index">
-                <div class="flex gap-1">
-                  <div class="flex flex-col gap-1">
-                    <img class="h-12 w-12 object-contain p-1" [src]="getCurrencySource(order.price.type)" />
-                  </div>
+<div class="item-page font-fritz scroll">
+  <!-- HEADER -->
+  <app-header
+    [showSearch]="true"
+    [showFeatures]="false"
+    [compact]="true"
+    (placeOrder)="orderOpen = true"
+    (selectItem)="onSelectItem($event)"
+  ></app-header>
 
-                  <div class="bg-slash relative -ml-2 flex h-12 w-12">
-                    <div class="absolute -left-1 top-0 w-8 text-center text-sm">{{ order.div_price }}</div>
-                    <div class="absolute -right-1 bottom-0 w-8 text-center text-sm">{{ order.div_quantity }}</div>
-                  </div>
-                  <!-- <div class="flex flex-col w-12 h-12 -ml-2">
-                  <div class="flex justify-start w-full h-3 gap-1" *ngIf="order.div_quantity !== order.quantity">
-                    <div class="text-xs">{{ order.div_price }}</div>
-                    <i class="self-center h-3 text-xs text-white fa fa-arrow-right"></i>
-                  </div>
-                  <div class="flex justify-end w-full h-3 gap-1" *ngIf="order.div_quantity !== order.quantity">
-                    <i class="self-center h-3 text-xs text-white fa fa-arrow-left"></i>
-                    <div class="text-xs">{{ order.div_quantity }}</div>
-                  </div>
-                  <div class="flex justify-start w-full h-3 gap-1">
-                    <div class="text-xs">{{ order.price.price }}</div>
-                    <i class="self-center h-3 text-xs text-white fa fa-arrow-right"></i>
-                  </div>
-                  <div class="flex justify-end w-full h-3 gap-1">
-                    <i class="self-center h-3 text-xs text-white fa fa-arrow-left"></i>
-                    <div class="text-xs">{{ order.quantity }}</div>
-                  </div>
-                </div> -->
-                  <div class="flex flex-col gap-1">
-                    <img class="h-12 w-12 object-contain" [src]="getImageSource(item)" />
-                  </div>
-                  <div class="flex w-[154px] flex-col gap-1">
-                    <div class="ml-1 flex justify-between gap-2">
-                      <div class="-mt-1 flex flex-col">
-                        <div class="flex gap-1">
-                          <div class="text-xs">max:</div>
-                          <div class="text-xs">{{ order.price.price }}</div>
-                          <img class="h-3 w-3 object-contain" [src]="getCurrencySource(order.price.type)" />
-                        </div>
-                        <div class="-mb-1 flex gap-1">
-                          <div class="text-xs">for:</div>
-                          <div class="text-xs">{{ order.quantity }}</div>
-                          <img class="h-4 w-4 object-contain" [src]="getImageSource(item)" />
-                        </div>
-                      </div>
-                      <div class="bg-button action p-1 text-xs" (click)="whisper(order)">Whisper</div>
-                    </div>
-                    <div class="flex justify-end" [title]="order.player">
-                      <div class="text-no-overflow text-right">{{ order.player }}</div>
-                      <div class="relative h-6 w-6" *ngIf="order.daybreakOnline">
-                        <img
-                          class="absolute left-1 top-0.5 h-6 w-6"
-                          src="../../../assets/img/online.png"
-                          title="Player online with Daybreak"
-                        />
-                      </div>
-                      <div class="relative h-6 w-6" *ngIf="order.authCertified">
-                        <img
-                          class="absolute left-1 top-0.5 h-6 w-6"
-                          src="../../../assets/img/certified.png"
-                          title="Player name certified"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <app-item-details class="-mt-1 mb-1" [item]="order.item" [details]="order.details"></app-item-details>
-                <div class="relative flex min-h-4 pr-12 text-xs">
-                  <span class="px-1">{{ order.description }}</span>
-                  <div class="absolute bottom-0 right-0 -mb-1 mt-1 flex">
-                    <span>{{ formatLastUpdate(order.lastRefresh) }}</span>
-                  </div>
-                </div>
-              </div>
+  <!-- MAIN LAYOUT: Sidebar + Content -->
+  <div class="page-layout">
+    <!-- ITEM SIDEBAR (Left on desktop, top on mobile) -->
+    <aside class="item-sidebar">
+      <div class="sidebar-inner">
+        <!-- Item Visual -->
+        <div class="item-visual">
+          <div class="item-frame">
+            <img class="item-image" [src]="getImageSource(item)" [alt]="item?.name" />
+          </div>
+        </div>
+
+        <!-- Item Info -->
+        <div class="item-info">
+          <h1 class="item-name">{{ item?.name || 'Loading...' }}</h1>
+          <div class="item-meta" *ngIf="details.length > 0">
+            <div class="meta-tag" *ngFor="let detail of details">
+              <span class="meta-text">{{ detail }}</span>
             </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="sidebar-stats">
+          <div class="stat-row">
+            <span class="stat-icon sell"><i class="fa fa-arrow-up"></i></span>
+            <span class="stat-label">Selling</span>
+            <span class="stat-value">{{ getTotalSellOrders() }}</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-icon buy"><i class="fa fa-arrow-down"></i></span>
+            <span class="stat-label">Buying</span>
+            <span class="stat-value">{{ getTotalBuyOrders() }}</span>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+      <!-- FILTER BAR -->
+      <section class="filter-bar">
+        <div class="filter-group">
+          <app-toggle-group
+            [options]="orderTypeOptions"
+            [value]="orderTypeFilter"
+            (valueChange)="setOrderTypeFilter($event)"
+          ></app-toggle-group>
+        </div>
+
+        <div class="filter-group" *ngIf="availableCurrencies.length > 1">
+          <app-toggle-group
+            [options]="currencyOptions"
+            [value]="currencyFilterValue"
+            (valueChange)="onCurrencyFilterChange($event)"
+          ></app-toggle-group>
+        </div>
+
+        <div class="filter-group view-mode-group" *ngIf="orderTypeFilter === 'all'">
+          <app-toggle-group
+            [options]="viewModeOptions"
+            [value]="viewMode"
+            (valueChange)="setViewMode($event)"
+          ></app-toggle-group>
+        </div>
+
+        <div class="filter-summary">
+          <span class="order-total">{{ getFilteredOrderCount() }} orders</span>
+        </div>
+      </section>
+
+      <!-- ORDERS SECTION -->
+      <main class="orders-section bg-sky bg-base">
+
+    <!-- SPLIT SELL/BUY COLUMNS (Separate view mode) - 2 column layout -->
+    <div class="split-columns-grid" *ngIf="showSplitColumns">
+      <!-- SELL SECTION -->
+      <div class="split-section sell-section">
+        <h2 class="section-title sell-title">
+          <i class="fa fa-arrow-up"></i>
+          Sell Orders
+          <span class="section-count">({{ getTotalSellOrders() }})</span>
+        </h2>
+        <div class="split-orders-list scroll">
+          <ng-container *ngFor="let timeBucket of getAllSellOrdersByTime()">
+            <div class="time-bucket-mini" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2">
+              <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
+              <app-order-row
+                *ngFor="let order of timeBucket.orders"
+                [order]="order"
+                [type]="'sell'"
+                [hasNote]="!!order.description || hasItemDetails(order)"
+                [showWeaponDetails]="hasItemDetails(order)"
+                (rowClick)="openOrderDetail($event)"
+                (whisperClick)="whisper($event)"
+              ></app-order-row>
+            </div>
+          </ng-container>
+          <div class="empty-section" *ngIf="getTotalSellOrders() === 0">
+            <i class="fa fa-inbox"></i>
+            <span>No sell orders</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUY SECTION -->
+      <div class="split-section buy-section">
+        <h2 class="section-title buy-title">
+          <i class="fa fa-arrow-down"></i>
+          Buy Orders
+          <span class="section-count">({{ getTotalBuyOrders() }})</span>
+        </h2>
+        <div class="split-orders-list scroll">
+          <ng-container *ngFor="let timeBucket of getAllBuyOrdersByTime()">
+            <div class="time-bucket-mini" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2">
+              <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
+              <app-order-row
+                *ngFor="let order of timeBucket.orders"
+                [order]="order"
+                [type]="'buy'"
+                [hasNote]="!!order.description || hasItemDetails(order)"
+                [showWeaponDetails]="hasItemDetails(order)"
+                (rowClick)="openOrderDetail($event)"
+                (whisperClick)="whisper($event)"
+              ></app-order-row>
+            </div>
+          </ng-container>
+          <div class="empty-section" *ngIf="getTotalBuyOrders() === 0">
+            <i class="fa fa-inbox"></i>
+            <span>No buy orders</span>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- CURRENCY-BASED LAYOUT (multiple currencies OR filtered to single order type) -->
+    <div class="currency-grid" [class.single-currency]="filteredCurrencies.length === 1" *ngIf="!showSplitColumns">
+      <!-- CURRENCY COLUMNS -->
+      <div class="currency-column" *ngFor="let currency of filteredCurrencies">
+        <h2 class="column-title currency-title">
+          <img [src]="currency.currency | currencySource" [alt]="currency.currencyName" class="currency-icon" />
+          {{ currency.currencyName }}
+          <span class="order-count" *ngIf="currency.totalOrders">({{ currency.totalOrders }})</span>
+        </h2>
+
+        <div class="currency-orders-list scroll" *ngIf="currency.totalOrders > 0">
+          <ng-container *ngFor="let timeBucket of currency.timeBuckets">
+            <div class="time-bucket" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2" *ngIf="hasOrdersInTimeBucket(timeBucket)">
+              <div class="time-bucket-header">
+                <span class="time-bucket-label">{{ timeToString(timeBucket.time) }}</span>
+                <span class="time-bucket-count">
+                  {{ timeBucket.sellOrders.length + timeBucket.buyOrders.length }} orders
+                </span>
+              </div>
+
+              <!-- SELL ORDERS in this time bucket -->
+              <div class="order-type-group sell-group" *ngIf="showSellOrders() && timeBucket.sellOrders.length > 0">
+                <div class="order-type-label sell-label">
+                  <i class="fa fa-arrow-up"></i> Selling
+                </div>
+                <app-order-row
+                  *ngFor="let order of timeBucket.sellOrders"
+                  [order]="order"
+                  [type]="'sell'"
+                  [hasNote]="!!order.description || hasItemDetails(order)"
+                  [showWeaponDetails]="hasItemDetails(order)"
+                  (rowClick)="openOrderDetail($event)"
+                  (whisperClick)="whisper($event)"
+                ></app-order-row>
+              </div>
+
+              <!-- BUY ORDERS in this time bucket -->
+              <div class="order-type-group buy-group" *ngIf="showBuyOrders() && timeBucket.buyOrders.length > 0">
+                <div class="order-type-label buy-label">
+                  <i class="fa fa-arrow-down"></i> Buying
+                </div>
+                <app-order-row
+                  *ngFor="let order of timeBucket.buyOrders"
+                  [order]="order"
+                  [type]="'buy'"
+                  [hasNote]="!!order.description || hasItemDetails(order)"
+                  [showWeaponDetails]="hasItemDetails(order)"
+                  (rowClick)="openOrderDetail($event)"
+                  (whisperClick)="whisper($event)"
+                ></app-order-row>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="empty-orders" *ngIf="currency.totalOrders === 0">
+          <i class="fa fa-inbox"></i>
+          <p>No orders</p>
+        </div>
+      </div>
+
+      <!-- Empty state when no orders at all -->
+      <div class="empty-orders full-width" *ngIf="filteredCurrencies.length === 0">
+        <i class="fa fa-inbox"></i>
+        <p>No orders for this item</p>
+      </div>
+    </div>
+      </main>
+    </div>
   </div>
+
+  <!-- FOOTER -->
   <app-footer></app-footer>
 </div>
-<div class="absolute left-0 top-0 z-40 flex h-screen w-screen bg-gwt-back p-4" *ngIf="popup" (click)="popup = false">
-  <div class="flex h-full w-full items-center justify-center bg-gwt-back">
-    <div class="bg-frame flex h-48 w-[800px] p-4" (click)="stopClick($event)">
-      <div class="quick mt-2 h-32 w-32">
-        <img class="h-32 w-32 object-contain p-6" [src]="getImageSource(item)" />
+
+<!-- Order Detail Modal -->
+<app-modal [isOpen]="!!selectedOrder" (closed)="closeOrderDetail()" contentClass="order-detail-content-wrapper">
+  <div class="order-detail-content" [class.sell-order]="selectedOrder?.orderType === 0" [class.buy-order]="selectedOrder?.orderType === 1">
+    <div class="order-detail-header">
+      <div class="order-type-badge" [class.sell]="selectedOrder?.orderType === 0" [class.buy]="selectedOrder?.orderType === 1">
+        <i class="fa" [class.fa-arrow-up]="selectedOrder?.orderType === 0" [class.fa-arrow-down]="selectedOrder?.orderType === 1"></i>
+        {{ selectedOrder?.orderType === 0 ? 'Selling' : 'Buying' }}
       </div>
-      <div class="flex w-[calc(100%-140px)] flex-col pl-24">
-        <div class="mb-2 mt-5 w-full text-center text-2xl text-white">Contact the player in game</div>
-        <textarea
-          class="frame h-16 w-full p-2 text-sm font-semibold text-white"
-          #area
-          (focus)="area.select()"
-          readonly="readonly"
-          >{{ tradeMessage }}</textarea
-        >
+      <button class="modal-close" (click)="closeOrderDetail()">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="order-detail-body">
+      <!-- Item Info -->
+      <div class="detail-item-row">
+        <img class="detail-item-img" [src]="getImageSource(item)" [alt]="item?.name" />
+        <div class="detail-item-info">
+          <span class="detail-item-name">{{ item?.name }}</span>
+          <span class="detail-item-qty">Quantity: <strong>{{ selectedOrder?.quantity }}</strong></span>
+        </div>
+      </div>
+
+      <!-- Price Info -->
+      <div class="detail-price-section" *ngIf="selectedOrder?.price">
+        <div class="detail-price-row">
+          <span class="detail-price-label">Total Price</span>
+          <div class="detail-price-value">
+            <img [src]="selectedOrder.price.type | currencySource" class="detail-currency-icon" />
+            <span class="detail-price-amount">{{ selectedOrder.price.price }}</span>
+            <span class="detail-currency-name">{{ selectedOrder.price.type | priceToString }}</span>
+          </div>
+        </div>
+        <div class="detail-price-row unit-price">
+          <span class="detail-price-label">Price per Item</span>
+          <div class="detail-price-value">
+            <span class="detail-price-decimal">{{ selectedOrder.price.price | decimalUnitPrice:selectedOrder.quantity }}</span>
+            <span class="detail-price-fraction">({{ selectedOrder.div_price }}:{{ selectedOrder.div_quantity }})</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seller Info -->
+      <div class="detail-seller-section">
+        <div class="detail-seller-row">
+          <span class="detail-seller-label">Player</span>
+          <div class="detail-seller-value">
+            <span class="detail-seller-name">{{ selectedOrder?.player }}</span>
+            <div class="detail-seller-badges">
+              <span class="badge online" *ngIf="selectedOrder?.daybreakOnline">
+                <img src="/assets/img/online.png" /> Online
+              </span>
+              <span class="badge certified" *ngIf="selectedOrder?.authCertified">
+                <img src="/assets/img/certified.png" /> Certified
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="detail-seller-row" *ngIf="selectedOrder?.lastRefresh">
+          <span class="detail-seller-label">Last Updated</span>
+          <span class="detail-seller-time">{{ selectedOrder.lastRefresh | formatLastUpdate }}</span>
+        </div>
+      </div>
+
+      <!-- Item Details (weapon, miniature, pre-searing) -->
+      <div class="detail-item-details-section" *ngIf="selectedOrder && hasItemDetails(selectedOrder)">
+        <app-item-details
+          [item]="selectedOrder.item"
+          [details]="selectedOrder.details"
+        ></app-item-details>
+      </div>
+
+      <!-- Notes Section (description only) -->
+      <div class="detail-notes-section" *ngIf="selectedOrder?.description">
+        <span class="detail-notes-label">Notes</span>
+        <div class="detail-notes-content">
+          <p class="detail-description">{{ selectedOrder.description }}</p>
+        </div>
       </div>
     </div>
+
+    <div class="order-detail-footer">
+      <button class="detail-whisper-btn" (click)="whisperFromDetail()">
+        <i class="fa fa-comment"></i>
+        Contact {{ selectedOrder?.player }}
+      </button>
+    </div>
   </div>
-</div>
-<app-new-order [preselect]="item" (createOrder)="onCreateOrder($event)"></app-new-order>
+</app-modal>
+
+<!-- Whisper Popup -->
+<app-modal [isOpen]="popup" (closed)="popup = false" contentClass="whisper-popup-content">
+  <div class="popup-content">
+    <div class="popup-header">
+      <img class="popup-img" [src]="getImageSource(item)" />
+      <div class="popup-title">
+        <h3>Contact Player</h3>
+        <p>Copy message to whisper in-game</p>
+      </div>
+      <button class="popup-close" (click)="popup = false">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <textarea
+      class="popup-textarea"
+      #area
+      (focus)="area.select()"
+      readonly
+    >{{ tradeMessage }}</textarea>
+  </div>
+</app-modal>
+
+<!-- Place Order Modal -->
+<app-new-order
+  [preselect]="item"
+  [orderOpen]="orderOpen"
+  (createOrder)="onCreateOrder($event)"
+  (closeOrder)="orderOpen = false"
+></app-new-order>

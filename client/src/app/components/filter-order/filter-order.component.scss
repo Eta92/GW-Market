@@ -1,96 +1,341 @@
-.card-wrapper {
+// ============================================
+// PRO MODE FILTER BAR
+// Matches obsidian/gold/parchment design system
+// ============================================
+
+// Import shared design system
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/form-controls';
+
+// ============================================
+// FILTER BAR CONTAINER
+// ============================================
+.filter-bar {
   display: flex;
-  border-radius: 8px;
-  align-items: flex-end;
-  transition: box-shadow 0.3s;
-  box-shadow: #0000006c 9px 9px 10px;
-  background: linear-gradient(to top, hsl(31 48% 26% / 1) 180px, transparent 250px);
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0;
+  background: transparent;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 
-  .card-img {
-    border-radius: 8px;
-    display: block;
-    width: 100%;
-    height: auto;
+  @media (max-width: 1200px) {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+// ============================================
+// FILTER GROUPS
+// ============================================
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item-filters,
+.weapon-filters,
+.upgrade-filters {
+  display: flex;
+  gap: 0.5rem;
+
+  @media (max-width: 900px) {
+    flex-wrap: wrap;
+  }
+}
+
+// ============================================
+// SEARCH INPUT WITH ICON
+// ============================================
+.filter-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  i {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+    left: 12px;
+    color: rgba($gold, 0.5);
+    font-size: 0.8rem;
+    pointer-events: none;
+    transition: color 0.2s ease;
   }
 
-  .card-text {
-    position: relative;
-    z-index: 2;
-    height: 80%;
+  &:focus-within i {
+    color: $gold;
+  }
+}
+
+.filter-input {
+  @extend %filter-input;
+  width: 160px;
+}
+
+// ============================================
+// SEGMENTED CONTROL (All / WTS / WTB)
+// ============================================
+.segmented-control {
+  @extend %segmented-control;
+}
+
+.segment {
+  @extend %segment-btn;
+}
+
+// ============================================
+// SELECT DROPDOWNS
+// ============================================
+.filter-select {
+  @extend %filter-select;
+  text-transform: capitalize;
+
+  option {
+    text-transform: capitalize;
+  }
+
+  // Placeholder style (first option)
+  &:invalid,
+  option[value="null"],
+  option:first-child {
+    color: rgba($parchment, 0.5);
+  }
+}
+
+// ============================================
+// REQUIREMENT RANGE INPUTS
+// ============================================
+.req-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  height: 36px;
+  background: rgba($obsidian-light, 0.6);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 6px;
+}
+
+.req-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba($gold, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.req-separator {
+  color: rgba($parchment, 0.4);
+  font-size: 0.8rem;
+}
+
+.filter-input-small {
+  width: 42px;
+  height: 28px;
+  padding: 0 6px;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 4px;
+  color: $parchment;
+  font-size: 0.85rem;
+  font-family: inherit;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+
+  // Hide number input spinners
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &::placeholder {
+    color: rgba($parchment, 0.3);
+  }
+
+  &:hover {
+    border-color: rgba($gold, 0.35);
+  }
+
+  &:focus {
+    border-color: $gold;
+    background: rgba($obsidian, 0.8);
+  }
+}
+
+// ============================================
+// RESPONSIVE ADJUSTMENTS
+// ============================================
+@media (max-width: 1400px) {
+  .filter-select {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 900px) {
+  .filter-bar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .filter-group {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-bar {
+    padding: 0;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .filter-group {
+    gap: 0.5rem;
+  }
+
+  .filter-input-wrapper {
+    flex: 1;
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  .filter-input {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-
-    .card-header {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #fff;
-      text-align: center;
-    }
-
-    .card-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background-image: url(../../../../../assets/img/fog-brown.png);
-      background-size: 100% auto;
-      background-repeat: repeat-x;
-      background-position: 0 100%;
-      -webkit-mask-image: url(../../../../../assets/img/fog.png);
-      mask-image: url(../../../../../assets/img/fog.png);
-      mask-mode: luminance;
-      -webkit-mask-size: 100% 110px;
-      mask-size: 100% 110px;
-      -webkit-mask-repeat: repeat-x;
-      mask-repeat: repeat-x;
-      animation:
-        anim_foglayer_move 18s linear infinite,
-        anim_bg_move 25s linear infinite;
-    }
-
-    .card-content {
-      background: linear-gradient(to bottom, #64441f00, #64441f);
-    }
+    height: 40px; // Touch-friendly
   }
 
-  .card-text::after {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    background-image: url(../../../../../assets/img/footer.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 40px;
+  .segmented-control {
+    flex-shrink: 0;
+  }
+
+  .segment {
+    padding: 0 12px;
+    height: 40px; // Touch-friendly
+    font-size: 0.8rem;
+  }
+
+  .filter-select {
+    height: 40px; // Touch-friendly
+    min-width: 100px;
+    font-size: 0.8rem;
+  }
+}
+
+// Small mobile
+@media (max-width: 480px) {
+  .filter-bar {
+    gap: 0.375rem;
+  }
+
+  .filter-input-wrapper {
+    flex: 1 1 100%;
+    max-width: none;
+    order: -1; // Search first on mobile
+  }
+
+  .filter-input {
     width: 100%;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+
+  .segmented-control {
+    flex: 0 0 auto;
+  }
+
+  .segment {
+    padding: 0 10px;
+    height: 36px;
+    font-size: 0.75rem;
+    gap: 4px;
+
+    i {
+      font-size: 0.65rem;
+    }
+  }
+
+  .filter-select {
+    flex: 1;
+    height: 36px;
+    min-width: 80px;
+    font-size: 0.75rem;
   }
 }
 
-@keyframes anim_foglayer_move {
-  0% {
-    background-position: 0 0;
+// Extra small phones
+@media (max-width: 375px) {
+  .filter-bar {
+    gap: 0.3rem;
   }
-  100% {
-    background-position: 208px 0;
-  }
-}
 
-@keyframes anim_bg_move {
-  0% {
-    background-position: 0 0;
+  .filter-group {
+    gap: 0.3rem;
   }
-  100% {
-    background-position: 208px 0;
-  }
-}
 
-.card-wrapper:hover {
-  filter: brightness(1.2);
-  box-shadow: 0 10px 20px white;
+  .filter-input-wrapper i {
+    left: 10px;
+    font-size: 0.75rem;
+  }
+
+  .filter-input {
+    height: 34px;
+    padding: 0 10px 0 32px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+  }
+
+  .segmented-control {
+    border-radius: 5px;
+  }
+
+  .segment {
+    padding: 0 8px;
+    height: 34px;
+    font-size: 0.7rem;
+    gap: 3px;
+
+    i {
+      font-size: 0.6rem;
+    }
+  }
+
+  .filter-select {
+    height: 34px;
+    min-width: 70px;
+    padding: 0 22px 0 8px;
+    font-size: 0.7rem;
+    border-radius: 5px;
+    background-position: right 6px center;
+  }
+
+  .req-group {
+    height: 34px;
+    padding: 0 6px;
+    gap: 4px;
+    border-radius: 5px;
+  }
+
+  .req-label {
+    font-size: 0.65rem;
+  }
+
+  .filter-input-small {
+    width: 38px;
+    height: 26px;
+    padding: 0 4px;
+    font-size: 0.75rem;
+    border-radius: 3px;
+  }
+
+  .req-separator {
+    font-size: 0.7rem;
+  }
 }

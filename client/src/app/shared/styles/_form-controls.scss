@@ -1,0 +1,232 @@
+// ============================================
+// GW MARKET - SHARED FORM CONTROL CLASSES
+// Ready-to-use classes that can be @extend-ed or imported
+// ============================================
+
+@import 'variables';
+@import 'mixins';
+
+// ============================================
+// FORM GROUP
+// ============================================
+%form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba($parchment, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+// ============================================
+// FORM INPUT
+// ============================================
+%form-input {
+  @include form-element-base;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+// ============================================
+// FORM SELECT
+// ============================================
+%form-select {
+  @include form-select;
+
+  option {
+    background: $obsidian;
+    color: $parchment;
+  }
+}
+
+// ============================================
+// TOGGLE GROUP (Segmented Control)
+// ============================================
+%toggle-group {
+  display: flex;
+  gap: 0;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 1px solid rgba($gold, 0.2);
+}
+
+%toggle-btn {
+  flex: 1;
+  min-width: 90px;
+  padding: 0.65rem 0.75rem;
+  background: rgba($obsidian-light, 0.6);
+  border: none;
+  color: rgba($parchment, 0.5);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  &:not(:last-child) {
+    border-right: 1px solid rgba($gold, 0.15);
+  }
+
+  i {
+    font-size: 0.7rem;
+  }
+
+  &:hover:not(.active) {
+    background: rgba($gold, 0.08);
+    color: rgba($parchment, 0.7);
+  }
+
+  &.active {
+    background: rgba($gold, 0.2);
+    color: $gold-light;
+  }
+}
+
+// ============================================
+// SEGMENTED CONTROL (Alternative style)
+// ============================================
+%segmented-control {
+  display: flex;
+  background: rgba($obsidian, 0.6);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: $radius-md - 2px;
+  overflow: hidden;
+}
+
+%segment-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  color: rgba($parchment, 0.6);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all $transition-base;
+  border-right: 1px solid rgba($gold, 0.1);
+
+  &:last-child {
+    border-right: none;
+  }
+
+  i {
+    font-size: 0.65rem;
+    transition: color $transition-base;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.1);
+    color: $parchment;
+  }
+
+  &.active {
+    background: linear-gradient(135deg, rgba($gold, 0.2) 0%, rgba($gold, 0.1) 100%);
+    color: $gold-light;
+    font-weight: 600;
+
+    i {
+      color: $gold;
+    }
+  }
+
+  // Sell segment specific
+  &.sell.active {
+    background: linear-gradient(135deg, rgba($sell-color, 0.2) 0%, rgba($sell-color, 0.1) 100%);
+    color: $sell-color;
+
+    i {
+      color: $sell-color;
+    }
+  }
+
+  // Buy segment specific
+  &.buy.active {
+    background: linear-gradient(135deg, rgba($buy-color, 0.2) 0%, rgba($buy-color, 0.1) 100%);
+    color: $buy-color;
+
+    i {
+      color: $buy-color;
+    }
+  }
+}
+
+// ============================================
+// FILTER INPUT (smaller variant)
+// ============================================
+%filter-input {
+  height: 36px;
+  padding: 0 12px 0 36px;
+  background: rgba($obsidian-light, 0.8);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: $radius-md - 2px;
+  color: $parchment;
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: all $transition-base;
+
+  &::placeholder {
+    color: rgba($parchment, 0.4);
+  }
+
+  &:hover {
+    border-color: rgba($gold, 0.4);
+  }
+
+  &:focus {
+    border-color: $gold;
+    background: rgba($obsidian-light, 0.95);
+    box-shadow: 0 0 0 2px rgba($gold, 0.15);
+  }
+}
+
+%filter-select {
+  height: 36px;
+  min-width: 120px;
+  padding: 0 28px 0 12px;
+  background: rgba($obsidian-light, 0.8);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: $radius-md - 2px;
+  color: $parchment;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: all $transition-base;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d4a853' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+
+  option {
+    background: $obsidian-light;
+    color: $parchment;
+    padding: 8px;
+  }
+
+  &:hover {
+    border-color: rgba($gold, 0.4);
+  }
+
+  &:focus {
+    border-color: $gold;
+    box-shadow: 0 0 0 2px rgba($gold, 0.15);
+  }
+}

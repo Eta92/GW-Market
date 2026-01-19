@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { OrderFilter } from '@app/models/order.model';
 import { Item, OrderType, Price, Shop, ShopItem } from '@app/models/shop.model';
@@ -9,13 +10,7 @@ import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
 import { ToastrService } from 'ngx-toastr';
-
-const ItemDetailMap = {
-  family: 'Family',
-  'duration_(mins)': 'Duration (mins)',
-  'applies_to...': 'Applies to',
-  summoned_ally: 'Invocation'
-};
+import { ItemDetailMapBasic } from '@app/shared/constants/item-detail.map';
 
 @Component({
   selector: 'app-shop',
@@ -56,6 +51,7 @@ export class ShopComponent implements OnInit {
   public playerWarning = false;
 
   public playerOpen = false;
+  public orderOpen = false;
 
   public OrderType = OrderType;
 
@@ -78,8 +74,8 @@ export class ShopComponent implements OnInit {
     // split order in the two lists
     this.shopService.getActiveShop().subscribe((shop: Shop) => {
       this.shop = shop;
-      this.sellOrders = this.shop.items.filter(si => si.orderType === OrderType.SELL);
-      this.buyOrders = this.shop.items.filter(si => si.orderType === OrderType.BUY);
+      this.populateItemDetails();
+      this.updateItemList();
       this.refreshCandle();
       this.cdr.detectChanges();
     });
@@ -90,30 +86,33 @@ export class ShopComponent implements OnInit {
     // refresh image once the item service is ready
     this.itemService.getReady().subscribe(ready => {
       if (ready) {
+        this.populateItemDetails();
+        this.updateItemList();
         this.cdr.detectChanges();
+      }
+    });
+  }
+
+  // Populate item details for filtering
+  private populateItemDetails(): void {
+    if (!this.shop?.items) return;
+    this.shop.items.forEach(shopItem => {
+      if (!shopItem.item) {
+        const basicItem = this.itemService.getItemBase(shopItem.name);
+        if (basicItem) {
+          shopItem.item = {
+            name: basicItem.name,
+            img: basicItem.img,
+            family: basicItem.family,
+            category: basicItem.category
+          };
+        }
       }
     });
   }
 
   getImageSource(itemName: string): string {
     return this.itemService?.getItemImage(itemName) || '';
-  }
-
-  getCurrencySource(price: Price): string {
-    return '../../../assets/items/currency/' + price.toString() + '.png';
-  }
-
-  priceToString(price: Price): string {
-    switch (price) {
-      case Price.PLAT:
-        return 'Plat';
-      case Price.ECTO:
-        return 'Ecto';
-      case Price.ARM:
-        return 'Ambrace';
-      case Price.ZKEY:
-        return 'Zkey';
-    }
   }
 
   stopClick(event): void {
@@ -331,6 +330,8 @@ export class ShopComponent implements OnInit {
   }
 
   updateItemList(): void {
+    if (!this.shop?.items) return;
+    this.populateItemDetails();
     const filteredItem = this.shop.items.filter(item => {
       if (this.orderFilter.name && !item.name.toLowerCase().includes(this.orderFilter.name.toLowerCase())) {
         return false;
@@ -380,6 +381,14 @@ export class ShopComponent implements OnInit {
         if (!item.weaponDetails || item.weaponDetails.suffix !== this.orderFilter.suffix) {
           return false;
         }
+      }
+
+      // Filter by order type (sell/buy)
+      if (this.orderFilter.orderType === 'sell' && item.orderType !== OrderType.SELL) {
+        return false;
+      }
+      if (this.orderFilter.orderType === 'buy' && item.orderType !== OrderType.BUY) {
+        return false;
       }
 
       return true;

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
 import { Item, ShopItem } from '@app/models/shop.model';
 
 @Component({
@@ -10,15 +9,21 @@ import { Item, ShopItem } from '@app/models/shop.model';
 export class NewOrderComponent {
   @Input() preselect?: Item;
   @Input() warning? = false;
+  @Input() orderOpen = false;
   @Output() createOrder = new EventEmitter<ShopItem>();
+  @Output() closeOrder = new EventEmitter<void>();
 
-  public orderOpen = false;
-
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor() {}
 
   onCreateOrder(order: ShopItem): void {
     this.createOrder.emit(order);
     this.orderOpen = false;
+    this.closeOrder.emit();
+  }
+
+  onClose(): void {
+    this.orderOpen = false;
+    this.closeOrder.emit();
   }
 
   @HostListener('window:keydown', ['$event'])
