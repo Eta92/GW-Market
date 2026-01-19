@@ -3,6 +3,7 @@
   <app-header
     [hero]="true"
     [showFeatures]="true"
+    (homeClick)="goToAll()"
     (placeOrder)="orderOpen = true"
     (selectItem)="goToItem($event)"
   ></app-header>
@@ -30,7 +31,8 @@
                 class="crumb"
                 [class.clickable]="availableList === 'item'"
                 (click)="availableList === 'item' && goToFamily(availableFamily)"
-              >{{ availableFamily?.name }}</span>
+                >{{ availableFamily?.name }}</span
+              >
               <ng-container *ngIf="availableList === 'item'">
                 <i class="fa fa-angle-right sep"></i>
                 <span class="crumb current">{{ availableCategory?.name }}</span>
@@ -120,7 +122,11 @@
                 <img class="explorer-icon" [src]="getPreviewSource(family.previews?.[0])" [alt]="family.name" />
                 <span class="explorer-name">{{ family.name }}</span>
                 <span class="explorer-count">{{ family.categories?.length || 0 }} categories</span>
-                <app-stats-display [mode]="timeMode === 'combined' ? 'combined' : 'basic'" [stats]="getStats(family)" containerClass="explorer-stats"></app-stats-display>
+                <app-stats-display
+                  [mode]="timeMode === 'combined' ? 'combined' : 'basic'"
+                  [stats]="getStats(family)"
+                  containerClass="explorer-stats"
+                ></app-stats-display>
                 <i class="fa fa-chevron-right nav-arrow"></i>
               </div>
             </div>
@@ -135,7 +141,11 @@
                 <img class="explorer-icon" [src]="getPreviewSource(category.previews?.[0])" [alt]="category.name" />
                 <span class="explorer-name">{{ category.name }}</span>
                 <span class="explorer-count">{{ category.items?.length || 0 }} items</span>
-                <app-stats-display [mode]="timeMode === 'combined' ? 'combined' : 'basic'" [stats]="getStats(category)" containerClass="explorer-stats"></app-stats-display>
+                <app-stats-display
+                  [mode]="timeMode === 'combined' ? 'combined' : 'basic'"
+                  [stats]="getStats(category)"
+                  containerClass="explorer-stats"
+                ></app-stats-display>
                 <i class="fa fa-chevron-right nav-arrow"></i>
               </div>
             </div>
@@ -149,7 +159,11 @@
               >
                 <img class="explorer-icon" [src]="getPreviewSource(item.name)" [alt]="item.name" />
                 <span class="explorer-name">{{ item.name }}</span>
-                <app-stats-display [mode]="timeMode === 'combined' ? 'combined' : 'basic'" [stats]="getStats(item)" containerClass="explorer-stats"></app-stats-display>
+                <app-stats-display
+                  [mode]="timeMode === 'combined' ? 'combined' : 'basic'"
+                  [stats]="getStats(item)"
+                  containerClass="explorer-stats"
+                ></app-stats-display>
                 <i class="fa fa-chevron-right nav-arrow"></i>
               </div>
             </div>
@@ -159,7 +173,7 @@
 
       <!-- Recent Listings Section -->
       <section class="listings-section">
-        <div class="section-header">
+        <div class="section-header flew-row">
           <h2 class="section-title">
             <i class="fa fa-clock"></i>
             Recent Listings
@@ -171,14 +185,18 @@
           <div
             *ngFor="let shopItem of lastItems"
             class="listing-card frame"
-            [class.faded]="(shopItem | oldOpacity) !== ''"
+            [ngClass]="shopItem | oldOpacity"
             [class.selling]="shopItem.orderType === OrderType.SELL"
             [class.buying]="shopItem.orderType === OrderType.BUY"
             (click)="goToItem(shopItem)"
           >
             <!-- Badge + Time -->
             <div class="listing-header">
-              <span class="order-badge" [class.sell]="shopItem.orderType === OrderType.SELL" [class.buy]="shopItem.orderType === OrderType.BUY">
+              <span
+                class="order-badge"
+                [class.sell]="shopItem.orderType === OrderType.SELL"
+                [class.buy]="shopItem.orderType === OrderType.BUY"
+              >
                 {{ shopItem.orderType === OrderType.SELL ? 'WTS' : 'WTB' }}
               </span>
               <span class="listing-time">{{ shopItem.lastRefresh | formatLastUpdate }}</span>
@@ -216,5 +234,9 @@
 
   <app-footer></app-footer>
 
-  <app-new-order [orderOpen]="orderOpen" (createOrder)="onCreateOrder($event)" (closeOrder)="orderOpen = false"></app-new-order>
+  <app-new-order
+    [orderOpen]="orderOpen"
+    (createOrder)="onCreateOrder($event)"
+    (closeOrder)="orderOpen = false"
+  ></app-new-order>
 </div>

@@ -13,6 +13,7 @@ export class HeaderComponent {
   @Input() compact = false;
   @Input() hero = false;
 
+  @Output() homeClick = new EventEmitter<void>();
   @Output() placeOrder = new EventEmitter<void>();
   @Output() selectItem = new EventEmitter<Item>();
 
@@ -20,6 +21,7 @@ export class HeaderComponent {
 
   goToHome(): void {
     this.router.navigate(['/']);
+    this.homeClick.emit();
   }
 
   goToShop(): void {

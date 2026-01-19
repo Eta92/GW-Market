@@ -17,6 +17,7 @@ import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.c
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public init = false;
   public searchControl: UntypedFormControl = new UntypedFormControl('');
   public searchedItems: Array<Item> = [];
   public searchOpen = false;
@@ -79,12 +80,11 @@ export class HomeComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.queryFamily = params['family'];
       this.queryCategory = params['category'];
-      this.autoExplore();
-    });
-    this.itemService.getAvailableTree().subscribe(tree => {
-      this.availableTree = tree;
-      this.autoExplore();
-      this.cdr.detectChanges();
+      this.itemService.getAvailableTree().subscribe(tree => {
+        this.availableTree = tree;
+        this.autoExplore();
+        this.cdr.detectChanges();
+      });
     });
     this.storeService.getLastItems().subscribe(items => {
       this.lastItems = items;
@@ -93,23 +93,27 @@ export class HomeComponent implements OnInit {
   }
 
   autoExplore(): void {
-    if (this.availableTree?.families?.length) {
-      if (this.queryFamily) {
-        const family = this.availableTree.families.find(f => f.name === this.queryFamily);
-        if (family) {
-          this.goToFamily(family);
-          if (this.queryCategory) {
-            const category = family.categories.find(c => c.name === this.queryCategory);
-            if (category) {
-              this.goToCategory(category);
-            }
+    if (this.queryFamily) {
+      const family = this.availableTree.families.find(f => f.name === this.queryFamily);
+      if (family) {
+        this.goToFamily(family, false);
+        if (this.queryCategory) {
+          const category = family.categories.find(c => c.name === this.queryCategory);
+          if (category) {
+            this.goToCategory(category, false);
+            this.storeService.requestSocket('getLastItemsByFamily', category.name);
           }
+        } else {
+          this.storeService.requestSocket('getLastItemsByFamily', family.name);
         }
-        this.scroll(this.listRef.nativeElement);
-      } else {
-        this.storeService.requestSocket('getLastItemsByFamily', 'all');
       }
+      if (!this.init && this.listRef?.nativeElement) {
+        this.scroll(this.listRef.nativeElement);
+      }
+    } else {
+      this.storeService.requestSocket('getLastItemsByFamily', 'all');
     }
+    this.init = true;
   }
 
   getImageSource(item: Item): string {
@@ -185,20 +189,26 @@ export class HomeComponent implements OnInit {
     this.availableList = 'family';
     const url = this.router.createUrlTree([], { relativeTo: this.activatedRoute, queryParams: {} }).toString();
     this.location.go(url);
+    this.queryFamily = null;
+    this.queryCategory = null;
     this.storeService.requestSocket('getLastItemsByFamily', 'all');
   }
 
-  goToFamily(family: AvailableFamily): void {
+  goToFamily(family: AvailableFamily, refresh = true): void {
     this.availableFamily = family;
     this.availableList = 'category';
     const url = this.router
       .createUrlTree([], { relativeTo: this.activatedRoute, queryParams: { family: this.availableFamily.name } })
       .toString();
     this.location.go(url);
-    this.storeService.requestSocket('getLastItemsByFamily', family.name);
+    this.queryFamily = family.name;
+    this.queryCategory = null;
+    if (refresh) {
+      this.storeService.requestSocket('getLastItemsByFamily', family.name);
+    }
   }
 
-  goToCategory(category: AvailableCategory): void {
+  goToCategory(category: AvailableCategory, refresh = true): void {
     this.availableCategory = category;
     this.availableList = 'item';
     const url = this.router
@@ -208,7 +218,10 @@ export class HomeComponent implements OnInit {
       })
       .toString();
     this.location.go(url);
-    this.storeService.requestSocket('getLastItemsByFamily', category.name);
+    this.queryCategory = category.name;
+    if (refresh) {
+      this.storeService.requestSocket('getLastItemsByFamily', category.name);
+    }
   }
 
   goToItem(item: Item | ShopItem): void {

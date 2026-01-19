@@ -243,26 +243,34 @@
 
     &.active.online {
       border-color: $sell-color;
-      i { color: $sell-color; }
+      i {
+        color: $sell-color;
+      }
     }
 
     &.active.today {
       border-color: #fbbf24;
-      i { color: #fbbf24; }
+      i {
+        color: #fbbf24;
+      }
     }
 
     &.active.week {
       border-color: #60a5fa;
-      i { color: #60a5fa; }
+      i {
+        color: #60a5fa;
+      }
     }
 
     &.combined i {
-      color: #a78bfa;  // purple for combined
+      color: #a78bfa; // purple for combined
     }
 
     &.active.combined {
       border-color: #a78bfa;
-      i { color: #a78bfa; }
+      i {
+        color: #a78bfa;
+      }
     }
   }
 }
@@ -313,7 +321,8 @@
               display: none;
             }
 
-            i, .toggle-img {
+            i,
+            .toggle-img {
               margin: 0;
             }
           }
@@ -404,7 +413,9 @@
 
   &:hover {
     border-color: rgba($gold, 0.5);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba($gold, 0.08);
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      inset 0 0 20px rgba($gold, 0.08);
     background: linear-gradient(145deg, rgba($gold, 0.08) 0%, transparent 50%);
 
     // Inner glow effect that doesn't clip
@@ -522,15 +533,15 @@
 // Combined mode - color arrows by time category
 .stat-sell.online i,
 .stat-buy.online i {
-  color: $sell-color;  // green for live
+  color: $sell-color; // green for live
 }
 .stat-sell.today i,
 .stat-buy.today i {
-  color: #fbbf24;  // yellow for today
+  color: #fbbf24; // yellow for today
 }
 .stat-sell.week i,
 .stat-buy.week i {
-  color: #60a5fa;  // blue for week
+  color: #60a5fa; // blue for week
 }
 
 // Combined stats layout
@@ -594,7 +605,9 @@
 
   &:hover {
     border-color: rgba($gold, 0.5);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba($gold, 0.08);
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      inset 0 0 20px rgba($gold, 0.08);
     background: linear-gradient(145deg, rgba($gold, 0.08) 0%, transparent 50%);
 
     &::after {
@@ -722,11 +735,8 @@
     transform: translateX(3px);
   }
 
-  &.faded {
-    opacity: 0.5;
-    &:hover {
-      opacity: 0.85;
-    }
+  &:hover {
+    opacity: 0.85;
   }
 
   // Accent border based on type

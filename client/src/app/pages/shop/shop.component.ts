@@ -2,15 +2,13 @@ import { Location } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { OrderFilter } from '@app/models/order.model';
-import { Item, OrderType, Price, Shop, ShopItem } from '@app/models/shop.model';
+import { Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
 import { ToastrService } from 'ngx-toastr';
-import { ItemDetailMapBasic } from '@app/shared/constants/item-detail.map';
 
 @Component({
   selector: 'app-shop',
