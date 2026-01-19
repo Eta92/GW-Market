@@ -191,9 +191,17 @@ export class ItemService {
   };
 
   public static searchItems = (search: string): Array<Item> => {
-    const resultsIndex = this.searchIndex.search(search);
+    // Pass limit to Flexsearch to get enough results
+    const resultsIndex = this.searchIndex.search(search, { limit: 100 });
     const results = resultsIndex.map((i) => this.allItems[i]);
     return results.slice(0, 6);
+  };
+
+  public static searchItemsWithLimit = (search: string, limit: number = 50): Array<Item> => {
+    // Pass higher limit to Flexsearch to ensure we get all matching items
+    const resultsIndex = this.searchIndex.search(search, { limit: 1000 });
+    const results = resultsIndex.map((i) => this.allItems[i]);
+    return results.slice(0, limit);
   };
 
   public static generateFakeShops = () => {

@@ -4,11 +4,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { ItemComponent } from './pages/item/item.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { AboutComponent } from './pages/about/about.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   },
   {
     path: 'item/:name',

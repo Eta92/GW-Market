@@ -12,6 +12,7 @@ import { FilterOrderComponent } from '@app/components/filter-order/filter-order.
 import { ActivePlayerComponent } from '@app/components/active-player/active-player.component';
 import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from '@app/components/header/header.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HeaderComponent } from '@app/components/header/header.component';
     SelectItemComponent,
     HomeComponent,
     ItemComponent,
+    SearchComponent,
     ShopComponent
   ],
   imports: [SharedModule, ServiceModule]

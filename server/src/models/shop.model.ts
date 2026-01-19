@@ -24,11 +24,28 @@ export interface ShopItem {
   prices: Array<ShopPrice>;
   description?: string;
   quantity: number;
+  weaponDetails?: WeaponDetails;
+  orderDetails?: OrderDetails;
   // copy from shop
   player?: string;
   daybreakOnline?: boolean;
   authCertified?: boolean;
   lastRefresh?: number;
+}
+
+export interface OrderDetails {
+  dedicated?: boolean;
+  pre?: boolean;
+}
+
+export interface WeaponDetails {
+  attribute: string;
+  requirement: number;
+  inscription: boolean;
+  oldschool: boolean;
+  core: string | null;
+  prefix: string | null;
+  suffix: string | null;
 }
 
 export interface ShopPrice {

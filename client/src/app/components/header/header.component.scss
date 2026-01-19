@@ -182,25 +182,21 @@ $parchment: #e8dcc4;
   }
 }
 
-// Search Wrapper
-.search-wrapper {
+// Search Group (wrapper + advanced search button)
+.search-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   flex: 1;
-  max-width: 580px;
+  max-width: 480px;
   min-width: 200px;
   animation: fadeInUp 500ms ease-out 100ms both;
   position: relative;
-  z-index: 100; // Above features row for dropdown
-
-  .hero-header & {
-    min-width: 200px;
-  }
+  z-index: 100;
 
   @media (max-width: 950px) {
+    max-width: 360px;
     min-width: 180px;
-
-    .hero-header & {
-      min-width: 180px;
-    }
   }
 
   @media (max-width: 768px) {
@@ -208,11 +204,14 @@ $parchment: #e8dcc4;
     flex-basis: 100%;
     max-width: none;
     min-width: 0;
-
-    .hero-header & {
-      min-width: 0;
-    }
   }
+}
+
+// Search Wrapper
+.search-wrapper {
+  flex: 1;
+  min-width: 0;
+  position: relative;
 
   ::ng-deep {
     .search-input {
@@ -272,6 +271,69 @@ $parchment: #e8dcc4;
     .result-image {
       width: 44px !important;
       height: 44px !important;
+    }
+  }
+}
+
+// Advanced Search Button
+.advanced-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  background: linear-gradient(135deg, rgba($gold, 0.5) 0%, rgba($gold, 0.3) 100%);
+  border: 2px solid rgba($gold, 0.45);
+  border-radius: 10px;
+  color: $gold;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 250ms ease;
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($gold, 0.65) 0%, rgba($gold, 0.45) 100%);
+    border-color: $gold-bright;
+    color: $gold-bright;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba($gold, 0.35), 0 0 25px rgba($gold, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba($gold, 0.2);
+  }
+
+  @media (max-width: 950px) {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    width: 44px;
+    height: 44px;
+    font-size: 15px;
+  }
+
+  // Compact header
+  .site-header.compact & {
+    width: 44px;
+    height: 44px;
+    font-size: 15px;
+    border-radius: 6px;
+
+    @media (max-width: 950px) {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      width: 38px;
+      height: 38px;
     }
   }
 }

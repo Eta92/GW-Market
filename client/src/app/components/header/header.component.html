@@ -6,8 +6,13 @@
         <img class="logo" src="/assets/img/trading.svg" alt="GW Market" />
       </a>
 
-      <div class="search-wrapper" *ngIf="showSearch">
-        <app-select-item (selectItem)="onSelectItem($event)"></app-select-item>
+      <div class="search-group" *ngIf="showSearch">
+        <div class="search-wrapper">
+          <app-select-item (selectItem)="onSelectItem($event)"></app-select-item>
+        </div>
+        <button class="advanced-search-btn" (click)="goToSearch()" title="Advanced Search">
+          <i class="fa fa-sliders-h"></i>
+        </button>
       </div>
 
       <div class="header-actions">
@@ -49,8 +54,13 @@
     </a>
 
     <!-- Search -->
-    <div class="search-wrapper" *ngIf="showSearch">
-      <app-select-item (selectItem)="onSelectItem($event)"></app-select-item>
+    <div class="search-group" *ngIf="showSearch">
+      <div class="search-wrapper">
+        <app-select-item (selectItem)="onSelectItem($event)"></app-select-item>
+      </div>
+      <button class="advanced-search-btn" (click)="goToSearch()" title="Advanced Search">
+        <i class="fa fa-sliders-h"></i>
+      </button>
     </div>
 
     <!-- Actions -->

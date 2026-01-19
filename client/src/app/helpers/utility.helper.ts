@@ -169,7 +169,7 @@ export class UtilityHelper {
 
   /**
    * Calculate unit price with proper decimal formatting.
-   * Shows 2 decimal places but trims trailing zeros.
+   * Shows up to 3 decimal places, trimming trailing zeros.
    */
   public static getDecimalUnitPrice(price: number, quantity: number): string {
     if (!quantity) return '0';
@@ -177,7 +177,8 @@ export class UtilityHelper {
     if (unitPrice === Math.floor(unitPrice)) {
       return unitPrice.toString();
     }
-    return unitPrice.toFixed(2).replace(/\.?0+$/, '');
+    const rounded = Math.round(unitPrice * 1000) / 1000;
+    return rounded.toString();
   }
 
   /**

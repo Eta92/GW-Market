@@ -26,6 +26,10 @@ export class HeaderComponent {
     this.router.navigate(['/shop']);
   }
 
+  goToSearch(): void {
+    this.router.navigate(['/search']);
+  }
+
   onSelectItem(item: Item): void {
     this.selectItem.emit(item);
     this.router.navigate(['/item', item.name]);
