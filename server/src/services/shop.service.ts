@@ -6,8 +6,8 @@ import { Server as SocketServer } from 'socket.io';
 import { nanoid } from 'nanoid';
 
 // Time thresholds in milliseconds
-const TIME_ONLINE = 1000 * 60 * 15;       // 15 minutes
-const TIME_TODAY = 1000 * 60 * 60 * 12;   // 12 hours
+const TIME_ONLINE = 1000 * 60 * 15; // 15 minutes
+const TIME_TODAY = 1000 * 60 * 60 * 12; // 12 hours
 
 export class ShopService {
   public static shopInit = false;
@@ -17,7 +17,7 @@ export class ShopService {
   public static activeShops: Array<Shop> = [];
   public static activeShopMap: { [key: string]: Shop } = {};
   public static activeItemMap: { [key: string]: Array<ShopItem> } = {};
-  public static activeOrderMap: { [key: string]: { name: string } & TimeOrderCounts } = {};
+  public static activeOrderMap: { [key: string]: TimeOrderCounts } = {};
   public static lastItemMap: { [key: string]: Array<ShopItem> } = {};
   public static itemToRefresh: Set<string> = new Set<string>();
   public static shopCertificationPending: { [key: string]: { uuid: string; player: string; socket: any; secret: string } } = {};
@@ -164,38 +164,33 @@ export class ShopService {
     Object.keys(this.allItemMap).forEach((itemName) => {
       const shopItems = this.allItemMap[itemName];
       const counts: TimeOrderCounts = {
-        sellOrders: 0,
-        buyOrders: 0,
-        sellOrdersOnline: 0,
-        buyOrdersOnline: 0,
-        sellOrdersToday: 0,
-        buyOrdersToday: 0,
-        sellOrdersWeek: 0,
-        buyOrdersWeek: 0,
+        sellNow: 0,
+        buyNow: 0,
+        sellDay: 0,
+        buyDay: 0,
+        sellWeek: 0,
+        buyWeek: 0,
       };
 
       shopItems.forEach((item) => {
         const age = now - (item.lastRefresh || 0);
         const isSell = item.orderType === OrderType.SELL;
 
-        // Total counts
-        if (isSell) counts.sellOrders++;
-        else counts.buyOrders++;
-
         // Time-bucketed counts
-        if (age < TIME_ONLINE) {
-          if (isSell) counts.sellOrdersOnline++;
-          else counts.buyOrdersOnline++;
-        } else if (age < TIME_TODAY) {
-          if (isSell) counts.sellOrdersToday++;
-          else counts.buyOrdersToday++;
-        } else {
-          if (isSell) counts.sellOrdersWeek++;
-          else counts.buyOrdersWeek++;
+        if (age < 1000 * 60 * 60 * 24 * 7) {
+          if (isSell) counts.sellWeek++;
+          else counts.buyWeek++;
+          if (age < 1000 * 60 * 60 * 12) {
+            if (isSell) counts.sellDay++;
+            else counts.buyDay++;
+            if (age < 1000 * 60 * 15) {
+              if (isSell) counts.sellNow++;
+              else counts.buyNow++;
+            }
+          }
         }
       });
-
-      this.activeOrderMap[itemName] = { name: itemName, ...counts };
+      this.activeOrderMap[itemName] = counts;
     });
 
     if (this.io) {
@@ -484,13 +479,17 @@ export class ShopService {
         case 'quantity':
           return multiplier * (a.quantity - b.quantity);
         case 'price': {
-          const priceA = filter.currency !== undefined ? a.prices.find((p) => p.type === filter.currency)?.price || 0 : a.prices[0]?.price || 0;
-          const priceB = filter.currency !== undefined ? b.prices.find((p) => p.type === filter.currency)?.price || 0 : b.prices[0]?.price || 0;
+          const priceA =
+            filter.currency !== undefined ? a.prices.find((p) => p.type === filter.currency)?.price || 0 : a.prices[0]?.price || 0;
+          const priceB =
+            filter.currency !== undefined ? b.prices.find((p) => p.type === filter.currency)?.price || 0 : b.prices[0]?.price || 0;
           return multiplier * (priceA - priceB);
         }
         case 'priceEach': {
-          const priceA = filter.currency !== undefined ? a.prices.find((p) => p.type === filter.currency)?.price || 0 : a.prices[0]?.price || 0;
-          const priceB = filter.currency !== undefined ? b.prices.find((p) => p.type === filter.currency)?.price || 0 : b.prices[0]?.price || 0;
+          const priceA =
+            filter.currency !== undefined ? a.prices.find((p) => p.type === filter.currency)?.price || 0 : a.prices[0]?.price || 0;
+          const priceB =
+            filter.currency !== undefined ? b.prices.find((p) => p.type === filter.currency)?.price || 0 : b.prices[0]?.price || 0;
           const eachA = priceA / (a.quantity || 1);
           const eachB = priceB / (b.quantity || 1);
           return multiplier * (eachA - eachB);

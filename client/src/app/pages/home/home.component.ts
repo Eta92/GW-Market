@@ -27,14 +27,12 @@ export class HomeComponent implements OnInit {
   public viewMode: 'grid' | 'list' = 'grid';
   public availableTree: AvailableTree = {
     families: [],
-    sellOrders: 0,
-    buyOrders: 0,
-    sellOrdersOnline: 0,
-    buyOrdersOnline: 0,
-    sellOrdersToday: 0,
-    buyOrdersToday: 0,
-    sellOrdersWeek: 0,
-    buyOrdersWeek: 0
+    sellNow: 0,
+    buyNow: 0,
+    sellDay: 0,
+    buyDay: 0,
+    sellWeek: 0,
+    buyWeek: 0
   };
   public availableFamily: AvailableFamily;
   public availableCategory: AvailableCategory;
@@ -127,8 +125,8 @@ export class HomeComponent implements OnInit {
   }
 
   active(list: any[]): typeof list {
-    const getSell = (i: any) => this.getSellCount(i);
-    const getBuy = (i: any) => this.getBuyCount(i);
+    const getSell = (i: any): number => this.getSellCount(i);
+    const getBuy = (i: any): number => this.getBuyCount(i);
 
     switch (this.availableMode) {
       case 'everything':
@@ -147,30 +145,26 @@ export class HomeComponent implements OnInit {
   getSellCount(item: any): number {
     switch (this.timeMode) {
       case 'online': // < 15 min
-        return item.sellOrdersOnline || 0;
+        return item.sellNow || 0;
       case 'today': // < 12 hrs (online + today)
-        return item.sellOrdersToday || 0;
-      case 'week': // all time
-        return item.sellOrdersWeek || 0;
-      case 'combined': // use total for filtering
-        return item.sellOrders || 0;
+        return item.sellDay || 0;
+      // case 'week': // all time
+      // case 'combined': // use total for filtering
       default:
-        return item.sellOrdersOnline || 0;
+        return item.sellWeek || 0;
     }
   }
 
   getBuyCount(item: any): number {
     switch (this.timeMode) {
       case 'online': // < 15 min
-        return item.buyOrdersOnline || 0;
+        return item.buyNow || 0;
       case 'today': // < 12 hrs (online + today)
-        return item.buyOrdersToday || 0;
-      case 'week': // all time
-        return item.buyOrdersWeek || 0;
-      case 'combined': // use total for filtering
-        return item.buyOrders || 0;
+        return item.buyDay || 0;
+      // case 'week': // all time
+      // case 'combined': // use total for filtering
       default:
-        return item.buyOrdersOnline || 0;
+        return item.buyWeek || 0;
     }
   }
 
@@ -178,12 +172,12 @@ export class HomeComponent implements OnInit {
     return {
       sellCount: this.getSellCount(item),
       buyCount: this.getBuyCount(item),
-      sellOnline: item.sellOrdersOnline || 0,
-      buyOnline: item.buyOrdersOnline || 0,
-      sellToday: item.sellOrdersToday || 0,
-      buyToday: item.buyOrdersToday || 0,
-      sellWeek: item.sellOrdersWeek || 0,
-      buyWeek: item.buyOrdersWeek || 0
+      sellNow: item.sellNow || 0,
+      buyNow: item.buyNow || 0,
+      sellDay: item.sellDay || 0,
+      buyDay: item.buyDay || 0,
+      sellWeek: item.sellWeek || 0,
+      buyWeek: item.buyWeek || 0
     };
   }
 

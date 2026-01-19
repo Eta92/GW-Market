@@ -1,14 +1,12 @@
 import { Item } from './shop.model';
 
 export interface TimeOrderCounts {
-  sellOrders: number;
-  buyOrders: number;
-  sellOrdersOnline: number;  // < 15 min
-  buyOrdersOnline: number;
-  sellOrdersToday: number;   // < 12 hrs
-  buyOrdersToday: number;
-  sellOrdersWeek: number;    // >= 12 hrs
-  buyOrdersWeek: number;
+  sellNow: number; // < 15 min
+  buyNow: number;
+  sellDay: number; // < 12 hrs
+  buyDay: number;
+  sellWeek: number; // >= 12 hrs
+  buyWeek: number;
 }
 
 export interface AvailableTree extends TimeOrderCounts {
