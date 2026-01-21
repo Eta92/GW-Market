@@ -1,4 +1,4 @@
-<div class="marketplace-layout font-fritz scroll" (click)="searchOpen = false">
+<div class="marketplace-layout scroll font-fritz" (click)="searchOpen = false">
   <!-- HERO HEADER with Guild Wars Background -->
   <app-header
     [hero]="true"
@@ -173,12 +173,12 @@
 
       <!-- Recent Listings Section -->
       <section class="listings-section">
-        <div class="section-header flew-row">
+        <div class="section-header !flex-row">
           <h2 class="section-title">
             <i class="fa fa-clock"></i>
             Recent Listings
           </h2>
-          <span class="count" *ngIf="lastItems.length">{{ lastItems.length }} items</span>
+          <span class="count self-end" *ngIf="lastItems.length">{{ lastItems.length }} items</span>
         </div>
 
         <div class="listings-container scroll">

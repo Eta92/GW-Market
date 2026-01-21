@@ -69,6 +69,11 @@ export class SocketService {
         ShopService.closeShop(uuid);
       });
 
+      socket.on('getPublicShop', (publicId: string) => {
+        const shop = ShopService.getPublicShop(publicId);
+        socket.emit('GetPublicShop', shop);
+      });
+
       socket.on('getLastItemsByFamily', (family: string) => {
         const items = ShopService.getLastItemsByFamily(family);
         socket.emit('GetLastItems', items);

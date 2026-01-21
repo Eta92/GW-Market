@@ -11,6 +11,7 @@ export interface Account {
 
 export interface Shop {
   uuid?: string;
+  publicId?: string;
   player: string;
   lastRefresh?: number;
   daybreakOnline?: boolean;

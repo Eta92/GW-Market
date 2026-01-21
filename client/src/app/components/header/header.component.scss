@@ -3,6 +3,8 @@ $gold: #d4a855;
 $gold-bright: #f0c674;
 $gold-dim: #8b7355;
 $parchment: #e8dcc4;
+$amber: #c9873a;
+$copper: #b87333;
 
 // Animations
 @keyframes fadeInUp {
@@ -17,17 +19,27 @@ $parchment: #e8dcc4;
 }
 
 @keyframes subtleGlow {
-  0%, 100% {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 rgba($gold, 0);
+  0%,
+  100% {
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      0 0 0 rgba($gold, 0);
   }
   50% {
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4), 0 0 30px rgba($gold, 0.15);
+    box-shadow:
+      0 4px 25px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba($gold, 0.15);
   }
 }
 
 @keyframes iconPulse {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 // ============================================
@@ -164,7 +176,9 @@ $parchment: #e8dcc4;
   height: 68px;
   width: auto;
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8));
-  transition: transform 250ms ease, filter 250ms ease;
+  transition:
+    transform 250ms ease,
+    filter 250ms ease;
   flex-shrink: 0;
   animation: fadeInUp 500ms ease-out both;
 
@@ -226,7 +240,9 @@ $parchment: #e8dcc4;
 
       &:focus {
         border-color: $gold-bright !important;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba($gold, 0.3) !important;
+        box-shadow:
+          0 4px 30px rgba(0, 0, 0, 0.5),
+          0 0 40px rgba($gold, 0.3) !important;
         background: rgba(0, 0, 0, 0.75) !important;
         animation: none !important;
       }
@@ -251,7 +267,9 @@ $parchment: #e8dcc4;
     .search-dropdown {
       border-radius: 10px !important;
       border: 1px solid rgba($gold, 0.5) !important;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba($gold, 0.1) !important;
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba($gold, 0.1) !important;
       backdrop-filter: blur(12px) !important;
     }
 
@@ -283,8 +301,8 @@ $parchment: #e8dcc4;
   width: 52px;
   height: 52px;
   padding: 0;
-  background: linear-gradient(135deg, rgba($gold, 0.5) 0%, rgba($gold, 0.3) 100%);
-  border: 2px solid rgba($gold, 0.45);
+  background: linear-gradient(135deg, rgba($copper, 0.7) 0%, rgba($copper, 0.5) 100%);
+  border: 2px solid rgba($gold, 0.65);
   border-radius: 10px;
   color: $gold;
   font-size: 18px;
@@ -294,11 +312,13 @@ $parchment: #e8dcc4;
   backdrop-filter: blur(8px);
 
   &:hover {
-    background: linear-gradient(135deg, rgba($gold, 0.65) 0%, rgba($gold, 0.45) 100%);
+    background: linear-gradient(135deg, rgba($copper, 0.85) 0%, rgba($copper, 0.65) 100%);
     border-color: $gold-bright;
     color: $gold-bright;
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba($gold, 0.35), 0 0 25px rgba($gold, 0.2);
+    box-shadow:
+      0 4px 20px rgba($gold, 0.35),
+      0 0 25px rgba($gold, 0.2);
   }
 
   &:active {
@@ -354,8 +374,8 @@ $parchment: #e8dcc4;
   align-items: center;
   gap: 10px;
   padding: 14px 22px;
-  background: linear-gradient(135deg, rgba($gold, 0.6) 0%, rgba($gold, 0.4) 100%);
-  border: 1px solid rgba($gold, 0.5);
+  background: linear-gradient(135deg, rgba($copper, 0.8) 0%, rgba($copper, 0.6) 100%);
+  border: 1px solid rgba($gold, 0.7);
   border-radius: 8px;
   color: $parchment;
   font-family: inherit;
@@ -369,9 +389,11 @@ $parchment: #e8dcc4;
   backdrop-filter: blur(4px);
 
   &:hover {
-    background: linear-gradient(135deg, rgba($gold, 0.75) 0%, rgba($gold, 0.55) 100%);
+    background: linear-gradient(135deg, rgba($copper, 0.95) 0%, rgba($copper, 0.75) 100%);
     border-color: $gold-bright;
-    box-shadow: 0 4px 25px rgba($gold, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 4px 25px rgba($gold, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
   }
 
@@ -458,9 +480,15 @@ $parchment: #e8dcc4;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   animation: fadeInUp 500ms ease-out both;
 
-  &:nth-child(1) { animation-delay: 300ms; }
-  &:nth-child(2) { animation-delay: 400ms; }
-  &:nth-child(3) { animation-delay: 500ms; }
+  &:nth-child(1) {
+    animation-delay: 300ms;
+  }
+  &:nth-child(2) {
+    animation-delay: 400ms;
+  }
+  &:nth-child(3) {
+    animation-delay: 500ms;
+  }
 
   i {
     color: $gold;

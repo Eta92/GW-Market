@@ -6277,14 +6277,6 @@
               "category": "Rare Axes"
             },
             {
-              "name": "Decade Axes Rival Skies",
-              "stats": [
-                "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nHealth +30\nCrafted in tribute to an enduring legend.\nHides off-hand items."
-              ],
-              "family": "weapon",
-              "category": "Rare Axes"
-            },
-            {
               "name": "Double-bladed Axe",
               "stats": [],
               "family": "weapon",
@@ -6368,14 +6360,6 @@
               "name": "Wintergreen Axe",
               "stats": [
                 "Slashing Dmg: 10-10\nInscription: None"
-              ],
-              "family": "weapon",
-              "category": "Rare Axes"
-            },
-            {
-              "name": "Anniversary Axe Engrave",
-              "stats": [
-                "Cold Dmg: 6-28 (Requires 9 Energy Storage)\nInscription: None\nCrafted in tribute to an enduring legend."
               ],
               "family": "weapon",
               "category": "Rare Axes"
@@ -6683,38 +6667,6 @@
               ],
               "family": "weapon",
               "category": "Rare Axes"
-            },
-            {
-              "name": "Charr Axe (Bonus Mission Pack)",
-              "stats": [
-                "Slashing Dmg: 6-28 (req. 9 Axe Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Axes"
-            },
-            {
-              "name": "Mursaat Axe",
-              "stats": [
-                "Slashing Dmg: 6-28 (req. 9 Axe Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Axes"
-            },
-            {
-              "name": "Tengu Axe",
-              "stats": [
-                "Slashing Dmg: 6-28 (req. 9 Axe Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Axes"
-            },
-            {
-              "name": "Undead Axe",
-              "stats": [
-                "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Axes"
             }
           ]
         },
@@ -6733,22 +6685,6 @@
               "name": "Balthazar's Daggers",
               "stats": [
                 "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: None"
-              ],
-              "family": "weapon",
-              "category": "Rare daggers"
-            },
-            {
-              "name": "Decade Daggers High Noon",
-              "stats": [
-                "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30\nCrafted in tribute to an enduring legend."
-              ],
-              "family": "weapon",
-              "category": "Rare daggers"
-            },
-            {
-              "name": "Anniversary Daggers Vengeance",
-              "stats": [
-                "Slashing Dmg: 7-17 (Requires 9 Leadership)\nInscription: None\nCrafted in tribute to an enduring legend."
               ],
               "family": "weapon",
               "category": "Rare daggers"
@@ -7094,38 +7030,6 @@
               "category": "Rare daggers"
             },
             {
-              "name": "Mursaat Daggers",
-              "stats": [
-                "Piercing Dmg: 7-17 (req. 9 Dagger Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare daggers"
-            },
-            {
-              "name": "Undead Daggers",
-              "stats": [
-                "Piercing Dmg: 7-17 (req. 9 Dagger Mastery)\nInscription: None\nBoth hands\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare daggers"
-            },
-            {
-              "name": "Charr Daggers",
-              "stats": [
-                "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare daggers"
-            },
-            {
-              "name": "Tengu Daggers",
-              "stats": [
-                "Slashing Dmg: 7-17 (req. 9 Dagger Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare daggers"
-            },
-            {
               "name": "Dragon Fangs (promotional)",
               "stats": [
                 "Piercing Dmg: 7-17 (Requires 9 Dagger Mastery)\nLengthens Poison duration on foes by 33% (Stacking)\nDamage +15% (while Enchanted)\nDagger Mastery +1 (20% chance while using skills)\nDamage +20% <customized>"
@@ -7138,6 +7042,12 @@
         {
           "name": "Rare focus items",
           "items": [
+            {
+              "name": "Storm Ember",
+              "stats": [],
+              "family": "weapon",
+              "category": "Rare focus items"
+            },
             {
               "name": "Fox's Greed",
               "stats": [],
@@ -7665,38 +7575,6 @@
               ],
               "family": "weapon",
               "category": "Rare focus items"
-            },
-            {
-              "name": "Charr Focus",
-              "stats": [
-                "Energy +12 (req. 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare focus items"
-            },
-            {
-              "name": "Mursaat Focus",
-              "stats": [
-                "Energy +12 (req. 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare focus items"
-            },
-            {
-              "name": "Tengu Focus",
-              "stats": [
-                "Energy +12 (req. 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare focus items"
-            },
-            {
-              "name": "Undead Focus",
-              "stats": [
-                "Energy +12 (req. 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare focus items"
             }
           ]
         },
@@ -7828,14 +7706,6 @@
               "stats": [
                 "Blunt damage: 8-10\nDamage +10% (while in a Stance)\nHealth +101",
                 "Can be salvaged"
-              ],
-              "family": "weapon",
-              "category": "Rare Hammers"
-            },
-            {
-              "name": "Anniversary Hammer Verdict",
-              "stats": [
-                "Holy Dmg: 19-35 (Requires 9 Divine Favor)\nInscription: None\nCrafted in tribute to an enduring legend."
               ],
               "family": "weapon",
               "category": "Rare Hammers"
@@ -8219,36 +8089,6 @@
               "category": "Rare Hammers"
             },
             {
-              "name": "Charr Maul",
-              "stats": [],
-              "family": "weapon",
-              "category": "Rare Hammers"
-            },
-            {
-              "name": "Mursaat Maul",
-              "stats": [
-                "Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Hammers"
-            },
-            {
-              "name": "Tengu Maul",
-              "stats": [
-                "Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Hammers"
-            },
-            {
-              "name": "Undead Maul",
-              "stats": [
-                "Blunt Dmg: 19-35 (req. 9 Hammer Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Hammers"
-            },
-            {
               "name": "Bear's Sloth (promotional)",
               "stats": [
                 "Blunt damage: 19-35 (Req. 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)"
@@ -8321,14 +8161,6 @@
               "name": "Peppermint Scythe",
               "stats": [
                 "Slashing Dmg: 10-10"
-              ],
-              "family": "weapon",
-              "category": "Rare Scythes"
-            },
-            {
-              "name": "Anniversary Scythe Sufferer",
-              "stats": [
-                "Dark Dmg: 9-41 (Requires 9 Soul Reaping)\nInscription: None\nCrafted in tribute to an enduring legend."
               ],
               "family": "weapon",
               "category": "Rare Scythes"
@@ -8587,44 +8419,18 @@
               ],
               "family": "weapon",
               "category": "Rare Scythes"
-            },
-            {
-              "name": "Charr Scythe",
-              "stats": [
-                "Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None\nTwo-handed\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Scythes"
-            },
-            {
-              "name": "Mursaat Scythe",
-              "stats": [
-                "Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None\nTwo-handed\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Scythes"
-            },
-            {
-              "name": "Tengu Scythe",
-              "stats": [
-                "Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None\nTwo-handed\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Scythes"
-            },
-            {
-              "name": "Undead Scythe",
-              "stats": [
-                "Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None\nTwo-handed\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Scythes"
             }
           ]
         },
         {
           "name": "Rare Shields",
           "items": [
+            {
+              "name": "Demonic Aegis",
+              "stats": [],
+              "family": "weapon",
+              "category": "Rare Shields"
+            },
             {
               "name": "Gingerbread Shield",
               "stats": [
@@ -9004,38 +8810,6 @@
               "category": "Rare Shields"
             },
             {
-              "name": "Charr Shield",
-              "stats": [
-                "Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Shields"
-            },
-            {
-              "name": "Mursaat Shield",
-              "stats": [
-                "Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nCustomized for <character name> (see notes)"
-              ],
-              "family": "weapon",
-              "category": "Rare Shields"
-            },
-            {
-              "name": "Tengu Shield",
-              "stats": [
-                "Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Shields"
-            },
-            {
-              "name": "Undead Shield",
-              "stats": [
-                "Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Shields"
-            },
-            {
               "name": "Aegis (shield)",
               "stats": [],
               "family": "weapon",
@@ -9272,14 +9046,6 @@
               "category": "Rare Shields"
             },
             {
-              "name": "Anniversary Shield Curtain",
-              "stats": [
-                "Armor: 16 (Requires 9 Fast Casting)\nReduced armor in PvP.\nInscription: None\nCrafted in tribute to an enduring legend."
-              ],
-              "family": "weapon",
-              "category": "Rare Shields"
-            },
-            {
               "name": "Japan 1st Anniversary Shield (promotional)",
               "stats": [
                 "Armor: 8\nInscription: None\nCustomized for <character name>"
@@ -9336,14 +9102,6 @@
               "name": "Peppermint Spear",
               "stats": [
                 "Piercing Dmg: 10-10"
-              ],
-              "family": "weapon",
-              "category": "Rare Spears"
-            },
-            {
-              "name": "Anniversary Spear Arbalest",
-              "stats": [
-                "Piercing Dmg: 14-27 (Requires 9 Strength)\nInscription: None\nCrafted in tribute to an enduring legend."
               ],
               "family": "weapon",
               "category": "Rare Spears"
@@ -9582,38 +9340,6 @@
               "name": "Spear of Purity",
               "stats": [
                 "Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nInscription: None"
-              ],
-              "family": "weapon",
-              "category": "Rare Spears"
-            },
-            {
-              "name": "Charr Spear",
-              "stats": [
-                "Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Spears"
-            },
-            {
-              "name": "Mursaat Spear",
-              "stats": [
-                "Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Spears"
-            },
-            {
-              "name": "Tengu Spear",
-              "stats": [
-                "Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Spears"
-            },
-            {
-              "name": "Undead Spear",
-              "stats": [
-                "Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None\nCustomized"
               ],
               "family": "weapon",
               "category": "Rare Spears"
@@ -9966,14 +9692,6 @@
               "category": "Rare staves"
             },
             {
-              "name": "Decade Staff Underworld Pillar",
-              "stats": [
-                "Energy +10\nDark Dmg: 11-22 (Requires 9 Communing)\nDark Dmg: 11-22 (Requires 9 Restoration Magic)\nDark Dmg: 11-22 (Requires 9 Channeling Magic)\nDark Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nEnchantments last 20% longer\nHealth +30\nCrafted in tribute to an enduring legend."
-              ],
-              "family": "weapon",
-              "category": "Rare staves"
-            },
-            {
               "name": "Channeling Staff",
               "stats": [],
               "family": "weapon",
@@ -10038,14 +9756,6 @@
             {
               "name": "Spawning Staff",
               "stats": [],
-              "family": "weapon",
-              "category": "Rare staves"
-            },
-            {
-              "name": "Anniversary Staff Unveil",
-              "stats": [
-                "Energy +10\nHoly Dmg: 11-22 (Requires 9 Mysticism)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCrafted in tribute to an enduring legend."
-              ],
               "family": "weapon",
               "category": "Rare staves"
             },
@@ -10316,38 +10026,6 @@
               "category": "Rare staves"
             },
             {
-              "name": "Undead Staff",
-              "stats": [
-                "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare staves"
-            },
-            {
-              "name": "Charr Staff",
-              "stats": [
-                "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare staves"
-            },
-            {
-              "name": "Mursaat Staff",
-              "stats": [
-                "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare staves"
-            },
-            {
-              "name": "Tengu Staff",
-              "stats": [
-                "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare staves"
-            },
-            {
               "name": "Imperial Staff",
               "stats": [
                 "Energy +10\n<Type> Dmg: 11-22 (Requires 9 <attribute>)\nHalves skill recharges of spells (Chance: 20%)\nInscription: \"Hale and Hearty\"\nEnergy +5 (while Health is above 50%)"
@@ -10552,14 +10230,6 @@
             {
               "name": "Wingblade Sword",
               "stats": [],
-              "family": "weapon",
-              "category": "Rare Swords"
-            },
-            {
-              "name": "Anniversary Sword Prominence",
-              "stats": [
-                "Slashing Dmg: 15-22 (Requires 9 Expertise)\nInscription: None\nCrafted in tribute to an enduring legend."
-              ],
               "family": "weapon",
               "category": "Rare Swords"
             },
@@ -11177,46 +10847,6 @@
               "category": "Rare Swords"
             },
             {
-              "name": "Charr Sword",
-              "stats": [
-                "Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Swords"
-            },
-            {
-              "name": "Mursaat Sword",
-              "stats": [
-                "Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Swords"
-            },
-            {
-              "name": "Tengu Sword",
-              "stats": [
-                "Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Swords"
-            },
-            {
-              "name": "Turai's Sword",
-              "stats": [
-                "Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription: None\nDamage +20% <customized>"
-              ],
-              "family": "weapon",
-              "category": "Rare Swords"
-            },
-            {
-              "name": "Undead Sword",
-              "stats": [
-                "Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Swords"
-            },
-            {
               "name": "Glacial Blade (promotional)",
               "stats": [
                 "Cold damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Enchanted)"
@@ -11232,14 +10862,6 @@
             {
               "name": "Quicksilver",
               "stats": [],
-              "family": "weapon",
-              "category": "Rare Wands"
-            },
-            {
-              "name": "Decade Rod Unicorn's Valor",
-              "stats": [
-                "Chaos Dmg: 11-22 (Requires 9 Divine Favor)\nChaos Dmg: 11-22 (Requires 9 Healing Prayers)\nChaos Dmg: 11-22 (Requires 9 Smiting Prayers)\nChaos Dmg: 11-22 (Requires 9 Protection Prayers)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nFast Casting: 5 (if your rank is lower. No effect in PvP.)\nCrafted in tribute to an enduring legend."
-              ],
               "family": "weapon",
               "category": "Rare Wands"
             },
@@ -11288,14 +10910,6 @@
             {
               "name": "Baneful Scepter",
               "stats": [],
-              "family": "weapon",
-              "category": "Rare Wands"
-            },
-            {
-              "name": "Decade Rod Undying Service",
-              "stats": [
-                "Dark Dmg: 11-22 (Requires 9 Soul Reaping)\nDark Dmg: 11-22 (Requires 9 Blood Magic)\nDark Dmg: 11-22 (Requires 9 Death Magic)\nDark Dmg: 11-22 (Requires 9 Curses)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
-              ],
               "family": "weapon",
               "category": "Rare Wands"
             },
@@ -11372,14 +10986,6 @@
               "category": "Rare Wands"
             },
             {
-              "name": "Decade Rod All the World",
-              "stats": [
-                "Chaos Dmg: 11-22 (Requires 9 Fast Casting)\nChaos Dmg: 11-22 (Requires 9 Illusion Magic)\nChaos Dmg: 11-22 (Requires 9 Domination Magic)\nChaos Dmg: 11-22 (Requires 9 Inspiration Magic)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
-              ],
-              "family": "weapon",
-              "category": "Rare Wands"
-            },
-            {
               "name": "Cane (Domination)",
               "stats": [],
               "family": "weapon",
@@ -11432,14 +11038,6 @@
             {
               "name": "Arcane Scepter",
               "stats": [],
-              "family": "weapon",
-              "category": "Rare Wands"
-            },
-            {
-              "name": "Decade Rod Antipode Alloy",
-              "stats": [
-                "Chaos Dmg: 11-22 (Requires 9 Energy Storage)\nChaos Dmg: 11-22 (Requires 9 Air Magic)\nChaos Dmg: 11-22 (Requires 9 Earth Magic)\nChaos Dmg: 11-22 (Requires 9 Fire Magic)\nChaos Dmg: 11-22 (Requires 9 Water Magic)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
-              ],
               "family": "weapon",
               "category": "Rare Wands"
             },
@@ -11768,38 +11366,6 @@
               "category": "Rare Wands"
             },
             {
-              "name": "Undead Scepter",
-              "stats": [
-                "<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Wands"
-            },
-            {
-              "name": "Charr Scepter",
-              "stats": [
-                "<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Wands"
-            },
-            {
-              "name": "Mursaat Scepter",
-              "stats": [
-                "<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Wands"
-            },
-            {
-              "name": "Tengu Scepter",
-              "stats": [
-                "<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Wands"
-            },
-            {
               "name": "Imperial Scepter",
               "stats": [
                 "<Type> damage: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nInscription: None"
@@ -11863,14 +11429,6 @@
             {
               "name": "Scorpion's Lust",
               "stats": [],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Anniversary Flatbow Oracle",
-              "stats": [
-                "Piercing Dmg: 15-28 (Requires 9 Spawning Power)\nInscription: None\nTwo handed Flatbow\nCrafted in tribute to an enduring legend."
-              ],
               "family": "weapon",
               "category": "Rare Bows"
             },
@@ -12001,14 +11559,6 @@
             {
               "name": "Half Moon",
               "stats": [],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Anniversary Shortbow Whisper",
-              "stats": [
-                "Piercing Dmg: 15-28 (Requires 9 Critical Strikes)\nInscription: None\nTwo handed Shortbow\nCrafted in tribute to an enduring legend."
-              ],
               "family": "weapon",
               "category": "Rare Bows"
             },
@@ -12551,162 +12101,6 @@
               ],
               "family": "weapon",
               "category": "Rare Bows"
-            },
-            {
-              "name": "Charr Flatbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Flatbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Mursaat Flatbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Flatbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Tengu Flatbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Flatbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Undead Flatbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Flatbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Charr Hornbow",
-              "stats": [],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Mursaat Hornbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Hornbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Tengu Hornbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Hornbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Undead Hornbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Hornbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Charr Longbow",
-              "stats": [],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Mursaat Longbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Longbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Tengu Longbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Longbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Undead Longbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Longbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Charr Recurve Bow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Recurve Bow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Mursaat Recurve Bow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Recurve Bow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Tengu Recurve Bow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Recurve Bow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Undead Recurve Bow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Recurve Bow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Charr Shortbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Shortbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Mursaat Shortbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Shortbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Tengu Shortbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription None\nTwo-handed Shortbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
-            },
-            {
-              "name": "Undead Shortbow",
-              "stats": [
-                "Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Shortbow\nCustomized"
-              ],
-              "family": "weapon",
-              "category": "Rare Bows"
             }
           ]
         }
@@ -12954,6 +12348,14 @@
               "name": "Conviction (weapon)",
               "stats": [
                 "Lightning Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"
+              ],
+              "family": "unique",
+              "category": "Unique Axes"
+            },
+            {
+              "name": "Decade Axes Rival Skies",
+              "stats": [
+                "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nHealth +30\nCrafted in tribute to an enduring legend.\nHides off-hand items."
               ],
               "family": "unique",
               "category": "Unique Axes"
@@ -13359,6 +12761,14 @@
               "name": "Oroku's Slicers",
               "stats": [
                 "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnergy gain on hit: 1\nEnergy regeneration -1\nArmor +5"
+              ],
+              "family": "unique",
+              "category": "Unique daggers"
+            },
+            {
+              "name": "Decade Daggers High Noon",
+              "stats": [
+                "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30\nCrafted in tribute to an enduring legend."
               ],
               "family": "unique",
               "category": "Unique daggers"
@@ -17059,6 +16469,14 @@
               "category": "Unique staves"
             },
             {
+              "name": "Decade Staff Underworld Pillar",
+              "stats": [
+                "Energy +10\nDark Dmg: 11-22 (Requires 9 Communing)\nDark Dmg: 11-22 (Requires 9 Restoration Magic)\nDark Dmg: 11-22 (Requires 9 Channeling Magic)\nDark Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nEnchantments last 20% longer\nHealth +30\nCrafted in tribute to an enduring legend."
+              ],
+              "family": "unique",
+              "category": "Unique staves"
+            },
+            {
               "name": "Decade Staff Astral Pillar",
               "stats": [
                 "Energy +10\nHoly Dmg: 11-22 (Requires 9 Divine Favor)\nHoly Dmg: 11-22 (Requires 9 Healing Prayers)\nHoly Dmg: 11-22 (Requires 9 Smiting Prayers)\nHoly Dmg: 11-22 (Requires 9 Protection Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nEnchantments last 20% longer\nHealth +30\nCrafted in tribute to an enduring legend."
@@ -18184,9 +17602,41 @@
               "category": "Unique Wands"
             },
             {
+              "name": "Decade Rod All the World",
+              "stats": [
+                "Chaos Dmg: 11-22 (Requires 9 Fast Casting)\nChaos Dmg: 11-22 (Requires 9 Illusion Magic)\nChaos Dmg: 11-22 (Requires 9 Domination Magic)\nChaos Dmg: 11-22 (Requires 9 Inspiration Magic)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+              ],
+              "family": "unique",
+              "category": "Unique Wands"
+            },
+            {
+              "name": "Decade Rod Undying Service",
+              "stats": [
+                "Dark Dmg: 11-22 (Requires 9 Soul Reaping)\nDark Dmg: 11-22 (Requires 9 Blood Magic)\nDark Dmg: 11-22 (Requires 9 Death Magic)\nDark Dmg: 11-22 (Requires 9 Curses)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+              ],
+              "family": "unique",
+              "category": "Unique Wands"
+            },
+            {
+              "name": "Decade Rod Antipode Alloy",
+              "stats": [
+                "Chaos Dmg: 11-22 (Requires 9 Energy Storage)\nChaos Dmg: 11-22 (Requires 9 Air Magic)\nChaos Dmg: 11-22 (Requires 9 Earth Magic)\nChaos Dmg: 11-22 (Requires 9 Fire Magic)\nChaos Dmg: 11-22 (Requires 9 Water Magic)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+              ],
+              "family": "unique",
+              "category": "Unique Wands"
+            },
+            {
               "name": "Deldrimor Scepter (unique)",
               "stats": [
                 "<Type> damage: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+              ],
+              "family": "unique",
+              "category": "Unique Wands"
+            },
+            {
+              "name": "Decade Rod Unicorn's Valor",
+              "stats": [
+                "Chaos Dmg: 11-22 (Requires 9 Divine Favor)\nChaos Dmg: 11-22 (Requires 9 Healing Prayers)\nChaos Dmg: 11-22 (Requires 9 Smiting Prayers)\nChaos Dmg: 11-22 (Requires 9 Protection Prayers)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nFast Casting: 5 (if your rank is lower. No effect in PvP.)\nCrafted in tribute to an enduring legend."
               ],
               "family": "unique",
               "category": "Unique Wands"

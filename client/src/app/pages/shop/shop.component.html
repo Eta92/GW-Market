@@ -1,4 +1,4 @@
-<div class="shop-page font-fritz scroll">
+<div class="shop-page scroll font-fritz">
   <!-- SITE HEADER (Navigation Only) -->
   <app-header
     [showSearch]="true"
@@ -27,7 +27,7 @@
 
         <!-- Player Info -->
         <div class="player-info">
-          <span class="player-label">{{ showCandle ? 'SHOP LIVE' : 'MY SHOP' }}</span>
+          <span class="player-label">{{ showcase ? 'SHOP OF' : showCandle ? 'SHOP LIVE' : 'MY SHOP' }}</span>
           <h1 class="player-name">{{ shop?.player || 'No Player' }}</h1>
           <div class="player-badges" *ngIf="shop?.daybreakOnline || shop?.authCertified">
             <span class="badge online" *ngIf="shop?.daybreakOnline">
@@ -40,21 +40,30 @@
         </div>
 
         <!-- Timer (when live) -->
-        <div class="sidebar-timer" *ngIf="showCandle">
+        <div class="sidebar-timer" *ngIf="showCandle && !showcase">
           <div class="timer-header">
             <i class="fa fa-clock"></i>
-            <span class="timer-label">Time Left</span>
+            <span class="timer-label">Online time</span>
           </div>
           <span class="timer-value">{{ formatTime(timeLeft) }}</span>
           <div class="timer-bar">
             <div class="timer-fill" [style.width.%]="(timeLeft / (15 * 60 * 1000)) * 100"></div>
           </div>
+          <button class="shop-toggle-btn shop-refresh-btn" (click)="refreshShop()">
+            <i class="fa fa-refresh"></i>
+            <span class="shop-refresh-text">{{ 'Refresh Shop' }}</span>
+          </button>
         </div>
 
         <!-- Enable/Stop Toggle -->
-        <button class="shop-toggle-btn" [class.active]="showCandle" (click)="showCandle ? stopShop() : refreshShop()">
+        <button
+          *ngIf="!showcase"
+          class="shop-toggle-btn"
+          [class.active]="showCandle"
+          (click)="showCandle ? stopShop() : refreshShop()"
+        >
           <i class="fa" [class.fa-power-off]="!showCandle" [class.fa-stop]="showCandle"></i>
-          <span>{{ showCandle ? 'Stop Shop' : 'Enable Shop' }}</span>
+          <span>{{ showCandle ? 'Stop Shop' : 'Update Shop' }}</span>
         </button>
 
         <!-- Quick Stats -->
@@ -72,7 +81,7 @@
         </div>
 
         <!-- Action Buttons -->
-        <div class="sidebar-actions">
+        <div *ngIf="!showcase" class="sidebar-actions">
           <button class="sidebar-action-btn" [class.warning]="playerWarning" (click)="openPlayer()">
             <i class="fa fa-user"></i>
             <span>Player</span>
@@ -90,6 +99,14 @@
             <i class="fa fa-fire"></i>
             <span>New</span>
           </button>
+          <button class="sidebar-action-btn col-span-2" (click)="getLink()">
+            <i class="fa fa-link"></i>
+            <span>Public Link</span>
+          </button>
+
+          <textarea *ngIf="showLink" class="sidebar-action-btn col-span-2" #area (focus)="area.select()" readonly>
+https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
+          >
         </div>
 
         <!-- Clear Confirmation -->
@@ -120,9 +137,11 @@
       <main class="orders-section bg-sky bg-base">
         <div class="orders-grid">
           <!-- Sell Orders Column -->
-          <div class="orders-column sell-column"
+          <div
+            class="orders-column sell-column"
             [class.hidden]="pro && orderFilter.orderType === 'buy'"
-            [class.full-width]="pro && orderFilter.orderType === 'sell'">
+            [class.full-width]="pro && orderFilter.orderType === 'sell'"
+          >
             <h2 class="column-title">
               <i class="fa fa-arrow-up"></i>
               Sell Orders
@@ -132,6 +151,7 @@
             <div class="orders-list scroll" *ngIf="sellOrders?.length > 0">
               <app-order-card
                 *ngFor="let order of sellOrders"
+                [locked]="showcase"
                 [order]="order"
                 [imageSource]="getImageSource(order.name)"
                 [priceLabel]="'ASKING'"
@@ -151,9 +171,11 @@
           </div>
 
           <!-- Buy Orders Column -->
-          <div class="orders-column buy-column"
+          <div
+            class="orders-column buy-column"
             [class.hidden]="pro && orderFilter.orderType === 'sell'"
-            [class.full-width]="pro && orderFilter.orderType === 'buy'">
+            [class.full-width]="pro && orderFilter.orderType === 'buy'"
+          >
             <h2 class="column-title">
               <i class="fa fa-arrow-down"></i>
               Buy Orders
@@ -164,6 +186,7 @@
               <app-order-card
                 *ngFor="let order of buyOrders"
                 [order]="order"
+                [locked]="showcase"
                 [imageSource]="getImageSource(order.name)"
                 [priceLabel]="'PAYING'"
                 (itemClick)="goToItem($event)"

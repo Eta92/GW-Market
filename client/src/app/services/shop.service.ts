@@ -19,6 +19,7 @@ export class ShopService {
   private daybreakOnline = false;
   //private commentsSubscribe
   private activeShopSubject = new CurrentSubject<Shop>();
+  private publicShopSubject = new CurrentSubject<Shop>();
 
   constructor(
     private http: HttpClient,
@@ -43,6 +44,7 @@ export class ShopService {
       const activeShop = {
         ...this.activeShopSubject.value,
         uuid: shop.uuid,
+        publicId: shop.publicId,
         lastRefresh: shop.lastRefresh,
         daybreakOnline: shop.daybreakOnline,
         authCertified: shop.certified?.includes(this.activeShopSubject.value.player),
@@ -78,6 +80,9 @@ export class ShopService {
         };
         this.activeShopSubject.set(shop);
       }
+    });
+    this.socket.on('GetPublicShop', (shop: Shop) => {
+      this.publicShopSubject.set(shop);
     });
   }
 
@@ -168,6 +173,10 @@ export class ShopService {
 
   getActiveShop(): Observable<Shop> {
     return this.activeShopSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getPublicShop(): Observable<Shop> {
+    return this.publicShopSubject.asObservable().pipe(debounceTime(0));
   }
 
   getdaybreakOnline(): boolean {
