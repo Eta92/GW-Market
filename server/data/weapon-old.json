@@ -1,0 +1,4687 @@
+[
+  {
+    "type": "Rare Axes",
+    "description": "Rare axes are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Piercing Axe",
+        "stats": []
+      },
+      {
+        "name": "War Axe",
+        "stats": []
+      },
+      {
+        "name": "Great Axe",
+        "stats": []
+      },
+      {
+        "name": "Balthazar's Axe",
+        "stats": ["Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Battle Axe (cleaver)",
+        "stats": []
+      },
+      {
+        "name": "Battle Axe (hatchet)",
+        "stats": []
+      },
+      {
+        "name": "Battlepick",
+        "stats": []
+      },
+      {
+        "name": "Candy Cane Axe",
+        "stats": ["Slashing Dmg: 10-10"]
+      },
+      {
+        "name": "Chaos Axe",
+        "stats": []
+      },
+      {
+        "name": "Decade Axes Rival Skies",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nHealth +30\nCrafted in tribute to an enduring legend.\nHides off-hand items."
+        ]
+      },
+      {
+        "name": "Double-bladed Axe",
+        "stats": []
+      },
+      {
+        "name": "Dwarven Axe",
+        "stats": []
+      },
+      {
+        "name": "Envoy Axe",
+        "stats": ["Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Fiery Blade Axe",
+        "stats": []
+      },
+      {
+        "name": "Hand Axe (Tyrian)",
+        "stats": []
+      },
+      {
+        "name": "Sephis Axe",
+        "stats": []
+      },
+      {
+        "name": "Serpent Axe",
+        "stats": []
+      },
+      {
+        "name": "Sickle (crescent)",
+        "stats": []
+      },
+      {
+        "name": "Sickle (doubleaxe)",
+        "stats": []
+      },
+      {
+        "name": "Spiked Axe",
+        "stats": []
+      },
+      {
+        "name": "Stygian Reaver",
+        "stats": []
+      },
+      {
+        "name": "Summit Axe",
+        "stats": []
+      },
+      {
+        "name": "Tribal Axe",
+        "stats": []
+      },
+      {
+        "name": "Wintergreen Axe",
+        "stats": ["Slashing Dmg: 10-10\nInscription: None"]
+      },
+      {
+        "name": "Anniversary Axe Engrave",
+        "stats": ["Cold Dmg: 6-28 (Requires 9 Energy Storage)\nInscription: None\nCrafted in tribute to an enduring legend."]
+      },
+      {
+        "name": "Deldrimor Axe",
+        "stats": ["Slashing damage 6-28 (Requires 9 Axe Mastery)\nInscription: None\nOne-handed"]
+      },
+      {
+        "name": "White Reaver",
+        "stats": []
+      },
+      {
+        "name": "Archaic Axe",
+        "stats": []
+      },
+      {
+        "name": "Celestial Axe",
+        "stats": []
+      },
+      {
+        "name": "Cleaver (Canthan)",
+        "stats": []
+      },
+      {
+        "name": "Crude Axe (Canthan)",
+        "stats": []
+      },
+      {
+        "name": "Dragoncrest Axe",
+        "stats": []
+      },
+      {
+        "name": "Gemstone Axe",
+        "stats": []
+      },
+      {
+        "name": "Gothic Axe",
+        "stats": []
+      },
+      {
+        "name": "Gothic Dual Axe",
+        "stats": []
+      },
+      {
+        "name": "Grinning Dragon Axe",
+        "stats": []
+      },
+      {
+        "name": "Halo Axe",
+        "stats": []
+      },
+      {
+        "name": "Hand Axe (Canthan)",
+        "stats": []
+      },
+      {
+        "name": "Jade Axe",
+        "stats": []
+      },
+      {
+        "name": "Kaineng Axe",
+        "stats": []
+      },
+      {
+        "name": "Mammoth Axe",
+        "stats": []
+      },
+      {
+        "name": "Morning Star Axe",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Axe",
+        "stats": []
+      },
+      {
+        "name": "Runic Axe",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Axe",
+        "stats": []
+      },
+      {
+        "name": "Ancient Axe",
+        "stats": []
+      },
+      {
+        "name": "Avian Axe",
+        "stats": []
+      },
+      {
+        "name": "Barbed Axe",
+        "stats": []
+      },
+      {
+        "name": "Cracked Axe",
+        "stats": []
+      },
+      {
+        "name": "Crescent Axe",
+        "stats": []
+      },
+      {
+        "name": "Crude Axe (Elonian)",
+        "stats": []
+      },
+      {
+        "name": "Dual Winged Axe",
+        "stats": []
+      },
+      {
+        "name": "Heket Axe",
+        "stats": []
+      },
+      {
+        "name": "Hooked Axe",
+        "stats": []
+      },
+      {
+        "name": "Icy Blade Axe",
+        "stats": []
+      },
+      {
+        "name": "Serpentine Reaver",
+        "stats": []
+      },
+      {
+        "name": "Shadow Axe",
+        "stats": []
+      },
+      {
+        "name": "Tormented Axe",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Ungula Axe",
+        "stats": []
+      },
+      {
+        "name": "Winged Axe",
+        "stats": []
+      },
+      {
+        "name": "Asuran Axe",
+        "stats": ["Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Charr Axe (Eye of the North)",
+        "stats": []
+      },
+      {
+        "name": "Charrslayer Axe",
+        "stats": ["Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nDmg +20% (vs. Charr)\nInscription: None"]
+      },
+      {
+        "name": "Destroyer Axe",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Eaglecrest Axe",
+        "stats": []
+      },
+      {
+        "name": "Greater Jagged Reaver",
+        "stats": []
+      },
+      {
+        "name": "Greater Summit Axe",
+        "stats": []
+      },
+      {
+        "name": "Jagged Reaver",
+        "stats": []
+      },
+      {
+        "name": "Lesser Jagged Reaver",
+        "stats": []
+      },
+      {
+        "name": "Norn Axe",
+        "stats": ["Slashing Dmg: 6-28 (req. 9 Axe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Pyroclastic Axe",
+        "stats": []
+      },
+      {
+        "name": "Imperial Axe",
+        "stats": [
+          "Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Oppressor's Axe",
+        "stats": ["Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Charr Axe (Bonus Mission Pack)",
+        "stats": ["Slashing Dmg: 6-28 (req. 9 Axe Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Axe",
+        "stats": ["Slashing Dmg: 6-28 (req. 9 Axe Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Tengu Axe",
+        "stats": ["Slashing Dmg: 6-28 (req. 9 Axe Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Axe",
+        "stats": ["Slashing Dmg: 6-28 (Requires 9 Axe Mastery)\nInscription: None\nCustomized"]
+      }
+    ]
+  },
+  {
+    "type": "Rare daggers",
+    "description": "Rare daggers are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Peppermint Daggers",
+        "stats": ["Piercing Dmg: 5-5"]
+      },
+      {
+        "name": "Balthazar's Daggers",
+        "stats": ["Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Decade Daggers High Noon",
+        "stats": [
+          "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nDeals 20% additional damage during Festival events. No effect in PvP.\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Anniversary Daggers Vengeance",
+        "stats": ["Slashing Dmg: 7-17 (Requires 9 Leadership)\nInscription: None\nCrafted in tribute to an enduring legend."]
+      },
+      {
+        "name": "Deldrimor Daggers",
+        "stats": ["Piercing damage 7-17 (Requires 9 Dagger Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Wintergreen Daggers",
+        "stats": ["Piercing Dmg: 5-5\nInscription: None"]
+      },
+      {
+        "name": "Aureate Daggers",
+        "stats": []
+      },
+      {
+        "name": "Celestial Daggers",
+        "stats": []
+      },
+      {
+        "name": "Ceremonial Daggers",
+        "stats": []
+      },
+      {
+        "name": "Chromium Shards",
+        "stats": []
+      },
+      {
+        "name": "Dirks",
+        "stats": []
+      },
+      {
+        "name": "Dragon Fangs",
+        "stats": []
+      },
+      {
+        "name": "Gilded Daggers",
+        "stats": []
+      },
+      {
+        "name": "Golden Talons",
+        "stats": []
+      },
+      {
+        "name": "Jade Daggers",
+        "stats": []
+      },
+      {
+        "name": "Kris Daggers",
+        "stats": []
+      },
+      {
+        "name": "Oni Daggers",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Daggers",
+        "stats": []
+      },
+      {
+        "name": "Sai",
+        "stats": []
+      },
+      {
+        "name": "Starter Daggers",
+        "stats": ["Piercing Dmg: 1-3\nDamage +20% <customized>"]
+      },
+      {
+        "name": "Stilletos",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Daggers",
+        "stats": []
+      },
+      {
+        "name": "Butterfly Knives",
+        "stats": []
+      },
+      {
+        "name": "Dragon Kamas",
+        "stats": []
+      },
+      {
+        "name": "Hooked Daggers",
+        "stats": []
+      },
+      {
+        "name": "Kamas",
+        "stats": []
+      },
+      {
+        "name": "Korambits",
+        "stats": []
+      },
+      {
+        "name": "Kukris",
+        "stats": []
+      },
+      {
+        "name": "Platinum Sickles",
+        "stats": []
+      },
+      {
+        "name": "Salient Daggers",
+        "stats": []
+      },
+      {
+        "name": "Split Chakrams",
+        "stats": []
+      },
+      {
+        "name": "Ancient Daggers",
+        "stats": []
+      },
+      {
+        "name": "Bronze Daggers",
+        "stats": []
+      },
+      {
+        "name": "Jeweled Daggers",
+        "stats": []
+      },
+      {
+        "name": "Ruby Daggers",
+        "stats": []
+      },
+      {
+        "name": "Steel Daggers",
+        "stats": []
+      },
+      {
+        "name": "Elonian Daggers",
+        "stats": []
+      },
+      {
+        "name": "Talon Daggers",
+        "stats": []
+      },
+      {
+        "name": "Tormented Daggers",
+        "stats": [
+          "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Arrowblade Daggers",
+        "stats": []
+      },
+      {
+        "name": "Crude Daggers",
+        "stats": []
+      },
+      {
+        "name": "Demon Fangs",
+        "stats": []
+      },
+      {
+        "name": "Storm Daggers",
+        "stats": []
+      },
+      {
+        "name": "Asuran Daggers",
+        "stats": ["Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Brass Knuckles",
+        "stats": ["Slashing Dmg: 5-5"]
+      },
+      {
+        "name": "Charrslayer Daggers",
+        "stats": ["Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nDmg +20% (vs. Charr)\nInscription: None"]
+      },
+      {
+        "name": "Crescent Blades",
+        "stats": []
+      },
+      {
+        "name": "Destroyer Daggers",
+        "stats": [
+          "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Glacial Blades",
+        "stats": []
+      },
+      {
+        "name": "Norn Daggers",
+        "stats": ["Slashing Dmg: 7-17 (req. 9 Dagger Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Savage Daggers",
+        "stats": []
+      },
+      {
+        "name": "Thunderfist's Brass Knuckles",
+        "stats": ["Slashing damage: 7-17 (Requires 9 Dagger Mastery)"]
+      },
+      {
+        "name": "Oppressor's Daggers",
+        "stats": ["Piercing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Alari's Double Blades",
+        "stats": [
+          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+        ]
+      },
+      {
+        "name": "Imperial Daggers",
+        "stats": [
+          "Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Daggers of Purity",
+        "stats": ["Blunt Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Mursaat Daggers",
+        "stats": ["Piercing Dmg: 7-17 (req. 9 Dagger Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Daggers",
+        "stats": ["Piercing Dmg: 7-17 (req. 9 Dagger Mastery)\nInscription: None\nBoth hands\nCustomized"]
+      },
+      {
+        "name": "Charr Daggers",
+        "stats": ["Slashing Dmg: 7-17 (Requires 9 Dagger Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Tengu Daggers",
+        "stats": ["Slashing Dmg: 7-17 (req. 9 Dagger Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Dragon Fangs (promotional)",
+        "stats": [
+          "Piercing Dmg: 7-17 (Requires 9 Dagger Mastery)\nLengthens Poison duration on foes by 33% (Stacking)\nDamage +15% (while Enchanted)\nDagger Mastery +1 (20% chance while using skills)\nDamage +20% <customized>"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Rare focus items",
+    "description": "Rare focus items are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Storm Ember",
+        "stats": []
+      },
+      {
+        "name": "Fox's Greed",
+        "stats": []
+      },
+      {
+        "name": "Divine Symbol (chalice)",
+        "stats": []
+      },
+      {
+        "name": "Divine Symbol (loop)",
+        "stats": []
+      },
+      {
+        "name": "Healing Ankh",
+        "stats": []
+      },
+      {
+        "name": "Protective Icon",
+        "stats": []
+      },
+      {
+        "name": "Hallowed Idol",
+        "stats": []
+      },
+      {
+        "name": "Diessa Icon",
+        "stats": ["Energy +6 (Requires 5 Smiting Prayers)\nHalves casting time of spells (Chance: 10%)"]
+      },
+      {
+        "name": "Divine Scroll",
+        "stats": []
+      },
+      {
+        "name": "Aureate Lamp",
+        "stats": []
+      },
+      {
+        "name": "Blessed Chalice",
+        "stats": []
+      },
+      {
+        "name": "Holy Vial",
+        "stats": []
+      },
+      {
+        "name": "Grim Cesta (knife)",
+        "stats": [
+          "Energy +6 (Requires 5 Blood Magic)\nHealth -50\nEnergy +3 (while Enchanted)\nEnergy +3 (while Hexed)\nEnergy +5 (while Health is below 40%)"
+        ]
+      },
+      {
+        "name": "Idol (hand)",
+        "stats": []
+      },
+      {
+        "name": "Idol (knife)",
+        "stats": []
+      },
+      {
+        "name": "Accursed Icon (diamond)",
+        "stats": []
+      },
+      {
+        "name": "Accursed Icon (gorgon)",
+        "stats": []
+      },
+      {
+        "name": "Grim Cesta (diamond)",
+        "stats": []
+      },
+      {
+        "name": "Grim Cesta (gorgon)",
+        "stats": []
+      },
+      {
+        "name": "Grim Cesta (claw)",
+        "stats": []
+      },
+      {
+        "name": "Grim Cesta (gauntlet)",
+        "stats": []
+      },
+      {
+        "name": "Bone Idol (hooked)",
+        "stats": []
+      },
+      {
+        "name": "Bone Idol (horned skull)",
+        "stats": []
+      },
+      {
+        "name": "Idol (gorgon)",
+        "stats": []
+      },
+      {
+        "name": "Blood Knife",
+        "stats": []
+      },
+      {
+        "name": "Bleached Skull",
+        "stats": []
+      },
+      {
+        "name": "Spined Focus",
+        "stats": []
+      },
+      {
+        "name": "Skull Brush",
+        "stats": []
+      },
+      {
+        "name": "Bone Charm",
+        "stats": []
+      },
+      {
+        "name": "Inscribed Chakram (metal)",
+        "stats": []
+      },
+      {
+        "name": "Inscribed Chakram (wooden)",
+        "stats": []
+      },
+      {
+        "name": "Jeweled Chakram (metal)",
+        "stats": []
+      },
+      {
+        "name": "Jeweled Chakram (stone)",
+        "stats": []
+      },
+      {
+        "name": "Jeweled Chakram (diamond)",
+        "stats": []
+      },
+      {
+        "name": "Jeweled Chalice",
+        "stats": []
+      },
+      {
+        "name": "Gilded Artifact",
+        "stats": []
+      },
+      {
+        "name": "Inscribed Chakram (diamond)",
+        "stats": []
+      },
+      {
+        "name": "Ominous Eidolon",
+        "stats": []
+      },
+      {
+        "name": "Majestic Focus",
+        "stats": []
+      },
+      {
+        "name": "Wooden Chakram",
+        "stats": []
+      },
+      {
+        "name": "Chimeric Eye",
+        "stats": []
+      },
+      {
+        "name": "Stone Chakram",
+        "stats": []
+      },
+      {
+        "name": "Aureate Chalice",
+        "stats": []
+      },
+      {
+        "name": "Butterfly Mirror",
+        "stats": []
+      },
+      {
+        "name": "Gwen's Flute (unique)",
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Starfish Focus",
+        "stats": []
+      },
+      {
+        "name": "Rose Focus",
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nHalves casting time of spells (Chance: 10%)\nHealth +30"]
+      },
+      {
+        "name": "Storm Artifact",
+        "stats": []
+      },
+      {
+        "name": "Earth Scroll",
+        "stats": []
+      },
+      {
+        "name": "Golden Chalice",
+        "stats": []
+      },
+      {
+        "name": "Flame Artifact (eye)",
+        "stats": []
+      },
+      {
+        "name": "Flame Artifact (flame)",
+        "stats": []
+      },
+      {
+        "name": "Frost Artifact",
+        "stats": []
+      },
+      {
+        "name": "Paper Lantern",
+        "stats": []
+      },
+      {
+        "name": "Air Prism",
+        "stats": []
+      },
+      {
+        "name": "Earth Prism",
+        "stats": []
+      },
+      {
+        "name": "Iridescent Prism",
+        "stats": []
+      },
+      {
+        "name": "Fire Prism",
+        "stats": []
+      },
+      {
+        "name": "Water Prism",
+        "stats": []
+      },
+      {
+        "name": "Channeling Focus",
+        "stats": []
+      },
+      {
+        "name": "Communing Focus",
+        "stats": []
+      },
+      {
+        "name": "Eerie Focus (ornamented)",
+        "stats": []
+      },
+      {
+        "name": "Restoration Focus",
+        "stats": []
+      },
+      {
+        "name": "Writhing Focus",
+        "stats": []
+      },
+      {
+        "name": "Ceremonial Cauldron",
+        "stats": []
+      },
+      {
+        "name": "Eerie Focus (ouroboros)",
+        "stats": []
+      },
+      {
+        "name": "Gingerbread Focus",
+        "stats": ["Energy: +5"]
+      },
+      {
+        "name": "Celestial Compass",
+        "stats": []
+      },
+      {
+        "name": "Flute",
+        "stats": ["Energy +1"]
+      },
+      {
+        "name": "Focus (pre-Searing)",
+        "stats": ["Energy +3"]
+      },
+      {
+        "name": "Deldrimor Focus",
+        "stats": ["Energy +12 (requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Jug",
+        "stats": []
+      },
+      {
+        "name": "Paper Fan",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Focus",
+        "stats": []
+      },
+      {
+        "name": "Straw Effigy",
+        "stats": []
+      },
+      {
+        "name": "Pronged Fan",
+        "stats": []
+      },
+      {
+        "name": "Tormented Focus",
+        "stats": ["Energy: +12 (Requires 9 <linked attribute>)\nHealth: +30\nInscription: None"]
+      },
+      {
+        "name": "Destroyer Focus",
+        "stats": ["Energy +12 (Requires 9 <attribute>)\nHealth +30\nInscription: None"]
+      },
+      {
+        "name": "Asuran Focus",
+        "stats": ["Energy +12 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Focus",
+        "stats": []
+      },
+      {
+        "name": "Norn Focus",
+        "stats": ["Energy: +12 (req. 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Focus of Purity",
+        "stats": ["Energy: +12 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Imperial Focus",
+        "stats": ["Energy +12 (Requires 9 <attribute>)\nHealth +30\nInscription: None"]
+      },
+      {
+        "name": "Oppressor's Focus",
+        "stats": ["Energy: +12 (req. 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charr Focus",
+        "stats": ["Energy +12 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Focus",
+        "stats": ["Energy +12 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Tengu Focus",
+        "stats": ["Energy +12 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Focus",
+        "stats": ["Energy +12 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      }
+    ]
+  },
+  {
+    "type": "Rare Hammers",
+    "description": "Rare hammers are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Ball Hammer",
+        "stats": []
+      },
+      {
+        "name": "Balthazar's Hammer",
+        "stats": ["Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Bear's Sloth",
+        "stats": []
+      },
+      {
+        "name": "Bonecrusher",
+        "stats": []
+      },
+      {
+        "name": "Break Hammer",
+        "stats": []
+      },
+      {
+        "name": "Candy Cane Hammer",
+        "stats": ["Blunt Dmg: 15-15"]
+      },
+      {
+        "name": "Foehammer",
+        "stats": []
+      },
+      {
+        "name": "Ram's Hammer",
+        "stats": []
+      },
+      {
+        "name": "Rhino's Sloth",
+        "stats": []
+      },
+      {
+        "name": "Righteous Maul",
+        "stats": []
+      },
+      {
+        "name": "Runic Hammer",
+        "stats": []
+      },
+      {
+        "name": "Starter Hammer",
+        "stats": ["Blunt Dmg: 3-5"]
+      },
+      {
+        "name": "Twin Hammer",
+        "stats": []
+      },
+      {
+        "name": "War Hammer (ball)",
+        "stats": []
+      },
+      {
+        "name": "War Hammer (dwarven)",
+        "stats": []
+      },
+      {
+        "name": "War Hammer (Krytan)",
+        "stats": []
+      },
+      {
+        "name": "War Hammer (lion)",
+        "stats": []
+      },
+      {
+        "name": "War Hammer (ram)",
+        "stats": []
+      },
+      {
+        "name": "War Hammer (spiked)",
+        "stats": []
+      },
+      {
+        "name": "War Hammer (Trouble in the Woods)",
+        "stats": ["Blunt damage: 8-10\nDamage +10% (while in a Stance)\nHealth +101", "Can be salvaged"]
+      },
+      {
+        "name": "Anniversary Hammer Verdict",
+        "stats": ["Holy Dmg: 19-35 (Requires 9 Divine Favor)\nInscription: None\nCrafted in tribute to an enduring legend."]
+      },
+      {
+        "name": "Ascalon Maul",
+        "stats": ["Blunt Damage: 13-20 (Requires 3 Hammer Mastery)\nHealth +20\nDamage +20% (vs. Charr)"]
+      },
+      {
+        "name": "Deldrimor Maul",
+        "stats": ["Blunt damage 19-35 (Requires 9 Hammer Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Dwarven Hammer",
+        "stats": []
+      },
+      {
+        "name": "Giant Slayers Hammer",
+        "stats": []
+      },
+      {
+        "name": "Magmas Arm",
+        "stats": []
+      },
+      {
+        "name": "Mursaat Hammer",
+        "stats": []
+      },
+      {
+        "name": "Oppressor's Hammer",
+        "stats": ["Blunt Dmg: 19-35 (req. 9 Hammer Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Shining Maul",
+        "stats": []
+      },
+      {
+        "name": "Summit Hammer",
+        "stats": []
+      },
+      {
+        "name": "Swamp Club",
+        "stats": []
+      },
+      {
+        "name": "War Pick",
+        "stats": []
+      },
+      {
+        "name": "Wintergreen Hammer",
+        "stats": ["Blunt Dmg: 15-15\nInscription: None"]
+      },
+      {
+        "name": "Bludgeoner",
+        "stats": []
+      },
+      {
+        "name": "Celestial Hammer",
+        "stats": []
+      },
+      {
+        "name": "Clouded Maul",
+        "stats": []
+      },
+      {
+        "name": "Colossal Pick",
+        "stats": []
+      },
+      {
+        "name": "Crab Claw Maul",
+        "stats": []
+      },
+      {
+        "name": "Gavel of the Nephilim",
+        "stats": []
+      },
+      {
+        "name": "Glowing Runic Maul",
+        "stats": []
+      },
+      {
+        "name": "Golden Maul",
+        "stats": []
+      },
+      {
+        "name": "Jade Hammer",
+        "stats": []
+      },
+      {
+        "name": "Marble Hammer",
+        "stats": []
+      },
+      {
+        "name": "Melon Hammer",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Maul",
+        "stats": []
+      },
+      {
+        "name": "Runic Maul",
+        "stats": []
+      },
+      {
+        "name": "Spiked Club",
+        "stats": []
+      },
+      {
+        "name": "Stone Crusher",
+        "stats": []
+      },
+      {
+        "name": "Supreme Bludgeoner",
+        "stats": []
+      },
+      {
+        "name": "Tetsubo Hammer",
+        "stats": []
+      },
+      {
+        "name": "Wolf Hammer",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Hammer",
+        "stats": []
+      },
+      {
+        "name": "Archaic Hammer",
+        "stats": []
+      },
+      {
+        "name": "Avian Hammer",
+        "stats": []
+      },
+      {
+        "name": "Barrel Hammer",
+        "stats": []
+      },
+      {
+        "name": "Bronze Crusher",
+        "stats": []
+      },
+      {
+        "name": "Copper Crusher",
+        "stats": []
+      },
+      {
+        "name": "Desolation Maul",
+        "stats": []
+      },
+      {
+        "name": "Granite Hammer",
+        "stats": []
+      },
+      {
+        "name": "Hawkeye Hammer",
+        "stats": []
+      },
+      {
+        "name": "Igneous Maul",
+        "stats": []
+      },
+      {
+        "name": "Iron Hammer",
+        "stats": []
+      },
+      {
+        "name": "Ivory Hammer",
+        "stats": []
+      },
+      {
+        "name": "Ruby Maul",
+        "stats": []
+      },
+      {
+        "name": "Stonehead Hammer",
+        "stats": []
+      },
+      {
+        "name": "Tormented Maul",
+        "stats": [
+          "Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Archaic Maul",
+        "stats": []
+      },
+      {
+        "name": "Asuran Maul",
+        "stats": ["Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Maul",
+        "stats": ["Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nDmg +20% (vs. Charr)\nInscription: None"]
+      },
+      {
+        "name": "Club of a Thousand Bears (weapon)",
+        "stats": ["Blunt Dmg: 15-15\nInscription: None"]
+      },
+      {
+        "name": "Destroyer Maul",
+        "stats": [
+          "Blunt Dmg 19-35 (Requires 9 Hammer Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Glyphic Maul",
+        "stats": []
+      },
+      {
+        "name": "Golden Hammer",
+        "stats": []
+      },
+      {
+        "name": "Greater Glyphic Maul",
+        "stats": []
+      },
+      {
+        "name": "Lesser Glyphic Maul",
+        "stats": []
+      },
+      {
+        "name": "Norn Maul",
+        "stats": ["Blunt Dmg: 19-35 (req. 9 Hammer Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Piranha Hammer",
+        "stats": []
+      },
+      {
+        "name": "Wingcrest Maul",
+        "stats": []
+      },
+      {
+        "name": "Imperial Maul",
+        "stats": [
+          "Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Hammer of Purity",
+        "stats": ["Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Charr Maul",
+        "stats": []
+      },
+      {
+        "name": "Mursaat Maul",
+        "stats": ["Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Tengu Maul",
+        "stats": ["Blunt Dmg: 19-35 (Requires 9 Hammer Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Maul",
+        "stats": ["Blunt Dmg: 19-35 (req. 9 Hammer Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Bear's Sloth (promotional)",
+        "stats": [
+          "Blunt damage: 19-35 (Req. 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Rhino's Charge",
+        "stats": [
+          "Blunt damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Rhino's Sloth (promotional)",
+        "stats": [
+          "Blunt damage: 19-35 (req. 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration +10% (Chance: 10%)\nTwo-handed"
+        ]
+      },
+      {
+        "name": "Bonecrusher (promotional)",
+        "stats": ["Blunt damage 19-35 (req. 9 Hammer Mastery)\nDamage +15% (when Health >50%)\nArmor penetration +20% (Chance: 20%)"]
+      },
+      {
+        "name": "War Pick (promotional)",
+        "stats": ["Blunt Damage: 18-33 (Requires 9 Hammer Mastery)\nHealth +20 (Requires 5 Strength)"]
+      }
+    ]
+  },
+  {
+    "type": "Rare Scythes",
+    "description": "Rare scythes are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Balthazar's Scythe",
+        "stats": ["Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Dhuum's Soul Reaper",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Envoy Scythe",
+        "stats": ["Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Peppermint Scythe",
+        "stats": ["Slashing Dmg: 10-10"]
+      },
+      {
+        "name": "Anniversary Scythe Sufferer",
+        "stats": ["Dark Dmg: 9-41 (Requires 9 Soul Reaping)\nInscription: None\nCrafted in tribute to an enduring legend."]
+      },
+      {
+        "name": "Deldrimor Scythe",
+        "stats": ["Slashing damage 9-41 (Requires 9 Scythe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Wintergreen Scythe",
+        "stats": ["Slashing Dmg: 10-10\nInscription: None"]
+      },
+      {
+        "name": "Draconic Scythe",
+        "stats": []
+      },
+      {
+        "name": "Ancient Scythe",
+        "stats": []
+      },
+      {
+        "name": "Banana Scythe",
+        "stats": ["Damage: [sic] 10-10"]
+      },
+      {
+        "name": "Briarwood Scythe",
+        "stats": []
+      },
+      {
+        "name": "Bronze Scythe",
+        "stats": []
+      },
+      {
+        "name": "Crenellated Scythe",
+        "stats": []
+      },
+      {
+        "name": "Duskblade Scythe",
+        "stats": []
+      },
+      {
+        "name": "Elegant Scythe",
+        "stats": []
+      },
+      {
+        "name": "Embossed Scythe",
+        "stats": []
+      },
+      {
+        "name": "Gazing Scythe",
+        "stats": []
+      },
+      {
+        "name": "Grim Scythe",
+        "stats": []
+      },
+      {
+        "name": "Hooked Scythe",
+        "stats": []
+      },
+      {
+        "name": "Nightmare Scythe",
+        "stats": []
+      },
+      {
+        "name": "Ornate Scythe",
+        "stats": []
+      },
+      {
+        "name": "Razorclaw Scythe",
+        "stats": []
+      },
+      {
+        "name": "Shadow Scythe",
+        "stats": []
+      },
+      {
+        "name": "Soulbreaker",
+        "stats": []
+      },
+      {
+        "name": "Starter Scythe",
+        "stats": ["Slashing Dmg: 4-6"]
+      },
+      {
+        "name": "Suntouched Scythe",
+        "stats": []
+      },
+      {
+        "name": "Tormented Scythe",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Asuran Scythe",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nInscription: None",
+          "A size comparison of the Asuran Scythe and the Soulbreaker."
+        ]
+      },
+      {
+        "name": "Bonecage Scythe",
+        "stats": []
+      },
+      {
+        "name": "Charrslayer Scythe",
+        "stats": ["Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nDmg +20% (vs. Charr)\nInscription: None."]
+      },
+      {
+        "name": "Clockwork Scythe",
+        "stats": []
+      },
+      {
+        "name": "Demon Tongue Scythe",
+        "stats": []
+      },
+      {
+        "name": "Destroyer Scythe",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Insectoid Scythe",
+        "stats": []
+      },
+      {
+        "name": "Norn Scythe",
+        "stats": ["Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Raven Scythe",
+        "stats": []
+      },
+      {
+        "name": "Saurian Scythe",
+        "stats": []
+      },
+      {
+        "name": "Steelhead Scythe",
+        "stats": []
+      },
+      {
+        "name": "Tentacle Scythe",
+        "stats": []
+      },
+      {
+        "name": "Imperial Scythe",
+        "stats": [
+          "Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Oppressor's Scythe",
+        "stats": ["Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Scythe of Purity",
+        "stats": ["Slashing Dmg: 9-41 (Requires 9 Scythe Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Soulbreaker (promotional)",
+        "stats": ["Cold Dmg: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
+      },
+      {
+        "name": "Charr Scythe",
+        "stats": ["Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None\nTwo-handed\nCustomized"]
+      },
+      {
+        "name": "Mursaat Scythe",
+        "stats": ["Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None\nTwo-handed\nCustomized"]
+      },
+      {
+        "name": "Tengu Scythe",
+        "stats": ["Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None\nTwo-handed\nCustomized"]
+      },
+      {
+        "name": "Undead Scythe",
+        "stats": ["Slashing Dmg: 9-41 (req. 9 Scythe Mastery)\nInscription: None\nTwo-handed\nCustomized"]
+      }
+    ]
+  },
+  {
+    "type": "Rare Shields",
+    "description": "Rare shields are fixed-stat armor dropped by specific bosses.",
+    "items": [
+      {
+        "name": "Gingerbread Shield",
+        "stats": ["Armor: 8"]
+      },
+      {
+        "name": "Peppermint Shield",
+        "stats": ["Armor: 8"]
+      },
+      {
+        "name": "Wintergreen Shield",
+        "stats": ["Armor: 8\nInscription: None"]
+      },
+      {
+        "name": "Hassin's Shell",
+        "stats": ["Armor: 8\nHealth +20"]
+      },
+      {
+        "name": "Bronze Guardian",
+        "stats": []
+      },
+      {
+        "name": "Defender",
+        "stats": []
+      },
+      {
+        "name": "Draconic Aegis",
+        "stats": []
+      },
+      {
+        "name": "Eternal Shield",
+        "stats": []
+      },
+      {
+        "name": "Gloom Shield",
+        "stats": []
+      },
+      {
+        "name": "Hog's Gluttony",
+        "stats": []
+      },
+      {
+        "name": "Ornate Buckler",
+        "stats": []
+      },
+      {
+        "name": "Shadow Shield",
+        "stats": []
+      },
+      {
+        "name": "Spider's Gluttony",
+        "stats": []
+      },
+      {
+        "name": "Tower Shield",
+        "stats": []
+      },
+      {
+        "name": "Canthan Targe",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Emboldened Carapace Shield",
+        "stats": ["Armor: 16 (Req. 9 Strength)\nHealth +60 (while Hexed)\nReceived physical damage -3 (while Hexed)"]
+      },
+      {
+        "name": "Magmas Shield",
+        "stats": []
+      },
+      {
+        "name": "Oppressor's Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Amber Aegis",
+        "stats": []
+      },
+      {
+        "name": "Bladed Shield",
+        "stats": []
+      },
+      {
+        "name": "Bronze Shield",
+        "stats": []
+      },
+      {
+        "name": "Celestial Shield",
+        "stats": []
+      },
+      {
+        "name": "Diamond Aegis",
+        "stats": []
+      },
+      {
+        "name": "Echovald Shield",
+        "stats": []
+      },
+      {
+        "name": "Emblazoned Defender",
+        "stats": []
+      },
+      {
+        "name": "Embossed Aegis",
+        "stats": []
+      },
+      {
+        "name": "Exalted Aegis",
+        "stats": []
+      },
+      {
+        "name": "Gothic Defender",
+        "stats": []
+      },
+      {
+        "name": "Guardian of the Hunt",
+        "stats": []
+      },
+      {
+        "name": "Iridescent Aegis",
+        "stats": []
+      },
+      {
+        "name": "Kappa Shield",
+        "stats": []
+      },
+      {
+        "name": "Ornate Shield",
+        "stats": []
+      },
+      {
+        "name": "Outcast Shield",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Shield",
+        "stats": []
+      },
+      {
+        "name": "Wooden Buckler",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Shield",
+        "stats": []
+      },
+      {
+        "name": "Forgotten Shield",
+        "stats": [
+          "Armor: 16 (Requires 9 <Strength, Tactics, Command or Motivation>)\nArmor +10 (vs. Earth damage) Strength variant only\nArmor +10 (vs. Cold damage) Tactics variant only\nArmor +10 (vs. Lightning damage) Command variant only\nArmor +10 (vs. Fire damage) Motivation variant only\nHealth +30"
+        ]
+      },
+      {
+        "name": "Istani Shield",
+        "stats": []
+      },
+      {
+        "name": "Kournan Defender",
+        "stats": []
+      },
+      {
+        "name": "Lotus Shield",
+        "stats": []
+      },
+      {
+        "name": "Shield of the Lion",
+        "stats": []
+      },
+      {
+        "name": "Sun and Moon Shield",
+        "stats": []
+      },
+      {
+        "name": "Tormented Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nHealth +30"]
+      },
+      {
+        "name": "Woven Shield",
+        "stats": []
+      },
+      {
+        "name": "Asuran Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nArmor +10 (vs. Charr)"]
+      },
+      {
+        "name": "Darkwing Defender",
+        "stats": []
+      },
+      {
+        "name": "Destroyer Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nHealth: +30\nInscription: None"]
+      },
+      {
+        "name": "Ebonhand Aegis",
+        "stats": []
+      },
+      {
+        "name": "Militia Shield",
+        "stats": []
+      },
+      {
+        "name": "Norn Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Oaken Aegis",
+        "stats": []
+      },
+      {
+        "name": "Plated Shield",
+        "stats": []
+      },
+      {
+        "name": "Reinforced Buckler",
+        "stats": []
+      },
+      {
+        "name": "Shield of the Wing",
+        "stats": []
+      },
+      {
+        "name": "Imperial Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Shield of Purity",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charr Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nCustomized for <character name> (see notes)"]
+      },
+      {
+        "name": "Tengu Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Aegis (shield)",
+        "stats": []
+      },
+      {
+        "name": "Bronze Guardian",
+        "stats": []
+      },
+      {
+        "name": "Draconic Aegis",
+        "stats": []
+      },
+      {
+        "name": "Gloom Shield",
+        "stats": []
+      },
+      {
+        "name": "Hog's Gluttony",
+        "stats": []
+      },
+      {
+        "name": "Ornate Buckler",
+        "stats": []
+      },
+      {
+        "name": "Reinforced Buckler",
+        "stats": []
+      },
+      {
+        "name": "Round Shield",
+        "stats": []
+      },
+      {
+        "name": "Shield of the Wing",
+        "stats": []
+      },
+      {
+        "name": "Spider's Gluttony",
+        "stats": []
+      },
+      {
+        "name": "Skeleton Shield",
+        "stats": []
+      },
+      {
+        "name": "Tall Shield",
+        "stats": []
+      },
+      {
+        "name": "Wooden Buckler",
+        "stats": []
+      },
+      {
+        "name": "Ascalon Aegis",
+        "stats": ["Armor: 6 (Requires 4 Tactics)\nArmor +10 (vs. Elemental damage)\nArmor +10 (vs. Charr)"]
+      },
+      {
+        "name": "Bulwark of Balthazar",
+        "stats": ["Armor: 6 (Requires 4 Tactics)\nArmor +5 (while attacking)\nArmor -5 (while casting)"]
+      },
+      {
+        "name": "Canthan Targe",
+        "stats": []
+      },
+      {
+        "name": "Crimson Carapace Shield",
+        "stats": []
+      },
+      {
+        "name": "Crude Shield",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Oppressor's Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Runic Shield",
+        "stats": ["Armor: 6 (Requires 4 Tactics)\nEnergy +5"]
+      },
+      {
+        "name": "Skull Shield",
+        "stats": []
+      },
+      {
+        "name": "Stalwart Carapace Shield",
+        "stats": ["Armor: 16 (Req. 9 Tactics)\nHealth +45 (while in a Stance)\nReceived physical damage -2 (while in a Stance)"]
+      },
+      {
+        "name": "Stone Summit Shield",
+        "stats": []
+      },
+      {
+        "name": "Summit Warlord Shield",
+        "stats": []
+      },
+      {
+        "name": "Amber Aegis",
+        "stats": []
+      },
+      {
+        "name": "Bladed Shield",
+        "stats": []
+      },
+      {
+        "name": "Bronze Shield",
+        "stats": []
+      },
+      {
+        "name": "Celestial Shield",
+        "stats": []
+      },
+      {
+        "name": "Diamond Aegis",
+        "stats": []
+      },
+      {
+        "name": "Echovald Shield",
+        "stats": []
+      },
+      {
+        "name": "Emblazoned Defender",
+        "stats": []
+      },
+      {
+        "name": "Embossed Aegis",
+        "stats": []
+      },
+      {
+        "name": "Exalted Aegis",
+        "stats": []
+      },
+      {
+        "name": "Gothic Defender",
+        "stats": []
+      },
+      {
+        "name": "Guardian of the Hunt",
+        "stats": []
+      },
+      {
+        "name": "Iridescent Aegis",
+        "stats": []
+      },
+      {
+        "name": "Kappa Shield",
+        "stats": []
+      },
+      {
+        "name": "Ornate Shield",
+        "stats": []
+      },
+      {
+        "name": "Outcast Shield",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Shield",
+        "stats": []
+      },
+      {
+        "name": "Spiked Targe",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Shield",
+        "stats": []
+      },
+      {
+        "name": "Adamantine Shield",
+        "stats": []
+      },
+      {
+        "name": "Ancient Shield",
+        "stats": []
+      },
+      {
+        "name": "Forgotten Shield",
+        "stats": [
+          "Armor: 16 (Requires 9 <Strength, Tactics, Command or Motivation>)\nArmor +10 (vs. Earth damage) Strength variant only\nArmor +10 (vs. Cold damage) Tactics variant only\nArmor +10 (vs. Lightning damage) Command variant only\nArmor +10 (vs. Fire damage) Motivation variant only\nHealth +30"
+        ]
+      },
+      {
+        "name": "Sea Purse Shield",
+        "stats": []
+      },
+      {
+        "name": "Sharktooth Shield",
+        "stats": []
+      },
+      {
+        "name": "Sun and Moon Shield",
+        "stats": []
+      },
+      {
+        "name": "Tormented Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nHealth +30"]
+      },
+      {
+        "name": "Tribal Shield (effigy)",
+        "stats": []
+      },
+      {
+        "name": "Woven Shield",
+        "stats": []
+      },
+      {
+        "name": "Amethyst Aegis",
+        "stats": []
+      },
+      {
+        "name": "Asuran Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nArmor +10 (vs. Charr)"]
+      },
+      {
+        "name": "Darkwing Defender",
+        "stats": []
+      },
+      {
+        "name": "Destroyer Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nHealth: +30\nInscription: None"]
+      },
+      {
+        "name": "Enameled Shield",
+        "stats": []
+      },
+      {
+        "name": "Equine Aegis",
+        "stats": []
+      },
+      {
+        "name": "Great Conch",
+        "stats": []
+      },
+      {
+        "name": "Militia Shield",
+        "stats": []
+      },
+      {
+        "name": "Norn Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Oaken Aegis",
+        "stats": []
+      },
+      {
+        "name": "Imperial Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Shield of Purity",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charr Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nCustomized for <character name> (see notes)"]
+      },
+      {
+        "name": "Tengu Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Eternal Shield",
+        "stats": []
+      },
+      {
+        "name": "Shadow Shield",
+        "stats": []
+      },
+      {
+        "name": "Skull Shield",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Oppressor's Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Exalted Aegis",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Shield",
+        "stats": []
+      },
+      {
+        "name": "Ancient Shield",
+        "stats": []
+      },
+      {
+        "name": "Aureate Aegis",
+        "stats": []
+      },
+      {
+        "name": "Copperleaf Shield",
+        "stats": []
+      },
+      {
+        "name": "Daedal Shield",
+        "stats": []
+      },
+      {
+        "name": "Diamond Aegis",
+        "stats": []
+      },
+      {
+        "name": "Eagle Defender",
+        "stats": []
+      },
+      {
+        "name": "Forgotten Shield",
+        "stats": [
+          "Armor: 16 (Requires 9 <Strength, Tactics, Command or Motivation>)\nArmor +10 (vs. Earth damage) Strength variant only\nArmor +10 (vs. Cold damage) Tactics variant only\nArmor +10 (vs. Lightning damage) Command variant only\nArmor +10 (vs. Fire damage) Motivation variant only\nHealth +30"
+        ]
+      },
+      {
+        "name": "Goldleaf Defender",
+        "stats": []
+      },
+      {
+        "name": "Heraldic Shield",
+        "stats": []
+      },
+      {
+        "name": "Iridescent Aegis",
+        "stats": []
+      },
+      {
+        "name": "Reinforced Defender",
+        "stats": []
+      },
+      {
+        "name": "Scarabshell Aegis",
+        "stats": []
+      },
+      {
+        "name": "Suntouched Shield",
+        "stats": []
+      },
+      {
+        "name": "Tormented Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nHealth +30"]
+      },
+      {
+        "name": "Tribal Shield (crude)",
+        "stats": []
+      },
+      {
+        "name": "Vabbian Bastion",
+        "stats": []
+      },
+      {
+        "name": "Vabbian Defender",
+        "stats": []
+      },
+      {
+        "name": "Vabbian Tower Shield",
+        "stats": []
+      },
+      {
+        "name": "Amethyst Aegis",
+        "stats": []
+      },
+      {
+        "name": "Asuran Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nArmor +10 (vs. Charr)"]
+      },
+      {
+        "name": "Destroyer Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nHealth: +30\nInscription: None"]
+      },
+      {
+        "name": "Draconic Aegis",
+        "stats": []
+      },
+      {
+        "name": "Equine Aegis",
+        "stats": []
+      },
+      {
+        "name": "Norn Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Shield of the Wing",
+        "stats": []
+      },
+      {
+        "name": "Signet Shield",
+        "stats": []
+      },
+      {
+        "name": "Imperial Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Shield of Purity",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charr Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nCustomized for <character name> (see notes)"]
+      },
+      {
+        "name": "Tengu Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Eternal Shield",
+        "stats": []
+      },
+      {
+        "name": "Shadow Shield",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Oppressor's Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Exalted Aegis",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Shield",
+        "stats": []
+      },
+      {
+        "name": "Aureate Aegis",
+        "stats": []
+      },
+      {
+        "name": "Copperleaf Defender",
+        "stats": []
+      },
+      {
+        "name": "Copperleaf Shield",
+        "stats": []
+      },
+      {
+        "name": "Daedal Shield",
+        "stats": []
+      },
+      {
+        "name": "Diamond Aegis",
+        "stats": []
+      },
+      {
+        "name": "Eagle Defender",
+        "stats": []
+      },
+      {
+        "name": "Forgotten Shield",
+        "stats": [
+          "Armor: 16 (Requires 9 <Strength, Tactics, Command or Motivation>)\nArmor +10 (vs. Earth damage) Strength variant only\nArmor +10 (vs. Cold damage) Tactics variant only\nArmor +10 (vs. Lightning damage) Command variant only\nArmor +10 (vs. Fire damage) Motivation variant only\nHealth +30"
+        ]
+      },
+      {
+        "name": "Goldleaf Defender",
+        "stats": []
+      },
+      {
+        "name": "Heraldic Shield",
+        "stats": []
+      },
+      {
+        "name": "Iridescent Aegis",
+        "stats": []
+      },
+      {
+        "name": "Reinforced Defender",
+        "stats": []
+      },
+      {
+        "name": "Scarabshell Aegis",
+        "stats": []
+      },
+      {
+        "name": "Suntouched Shield",
+        "stats": []
+      },
+      {
+        "name": "Tormented Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nHealth +30"]
+      },
+      {
+        "name": "Tribal Shield (crude)",
+        "stats": []
+      },
+      {
+        "name": "Vabbian Bastion",
+        "stats": []
+      },
+      {
+        "name": "Vabbian Defender",
+        "stats": []
+      },
+      {
+        "name": "Vabbian Tower Shield",
+        "stats": []
+      },
+      {
+        "name": "Amethyst Aegis",
+        "stats": []
+      },
+      {
+        "name": "Asuran Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nArmor +10 (vs. Charr)"]
+      },
+      {
+        "name": "Destroyer Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nHealth: +30\nInscription: None"]
+      },
+      {
+        "name": "Draconic Aegis",
+        "stats": []
+      },
+      {
+        "name": "Norn Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Plated Shield",
+        "stats": []
+      },
+      {
+        "name": "Shield of the Wing",
+        "stats": []
+      },
+      {
+        "name": "Signet Shield",
+        "stats": []
+      },
+      {
+        "name": "Imperial Shield",
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Shield of Purity",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charr Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Shield",
+        "stats": ["Armor: 16 (Requires 9 <linked attribute>)\nInscription: None\nCustomized for <character name> (see notes)"]
+      },
+      {
+        "name": "Tengu Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Shield",
+        "stats": ["Armor: 16 (req. 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Bronze Guardian",
+        "stats": []
+      },
+      {
+        "name": "Hog's Gluttony",
+        "stats": []
+      },
+      {
+        "name": "Spider's Gluttony",
+        "stats": []
+      },
+      {
+        "name": "Canthan Targe",
+        "stats": []
+      },
+      {
+        "name": "Anniversary Shield Curtain",
+        "stats": [
+          "Armor: 16 (Requires 9 Fast Casting)\nReduced armor in PvP.\nInscription: None\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Japan 1st Anniversary Shield (promotional)",
+        "stats": ["Armor: 8\nInscription: None\nCustomized for <character name>"]
+      },
+      {
+        "name": "Bronze Guardian (promotional)",
+        "stats": ["Armor +16 (req. 9 Tactics)\nReceived physical damage -2 (while in Stance)\nHealth +30"]
+      },
+      {
+        "name": "Canthan Targe (promotional)",
+        "stats": [
+          "Armor: 14 (Requires 10 Tactics)\nHealth +30 (Requires 8 Strength)\nEnergy +2 (Requires 8 Swordsmanship)\nEnergy +2 (Requires 8 Axe Mastery)"
+        ]
+      },
+      {
+        "name": "Hog's Gluttony (promotional)",
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived physical damage -2 (while in a Stance)\nHealth +30"]
+      },
+      {
+        "name": "Serrated Shield",
+        "stats": ["Armor 16 (Requires 9 Tactics)\nReceived physical damage -2 (while in a Stance)\nHealth +30"]
+      }
+    ]
+  },
+  {
+    "type": "Rare Spears",
+    "description": "Rare spears are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Balthazar's Spear",
+        "stats": ["Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Peppermint Spear",
+        "stats": ["Piercing Dmg: 10-10"]
+      },
+      {
+        "name": "Anniversary Spear Arbalest",
+        "stats": ["Piercing Dmg: 14-27 (Requires 9 Strength)\nInscription: None\nCrafted in tribute to an enduring legend."]
+      },
+      {
+        "name": "Deldrimor Spear",
+        "stats": ["Piercing damage 14-27 (Requires 9 Spear Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Wintergreen Spear",
+        "stats": ["Piercing Dmg: 10-10\nInscription: None"]
+      },
+      {
+        "name": "Ceremonial Spear",
+        "stats": []
+      },
+      {
+        "name": "Banded Spear",
+        "stats": []
+      },
+      {
+        "name": "Brass Spear",
+        "stats": []
+      },
+      {
+        "name": "Broadhead Spear",
+        "stats": []
+      },
+      {
+        "name": "Bronzehead Spear",
+        "stats": []
+      },
+      {
+        "name": "Clouded Spear",
+        "stats": []
+      },
+      {
+        "name": "Crenellated Spear",
+        "stats": []
+      },
+      {
+        "name": "Nightmare Spear",
+        "stats": []
+      },
+      {
+        "name": "Pronged Spear",
+        "stats": []
+      },
+      {
+        "name": "Skull Spear",
+        "stats": []
+      },
+      {
+        "name": "Solemn Spear",
+        "stats": []
+      },
+      {
+        "name": "Spiraling Spear",
+        "stats": []
+      },
+      {
+        "name": "Sunburst Spear",
+        "stats": []
+      },
+      {
+        "name": "Starter Spear",
+        "stats": ["Piercing Dmg: 3-5"]
+      },
+      {
+        "name": "Suntouched Spear",
+        "stats": []
+      },
+      {
+        "name": "Tormented Spear",
+        "stats": [
+          "Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Tribal Spear",
+        "stats": []
+      },
+      {
+        "name": "Windblade Spear",
+        "stats": []
+      },
+      {
+        "name": "Asuran Spear",
+        "stats": ["Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Spear",
+        "stats": ["Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nDmg +20% (vs. Charr)\nInscription: None."]
+      },
+      {
+        "name": "Demoncrest Spear",
+        "stats": []
+      },
+      {
+        "name": "Destroyer Spear",
+        "stats": [
+          "Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nInscription \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Draconic Spear",
+        "stats": []
+      },
+      {
+        "name": "Forked Spear",
+        "stats": []
+      },
+      {
+        "name": "Greater Guardian Spear",
+        "stats": []
+      },
+      {
+        "name": "Guardian Spear",
+        "stats": []
+      },
+      {
+        "name": "Lesser Guardian Spear",
+        "stats": []
+      },
+      {
+        "name": "Norn Spear",
+        "stats": ["Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Ornate Spear",
+        "stats": []
+      },
+      {
+        "name": "Serrated Spear",
+        "stats": []
+      },
+      {
+        "name": "Voltaic Spear",
+        "stats": []
+      },
+      {
+        "name": "Imperial Spear",
+        "stats": [
+          "Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Oppressor's Spear",
+        "stats": ["Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Spear of Purity",
+        "stats": ["Piercing Dmg: 14-27 (Requires 9 Spear Mastery)\nInscription: None"]
+      },
+      {
+        "name": "Charr Spear",
+        "stats": ["Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Spear",
+        "stats": ["Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Tengu Spear",
+        "stats": ["Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Undead Spear",
+        "stats": ["Piercing Dmg: 14-27 (req. 9 Spear Mastery)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Sunspear (weapon)",
+        "stats": []
+      }
+    ]
+  },
+  {
+    "type": "Rare staves",
+    "description": "Rare staves are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Goldhorn Staff",
+        "stats": []
+      },
+      {
+        "name": "Holy Staff",
+        "stats": []
+      },
+      {
+        "name": "Divine Staff",
+        "stats": []
+      },
+      {
+        "name": "Healing Staff",
+        "stats": []
+      },
+      {
+        "name": "Holy Branch",
+        "stats": []
+      },
+      {
+        "name": "Protective Staff",
+        "stats": []
+      },
+      {
+        "name": "Smiting Staff",
+        "stats": []
+      },
+      {
+        "name": "Winged Staff",
+        "stats": []
+      },
+      {
+        "name": "Death's Head",
+        "stats": []
+      },
+      {
+        "name": "Snake's Envy",
+        "stats": []
+      },
+      {
+        "name": "Cruel Staff",
+        "stats": []
+      },
+      {
+        "name": "Dark Tendril Staff",
+        "stats": []
+      },
+      {
+        "name": "Evil Eye Staff",
+        "stats": []
+      },
+      {
+        "name": "Spinal Staff",
+        "stats": []
+      },
+      {
+        "name": "Accursed Staff",
+        "stats": []
+      },
+      {
+        "name": "Wicked Staff",
+        "stats": []
+      },
+      {
+        "name": "Unholy Staff",
+        "stats": []
+      },
+      {
+        "name": "Bone Staff",
+        "stats": []
+      },
+      {
+        "name": "Wailing Staff",
+        "stats": []
+      },
+      {
+        "name": "Crescent Staff",
+        "stats": []
+      },
+      {
+        "name": "Boneclaw Staff",
+        "stats": []
+      },
+      {
+        "name": "Soul Spire",
+        "stats": []
+      },
+      {
+        "name": "Inscribed Staff",
+        "stats": []
+      },
+      {
+        "name": "Clairvoyant Staff",
+        "stats": []
+      },
+      {
+        "name": "Gemstone Staff",
+        "stats": []
+      },
+      {
+        "name": "Ensorcelling Staff",
+        "stats": []
+      },
+      {
+        "name": "Arcane Staff",
+        "stats": []
+      },
+      {
+        "name": "Aureate Staff",
+        "stats": []
+      },
+      {
+        "name": "Jeweled Staff (twin serpent)",
+        "stats": []
+      },
+      {
+        "name": "Jeweled Staff (metal)",
+        "stats": []
+      },
+      {
+        "name": "Hypnotic Staff",
+        "stats": []
+      },
+      {
+        "name": "Illusory Staff",
+        "stats": []
+      },
+      {
+        "name": "Fuchsia Staff",
+        "stats": []
+      },
+      {
+        "name": "Dragon Spire Staff",
+        "stats": []
+      },
+      {
+        "name": "Scrying Glass Staff",
+        "stats": []
+      },
+      {
+        "name": "Air Staff (normal)",
+        "stats": []
+      },
+      {
+        "name": "Air Staff (metal)",
+        "stats": []
+      },
+      {
+        "name": "Air Staff (lightning spire)",
+        "stats": []
+      },
+      {
+        "name": "Tempest Staff",
+        "stats": []
+      },
+      {
+        "name": "Earth Staff (core)",
+        "stats": []
+      },
+      {
+        "name": "Earth Staff (crystallized)",
+        "stats": []
+      },
+      {
+        "name": "Earth Staff (metal)",
+        "stats": []
+      },
+      {
+        "name": "Earth Staff (granite)",
+        "stats": []
+      },
+      {
+        "name": "Earth Staff (obsidian)",
+        "stats": []
+      },
+      {
+        "name": "Ether Staff",
+        "stats": []
+      },
+      {
+        "name": "Goldtouched Staff",
+        "stats": []
+      },
+      {
+        "name": "Portal Staff",
+        "stats": []
+      },
+      {
+        "name": "Dolyak Prod Staff",
+        "stats": []
+      },
+      {
+        "name": "Fire Staff (core)",
+        "stats": []
+      },
+      {
+        "name": "Fire Staff (inscribed)",
+        "stats": []
+      },
+      {
+        "name": "Fire Staff (metal)",
+        "stats": []
+      },
+      {
+        "name": "Pyrewood Staff",
+        "stats": []
+      },
+      {
+        "name": "Water Staff (core)",
+        "stats": []
+      },
+      {
+        "name": "Water Staff (inscribed)",
+        "stats": []
+      },
+      {
+        "name": "Water Staff (metal)",
+        "stats": []
+      },
+      {
+        "name": "Tidal Staff",
+        "stats": []
+      },
+      {
+        "name": "Decade Staff Underworld Pillar",
+        "stats": [
+          "Energy +10\nDark Dmg: 11-22 (Requires 9 Communing)\nDark Dmg: 11-22 (Requires 9 Restoration Magic)\nDark Dmg: 11-22 (Requires 9 Channeling Magic)\nDark Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nEnchantments last 20% longer\nHealth +30\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Channeling Staff",
+        "stats": []
+      },
+      {
+        "name": "Spiritbinder",
+        "stats": []
+      },
+      {
+        "name": "Communing Staff (eerie)",
+        "stats": []
+      },
+      {
+        "name": "Communing Staff (conjuring)",
+        "stats": []
+      },
+      {
+        "name": "Eerie Staff",
+        "stats": []
+      },
+      {
+        "name": "Primitive Staff",
+        "stats": []
+      },
+      {
+        "name": "Restoration Staff (curved)",
+        "stats": []
+      },
+      {
+        "name": "Conjuring Staff",
+        "stats": []
+      },
+      {
+        "name": "Red Asuraline Staff",
+        "stats": [
+          "Energy +10\nLightning Dmg: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Restoration Staff (conjuring)",
+        "stats": []
+      },
+      {
+        "name": "Spawning Staff",
+        "stats": []
+      },
+      {
+        "name": "Anniversary Staff Unveil",
+        "stats": [
+          "Energy +10\nHoly Dmg: 11-22 (Requires 9 Mysticism)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Balthazar's Staff",
+        "stats": [
+          "Energy +10\n<Type> Dmg: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Candy Cane Staff",
+        "stats": ["Cold Dmg: 10-10"]
+      },
+      {
+        "name": "Envoy Staff",
+        "stats": ["Energy +10\n<Type> Dmg: 11-22 (Requires 9 <attribute>)\nHalves casting time of spells (Chance: 10%)\nInscription: None"]
+      },
+      {
+        "name": "Ghostly Staff",
+        "stats": []
+      },
+      {
+        "name": "Shadow Staff",
+        "stats": []
+      },
+      {
+        "name": "Dead Staff",
+        "stats": []
+      },
+      {
+        "name": "Dragon's Envy",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Staff",
+        "stats": [
+          "<Type> damage: 11-22 (Requires 9 <attribute>)\nEnergy +10\nHalves skill recharge of spells (Chance: 20%)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Wintergreen Staff",
+        "stats": ["Cold Dmg: 10-10\nInscription: None"]
+      },
+      {
+        "name": "Raven Staff",
+        "stats": []
+      },
+      {
+        "name": "Amber Staff",
+        "stats": []
+      },
+      {
+        "name": "Bo Staff",
+        "stats": []
+      },
+      {
+        "name": "Celestial Staff",
+        "stats": []
+      },
+      {
+        "name": "Cockatrice Staff",
+        "stats": []
+      },
+      {
+        "name": "Dragon Staff",
+        "stats": []
+      },
+      {
+        "name": "Forbidden Staff",
+        "stats": []
+      },
+      {
+        "name": "Jade Staff",
+        "stats": []
+      },
+      {
+        "name": "Lotus Staff",
+        "stats": []
+      },
+      {
+        "name": "Outcast Staff",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Staff",
+        "stats": []
+      },
+      {
+        "name": "Platinum Staff",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Staff",
+        "stats": []
+      },
+      {
+        "name": "Tormented Staff",
+        "stats": [
+          "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: \"Hale and Hearty\"\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Ancient Moss Staff",
+        "stats": []
+      },
+      {
+        "name": "Astral Staff",
+        "stats": []
+      },
+      {
+        "name": "Bone Dragon Staff",
+        "stats": []
+      },
+      {
+        "name": "Chrysocola Staff",
+        "stats": []
+      },
+      {
+        "name": "Cobalt Staff",
+        "stats": []
+      },
+      {
+        "name": "Crystal Flame Staff",
+        "stats": []
+      },
+      {
+        "name": "Embercrest Staff",
+        "stats": []
+      },
+      {
+        "name": "Hourglass Staff",
+        "stats": []
+      },
+      {
+        "name": "Icicle Staff",
+        "stats": []
+      },
+      {
+        "name": "Insectoid Staff",
+        "stats": []
+      },
+      {
+        "name": "Moldavite Staff",
+        "stats": []
+      },
+      {
+        "name": "Onyx Staff",
+        "stats": []
+      },
+      {
+        "name": "Suntouched Staff",
+        "stats": []
+      },
+      {
+        "name": "Turquoise Staff",
+        "stats": []
+      },
+      {
+        "name": "Asuran Staff",
+        "stats": [
+          "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Charrslayer Staff",
+        "stats": [
+          "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nDmg +20% (vs. Charr)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Destroyer Staff",
+        "stats": [
+          "Energy +10\n<Type> Dmg: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: \"Hale and Hearty\"\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Norn Staff",
+        "stats": [
+          "Energy +10\n<Type> Dmg: 11-22 (req. 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Undead Staff",
+        "stats": [
+          "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCustomized"
+        ]
+      },
+      {
+        "name": "Charr Staff",
+        "stats": [
+          "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCustomized"
+        ]
+      },
+      {
+        "name": "Mursaat Staff",
+        "stats": [
+          "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCustomized"
+        ]
+      },
+      {
+        "name": "Tengu Staff",
+        "stats": [
+          "Energy +10\n<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None\nCustomized"
+        ]
+      },
+      {
+        "name": "Imperial Staff",
+        "stats": [
+          "Energy +10\n<Type> Dmg: 11-22 (Requires 9 <attribute>)\nHalves skill recharges of spells (Chance: 20%)\nInscription: \"Hale and Hearty\"\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Oppressor's Staff",
+        "stats": [
+          "Energy +10\n<Type> damage: 11-22 (Requires 9 <attribute>)\nHalves skill recharges of spells (Chance: 20%)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Staff of Purity",
+        "stats": [
+          "Energy +10\n<Type> Dmg: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of spells (Chance: 20%)\nInscription: None"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Rare Swords",
+    "description": "Rare swords are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Balthazar's Sword",
+        "stats": ["Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription: None"]
+      },
+      {
+        "name": "Brute Sword",
+        "stats": []
+      },
+      {
+        "name": "Butterfly Sword",
+        "stats": []
+      },
+      {
+        "name": "Candy Cane Sword",
+        "stats": ["Slashing Dmg: 10-10"]
+      },
+      {
+        "name": "Canthan Machete",
+        "stats": []
+      },
+      {
+        "name": "Crystalline Sword",
+        "stats": []
+      },
+      {
+        "name": "Envoy Sword",
+        "stats": ["Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription: None"]
+      },
+      {
+        "name": "Eternal Blade",
+        "stats": []
+      },
+      {
+        "name": "Falchion",
+        "stats": []
+      },
+      {
+        "name": "Fanged Sword",
+        "stats": []
+      },
+      {
+        "name": "Fellblade",
+        "stats": []
+      },
+      {
+        "name": "Fiery Dragon Sword",
+        "stats": []
+      },
+      {
+        "name": "Flamberge",
+        "stats": []
+      },
+      {
+        "name": "Forked Sword",
+        "stats": []
+      },
+      {
+        "name": "Gladius (short sword)",
+        "stats": []
+      },
+      {
+        "name": "Kournan Sword",
+        "stats": []
+      },
+      {
+        "name": "Legendary Sword",
+        "stats": []
+      },
+      {
+        "name": "Long Sword",
+        "stats": []
+      },
+      {
+        "name": "Obsidian Edge",
+        "stats": []
+      },
+      {
+        "name": "Runic Blade",
+        "stats": []
+      },
+      {
+        "name": "Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Shadow Blade",
+        "stats": []
+      },
+      {
+        "name": "Short Sword",
+        "stats": []
+      },
+      {
+        "name": "Spatha",
+        "stats": []
+      },
+      {
+        "name": "Starter Sword",
+        "stats": ["Slashing Dmg: 2–3"]
+      },
+      {
+        "name": "Tribal Blade",
+        "stats": []
+      },
+      {
+        "name": "Vampiric Dragon Sword",
+        "stats": [
+          "Vampiric Dragon SwordSlashing Dmg: 15-22 (Requires 9 Swordsmanship)Life Draining: 3Health regeneration -1Inscription: None\"Necromancer Munne sometimes gives these to me in trade.\" -Nicholas",
+          "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nLife Draining: 3\nHealth regeneration - 1\nInscription: None"
+        ]
+      },
+      {
+        "name": "Wingblade Sword",
+        "stats": []
+      },
+      {
+        "name": "Anniversary Sword Prominence",
+        "stats": ["Slashing Dmg: 15-22 (Requires 9 Expertise)\nInscription: None\nCrafted in tribute to an enduring legend."]
+      },
+      {
+        "name": "Ascalon Razor",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Sword",
+        "stats": ["Slashing damage 15-22 (Requires 9 Swordsmanship)\nInscription: None"]
+      },
+      {
+        "name": "Icy Dragon Sword",
+        "stats": [
+          "This item always comes with an inherent Icy Sword Hilt that cannot be salvaged or replaced.",
+          "Icy Dragon SwordCold Dmg: 15-22 (Requires 9 Swordsmanship)Damage +15% (while Health is above 50%)",
+          "When dropped as loot from Ice Imps, it comes with the following weapon stats:\nCold damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%) (inherent; cannot be replaced with an Inscription).",
+          "Icy Dragon SwordCold Dmg: 15-22 (Requires 9 Swordsmanship)Inscription: None\"Yakkington had to win a tug of war battle with an Ice Imp forthis little treasure!\" -Nicholas",
+          "When obtained from a Gift of the Traveler, it has these stats:\nCold damage: 15-22 (Requires 9 Swordsmanship)\nAn empty Inscription slot.\nIt cannot be dyed nor sold.\nIt is appended with a note:",
+          "\"Yakkington had to win a tug of war battle with an Ice Imp for this little treasure!\" -Nicholas"
+        ]
+      },
+      {
+        "name": "Long Sword (crystalline)",
+        "stats": ["Slashing Dmg: 6-9\nArmor +5 (while casting)\nHalves casting time of spells (Chance: 5%)"]
+      },
+      {
+        "name": "Long Sword (Short Sword)",
+        "stats": [
+          "Quest reward\nSlashing Dmg: 6-9\nDamage +15% (while Health is above 50%)\nArmor +5 (vs. physical damage)1",
+          "Can be salvaged"
+        ]
+      },
+      {
+        "name": "Oppressor's Sword",
+        "stats": []
+      },
+      {
+        "name": "Plasma Blade",
+        "stats": ["Slashing Dmgnote: 10-14 (Requires 3 Swordsmanship)\nDamage +10% (while in a Stance)"]
+      },
+      {
+        "name": "Rinblade",
+        "stats": [
+          "Weaponsmith version:",
+          "Slashing Dmg: 10–14 (Requires 3 Swordsmanship)\nArmor +5 (vs. Charr)",
+          "Collector version:",
+          "Slashing Dmg: 10–14 (Requires 3 Swordsmanship)"
+        ]
+      },
+      {
+        "name": "Wintergreen Sword",
+        "stats": ["Slashing Dmg: 10-10\nInscription: None"]
+      },
+      {
+        "name": "Broadsword",
+        "stats": []
+      },
+      {
+        "name": "Celestial Sword",
+        "stats": []
+      },
+      {
+        "name": "Crenellated Sword",
+        "stats": []
+      },
+      {
+        "name": "Dadao Sword",
+        "stats": []
+      },
+      {
+        "name": "Dusk Blade",
+        "stats": []
+      },
+      {
+        "name": "Golden Phoenix Blade",
+        "stats": []
+      },
+      {
+        "name": "Gothic Sword",
+        "stats": []
+      },
+      {
+        "name": "Jade Sword",
+        "stats": []
+      },
+      {
+        "name": "Jitte",
+        "stats": []
+      },
+      {
+        "name": "Katana",
+        "stats": []
+      },
+      {
+        "name": "Oni Blade",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Sword",
+        "stats": []
+      },
+      {
+        "name": "Platinum Blade",
+        "stats": []
+      },
+      {
+        "name": "Shinobi Blade",
+        "stats": []
+      },
+      {
+        "name": "Sunqua Blade",
+        "stats": []
+      },
+      {
+        "name": "Wicked Blade",
+        "stats": []
+      },
+      {
+        "name": "Vertebreaker",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Sword",
+        "stats": []
+      },
+      {
+        "name": "Adamantine Falchion",
+        "stats": []
+      },
+      {
+        "name": "Aerowind Blade",
+        "stats": []
+      },
+      {
+        "name": "Bramble Blade",
+        "stats": []
+      },
+      {
+        "name": "Briar Blade",
+        "stats": []
+      },
+      {
+        "name": "Broadblade Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Colossal Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Crested Machete",
+        "stats": []
+      },
+      {
+        "name": "Crude Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Dead Sword",
+        "stats": []
+      },
+      {
+        "name": "Desolation Sword",
+        "stats": []
+      },
+      {
+        "name": "Elemental Sword",
+        "stats": []
+      },
+      {
+        "name": "Elonian Blade",
+        "stats": []
+      },
+      {
+        "name": "Fiery Gladius",
+        "stats": []
+      },
+      {
+        "name": "Gladius (gladius)",
+        "stats": []
+      },
+      {
+        "name": "Golden Machete",
+        "stats": []
+      },
+      {
+        "name": "Igneous Blade",
+        "stats": []
+      },
+      {
+        "name": "Istani Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Machete",
+        "stats": []
+      },
+      {
+        "name": "Ornate Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Ripper Blade",
+        "stats": []
+      },
+      {
+        "name": "Rusty Machete",
+        "stats": []
+      },
+      {
+        "name": "Salient Sword",
+        "stats": []
+      },
+      {
+        "name": "Steelblade Machete",
+        "stats": []
+      },
+      {
+        "name": "Tattooed Blade",
+        "stats": []
+      },
+      {
+        "name": "Tattooed Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Tormented Sword",
+        "stats": [
+          "Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Vabbian Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Arced Blade",
+        "stats": []
+      },
+      {
+        "name": "Asuran Sword",
+        "stats": ["Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription: None"]
+      },
+      {
+        "name": "Aureate Blade",
+        "stats": []
+      },
+      {
+        "name": "Bronze Edge",
+        "stats": []
+      },
+      {
+        "name": "Charrslayer Sword",
+        "stats": ["Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nDmg +20% (vs. Charr)\nInscription: None"]
+      },
+      {
+        "name": "Cerulean Edge",
+        "stats": []
+      },
+      {
+        "name": "Dark Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Destroyer Sword",
+        "stats": [
+          "Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Emerald Blade",
+        "stats": []
+      },
+      {
+        "name": "Emerald Edge",
+        "stats": []
+      },
+      {
+        "name": "Etched Sword",
+        "stats": []
+      },
+      {
+        "name": "Fiery Embersteel Blade",
+        "stats": []
+      },
+      {
+        "name": "Gilded Edge",
+        "stats": []
+      },
+      {
+        "name": "Glacial Blade",
+        "stats": []
+      },
+      {
+        "name": "Granite Edge",
+        "stats": []
+      },
+      {
+        "name": "Greater Dark Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Greater Etched Sword",
+        "stats": []
+      },
+      {
+        "name": "Greater Granite Edge",
+        "stats": []
+      },
+      {
+        "name": "Greater Highlander Blade",
+        "stats": []
+      },
+      {
+        "name": "Greater Sage Blade",
+        "stats": []
+      },
+      {
+        "name": "Greater Stoneblade",
+        "stats": []
+      },
+      {
+        "name": "Highlander Blade",
+        "stats": []
+      },
+      {
+        "name": "Lesser Dark Scimitar",
+        "stats": []
+      },
+      {
+        "name": "Lesser Etched Sword",
+        "stats": []
+      },
+      {
+        "name": "Lesser Granite Edge",
+        "stats": []
+      },
+      {
+        "name": "Lesser Highlander Blade",
+        "stats": []
+      },
+      {
+        "name": "Lesser Sage Blade",
+        "stats": []
+      },
+      {
+        "name": "Lesser Stoneblade",
+        "stats": []
+      },
+      {
+        "name": "Mammoth Blade",
+        "stats": []
+      },
+      {
+        "name": "Norn Sword",
+        "stats": ["Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None"]
+      },
+      {
+        "name": "Notched Blade",
+        "stats": []
+      },
+      {
+        "name": "Platinum Broadsword",
+        "stats": []
+      },
+      {
+        "name": "Sage Blade",
+        "stats": []
+      },
+      {
+        "name": "Sephis Sword",
+        "stats": []
+      },
+      {
+        "name": "Shining Gladius",
+        "stats": []
+      },
+      {
+        "name": "Singing Blade",
+        "stats": []
+      },
+      {
+        "name": "Steel Broadsword",
+        "stats": []
+      },
+      {
+        "name": "Stoneblade",
+        "stats": []
+      },
+      {
+        "name": "Wyvern Blade",
+        "stats": []
+      },
+      {
+        "name": "Violet Edge",
+        "stats": []
+      },
+      {
+        "name": "Imperial Sword",
+        "stats": [
+          "Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Sword of Purity",
+        "stats": ["Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription: None"]
+      },
+      {
+        "name": "Charr Sword",
+        "stats": ["Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Sword",
+        "stats": ["Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Tengu Sword",
+        "stats": ["Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Turai's Sword",
+        "stats": ["Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nInscription: None\nDamage +20% <customized>"]
+      },
+      {
+        "name": "Undead Sword",
+        "stats": ["Slashing Dmg: 15-22 (req. 9 Swordsmanship)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Glacial Blade (promotional)",
+        "stats": ["Cold damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Enchanted)"]
+      }
+    ]
+  },
+  {
+    "type": "Rare Wands",
+    "description": "Rare wands are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Quicksilver",
+        "stats": []
+      },
+      {
+        "name": "Decade Rod Unicorn's Valor",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Divine Favor)\nChaos Dmg: 11-22 (Requires 9 Healing Prayers)\nChaos Dmg: 11-22 (Requires 9 Smiting Prayers)\nChaos Dmg: 11-22 (Requires 9 Protection Prayers)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nFast Casting: 5 (if your rank is lower. No effect in PvP.)\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Holy Rod",
+        "stats": []
+      },
+      {
+        "name": "Protective Rod",
+        "stats": []
+      },
+      {
+        "name": "Eternal Flame Wand",
+        "stats": []
+      },
+      {
+        "name": "Unicorn's Wrath",
+        "stats": []
+      },
+      {
+        "name": "Healing Rod",
+        "stats": []
+      },
+      {
+        "name": "Protective Wand",
+        "stats": []
+      },
+      {
+        "name": "Smiting Rod",
+        "stats": []
+      },
+      {
+        "name": "Baneful Scepter",
+        "stats": []
+      },
+      {
+        "name": "Decade Rod Undying Service",
+        "stats": [
+          "Dark Dmg: 11-22 (Requires 9 Soul Reaping)\nDark Dmg: 11-22 (Requires 9 Blood Magic)\nDark Dmg: 11-22 (Requires 9 Death Magic)\nDark Dmg: 11-22 (Requires 9 Curses)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Truncheon",
+        "stats": []
+      },
+      {
+        "name": "Deadly Cesta (truncheon)",
+        "stats": []
+      },
+      {
+        "name": "Pronged Rod",
+        "stats": []
+      },
+      {
+        "name": "Blood Spore Scepter",
+        "stats": []
+      },
+      {
+        "name": "Deadly Cesta",
+        "stats": []
+      },
+      {
+        "name": "Spiral Rod",
+        "stats": []
+      },
+      {
+        "name": "Wailing Wand",
+        "stats": []
+      },
+      {
+        "name": "Blighted Rod",
+        "stats": []
+      },
+      {
+        "name": "Bone Spiral Rod",
+        "stats": []
+      },
+      {
+        "name": "Cyclopian Wand",
+        "stats": []
+      },
+      {
+        "name": "Crimson Claw Scepter",
+        "stats": []
+      },
+      {
+        "name": "Dead Scepter",
+        "stats": []
+      },
+      {
+        "name": "Unicorn's Wrath",
+        "stats": []
+      },
+      {
+        "name": "Decade Rod All the World",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Fast Casting)\nChaos Dmg: 11-22 (Requires 9 Illusion Magic)\nChaos Dmg: 11-22 (Requires 9 Domination Magic)\nChaos Dmg: 11-22 (Requires 9 Inspiration Magic)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Cane (Domination)",
+        "stats": []
+      },
+      {
+        "name": "Gazing Scepter",
+        "stats": []
+      },
+      {
+        "name": "Imposing Scepter",
+        "stats": []
+      },
+      {
+        "name": "Peacock's Wrath",
+        "stats": []
+      },
+      {
+        "name": "Luminescent Scepter",
+        "stats": [
+          "Chaos Dmg: 11-22 (req. 9 Domination Magic)\nHalves casting time of Illusion Magic spells (Chance: 20%)\nEnergy +5 (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Unicorn's Wrath",
+        "stats": []
+      },
+      {
+        "name": "Cane (Illusion)",
+        "stats": []
+      },
+      {
+        "name": "Hypnotic Scepter",
+        "stats": []
+      },
+      {
+        "name": "Crystal Wand",
+        "stats": []
+      },
+      {
+        "name": "Arcane Scepter",
+        "stats": []
+      },
+      {
+        "name": "Decade Rod Antipode Alloy",
+        "stats": [
+          "Chaos Dmg: 11-22 (Requires 9 Energy Storage)\nChaos Dmg: 11-22 (Requires 9 Air Magic)\nChaos Dmg: 11-22 (Requires 9 Earth Magic)\nChaos Dmg: 11-22 (Requires 9 Fire Magic)\nChaos Dmg: 11-22 (Requires 9 Water Magic)\nHalves casting time of spells during Festival events. (Chance: 20%) No effect in PvP.\nHalves skill recharge of spells (Chance: 10%)\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Air Wand",
+        "stats": []
+      },
+      {
+        "name": "Voltaic Wand",
+        "stats": []
+      },
+      {
+        "name": "Cloudburst Wand",
+        "stats": []
+      },
+      {
+        "name": "Earth Wand",
+        "stats": []
+      },
+      {
+        "name": "Golden Pillar",
+        "stats": []
+      },
+      {
+        "name": "Guardian Branch",
+        "stats": []
+      },
+      {
+        "name": "Unicorn's Wrath",
+        "stats": []
+      },
+      {
+        "name": "Fire Wand",
+        "stats": []
+      },
+      {
+        "name": "Dragon's Breath Wand",
+        "stats": []
+      },
+      {
+        "name": "Blazing Wing Wand",
+        "stats": []
+      },
+      {
+        "name": "Pyrewood Scepter",
+        "stats": []
+      },
+      {
+        "name": "Water Wand",
+        "stats": []
+      },
+      {
+        "name": "Water Spirit Rod",
+        "stats": []
+      },
+      {
+        "name": "Watercrest Wand",
+        "stats": []
+      },
+      {
+        "name": "Whalekin Wand",
+        "stats": []
+      },
+      {
+        "name": "Channeling Rod (loop)",
+        "stats": []
+      },
+      {
+        "name": "Channeling Rod (forked)",
+        "stats": []
+      },
+      {
+        "name": "Ritualist Cane",
+        "stats": []
+      },
+      {
+        "name": "Eerie Rod",
+        "stats": []
+      },
+      {
+        "name": "Harmonic Rod",
+        "stats": []
+      },
+      {
+        "name": "Ritualist Wand",
+        "stats": []
+      },
+      {
+        "name": "Unicorn's Wrath",
+        "stats": []
+      },
+      {
+        "name": "Restoration Scepter",
+        "stats": []
+      },
+      {
+        "name": "Shamanic Wand",
+        "stats": []
+      },
+      {
+        "name": "Ritualist Scepter",
+        "stats": []
+      },
+      {
+        "name": "Spawning Wand (claw)",
+        "stats": []
+      },
+      {
+        "name": "Spawning Wand (wrapped)",
+        "stats": []
+      },
+      {
+        "name": "Balthazar's Rod",
+        "stats": ["<Type> Dmg: 11-22 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Candy Cane Wand",
+        "stats": ["Cold Dmg: 10-10"]
+      },
+      {
+        "name": "Deldrimor Scepter",
+        "stats": ["<Type> damage: 11-22 (Requires 9 <attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Wintergreen Wand",
+        "stats": ["Cold Dmg: 10-10\nInscription: None"]
+      },
+      {
+        "name": "Amber Wand",
+        "stats": []
+      },
+      {
+        "name": "Celestial Scepter",
+        "stats": []
+      },
+      {
+        "name": "Jade Wand",
+        "stats": []
+      },
+      {
+        "name": "Jellyfish Wand",
+        "stats": []
+      },
+      {
+        "name": "Koi Scepter",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Scepter",
+        "stats": []
+      },
+      {
+        "name": "Platinum Wand",
+        "stats": []
+      },
+      {
+        "name": "Serpentine Scepter",
+        "stats": []
+      },
+      {
+        "name": "Wayward Wand",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Scepter",
+        "stats": []
+      },
+      {
+        "name": "Scepter of the Forgotten",
+        "stats": []
+      },
+      {
+        "name": "Silver Boar Scepter",
+        "stats": []
+      },
+      {
+        "name": "Tormented Scepter",
+        "stats": [
+          "<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nHalves skill recharge of <linked attribute> spells (Chance: 20%)"
+        ]
+      },
+      {
+        "name": "Wooden Boar Scepter",
+        "stats": []
+      },
+      {
+        "name": "Darkhorn Rod",
+        "stats": []
+      },
+      {
+        "name": "Frog Scepter",
+        "stats": []
+      },
+      {
+        "name": "Onyx Scepter",
+        "stats": []
+      },
+      {
+        "name": "Topaz Scepter",
+        "stats": []
+      },
+      {
+        "name": "Asuran Scepter",
+        "stats": ["<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Scepter",
+        "stats": ["<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nDmg +20% (vs. Charr)\nInscription: None"]
+      },
+      {
+        "name": "Norn Scepter",
+        "stats": ["<Type> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Destroyer Scepter",
+        "stats": [
+          "<Type> Dmg: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Undead Scepter",
+        "stats": ["<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Charr Scepter",
+        "stats": ["<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Mursaat Scepter",
+        "stats": ["<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Tengu Scepter",
+        "stats": ["<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None\nCustomized"]
+      },
+      {
+        "name": "Imperial Scepter",
+        "stats": [
+          "<Type> damage: 11-22 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nInscription: None"
+        ]
+      },
+      {
+        "name": "Oppressor's Scepter",
+        "stats": ["<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None"]
+      },
+      {
+        "name": "Fan of Purity",
+        "stats": ["<Varies> Dmg: 11-22 (Requires 9 <linked attribute>)\nInscription: None"]
+      }
+    ]
+  },
+  {
+    "type": "Rare Bows",
+    "description": "Rare bows are random-stat weapon dropped by random mobs or chests.",
+    "items": [
+      {
+        "name": "Black Hawk's Lust",
+        "stats": []
+      },
+      {
+        "name": "Balthazar's Bow",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Flatbow (wooden)",
+        "stats": []
+      },
+      {
+        "name": "Flatbow (feathered)",
+        "stats": []
+      },
+      {
+        "name": "Scorpion Bow",
+        "stats": []
+      },
+      {
+        "name": "Scorpion's Lust",
+        "stats": []
+      },
+      {
+        "name": "Anniversary Flatbow Oracle",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Spawning Power)\nInscription: None\nTwo handed Flatbow\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Balthazar's Bow",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Hornbow (dragon)",
+        "stats": []
+      },
+      {
+        "name": "Hornbow (Mursaat)",
+        "stats": []
+      },
+      {
+        "name": "Hornbow (stoneshard)",
+        "stats": []
+      },
+      {
+        "name": "Ivory Bow",
+        "stats": []
+      },
+      {
+        "name": "Shadow Bow",
+        "stats": []
+      },
+      {
+        "name": "Balthazar's Bow",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Candy Cane Bow",
+        "stats": ["Piercing Dmg: 15-15"]
+      },
+      {
+        "name": "Feathered Longbow",
+        "stats": []
+      },
+      {
+        "name": "Longbow (feathered)",
+        "stats": []
+      },
+      {
+        "name": "Longbow (wooden)",
+        "stats": []
+      },
+      {
+        "name": "Longbow (Across the Wall)",
+        "stats": []
+      },
+      {
+        "name": "Longbow (Blankets for the Settlers)",
+        "stats": []
+      },
+      {
+        "name": "Longbow (The Hunter's Horn)",
+        "stats": []
+      },
+      {
+        "name": "Storm Bow",
+        "stats": []
+      },
+      {
+        "name": "Balthazar's Bow",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Composite Bow",
+        "stats": []
+      },
+      {
+        "name": "Dead Bow",
+        "stats": []
+      },
+      {
+        "name": "Eternal Bow",
+        "stats": []
+      },
+      {
+        "name": "Grinning Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Recurve Bow (weapon)",
+        "stats": []
+      },
+      {
+        "name": "Starter Bow",
+        "stats": ["Piercing Dmg: 3-5"]
+      },
+      {
+        "name": "Balthazar's Bow",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Shortbow (weapon)",
+        "stats": []
+      },
+      {
+        "name": "Half Moon",
+        "stats": []
+      },
+      {
+        "name": "Anniversary Shortbow Whisper",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Critical Strikes)\nInscription: None\nTwo handed Shortbow\nCrafted in tribute to an enduring legend."
+        ]
+      },
+      {
+        "name": "Ascalon Bow",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Flatbow",
+        "stats": ["Piercing damage 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Ithas Bow",
+        "stats": []
+      },
+      {
+        "name": "Longbow (Across the Wall)",
+        "stats": ["Piercing damage: 7-10\nDamage +10% (vs. Hexed foes)\nEnchantments last 5% longer1", "Can be salvaged"]
+      },
+      {
+        "name": "Ascalon Bow",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Hornbow",
+        "stats": ["Piercing damage 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Ascalon Bow",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Longbow",
+        "stats": ["Piercing damage 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Wintergreen Bow",
+        "stats": ["Piercing Dmg: 15-15\nInscription: None"]
+      },
+      {
+        "name": "Ascalon Bow",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Recurve Bow",
+        "stats": ["Piercing damage 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Ascalon Bow",
+        "stats": []
+      },
+      {
+        "name": "Deldrimor Shortbow",
+        "stats": ["Piercing damage 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Longbow (The Hunter's Horn)",
+        "stats": ["Piercing damage: 7-10\nHealth +101\nDamage +15% (while Health is above 50%)", "Can be salvaged"]
+      },
+      {
+        "name": "Amber Longbow",
+        "stats": []
+      },
+      {
+        "name": "Bramble Flatbow",
+        "stats": []
+      },
+      {
+        "name": "Ironwing Flatbow",
+        "stats": []
+      },
+      {
+        "name": "Bramble Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Amber Longbow",
+        "stats": []
+      },
+      {
+        "name": "Bramble Longbow",
+        "stats": []
+      },
+      {
+        "name": "Celestial Longbow",
+        "stats": []
+      },
+      {
+        "name": "Jade Longbow",
+        "stats": []
+      },
+      {
+        "name": "Platinum Longbow",
+        "stats": []
+      },
+      {
+        "name": "Naga Longbow",
+        "stats": []
+      },
+      {
+        "name": "Zodiac Longbow",
+        "stats": []
+      },
+      {
+        "name": "Bramble Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Plagueborn Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Bramble Shortbow",
+        "stats": []
+      },
+      {
+        "name": "Naga Shortbow",
+        "stats": []
+      },
+      {
+        "name": "Ancient Flatbow",
+        "stats": []
+      },
+      {
+        "name": "Feathered Flatbow",
+        "stats": []
+      },
+      {
+        "name": "Skull Flatbow",
+        "stats": []
+      },
+      {
+        "name": "Starter Flatbow",
+        "stats": ["Piercing Dmg: 3–5"]
+      },
+      {
+        "name": "Tormented Flatbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Vabbian Flatbow",
+        "stats": []
+      },
+      {
+        "name": "Ancient Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Dragon Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Skull Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Stoneshard Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Tormented Hornbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Vabbian Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Aureate Longbow",
+        "stats": []
+      },
+      {
+        "name": "Ancient Longbow",
+        "stats": []
+      },
+      {
+        "name": "Skull Longbow",
+        "stats": []
+      },
+      {
+        "name": "Tormented Longbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Vabbian Longbow",
+        "stats": []
+      },
+      {
+        "name": "Wooden Longbow",
+        "stats": []
+      },
+      {
+        "name": "Ancient Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Azure Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Bladed Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Skull Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Spiked Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Sturdy Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Tormented Recurve Bow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Vabbian Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Ancient Shortbow",
+        "stats": []
+      },
+      {
+        "name": "Azure Shortbow",
+        "stats": []
+      },
+      {
+        "name": "Caged Shortbow",
+        "stats": []
+      },
+      {
+        "name": "Composite Shortbow",
+        "stats": []
+      },
+      {
+        "name": "Skull Shortbow",
+        "stats": []
+      },
+      {
+        "name": "Tormented Shortbow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Vabbian Shortbow",
+        "stats": []
+      },
+      {
+        "name": "Zehtuka's Shortbow",
+        "stats": ["Piercing damage: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Asuran Bow",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Charrslayer Bow",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nDmg +20% (vs. Charr)\nInscription: None."]
+      },
+      {
+        "name": "Destroyer Bow",
+        "stats": [
+          "Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Norn Bow",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Forked Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Darksteel Longbow (promotional)",
+        "stats": ["Piercing damage: 15-28 (Requires 9 Marksmanship)\nArmor penetration +20% (Chance: 20%)\nDamage +15%\nEnergy -5"]
+      },
+      {
+        "name": "Maplewood Longbow",
+        "stats": []
+      },
+      {
+        "name": "Turtle Shell Longbow",
+        "stats": []
+      },
+      {
+        "name": "Oaken Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Silverwing Recurve Bow",
+        "stats": []
+      },
+      {
+        "name": "Dryad Bow",
+        "stats": []
+      },
+      {
+        "name": "Imperial Bow",
+        "stats": [
+          "Piercing Dmg: 15-22 (Requires 9 Marksmanship)\nInscription: \"Strength and Honor\"\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Oppressor's Flatbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Bow of Purity",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Oppressor's Hornbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Bow of Purity",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Oppressor's Longbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Bow of Purity",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Oppressor's Recurve Bow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Bow of Purity",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Oppressor's Shortbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Bow of Purity",
+        "stats": ["Piercing Dmg: 15-28 (Requires 9 Marksmanship)\nInscription: None"]
+      },
+      {
+        "name": "Ithas Bow (promotional)",
+        "stats": ["Piercing Dmg: 13-25 (Requires 10 Marksmanship)\nArmor +5 (Requires 10 Marksmanship)"]
+      },
+      {
+        "name": "Nevermore Flatbow",
+        "stats": [
+          "Piercing damage 15-28 (Requires 9 Marksmanship)\nLengthens Poison duration on foes by 33% (Stacking)\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Black Hawk's Lust (promotional)",
+        "stats": [
+          "Piercing damage: 15-28 (req. 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration on foe by 33%"
+        ]
+      },
+      {
+        "name": "Scorpion Bow (promotional)",
+        "stats": [
+          "Piercing damage 15-28 (Requires 9 Marksmanship)\nLengthens poison duration on foes by 33%\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Scorpion's Lust (promotional)",
+        "stats": [
+          "Piercing damage 15-28 (req. 9 Marksmanship)\nLengthens poison duration on foes by 33%\nDamage +15% (while Health is above 50%)"
+        ]
+      },
+      {
+        "name": "Charr Flatbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Flatbow\nCustomized"]
+      },
+      {
+        "name": "Mursaat Flatbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Flatbow\nCustomized"]
+      },
+      {
+        "name": "Tengu Flatbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Flatbow\nCustomized"]
+      },
+      {
+        "name": "Undead Flatbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Flatbow\nCustomized"]
+      },
+      {
+        "name": "Charr Hornbow",
+        "stats": []
+      },
+      {
+        "name": "Mursaat Hornbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Hornbow\nCustomized"]
+      },
+      {
+        "name": "Tengu Hornbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Hornbow\nCustomized"]
+      },
+      {
+        "name": "Undead Hornbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Hornbow\nCustomized"]
+      },
+      {
+        "name": "Charr Longbow",
+        "stats": []
+      },
+      {
+        "name": "Mursaat Longbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Longbow\nCustomized"]
+      },
+      {
+        "name": "Tengu Longbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Longbow\nCustomized"]
+      },
+      {
+        "name": "Undead Longbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Longbow\nCustomized"]
+      },
+      {
+        "name": "Charr Recurve Bow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Recurve Bow\nCustomized"]
+      },
+      {
+        "name": "Mursaat Recurve Bow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Recurve Bow\nCustomized"]
+      },
+      {
+        "name": "Tengu Recurve Bow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Recurve Bow\nCustomized"]
+      },
+      {
+        "name": "Undead Recurve Bow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Recurve Bow\nCustomized"]
+      },
+      {
+        "name": "Charr Shortbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Shortbow\nCustomized"]
+      },
+      {
+        "name": "Mursaat Shortbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Shortbow\nCustomized"]
+      },
+      {
+        "name": "Tengu Shortbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription None\nTwo-handed Shortbow\nCustomized"]
+      },
+      {
+        "name": "Undead Shortbow",
+        "stats": ["Piercing Dmg: 15-28 (req. 9 Marksmanship)\nInscription: None\nTwo-handed Shortbow\nCustomized"]
+      }
+    ]
+  }
+]
