@@ -17,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ShopComponent implements OnInit {
   public pro = false;
+  public showcase = false;
   public shop: Shop;
   public sellOrders: Array<ShopItem> = [];
   public buyOrders: Array<ShopItem> = [];
@@ -44,6 +45,7 @@ export class ShopComponent implements OnInit {
   public playerControl: UntypedFormControl = new UntypedFormControl('');
   public playerEdit = false;
   public clearShop = false;
+  public showLink = false;
 
   public orderWarning = false;
   public playerWarning = false;
@@ -69,24 +71,41 @@ export class ShopComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // split order in the two lists
-    this.shopService.getActiveShop().subscribe((shop: Shop) => {
-      this.shop = shop;
-      this.populateItemDetails();
-      this.updateItemList();
-      this.refreshCandle();
-      this.cdr.detectChanges();
-    });
-    // auto switch to pro mode
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.pro = params['pro'];
-    });
-    // refresh image once the item service is ready
-    this.itemService.getReady().subscribe(ready => {
-      if (ready) {
-        this.populateItemDetails();
-        this.updateItemList();
-        this.cdr.detectChanges();
+    this.activatedRoute.url.subscribe(urlSegments => {
+      this.showcase = urlSegments.some(segment => segment.path.toLowerCase() === 'showcase');
+      if (this.showcase) {
+        // load showcase shop
+        this.activatedRoute.queryParams.subscribe(params => {
+          const publicId = params['public'];
+          this.storeService.requestSocket('getPublicShop', publicId);
+          this.shopService.getPublicShop().subscribe((shop: Shop) => {
+            this.shop = shop;
+            this.populateItemDetails();
+            this.updateItemList();
+            this.cdr.detectChanges();
+          });
+        });
+      } else {
+        // load personal shop
+        this.shopService.getActiveShop().subscribe((shop: Shop) => {
+          this.shop = shop;
+          this.populateItemDetails();
+          this.updateItemList();
+          this.refreshCandle();
+          this.cdr.detectChanges();
+        });
+        // auto switch to pro mode
+        this.activatedRoute.queryParams.subscribe(params => {
+          this.pro = params['pro'];
+        });
+        // refresh image once the item service is ready
+        this.itemService.getReady().subscribe(ready => {
+          if (ready) {
+            this.populateItemDetails();
+            this.updateItemList();
+            this.cdr.detectChanges();
+          }
+        });
       }
     });
   }
@@ -320,6 +339,14 @@ export class ShopComponent implements OnInit {
       })
       .toString();
     this.location.go(url);
+  }
+
+  getLink(): void {
+    if (this.shop?.publicId) {
+      this.showLink = true;
+    } else {
+      this.toastrService.error('Public link is not ready, refresh your shop first.');
+    }
   }
 
   onFilterChange(orderFilter: OrderFilter): void {

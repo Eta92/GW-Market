@@ -24,6 +24,10 @@ const routes: Routes = [
     component: ShopComponent
   },
   {
+    path: 'shop/showcase',
+    component: ShopComponent
+  },
+  {
     path: 'about',
     component: AboutComponent
   },

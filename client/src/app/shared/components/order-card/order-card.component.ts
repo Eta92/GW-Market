@@ -7,6 +7,7 @@ import { OrderType, ShopItem } from '@app/models/shop.model';
   styleUrls: ['./order-card.component.scss']
 })
 export class OrderCardComponent {
+  @Input() locked = false;
   @Input() order: ShopItem;
   @Input() priceLabel: 'ASKING' | 'PAYING' = 'ASKING';
   @Input() imageSource = '';

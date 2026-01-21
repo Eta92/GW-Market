@@ -19,6 +19,7 @@ export class ShopService {
   public static activeItemMap: { [key: string]: Array<ShopItem> } = {};
   public static activeOrderMap: { [key: string]: TimeOrderCounts } = {};
   public static lastItemMap: { [key: string]: Array<ShopItem> } = {};
+  public static publicShopMap: { [key: string]: string } = {};
   public static itemToRefresh: Set<string> = new Set<string>();
   public static shopCertificationPending: { [key: string]: { uuid: string; player: string; socket: any; secret: string } } = {};
   public static certifiedPlayers: { [key: string]: string } = {};
@@ -40,6 +41,7 @@ export class ShopService {
     shops.forEach((shop) => {
       if (shop && shop.uuid) {
         this.allShopMap[shop.uuid] = shop;
+        this.publicShopMap[shop.publicId || ''] = shop.uuid;
         if (Date.now() - shop.lastRefresh < 1000 * 60 * 15) {
           this.activeShopMap[shop.uuid] = shop;
         }
@@ -82,6 +84,11 @@ export class ShopService {
       if (!shop.uuid) {
         shop.uuid = nanoid(10);
       }
+      // (prepare public shop ids)
+      if (!shop.publicId) {
+        shop.publicId = nanoid(10);
+      }
+      this.publicShopMap[shop.publicId] = shop.uuid;
       // update and save data in ram and in database
       shop.lastRefresh = Date.now();
       const shopToSave = this.allShopMap[shop.uuid] ? { ...this.allShopMap[shop.uuid], ...shop } : shop;
@@ -123,6 +130,23 @@ export class ShopService {
       this.refreshItems();
       this.refreshLastItems();
     }
+  }
+
+  public static getPublicShop(publicId: string): Shop | null {
+    const uuid = this.publicShopMap[publicId];
+    const shop = this.allShopMap[uuid] || null;
+    if (shop) {
+      const limitedShop: Shop = {
+        publicId: shop.publicId,
+        player: shop.player,
+        lastRefresh: shop.lastRefresh,
+        daybreakOnline: shop.daybreakOnline,
+        items: shop.items,
+        certified: shop.certified,
+      };
+      return limitedShop;
+    }
+    return null;
   }
 
   private static refreshItems(): void {

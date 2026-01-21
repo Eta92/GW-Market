@@ -1,7 +1,9 @@
-<div class="order-card"
-     [class.hidden-order]="order?.hidden"
-     [class.sell-card]="isSelling"
-     [class.buy-card]="!isSelling">
+<div
+  class="order-card"
+  [class.hidden-order]="order?.hidden"
+  [class.sell-card]="isSelling"
+  [class.buy-card]="!isSelling"
+>
   <!-- Main Row: Item + Qty + Price -->
   <div class="order-main">
     <!-- Item Thumbnail & Qty -->
@@ -30,17 +32,34 @@
     </div>
 
     <!-- Actions -->
-    <div class="order-actions">
+    <div class="order-actions" *ngIf="!locked">
       <button class="action-btn edit" (click)="onEditClick()" title="Edit">
         <i class="fa fa-pen"></i>
       </button>
-      <button class="action-btn visibility" [class.active]="order?.hidden" (click)="onHideClick()" [title]="order?.hidden ? 'Show' : 'Hide'">
+      <button
+        class="action-btn visibility"
+        [class.active]="order?.hidden"
+        (click)="onHideClick()"
+        [title]="order?.hidden ? 'Show' : 'Hide'"
+      >
         <i class="fa" [class.fa-eye]="!order?.hidden" [class.fa-eye-slash]="order?.hidden"></i>
       </button>
-      <button class="action-btn success" [class.confirm]="order?.completed" (click)="onCompleteClick()" (mouseleave)="onCompleteLeave()" [title]="completeTitle">
+      <button
+        class="action-btn success"
+        [class.confirm]="order?.completed"
+        (click)="onCompleteClick()"
+        (mouseleave)="onCompleteLeave()"
+        [title]="completeTitle"
+      >
         <i class="fa fa-check"></i>
       </button>
-      <button class="action-btn danger" [class.confirm]="order?.removed" (click)="onRemoveClick()" (mouseleave)="onCompleteLeave()" title="Remove">
+      <button
+        class="action-btn danger"
+        [class.confirm]="order?.removed"
+        (click)="onRemoveClick()"
+        (mouseleave)="onCompleteLeave()"
+        title="Remove"
+      >
         <i class="fa fa-trash"></i>
       </button>
     </div>

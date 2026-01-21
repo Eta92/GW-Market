@@ -109,7 +109,8 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -120,7 +121,8 @@
 }
 
 @keyframes pulse-live {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 15px rgba($live-color, 0.2);
   }
   50% {
@@ -752,7 +754,8 @@
 // ANIMATIONS
 // ============================================
 @keyframes pulse-warning {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 5px rgba($danger-color, 0.3);
   }
   50% {
@@ -870,6 +873,10 @@
     flex: 0 0 auto;
     border-right: none;
     border-bottom: 1px solid rgba($gold, 0.25);
+  }
+
+  .shop-refresh-btn {
+    margin: -4px;
   }
 
   .sidebar-inner {
@@ -1123,6 +1130,10 @@
     i {
       font-size: 0.85rem;
     }
+  }
+
+  .shop-refresh-text {
+    display: none;
   }
 
   .sidebar-stats {
