@@ -16,6 +16,7 @@ import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
 import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
+import { ToastrService } from 'ngx-toastr';
 
 // Filter types
 export type OrderTypeFilter = 'all' | 'sell' | 'buy';
@@ -59,11 +60,15 @@ export class ItemComponent implements OnInit {
     { value: 'combined', label: 'Combined', icon: 'fa-list' }
   ];
 
+  selectedWhisperOrder: any = null;
+  whisperQuantity: number = 1;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private shopService: ShopService,
     private storeService: StoreService,
+    private toastrService: ToastrService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -431,19 +436,48 @@ export class ItemComponent implements OnInit {
     this.selectedOrder = null;
   }
 
-  whisper(item: ItemOrder): void {
-    if (item.orderType === OrderType.SELL) {
-      this.tradeMessage = `/w ${item.player}, Hi, I would like to buy your ${item.quantity} ${this.item.name} listed for ${item.price.price} ${UtilityHelper.priceToString(item.price.type)}. ${item.quantity > 1 ? 'Are they' : 'Is it'} still available?`;
-    } else {
-      this.tradeMessage = `/w ${item.player}, Hi, I would like to sell you my ${item.quantity} ${this.item.name} for ${item.price.price} ${UtilityHelper.priceToString(item.price.type)}. Are you still interested?`;
-    }
+  whisper(order: ItemOrder): void {
+    this.selectedWhisperOrder = order;
+    this.whisperQuantity = order.quantity;
+    this.updateTradeMessage();
     this.popup = true;
   }
 
   whisperFromDetail(): void {
     if (this.selectedOrder) {
       this.whisper(this.selectedOrder);
-      this.selectedOrder = null;
+    }
+  }
+
+  updateTradeMessage(): void {
+    if (!this.selectedWhisperOrder) return;
+
+    const order = this.selectedWhisperOrder;
+    const quantity = this.whisperQuantity;
+    const totalPrice = this.calculatePartialPrice();
+
+    // Build the trade message with partial quantity
+    if (order.orderType === OrderType.SELL) {
+      this.tradeMessage = `/w ${order.player}, Hi, I would like to buy your ${quantity} ${this.item.name} listed for ${totalPrice} ${UtilityHelper.priceToString(order.price.type)}. ${quantity > 1 ? 'Are they' : 'Is it'} still available?`;
+    } else {
+      this.tradeMessage = `/w ${order.player}, Hi, I would like to sell you my ${quantity} ${this.item.name} for ${totalPrice} ${UtilityHelper.priceToString(order.price.type)}. Are you still interested?`;
+    }
+  }
+
+  calculatePartialPrice(): number {
+    if (!this.selectedWhisperOrder?.price) return 0;
+
+    const unitPrice = this.selectedWhisperOrder.price.price / this.selectedWhisperOrder.quantity;
+    return Math.ceil(unitPrice * this.whisperQuantity);
+  }
+
+  copyMessage(): void {
+    if (this.tradeMessage) {
+      navigator.clipboard.writeText(this.tradeMessage).then(() => {
+        this.toastrService.success('Private trade message copied to clipboard', '', {
+          timeOut: 3000
+        });
+      });
     }
   }
 

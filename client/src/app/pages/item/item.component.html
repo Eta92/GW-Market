@@ -1,4 +1,4 @@
-<div class="item-page font-fritz scroll">
+<div class="item-page scroll font-fritz">
   <!-- HEADER -->
   <app-header
     [showSearch]="true"
@@ -43,7 +43,6 @@
             <span class="stat-value">{{ getTotalBuyOrders() }}</span>
           </div>
         </div>
-
       </div>
     </aside>
 
@@ -82,135 +81,146 @@
 
       <!-- ORDERS SECTION -->
       <main class="orders-section bg-sky bg-base">
-
-    <!-- SPLIT SELL/BUY COLUMNS (Separate view mode) - 2 column layout -->
-    <div class="split-columns-grid" *ngIf="showSplitColumns">
-      <!-- SELL SECTION -->
-      <div class="split-section sell-section">
-        <h2 class="section-title sell-title">
-          <i class="fa fa-arrow-up"></i>
-          Sell Orders
-          <span class="section-count">({{ getTotalSellOrders() }})</span>
-        </h2>
-        <div class="split-orders-list scroll">
-          <ng-container *ngFor="let timeBucket of getAllSellOrdersByTime()">
-            <div class="time-bucket-mini" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2">
-              <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
-              <app-order-row
-                *ngFor="let order of timeBucket.orders"
-                [order]="order"
-                [type]="'sell'"
-                [hasNote]="!!order.description || hasItemDetails(order)"
-                [showWeaponDetails]="hasItemDetails(order)"
-                (rowClick)="openOrderDetail($event)"
-                (whisperClick)="whisper($event)"
-              ></app-order-row>
+        <!-- SPLIT SELL/BUY COLUMNS (Separate view mode) - 2 column layout -->
+        <div class="split-columns-grid" *ngIf="showSplitColumns">
+          <!-- SELL SECTION -->
+          <div class="split-section sell-section">
+            <h2 class="section-title sell-title">
+              <i class="fa fa-arrow-up"></i>
+              Sell Orders
+              <span class="section-count">({{ getTotalSellOrders() }})</span>
+            </h2>
+            <div class="split-orders-list scroll">
+              <ng-container *ngFor="let timeBucket of getAllSellOrdersByTime()">
+                <div
+                  class="time-bucket-mini"
+                  [class.online-bucket]="timeBucket.time === 0"
+                  [class.today-bucket]="timeBucket.time === 1"
+                  [class.week-bucket]="timeBucket.time === 2"
+                >
+                  <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
+                  <app-order-row
+                    *ngFor="let order of timeBucket.orders"
+                    [order]="order"
+                    [type]="'sell'"
+                    [hasNote]="!!order.description || hasItemDetails(order)"
+                    [showWeaponDetails]="hasItemDetails(order)"
+                    (rowClick)="openOrderDetail($event)"
+                    (whisperClick)="whisper($event)"
+                  ></app-order-row>
+                </div>
+              </ng-container>
+              <div class="empty-section" *ngIf="getTotalSellOrders() === 0">
+                <i class="fa fa-inbox"></i>
+                <span>No sell orders</span>
+              </div>
             </div>
-          </ng-container>
-          <div class="empty-section" *ngIf="getTotalSellOrders() === 0">
-            <i class="fa fa-inbox"></i>
-            <span>No sell orders</span>
+          </div>
+
+          <!-- BUY SECTION -->
+          <div class="split-section buy-section">
+            <h2 class="section-title buy-title">
+              <i class="fa fa-arrow-down"></i>
+              Buy Orders
+              <span class="section-count">({{ getTotalBuyOrders() }})</span>
+            </h2>
+            <div class="split-orders-list scroll">
+              <ng-container *ngFor="let timeBucket of getAllBuyOrdersByTime()">
+                <div
+                  class="time-bucket-mini"
+                  [class.online-bucket]="timeBucket.time === 0"
+                  [class.today-bucket]="timeBucket.time === 1"
+                  [class.week-bucket]="timeBucket.time === 2"
+                >
+                  <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
+                  <app-order-row
+                    *ngFor="let order of timeBucket.orders"
+                    [order]="order"
+                    [type]="'buy'"
+                    [hasNote]="!!order.description || hasItemDetails(order)"
+                    [showWeaponDetails]="hasItemDetails(order)"
+                    (rowClick)="openOrderDetail($event)"
+                    (whisperClick)="whisper($event)"
+                  ></app-order-row>
+                </div>
+              </ng-container>
+              <div class="empty-section" *ngIf="getTotalBuyOrders() === 0">
+                <i class="fa fa-inbox"></i>
+                <span>No buy orders</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- BUY SECTION -->
-      <div class="split-section buy-section">
-        <h2 class="section-title buy-title">
-          <i class="fa fa-arrow-down"></i>
-          Buy Orders
-          <span class="section-count">({{ getTotalBuyOrders() }})</span>
-        </h2>
-        <div class="split-orders-list scroll">
-          <ng-container *ngFor="let timeBucket of getAllBuyOrdersByTime()">
-            <div class="time-bucket-mini" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2">
-              <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
-              <app-order-row
-                *ngFor="let order of timeBucket.orders"
-                [order]="order"
-                [type]="'buy'"
-                [hasNote]="!!order.description || hasItemDetails(order)"
-                [showWeaponDetails]="hasItemDetails(order)"
-                (rowClick)="openOrderDetail($event)"
-                (whisperClick)="whisper($event)"
-              ></app-order-row>
+        <!-- CURRENCY-BASED LAYOUT (multiple currencies OR filtered to single order type) -->
+        <div class="currency-grid" [class.single-currency]="filteredCurrencies.length === 1" *ngIf="!showSplitColumns">
+          <!-- CURRENCY COLUMNS -->
+          <div class="currency-column" *ngFor="let currency of filteredCurrencies">
+            <h2 class="column-title currency-title">
+              <img [src]="currency.currency | currencySource" [alt]="currency.currencyName" class="currency-icon" />
+              {{ currency.currencyName }}
+              <span class="order-count" *ngIf="currency.totalOrders">({{ currency.totalOrders }})</span>
+            </h2>
+
+            <div class="currency-orders-list scroll" *ngIf="currency.totalOrders > 0">
+              <ng-container *ngFor="let timeBucket of currency.timeBuckets">
+                <div
+                  class="time-bucket"
+                  [class.online-bucket]="timeBucket.time === 0"
+                  [class.today-bucket]="timeBucket.time === 1"
+                  [class.week-bucket]="timeBucket.time === 2"
+                  *ngIf="hasOrdersInTimeBucket(timeBucket)"
+                >
+                  <div class="time-bucket-header">
+                    <span class="time-bucket-label">{{ timeToString(timeBucket.time) }}</span>
+                    <span class="time-bucket-count">
+                      {{ timeBucket.sellOrders.length + timeBucket.buyOrders.length }} orders
+                    </span>
+                  </div>
+
+                  <!-- SELL ORDERS in this time bucket -->
+                  <div class="order-type-group sell-group" *ngIf="showSellOrders() && timeBucket.sellOrders.length > 0">
+                    <div class="order-type-label sell-label"><i class="fa fa-arrow-up"></i> Selling</div>
+                    <app-order-row
+                      *ngFor="let order of timeBucket.sellOrders"
+                      [order]="order"
+                      [type]="'sell'"
+                      [hasNote]="!!order.description || hasItemDetails(order)"
+                      [showWeaponDetails]="hasItemDetails(order)"
+                      (rowClick)="openOrderDetail($event)"
+                      (whisperClick)="whisper($event)"
+                    ></app-order-row>
+                  </div>
+
+                  <!-- BUY ORDERS in this time bucket -->
+                  <div class="order-type-group buy-group" *ngIf="showBuyOrders() && timeBucket.buyOrders.length > 0">
+                    <div class="order-type-label buy-label"><i class="fa fa-arrow-down"></i> Buying</div>
+                    <app-order-row
+                      *ngFor="let order of timeBucket.buyOrders"
+                      [order]="order"
+                      [type]="'buy'"
+                      [hasNote]="!!order.description || hasItemDetails(order)"
+                      [showWeaponDetails]="hasItemDetails(order)"
+                      (rowClick)="openOrderDetail($event)"
+                      (whisperClick)="whisper($event)"
+                    ></app-order-row>
+                  </div>
+                </div>
+              </ng-container>
             </div>
-          </ng-container>
-          <div class="empty-section" *ngIf="getTotalBuyOrders() === 0">
+
+            <div class="empty-orders" *ngIf="currency.totalOrders === 0">
+              <i class="fa fa-inbox"></i>
+              <p>No orders</p>
+            </div>
+          </div>
+
+          <!-- Empty state when no orders at all -->
+          <div class="empty-orders full-width" *ngIf="filteredCurrencies.length === 0">
             <i class="fa fa-inbox"></i>
-            <span>No buy orders</span>
+            <p>No orders for this item</p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- CURRENCY-BASED LAYOUT (multiple currencies OR filtered to single order type) -->
-    <div class="currency-grid" [class.single-currency]="filteredCurrencies.length === 1" *ngIf="!showSplitColumns">
-      <!-- CURRENCY COLUMNS -->
-      <div class="currency-column" *ngFor="let currency of filteredCurrencies">
-        <h2 class="column-title currency-title">
-          <img [src]="currency.currency | currencySource" [alt]="currency.currencyName" class="currency-icon" />
-          {{ currency.currencyName }}
-          <span class="order-count" *ngIf="currency.totalOrders">({{ currency.totalOrders }})</span>
-        </h2>
-
-        <div class="currency-orders-list scroll" *ngIf="currency.totalOrders > 0">
-          <ng-container *ngFor="let timeBucket of currency.timeBuckets">
-            <div class="time-bucket" [class.online-bucket]="timeBucket.time === 0" [class.today-bucket]="timeBucket.time === 1" [class.week-bucket]="timeBucket.time === 2" *ngIf="hasOrdersInTimeBucket(timeBucket)">
-              <div class="time-bucket-header">
-                <span class="time-bucket-label">{{ timeToString(timeBucket.time) }}</span>
-                <span class="time-bucket-count">
-                  {{ timeBucket.sellOrders.length + timeBucket.buyOrders.length }} orders
-                </span>
-              </div>
-
-              <!-- SELL ORDERS in this time bucket -->
-              <div class="order-type-group sell-group" *ngIf="showSellOrders() && timeBucket.sellOrders.length > 0">
-                <div class="order-type-label sell-label">
-                  <i class="fa fa-arrow-up"></i> Selling
-                </div>
-                <app-order-row
-                  *ngFor="let order of timeBucket.sellOrders"
-                  [order]="order"
-                  [type]="'sell'"
-                  [hasNote]="!!order.description || hasItemDetails(order)"
-                  [showWeaponDetails]="hasItemDetails(order)"
-                  (rowClick)="openOrderDetail($event)"
-                  (whisperClick)="whisper($event)"
-                ></app-order-row>
-              </div>
-
-              <!-- BUY ORDERS in this time bucket -->
-              <div class="order-type-group buy-group" *ngIf="showBuyOrders() && timeBucket.buyOrders.length > 0">
-                <div class="order-type-label buy-label">
-                  <i class="fa fa-arrow-down"></i> Buying
-                </div>
-                <app-order-row
-                  *ngFor="let order of timeBucket.buyOrders"
-                  [order]="order"
-                  [type]="'buy'"
-                  [hasNote]="!!order.description || hasItemDetails(order)"
-                  [showWeaponDetails]="hasItemDetails(order)"
-                  (rowClick)="openOrderDetail($event)"
-                  (whisperClick)="whisper($event)"
-                ></app-order-row>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-
-        <div class="empty-orders" *ngIf="currency.totalOrders === 0">
-          <i class="fa fa-inbox"></i>
-          <p>No orders</p>
-        </div>
-      </div>
-
-      <!-- Empty state when no orders at all -->
-      <div class="empty-orders full-width" *ngIf="filteredCurrencies.length === 0">
-        <i class="fa fa-inbox"></i>
-        <p>No orders for this item</p>
-      </div>
-    </div>
       </main>
     </div>
   </div>
@@ -221,10 +231,22 @@
 
 <!-- Order Detail Modal -->
 <app-modal [isOpen]="!!selectedOrder" (closed)="closeOrderDetail()" contentClass="order-detail-content-wrapper">
-  <div class="order-detail-content" [class.sell-order]="selectedOrder?.orderType === 0" [class.buy-order]="selectedOrder?.orderType === 1">
+  <div
+    class="order-detail-content"
+    [class.sell-order]="selectedOrder?.orderType === 0"
+    [class.buy-order]="selectedOrder?.orderType === 1"
+  >
     <div class="order-detail-header">
-      <div class="order-type-badge" [class.sell]="selectedOrder?.orderType === 0" [class.buy]="selectedOrder?.orderType === 1">
-        <i class="fa" [class.fa-arrow-up]="selectedOrder?.orderType === 0" [class.fa-arrow-down]="selectedOrder?.orderType === 1"></i>
+      <div
+        class="order-type-badge"
+        [class.sell]="selectedOrder?.orderType === 0"
+        [class.buy]="selectedOrder?.orderType === 1"
+      >
+        <i
+          class="fa"
+          [class.fa-arrow-up]="selectedOrder?.orderType === 0"
+          [class.fa-arrow-down]="selectedOrder?.orderType === 1"
+        ></i>
         {{ selectedOrder?.orderType === 0 ? 'Selling' : 'Buying' }}
       </div>
       <button class="modal-close" (click)="closeOrderDetail()">
@@ -238,7 +260,9 @@
         <img class="detail-item-img" [src]="getImageSource(item)" [alt]="item?.name" />
         <div class="detail-item-info">
           <span class="detail-item-name">{{ item?.name }}</span>
-          <span class="detail-item-qty">Quantity: <strong>{{ selectedOrder?.quantity }}</strong></span>
+          <span class="detail-item-qty"
+            >Quantity: <strong>{{ selectedOrder?.quantity }}</strong></span
+          >
         </div>
       </div>
 
@@ -255,7 +279,9 @@
         <div class="detail-price-row unit-price">
           <span class="detail-price-label">Price per Item</span>
           <div class="detail-price-value">
-            <span class="detail-price-decimal">{{ selectedOrder.price.price | decimalUnitPrice:selectedOrder.quantity }}</span>
+            <span class="detail-price-decimal">{{
+              selectedOrder.price.price | decimalUnitPrice: selectedOrder.quantity
+            }}</span>
             <span class="detail-price-fraction">({{ selectedOrder.div_price }}:{{ selectedOrder.div_quantity }})</span>
           </div>
         </div>
@@ -285,10 +311,7 @@
 
       <!-- Item Details (weapon, miniature, pre-searing) -->
       <div class="detail-item-details-section" *ngIf="selectedOrder && hasItemDetails(selectedOrder)">
-        <app-item-details
-          [item]="selectedOrder.item"
-          [details]="selectedOrder.details"
-        ></app-item-details>
+        <app-item-details [item]="selectedOrder.item" [details]="selectedOrder.details"></app-item-details>
       </div>
 
       <!-- Notes Section (description only) -->
@@ -322,12 +345,34 @@
         <i class="fa fa-times"></i>
       </button>
     </div>
-    <textarea
-      class="popup-textarea"
-      #area
-      (focus)="area.select()"
-      readonly
-    >{{ tradeMessage }}</textarea>
+
+    <!-- Quantity Slider Section -->
+    <div class="popup-slider-section" *ngIf="selectedWhisperOrder && selectedWhisperOrder.quantity > 1">
+      <div class="slider-header">
+        <span class="slider-label">Quantity</span>
+        <span class="slider-value">{{ whisperQuantity }} / {{ selectedWhisperOrder.quantity }}</span>
+      </div>
+      <input
+        type="range"
+        class="quantity-slider"
+        [min]="1"
+        [max]="selectedWhisperOrder.quantity"
+        [step]="1"
+        [(ngModel)]="whisperQuantity"
+        (input)="updateTradeMessage()"
+      />
+      <div class="slider-price-info" *ngIf="selectedWhisperOrder.price">
+        <span>Total: </span>
+        <img [src]="selectedWhisperOrder.price.type | currencySource" class="slider-currency-icon" />
+        <span class="slider-price">{{ calculatePartialPrice() }}</span>
+      </div>
+    </div>
+
+    <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ tradeMessage }}</textarea>
+    <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
+      <i class="fa fa-copy"></i>
+      Copy Trade Message
+    </button>
   </div>
 </app-modal>
 
