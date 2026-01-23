@@ -61,6 +61,10 @@ export class SocketService {
         socket.emit('GetItemsDetails', itemsDetails);
       });
 
+      socket.on('checkShopUpToDate', (uuid: string, lastRefresh: number) => {
+        ShopService.isShopUpToDate(uuid, lastRefresh, socket);
+      });
+
       socket.on('refreshShop', (shop: Shop) => {
         ShopService.refreshShop(shop, socket);
       });

@@ -171,6 +171,11 @@ export class ShopService {
     this.socket.emit('closeShop', activeShop.uuid);
   }
 
+  checkUpToDate(): void {
+    const activeShop = this.activeShopSubject.value;
+    this.socket.emit('checkShopUpToDate', activeShop.uuid, activeShop.lastRefresh);
+  }
+
   getActiveShop(): Observable<Shop> {
     return this.activeShopSubject.asObservable().pipe(debounceTime(0));
   }

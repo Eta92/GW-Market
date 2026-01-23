@@ -54,6 +54,13 @@ export class ShopService {
     this.refreshShops(true);
   }
 
+  public static isShopUpToDate(uuid: string, lastRefresh: number, socket: any): void {
+    const shop = this.allShopMap[uuid];
+    if (shop && shop.lastRefresh > lastRefresh) {
+      socket.emit('RefreshShop', { ...shop, _id: undefined, lastIP: undefined });
+    }
+  }
+
   public static refreshShop(rawShop: Shop, socket: any): void {
     const ip = socket.data.ip;
     if (rawShop) {

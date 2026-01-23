@@ -126,6 +126,8 @@ export class ShopComponent implements OnInit {
         }
       }
     });
+    // check if the shop is sync with other devices
+    this.shopService.checkUpToDate();
   }
 
   getImageSource(itemName: string): string {
