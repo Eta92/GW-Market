@@ -1172,5 +1172,40 @@
         "region": "The Battle Isles"
       }
     ]
+  },
+  {
+    "type": "Tool Kits",
+    "description": "Tool items to help you to identify and recycle your items.",
+    "items": [
+      {
+        "name": "Salvage Kit",
+        "cost": 100,
+        "description": "A Salvage Kit contains the tools needed to salvage common crafting materials from items that can be salvaged."
+      },
+      {
+        "name": "Expert Salvage Kit",
+        "cost": 400,
+        "description": "n item used to salvage other items for both common and rare crafting materials. It is similar to a Salvage Kit, but with the potential to take more valuable parts of the salvage item. On top of the chance to receive rare materials, Expert Salvage Kits also have at least one guaranteed chance to salvage the upgrade component of your choice from an item with salvageable modifiers, such as inscriptions. Items have a chance of being destroyed when salvaged for upgrades."
+      },
+      {
+        "name": "Superior Salvage Kit",
+        "cost": 2000,
+        "description": "A kit used to salvage items for both common and rare crafting materials. The Superior Salvage Kit is the more expensive and longer-lasting cousin of the Expert Salvage Kit, having a default of 100 uses. The Superior Kit does not have any added effect in comparison to an Expert Salvage Kit other than its additional uses. A Superior Salvage Kit is slightly less value for money than an Expert Salvage Kit, yet many players prefer to carry one because it requires fewer trips to the merchant. Four Expert Salvage Kits would also take up more inventory slots."
+      },
+      {
+        "name": "Perfect Salvage Kit",
+        "description": "Perfect Salvage Kits allows one to salvage upgrade components from all kinds of equipment without the risk of breaking the salvaged item; they cannot be used on unidentified items or to salvage crafting materials."
+      },
+      {
+        "name": "Identification Kit",
+        "cost": 100,
+        "description": "An Identification Kit is a kit used to identify items."
+      },
+      {
+        "name": "Superior Identification Kit",
+        "cost": 500,
+        "description": "Used to identify items, Superior Identification Kits are Identification Kits with 100 uses by default. A Superior Identification Kit is slightly less cost-effective than an Identification Kit; however, it requires fewer trips to the merchant and saves inventory slots."
+      }
+    ]
   }
 ]

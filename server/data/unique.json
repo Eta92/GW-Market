@@ -184,7 +184,7 @@
     ]
   },
   {
-    "type": "Unique daggers",
+    "type": "Unique Daggers",
     "description": "Unique daggers are fixed-stat weapon dropped by specific bosses.",
     "items": [
       {
@@ -506,7 +506,7 @@
     ]
   },
   {
-    "type": "Unique focus items",
+    "type": "Unique Focus Items",
     "description": "Unique focus items are fixed-stat weapon dropped by specific bosses.",
     "items": [
       {
@@ -2113,7 +2113,7 @@
     ]
   },
   {
-    "type": "Unique staves",
+    "type": "Unique Staves",
     "description": "Unique staves are fixed-stat weapon dropped by specific bosses.",
     "items": [
       {

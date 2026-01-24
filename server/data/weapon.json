@@ -95,7 +95,7 @@
     ]
   },
   {
-    "type": "Rare daggers",
+    "type": "Rare Daggers",
     "description": "Rare daggers are random-stat weapon dropped by random mobs or chests.",
     "items": [
       { "name": "Peppermint Daggers", "stats": ["Piercing Dmg: 5-5"] },
@@ -184,7 +184,7 @@
     ]
   },
   {
-    "type": "Rare focus items",
+    "type": "Rare Focus Items",
     "description": "Rare focus items are random-stat weapon dropped by random mobs or chests.",
     "items": [
       { "name": "Storm Ember", "stats": [] },
@@ -819,7 +819,7 @@
     ]
   },
   {
-    "type": "Rare staves",
+    "type": "Rare Staves",
     "description": "Rare staves are random-stat weapon dropped by random mobs or chests.",
     "items": [
       { "name": "Goldhorn Staff", "stats": [] },
