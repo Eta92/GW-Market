@@ -128,6 +128,24 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
       <!-- FILTER BAR -->
       <section class="filter-bar">
         <app-filter-order (updateFilter)="onFilterChange($event)"></app-filter-order>
+        <div class="view-options" *ngIf="!showcase">
+          <button
+            class="view-option-btn"
+            [class.active]="compactView"
+            (click)="compactView = !compactView"
+            title="Compact view with multiple columns"
+          >
+            <i class="fa fa-th"></i>
+          </button>
+          <button
+            class="view-option-btn"
+            [class.active]="showDetails"
+            (click)="showDetails = !showDetails"
+            title="Show/hide item details"
+          >
+            <i class="fa fa-tags"></i>
+          </button>
+        </div>
         <div class="filter-summary">
           <span class="order-total">{{ (sellOrders?.length || 0) + (buyOrders?.length || 0) }} orders</span>
         </div>
@@ -140,7 +158,8 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <div
             class="orders-column sell-column"
             [class.hidden]="orderFilter.orderType === 'buy'"
-            [class.full-width]="orderFilter.orderType === 'sell'"
+            [class.full-width]="orderFilter.orderType === 'sell' || compactView"
+            [class.compact-column]="compactView"
           >
             <h2 class="column-title">
               <i class="fa fa-arrow-up"></i>
@@ -152,6 +171,8 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
               <app-order-card
                 *ngFor="let order of sellOrders"
                 [locked]="showcase"
+                [compact]="compactView || orderFilter.orderType === 'sell'"
+                [showDetails]="showDetails"
                 [order]="order"
                 [imageSource]="getImageSource(order.name)"
                 [priceLabel]="'ASKING'"
@@ -175,7 +196,8 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <div
             class="orders-column buy-column"
             [class.hidden]="orderFilter.orderType === 'sell'"
-            [class.full-width]="orderFilter.orderType === 'buy'"
+            [class.full-width]="orderFilter.orderType === 'buy' || compactView"
+            [class.compact-column]="compactView"
           >
             <h2 class="column-title">
               <i class="fa fa-arrow-down"></i>
@@ -188,6 +210,8 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
                 *ngFor="let order of buyOrders"
                 [order]="order"
                 [locked]="showcase"
+                [compact]="compactView || orderFilter.orderType === 'buy'"
+                [showDetails]="showDetails"
                 [imageSource]="getImageSource(order.name)"
                 [priceLabel]="'PAYING'"
                 (itemClick)="goToItem($event)"
@@ -239,4 +263,46 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     (closeEdit)="playerOpen = false"
     (confirmPlayer)="onConfirmPlayer($event)"
   ></app-active-player>
+</app-modal>
+
+<!-- View Options Help Modal -->
+<app-modal [isOpen]="showViewOptionsHelp && !showcase" (closed)="dismissViewOptionsHelp(false)">
+  <div class="view-options-help">
+    <h2 class="help-title">
+      <i class="fa fa-lightbulb"></i>
+      New View Options
+    </h2>
+
+    <div class="help-content">
+      <div class="help-item">
+        <div class="help-icon">
+          <i class="fa fa-th"></i>
+        </div>
+        <div class="help-text">
+          <h3>Compact Mode</h3>
+          <p>Display your orders in a multi-column grid layout. Cards are smaller with a 3-dot menu for actions. Great for managing large inventories.</p>
+        </div>
+      </div>
+
+      <div class="help-item">
+        <div class="help-icon">
+          <i class="fa fa-tags"></i>
+        </div>
+        <div class="help-text">
+          <h3>Show/Hide Details</h3>
+          <p>Toggle item details like weapon requirements, inscriptions, and miniature status. Hide them for a cleaner, uniform look.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="help-actions">
+      <label class="dont-show-checkbox">
+        <input type="checkbox" #dontShow />
+        Don't show this again
+      </label>
+      <button class="help-btn" (click)="dismissViewOptionsHelp(dontShow.checked)">
+        Got it!
+      </button>
+    </div>
+  </div>
 </app-modal>
