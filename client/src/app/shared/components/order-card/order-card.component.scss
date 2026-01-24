@@ -211,6 +211,7 @@
       background: rgba($sell-color, 0.25);
       color: $sell-color;
       border-color: rgba($sell-color, 0.6);
+      animation: confirm-blink-success 0.4s ease-in-out infinite;
     }
   }
 
@@ -225,7 +226,35 @@
       background: rgba($danger-color, 0.25);
       color: $danger-color;
       border-color: rgba($danger-color, 0.6);
+      animation: confirm-blink-danger 0.4s ease-in-out infinite;
     }
+  }
+}
+
+// Blinking animations for confirm state
+@keyframes confirm-blink-success {
+  0%, 100% {
+    background: rgba($sell-color, 0.15);
+    border-color: rgba($sell-color, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    background: rgba($sell-color, 0.4);
+    border-color: $sell-color;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes confirm-blink-danger {
+  0%, 100% {
+    background: rgba($danger-color, 0.15);
+    border-color: rgba($danger-color, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    background: rgba($danger-color, 0.5);
+    border-color: $danger-color;
+    transform: scale(1.08);
   }
 }
 

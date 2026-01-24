@@ -139,8 +139,8 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <!-- Sell Orders Column -->
           <div
             class="orders-column sell-column"
-            [class.hidden]="pro && orderFilter.orderType === 'buy'"
-            [class.full-width]="pro && orderFilter.orderType === 'sell'"
+            [class.hidden]="orderFilter.orderType === 'buy'"
+            [class.full-width]="orderFilter.orderType === 'sell'"
           >
             <h2 class="column-title">
               <i class="fa fa-arrow-up"></i>
@@ -161,6 +161,7 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
                 (completeClick)="onCompleteOrder($event)"
                 (completeLeave)="onCompleteLeave($event)"
                 (removeClick)="onRemoveOrder($event)"
+                (removeLeave)="onRemoveLeave($event)"
               ></app-order-card>
             </div>
 
@@ -173,8 +174,8 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <!-- Buy Orders Column -->
           <div
             class="orders-column buy-column"
-            [class.hidden]="pro && orderFilter.orderType === 'sell'"
-            [class.full-width]="pro && orderFilter.orderType === 'buy'"
+            [class.hidden]="orderFilter.orderType === 'sell'"
+            [class.full-width]="orderFilter.orderType === 'buy'"
           >
             <h2 class="column-title">
               <i class="fa fa-arrow-down"></i>
@@ -195,6 +196,7 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
                 (completeClick)="onCompleteOrder($event)"
                 (completeLeave)="onCompleteLeave($event)"
                 (removeClick)="onRemoveOrder($event)"
+                (removeLeave)="onRemoveLeave($event)"
               ></app-order-card>
             </div>
 

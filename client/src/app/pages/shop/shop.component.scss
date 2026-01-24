@@ -661,6 +661,14 @@
 
   &.full-width {
     grid-column: 1 / -1;
+
+    // Multi-column layout for orders-list when full-width
+    .orders-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      align-content: start;
+    }
   }
 }
 
@@ -1030,6 +1038,15 @@
   .orders-column {
     max-height: 50vh;
     min-height: 200px;
+
+    // When full-width (filtered to single type), allow more height
+    &.full-width {
+      max-height: none;
+
+      .orders-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   }
 
   .filter-bar {
@@ -1336,5 +1353,26 @@
     i {
       font-size: 0.7rem;
     }
+  }
+}
+
+// ============================================
+// RESPONSIVE - Large screens (multi-column expansion)
+// ============================================
+@media (min-width: 1400px) {
+  .orders-column.full-width .orders-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1800px) {
+  .orders-column.full-width .orders-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 2200px) {
+  .orders-column.full-width .orders-list {
+    grid-template-columns: repeat(5, 1fr);
   }
 }

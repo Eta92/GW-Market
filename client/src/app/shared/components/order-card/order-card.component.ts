@@ -22,6 +22,7 @@ export class OrderCardComponent {
   @Output() completeClick = new EventEmitter<ShopItem>();
   @Output() completeLeave = new EventEmitter<ShopItem>();
   @Output() removeClick = new EventEmitter<ShopItem>();
+  @Output() removeLeave = new EventEmitter<ShopItem>();
 
   get completeTitle(): string {
     return this.priceLabel === 'ASKING' ? 'Mark as Sold' : 'Mark as Bought';
@@ -49,5 +50,9 @@ export class OrderCardComponent {
 
   onRemoveClick(): void {
     this.removeClick.emit(this.order);
+  }
+
+  onRemoveLeave(): void {
+    this.removeLeave.emit(this.order);
   }
 }
