@@ -3,6 +3,8 @@
   [class.hidden-order]="order?.hidden"
   [class.sell-card]="isSelling"
   [class.buy-card]="!isSelling"
+  [class.compact-card]="compact"
+  [class.menu-open]="menuOpen"
 >
   <!-- Main Row: Item + Qty + Price -->
   <div class="order-main">
@@ -19,8 +21,8 @@
     <!-- Item Info -->
     <div class="order-info">
       <span class="order-name" [title]="order?.name" (click)="onItemClick()">{{ order?.name }}</span>
-      <app-item-details [item]="order" [details]="order?.item"></app-item-details>
-      <span class="desc-preview" *ngIf="order?.description">{{ order.description }}</span>
+      <app-item-details *ngIf="showDetails" [item]="order" [details]="order?.item"></app-item-details>
+      <span class="desc-preview" *ngIf="order?.description && showDetails">{{ order.description }}</span>
     </div>
 
     <!-- Price -->
@@ -31,8 +33,8 @@
       </div>
     </div>
 
-    <!-- Actions -->
-    <div class="order-actions" *ngIf="!locked">
+    <!-- Actions (full) -->
+    <div class="order-actions" *ngIf="!locked && !compact">
       <button class="action-btn edit" (click)="onEditClick()" title="Edit">
         <i class="fa fa-pen"></i>
       </button>
@@ -57,11 +59,45 @@
         class="action-btn danger"
         [class.confirm]="order?.removed"
         (click)="onRemoveClick()"
-        (mouseleave)="onCompleteLeave()"
+        (mouseleave)="onRemoveLeave()"
         title="Remove"
       >
         <i class="fa fa-trash"></i>
       </button>
+    </div>
+
+    <!-- Actions (compact dropdown) -->
+    <div class="order-actions-compact" *ngIf="!locked && compact">
+      <button class="action-btn menu-btn" (click)="toggleMenu($event)" title="Actions">
+        <i class="fa fa-ellipsis-v"></i>
+      </button>
+      <div class="actions-dropdown" *ngIf="menuOpen" (click)="$event.stopPropagation()">
+        <div class="dropdown-inner">
+          <button class="dropdown-item" (click)="onEditClick(); closeMenu()">
+            <i class="fa fa-pen"></i> Edit
+          </button>
+          <button class="dropdown-item" (click)="onHideClick(); closeMenu()">
+            <i class="fa" [class.fa-eye]="!order?.hidden" [class.fa-eye-slash]="order?.hidden"></i>
+            {{ order?.hidden ? 'Show' : 'Hide' }}
+          </button>
+          <button
+            class="dropdown-item success"
+            [class.confirm]="order?.completed"
+            (click)="onCompleteClick()"
+            (mouseleave)="onCompleteLeave()"
+          >
+            <i class="fa fa-check"></i> {{ completeTitle }}
+          </button>
+          <button
+            class="dropdown-item danger"
+            [class.confirm]="order?.removed"
+            (click)="onRemoveClick()"
+            (mouseleave)="onRemoveLeave()"
+          >
+            <i class="fa fa-trash"></i> Remove
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

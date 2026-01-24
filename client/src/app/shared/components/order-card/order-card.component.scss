@@ -15,6 +15,12 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 
+  // Disable hover transform when menu is open to prevent flickering
+  &.menu-open {
+    transform: none !important;
+    background: rgba($obsidian-light, 0.6);
+  }
+
   &.sell-card {
     border-left-color: rgba($sell-color, 0.6);
 
@@ -211,6 +217,7 @@
       background: rgba($sell-color, 0.25);
       color: $sell-color;
       border-color: rgba($sell-color, 0.6);
+      animation: confirm-blink-success 0.4s ease-in-out infinite;
     }
   }
 
@@ -225,7 +232,206 @@
       background: rgba($danger-color, 0.25);
       color: $danger-color;
       border-color: rgba($danger-color, 0.6);
+      animation: confirm-blink-danger 0.4s ease-in-out infinite;
     }
+  }
+}
+
+// Compact mode - dropdown menu
+.order-actions-compact {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.menu-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 4px;
+  color: rgba($parchment, 0.6);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: rgba($gold, 0.15);
+    border-color: rgba($gold, 0.4);
+    color: $parchment;
+  }
+}
+
+.actions-dropdown {
+  position: absolute;
+  top: 100%;
+  right: -8px;
+  padding-top: 2px;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-inner {
+  background: #1a1a1f; // Solid dark color
+  border: 1px solid rgba($gold, 0.4);
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem 0.875rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba($gold, 0.1);
+  color: $parchment;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.1s ease;
+  text-align: left;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  i {
+    width: 16px;
+    font-size: 0.75rem;
+    color: rgba($parchment, 0.6);
+  }
+
+  &:hover {
+    background: #2a2a30;
+  }
+
+  &.success {
+    &:hover {
+      background: #1f2a1f;
+      color: $sell-color;
+
+      i { color: $sell-color; }
+    }
+
+    &.confirm {
+      background: #2a3a2a;
+      color: $sell-color;
+      animation: confirm-blink-success-dropdown 0.4s ease-in-out infinite;
+
+      i { color: $sell-color; }
+    }
+  }
+
+  &.danger {
+    &:hover {
+      background: #2a1f1f;
+      color: $danger-color;
+
+      i { color: $danger-color; }
+    }
+
+    &.confirm {
+      background: #3a2525;
+      color: $danger-color;
+      animation: confirm-blink-danger-dropdown 0.4s ease-in-out infinite;
+
+      i { color: $danger-color; }
+    }
+  }
+}
+
+// Blinking animations for confirm state
+@keyframes confirm-blink-success {
+  0%, 100% {
+    background: rgba($sell-color, 0.15);
+    border-color: rgba($sell-color, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    background: rgba($sell-color, 0.4);
+    border-color: $sell-color;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes confirm-blink-danger {
+  0%, 100% {
+    background: rgba($danger-color, 0.15);
+    border-color: rgba($danger-color, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    background: rgba($danger-color, 0.5);
+    border-color: $danger-color;
+    transform: scale(1.08);
+  }
+}
+
+// Dropdown-specific blink animations (solid colors)
+@keyframes confirm-blink-success-dropdown {
+  0%, 100% {
+    background: #2a3a2a;
+  }
+  50% {
+    background: #3a4a3a;
+  }
+}
+
+@keyframes confirm-blink-danger-dropdown {
+  0%, 100% {
+    background: #3a2525;
+  }
+  50% {
+    background: #4a3030;
+  }
+}
+
+// Compact mode styling
+.order-card.compact-card {
+  .order-main {
+    gap: 0.5rem;
+    padding: 0.5rem 0.625rem;
+  }
+
+  .order-img {
+    width: 32px;
+    height: 32px;
+    padding: 2px;
+  }
+
+  .order-qty {
+    min-width: 28px;
+
+    .qty-value {
+      font-size: 1rem;
+    }
+
+    .qty-label {
+      font-size: 0.55rem;
+    }
+  }
+
+  .order-name {
+    font-size: 0.8rem;
+  }
+
+  .order-price {
+    min-width: 50px;
+  }
+
+  .price-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .price-amount {
+    font-size: 0.85rem;
   }
 }
 

@@ -619,6 +619,42 @@
   }
 }
 
+.view-options {
+  display: flex;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+
+.view-option-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 5px;
+  color: rgba($parchment, 0.5);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  i {
+    font-size: 0.8rem;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.15);
+    border-color: rgba($gold, 0.4);
+    color: $parchment;
+  }
+
+  &.active {
+    background: rgba($gold, 0.2);
+    border-color: rgba($gold, 0.5);
+    color: $gold-light;
+  }
+}
+
 .filter-summary {
   margin-left: auto;
   flex-shrink: 0;
@@ -661,6 +697,25 @@
 
   &.full-width {
     grid-column: 1 / -1;
+
+    // Multi-column layout for orders-list when full-width
+    // Uses auto-fill so columns only appear when there's enough space
+    .orders-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 0.5rem;
+      align-content: start;
+    }
+  }
+
+  // Compact column - multi-column grid without spanning full width
+  &.compact-column:not(.full-width) {
+    .orders-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.5rem;
+      align-content: start;
+    }
   }
 }
 
@@ -760,6 +815,121 @@
   }
   50% {
     box-shadow: 0 0 15px rgba($danger-color, 0.5);
+  }
+}
+
+// ============================================
+// VIEW OPTIONS HELP MODAL
+// ============================================
+.view-options-help {
+  padding: 1.5rem;
+  max-width: 420px;
+}
+
+.help-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $gold-light;
+  margin: 0 0 1.25rem 0;
+
+  i {
+    font-size: 1.1rem;
+    color: $gold;
+  }
+}
+
+.help-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.help-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba($obsidian-light, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 8px;
+}
+
+.help-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($gold, 0.15);
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: 8px;
+
+  i {
+    font-size: 1rem;
+    color: $gold-light;
+  }
+}
+
+.help-text {
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $parchment;
+    margin: 0 0 0.375rem 0;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: rgba($parchment, 0.7);
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.help-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dont-show-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.6);
+  cursor: pointer;
+
+  input {
+    cursor: pointer;
+    accent-color: $gold;
+  }
+
+  &:hover {
+    color: $parchment;
+  }
+}
+
+.help-btn {
+  padding: 0.625rem 1.5rem;
+  background: linear-gradient(135deg, rgba($gold, 0.2), rgba($gold, 0.1));
+  border: 1px solid rgba($gold, 0.4);
+  border-radius: 6px;
+  color: $gold-light;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($gold, 0.3), rgba($gold, 0.15));
+    border-color: rgba($gold, 0.6);
   }
 }
 
@@ -1030,6 +1200,11 @@
   .orders-column {
     max-height: 50vh;
     min-height: 200px;
+
+    // When full-width (filtered to single type), allow more height
+    &.full-width {
+      max-height: none;
+    }
   }
 
   .filter-bar {
@@ -1338,3 +1513,4 @@
     }
   }
 }
+
