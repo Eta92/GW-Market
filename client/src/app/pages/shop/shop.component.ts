@@ -76,12 +76,6 @@ export class ShopComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Check if view options help should be shown
-    const dismissed = localStorage.getItem('viewOptionsHelpDismissed');
-    if (!dismissed) {
-      this.showViewOptionsHelp = true;
-    }
-
     this.activatedRoute.url.subscribe(urlSegments => {
       this.showcase = urlSegments.some(segment => segment.path.toLowerCase() === 'showcase');
       if (this.showcase) {
@@ -359,13 +353,6 @@ export class ShopComponent implements OnInit {
       this.showLink = true;
     } else {
       this.toastrService.error('Public link is not ready, refresh your shop first.');
-    }
-  }
-
-  dismissViewOptionsHelp(dontShowAgain: boolean): void {
-    this.showViewOptionsHelp = false;
-    if (dontShowAgain) {
-      localStorage.setItem('viewOptionsHelpDismissed', 'true');
     }
   }
 

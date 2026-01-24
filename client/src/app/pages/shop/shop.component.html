@@ -133,7 +133,7 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
             class="view-option-btn"
             [class.active]="compactView"
             (click)="compactView = !compactView"
-            title="Compact view with multiple columns"
+            title="Display your orders in a multi-column grid layout. Cards are smaller with a 3-dot menu for actions. Great for managing large inventories."
           >
             <i class="fa fa-th"></i>
           </button>
@@ -141,7 +141,7 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
             class="view-option-btn"
             [class.active]="showDetails"
             (click)="showDetails = !showDetails"
-            title="Show/hide item details"
+            title="Toggle item details like weapon requirements, inscriptions, and miniature status. Hide them for a cleaner, uniform look."
           >
             <i class="fa fa-tags"></i>
           </button>
@@ -263,46 +263,4 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     (closeEdit)="playerOpen = false"
     (confirmPlayer)="onConfirmPlayer($event)"
   ></app-active-player>
-</app-modal>
-
-<!-- View Options Help Modal -->
-<app-modal [isOpen]="showViewOptionsHelp && !showcase" (closed)="dismissViewOptionsHelp(false)">
-  <div class="view-options-help">
-    <h2 class="help-title">
-      <i class="fa fa-lightbulb"></i>
-      New View Options
-    </h2>
-
-    <div class="help-content">
-      <div class="help-item">
-        <div class="help-icon">
-          <i class="fa fa-th"></i>
-        </div>
-        <div class="help-text">
-          <h3>Compact Mode</h3>
-          <p>Display your orders in a multi-column grid layout. Cards are smaller with a 3-dot menu for actions. Great for managing large inventories.</p>
-        </div>
-      </div>
-
-      <div class="help-item">
-        <div class="help-icon">
-          <i class="fa fa-tags"></i>
-        </div>
-        <div class="help-text">
-          <h3>Show/Hide Details</h3>
-          <p>Toggle item details like weapon requirements, inscriptions, and miniature status. Hide them for a cleaner, uniform look.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="help-actions">
-      <label class="dont-show-checkbox">
-        <input type="checkbox" #dontShow />
-        Don't show this again
-      </label>
-      <button class="help-btn" (click)="dismissViewOptionsHelp(dontShow.checked)">
-        Got it!
-      </button>
-    </div>
-  </div>
 </app-modal>
