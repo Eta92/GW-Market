@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   public timeModeOptions: ToggleOption[] = [
     { value: 'online', label: 'Live', icon: 'fa-circle', styleClass: 'online' },
     { value: 'today', label: 'Today', icon: 'fa-sun', styleClass: 'today' },
-    { value: 'week', label: 'This Week', icon: 'fa-calendar', styleClass: 'week' },
+    { value: 'week', label: 'This week', icon: 'fa-calendar', styleClass: 'week' },
     { value: 'combined', label: 'Combined', icon: 'fa-layer-group', styleClass: 'combined' }
   ];
 
@@ -241,3 +241,4 @@ export class HomeComponent implements OnInit {
     el.scrollIntoView({ behavior: 'smooth' });
   }
 }
+
