@@ -26,7 +26,9 @@ $parchment: #e8dcc4;
 
   &:hover {
     border-color: rgba($gold, 0.5);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba($gold, 0.08);
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      inset 0 0 20px rgba($gold, 0.08);
     background: linear-gradient(145deg, rgba($gold, 0.08) 0%, transparent 50%);
 
     &::after {
@@ -107,6 +109,8 @@ $parchment: #e8dcc4;
 
   &.small {
     font-size: 11px;
+    text-overflow: unset;
+    white-space: unset;
     text-transform: none;
   }
 }

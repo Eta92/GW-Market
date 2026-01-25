@@ -128,7 +128,7 @@ https://v2.gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
       <!-- FILTER BAR -->
       <section class="filter-bar">
         <app-filter-order (updateFilter)="onFilterChange($event)"></app-filter-order>
-        <div class="view-options" *ngIf="!showcase">
+        <div class="view-options">
           <button
             class="view-option-btn"
             [class.active]="compactView"

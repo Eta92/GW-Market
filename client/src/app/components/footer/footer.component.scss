@@ -69,6 +69,8 @@ $parchment: #e8dcc4;
 }
 
 .footer-right {
+  align-items: center;
+  color: $parchment;
   display: flex;
   gap: 16px;
 }
@@ -126,5 +128,13 @@ $parchment: #e8dcc4;
     width: 28px;
     height: 28px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 1375px) {
+  .footer-right {
+    div {
+      display: none;
+    }
   }
 }

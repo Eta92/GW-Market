@@ -13,6 +13,7 @@ import { ActivePlayerComponent } from '@app/components/active-player/active-play
 import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from '@app/components/header/header.component';
 import { SearchComponent } from './search/search.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SearchComponent } from './search/search.component';
     HeaderComponent,
     NewOrderComponent,
     SelectItemComponent,
+    HelpComponent,
     HomeComponent,
     ItemComponent,
     SearchComponent,

@@ -9,6 +9,8 @@ import { SocketService } from './src/services/socket.service';
 // Hey folks, let me promote the new player to player marketplace, ez sell your stashes and buy stuff on gwmarket dot net !
 // I am not a bot so feel free to ask any question :)
 // I am running a event now, 1 ecto for each friend shop opened (I am not so rich), check more on reddit ! (I'm not a bot)
+// Hey people, have you checked your toolbox ? There is now the market place integrated <3
+// Come and create your shop on gwmarket dot net to get involved in the player to player economy !
 
 // Function to detect crawlers
 function isCrawler(userAgent) {

@@ -202,8 +202,8 @@ export class HomeComponent implements OnInit {
       .toString();
     this.location.go(url);
     this.queryFamily = family.name;
-    this.queryCategory = null;
     if (refresh) {
+      this.queryCategory = null;
       this.storeService.requestSocket('getLastItemsByFamily', family.name);
     }
   }
@@ -241,4 +241,3 @@ export class HomeComponent implements OnInit {
     el.scrollIntoView({ behavior: 'smooth' });
   }
 }
-
