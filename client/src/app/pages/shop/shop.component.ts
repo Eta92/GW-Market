@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
@@ -9,13 +9,16 @@ import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss']
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   public pro = false;
   public showcase = false;
   public shop: Shop;
@@ -76,43 +79,70 @@ export class ShopComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.url.subscribe(urlSegments => {
+    this.activatedRoute.url.pipe(takeUntil(this.destroy$)).subscribe(urlSegments => {
       this.showcase = urlSegments.some(segment => segment.path.toLowerCase() === 'showcase');
       if (this.showcase) {
         // load showcase shop
-        this.activatedRoute.queryParams.subscribe(params => {
-          const publicId = params['public'];
-          this.storeService.requestSocket('getPublicShop', publicId);
-          this.shopService.getPublicShop().subscribe((shop: Shop) => {
+        // Subscribe BEFORE emitting the socket request to avoid race condition
+        this.shopService
+          .getPublicShop()
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((shop: Shop) => {
             this.shop = shop;
             this.populateItemDetails();
             this.updateItemList();
             this.cdr.detectChanges();
           });
+        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+          const publicId = params['public'];
+          this.storeService.requestSocket('getPublicShop', publicId);
         });
+        // Re-populate item details once item data (data.json) is ready
+        this.itemService
+          .getReady()
+          .pipe(takeUntil(this.destroy$))
+          .subscribe(ready => {
+            if (ready && this.shop) {
+              this.populateItemDetails();
+              this.updateItemList();
+              this.cdr.detectChanges();
+            }
+          });
       } else {
         // load personal shop
-        this.shopService.getActiveShop().subscribe((shop: Shop) => {
-          this.shop = shop;
-          this.populateItemDetails();
-          this.updateItemList();
-          this.refreshCandle();
-          this.cdr.detectChanges();
-        });
+        this.shopService
+          .getActiveShop()
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((shop: Shop) => {
+            this.shop = shop;
+            this.populateItemDetails();
+            this.updateItemList();
+            this.refreshCandle();
+            this.cdr.detectChanges();
+          });
         // auto switch to pro mode
-        this.activatedRoute.queryParams.subscribe(params => {
+        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
           this.pro = params['pro'];
         });
         // refresh image once the item service is ready
-        this.itemService.getReady().subscribe(ready => {
-          if (ready) {
-            this.populateItemDetails();
-            this.updateItemList();
-            this.cdr.detectChanges();
-          }
-        });
+        this.itemService
+          .getReady()
+          .pipe(takeUntil(this.destroy$))
+          .subscribe(ready => {
+            if (ready) {
+              this.populateItemDetails();
+              this.updateItemList();
+              this.cdr.detectChanges();
+            }
+          });
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.timerActive = false;
   }
 
   // Populate item details for filtering
@@ -131,8 +161,10 @@ export class ShopComponent implements OnInit {
         }
       }
     });
-    // check if the shop is sync with other devices
-    this.shopService.checkUpToDate();
+    // check if the shop is sync with other devices (only for personal shop, not showcase)
+    if (!this.showcase) {
+      this.shopService.checkUpToDate();
+    }
   }
 
   getImageSource(itemName: string): string {
@@ -280,12 +312,13 @@ export class ShopComponent implements OnInit {
     if (this.shop.lastRefresh + 15 * 60 * 1000 > Date.now()) {
       this.showCandle = true;
       this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
-      const percentLeft = this.timeLeft / (15 * 60 * 1000);
       if (this.candleRef && this.candleRef.nativeElement) {
-        this.candleRef.nativeElement.style.animation = 'none';
-        setTimeout(() => {
-          this.candleRef.nativeElement.style.animation = `melt ${this.timeLeft}ms linear forwards`;
-        }, 10);
+        const el = this.candleRef.nativeElement;
+        el.style.animation = 'none';
+        // Force a reflow so the browser registers the animation reset
+        // Using void + offsetHeight is reliable across all browsers (including Firefox)
+        void el.offsetHeight;
+        el.style.animation = `melt ${this.timeLeft}ms linear forwards`;
       }
       if (!this.timerActive) {
         this.refreshTimer();
@@ -299,21 +332,26 @@ export class ShopComponent implements OnInit {
 
   private timerActive = false;
   refreshTimer(): void {
+    this.timerActive = true;
     if (this.showCandle && this.timeLeft > 0) {
-      this.timerActive = true;
       this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
       if (this.timeLeft < 0) {
         this.showCandle = false;
         this.timeLeft = 0;
+        this.timerActive = false;
         return;
       }
       if (this.timeLeft < 60 * 1000 * 5 && this.shopService.getdaybreakOnline()) {
         this.refreshShop();
       }
       setTimeout(() => {
-        this.refreshTimer();
+        if (this.timerActive) {
+          this.refreshTimer();
+        }
       }, 1000);
       this.cdr.detectChanges();
+    } else {
+      this.timerActive = false;
     }
   }
 

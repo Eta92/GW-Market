@@ -29,6 +29,11 @@ export class ShopService {
     private socket: Socket,
     private router: Router
   ) {
+    // Attach public shop listener immediately so it's ready before any request
+    this.socket.on('GetPublicShop', (shop: Shop) => {
+      this.publicShopSubject.set(shop);
+    });
+
     this.utilService.getReady().subscribe(ready => {
       if (ready && !this.init) {
         console.log('shop init');
@@ -80,9 +85,6 @@ export class ShopService {
         };
         this.activeShopSubject.set(shop);
       }
-    });
-    this.socket.on('GetPublicShop', (shop: Shop) => {
-      this.publicShopSubject.set(shop);
     });
   }
 
@@ -173,7 +175,9 @@ export class ShopService {
 
   checkUpToDate(): void {
     const activeShop = this.activeShopSubject.value;
-    this.socket.emit('checkShopUpToDate', activeShop.uuid, activeShop.lastRefresh);
+    if (activeShop?.uuid) {
+      this.socket.emit('checkShopUpToDate', activeShop.uuid, activeShop.lastRefresh);
+    }
   }
 
   getActiveShop(): Observable<Shop> {
@@ -181,7 +185,7 @@ export class ShopService {
   }
 
   getPublicShop(): Observable<Shop> {
-    return this.publicShopSubject.asObservable().pipe(debounceTime(0));
+    return this.publicShopSubject.asObservable();
   }
 
   getdaybreakOnline(): boolean {

@@ -199,7 +199,7 @@ export class ItemService {
     if (this.treeLoaded) {
       return of(true);
     } else {
-      return this.readySubject.asObservable().pipe(debounceTime(0));
+      return this.readySubject.asObservable();
     }
   }
 }

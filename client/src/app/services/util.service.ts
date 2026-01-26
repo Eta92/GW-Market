@@ -3,7 +3,6 @@ import { Socket } from 'ngx-socket-io';
 import { Observable, of } from 'rxjs';
 import { CurrentSubject } from '../helpers/current.subject';
 import { Router } from '@angular/router';
-import { debounceTime } from 'rxjs/operators';
 import { ToasterService } from './toaster.service';
 
 @Injectable()
@@ -53,7 +52,7 @@ export class UtilService {
     if (this.ready) {
       return of(true);
     } else {
-      return this.readySubject.asObservable().pipe(debounceTime(0));
+      return this.readySubject.asObservable();
     }
   }
 }

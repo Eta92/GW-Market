@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Router } from '@angular/router';
-import { Observable, debounceTime } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UtilService } from './util.service';
 
 import { CurrentSubject } from '@app/helpers/current.subject';
@@ -85,30 +85,30 @@ export class StoreService {
   }
 
   getSearchItems(): Observable<Array<Item>> {
-    return this.searchItemSubject.asObservable().pipe(debounceTime(0));
+    return this.searchItemSubject.asObservable();
   }
 
   getItemDetails(): Observable<Item> {
-    return this.itemDetailSubject.asObservable().pipe(debounceTime(0));
+    return this.itemDetailSubject.asObservable();
   }
   resetItemDetails(): void {
     this.itemDetailSubject.set(null);
   }
 
   getItemsDetails(): Observable<Array<Item>> {
-    return this.itemsDetailSubject.asObservable().pipe(debounceTime(0));
+    return this.itemsDetailSubject.asObservable();
   }
 
   getItemOrders(): Observable<Array<ShopItem>> {
-    return this.itemOrdersSubject.asObservable().pipe(debounceTime(0));
+    return this.itemOrdersSubject.asObservable();
   }
 
   getLastItems(): Observable<Array<ShopItem>> {
-    return this.lastItemsSubject.asObservable().pipe(debounceTime(0));
+    return this.lastItemsSubject.asObservable();
   }
 
   getShopSecret(): Observable<{ uuid: string; secret: string }> {
-    return this.shopSecretSubject.asObservable().pipe(debounceTime(0));
+    return this.shopSecretSubject.asObservable();
   }
 
   // ================================
@@ -126,7 +126,7 @@ export class StoreService {
   }
 
   getSearchOrders(): Observable<SearchResult> {
-    return this.searchOrdersSubject.asObservable().pipe(debounceTime(0));
+    return this.searchOrdersSubject.asObservable();
   }
 
   resetSearchOrders(): void {
