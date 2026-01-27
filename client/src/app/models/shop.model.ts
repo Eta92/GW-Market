@@ -53,6 +53,7 @@ export interface WeaponDetails {
 export interface OrderDetails {
   dedicated: boolean;
   pre: boolean;
+  legacy: boolean;
 }
 
 export interface ShopPrice {
@@ -66,7 +67,8 @@ export enum Price {
   PLAT,
   ECTO,
   ZKEY,
-  ARM
+  ARM,
+  BD
 }
 
 export enum OrderType {

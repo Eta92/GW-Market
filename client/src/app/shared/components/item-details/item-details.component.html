@@ -6,12 +6,8 @@
       Req.{{ wd.requirement }}
       <span class="attr" *ngIf="wd.attribute">{{ wd.attribute }}</span>
     </span>
-    <span class="detail-badge os" *ngIf="wd.oldschool">
-      <i class="fa fa-scroll"></i> OS
-    </span>
-    <span class="detail-badge insc" *ngIf="wd.inscription">
-      <i class="fa fa-pen-fancy"></i> Insc.
-    </span>
+    <span class="detail-badge os" *ngIf="wd.oldschool"> <i class="fa fa-scroll"></i> OS </span>
+    <span class="detail-badge insc" *ngIf="wd.inscription"> <i class="fa fa-pen-fancy"></i> Insc. </span>
     <span class="detail-badge core" *ngIf="wd.core">
       {{ wd.core }}
     </span>
@@ -24,16 +20,27 @@
   </ng-container>
 
   <!-- Miniature Details -->
-  <span class="detail-badge mini" *ngIf="isMiniature(details)"
-        [class.dedicated]="shopItem?.orderDetails?.dedicated"
-        [class.undedicated]="!shopItem?.orderDetails?.dedicated">
-    <i class="fa" [class.fa-star]="shopItem?.orderDetails?.dedicated"
-                  [class.fa-star-half-alt]="!shopItem?.orderDetails?.dedicated"></i>
+  <span
+    class="detail-badge mini"
+    *ngIf="isMiniature(details)"
+    [class.dedicated]="shopItem?.orderDetails?.dedicated"
+    [class.undedicated]="!shopItem?.orderDetails?.dedicated"
+  >
+    <i
+      class="fa"
+      [class.fa-star]="shopItem?.orderDetails?.dedicated"
+      [class.fa-star-half-alt]="!shopItem?.orderDetails?.dedicated"
+    ></i>
     {{ shopItem?.orderDetails?.dedicated ? 'Dedicated' : 'Undedicated' }}
   </span>
 
   <!-- Pre-Searing Flag -->
   <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.pre">
     <i class="fa fa-sun"></i> Pre-Searing
+  </span>
+
+  <!-- Pre-Nerf Flag -->
+  <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.legacy">
+    <i class="fa fa-lock"></i> Pre-Nerf
   </span>
 </div>

@@ -331,7 +331,9 @@ $topbar-height: 38px;
     z-index: 999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 300ms ease, visibility 300ms ease;
+    transition:
+      opacity 300ms ease,
+      visibility 300ms ease;
 
     &.open {
       opacity: 1;
@@ -474,7 +476,7 @@ $topbar-height: 38px;
 
     .toggle-btn {
       flex: 1 1 0;
-      min-width: 0;
+      min-width: fit-content;
       height: $input-height !important;
       padding: 0 0.375rem;
       font-size: 0.7rem;
@@ -545,7 +547,6 @@ $filter-spacing: 1rem;
     white-space: nowrap;
   }
 }
-
 
 // Select Dropdowns
 .filter-select {
@@ -646,7 +647,7 @@ $filter-spacing: 1rem;
   }
 
   // Hide native checkbox
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     position: absolute;
     opacity: 0;
     width: 0;
@@ -821,7 +822,9 @@ $filter-spacing: 1rem;
   &:hover {
     transform: translateY(-3px);
     border-color: rgba($gold, 0.5);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba($gold, 0.1);
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.4),
+      0 0 15px rgba($gold, 0.1);
   }
 
   &.online {
@@ -930,7 +933,8 @@ $filter-spacing: 1rem;
     color: #a78bfa;
   }
 
-  .flag-unded {
+  .flag-unded,
+  .flag-legacy {
     background: rgba($parchment, 0.1);
     border: 1px solid rgba($parchment, 0.3);
     color: rgba($parchment, 0.7);

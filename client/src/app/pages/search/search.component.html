@@ -1,23 +1,17 @@
-<div class="search-page font-fritz scroll">
+<div class="search-page scroll font-fritz">
   <!-- HEADER -->
   <app-header [showSearch]="false" [compact]="true"></app-header>
 
   <!-- MAIN CONTENT -->
   <main class="main-content bg-sky bg-base">
     <form [formGroup]="form" (ngSubmit)="onSearch()" class="search-container">
-
       <!-- TOP BAR: Search + Sort -->
       <div class="search-topbar">
         <!-- Search Group -->
         <div class="topbar-search">
           <div class="search-input-wrapper">
             <i class="fa fa-search search-icon"></i>
-            <input
-              type="text"
-              formControlName="query"
-              placeholder="Search items by name..."
-              class="search-input"
-            />
+            <input type="text" formControlName="query" placeholder="Search items by name..." class="search-input" />
           </div>
           <button type="submit" class="search-btn" [disabled]="loading">
             <i class="fa" [class.fa-search]="!loading" [class.fa-spinner]="loading" [class.fa-spin]="loading"></i>
@@ -49,7 +43,11 @@
             (click)="form.patchValue({ sortOrder: form.get('sortOrder')?.value === 'asc' ? 'desc' : 'asc' })"
             [title]="form.get('sortOrder')?.value === 'asc' ? 'Ascending' : 'Descending'"
           >
-            <i class="fa" [class.fa-sort-amount-up]="form.get('sortOrder')?.value === 'asc'" [class.fa-sort-amount-down]="form.get('sortOrder')?.value === 'desc'"></i>
+            <i
+              class="fa"
+              [class.fa-sort-amount-up]="form.get('sortOrder')?.value === 'asc'"
+              [class.fa-sort-amount-down]="form.get('sortOrder')?.value === 'desc'"
+            ></i>
           </button>
         </div>
       </div>
@@ -126,23 +124,9 @@
             <div class="sidebar-section">
               <label class="section-label">Requirement</label>
               <div class="range-inputs">
-                <input
-                  type="number"
-                  formControlName="reqMin"
-                  class="filter-input"
-                  min="0"
-                  max="13"
-                  placeholder="0"
-                />
+                <input type="number" formControlName="reqMin" class="filter-input" min="0" max="13" placeholder="0" />
                 <span class="range-separator">to</span>
-                <input
-                  type="number"
-                  formControlName="reqMax"
-                  class="filter-input"
-                  min="0"
-                  max="13"
-                  placeholder="13"
-                />
+                <input type="number" formControlName="reqMax" class="filter-input" min="0" max="13" placeholder="13" />
               </div>
             </div>
 
@@ -184,6 +168,16 @@
             ></app-toggle-group>
           </div>
 
+          <!-- Pre-Nerf -->
+          <div class="sidebar-section">
+            <label class="section-label">Pre-Nerf</label>
+            <app-toggle-group
+              [options]="preNerfOptions"
+              [value]="form.get('preNerf')?.value"
+              (valueChange)="form.patchValue({ preNerf: $event })"
+            ></app-toggle-group>
+          </div>
+
           <!-- Currency -->
           <div class="sidebar-section">
             <label class="section-label">Currency</label>
@@ -198,21 +192,9 @@
           <div class="sidebar-section">
             <label class="section-label">Price Total</label>
             <div class="range-inputs">
-              <input
-                type="number"
-                formControlName="priceMin"
-                placeholder="Min"
-                class="filter-input"
-                min="0"
-              />
+              <input type="number" formControlName="priceMin" placeholder="Min" class="filter-input" min="0" />
               <span class="range-separator">to</span>
-              <input
-                type="number"
-                formControlName="priceMax"
-                placeholder="Max"
-                class="filter-input"
-                min="0"
-              />
+              <input type="number" formControlName="priceMax" placeholder="Max" class="filter-input" min="0" />
             </div>
           </div>
 
@@ -220,21 +202,9 @@
           <div class="sidebar-section">
             <label class="section-label">Price Each</label>
             <div class="range-inputs">
-              <input
-                type="number"
-                formControlName="priceEachMin"
-                placeholder="Min"
-                class="filter-input"
-                min="0"
-              />
+              <input type="number" formControlName="priceEachMin" placeholder="Min" class="filter-input" min="0" />
               <span class="range-separator">to</span>
-              <input
-                type="number"
-                formControlName="priceEachMax"
-                placeholder="Max"
-                class="filter-input"
-                min="0"
-              />
+              <input type="number" formControlName="priceEachMax" placeholder="Max" class="filter-input" min="0" />
             </div>
           </div>
 
@@ -298,7 +268,11 @@
                 (click)="goToItem(order)"
               >
                 <!-- Order Badge -->
-                <div class="card-badge" [class.sell]="order.orderType === OrderType.SELL" [class.buy]="order.orderType === OrderType.BUY">
+                <div
+                  class="card-badge"
+                  [class.sell]="order.orderType === OrderType.SELL"
+                  [class.buy]="order.orderType === OrderType.BUY"
+                >
                   {{ order.orderType === OrderType.SELL ? 'WTS' : 'WTB' }}
                 </div>
 
@@ -320,13 +294,17 @@
                 <div class="card-weapon-details" *ngIf="order.weaponDetails">
                   <span class="weapon-attr">{{ order.weaponDetails.attribute }}</span>
                   <span class="weapon-req">Q{{ order.weaponDetails.requirement }}</span>
-                  <span class="weapon-type" *ngIf="order.weaponDetails.oldschool">OS</span>
+                  <!--<span class="weapon-type" *ngIf="order.weaponDetails.oldschool">OS</span>-->
                   <span class="weapon-type" *ngIf="order.weaponDetails.inscription">Inscr</span>
                 </div>
 
                 <!-- Special Flags (Pre-Searing, Dedicated) -->
-                <div class="card-special-flags" *ngIf="order.preSearing || order.dedicated !== undefined">
+                <div
+                  class="card-special-flags"
+                  *ngIf="order.preSearing || order.preNerf || order.dedicated !== undefined"
+                >
                   <span class="flag-pre" *ngIf="order.preSearing">Pre-Searing</span>
+                  <span class="flag-legacy" *ngIf="order.preNerf">Pre-Nerf</span>
                   <span class="flag-ded" *ngIf="order.dedicated === true">Dedicated</span>
                   <span class="flag-unded" *ngIf="order.dedicated === false">Undedicated</span>
                 </div>
@@ -334,7 +312,11 @@
                 <!-- Prices -->
                 <div class="card-prices">
                   <div class="price-row" *ngFor="let price of order.prices">
-                    <img class="currency-icon" [src]="getCurrencySource(price.type)" [alt]="priceToString(price.type)" />
+                    <img
+                      class="currency-icon"
+                      [src]="getCurrencySource(price.type)"
+                      [alt]="priceToString(price.type)"
+                    />
                     <span class="price-amount">{{ price.price }}</span>
                     <span class="price-each" *ngIf="getUnitPrice(price.price, order.quantity) as unitPrice">
                       · {{ unitPrice }} ea

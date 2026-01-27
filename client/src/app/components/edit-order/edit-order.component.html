@@ -12,19 +12,14 @@
         <div class="item-name empty" *ngIf="!item">Select an item below</div>
       </div>
     </div>
-    <button class="close-btn" (click)="closeEdit.emit()" title="Close">
+    <button class="close-btn" (click)="cancelOrder()" title="Close">
       <i class="fa fa-times"></i>
     </button>
   </div>
 
   <!-- Search Section -->
   <div class="search-section" *ngIf="!maskSearch">
-    <app-select-item
-      [width]="800"
-      [height]="160"
-      [offsetY]="-48"
-      (selectItem)="onSelectItem($event)"
-    ></app-select-item>
+    <app-select-item [width]="800" [height]="160" [offsetY]="-48" (selectItem)="onSelectItem($event)"></app-select-item>
   </div>
 
   <!-- Modal Body -->
@@ -46,7 +41,11 @@
             <span class="card-desc">List an item for sale</span>
           </div>
           <div class="card-check">
-            <i class="fa" [class.fa-circle]="form.get('orderType')?.value !== OrderType.SELL" [class.fa-check-circle]="form.get('orderType')?.value === OrderType.SELL"></i>
+            <i
+              class="fa"
+              [class.fa-circle]="form.get('orderType')?.value !== OrderType.SELL"
+              [class.fa-check-circle]="form.get('orderType')?.value === OrderType.SELL"
+            ></i>
           </div>
         </button>
         <button
@@ -62,7 +61,11 @@
             <span class="card-desc">Post a buy request</span>
           </div>
           <div class="card-check">
-            <i class="fa" [class.fa-circle]="form.get('orderType')?.value !== OrderType.BUY" [class.fa-check-circle]="form.get('orderType')?.value === OrderType.BUY"></i>
+            <i
+              class="fa"
+              [class.fa-circle]="form.get('orderType')?.value !== OrderType.BUY"
+              [class.fa-check-circle]="form.get('orderType')?.value === OrderType.BUY"
+            ></i>
           </div>
         </button>
       </div>
@@ -72,11 +75,7 @@
     <div class="details-row">
       <div class="form-group quantity-group">
         <label>Quantity</label>
-        <app-qty-input
-          formControlName="quantity"
-          [min]="1"
-          [max]="9999"
-        ></app-qty-input>
+        <app-qty-input formControlName="quantity" [min]="1" [max]="9999"></app-qty-input>
       </div>
 
       <div class="form-group visibility-group">
@@ -97,45 +96,34 @@
       </div>
 
       <div class="form-row">
-        <div class="form-group" style="flex: 2;">
+        <div *ngIf="!isLocked" class="form-group" style="flex: 2">
           <label>Attribute</label>
           <select class="form-select" formControlName="attribute">
             <option [ngValue]="'any'">Any / Default</option>
             <option *ngFor="let attr of attributes" [ngValue]="attr">{{ attr }}</option>
           </select>
         </div>
-        <div class="form-group" style="flex: 1;">
+        <div class="form-group" style="flex: 1">
           <label>Requirement</label>
-          <input
-            type="number"
-            class="form-input"
-            formControlName="requirement"
-            min="0"
-            max="13"
-          />
-        </div>
-        <div class="form-group" style="flex: 2;">
-          <label>Legacy</label>
-          <app-toggle-group
-            [options]="[{value: false, label: 'Modern'}, {value: true, label: 'Old School'}]"
-            [value]="formWeapon.get('oldschool')?.value"
-            (valueChange)="formWeapon.patchValue({ oldschool: $event })"
-          ></app-toggle-group>
+          <input type="number" class="form-input" formControlName="requirement" min="0" max="13" />
         </div>
       </div>
 
       <div class="form-row">
-        <div class="form-group" style="flex: 2;">
+        <div class="form-group" style="flex: 2">
           <label>Core Modification</label>
           <select class="form-select" formControlName="core">
             <option [ngValue]="null">None</option>
             <option *ngFor="let core of weaponLists.core" [ngValue]="core">{{ core }}</option>
           </select>
         </div>
-        <div class="form-group" style="flex: 2;">
+        <div class="form-group" style="flex: 2">
           <label>Inscription</label>
           <app-toggle-group
-            [options]="[{value: true, label: 'Inscribable', icon: 'fa-scroll'}, {value: false, label: 'Classic'}]"
+            [options]="[
+              { value: true, label: 'Inscribable', icon: 'fa-scroll' },
+              { value: false, label: 'Classic' }
+            ]"
             [value]="formWeapon.get('inscription')?.value"
             (valueChange)="formWeapon.patchValue({ inscription: $event })"
           ></app-toggle-group>
@@ -170,7 +158,10 @@
         <div class="form-group">
           <label>Dedication Status</label>
           <app-toggle-group
-            [options]="[{value: false, label: 'Undedicated'}, {value: true, label: 'Dedicated'}]"
+            [options]="[
+              { value: false, label: 'Undedicated' },
+              { value: true, label: 'Dedicated' }
+            ]"
             [value]="formOther.get('dedicated')?.value"
             (valueChange)="formOther.patchValue({ dedicated: $event })"
           ></app-toggle-group>
@@ -190,9 +181,23 @@
           <div class="form-group">
             <label>Pre-Searing Item</label>
             <app-toggle-group
-              [options]="[{value: false, label: 'Normal'}, {value: true, label: 'Pre-Searing'}]"
+              [options]="[
+                { value: false, label: 'Normal' },
+                { value: true, label: 'Pre-Searing' }
+              ]"
               [value]="formOther.get('pre')?.value"
               (valueChange)="formOther.patchValue({ pre: $event })"
+            ></app-toggle-group>
+          </div>
+          <div class="form-group">
+            <label>Pre-Nerf Item</label>
+            <app-toggle-group
+              [options]="[
+                { value: false, label: 'Normal' },
+                { value: true, label: 'Legacy' }
+              ]"
+              [value]="formOther.get('legacy')?.value"
+              (valueChange)="formOther.patchValue({ legacy: $event })"
             ></app-toggle-group>
           </div>
         </div>
@@ -205,11 +210,7 @@
         <span>{{ form.get('orderType')?.value === OrderType.SELL ? 'Asking Price' : 'Willing to Pay' }}</span>
       </div>
       <div class="prices-container" formArrayName="prices">
-        <div
-          class="price-card"
-          *ngFor="let price of getprices().controls; let i = index"
-          [formGroupName]="i"
-        >
+        <div class="price-card" *ngFor="let price of getprices().controls; let i = index" [formGroupName]="i">
           <div class="price-field currency-field">
             <label>Currency</label>
             <app-currency-dropdown
@@ -222,26 +223,14 @@
               <label>Per Unit</label>
               <div class="input-with-icon">
                 <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
-                <input
-                  type="number"
-                  class="form-input price-input"
-                  formControlName="unit"
-                  min="0"
-                  placeholder="0"
-                />
+                <input type="number" class="form-input price-input" formControlName="unit" min="0" placeholder="0" />
               </div>
             </div>
             <div class="price-field">
               <label>Total</label>
               <div class="input-with-icon">
                 <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
-                <input
-                  type="number"
-                  class="form-input price-input"
-                  formControlName="price"
-                  min="0"
-                  placeholder="0"
-                />
+                <input type="number" class="form-input price-input" formControlName="price" min="0" placeholder="0" />
               </div>
             </div>
           </div>
@@ -276,12 +265,21 @@
 
   <!-- Modal Footer -->
   <div class="modal-footer">
-    <button class="cancel-btn" (click)="closeEdit.emit()">
+    <button class="cancel-btn" (click)="cancelOrder()">
       <i class="fa fa-times"></i>
       Cancel
     </button>
-    <button class="confirm-btn" [class.sell]="form.get('orderType')?.value === OrderType.SELL" [class.buy]="form.get('orderType')?.value === OrderType.BUY" (click)="validateOrder()">
-      <i class="fa" [class.fa-arrow-up]="form.get('orderType')?.value === OrderType.SELL" [class.fa-arrow-down]="form.get('orderType')?.value === OrderType.BUY"></i>
+    <button
+      class="confirm-btn"
+      [class.sell]="form.get('orderType')?.value === OrderType.SELL"
+      [class.buy]="form.get('orderType')?.value === OrderType.BUY"
+      (click)="validateOrder()"
+    >
+      <i
+        class="fa"
+        [class.fa-arrow-up]="form.get('orderType')?.value === OrderType.SELL"
+        [class.fa-arrow-down]="form.get('orderType')?.value === OrderType.BUY"
+      ></i>
       {{ confirm || 'Create Order' }}
     </button>
   </div>

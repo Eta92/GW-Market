@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   SimpleChanges
@@ -15,7 +16,7 @@ import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
-import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
+import { LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-attributes';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -25,7 +26,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './edit-order.component.html',
   styleUrls: ['./edit-order.component.scss']
 })
-export class EditOrderComponent implements OnInit, OnChanges {
+export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   @Input() preselect?: Item;
   @Input() original?: ShopItem;
   @Input() maskSearch = false;
@@ -47,7 +48,9 @@ export class EditOrderComponent implements OnInit, OnChanges {
   public isAdvanced = false;
   // weapons
   public isWeapon = false;
-  public attributes = WEAPON_ATTRIBUTES;
+  public isLocked = true;
+  public attributes = VARIABLE_ATTRIBUTE;
+  public lockWeapons = LOCKED_WEAPON;
   public weaponLists: { core: Array<string>; prefix: Array<string>; suffix: Array<string> } = {
     core: [],
     prefix: [],
@@ -90,6 +93,7 @@ export class EditOrderComponent implements OnInit, OnChanges {
     });
     this.formOther = this.fb.group({
       dedicated: [false],
+      legacy: [false],
       pre: [false]
     });
     if (this.original) {
@@ -132,6 +136,7 @@ export class EditOrderComponent implements OnInit, OnChanges {
     this.isMiniature = WeaponHelper.isMiniature(order.item);
     if (WeaponHelper.isWeapon(order.item) && this.allItems) {
       this.isWeapon = true;
+      this.isLocked = LOCKED_WEAPON.includes(order.item.category);
       this.weaponLists = WeaponHelper.getItemList(order.item, this.allItems);
       this.formWeapon.patchValue(order.weaponDetails || {});
     }
@@ -147,6 +152,7 @@ export class EditOrderComponent implements OnInit, OnChanges {
     // Set weapon flag if applicable
     if (WeaponHelper.isWeapon(item)) {
       this.isWeapon = true;
+      this.isLocked = LOCKED_WEAPON.includes(item.category);
       this.weaponLists = WeaponHelper.getItemList(item, this.allItems);
     }
     // Set miniature flag if applicable
@@ -214,6 +220,11 @@ export class EditOrderComponent implements OnInit, OnChanges {
     this.bindPrices.push(toAllPrices);
   }
 
+  cancelOrder(): void {
+    this.resetForms();
+    this.closeEdit.emit();
+  }
+
   validateOrder(): void {
     const order = this.form.value as ShopItem;
     if (this.form.invalid || (this.isWeapon && this.formWeapon.invalid)) {
@@ -229,16 +240,41 @@ export class EditOrderComponent implements OnInit, OnChanges {
       while (this.getprices()?.value.length > 1) {
         this.getprices().removeAt(1);
       }
-      this.form.reset({
-        name: '',
-        orderType: OrderType.SELL,
-        hidden: false,
-        prices: [{ type: Price.PLAT, price: 0, unit: 0 }],
-        quantity: 1,
-        description: ''
-      });
-      this.item = undefined;
+      this.resetForms();
       this.refreshBindPrices();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.resetForms();
+    this.bindPrices.forEach(sub => sub.unsubscribe());
+  }
+
+  resetForms(): void {
+    this.form.reset({
+      name: '',
+      orderType: OrderType.SELL,
+      hidden: false,
+      prices: [{ type: Price.PLAT, price: 0, unit: 0 }],
+      quantity: 1,
+      description: ''
+    });
+    this.item = undefined;
+    this.formWeapon.reset({
+      attribute: 'any',
+      requirement: 9,
+      inscription: true,
+      oldschool: false,
+      core: null,
+      prefix: null,
+      suffix: null
+    });
+    this.formOther.reset({
+      dedicated: false,
+      pre: false
+    });
+    this.isWeapon = false;
+    this.isMiniature = false;
+    this.isLocked = true;
   }
 }

@@ -24,6 +24,9 @@ export interface SearchFilter {
   // Pre-Searing filter
   preSearing?: boolean; // true = pre-searing only, false = post-searing only
 
+  // Pre-Nerf filter
+  preNerf?: boolean; // true = legacy only, false = normal only
+
   // Miniature-specific filters
   miniDedicated?: boolean; // true = dedicated, false = undedicated
 
@@ -74,6 +77,7 @@ export interface SearchResultOrder {
   // Special flags
   preSearing?: boolean;
   dedicated?: boolean;
+  preNerf?: boolean;
 }
 
 // Re-export WeaponDetails for convenience

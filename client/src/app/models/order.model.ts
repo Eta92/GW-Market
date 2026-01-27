@@ -99,6 +99,9 @@ export interface SearchFilter {
   // Pre-searing filter
   preSearing?: boolean;
 
+  // Pre-nerf filter
+  preNerf?: boolean;
+
   // Miniature-specific filters
   miniDedicated?: boolean;
 
@@ -143,7 +146,6 @@ export interface SearchResultOrder {
     attribute: string;
     requirement: number;
     inscription: boolean;
-    oldschool: boolean;
     core: string | null;
     prefix: string | null;
     suffix: string | null;
@@ -151,6 +153,7 @@ export interface SearchResultOrder {
   family: string;
   category: string;
   preSearing?: boolean;
+  preNerf?: boolean;
   dedicated?: boolean;
 }
 

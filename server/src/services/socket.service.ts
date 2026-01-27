@@ -105,7 +105,7 @@ export class SocketService {
           suffix: typeof filter?.suffix === 'string' ? filter.suffix : undefined,
           preSearing: typeof filter?.preSearing === 'boolean' ? filter.preSearing : undefined,
           miniDedicated: typeof filter?.miniDedicated === 'boolean' ? filter.miniDedicated : undefined,
-          currency: [Price.PLAT, Price.ECTO, Price.ZKEY, Price.ARM].includes(filter?.currency) ? filter.currency : undefined,
+          currency: [Price.PLAT, Price.ECTO, Price.ZKEY, Price.ARM, Price.BD].includes(filter?.currency) ? filter.currency : undefined,
           priceMin: typeof filter?.priceMin === 'number' ? Math.max(0, filter.priceMin) : undefined,
           priceMax: typeof filter?.priceMax === 'number' ? Math.max(0, filter.priceMax) : undefined,
           priceEachMin: typeof filter?.priceEachMin === 'number' ? Math.max(0, filter.priceEachMin) : undefined,

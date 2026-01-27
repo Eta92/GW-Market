@@ -351,6 +351,7 @@ export class ShopService {
         // Determine special flags
         const isPreSearing = order.orderDetails?.pre === true || itemMeta.category === 'Pre-Searing';
         const isDedicated = itemMeta.family === 'miniature' ? this.getDedicatedStatus(order) : undefined;
+        const isPreNerf = order.orderDetails?.legacy === true;
 
         // Build enriched result
         const resultOrder: SearchResultOrder = {
@@ -367,6 +368,7 @@ export class ShopService {
           family: itemMeta.family,
           category: itemMeta.category,
           preSearing: isPreSearing || undefined,
+          preNerf: isPreNerf || undefined,
           dedicated: isDedicated,
         };
 
@@ -459,6 +461,14 @@ export class ShopService {
       const isPreSearing = order.orderDetails?.pre === true || item.category === 'Pre-Searing';
       if (filter.preSearing && !isPreSearing) return false;
       if (!filter.preSearing && isPreSearing) return false;
+    }
+
+    // Pre-Nerf filter (check orderDetails.legacy or item category)
+    if (filter.preNerf !== undefined) {
+      // First check orderDetails.legacy if available
+      const isPreNerf = order.orderDetails?.legacy === true;
+      if (filter.preNerf && !isPreNerf) return false;
+      if (!filter.preNerf && isPreNerf) return false;
     }
 
     // Miniature dedicated filter

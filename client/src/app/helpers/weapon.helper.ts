@@ -2,9 +2,21 @@ import { Item, ShopItem, WeaponDetails } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 
 // Inscription category sets
-const MARTIAL_INSCRIPTIONS = ['All weapons Inscriptions', 'Martial weapons Inscriptions', 'All equippable items Inscriptions'];
-const SPELLCASTING_INSCRIPTIONS = ['All weapons Inscriptions', 'Spellcasting weapons Inscriptions', 'All equippable items Inscriptions'];
-const FOCUS_INSCRIPTIONS = ['Focus items or shields Inscriptions', 'Focus items Inscriptions', 'All equippable items Inscriptions'];
+const MARTIAL_INSCRIPTIONS = [
+  'All weapons Inscriptions',
+  'Martial weapons Inscriptions',
+  'All equippable items Inscriptions'
+];
+const SPELLCASTING_INSCRIPTIONS = [
+  'All weapons Inscriptions',
+  'Spellcasting weapons Inscriptions',
+  'All equippable items Inscriptions'
+];
+const FOCUS_INSCRIPTIONS = [
+  'Focus items or shields Inscriptions',
+  'Focus items Inscriptions',
+  'All equippable items Inscriptions'
+];
 const SHIELD_INSCRIPTIONS = ['Focus items or shields Inscriptions', 'All equippable items Inscriptions'];
 
 // Weapon upgrade configuration: maps category to [coreInscriptions, prefixCategory, suffixCategory]
@@ -38,6 +50,7 @@ export class WeaponHelper {
     if (WeaponHelper.isWeapon(item) && shopItem?.weaponDetails) return true;
     if (WeaponHelper.isMiniature(item)) return true;
     if (shopItem?.orderDetails?.pre) return true;
+    if (shopItem?.orderDetails?.legacy) return true;
     return false;
   }
 
@@ -57,10 +70,7 @@ export class WeaponHelper {
   /**
    * Get available upgrade items for a weapon category.
    */
-  static getItemList(
-    item: Item,
-    completeTree: AvailableTree
-  ): { core: string[]; prefix: string[]; suffix: string[] } {
+  static getItemList(item: Item, completeTree: AvailableTree): { core: string[]; prefix: string[]; suffix: string[] } {
     const upgrades = completeTree.families.find(fam => fam.name === 'upgrade')?.categories;
     if (!upgrades) {
       return { core: [], prefix: [], suffix: [] };

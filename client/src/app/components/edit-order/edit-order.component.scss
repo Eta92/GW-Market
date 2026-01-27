@@ -11,11 +11,7 @@
   max-height: 90vh;
   overflow-y: auto;
   overflow-x: visible;
-  background: linear-gradient(
-    145deg,
-    rgba($obsidian, 0.98) 0%,
-    rgba($obsidian-light, 0.98) 100%
-  );
+  background: linear-gradient(145deg, rgba($obsidian, 0.98) 0%, rgba($obsidian-light, 0.98) 100%);
   border: 2px solid rgba($gold, 0.6);
   border-radius: 16px;
   box-shadow:
@@ -48,11 +44,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
-  background: linear-gradient(
-    180deg,
-    rgba($obsidian, 1) 0%,
-    rgba($obsidian, 0.98) 100%
-  );
+  background: linear-gradient(180deg, rgba($obsidian, 1) 0%, rgba($obsidian, 0.98) 100%);
   border-bottom: 1px solid rgba($gold, 0.25);
 
   .header-left {
@@ -452,6 +444,7 @@
       flex-direction: column;
       gap: 0.5rem;
       flex-shrink: 0;
+      min-width: 160px;
 
       label {
         font-size: 0.7rem;
@@ -634,7 +627,6 @@
             }
           }
         }
-
       }
     }
 
@@ -725,12 +717,14 @@
   background: rgba($obsidian-light, 0.4);
   border: 1px solid rgba($gold, 0.15);
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
   .weapon-header {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    margin-bottom: 1.25rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid rgba($gold, 0.1);
 
@@ -824,11 +818,7 @@
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
   border-top: 1px solid rgba($gold, 0.15);
-  background: linear-gradient(
-    180deg,
-    rgba($obsidian, 0.95) 0%,
-    rgba($obsidian, 1) 100%
-  );
+  background: linear-gradient(180deg, rgba($obsidian, 0.95) 0%, rgba($obsidian, 1) 100%);
 }
 
 .cancel-btn {

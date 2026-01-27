@@ -108,6 +108,8 @@ export class UtilityHelper {
         return 'Ambrace';
       case Price.ZKEY:
         return 'Zkey';
+      case Price.BD:
+        return 'BlackDye';
     }
   }
 
@@ -125,6 +127,8 @@ export class UtilityHelper {
         return 'Zaishen Key';
       case Price.ARM:
         return 'Armbraces';
+      case Price.BD:
+        return 'Black Dye';
       default:
         return 'Currency';
     }

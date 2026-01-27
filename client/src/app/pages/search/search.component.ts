@@ -58,7 +58,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     { value: Price.PLAT, label: 'Plat', imgSrc: UtilityHelper.getCurrencySource(Price.PLAT) },
     { value: Price.ECTO, label: 'Ecto', imgSrc: UtilityHelper.getCurrencySource(Price.ECTO) },
     { value: Price.ZKEY, label: 'Zkey', imgSrc: UtilityHelper.getCurrencySource(Price.ZKEY) },
-    { value: Price.ARM, label: 'Arm', imgSrc: UtilityHelper.getCurrencySource(Price.ARM) }
+    { value: Price.ARM, label: 'Arm', imgSrc: UtilityHelper.getCurrencySource(Price.ARM) },
+    { value: Price.BD, label: 'BD', imgSrc: UtilityHelper.getCurrencySource(Price.BD) }
   ];
 
   public preSearingOptions: ToggleOption[] = [
@@ -71,6 +72,12 @@ export class SearchComponent implements OnInit, OnDestroy {
     { value: null, label: 'Any' },
     { value: true, label: 'Dedicated' },
     { value: false, label: 'Undedicated' }
+  ];
+
+  public preNerfOptions: ToggleOption[] = [
+    { value: null, label: 'Any' },
+    { value: true, label: 'Legacy', icon: 'fa-lock' },
+    { value: false, label: 'Normal' }
   ];
 
   constructor(
@@ -138,6 +145,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       prefix: [null],
       suffix: [null],
       preSearing: [null],
+      preNerf: [null],
       miniDedicated: [null],
       currency: [null],
       priceMin: [null],

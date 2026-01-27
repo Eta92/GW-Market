@@ -17,7 +17,12 @@ export class ItemDetailsComponent {
   get shopItem(): ShopItem | null {
     if (!this.item) return null;
     // Check if it's a ShopItem by looking for ShopItem-specific properties
-    if ('orderType' in this.item || 'weaponDetails' in this.item || 'orderDetails' in this.item || 'prices' in this.item) {
+    if (
+      'orderType' in this.item ||
+      'weaponDetails' in this.item ||
+      'orderDetails' in this.item ||
+      'prices' in this.item
+    ) {
       return this.item as ShopItem;
     }
     return null;
@@ -32,6 +37,9 @@ export class ItemDetailsComponent {
 
     // Has pre-searing flag
     if (this.shopItem?.orderDetails?.pre) return true;
+
+    // Has pre-nerf flag
+    if (this.shopItem?.orderDetails?.legacy) return true;
 
     return false;
   }
