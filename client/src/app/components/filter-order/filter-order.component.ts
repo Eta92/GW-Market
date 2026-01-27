@@ -44,6 +44,9 @@ export class FilterOrderComponent implements OnInit {
       prefix: [null],
       suffix: [null]
     });
+    this.form.get('family').valueChanges.subscribe(() => {
+      this.form.get('category').setValue(null);
+    });
     this.form.valueChanges.subscribe(() => {
       this.updateFilter.emit(this.form.value as OrderFilter);
     });

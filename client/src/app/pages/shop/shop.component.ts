@@ -85,54 +85,30 @@ export class ShopComponent implements OnInit {
           this.storeService.requestSocket('getPublicShop', publicId);
           this.shopService.getPublicShop().subscribe((shop: Shop) => {
             this.shop = shop;
-            this.populateItemDetails();
-            this.updateItemList();
-            this.cdr.detectChanges();
+            this.shopUpdate();
           });
         });
       } else {
         // load personal shop
         this.shopService.getActiveShop().subscribe((shop: Shop) => {
           this.shop = shop;
-          this.populateItemDetails();
-          this.updateItemList();
-          this.refreshCandle();
-          this.cdr.detectChanges();
+          this.shopUpdate();
         });
         // auto switch to pro mode
         this.activatedRoute.queryParams.subscribe(params => {
           this.pro = params['pro'];
-        });
-        // refresh image once the item service is ready
-        this.itemService.getReady().subscribe(ready => {
-          if (ready) {
-            this.populateItemDetails();
-            this.updateItemList();
-            this.cdr.detectChanges();
-          }
         });
       }
     });
   }
 
   // Populate item details for filtering
-  private populateItemDetails(): void {
-    if (!this.shop?.items) return;
-    this.shop.items.forEach(shopItem => {
-      if (!shopItem.item) {
-        const basicItem = this.itemService.getItemBase(shopItem.name);
-        if (basicItem) {
-          shopItem.item = {
-            name: basicItem.name,
-            img: basicItem.img,
-            family: basicItem.family,
-            category: basicItem.category
-          };
-        }
-      }
-    });
-    // check if the shop is sync with other devices
-    this.shopService.checkUpToDate();
+  private shopUpdate(): void {
+    if (this.shop?.items) {
+      this.updateItemList();
+      this.refreshCandle();
+      this.cdr.detectChanges();
+    }
   }
 
   getImageSource(itemName: string): string {
@@ -363,7 +339,6 @@ export class ShopComponent implements OnInit {
 
   updateItemList(): void {
     if (!this.shop?.items) return;
-    this.populateItemDetails();
     const filteredItem = this.shop.items.filter(item => {
       if (this.orderFilter.name && !item.name.toLowerCase().includes(this.orderFilter.name.toLowerCase())) {
         return false;

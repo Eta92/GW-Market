@@ -73,6 +73,7 @@ export class ShopService {
           item.item = this.itemService.getItemBase(item.name);
         });
         this.activeShopSubject.set(shop);
+        this.socket.emit('checkShopUpToDate', shop.uuid, shop.lastRefresh);
       } else {
         const shop: Shop = {
           player: 'GWTrader',
@@ -169,11 +170,6 @@ export class ShopService {
     this.activeShopSubject.set(activeShop);
     this.saveShop();
     this.socket.emit('closeShop', activeShop.uuid);
-  }
-
-  checkUpToDate(): void {
-    const activeShop = this.activeShopSubject.value;
-    this.socket.emit('checkShopUpToDate', activeShop.uuid, activeShop.lastRefresh);
   }
 
   getActiveShop(): Observable<Shop> {

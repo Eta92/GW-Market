@@ -482,6 +482,7 @@ export class ItemComponent implements OnInit {
   }
 
   addDetails(item: Item): void {
+    if (!item) return;
     this.details = [];
     for (const key in ItemDetailMap) {
       if (item[key as keyof Item]) {

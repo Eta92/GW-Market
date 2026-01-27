@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { debounceTime, Subject, takeUntil } from 'rxjs';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { SearchFilter, SearchResult, SearchResultOrder, Time } from '@app/models/order.model';
-import { Item, OrderType, Price } from '@app/models/shop.model';
+import { OrderType, Price } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
@@ -108,10 +108,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     });
 
     // Auto-search when filters/sort change (excluding query which needs button)
-    this.form.valueChanges.pipe(
-      debounceTime(300),
-      takeUntil(this.destroy$)
-    ).subscribe((values) => {
+    this.form.valueChanges.pipe(debounceTime(300), takeUntil(this.destroy$)).subscribe(values => {
       // Only auto-search if we've already searched once (not on initial load)
       // and the change wasn't just the query field
       if (this.hasSearched) {
@@ -152,6 +149,9 @@ export class SearchComponent implements OnInit, OnDestroy {
       certifiedOnly: [false],
       sortBy: ['time'],
       sortOrder: ['desc']
+    });
+    this.form.get('family').valueChanges.subscribe(() => {
+      this.form.get('category').setValue(null);
     });
   }
 
