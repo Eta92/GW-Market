@@ -51,7 +51,7 @@
           </div>
           <button class="shop-toggle-btn shop-refresh-btn" (click)="refreshShop()">
             <i class="fa fa-refresh"></i>
-            <span class="shop-refresh-text">{{ 'Refresh Shop' }}</span>
+            <span class="shop-refresh-text">{{ 'Refresh shop' }}</span>
           </button>
         </div>
 
@@ -63,7 +63,7 @@
           (click)="showCandle ? stopShop() : refreshShop()"
         >
           <i class="fa" [class.fa-power-off]="!showCandle" [class.fa-stop]="showCandle"></i>
-          <span>{{ showCandle ? 'Stop Shop' : 'Update Shop' }}</span>
+          <span>{{ showCandle ? 'Stop shop' : 'Update shop' }}</span>
         </button>
 
         <!-- Quick Stats -->
@@ -163,7 +163,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           >
             <h2 class="column-title">
               <i class="fa fa-arrow-up"></i>
-              Sell Orders
+              Sell orders
               <span class="order-count" *ngIf="sellOrders?.length">({{ sellOrders.length }})</span>
             </h2>
 
@@ -201,7 +201,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           >
             <h2 class="column-title">
               <i class="fa fa-arrow-down"></i>
-              Buy Orders
+              Buy orders
               <span class="order-count" *ngIf="buyOrders?.length">({{ buyOrders.length }})</span>
             </h2>
 
