@@ -4,6 +4,7 @@ import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { OrderFilter } from '@app/models/order.model';
+import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 import { Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
@@ -137,8 +138,23 @@ export class ShopComponent implements OnInit {
 
   onCompleteOrder(order: ShopItem): void {
     if (order.completed) {
-      // TODO register order completion
       this.shopService.removeShopItem(this.shop.items.indexOf(order));
+      this.storeService.requestSocket('logPurchase', {
+        name: order.name,
+        shop: this.shop.uuid,
+        prices: order.prices.map(
+          p =>
+            ({
+              type: p.type,
+              quantity: order.quantity,
+              totalPrice: p.price,
+              unitPrice: Math.round(p.price / (order.quantity || 1))
+            }) as PurchasePrice
+        ),
+        orderType: order.orderType,
+        date: Date.now(),
+        origin: PurchaseOrigin.SHOP
+      } as Purchase);
     } else {
       order.completed = true;
     }

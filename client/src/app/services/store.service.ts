@@ -58,7 +58,7 @@ export class StoreService {
     });
   }
 
-  requestSocket(field: string, option?: number | string): void {
+  requestSocket(field: string, option?: any): void {
     if (this.init) {
       this.socket.emit(field, option);
     } else {
@@ -68,7 +68,7 @@ export class StoreService {
     }
   }
 
-  secureRequestSocket(field: string, option?: number): void {
+  secureRequestSocket(field: string, option?: any): void {
     if (this.init) {
       const password = localStorage.getItem('password');
       // if (password) {

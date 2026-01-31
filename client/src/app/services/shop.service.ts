@@ -184,6 +184,10 @@ export class ShopService {
     return this.daybreakOnline;
   }
 
+  getShopUuid(): string {
+    return this.activeShopSubject?.value?.uuid || '';
+  }
+
   // Daybreak API
   private daybreakMaxTry = 3;
   private maintainDaybreakLink(): void {

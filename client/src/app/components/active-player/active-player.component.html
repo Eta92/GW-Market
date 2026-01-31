@@ -22,12 +22,7 @@
       <label class="section-label">Active Player Name</label>
       <div class="input-wrapper">
         <i class="fa fa-user input-icon"></i>
-        <input
-          type="text"
-          class="form-input"
-          placeholder="Enter your in-game character name"
-          formControlName="name"
-        />
+        <input type="text" class="form-input" placeholder="Enter your in-game character name" formControlName="name" />
       </div>
       <p class="input-hint">
         <i class="fa fa-info-circle"></i>
@@ -42,6 +37,12 @@
         <span>Character Certification</span>
       </div>
 
+      <!-- <div class="p-3 text-white bg-red-600 rounded-lg secret-display">
+        <i class="fa fa-exclamation-triangle"></i>
+        Character certification is currently disabled.<br />
+        <span class="text-xs">Guild Wars update broke our current code and we need some time to repair it.</span>
+      </div> -->
+
       <!-- Certify Button -->
       <button class="cert-btn" (click)="addPlayer()">
         <i class="fa fa-plus-circle"></i>
@@ -55,12 +56,7 @@
           Copy this whisper command in-game to verify
         </label>
         <div class="secret-input-group">
-          <input
-            type="text"
-            class="secret-input"
-            [value]="secret"
-            readonly
-          />
+          <input type="text" class="secret-input" [value]="secret" readonly />
           <button class="copy-btn" (click)="copySecret()" title="Copy to clipboard">
             <i class="fa fa-copy"></i>
           </button>
@@ -90,7 +86,11 @@
           (click)="form.patchValue({ name: name })"
         >
           <div class="char-radio">
-            <i class="fa" [class.fa-circle]="form.get('name')?.value !== name" [class.fa-circle-dot]="form.get('name')?.value === name"></i>
+            <i
+              class="fa"
+              [class.fa-circle]="form.get('name')?.value !== name"
+              [class.fa-circle-dot]="form.get('name')?.value === name"
+            ></i>
           </div>
           <span class="char-name">{{ name }}</span>
           <i class="fa fa-certificate char-badge"></i>

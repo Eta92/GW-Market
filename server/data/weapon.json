@@ -187,6 +187,7 @@
     "type": "Rare Focus Items",
     "description": "Rare focus items are random-stat weapon dropped by random mobs or chests.",
     "items": [
+      { "name": "Lion's Pride", "stats": [] },
       { "name": "Storm Ember", "stats": [] },
       { "name": "Fox's Greed", "stats": [] },
       { "name": "Divine Symbol (chalice)", "stats": [] },

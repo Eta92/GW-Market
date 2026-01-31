@@ -17,6 +17,7 @@ import { StoreService } from '@app/services/store.service';
 import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ToastrService } from 'ngx-toastr';
+import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 
 // Filter types
 export type OrderTypeFilter = 'all' | 'sell' | 'buy';
@@ -441,6 +442,21 @@ export class ItemComponent implements OnInit {
     this.whisperQuantity = order.quantity;
     this.updateTradeMessage();
     this.popup = true;
+    this.storeService.requestSocket('logPurchase', {
+      name: this.item.name,
+      shop: this.shopService.getShopUuid(),
+      prices: [
+        {
+          type: order.price.type,
+          quantity: order.quantity,
+          totalPrice: order.price.price,
+          unitPrice: Math.round(order.price.price / (order.quantity || 1))
+        } as PurchasePrice
+      ],
+      orderType: order.orderType,
+      date: Date.now(),
+      origin: PurchaseOrigin.CLIENT
+    } as Purchase);
   }
 
   whisperFromDetail(): void {
