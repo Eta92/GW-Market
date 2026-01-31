@@ -16,7 +16,10 @@ export class OrderRowComponent {
   @Input() showWeaponDetails = false;
 
   @Output() rowClick = new EventEmitter<ItemOrder>();
+  @Output() submitVote = new EventEmitter<{ order: ItemOrder; vote: 'positive' | 'negative' }>();
   @Output() whisperClick = new EventEmitter<ItemOrder>();
+
+  public details = false;
 
   get fade(): string {
     return UtilityHelper.getOldOpacity(this.order);
@@ -31,5 +34,10 @@ export class OrderRowComponent {
   onWhisper(event: Event): void {
     event.stopPropagation();
     this.whisperClick.emit(this.order);
+  }
+
+  onSubmitVote(event: Event, vote: 'positive' | 'negative'): void {
+    event.stopPropagation();
+    this.submitVote.emit({ order: this.order, vote });
   }
 }

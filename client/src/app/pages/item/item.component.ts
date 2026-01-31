@@ -465,6 +465,10 @@ export class ItemComponent implements OnInit {
     }
   }
 
+  reputationVote(order: ItemOrder, vote: 'positive' | 'negative'): void {
+    this.shopService.submitReputationVote(order.player, vote);
+  }
+
   updateTradeMessage(): void {
     if (!this.selectedWhisperOrder) return;
 

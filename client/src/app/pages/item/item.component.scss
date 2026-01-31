@@ -1034,6 +1034,49 @@
   }
 }
 
+.detail-actions-right {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.detail-vote-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0.2rem 0.4rem;
+  margin-bottom: -0.2rem;
+  margin-top: -0.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.8;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+
+  span {
+    font-weight: 600;
+  }
+
+  &.positive {
+    background-color: #4caf50;
+    color: $parchment;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+
+  &.negative {
+    background-color: #f44336;
+    color: $parchment;
+
+    &:hover {
+      background-color: #da190b;
+    }
+  }
+}
+
 // ============================================
 // RESPONSIVE - Large screens (wider sidebar)
 // ============================================

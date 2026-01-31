@@ -188,6 +188,26 @@ export class ShopService {
     return this.activeShopSubject?.value?.uuid || '';
   }
 
+  submitReputationVote(target: string, vote: 'positive' | 'negative', comment?: string): void {
+    const activeShop = this.activeShopSubject.value;
+    if (activeShop?.uuid && activeShop?.certified?.length > 0) {
+      this.socket.emit('submitReputationVote', {
+        shop: activeShop.uuid,
+        target: target,
+        type: vote,
+        comment: comment || ''
+      });
+    } else {
+      this.toastrService.error(
+        'You need to have an active shop with certified characters to submit reputation votes.',
+        '',
+        {
+          timeOut: 5000
+        }
+      );
+    }
+  }
+
   // Daybreak API
   private daybreakMaxTry = 3;
   private maintainDaybreakLink(): void {

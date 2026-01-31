@@ -18,6 +18,23 @@ export interface Shop {
   authCertified?: boolean;
   items: Array<ShopItem>;
   certified?: Array<string>;
+  reputation?: ShopReputation;
+}
+
+export interface ShopReputation {
+  positive: number;
+  negative: number;
+  usedPoints: number;
+  history: Array<ShopHistory>;
+  lastReset: number;
+}
+
+export interface ShopHistory {
+  date: number;
+  from: string;
+  name: string;
+  type: 'positive' | 'negative';
+  comment?: string;
 }
 
 export interface ShopItem {

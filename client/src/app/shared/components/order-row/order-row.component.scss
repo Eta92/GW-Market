@@ -195,11 +195,18 @@
   object-fit: contain;
 }
 
-.whisper-btn {
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.action-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
+  gap: 4px;
+  padding: 0 8px;
   height: 28px;
   background: rgba($obsidian, 0.5);
   border: 1px solid rgba($gold, 0.3);
@@ -213,10 +220,29 @@
     font-size: 0.7rem;
   }
 
-  &:hover {
+  span {
+    font-size: 0.6rem;
+    font-weight: 600;
+  }
+
+  &.whisper-btn:hover {
     background: rgba($gold, 0.15);
     border-color: rgba($gold, 0.5);
     color: $gold-light;
+    transform: scale(1.05);
+  }
+
+  &.positive:hover {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: #4caf50;
+    color: #4caf50;
+    transform: scale(1.05);
+  }
+
+  &.negative:hover {
+    background: rgba(244, 67, 54, 0.3);
+    border-color: #f44336;
+    color: #f44336;
     transform: scale(1.05);
   }
 }

@@ -44,10 +44,22 @@
     <img class="badge-icon" src="/assets/img/certified.png" title="Certified" *ngIf="order.authCertified" />
   </div>
 
+  <div *ngIf="details" class="h-10 w-full bg-red-600"></div>
+
   <!-- Whisper Button -->
-  <button class="whisper-btn" (click)="onWhisper($event)" title="Contact {{ order.player }}">
-    <i class="fa fa-comment"></i>
-  </button>
+  <div class="action-buttons">
+    <button class="action-btn vote-btn positive" (click)="onSubmitVote($event, 'positive')" title="Positive vote">
+      <span>{{ order.positives }}</span
+      ><i class="fa fa-thumbs-up -mt-0.5"></i>
+    </button>
+    <button class="action-btn vote-btn negative" (click)="onSubmitVote($event, 'negative')" title="Negative vote">
+      <span>{{ order.negatives }}</span
+      ><i class="fa fa-thumbs-down mt-0.5"></i>
+    </button>
+    <button class="action-btn whisper-btn" (click)="onWhisper($event)" title="Contact {{ order.player }}">
+      <i class="fa fa-comment"></i>
+    </button>
+  </div>
 
   <!-- Item Details (weapon, miniature, pre-searing) -->
   <app-item-details *ngIf="showWeaponDetails" [item]="order.item" [details]="order.details"></app-item-details>

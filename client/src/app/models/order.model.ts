@@ -48,6 +48,8 @@ export interface ItemOrder {
   div_quantity?: number;
   // copy from shop
   lastRefresh?: number;
+  positives?: number;
+  negatives?: number;
 }
 
 export enum Time {
