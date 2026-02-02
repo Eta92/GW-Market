@@ -144,6 +144,9 @@ export class ItemComponent implements OnInit {
           player: item.player,
           daybreakOnline: item.daybreakOnline,
           authCertified: item.authCertified,
+          positives: item.positives,
+          negatives: item.negatives,
+          shopId: item.shopId,
           lastRefresh: item.lastRefresh,
           item: item as any,
           details: this.item,
@@ -199,6 +202,9 @@ export class ItemComponent implements OnInit {
           player: item.player,
           daybreakOnline: item.daybreakOnline,
           authCertified: item.authCertified,
+          positives: item.positives,
+          negatives: item.negatives,
+          shopId: item.shopId,
           lastRefresh: item.lastRefresh,
           item: item as any,
           details: this.item,
@@ -529,6 +535,12 @@ export class ItemComponent implements OnInit {
 
   onHome(): void {
     this.router.navigate(['']);
+  }
+
+  goToShop(order: ItemOrder): void {
+    if (order.shopId) {
+      window.open(`https://gwmarket.net/shop/showcase?public=${order.shopId}`, '_blank');
+    }
   }
 
   onCreateOrder(order): void {

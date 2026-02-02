@@ -295,7 +295,7 @@
       <div class="detail-seller-section">
         <div class="detail-seller-row">
           <div>
-            <span class="detail-seller-label">Player</span>
+            <span class="detail-seller-label -mt-1 mb-1 flex">Player</span>
             <div class="detail-seller-badges">
               <span class="badge online" *ngIf="selectedOrder?.daybreakOnline">
                 <img src="/assets/img/online.png" /> Online
@@ -306,7 +306,13 @@
             </div>
           </div>
           <div class="detail-seller-value -mt-1.5">
-            <span class="detail-seller-name">{{ selectedOrder?.player }}</span>
+            <span
+              class="detail-seller-name"
+              [ngClass]="{ 'flex cursor-pointer underline': selectedOrder?.shopId }"
+              (click)="goToShop(selectedOrder)"
+              >{{ selectedOrder?.player }}
+              <i *ngIf="selectedOrder?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+            ></span>
             <div class="detail-actions-right">
               <button
                 class="detail-vote-btn positive"

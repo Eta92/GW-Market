@@ -50,6 +50,7 @@ export interface ItemOrder {
   lastRefresh?: number;
   positives?: number;
   negatives?: number;
+  shopId?: string;
 }
 
 export enum Time {

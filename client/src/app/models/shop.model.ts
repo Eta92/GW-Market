@@ -39,8 +39,6 @@ export interface ShopHistory {
 
 export interface ShopItem {
   player: string;
-  daybreakOnline: boolean;
-  authCertified: boolean;
   name: string;
   orderType: OrderType;
   hidden: boolean;
@@ -54,7 +52,12 @@ export interface ShopItem {
   completed?: boolean;
   removed?: boolean;
   // copy from shop
+  daybreakOnline: boolean;
+  authCertified: boolean;
+  positives?: number;
+  negatives?: number;
   lastRefresh?: number;
+  shopId?: string;
 }
 
 export interface WeaponDetails {
