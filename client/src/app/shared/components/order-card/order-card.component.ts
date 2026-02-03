@@ -22,6 +22,10 @@ export class OrderCardComponent {
     return this.order?.orderType === OrderType.SELL;
   }
 
+  get isSingleRemoval(): boolean {
+    return this.order?.quantity > 1 && this.order?.prices.every(price => price.unit % 1 === 0);
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
     // Only close if click is outside this component
@@ -42,6 +46,8 @@ export class OrderCardComponent {
   @Output() itemClick = new EventEmitter<string>();
   @Output() editClick = new EventEmitter<ShopItem>();
   @Output() hideClick = new EventEmitter<ShopItem>();
+  @Output() singleClick = new EventEmitter<ShopItem>();
+  @Output() singleLeave = new EventEmitter<ShopItem>();
   @Output() completeClick = new EventEmitter<ShopItem>();
   @Output() completeLeave = new EventEmitter<ShopItem>();
   @Output() removeClick = new EventEmitter<ShopItem>();
@@ -77,5 +83,13 @@ export class OrderCardComponent {
 
   onRemoveLeave(): void {
     this.removeLeave.emit(this.order);
+  }
+
+  onSingleClick(): void {
+    this.singleClick.emit(this.order);
+  }
+
+  onSingleLeave(): void {
+    this.singleLeave.emit(this.order);
   }
 }

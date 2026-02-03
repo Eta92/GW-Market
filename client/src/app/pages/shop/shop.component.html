@@ -55,6 +55,15 @@
           </button>
         </div>
 
+        <!-- Pending changes -->
+        <div class="sidebar-stats" *ngIf="pendingChanges > 0" title="There are changes to be sent to the server">
+          <div class="stat-row">
+            <span class="stat-icon changes"><i class="fa fa-sync-alt"></i></span>
+            <span class="stat-label">Changes</span>
+            <span class="stat-value">{{ pendingChanges }}</span>
+          </div>
+        </div>
+
         <!-- Enable/Stop Toggle -->
         <button
           *ngIf="!showcase"
@@ -179,6 +188,8 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
                 (itemClick)="goToItem($event)"
                 (editClick)="editOrder($event)"
                 (hideClick)="onHideOrder($event)"
+                (singleClick)="onSingleOrder($event)"
+                (singleLeave)="onSingleLeave($event)"
                 (completeClick)="onCompleteOrder($event)"
                 (completeLeave)="onCompleteLeave($event)"
                 (removeClick)="onRemoveOrder($event)"
@@ -217,6 +228,8 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
                 (itemClick)="goToItem($event)"
                 (editClick)="editOrder($event)"
                 (hideClick)="onHideOrder($event)"
+                (singleClick)="onSingleOrder($event)"
+                (singleLeave)="onSingleLeave($event)"
                 (completeClick)="onCompleteOrder($event)"
                 (completeLeave)="onCompleteLeave($event)"
                 (removeClick)="onRemoveOrder($event)"

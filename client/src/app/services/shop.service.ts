@@ -15,9 +15,11 @@ import { ItemService } from './item.service';
 @Injectable()
 export class ShopService {
   private init = false;
+  private pendingChanges = 0;
   private daybreakLinked = false;
   private daybreakOnline = false;
   //private commentsSubscribe
+  private pendingChangesSubject = new CurrentSubject<number>();
   private activeShopSubject = new CurrentSubject<Shop>();
   private publicShopSubject = new CurrentSubject<Shop>();
 
@@ -56,7 +58,7 @@ export class ShopService {
       });
       this.activeShopSubject.set(activeShop);
       this.saveShop();
-      this.toastrService.success('Shop registration updated', '', {
+      this.toastrService.success('', 'Shop updated completed', {
         timeOut: 5000
       });
       if (!this.daybreakLinked) {
@@ -91,6 +93,14 @@ export class ShopService {
     const activeShop = this.activeShopSubject.value;
     activeShop.items.push(item);
     this.activeShopSubject.set(activeShop);
+    this.toastrService.success(
+      'Your new item will be visible for customers on next shop update',
+      'Item added to your shop',
+      {
+        timeOut: 3000
+      }
+    );
+    this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
   }
 
@@ -98,6 +108,10 @@ export class ShopService {
     const activeShop = this.activeShopSubject.value;
     activeShop.items[index] = item;
     this.activeShopSubject.set(activeShop);
+    this.toastrService.success('Your changes will be visible for customers on next shop update', 'Item updated', {
+      timeOut: 3000
+    });
+    this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
   }
 
@@ -105,6 +119,37 @@ export class ShopService {
     const activeShop = this.activeShopSubject.value;
     activeShop.items.splice(index, 1);
     this.activeShopSubject.set(activeShop);
+    this.toastrService.success(
+      'The item will be cleared from item lists on next shop update',
+      'Item removed from the shop',
+      {
+        timeOut: 3000
+      }
+    );
+    this.pendingChangesSubject.set(++this.pendingChanges);
+    this.saveShop();
+  }
+
+  singleShopItem(index: number): void {
+    const activeShop = this.activeShopSubject.value;
+    const targetItem = activeShop.items[index];
+    activeShop.items[index] = {
+      ...targetItem,
+      quantity: targetItem.quantity - 1,
+      prices: targetItem.prices.map(price => ({
+        ...price,
+        price: price.unit * (targetItem.quantity - 1)
+      }))
+    };
+    this.activeShopSubject.set(activeShop);
+    this.toastrService.success(
+      'The item will be cleared from item lists on next shop update',
+      'Item amount reduced from the shop',
+      {
+        timeOut: 3000
+      }
+    );
+    this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
   }
 
@@ -112,6 +157,14 @@ export class ShopService {
     const activeShop = this.activeShopSubject.value;
     activeShop.player = name;
     this.activeShopSubject.set(activeShop);
+    this.toastrService.success(
+      'Customer will be able to contact you ingame via this character on next shop update',
+      'Shop player updated',
+      {
+        timeOut: 3000
+      }
+    );
+    this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
   }
 
@@ -153,6 +206,8 @@ export class ShopService {
 
   enableShop(): void {
     this.itemService.resetItemWarnings();
+    this.pendingChanges = 0;
+    this.pendingChangesSubject.set(this.pendingChanges);
     const activeShop = UtilityHelper.copy(this.activeShopSubject.value);
     activeShop.daybreakOnline = this.daybreakOnline;
     activeShop.items = activeShop.items.filter(item => !item.hidden);
@@ -178,6 +233,10 @@ export class ShopService {
 
   getPublicShop(): Observable<Shop> {
     return this.publicShopSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getPendingChanges(): Observable<number> {
+    return this.pendingChangesSubject.asObservable().pipe(debounceTime(0));
   }
 
   getdaybreakOnline(): boolean {

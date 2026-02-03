@@ -51,6 +51,7 @@ export interface ShopItem {
   item?: Item;
   completed?: boolean;
   removed?: boolean;
+  single?: boolean;
   // copy from shop
   daybreakOnline: boolean;
   authCertified: boolean;
@@ -81,6 +82,7 @@ export interface ShopPrice {
   price: number;
   // copy from shopitem
   quantity?: number;
+  unit?: number;
 }
 
 export enum Price {

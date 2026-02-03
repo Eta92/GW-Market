@@ -28,6 +28,7 @@ export class ShopComponent implements OnInit {
   public orderEdit: ShopItem = null;
   public showCandle = false;
   public timeLeft = 0;
+  public pendingChanges = 0;
   public orderFilter: OrderFilter = {
     name: '',
     orderType: null,
@@ -77,6 +78,10 @@ export class ShopComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.shopService.getPendingChanges().subscribe(pendingChanges => {
+      this.pendingChanges = pendingChanges;
+      this.cdr.detectChanges();
+    });
     this.activatedRoute.url.subscribe(urlSegments => {
       this.showcase = urlSegments.some(segment => segment.path.toLowerCase() === 'showcase');
       if (this.showcase) {
@@ -156,6 +161,11 @@ export class ShopComponent implements OnInit {
         origin: PurchaseOrigin.SHOP
       } as Purchase);
     } else {
+      this.toastrService.warning(
+        'Confirm completion by clicking the check button again',
+        'Order validation initiated',
+        { timeOut: 3000 }
+      );
       order.completed = true;
     }
   }
@@ -164,7 +174,41 @@ export class ShopComponent implements OnInit {
     if (order.removed) {
       this.shopService.removeShopItem(this.shop.items.indexOf(order));
     } else {
+      this.toastrService.warning('Confirm deletion by clicking the trash button again', 'Order removal initiated', {
+        timeOut: 3000
+      });
       order.removed = true;
+    }
+  }
+
+  onSingleOrder(order: ShopItem): void {
+    if (order.single) {
+      this.shopService.singleShopItem(this.shop.items.indexOf(order));
+      this.storeService.requestSocket('logPurchase', {
+        name: order.name,
+        shop: this.shop.uuid,
+        prices: order.prices.map(
+          p =>
+            ({
+              type: p.type,
+              quantity: 1,
+              totalPrice: Math.round(p.price / (order.quantity || 1)),
+              unitPrice: Math.round(p.price / (order.quantity || 1))
+            }) as PurchasePrice
+        ),
+        orderType: order.orderType,
+        date: Date.now(),
+        origin: PurchaseOrigin.SHOP
+      } as Purchase);
+    } else {
+      this.toastrService.warning(
+        'Confirm single completion by clicking the check button again',
+        'Single validation initiated',
+        {
+          timeOut: 3000
+        }
+      );
+      order.single = true;
     }
   }
 
@@ -174,6 +218,10 @@ export class ShopComponent implements OnInit {
 
   onRemoveLeave(order: ShopItem): void {
     order.removed = false;
+  }
+
+  onSingleLeave(order: ShopItem): void {
+    order.single = false;
   }
 
   homeBaseUrl(): string {
@@ -259,6 +307,11 @@ export class ShopComponent implements OnInit {
     } else if (this.shop.items.length === 0) {
       this.toastrService.warning('Please place at least one order before onlining your shop', 'No items');
       this.orderWarning = true;
+    } else if (Date.now() - this.shop.lastRefresh < 60 * 1000) {
+      this.toastrService.warning(
+        'Refreshing more than once a minute is a bit rude',
+        'Please be gentle with the server'
+      );
     } else {
       this.shopService.enableShop();
     }

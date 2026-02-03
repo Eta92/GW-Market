@@ -320,6 +320,12 @@
     border: 1px solid rgba($buy-color, 0.4);
     color: $buy-color;
   }
+
+  &.changes {
+    background: rgba($gold, 0.15);
+    border: 1px solid rgba($gold, 0.4);
+    color: $gold-light;
+  }
 }
 
 .stat-label {

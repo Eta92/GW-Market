@@ -47,13 +47,23 @@
         <i class="fa" [class.fa-eye]="!order?.hidden" [class.fa-eye-slash]="order?.hidden"></i>
       </button>
       <button
+        *ngIf="isSingleRemoval"
+        class="action-btn success"
+        [class.confirm]="order?.single"
+        (click)="onSingleClick()"
+        (mouseleave)="onSingleLeave()"
+        title="Complete one"
+      >
+        <i class="fa fa-check"></i>
+      </button>
+      <button
         class="action-btn success"
         [class.confirm]="order?.completed"
         (click)="onCompleteClick()"
         (mouseleave)="onCompleteLeave()"
         [title]="completeTitle"
       >
-        <i class="fa fa-check"></i>
+        <i class="fa fa-check-double"></i>
       </button>
       <button
         class="action-btn danger"
@@ -73,12 +83,19 @@
       </button>
       <div class="actions-dropdown" *ngIf="menuOpen" (click)="$event.stopPropagation()">
         <div class="dropdown-inner">
-          <button class="dropdown-item" (click)="onEditClick(); closeMenu()">
-            <i class="fa fa-pen"></i> Edit
-          </button>
+          <button class="dropdown-item" (click)="onEditClick(); closeMenu()"><i class="fa fa-pen"></i> Edit</button>
           <button class="dropdown-item" (click)="onHideClick(); closeMenu()">
             <i class="fa" [class.fa-eye]="!order?.hidden" [class.fa-eye-slash]="order?.hidden"></i>
             {{ order?.hidden ? 'Show' : 'Hide' }}
+          </button>
+          <button
+            *ngIf="isSingleRemoval"
+            class="dropdown-item success"
+            [class.confirm]="order?.single"
+            (click)="onSingleClick()"
+            (mouseleave)="onSingleLeave()"
+          >
+            <i class="fa fa-check"></i> Complete one
           </button>
           <button
             class="dropdown-item success"
