@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import '../../assets/fontawesome/css/all.css';
+@import './app/shared/styles/variables.scss';
 
 // ============================================
 // CSS CUSTOM PROPERTIES
@@ -24,7 +25,8 @@
 // ============================================
 // BASE STYLES
 // ============================================
-html, body {
+html,
+body {
   height: 100%;
   overflow: hidden;
   background-color: var(--gwt-void);
@@ -42,7 +44,11 @@ html, body {
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family:
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    sans-serif;
   font-size: 14px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -73,7 +79,7 @@ body {
 // ============================================
 .scroll {
   scrollbar-width: thin;
-  scrollbar-color: var(--gwt-stone) var(--gwt-obsidian);
+  scrollbar-color: rgba($gold, 0.35) rgba($obsidian, 0.5);
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -81,15 +87,14 @@ body {
   }
 
   &::-webkit-scrollbar-track {
-    background: var(--gwt-obsidian);
+    background: rgba($obsidian, 0.5);
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--gwt-stone);
+    background: rgba($gold, 0.35);
     border-radius: 4px;
-
     &:hover {
-      background: #3a3a40;
+      background: rgba($gold, 0.8);
     }
   }
 }
@@ -133,19 +138,16 @@ body {
 // CARD SYSTEM
 // ============================================
 .card {
-  background: linear-gradient(
-    145deg,
-    rgba(26, 26, 30, 0.95) 0%,
-    rgba(18, 18, 20, 0.98) 100%
-  );
+  background: linear-gradient(145deg, rgba(26, 26, 30, 0.95) 0%, rgba(18, 18, 20, 0.98) 100%);
   border: 1px solid rgba(212, 168, 85, 0.15);
   border-radius: 4px;
   transition: all var(--transition-base);
 
   &:hover {
     border-color: rgba(212, 168, 85, 0.35);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(212, 168, 85, 0.08);
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(212, 168, 85, 0.08);
   }
 }
 
@@ -297,12 +299,7 @@ body {
 // ============================================
 .divider {
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212, 168, 85, 0.3) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 168, 85, 0.3) 50%, transparent 100%);
 }
 
 // ============================================
@@ -329,8 +326,12 @@ body {
 // ANIMATION UTILITIES
 // ============================================
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
@@ -466,7 +467,11 @@ body {
     border-radius: 6px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
     padding: 1rem 1.25rem 1rem 1rem;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family:
+      'Segoe UI',
+      system-ui,
+      -apple-system,
+      sans-serif;
 
     &:hover {
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);

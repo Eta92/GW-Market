@@ -101,12 +101,13 @@ export class ItemService {
           category.sellWeek = category.items.reduce((sum, i) => sum + (i.sellWeek || 0), 0);
           category.buyWeek = category.items.reduce((sum, i) => sum + (i.buyWeek || 0), 0);
           category.previews = [];
+          let cattry = 0;
           while (category.previews.length < 4 && category.previews.length < category.items.length) {
             const randomIndex = Math.floor(Math.random() * category.items.length);
             const previewItem = category.items[randomIndex];
             const iconName = previewItem?.img || previewItem?.name;
             // infinite loop for upgrades with same icon
-            if (iconName /*&& !category.previews.includes(iconName)*/) {
+            if (iconName && (!category.previews.includes(iconName) || cattry > 16)) {
               if (!this.itemNameBase[iconName]) {
                 this.itemNameBase[iconName] = {
                   name: iconName,
@@ -116,6 +117,8 @@ export class ItemService {
                 };
               }
               category.previews.push(iconName);
+            } else {
+              cattry++;
             }
           }
         });
@@ -134,7 +137,7 @@ export class ItemService {
           if (previewCategory && previewCategory.previews.length > 0) {
             const randomItemIndex = Math.floor(Math.random() * previewCategory.previews.length);
             const previewItemName = previewCategory.previews[randomItemIndex];
-            if (previewItemName && (!family.previews.includes(previewItemName) || famtry > 10)) {
+            if (previewItemName && (!family.previews.includes(previewItemName) || famtry > 16)) {
               family.previews.push(previewItemName);
             } else {
               famtry++;
@@ -148,9 +151,11 @@ export class ItemService {
       activeTree.buyDay = activeTree.families.reduce((sum, f) => sum + (f.buyDay || 0), 0);
       activeTree.sellWeek = activeTree.families.reduce((sum, f) => sum + (f.sellWeek || 0), 0);
       activeTree.buyWeek = activeTree.families.reduce((sum, f) => sum + (f.buyWeek || 0), 0);
-      this.availableTreeSubject.next(activeTree);
-      this.treeLoaded = true;
-      this.setReady();
+      this.availableTreeSubject.set(activeTree);
+      if (!this.treeLoaded) {
+        this.treeLoaded = true;
+        this.setReady();
+      }
     }
   }
 

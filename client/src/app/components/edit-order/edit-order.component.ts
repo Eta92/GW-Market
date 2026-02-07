@@ -19,7 +19,7 @@ import { StoreService } from '@app/services/store.service';
 import { LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-attributes';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'app-edit-order',
@@ -103,12 +103,15 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       this.item = item;
       this.cdr.detectChanges();
     });
-    this.itemService.getAvailableTree().subscribe((tree: AvailableTree) => {
-      this.allItems = tree;
-      if (this.original) {
-        this.loadOrder(this.original);
-      }
-    });
+    this.itemService
+      .getAvailableTree()
+      .pipe(take(1))
+      .subscribe((tree: AvailableTree) => {
+        this.allItems = tree;
+        if (this.original) {
+          this.loadOrder(this.original);
+        }
+      });
     this.refreshBindPrices();
   }
 

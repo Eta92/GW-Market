@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Shop } from '@app/models/shop.model';
 import { StoreService } from '@app/services/store.service';
 import { ToastrService } from 'ngx-toastr';
@@ -41,7 +41,7 @@ export class ActivePlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: [this.shop ? this.shop.player : '']
+      name: [this.shop ? this.shop.player : '', Validators.pattern(/.*\s+.*/)]
     });
     this.storeService.getShopSecret().subscribe((certificate: { uuid: string; secret: string }) => {
       if (certificate) {
@@ -73,7 +73,13 @@ export class ActivePlayerComponent implements OnInit {
   }
 
   onConfirmPlayer(): void {
-    const playerName = this.form.get('name')?.value;
-    this.confirmPlayer.emit(playerName);
+    if (this.form.valid) {
+      const playerName = this.form.get('name')?.value;
+      this.confirmPlayer.emit(playerName);
+    } else {
+      this.toastrService.error('Please enter a valid player name (at least two names)', '', {
+        timeOut: 3000
+      });
+    }
   }
 }

@@ -59,8 +59,8 @@ export class HomeComponent implements OnInit {
   ];
 
   public viewModeOptions: ToggleOption[] = [
-    { value: 'grid', label: '', icon: 'fa-th-large' },
-    { value: 'list', label: '', icon: 'fa-list' }
+    { value: 'grid', label: 'grid', icon: 'fa-th-large' },
+    { value: 'list', label: 'list', icon: 'fa-list' }
   ];
 
   @ViewChild('list') private listRef: ElementRef<HTMLElement>;
