@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,7 @@ export class QtyInputComponent implements ControlValueAccessor {
   @Input() min = 1;
   @Input() max = 9999;
   @Input() step = 1;
+  @Input() small = false;
 
   value = 1;
   disabled = false;

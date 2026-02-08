@@ -10,6 +10,24 @@
   overflow: hidden;
   transition: all $transition-base;
 
+  &.small {
+    height: 28px;
+
+    .qty-btn {
+      width: 28px;
+      padding: $spacing-xs 0;
+
+      i {
+        font-size: 0.65rem;
+      }
+    }
+
+    .qty-input {
+      min-width: 40px;
+      font-size: 0.85rem;
+    }
+  }
+
   &:focus-within {
     border-color: $gold;
     box-shadow: 0 0 0 2px rgba($gold, 0.1);

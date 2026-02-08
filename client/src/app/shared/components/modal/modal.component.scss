@@ -19,6 +19,11 @@
   overflow-y: auto;
   animation: slideUp 0.25s ease;
 
+  &.full-screen {
+    max-width: unset;
+    width: 95vw;
+  }
+
   // Custom scrollbar
   &::-webkit-scrollbar {
     width: 6px;

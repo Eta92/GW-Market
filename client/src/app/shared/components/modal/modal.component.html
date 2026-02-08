@@ -1,13 +1,5 @@
-<div
-  class="modal-overlay"
-  *ngIf="isOpen"
-  (click)="onBackdropClick()"
->
-  <div
-    class="modal-content"
-    [ngClass]="contentClass"
-    (click)="onContentClick($event)"
-  >
+<div class="modal-overlay" *ngIf="isOpen" (click)="onBackdropClick()">
+  <div class="modal-content" [ngClass]="contentClass" [class.full-screen]="fullScreen" (click)="onContentClick($event)">
     <ng-content></ng-content>
   </div>
 </div>

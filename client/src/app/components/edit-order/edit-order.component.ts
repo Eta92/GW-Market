@@ -240,9 +240,6 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       }
       order.orderDetails = this.formOther.value;
       this.confirmOrder.emit(order);
-      while (this.getprices()?.value.length > 1) {
-        this.getprices().removeAt(1);
-      }
       this.resetForms();
       this.refreshBindPrices();
     }
@@ -254,6 +251,9 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   resetForms(): void {
+    while (this.getprices()?.value.length > 1) {
+      this.getprices().removeAt(1);
+    }
     this.form.reset({
       name: '',
       orderType: OrderType.SELL,

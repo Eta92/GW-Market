@@ -1,0 +1,150 @@
+<div class="order-modal font-fritz" (click)="$event.stopPropagation()">
+  <!-- Modal Header -->
+  <div class="modal-header">
+    <div class="header-left">
+      <div class="header-title">
+        <h2>{{ confirm || 'Place Order' }}</h2>
+      </div>
+    </div>
+    <div class="header-prices">
+      <ng-container *ngFor="let price of availablePrices; let i = index">
+        <div class="compact-input cursor-pointer" (click)="togglePrice(price)">
+          <img class="input-icon" [src]="price.icon | currencySource" alt="" />
+          <div class="num-input leading-6" [class.inactive]="!price.active">{{ price.label }}</div>
+        </div>
+      </ng-container>
+    </div>
+    <button class="close-btn" (click)="cancelOrder()" title="Close">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+
+  <!-- Single-line Grid -->
+  <div class="grid-body scroll">
+    <!-- Header row -->
+    <div class="grid-line grid-headers" [style.grid-template-columns]="gridColumns">
+      <div></div>
+      <div class="gh">Item name</div>
+      <div class="gh">Qty</div>
+      <ng-container *ngFor="let price of activePrices; let i = index">
+        <div class="gh">Per Unit</div>
+        <div class="gh">Total</div>
+      </ng-container>
+      <div class="gh">Type</div>
+      <div class="gh">Visibility</div>
+      <div class="gh">Description</div>
+    </div>
+
+    <ng-container *ngFor="let formGroup of formGroups; let i = index" [formGroup]="formGroup">
+      <!-- Input row -->
+      <div class="grid-line grid-inputs" [style.grid-template-columns]="gridColumns" [class.alternate]="i % 2 === 1">
+        <!-- Item -->
+        <div class="item-preview has-item">
+          <img *ngIf="items[i]" [src]="getImageSource(items[i].name)" [alt]="items[i]?.name" />
+        </div>
+        <div class="header-title text-no-overflow" [title]="items[i].name">
+          <div class="item-name" *ngIf="items[i]">{{ items[i].name }}</div>
+          <div class="item-name empty" *ngIf="!items[i]">Select an item below</div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="gi">
+          <app-qty-input formControlName="quantity" [small]="true" [min]="1" [max]="9999"></app-qty-input>
+        </div>
+
+        <!-- Price groups inline -->
+        <ng-container formArrayName="prices">
+          <ng-container *ngFor="let price of getFormPrices(formGroup).controls; let p = index" [formGroupName]="p">
+            <ng-container *ngIf="availablePrices[p].active">
+              <div class="gi">
+                <div class="compact-input">
+                  <img class="input-icon" [src]="price.get('type')?.value | currencySource" alt="" />
+                  <input
+                    id="unit-{{ i }}-{{ availablePrices[p].label }}"
+                    type="number"
+                    class="num-input"
+                    formControlName="unit"
+                    min="0"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <div class="gi">
+                <div class="compact-input">
+                  <img class="input-icon" [src]="price.get('type')?.value | currencySource" alt="" />
+                  <input
+                    id="price-{{ i }}-{{ availablePrices[p].label }}"
+                    type="number"
+                    class="num-input"
+                    formControlName="price"
+                    min="0"
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+
+        <!-- Order Type -->
+        <div class="gi">
+          <div class="type-toggle">
+            <button
+              class="type-btn sell"
+              [class.active]="formGroup.get('orderType')?.value === OrderType.SELL"
+              (click)="formGroup.patchValue({ orderType: OrderType.SELL })"
+            >
+              <i class="fa fa-arrow-up"></i> WTS
+            </button>
+            <button
+              class="type-btn buy"
+              [class.active]="formGroup.get('orderType')?.value === OrderType.BUY"
+              (click)="formGroup.patchValue({ orderType: OrderType.BUY })"
+            >
+              <i class="fa fa-arrow-down"></i> WTB
+            </button>
+          </div>
+        </div>
+
+        <!-- Visibility -->
+        <div class="gi">
+          <div class="type-toggle">
+            <button
+              class="type-btn show"
+              [class.active]="!formGroup.get('hidden')?.value"
+              (click)="formGroup.patchValue({ hidden: false })"
+            >
+              <i class="fa fa-eye"></i> Visible
+            </button>
+            <button
+              class="type-btn mask"
+              [class.active]="formGroup.get('hidden')?.value"
+              (click)="formGroup.patchValue({ hidden: true })"
+            >
+              <i class="fa fa-eye-slash"></i> Hidden
+            </button>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="gi">
+          <input
+            id="description-{{ i }}"
+            class="notes-inline"
+            type="text"
+            formControlName="description"
+            placeholder="Notes..."
+          />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button class="cancel-btn" (click)="cancelOrder()"><i class="fa fa-times"></i> Cancel</button>
+    <button class="confirm-btn" (click)="validateOrders()">
+      {{ confirm || 'Create Order' }}
+    </button>
+  </div>
+</div>

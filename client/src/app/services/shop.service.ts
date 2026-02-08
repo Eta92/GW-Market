@@ -115,6 +115,17 @@ export class ShopService {
     this.saveShop();
   }
 
+  updateAllShopItems(items: Array<ShopItem>): void {
+    const activeShop = this.activeShopSubject.value;
+    activeShop.items = activeShop.items.map((item, index) => ({ ...item, ...items[index] }));
+    this.activeShopSubject.set(activeShop);
+    this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
+      timeOut: 3000
+    });
+    this.pendingChangesSubject.set(++this.pendingChanges);
+    this.saveShop();
+  }
+
   removeShopItem(index: number): void {
     const activeShop = this.activeShopSubject.value;
     activeShop.items.splice(index, 1);

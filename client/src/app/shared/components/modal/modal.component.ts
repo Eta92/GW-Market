@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ModalComponent {
   @Input() isOpen = false;
+  @Input() fullScreen = false;
   @Input() contentClass = '';
   @Input() closeOnBackdrop = true;
 

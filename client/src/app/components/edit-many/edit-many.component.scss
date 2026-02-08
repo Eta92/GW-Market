@@ -1,0 +1,471 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/form-controls';
+
+$row-h: 28px;
+$gap: 6px;
+
+// ── Modal Shell ──
+.order-modal {
+  position: relative;
+  width: 98vw;
+  max-width: 1800px;
+  background: linear-gradient(145deg, rgba($obsidian, 0.98) 0%, rgba($obsidian-light, 0.98) 100%);
+  border: 2px solid rgba($gold, 0.6);
+  border-radius: 10px;
+  box-shadow:
+    0 0 50px rgba($gold, 0.12),
+    0 16px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba($gold, 0.1);
+  overflow: hidden;
+}
+
+// ── Header ──
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem;
+  background: rgba($obsidian, 0.95);
+  border-bottom: 1px solid rgba($gold, 0.25);
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .header-prices {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    .compact-input:hover {
+      background: rgba($gold, 0.08);
+      border-color: $gold;
+    }
+
+    .inactive {
+      opacity: 0.4;
+      text-decoration: line-through;
+    }
+  }
+
+  .item-preview {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(145deg, $obsidian-light, $obsidian);
+    border: 1.5px solid rgba($gold, 0.4);
+    border-radius: 5px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+    }
+    i {
+      font-size: 0.75rem;
+      color: $sepia;
+    }
+    &.empty {
+      border-style: dashed;
+      border-color: rgba($sepia, 0.5);
+    }
+    &.has-item {
+      border-color: $gold;
+      box-shadow: 0 0 8px rgba($gold, 0.15);
+    }
+  }
+
+  .header-title {
+    h2 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: $gold;
+      margin: 0;
+      letter-spacing: 0.03em;
+    }
+    .item-name {
+      font-size: 0.6rem;
+      color: $parchment;
+      margin-top: 1px;
+      max-width: 220px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &.empty {
+        color: $sepia;
+        font-style: italic;
+      }
+    }
+  }
+
+  .close-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba($parchment, 0.2);
+    border-radius: 4px;
+    color: rgba($parchment, 0.5);
+    font-size: 0.65rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    &:hover {
+      background: rgba($parchment, 0.1);
+      border-color: rgba($parchment, 0.4);
+      color: $parchment;
+    }
+  }
+}
+
+// ── Grid Body ──
+.grid-body {
+  height: calc(90vh - 84px);
+  overflow-y: auto;
+  padding: 0.4rem 0.75rem 0.5rem;
+}
+
+// ── Grid Line — shared for headers + inputs ──
+.grid-line {
+  display: grid;
+  gap: $gap;
+  align-items: center;
+  &.alternate {
+    background: rgba($obsidian, 1);
+  }
+}
+
+// Column template (dynamic via style binding in template)
+// Fallback for non-search layout
+.grid-headers {
+  margin-bottom: 3px;
+}
+
+.grid-inputs {
+  // ensure children stretch to fill cells
+  > * {
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+// ── Header cells ──
+.gh {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: rgba($parchment, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+
+  i {
+    font-size: 0.45rem;
+    color: rgba($gold, 0.6);
+  }
+}
+
+// ── Input cells ──
+.gi {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: $row-h;
+
+  // Force all child components to fill cell width
+  > * {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+// ── Type toggle ──
+.type-toggle {
+  display: flex;
+  height: $row-h;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba($gold, 0.25);
+  width: 100%;
+
+  .type-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 0;
+    height: 100%;
+    background: rgba($obsidian-light, 0.6);
+    border: none;
+    color: rgba($parchment, 0.5);
+    font-size: 0.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+
+    i {
+      font-size: 0.5rem;
+    }
+    &:first-child {
+      border-right: 1px solid rgba($gold, 0.15);
+    }
+
+    &:hover:not(.active) {
+      background: rgba($gold, 0.08);
+      color: rgba($parchment, 0.7);
+    }
+    &.sell.active {
+      background: rgba($sell-color, 0.18);
+      color: $sell-color;
+    }
+    &.buy.active {
+      background: rgba($buy-color, 0.18);
+      color: $buy-color;
+    }
+    &.show.active {
+      background: rgba($gold, 0.25);
+      color: $gold;
+    }
+    &.mask.active {
+      background: rgba($parchment, 0.18);
+      color: $parchment;
+    }
+  }
+}
+
+// ── Compact input (price fields) ──
+.compact-input {
+  display: flex;
+  align-items: center;
+  height: $row-h;
+  background: rgba($obsidian, 0.6);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  width: 100%;
+
+  &:focus-within {
+    border-color: $gold;
+    box-shadow: 0 0 0 2px rgba($gold, 0.1);
+  }
+
+  .input-icon {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    margin-left: 0.3rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  }
+
+  .num-input {
+    flex: 1;
+    height: 100%;
+    padding: 0 0.3rem;
+    background: transparent;
+    border: none;
+    color: $gold-light;
+    font-size: 0.7rem;
+    font-weight: 600;
+    min-width: 0;
+
+    &::placeholder {
+      color: $sepia;
+    }
+    &:focus {
+      outline: none;
+    }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+// ── Remove button ──
+.remove-btn {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(#e74c3c, 0.08);
+  border: 1px solid rgba(#e74c3c, 0.3);
+  border-radius: 3px;
+  color: rgba(#e74c3c, 0.65);
+  font-size: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: rgba(#e74c3c, 0.2);
+    border-color: #e74c3c;
+    color: #e74c3c;
+  }
+}
+
+// ── Add currency button ──
+.add-currency-btn {
+  width: 100%;
+  height: $row-h;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px dashed rgba($gold, 0.25);
+  border-radius: 4px;
+  color: rgba($gold, 0.5);
+  font-size: 0.55rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: rgba($gold, 0.06);
+    border-color: $gold;
+    border-style: solid;
+    color: $gold;
+  }
+}
+
+// ── Inline notes input ──
+.notes-inline {
+  width: 100%;
+  height: $row-h;
+  padding: 0 0.35rem;
+  background: rgba($obsidian-light, 0.4);
+  border: 1px solid rgba($gold, 0.18);
+  border-radius: 4px;
+  color: $parchment;
+  font-size: 0.65rem;
+  transition: all 0.15s ease;
+
+  &::placeholder {
+    color: $sepia;
+  }
+  &:focus {
+    outline: none;
+    border-color: $gold;
+    box-shadow: 0 0 0 2px rgba($gold, 0.1);
+  }
+}
+
+// ── Footer ──
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-top: 1px solid rgba($gold, 0.15);
+  background: rgba($obsidian, 0.95);
+}
+
+.cancel-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.25rem 0.55rem;
+  background: transparent;
+  border: 1px solid rgba($parchment, 0.2);
+  border-radius: 4px;
+  color: rgba($parchment, 0.6);
+  font-size: 0.65rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  i {
+    font-size: 0.55rem;
+  }
+
+  &:hover {
+    background: rgba($parchment, 0.06);
+    border-color: rgba($parchment, 0.35);
+    color: $parchment;
+  }
+}
+
+.confirm-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem 0.85rem;
+  background: linear-gradient(135deg, $gold-dark 0%, $gold 100%);
+  border: none;
+  border-radius: 4px;
+  color: $obsidian;
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba($gold, 0.2);
+
+  i {
+    font-size: 0.6rem;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba($gold, 0.3);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.sell,
+  &.buy,
+  &.show,
+  &.mask {
+    background: linear-gradient(135deg, $gold-dark 0%, $gold 100%);
+    color: $obsidian;
+    &:hover {
+      background: linear-gradient(135deg, $gold 0%, $gold-light 100%);
+    }
+  }
+}
+
+// ── Shared form overrides ──
+.form-group {
+  @extend %form-group;
+  flex: 1;
+  min-width: 0;
+}
+
+.form-input {
+  @extend %form-input;
+  height: $row-h;
+  font-size: 0.7rem;
+  padding: 0 0.35rem;
+}
+
+.form-select {
+  @extend %form-select;
+  height: $row-h;
+  font-size: 0.7rem;
+}
+
+.toggle-group {
+  @extend %toggle-group;
+  .toggle-btn {
+    @extend %toggle-btn;
+  }
+}

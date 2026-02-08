@@ -1,10 +1,5 @@
-<div class="qty-input-wrapper" [class.disabled]="disabled">
-  <button
-    type="button"
-    class="qty-btn decrement"
-    [disabled]="disabled || value <= min"
-    (click)="decrement($event)"
-  >
+<div class="qty-input-wrapper" [class.disabled]="disabled" [ngClass]="{ small: small }">
+  <button type="button" class="qty-btn decrement" [disabled]="disabled || value <= min" (click)="decrement($event)">
     <i class="fa fa-minus"></i>
   </button>
   <input
@@ -17,12 +12,7 @@
     (input)="onInputChange($event)"
     (blur)="onBlur()"
   />
-  <button
-    type="button"
-    class="qty-btn increment"
-    [disabled]="disabled || value >= max"
-    (click)="increment($event)"
-  >
+  <button type="button" class="qty-btn increment" [disabled]="disabled || value >= max" (click)="increment($event)">
     <i class="fa fa-plus"></i>
   </button>
 </div>

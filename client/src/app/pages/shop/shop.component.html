@@ -108,6 +108,10 @@
             <i class="fa fa-fire"></i>
             <span>New</span>
           </button>
+          <button class="sidebar-action-btn col-span-2" (click)="orderEditAll = true">
+            <i class="fa fa-pen"></i>
+            <span>Edit All Orders</span>
+          </button>
           <button class="sidebar-action-btn col-span-2" (click)="getLink()">
             <i class="fa fa-link"></i>
             <span>Public Link</span>
@@ -259,6 +263,16 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     (closeEdit)="orderEdit = null"
     (confirmOrder)="onEditOrder($event)"
   ></app-edit-order>
+</app-modal>
+
+<!-- Edit All Orders Modal -->
+<app-modal [isOpen]="!!orderEditAll" [fullScreen]="true" (closed)="orderEditAll = false">
+  <app-edit-many
+    [originals]="shop?.items || []"
+    [confirm]="'Edit All Orders'"
+    (closeEdit)="orderEditAll = false"
+    (confirmOrders)="onEditOrders($event)"
+  ></app-edit-many>
 </app-modal>
 
 <!-- New Order Component -->

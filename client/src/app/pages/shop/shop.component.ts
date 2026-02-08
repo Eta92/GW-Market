@@ -26,6 +26,7 @@ export class ShopComponent implements OnInit {
   public details: Array<string> = [];
   public popup = false;
   public orderEdit: ShopItem = null;
+  public orderEditAll = false;
   public showCandle = false;
   public timeLeft = 0;
   public pendingChanges = 0;
@@ -134,6 +135,11 @@ export class ShopComponent implements OnInit {
     const editIndex = this.shop.items.indexOf(this.orderEdit);
     this.shopService.updateShopItem(editIndex, order);
     this.orderEdit = null;
+  }
+
+  onEditOrders(orders: Array<ShopItem>): void {
+    this.shopService.updateAllShopItems(orders);
+    this.orderEditAll = false;
   }
 
   onHideOrder(order: ShopItem): void {
