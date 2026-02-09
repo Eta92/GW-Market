@@ -112,12 +112,22 @@
             <i class="fa fa-pen"></i>
             <span>Edit All Orders</span>
           </button>
+          <button class="sidebar-action-btn col-span-2" (click)="loadDaybreakItems()">
+            <i class="fa fa-rotate"></i>
+            <span>Dump From Daybreak</span>
+          </button>
           <button class="sidebar-action-btn col-span-2" (click)="getLink()">
             <i class="fa fa-link"></i>
             <span>Public Link</span>
           </button>
 
-          <textarea *ngIf="showLink" class="sidebar-action-btn col-span-2" #area (focus)="area.select()" readonly>
+          <textarea
+            *ngIf="showLink"
+            class="sidebar-action-btn col-span-2 h-[70px]"
+            #area
+            (focus)="area.select()"
+            readonly
+          >
 https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           >
         </div>
@@ -272,6 +282,17 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     [confirm]="'Edit All Orders'"
     (closeEdit)="orderEditAll = false"
     (confirmOrders)="onEditOrders($event)"
+  ></app-edit-many>
+</app-modal>
+
+<!-- Edit All Orders Modal -->
+<app-modal [isOpen]="!!daybreakEdit" [fullScreen]="true" (closed)="daybreakEdit = false">
+  <app-edit-many
+    *ngIf="daybreakItems?.length > 0"
+    [daybreaks]="daybreakItems"
+    [confirm]="'Import Selected Daybreak Orders'"
+    (closeEdit)="daybreakEdit = false"
+    (confirmOrders)="onImportDaybreaks($event)"
   ></app-edit-many>
 </app-modal>
 

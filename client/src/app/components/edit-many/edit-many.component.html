@@ -23,6 +23,7 @@
   <div class="grid-body scroll">
     <!-- Header row -->
     <div class="grid-line grid-headers" [style.grid-template-columns]="gridColumns">
+      <div *ngIf="daybreaks" class="gh">Use</div>
       <div></div>
       <div class="gh">Item name</div>
       <div class="gh">Qty</div>
@@ -39,6 +40,12 @@
       <!-- Input row -->
       <div class="grid-line grid-inputs" [style.grid-template-columns]="gridColumns" [class.alternate]="i % 2 === 1">
         <!-- Item -->
+        <div *ngIf="daybreaks" class="gi">
+          <label class="import-toggle">
+            <input type="checkbox" formControlName="import" />
+            <span class="custom-checkbox"></span>
+          </label>
+        </div>
         <div class="item-preview has-item">
           <img *ngIf="items[i]" [src]="getImageSource(items[i].name)" [alt]="items[i]?.name" />
         </div>

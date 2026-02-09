@@ -25,7 +25,7 @@ import { Subscription, take } from 'rxjs';
 })
 export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
   @Input() originals?: Array<ShopItem>;
-  @Input() daybreaks?: Array<any>;
+  @Input() daybreaks?: Array<{ name: string; quantity: number }>;
   @Input() confirm: string;
 
   @Output() closeEdit = new EventEmitter<void>();
@@ -67,6 +67,9 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
     if (this.originals) {
       this.loadOrders(this.originals);
     }
+    if (this.daybreaks) {
+      this.loadDaybreaks(this.daybreaks);
+    }
     // if (this.daybreaks) {
     //   this.loadDaybreaks(this.daybreaks);
     // }
@@ -77,6 +80,9 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
         this.allItems = tree;
         if (this.originals) {
           this.loadOrders(this.originals);
+        }
+        if (this.daybreaks) {
+          this.loadDaybreaks(this.daybreaks);
         }
       });
     this.refreshBindPrices();
@@ -109,6 +115,33 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
         prices: this.fb.array(prices),
         quantity: [order.quantity, Validators.min(1)],
         description: [order.description]
+      });
+    });
+    this.forms = this.fb.array(orderArray);
+    this.refreshBindPrices();
+  }
+
+  loadDaybreaks(daybreaks: Array<{ name: string; quantity: number }>): void {
+    this.items = daybreaks
+      .map(db => db.name)
+      .map(name => this.itemService.getItemBase(name))
+      .filter(item => item !== null) as Array<Item>;
+    const orderArray = daybreaks.map(db => {
+      const prices = this.availablePrices.map(p => {
+        return this.fb.group({
+          type: [p.type, Validators.required],
+          price: [0, Validators.min(0)],
+          unit: [0, Validators.min(0)]
+        });
+      });
+      return this.fb.group({
+        import: [false],
+        name: [db.name, Validators.required],
+        orderType: [OrderType.SELL, Validators.required],
+        hidden: [false],
+        prices: this.fb.array(prices),
+        quantity: [db.quantity, Validators.min(1)],
+        description: ['']
       });
     });
     this.forms = this.fb.array(orderArray);
@@ -164,7 +197,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
       orders.forEach((order, index) => {
         order.prices = order.prices.filter(p => p.price > 0);
       });
-      this.confirmOrders.emit(orders);
+      this.confirmOrders.emit(orders.filter(o => o.prices.length > 0 && (!this.daybreaks || o.import)));
       this.resetForms();
       this.refreshBindPrices();
     }
@@ -195,6 +228,10 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
 
   get gridColumns(): string {
     const cols: string[] = [];
+
+    if (this.daybreaks) {
+      cols.push('32px'); // Import toggle
+    }
 
     // Item search
     cols.push('32px');

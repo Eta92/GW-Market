@@ -126,6 +126,17 @@ export class ShopService {
     this.saveShop();
   }
 
+  addDaybreakShopItems(items: Array<ShopItem>): void {
+    const activeShop = this.activeShopSubject.value;
+    activeShop.items = [...activeShop.items, ...items];
+    this.activeShopSubject.set(activeShop);
+    this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
+      timeOut: 3000
+    });
+    this.pendingChangesSubject.set(++this.pendingChanges);
+    this.saveShop();
+  }
+
   removeShopItem(index: number): void {
     const activeShop = this.activeShopSubject.value;
     activeShop.items.splice(index, 1);
@@ -232,7 +243,7 @@ export class ShopService {
 
   disableShop(): void {
     const activeShop = this.activeShopSubject.value;
-    activeShop.lastRefresh = undefined;
+    activeShop.lastRefresh = Date.now() - 1000 * 60 * 15;
     this.activeShopSubject.set(activeShop);
     this.saveShop();
     this.socket.emit('closeShop', activeShop.uuid);
@@ -314,5 +325,63 @@ export class ShopService {
     } else {
       this.daybreakLinked = false;
     }
+  }
+
+  public async fetchDaybreakItems(): Promise<Array<{ name: string; quantity: number }>> {
+    const prom = new Promise<Array<{ name: string; quantity: number }>>((resolve, reject) => {
+      const items = [];
+      this.http.get('http://localhost:5080/api/v1/rest/inventory').subscribe({
+        next: data => {
+          const allBags = (data as any)?.bags || [];
+          allBags.forEach(bag => {
+            if (bag?.bagType === 'Storage') {
+              bag.items?.forEach(item => {
+                const name = item?.decodedSingleName || item?.decodedCompleteName || item?.decodedName || '';
+                const parsedName =
+                  name
+                    .replace(/<[^>]+>(.*?)<\/[^>]+>/, '$1')
+                    .replace(/\"/gi, '')
+                    .replace(/Inscription: /, '') || '';
+                if (this.itemService.getItemBase(parsedName, false)) {
+                  items.push({
+                    name: parsedName || '',
+                    quantity: item?.quantity || 0
+                  });
+                }
+              });
+            }
+          });
+
+          const groupedItems = items.reduce(
+            (acc, item) => {
+              const existing = acc.find(i => i.name === item.name);
+              if (existing) {
+                existing.quantity += item.quantity;
+              } else {
+                acc.push({ ...item });
+              }
+              return acc;
+            },
+            [] as Array<{ name: string; quantity: number }>
+          );
+          this.toastrService.success('Successfully fetched items from Daybreak API', 'Daybreak items loaded', {
+            timeOut: 3000
+          });
+          resolve(groupedItems);
+        },
+        error: error => {
+          console.log('failed to connect to daybreak api', error);
+          this.toastrService.error(
+            'Make sure your Daybreak Launcher is running and you have the API enabled.',
+            'Failed to connect to Daybreak API.',
+            {
+              timeOut: 5000
+            }
+          );
+          reject(error);
+        }
+      });
+    });
+    return prom;
   }
 }

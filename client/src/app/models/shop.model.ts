@@ -52,6 +52,7 @@ export interface ShopItem {
   completed?: boolean;
   removed?: boolean;
   single?: boolean;
+  import?: boolean;
   // copy from shop
   daybreakOnline: boolean;
   authCertified: boolean;

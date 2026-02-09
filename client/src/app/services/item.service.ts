@@ -183,9 +183,9 @@ export class ItemService {
     }
   }
 
-  getItemBase(name: string): BasicItem | null {
+  getItemBase(name: string, warning = true): BasicItem | null {
     if (!this.itemNameBase[name]) {
-      if (this.treeLoaded && this.warningMap[name] !== true) {
+      if (this.treeLoaded && warning && this.warningMap[name] !== true) {
         this.toastrService.warning(`The item ${name} seems to be outdated, please update it.`);
         this.warningMap[name] = true;
       }

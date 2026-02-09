@@ -30,6 +30,8 @@ export class ShopComponent implements OnInit {
   public showCandle = false;
   public timeLeft = 0;
   public pendingChanges = 0;
+  public daybreakEdit = false;
+  public daybreakItems: Array<{ name: string; quantity: number }>;
   public orderFilter: OrderFilter = {
     name: '',
     orderType: null,
@@ -126,6 +128,23 @@ export class ShopComponent implements OnInit {
     event.stopPropagation();
   }
 
+  onEditOrders(orders: Array<ShopItem>): void {
+    this.shopService.updateAllShopItems(orders);
+    this.orderEditAll = false;
+  }
+
+  async loadDaybreakItems(): Promise<void> {
+    const items = await this.shopService.fetchDaybreakItems();
+    this.daybreakItems = items;
+    this.daybreakEdit = true;
+    this.cdr.detectChanges();
+  }
+
+  onImportDaybreaks(orders: Array<ShopItem>): void {
+    this.shopService.addDaybreakShopItems(orders);
+    this.daybreakEdit = false;
+  }
+
   editOrder(order: ShopItem): void {
     this.orderEdit = order;
   }
@@ -135,11 +154,6 @@ export class ShopComponent implements OnInit {
     const editIndex = this.shop.items.indexOf(this.orderEdit);
     this.shopService.updateShopItem(editIndex, order);
     this.orderEdit = null;
-  }
-
-  onEditOrders(orders: Array<ShopItem>): void {
-    this.shopService.updateAllShopItems(orders);
-    this.orderEditAll = false;
   }
 
   onHideOrder(order: ShopItem): void {

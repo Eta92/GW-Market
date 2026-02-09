@@ -469,3 +469,71 @@ $gap: 6px;
     @extend %toggle-btn;
   }
 }
+
+// Hide native checkbox
+input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  cursor: pointer;
+
+  // Checked state
+  &:checked + .custom-checkbox {
+    background: linear-gradient(135deg, rgba($gold, 0.9) 0%, rgba($gold, 0.7) 100%);
+    border-color: $gold-bright;
+
+    &::after {
+      opacity: 1;
+      transform: rotate(45deg) scale(1);
+    }
+  }
+
+  // Focus state
+  &:focus + .custom-checkbox {
+    box-shadow: 0 0 0 2px rgba($gold, 0.3);
+  }
+}
+
+// Custom checkbox styling
+.custom-checkbox {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background: rgba($obsidian, 0.6);
+  border: 2px solid rgba($gold, 0.4);
+  border-radius: 3px;
+  transition: all 200ms ease;
+  cursor: pointer;
+
+  // Checkmark
+  &::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid $obsidian;
+    border-width: 0 2px 2px 0;
+    opacity: 0;
+    transform: rotate(45deg) scale(0.5);
+    transition: all 150ms ease;
+  }
+
+  // Hover state
+  &:hover {
+    border-color: rgba($gold, 0.6);
+  }
+}
+
+// Import toggle wrapper
+.import-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
