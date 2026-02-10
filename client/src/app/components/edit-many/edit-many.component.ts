@@ -85,7 +85,6 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
           this.loadDaybreaks(this.daybreaks);
         }
       });
-    this.refreshBindPrices();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -95,57 +94,61 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   loadOrders(orders: Array<ShopItem>): void {
-    this.items = orders
-      .map(order => order.name)
-      .map(name => this.itemService.getItemBase(name))
-      .filter(item => item !== null) as Array<Item>;
-    const orderArray = orders.map(order => {
-      const prices = this.availablePrices.map(p => {
-        const existingPrice = order.prices.find(op => op.type === p.type);
+    if (this.allItems) {
+      this.items = orders
+        .map(order => order.name)
+        .map(name => this.itemService.getItemBase(name))
+        .filter(item => item !== null) as Array<Item>;
+      const orderArray = orders.map(order => {
+        const prices = this.availablePrices.map(p => {
+          const existingPrice = order.prices.find(op => op.type === p.type);
+          return this.fb.group({
+            type: [existingPrice?.type || p.type, Validators.required],
+            price: [existingPrice?.price || 0, Validators.min(0)],
+            unit: [existingPrice?.unit || 0, Validators.min(0)]
+          });
+        });
         return this.fb.group({
-          type: [existingPrice?.type || p.type, Validators.required],
-          price: [existingPrice?.price || 0, Validators.min(0)],
-          unit: [existingPrice?.unit || 0, Validators.min(0)]
+          name: [order.name, Validators.required],
+          orderType: [order.orderType, Validators.required],
+          hidden: [order.hidden],
+          prices: this.fb.array(prices),
+          quantity: [order.quantity, Validators.min(1)],
+          description: [order.description]
         });
       });
-      return this.fb.group({
-        name: [order.name, Validators.required],
-        orderType: [order.orderType, Validators.required],
-        hidden: [order.hidden],
-        prices: this.fb.array(prices),
-        quantity: [order.quantity, Validators.min(1)],
-        description: [order.description]
-      });
-    });
-    this.forms = this.fb.array(orderArray);
-    this.refreshBindPrices();
+      this.forms = this.fb.array(orderArray);
+      this.refreshBindPrices();
+    }
   }
 
   loadDaybreaks(daybreaks: Array<{ name: string; quantity: number }>): void {
-    this.items = daybreaks
-      .map(db => db.name)
-      .map(name => this.itemService.getItemBase(name))
-      .filter(item => item !== null) as Array<Item>;
-    const orderArray = daybreaks.map(db => {
-      const prices = this.availablePrices.map(p => {
+    if (this.allItems) {
+      this.items = daybreaks
+        .map(db => db.name)
+        .map(name => this.itemService.getItemBase(name))
+        .filter(item => item !== null) as Array<Item>;
+      const orderArray = daybreaks.map(db => {
+        const prices = this.availablePrices.map(p => {
+          return this.fb.group({
+            type: [p.type, Validators.required],
+            price: [0, Validators.min(0)],
+            unit: [0, Validators.min(0)]
+          });
+        });
         return this.fb.group({
-          type: [p.type, Validators.required],
-          price: [0, Validators.min(0)],
-          unit: [0, Validators.min(0)]
+          import: [false],
+          name: [db.name, Validators.required],
+          orderType: [OrderType.SELL, Validators.required],
+          hidden: [false],
+          prices: this.fb.array(prices),
+          quantity: [db.quantity, Validators.min(1)],
+          description: ['']
         });
       });
-      return this.fb.group({
-        import: [false],
-        name: [db.name, Validators.required],
-        orderType: [OrderType.SELL, Validators.required],
-        hidden: [false],
-        prices: this.fb.array(prices),
-        quantity: [db.quantity, Validators.min(1)],
-        description: ['']
-      });
-    });
-    this.forms = this.fb.array(orderArray);
-    this.refreshBindPrices();
+      this.forms = this.fb.array(orderArray);
+      this.refreshBindPrices();
+    }
   }
 
   getImageSource(itemName: string): string {
@@ -182,6 +185,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
       });
       this.bindPrices.push(toAllPrices);
     });
+    this.cdr.detectChanges();
   }
 
   cancelOrder(): void {

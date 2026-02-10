@@ -20,7 +20,7 @@
   </div>
 
   <!-- Single-line Grid -->
-  <div class="grid-body scroll">
+  <div class="grid-body scroll" *ngIf="items?.length > 0">
     <!-- Header row -->
     <div class="grid-line grid-headers" [style.grid-template-columns]="gridColumns">
       <div *ngIf="daybreaks" class="gh">Use</div>
@@ -49,8 +49,8 @@
         <div class="item-preview has-item">
           <img *ngIf="items[i]" [src]="getImageSource(items[i].name)" [alt]="items[i]?.name" />
         </div>
-        <div class="header-title text-no-overflow" [title]="items[i].name">
-          <div class="item-name" *ngIf="items[i]">{{ items[i].name }}</div>
+        <div class="header-title text-no-overflow">
+          <div class="item-name" *ngIf="items[i]" [title]="items[i].name">{{ items[i].name }}</div>
           <div class="item-name empty" *ngIf="!items[i]">Select an item below</div>
         </div>
 

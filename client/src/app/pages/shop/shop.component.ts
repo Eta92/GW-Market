@@ -64,6 +64,7 @@ export class ShopComponent implements OnInit {
   public showViewOptionsHelp = false;
 
   public OrderType = OrderType;
+  public Array = Array;
 
   @ViewChild('player') private playerRef: ElementRef<HTMLElement>;
   @ViewChild('candle') private candleRef: ElementRef<HTMLElement>;

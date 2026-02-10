@@ -108,7 +108,11 @@
             <i class="fa fa-fire"></i>
             <span>New</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="orderEditAll = true">
+          <button
+            class="sidebar-action-btn col-span-2"
+            (click)="orderEditAll = true"
+            *ngIf="Array.isArray(shop?.items) && shop.items.length > 0"
+          >
             <i class="fa fa-pen"></i>
             <span>Edit All Orders</span>
           </button>
@@ -276,8 +280,9 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
 </app-modal>
 
 <!-- Edit All Orders Modal -->
-<app-modal [isOpen]="!!orderEditAll" [fullScreen]="true" (closed)="orderEditAll = false">
+<app-modal [isOpen]="orderEditAll" [fullScreen]="true" (closed)="orderEditAll = false">
   <app-edit-many
+    *ngIf="orderEditAll"
     [originals]="shop?.items || []"
     [confirm]="'Edit All Orders'"
     (closeEdit)="orderEditAll = false"
