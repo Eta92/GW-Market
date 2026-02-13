@@ -24,6 +24,13 @@
           <i class="fa fa-store"></i>
           <span>My shop</span>
         </button>
+        <button class="nav-btn online-btn relative overflow-hidden" (click)="refreshShop()" *ngIf="shop?.lastRefresh">
+          <div
+            class="online-bg absolute bottom-0 left-0 w-full"
+            [style.height.%]="(timeLeft / (15 * 60 * 1000)) * 100"
+          ></div>
+          <i class="fa fa-power-off hover:fa-sync z-10"></i>
+        </button>
       </div>
     </div>
 
@@ -72,6 +79,13 @@
       <button class="nav-btn" (click)="goToShop()">
         <i class="fa fa-store"></i>
         <span>My Shop</span>
+      </button>
+      <button class="nav-btn online-btn relative overflow-hidden" (click)="refreshShop()" *ngIf="shop?.lastRefresh">
+        <div
+          class="online-bg absolute bottom-0 left-0 w-full"
+          [style.height.%]="(timeLeft / (15 * 60 * 1000)) * 100"
+        ></div>
+        <i class="fa fa-power-off hover:fa-sync z-10"></i>
       </button>
     </div>
   </div>

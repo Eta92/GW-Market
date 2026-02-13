@@ -373,9 +373,6 @@ export class ShopComponent implements OnInit {
         this.timeLeft = 0;
         return;
       }
-      if (this.timeLeft < 60 * 1000 * 5 && this.shopService.getdaybreakOnline()) {
-        this.refreshShop();
-      }
       setTimeout(() => {
         this.refreshTimer();
       }, 1000);

@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Item } from '@app/models/shop.model';
+import { Item, Shop } from '@app/models/shop.model';
+import { ShopService } from '@app/services/shop.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   @Input() showSearch = true;
   @Input() showFeatures = false;
   @Input() compact = false;
@@ -17,7 +18,23 @@ export class HeaderComponent {
   @Output() placeOrder = new EventEmitter<void>();
   @Output() selectItem = new EventEmitter<Item>();
 
-  constructor(private router: Router) {}
+  public shop: Shop;
+
+  constructor(
+    private router: Router,
+    private shopService: ShopService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.shopService.getActiveShop().subscribe(shop => {
+      this.shop = shop;
+      if (this.shop && this.shop.lastRefresh && !this.timerActive) {
+        this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
+        this.refreshTimer();
+      }
+    });
+  }
 
   goToHome(): void {
     this.router.navigate(['/']);
@@ -39,5 +56,26 @@ export class HeaderComponent {
 
   onPlaceOrder(): void {
     this.placeOrder.emit();
+  }
+
+  refreshShop(): void {
+    this.shopService.enableShop();
+  }
+
+  private timerActive = false;
+  public timeLeft = 0;
+  refreshTimer(): void {
+    if (this.timeLeft > 0) {
+      this.timerActive = true;
+      this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
+      if (this.timeLeft < 0) {
+        this.timeLeft = 0;
+        return;
+      }
+      setTimeout(() => {
+        this.refreshTimer();
+      }, 1000);
+      this.cdr.detectChanges();
+    }
   }
 }

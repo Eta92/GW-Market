@@ -143,6 +143,10 @@ $copper: #b87333;
         }
       }
     }
+
+    .online-btn {
+      padding: 10px 12px;
+    }
   }
 }
 
@@ -446,6 +450,19 @@ $copper: #b87333;
 
   i {
     color: #7dc98b;
+  }
+}
+
+.online-btn {
+  background: linear-gradient(135deg, rgba($copper, 0.3) 0%, rgba($copper, 0.2) 100%);
+  padding: 14px 17px;
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($copper, 0.95) 0%, rgba($copper, 0.75) 100%);
+  }
+
+  .online-bg {
+    background: linear-gradient(135deg, rgba($copper, 0.6) 0%, rgba($copper, 0.4) 100%);
   }
 }
 

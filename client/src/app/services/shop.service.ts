@@ -61,10 +61,7 @@ export class ShopService {
       this.toastrService.success('', 'Shop updated completed', {
         timeOut: 5000
       });
-      if (!this.daybreakLinked) {
-        this.daybreakMaxTry = 3;
-        this.maintainDaybreakLink();
-      }
+      this.daybreakStart();
     });
     // rest of init
     this.itemService.getReady().subscribe(ready => {
@@ -76,6 +73,9 @@ export class ShopService {
         });
         this.activeShopSubject.set(shop);
         this.socket.emit('checkShopUpToDate', shop.uuid, shop.lastRefresh);
+        if (shop.lastRefresh && Date.now() - shop.lastRefresh < 1000 * 60 * 15) {
+          this.daybreakStart();
+        }
       } else {
         const shop: Shop = {
           player: 'GWTrader',
@@ -289,6 +289,13 @@ export class ShopService {
     }
   }
 
+  private daybreakStart(): void {
+    if (!this.daybreakLinked) {
+      this.daybreakMaxTry = 3;
+      this.maintainDaybreakLink();
+    }
+  }
+
   // Daybreak API
   private daybreakMaxTry = 3;
   private maintainDaybreakLink(): void {
@@ -298,26 +305,32 @@ export class ShopService {
       return;
     }
     this.daybreakLinked = true;
-    try {
-      this.http.get('http://localhost:5080/api/v1/rest/character-select').subscribe(data => {
+    this.http.get('http://localhost:5080/api/v1/rest/character-select').subscribe({
+      next: data => {
         const currentName = (data as any)?.currentCharacter?.name;
         if (currentName) {
           this.daybreakOnline = true;
           if (activeShop.player !== currentName) {
+            // force active player name and refresh shop
             activeShop.player = currentName;
             this.activeShopSubject.set(activeShop);
             this.saveShop();
-          }
-          if (!activeShop.daybreakOnline) {
+            this.enableShop();
+          } else if (!activeShop.daybreakOnline) {
+            // not detected with daybreak so set it up and refresh
+            this.enableShop();
+          } else if (Date.now() - activeShop.lastRefresh > 60 * 1000 * 10) {
+            // shop active but closing soon so auto refresh
             this.enableShop();
           }
         }
-      });
-    } catch (error) {
-      this.daybreakOnline = false;
-      console.log('failed to connect to daybreak api');
-      this.daybreakMaxTry--;
-    }
+      },
+      error: error => {
+        this.daybreakOnline = false;
+        console.log('failed to connect to daybreak api');
+        this.daybreakMaxTry--;
+      }
+    });
     if (this.daybreakMaxTry > 0) {
       setTimeout(() => {
         this.maintainDaybreakLink();
