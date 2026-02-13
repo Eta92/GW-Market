@@ -13,13 +13,32 @@ export class ModalComponent {
 
   @Output() closed = new EventEmitter<void>();
 
+  public lockModal = false;
+
   onBackdropClick(): void {
     if (this.closeOnBackdrop) {
-      this.closed.emit();
+      if (!this.lockModal) {
+        this.closed.emit();
+      } else {
+        console.log('backdrop modal content');
+        this.lockModal = false;
+      }
     }
   }
 
   onContentClick(event: Event): void {
+    console.log('click modal content');
+    this.lockModal = false;
     event.stopPropagation();
+  }
+
+  onMouseDown(event: MouseEvent): void {
+    console.log('mousedown modal content');
+    this.lockModal = true;
+  }
+
+  onMouseUp(event: MouseEvent): void {
+    console.log('mouseup modal content');
+    this.lockModal = false;
   }
 }

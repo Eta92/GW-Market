@@ -40,7 +40,7 @@
 
   <!-- Badges (fixed width container for alignment) -->
   <div class="badges">
-    <img class="badge-icon" src="/assets/img/online.png" title="Online" *ngIf="order.daybreakOnline" />
+    <img class="badge-icon" src="/assets/img/online.png" title="Online" *ngIf="order.daybreakOnline && isActive" />
     <img class="badge-icon" src="/assets/img/certified.png" title="Certified" *ngIf="order.authCertified" />
   </div>
 

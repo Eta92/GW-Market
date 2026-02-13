@@ -34,7 +34,11 @@ const configIo: SocketIoConfig = { url: window.location.origin, options: {} };
       scope: '/'
     }),
     SocketIoModule.forRoot(configIo),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true
+    }),
 
     PageModule,
     ServiceModule
