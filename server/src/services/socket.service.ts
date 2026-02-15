@@ -83,6 +83,11 @@ export class SocketService {
         socket.emit('GetLastItems', items);
       });
 
+      socket.on('getPriceInspection', (itemName: string, orderType: OrderType) => {
+        const inspection = ShopService.getItemPrices(itemName, orderType);
+        socket.emit('GetPriceInspection', inspection);
+      });
+
       // ================================
       // ==== GLOBAL SEARCH ====
       // ================================

@@ -1,9 +1,10 @@
-import { Item, OrderType, Price, Shop, ShopItem } from '../models/shop.model';
+import { Item, OrderType, Price, Shop, ShopItem, ShopPrice } from '../models/shop.model';
 import { SearchAggregations, SearchFilter, SearchResult, SearchResultOrder } from '../models/search.model';
 import { TimeOrderCounts } from '../models/tree.model';
 import { ItemService } from './item.service';
 import { Server as SocketServer } from 'socket.io';
 import { nanoid } from 'nanoid';
+import { PriceInspection } from '../models/inspection.model';
 
 // Time thresholds in milliseconds
 const TIME_ONLINE = 1000 * 60 * 15; // 15 minutes
@@ -35,6 +36,55 @@ export class ShopService {
 
   public static getItemOrders(itemName: string): Array<ShopItem> {
     return this.allItemMap[itemName] || [];
+  }
+
+  private static setPrice(prices: Array<ShopPrice>, order: ShopItem): void {
+    order.prices.forEach((price) => {
+      const unit = price.price / order.quantity;
+      const minPrice = prices.find((p) => p.type === price.type);
+      if (minPrice.quantity === 0) {
+        minPrice.price = price.price;
+        minPrice.quantity = order.quantity;
+      } else if (minPrice.price > unit) {
+        minPrice.price = unit;
+        minPrice.quantity = order.quantity;
+      } else if (minPrice.price === unit) {
+        minPrice.quantity += order.quantity;
+      }
+    });
+  }
+
+  public static getItemPrices(itemName: string, orderType: OrderType): PriceInspection {
+    const orders = this.getItemOrders(itemName);
+    const inspection: PriceInspection = {
+      active: [],
+      day: [],
+      week: [],
+    };
+    // Initialize all categories with empty prices for each currency type
+    for (let priceType = 0; priceType < 5; priceType++) {
+      const emptyPrice: ShopPrice = {
+        type: priceType,
+        price: 0,
+        quantity: 0,
+      };
+      inspection.active.push({ ...emptyPrice });
+      inspection.day.push({ ...emptyPrice });
+      inspection.week.push({ ...emptyPrice });
+    }
+    orders.forEach((order) => {
+      if (order.orderType === orderType) {
+        const age = Date.now() - order.lastRefresh;
+        if (age < TIME_ONLINE) {
+          this.setPrice(inspection.active, order);
+        }
+        if (age < TIME_TODAY) {
+          this.setPrice(inspection.day, order);
+        }
+        this.setPrice(inspection.week, order);
+      }
+    });
+    return inspection;
   }
 
   public static initShops(shops: Array<Shop>): void {
