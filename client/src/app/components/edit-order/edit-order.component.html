@@ -212,7 +212,7 @@
       <div class="prices-container" formArrayName="prices">
         <div class="price-card" *ngFor="let price of getprices().controls; let i = index" [formGroupName]="i">
           <div class="price-field currency-field">
-            <label>Currency</label>
+            <label *ngIf="i === 0">Currency</label>
             <app-currency-dropdown
               [selectedCurrency]="price.get('type')?.value"
               (currencyChange)="selectCurrency(i, $event)"
@@ -220,14 +220,25 @@
           </div>
           <div class="price-inputs">
             <div class="price-field">
-              <label>Per Unit</label>
+              <label *ngIf="i === 0">Per Unit</label>
               <div class="input-with-icon">
                 <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
                 <input type="number" class="form-input price-input" formControlName="unit" min="0" placeholder="0" />
               </div>
             </div>
             <div class="price-field">
-              <label>Total</label>
+              <div *ngIf="i === 0" class="flex justify-between">
+                <label>Total</label>
+                <!-- Price Inspector -->
+                <div
+                  title="hover to get the current minimum prices"
+                  class="inspect -mb-2 px-2"
+                  (mouseenter)="togglePriceInspector(true)"
+                  (mouseleave)="togglePriceInspector(false)"
+                >
+                  <i class="fa fa-dollar-sign !w-2 pr-2"></i>?
+                </div>
+              </div>
               <div class="input-with-icon">
                 <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
                 <input type="number" class="form-input price-input" formControlName="price" min="0" placeholder="0" />
@@ -284,3 +295,4 @@
     </button>
   </div>
 </div>
+<app-price-inspector></app-price-inspector>

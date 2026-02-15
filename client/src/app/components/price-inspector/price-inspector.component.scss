@@ -1,0 +1,139 @@
+@import '../../shared/styles/variables';
+
+$row-h: 28px;
+$gap: 6px;
+
+:host {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  bottom: 0;
+  right: 0;
+}
+
+// ── Modal Shell ──
+.order-modal {
+  position: relative;
+  background: linear-gradient(145deg, rgba($obsidian, 0.98) 0%, rgba($obsidian-light, 0.98) 100%);
+  border: 2px solid rgba($gold, 0.6);
+  border-radius: 10px;
+  box-shadow:
+    0 0 50px rgba($gold, 0.12),
+    0 16px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba($gold, 0.1);
+  overflow: hidden;
+}
+
+// ── Header ──
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem;
+  background: rgba($obsidian, 0.95);
+  border-bottom: 1px solid rgba($gold, 0.25);
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .header-title {
+    h2 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: $gold;
+      margin: 0;
+      letter-spacing: 0.03em;
+    }
+  }
+
+  .close-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba($parchment, 0.2);
+    border-radius: 4px;
+    color: rgba($parchment, 0.5);
+    font-size: 0.65rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    &:hover {
+      background: rgba($parchment, 0.1);
+      border-color: rgba($parchment, 0.4);
+      color: $parchment;
+    }
+  }
+}
+
+// ── Grid Body ──
+.grid-body {
+  padding: 0.4rem 0.75rem 0.5rem;
+}
+
+// ── Grid Line — shared for headers + inputs ──
+.grid-line {
+  display: flex;
+  gap: $gap;
+  align-items: center;
+
+  .gh,
+  .gi {
+    display: block;
+    width: 80px;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+// ── Header cells ──
+.gh {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: rgba($parchment, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+
+  i {
+    font-size: 0.45rem;
+    color: rgba($gold, 0.6);
+  }
+}
+
+.grid-headers {
+  margin-bottom: 10px;
+}
+
+// ── Input cells ──
+.gi {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: $row-h;
+
+  > * {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+// ── Input icon ──
+.input-icon {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}

@@ -20,6 +20,7 @@ import { LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, take } from 'rxjs';
+import { InspectorService } from '@app/services/inspector.service';
 
 @Component({
   selector: 'app-edit-order',
@@ -67,6 +68,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     private storeService: StoreService,
     private itemService: ItemService,
     private toastrService: ToastrService,
+    private inspectorService: InspectorService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -221,6 +223,14 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       });
     });
     this.bindPrices.push(toAllPrices);
+  }
+
+  togglePriceInspector(show: boolean): void {
+    this.inspectorService.toggleInspector(show);
+    if (show && this.item) {
+      const orderType = this.form.get('orderType')?.value || OrderType.SELL;
+      this.inspectorService.requestInspection(this.item.name, orderType);
+    }
   }
 
   cancelOrder(): void {

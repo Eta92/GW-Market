@@ -12,8 +12,8 @@ import {
 import { FormArray, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
+import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
-import { StoreService } from '@app/services/store.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, take } from 'rxjs';
@@ -53,7 +53,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private fb: UntypedFormBuilder,
-    private storeService: StoreService,
+    private inspectorService: InspectorService,
     private itemService: ItemService,
     private toastrService: ToastrService,
     private cdr: ChangeDetectorRef
@@ -166,11 +166,13 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
     this.formGroups.forEach((formGroup, formIndex) => {
       (formGroup.get('prices') as FormArray).controls.forEach((group, index) => {
         const toUnit = group.get('price')?.valueChanges.subscribe(value => {
+          formGroup.get('import')?.setValue(value > 0, { emitEvent: false });
           const amount = formGroup.get('quantity')?.value || 1;
           group.get('unit')?.setValue(value / amount, { emitEvent: false });
         });
         this.bindPrices.push(toUnit);
         const toPrice = group.get('unit')?.valueChanges.subscribe(value => {
+          formGroup.get('import')?.setValue(value > 0, { emitEvent: false });
           const amount = formGroup.get('quantity')?.value || 1;
           group.get('price')?.setValue(value * amount, { emitEvent: false });
         });
@@ -230,6 +232,16 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
     return this.forms.controls as Array<UntypedFormGroup>;
   }
 
+  togglePriceInspector(line: number, active: boolean): void {
+    const itemName = this.formGroups[line].get('name')?.value;
+    const orderType = this.formGroups[line].get('orderType')?.value;
+    this.inspectorService.toggleInspector(active);
+    if (active) {
+      this.inspectorService.requestInspection(itemName, orderType);
+    }
+    this.cdr.detectChanges();
+  }
+
   get gridColumns(): string {
     const cols: string[] = [];
 
@@ -250,6 +262,9 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
       cols.push('1fr'); // per unit
       cols.push('1fr'); // total
     }
+
+    // price inspector
+    cols.push('32px');
 
     // Type
     cols.push('2fr');

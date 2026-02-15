@@ -167,3 +167,12 @@ export interface SearchAggregations {
   priceRange: { min: number; max: number; currency: Price } | null;
   totalSellers: number;
 }
+
+// inspector
+
+export interface PriceInspection {
+  itemName: string;
+  active: Array<ShopPrice | null>;
+  day: Array<ShopPrice | null>;
+  week: Array<ShopPrice | null>;
+}

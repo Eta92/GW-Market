@@ -9,6 +9,7 @@ import { FilterOrderComponent } from '@app/components/filter-order/filter-order.
 import { ActivePlayerComponent } from '@app/components/active-player/active-player.component';
 import { HeaderComponent } from '@app/components/header/header.component';
 import { EditManyComponent } from './edit-many/edit-many.component';
+import { PriceInspectorComponent } from './price-inspector/price-inspector.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { EditManyComponent } from './edit-many/edit-many.component';
     FooterComponent,
     HeaderComponent,
     NewOrderComponent,
+    PriceInspectorComponent,
     SelectItemComponent
   ],
   exports: [
@@ -29,6 +31,7 @@ import { EditManyComponent } from './edit-many/edit-many.component';
     FooterComponent,
     HeaderComponent,
     NewOrderComponent,
+    PriceInspectorComponent,
     SelectItemComponent
   ],
   imports: [SharedModule, ServiceModule]

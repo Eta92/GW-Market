@@ -4,8 +4,9 @@ import { ToasterService } from './toaster.service';
 import { UtilService } from './util.service';
 import { ShopService } from './shop.service';
 import { ItemService } from './item.service';
+import { InspectorService } from './inspector.service';
 
 @NgModule({
-  providers: [ItemService, ShopService, StoreService, ToasterService, UtilService]
+  providers: [InspectorService, ItemService, ShopService, StoreService, ToasterService, UtilService]
 })
 export class ServiceModule {}

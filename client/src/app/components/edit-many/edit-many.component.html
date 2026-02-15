@@ -31,6 +31,7 @@
         <div class="gh">Per Unit</div>
         <div class="gh">Total</div>
       </ng-container>
+      <div class="gh">Hint</div>
       <div class="gh">Type</div>
       <div class="gh">Visibility</div>
       <div class="gh">Description</div>
@@ -92,6 +93,16 @@
             </ng-container>
           </ng-container>
         </ng-container>
+
+        <!-- Price Inspector -->
+        <div
+          title="hover to get the current minimum prices"
+          class="gi inspect px-2"
+          (mouseenter)="togglePriceInspector(i, true)"
+          (mouseleave)="togglePriceInspector(i, false)"
+        >
+          <i class="fa fa-dollar-sign !w-2 pr-2"></i>?
+        </div>
 
         <!-- Order Type -->
         <div class="gi">
@@ -155,3 +166,4 @@
     </button>
   </div>
 </div>
+<app-price-inspector></app-price-inspector>

@@ -1,0 +1,41 @@
+<div class="order-modal font-fritz" *ngIf="active" (click)="$event.stopPropagation()">
+  <!-- Modal Header -->
+  <div class="modal-header">
+    <div class="header-left">
+      <div class="header-title">
+        <h2 class="text-no-overflow w-88">{{ 'Lower prices inspector for ' + inspection?.itemName }}</h2>
+      </div>
+    </div>
+    <!-- <button class="close-btn" (click)="close()" title="Close">
+      <i class="fa fa-times"></i>
+    </button> -->
+  </div>
+
+  <!-- Single-line Grid -->
+  <div class="grid-body scroll" *ngIf="inspection">
+    <!-- Header row -->
+    <div class="grid-line grid-headers">
+      <div class="gh">time range</div>
+      <div class="gh">15 min</div>
+      <div class="gh">1 day</div>
+      <div class="gh">1 week</div>
+    </div>
+
+    <ng-container *ngFor="let notused of inspection.active; let i = index">
+      <!-- Input row -->
+      <div class="grid-line grid-inputs">
+        <!-- Item -->
+        <div class="gi">
+          <img class="input-icon" [src]="inspection.active[i].type | currencySource" alt="" />
+        </div>
+
+        <ng-container *ngFor="let time of times; let t = index">
+          <div class="gi" *ngIf="inspection[time][i].quantity">
+            {{ inspection[time][i].price + ' (' + inspection[time][i].quantity + ')' }}
+          </div>
+          <div class="gi" *ngIf="!inspection[time][i].quantity">-</div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>
