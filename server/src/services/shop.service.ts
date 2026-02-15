@@ -43,7 +43,7 @@ export class ShopService {
       const unit = price.price / order.quantity;
       const minPrice = prices.find((p) => p.type === price.type);
       if (minPrice.quantity === 0) {
-        minPrice.price = price.price;
+        minPrice.price = unit;
         minPrice.quantity = order.quantity;
       } else if (minPrice.price > unit) {
         minPrice.price = unit;

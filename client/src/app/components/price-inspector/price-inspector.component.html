@@ -25,8 +25,9 @@
       <!-- Input row -->
       <div class="grid-line grid-inputs">
         <!-- Item -->
-        <div class="gi">
+        <div class="gi flex !justify-start gap-1">
           <img class="input-icon" [src]="inspection.active[i].type | currencySource" alt="" />
+          {{ priceToString(inspection.active[i].type) }}
         </div>
 
         <ng-container *ngFor="let time of times; let t = index">

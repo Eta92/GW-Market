@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
+import { UtilityHelper } from '@app/helpers/utility.helper';
 import { PriceInspection } from '@app/models/order.model';
 import { Item } from '@app/models/shop.model';
 import { InspectorService } from '@app/services/inspector.service';
@@ -33,6 +34,10 @@ export class PriceInspectorComponent implements OnInit {
       this.inspection = inspection;
       this.cdr.detectChanges();
     });
+  }
+
+  priceToString(price: number): string {
+    return UtilityHelper.priceToString(price);
   }
 
   close(): void {
