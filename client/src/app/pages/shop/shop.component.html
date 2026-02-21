@@ -184,7 +184,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <!-- Sell Orders Column -->
           <div
             class="orders-column sell-column"
-            [class.hidden]="orderFilter.orderType === 'buy'"
+            [class.hidden]="orderFilter.orderType === 'buy' || orderFilter.orderType === 'auction'"
             [class.full-width]="orderFilter.orderType === 'sell' || compactView"
             [class.compact-column]="compactView"
           >
@@ -224,7 +224,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <!-- Buy Orders Column -->
           <div
             class="orders-column buy-column"
-            [class.hidden]="orderFilter.orderType === 'sell'"
+            [class.hidden]="orderFilter.orderType === 'sell' || orderFilter.orderType === 'auction'"
             [class.full-width]="orderFilter.orderType === 'buy' || compactView"
             [class.compact-column]="compactView"
           >
@@ -258,6 +258,41 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
             <div class="empty-orders" *ngIf="!buyOrders?.length">
               <i class="fa fa-shopping-cart"></i>
               <p>No buy orders</p>
+            </div>
+          </div>
+
+          <!-- Auction Column -->
+          <div
+            class="orders-column auction-column"
+            [class.hidden]="orderFilter.orderType === 'sell' || orderFilter.orderType === 'buy'"
+            [class.full-width]="orderFilter.orderType === 'auction' || compactView"
+            [class.compact-column]="compactView"
+          >
+            <h2 class="column-title">
+              <i class="fa fa-gavel"></i>
+              Auctions
+              <span class="order-count" *ngIf="itemAuctions?.length">({{ itemAuctions.length }})</span>
+            </h2>
+
+            <div class="orders-list scroll" *ngIf="itemAuctions?.length > 0">
+              <app-order-card
+                *ngFor="let auction of itemAuctions"
+                [order]="auction.item"
+                [auction]="auction"
+                [locked]="true"
+                [compact]="compactView || orderFilter.orderType === 'auction'"
+                [showDetails]="showDetails"
+                [imageSource]="getImageSource(auction.item.name)"
+                (itemClick)="goToItem($event)"
+                (auctionClick)="onAuctionClick($event)"
+                (cloturateClick)="onCloturateAuction($event)"
+                (cloturateLeave)="onCloturateLeave($event)"
+              ></app-order-card>
+            </div>
+
+            <div class="empty-orders" *ngIf="!itemAuctions?.length">
+              <i class="fa fa-gavel"></i>
+              <p>No item in auction</p>
             </div>
           </div>
         </div>

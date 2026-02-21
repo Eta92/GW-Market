@@ -33,8 +33,8 @@ export class PriceToStringPipe implements PipeTransform {
 
 @Pipe({ name: 'formatLastUpdate' })
 export class FormatLastUpdatePipe implements PipeTransform {
-  transform(timestamp: number): string {
-    return UtilityHelper.formatLastUpdate(timestamp);
+  transform(timestamp: number, futur = false): string {
+    return UtilityHelper.formatLastUpdate(timestamp, futur);
   }
 }
 

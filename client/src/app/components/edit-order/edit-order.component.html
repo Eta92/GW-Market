@@ -68,11 +68,32 @@
             ></i>
           </div>
         </button>
+        <button
+          *ngIf="!maskSearch"
+          class="order-type-card auction"
+          [class.active]="form.get('orderType')?.value === OrderType.AUCTION"
+          (click)="form.patchValue({ orderType: OrderType.AUCTION })"
+        >
+          <div class="card-icon">
+            <i class="fa fa-gavel"></i>
+          </div>
+          <div class="card-content">
+            <span class="card-title">Auction</span>
+            <span class="card-desc">Create an auction</span>
+          </div>
+          <div class="card-check">
+            <i
+              class="fa"
+              [class.fa-circle]="form.get('orderType')?.value !== OrderType.AUCTION"
+              [class.fa-check-circle]="form.get('orderType')?.value === OrderType.AUCTION"
+            ></i>
+          </div>
+        </button>
       </div>
     </div>
 
     <!-- Quantity & Visibility Row -->
-    <div class="details-row">
+    <div class="details-row" *ngIf="!isAuction">
       <div class="form-group quantity-group">
         <label>Quantity</label>
         <app-qty-input formControlName="quantity" [min]="1" [max]="9999"></app-qty-input>
@@ -85,6 +106,14 @@
           [value]="form.get('hidden')?.value"
           (valueChange)="form.patchValue({ hidden: $event })"
         ></app-toggle-group>
+      </div>
+    </div>
+
+    <!-- auction end date -->
+    <div class="details-row" *ngIf="isAuction">
+      <div class="form-group">
+        <label>Auction End Date</label>
+        <input type="datetime-local" class="form-input custom-datetime" formControlName="endTime" />
       </div>
     </div>
 
@@ -207,7 +236,13 @@
     <!-- Pricing Section -->
     <div class="pricing-section">
       <div class="section-label">
-        <span>{{ form.get('orderType')?.value === OrderType.SELL ? 'Asking Price' : 'Willing to Pay' }}</span>
+        <span>{{
+          form.get('orderType')?.value === OrderType.SELL
+            ? 'Asking Price'
+            : form.get('orderType')?.value === OrderType.BUY
+              ? 'Willing to Pay'
+              : 'Starting Bid'
+        }}</span>
       </div>
       <div class="prices-container" formArrayName="prices">
         <div class="price-card" *ngFor="let price of getprices().controls; let i = index" [formGroupName]="i">
@@ -219,20 +254,34 @@
             ></app-currency-dropdown>
           </div>
           <div class="price-inputs">
-            <div class="price-field">
+            <div class="price-field" *ngIf="isAuction">
+              <label *ngIf="i === 0">Starting Price</label>
+              <div class="input-with-icon">
+                <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
+                <input type="number" class="form-input price-input" formControlName="price" min="1" placeholder="0" />
+              </div>
+            </div>
+            <div class="price-field" *ngIf="isAuction">
+              <label *ngIf="i === 0">Buyout Price (opt.)</label>
+              <div class="input-with-icon">
+                <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
+                <input type="number" class="form-input price-input" formControlName="max" min="0" placeholder="0" />
+              </div>
+            </div>
+            <div class="price-field" *ngIf="!isAuction">
               <label *ngIf="i === 0">Per Unit</label>
               <div class="input-with-icon">
                 <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
                 <input type="number" class="form-input price-input" formControlName="unit" min="0" placeholder="0" />
               </div>
             </div>
-            <div class="price-field">
+            <div class="price-field" *ngIf="!isAuction">
               <div *ngIf="i === 0" class="flex justify-between">
                 <label>Total</label>
                 <!-- Price Inspector -->
                 <div
                   title="hover to get the current minimum prices"
-                  class="inspect -mb-2 px-2"
+                  class="px-2 -mb-2 inspect"
                   (mouseenter)="togglePriceInspector(true)"
                   (mouseleave)="togglePriceInspector(false)"
                 >
@@ -255,7 +304,7 @@
             <i class="fa fa-times"></i>
           </button>
         </div>
-        <button type="button" class="add-price-btn" (click)="addPrice()">
+        <button *ngIf="!isAuction" type="button" class="add-price-btn" (click)="addPrice()">
           <i class="fa fa-plus"></i>
           <span>Add Currency</span>
         </button>
@@ -272,6 +321,17 @@
         rows="3"
       ></textarea>
     </div>
+
+    <div class="description-section" *ngIf="isAuction">
+      <div class="section-label">Auction Terms</div>
+      <label class="auction-acknowledge">
+        <input type="checkbox" formControlName="acknowledge" />
+        <span class="custom-checkbox"></span>
+        I understand that auction orders cannot be edited or canceled after creation.<br />
+        Not fulfilling an auction may result in severe actions for your shop.<br />
+        Also current pending shop changes will be discarded.
+      </label>
+    </div>
   </div>
 
   <!-- Modal Footer -->
@@ -284,12 +344,14 @@
       class="confirm-btn"
       [class.sell]="form.get('orderType')?.value === OrderType.SELL"
       [class.buy]="form.get('orderType')?.value === OrderType.BUY"
+      [class.auction]="form.get('orderType')?.value === OrderType.AUCTION"
       (click)="validateOrder()"
     >
       <i
         class="fa"
         [class.fa-arrow-up]="form.get('orderType')?.value === OrderType.SELL"
         [class.fa-arrow-down]="form.get('orderType')?.value === OrderType.BUY"
+        [class.fa-gavel]="form.get('orderType')?.value === OrderType.AUCTION"
       ></i>
       {{ confirm || 'Create Order' }}
     </button>

@@ -1,8 +1,9 @@
 <div
   class="order-card"
   [class.hidden-order]="order?.hidden"
-  [class.sell-card]="isSelling"
-  [class.buy-card]="!isSelling"
+  [class.sell-card]="isSelling && !auction"
+  [class.buy-card]="!isSelling && !auction"
+  [class.auction-card]="auction"
   [class.compact-card]="compact"
   [class.menu-open]="menuOpen"
 >
@@ -25,20 +26,31 @@
       <span class="desc-preview" *ngIf="order?.description && showDetails">{{ order.description }}</span>
     </div>
 
-    <!-- Price -->
-    <div class="order-price">
+    <!-- Price Classic -->
+    <div class="order-price" *ngIf="!auction">
       <div class="price-row" *ngFor="let price of order?.prices">
         <img class="price-icon" [src]="price.type | currencySource" />
         <span class="price-amount">{{ price.price }}</span>
       </div>
     </div>
 
+    <!-- Price Auction -->
+    <div class="order-price" *ngIf="auction">
+      <div class="price-row">
+        <img class="price-icon" [src]="auction.currency | currencySource" />
+        <span class="price-amount">{{
+          auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice
+        }}</span>
+      </div>
+    </div>
+
     <!-- Actions (full) -->
     <div class="order-actions" *ngIf="!locked && !compact">
-      <button class="action-btn edit" (click)="onEditClick()" title="Edit">
+      <button class="action-btn edit" (click)="onEditClick()" title="Edit" *ngIf="!auction">
         <i class="fa fa-pen"></i>
       </button>
       <button
+        *ngIf="!auction"
         class="action-btn visibility"
         [class.active]="order?.hidden"
         (click)="onHideClick()"
@@ -47,7 +59,7 @@
         <i class="fa" [class.fa-eye]="!order?.hidden" [class.fa-eye-slash]="order?.hidden"></i>
       </button>
       <button
-        *ngIf="isSingleRemoval"
+        *ngIf="isSingleRemoval && !auction"
         class="action-btn success"
         [class.confirm]="order?.single"
         (click)="onSingleClick()"
@@ -57,6 +69,7 @@
         <i class="fa fa-check"></i>
       </button>
       <button
+        *ngIf="!auction"
         class="action-btn success"
         [class.confirm]="order?.completed"
         (click)="onCompleteClick()"
@@ -66,6 +79,7 @@
         <i class="fa fa-check-double"></i>
       </button>
       <button
+        *ngIf="!auction || (auction && !auction.active)"
         class="action-btn danger"
         [class.confirm]="order?.removed"
         (click)="onRemoveClick()"
@@ -83,13 +97,15 @@
       </button>
       <div class="actions-dropdown" *ngIf="menuOpen" (click)="$event.stopPropagation()">
         <div class="dropdown-inner">
-          <button class="dropdown-item" (click)="onEditClick(); closeMenu()"><i class="fa fa-pen"></i> Edit</button>
-          <button class="dropdown-item" (click)="onHideClick(); closeMenu()">
+          <button class="dropdown-item" *ngIf="!auction" (click)="onEditClick(); closeMenu()">
+            <i class="fa fa-pen"></i> Edit
+          </button>
+          <button class="dropdown-item" *ngIf="!auction" (click)="onHideClick(); closeMenu()">
             <i class="fa" [class.fa-eye]="!order?.hidden" [class.fa-eye-slash]="order?.hidden"></i>
             {{ order?.hidden ? 'Show' : 'Hide' }}
           </button>
           <button
-            *ngIf="isSingleRemoval"
+            *ngIf="!auction && isSingleRemoval"
             class="dropdown-item success"
             [class.confirm]="order?.single"
             (click)="onSingleClick()"
@@ -98,6 +114,7 @@
             <i class="fa fa-check"></i> Complete one
           </button>
           <button
+            *ngIf="!auction"
             class="dropdown-item success"
             [class.confirm]="order?.completed"
             (click)="onCompleteClick()"
@@ -106,6 +123,7 @@
             <i class="fa fa-check"></i> {{ completeTitle }}
           </button>
           <button
+            *ngIf="!auction || (auction && !auction.active)"
             class="dropdown-item danger"
             [class.confirm]="order?.removed"
             (click)="onRemoveClick()"

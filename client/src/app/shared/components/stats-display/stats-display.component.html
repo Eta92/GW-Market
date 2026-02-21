@@ -1,6 +1,7 @@
 <div [class]="containerClass" *ngIf="mode !== 'combined'">
   <span class="stat-sell"><i class="fa fa-arrow-up"></i> {{ stats.sellCount || 0 }}</span>
   <span class="stat-buy"><i class="fa fa-arrow-down"></i> {{ stats.buyCount || 0 }}</span>
+  <span class="stat-auction"><i class="fa fa-gavel"></i> {{ stats.auctionCount || 0 }}</span>
 </div>
 <div [class]="containerClass + ' combined'" *ngIf="mode === 'combined'">
   <span class="stat-sell online"><i class="fa fa-arrow-up"></i> {{ stats.sellNow || 0 }}</span>
@@ -9,4 +10,7 @@
   <span class="stat-buy online"><i class="fa fa-arrow-down"></i> {{ stats.buyNow || 0 }}</span>
   <span class="stat-buy today"><i class="fa fa-arrow-down"></i> {{ stats.buyDay || 0 }}</span>
   <span class="stat-buy week"><i class="fa fa-arrow-down"></i> {{ stats.buyWeek || 0 }}</span>
+  <span class="stat-auction online"><i class="fa fa-gavel"></i> {{ stats.auctionNow || 0 }}</span>
+  <span class="stat-auction today"><i class="fa fa-gavel"></i> {{ stats.auctionDay || 0 }}</span>
+  <span class="stat-auction week"><i class="fa fa-gavel"></i> {{ stats.auctionWeek || 0 }}</span>
 </div>

@@ -11,6 +11,7 @@ import { UtilityHelper } from '@app/helpers/utility.helper';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { ItemService } from './item.service';
+import { Auction } from '@app/models/auction.model';
 
 @Injectable()
 export class ShopService {
@@ -22,6 +23,7 @@ export class ShopService {
   private pendingChangesSubject = new CurrentSubject<number>();
   private activeShopSubject = new CurrentSubject<Shop>();
   private publicShopSubject = new CurrentSubject<Shop>();
+  private personalAuctionsSubject = new CurrentSubject<Array<Auction>>();
 
   constructor(
     private http: HttpClient,
@@ -51,20 +53,26 @@ export class ShopService {
         daybreakOnline: shop.daybreakOnline,
         authCertified: shop.certified?.includes(this.activeShopSubject.value.player),
         certified: shop.certified,
-        items: shop.items
+        items: shop.items,
+        auctions: shop.auctions
       };
       activeShop.items.forEach(item => {
         item.item = this.itemService.getItemBase(item.name);
       });
       this.activeShopSubject.set(activeShop);
+      this.socket.emit('getPersonalAuctions', shop.auctions);
       this.saveShop();
       this.toastrService.success('', 'Shop updated completed', {
         timeOut: 5000
       });
       this.daybreakStart();
     });
+    this.socket.on('PersonalAuctions', (auctions: Array<Auction>) => {
+      this.personalAuctionsSubject.set(auctions);
+    });
     // rest of init
     this.itemService.getReady().subscribe(ready => {
+      // load shop from cache
       const shopString = localStorage.getItem('personalShop');
       if (shopString) {
         const shop = JSON.parse(shopString) as Shop;
@@ -72,6 +80,7 @@ export class ShopService {
           item.item = this.itemService.getItemBase(item.name);
         });
         this.activeShopSubject.set(shop);
+        this.socket.emit('getPersonalAuctions', shop.auctions);
         this.socket.emit('checkShopUpToDate', shop.uuid, shop.lastRefresh);
         if (shop.lastRefresh && Date.now() - shop.lastRefresh < 1000 * 60 * 15) {
           this.daybreakStart();
@@ -86,6 +95,7 @@ export class ShopService {
     });
     this.socket.on('GetPublicShop', (shop: Shop) => {
       this.publicShopSubject.set(shop);
+      this.socket.emit('getPersonalAuctions', shop.auctions);
     });
   }
 
@@ -175,6 +185,25 @@ export class ShopService {
     this.saveShop();
   }
 
+  bidAuction(auction: Auction, amount: number): void {
+    const activeShop = this.activeShopSubject.value;
+    if (activeShop) {
+      this.socket.emit('bidAuction', { bidder: activeShop.uuid, auctionId: auction.uuid, amount });
+    } else {
+      this.toastrService.error('You must have a working shop before placing bids', 'Bid Error', {
+        timeOut: 3000
+      });
+    }
+  }
+
+  cloturateAuction(index: number): void {
+    const activeShop = this.activeShopSubject.value;
+    const targetAuction = activeShop.auctions[index];
+    this.socket.emit('cloturateAuction', targetAuction);
+    activeShop.items.splice(index, 1);
+    this.activeShopSubject.set(activeShop);
+  }
+
   updateShopName(name: string): void {
     const activeShop = this.activeShopSubject.value;
     activeShop.player = name;
@@ -253,6 +282,10 @@ export class ShopService {
     return this.activeShopSubject.asObservable().pipe(debounceTime(0));
   }
 
+  getPersonalAuctions(): Observable<Array<Auction>> {
+    return this.personalAuctionsSubject.asObservable().pipe(debounceTime(0));
+  }
+
   getPublicShop(): Observable<Shop> {
     return this.publicShopSubject.asObservable().pipe(debounceTime(0));
   }
@@ -286,6 +319,24 @@ export class ShopService {
           timeOut: 5000
         }
       );
+    }
+  }
+
+  public addAuctionItem(item: ShopItem): void {
+    const activeShop = this.activeShopSubject.value;
+    if (!activeShop.uuid) {
+      this.toastrService.error('You need to have an active shop to create an auction.', 'Shop not valid');
+    } else if (!activeShop.certified || activeShop.certified.length === 0) {
+      this.toastrService.error('You need to have certified characters to create an auction.', 'Shop not valid');
+    } else {
+      const auction = {
+        item: item,
+        currency: item.prices[0].type,
+        startingPrice: item.prices[0].price,
+        buyoutPrice: item.prices[0].max,
+        endTime: new Date(item.endTime).getTime()
+      } as Auction;
+      this.socket.emit('createAuction', activeShop.uuid, auction);
     }
   }
 

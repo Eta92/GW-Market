@@ -9,7 +9,7 @@ import { ItemOrder } from '@app/models/order.model';
 })
 export class OrderRowComponent implements OnInit {
   @Input() order: ItemOrder;
-  @Input() type: 'sell' | 'buy' = 'sell';
+  @Input() type: 'sell' | 'buy' | 'auction' = 'sell';
   @Input() hasNote = false;
   @Input() clickable = true;
   @Input() compact = false;

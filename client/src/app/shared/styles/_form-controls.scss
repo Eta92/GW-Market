@@ -165,6 +165,15 @@
       color: $buy-color;
     }
   }
+
+  &.auction.active {
+    background: linear-gradient(135deg, rgba($auction-color, 0.2) 0%, rgba($auction-color, 0.1) 100%);
+    color: $auction-color;
+
+    i {
+      color: $auction-color;
+    }
+  }
 }
 
 // ============================================

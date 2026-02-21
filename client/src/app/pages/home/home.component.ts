@@ -23,17 +23,20 @@ export class HomeComponent implements OnInit {
   public searchOpen = false;
   public lastItems: Array<ShopItem> = [];
   public orderOpen = false;
-  public availableMode: 'everything' | 'active' | 'sold' | 'bought' = 'everything';
+  public availableMode: 'everything' | 'active' | 'sold' | 'bought' | 'auction' = 'everything';
   public timeMode: 'online' | 'today' | 'week' | 'combined' = 'online';
   public viewMode: 'grid' | 'list' = 'grid';
   public availableTree: AvailableTree = {
     families: [],
     sellNow: 0,
     buyNow: 0,
+    auctionNow: 0,
     sellDay: 0,
     buyDay: 0,
+    auctionDay: 0,
     sellWeek: 0,
-    buyWeek: 0
+    buyWeek: 0,
+    auctionWeek: 0
   };
   public availableFamily: AvailableFamily;
   public availableCategory: AvailableCategory;
@@ -48,7 +51,8 @@ export class HomeComponent implements OnInit {
     { value: 'everything', label: 'All' },
     { value: 'active', label: 'Active' },
     { value: 'sold', label: 'Selling', icon: 'fa-arrow-up', styleClass: 'sell' },
-    { value: 'bought', label: 'Buying', icon: 'fa-arrow-down', styleClass: 'buy' }
+    { value: 'bought', label: 'Buying', icon: 'fa-arrow-down', styleClass: 'buy' },
+    { value: 'auction', label: 'Auction', icon: 'fa-gavel', styleClass: 'auction' }
   ];
 
   public timeModeOptions: ToggleOption[] = [
@@ -131,16 +135,19 @@ export class HomeComponent implements OnInit {
   active(list: any[]): typeof list {
     const getSell = (i: any): number => this.getSellCount(i);
     const getBuy = (i: any): number => this.getBuyCount(i);
+    const getAuction = (i: any): number => this.getAuctionCount(i);
 
     switch (this.availableMode) {
       case 'everything':
         return list;
       case 'active':
-        return list.filter(i => getSell(i) > 0 || getBuy(i) > 0);
+        return list.filter(i => getSell(i) > 0 || getBuy(i) > 0 || getAuction(i) > 0);
       case 'sold':
         return list.filter(i => getSell(i) > 0);
       case 'bought':
         return list.filter(i => getBuy(i) > 0);
+      case 'auction':
+        return list.filter(i => getAuction(i) > 0);
       default:
         return list;
     }
@@ -172,16 +179,33 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  getAuctionCount(item: any): number {
+    switch (this.timeMode) {
+      case 'online': // < 15 min
+        return item.auctionNow || 0;
+      case 'today': // < 12 hrs (online + today)
+        return item.auctionDay || 0;
+      // case 'week': // all time
+      // case 'combined': // use total for filtering
+      default:
+        return item.auctionWeek || 0;
+    }
+  }
+
   getStats(item: any): StatsData {
     return {
       sellCount: this.getSellCount(item),
       buyCount: this.getBuyCount(item),
+      auctionCount: this.getAuctionCount(item),
       sellNow: item.sellNow || 0,
       buyNow: item.buyNow || 0,
+      auctionNow: item.auctionNow || 0,
       sellDay: item.sellDay || 0,
       buyDay: item.buyDay || 0,
+      auctionDay: item.auctionDay || 0,
       sellWeek: item.sellWeek || 0,
-      buyWeek: item.buyWeek || 0
+      buyWeek: item.buyWeek || 0,
+      auctionWeek: item.auctionWeek || 0
     };
   }
 

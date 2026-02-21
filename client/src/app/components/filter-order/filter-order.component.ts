@@ -21,7 +21,8 @@ export class FilterOrderComponent implements OnInit {
   public orderTypeOptions: ToggleOption[] = [
     { value: null, label: 'All' },
     { value: 'sell', label: 'Sell', icon: 'fa-arrow-up', styleClass: 'sell' },
-    { value: 'buy', label: 'Buy', icon: 'fa-arrow-down', styleClass: 'buy' }
+    { value: 'buy', label: 'Buy', icon: 'fa-arrow-down', styleClass: 'buy' },
+    { value: 'auction', label: 'Auction', icon: 'fa-gavel', styleClass: 'auction' }
   ];
 
   constructor(

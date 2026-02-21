@@ -26,7 +26,7 @@
     </div>
 
     <!-- Unit Price Box -->
-    <div class="info-box unit-box">
+    <div class="info-box unit-box" *ngIf="type !== 'auction'">
       <span class="box-label">EACH</span>
       <span class="box-value">{{ order.price.price | decimalUnitPrice: order.quantity }}</span>
     </div>
@@ -35,7 +35,7 @@
   <!-- Player Info Section -->
   <div class="player-info">
     <span class="player-name">{{ order.player }}</span>
-    <span class="player-time" *ngIf="order.lastRefresh">{{ order.lastRefresh | formatLastUpdate }}</span>
+    <span class="player-time" *ngIf="order.lastRefresh">{{ order.lastRefresh | formatLastUpdate: true }}</span>
   </div>
 
   <!-- Badges (fixed width container for alignment) -->
@@ -56,7 +56,12 @@
       <span>{{ order.negatives }}</span
       ><i class="fa fa-thumbs-down mt-0.5"></i>
     </button>
-    <button class="action-btn whisper-btn" (click)="onWhisper($event)" title="Contact {{ order.player }}">
+    <button
+      *ngIf="type !== 'auction'"
+      class="action-btn whisper-btn"
+      (click)="onWhisper($event)"
+      title="Contact {{ order.player }}"
+    >
       <i class="fa fa-comment"></i>
     </button>
   </div>

@@ -20,7 +20,8 @@
 }
 
 .stat-sell,
-.stat-buy {
+.stat-buy,
+.stat-auction {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -39,20 +40,27 @@
   color: #fb923c;
 }
 
+.stat-auction i {
+  color: $auction-color;
+}
+
 // Combined mode - color arrows by time category
 .stat-sell.online i,
-.stat-buy.online i {
-  color: $sell-color;  // green for live
+.stat-buy.online i,
+.stat-auction.online i {
+  color: $sell-color; // green for live
 }
 
 .stat-sell.today i,
-.stat-buy.today i {
-  color: #fbbf24;  // yellow for today
+.stat-buy.today i,
+.stat-auction.today i {
+  color: #fbbf24; // yellow for today
 }
 
 .stat-sell.week i,
-.stat-buy.week i {
-  color: #60a5fa;  // blue for week
+.stat-buy.week i,
+.stat-auction.week i {
+  color: #60a5fa; // blue for week
 }
 
 // Combined stats layout for cards
@@ -63,8 +71,12 @@
   font-size: 11px;
 
   .stat-sell,
-  .stat-buy {
+  .stat-buy,
+  .stat-auction {
     gap: 2px;
+    i {
+      width: 9px;
+    }
   }
 }
 
@@ -76,7 +88,8 @@
   font-size: 11px;
 
   .stat-sell,
-  .stat-buy {
+  .stat-buy,
+  .stat-auction {
     min-width: 35px;
     gap: 2px;
   }
@@ -89,7 +102,8 @@
     font-size: 11px;
 
     .stat-sell,
-    .stat-buy {
+    .stat-buy,
+    .stat-auction {
       min-width: 40px;
     }
   }

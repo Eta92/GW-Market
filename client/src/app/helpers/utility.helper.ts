@@ -155,8 +155,11 @@ export class UtilityHelper {
     }
   }
 
-  public static formatLastUpdate(timestamp: number): string {
-    const diff = Date.now() - timestamp;
+  public static formatLastUpdate(timestamp: number, futur = false): string {
+    let diff = Date.now() - timestamp;
+    if (futur) {
+      diff = timestamp - Date.now();
+    }
     if (diff < 1000 * 60) {
       return 'now';
     } else if (diff < 1000 * 60 * 60) {

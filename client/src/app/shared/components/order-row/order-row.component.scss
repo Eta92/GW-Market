@@ -50,6 +50,14 @@
     }
   }
 
+  &.auction-row {
+    border-left-color: rgba($auction-color, 0.6);
+
+    &:hover {
+      border-left-color: $auction-color;
+    }
+  }
+
   &.faded {
     opacity: 0.5;
   }

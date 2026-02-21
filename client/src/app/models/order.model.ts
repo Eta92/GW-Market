@@ -3,6 +3,7 @@ import { Item, OrderType, Price, ShopItem, ShopPrice } from './shop.model';
 export interface ItemOrders {
   sellOrders: Array<ItemPriceList>;
   buyOrders: Array<ItemPriceList>;
+  auctions: Array<ItemPriceList>;
 }
 
 export interface ItemPriceList {
@@ -26,6 +27,7 @@ export interface TimeBucket {
   time: Time;
   sellOrders: Array<ItemOrder>;
   buyOrders: Array<ItemOrder>;
+  auctions: Array<ItemOrder>;
 }
 
 export interface ItemTimeList {
@@ -46,6 +48,7 @@ export interface ItemOrder {
   // front only
   div_price?: number;
   div_quantity?: number;
+  auction?: string;
   // copy from shop
   lastRefresh?: number;
   positives?: number;

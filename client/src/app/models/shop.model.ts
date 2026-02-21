@@ -19,6 +19,7 @@ export interface Shop {
   items: Array<ShopItem>;
   certified?: Array<string>;
   reputation?: ShopReputation;
+  auctions?: Array<string>;
 }
 
 export interface ShopReputation {
@@ -53,6 +54,9 @@ export interface ShopItem {
   removed?: boolean;
   single?: boolean;
   import?: boolean;
+  // auction temp values
+  acknowledge?: boolean;
+  endTime?: number;
   // copy from shop
   daybreakOnline: boolean;
   authCertified: boolean;
@@ -84,6 +88,8 @@ export interface ShopPrice {
   // copy from shopitem
   quantity?: number;
   unit?: number;
+  // only for auction
+  max?: number;
 }
 
 export enum Price {
@@ -96,7 +102,8 @@ export enum Price {
 
 export enum OrderType {
   SELL,
-  BUY
+  BUY,
+  AUCTION
 }
 
 export interface Item {

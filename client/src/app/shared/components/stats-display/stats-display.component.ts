@@ -3,12 +3,16 @@ import { Component, Input } from '@angular/core';
 export interface StatsData {
   sellCount?: number;
   buyCount?: number;
+  auctionCount?: number;
   sellNow?: number;
   buyNow?: number;
+  auctionNow?: number;
   sellDay?: number;
   buyDay?: number;
+  auctionDay?: number;
   sellWeek?: number;
   buyWeek?: number;
+  auctionWeek?: number;
 }
 
 @Component({

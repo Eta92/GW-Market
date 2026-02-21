@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@an
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
+import { Auction } from '@app/models/auction.model';
 import { OrderFilter } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 import { Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
@@ -22,11 +23,13 @@ export class ShopComponent implements OnInit {
   public shop: Shop;
   public sellOrders: Array<ShopItem> = [];
   public buyOrders: Array<ShopItem> = [];
+  public itemAuctions: Array<Auction> = [];
   public tradeMessage = '';
   public details: Array<string> = [];
   public popup = false;
   public orderEdit: ShopItem = null;
   public orderEditAll = false;
+  public auctionDisplay: Auction = null;
   public showCandle = false;
   public timeLeft = 0;
   public pendingChanges = 0;
@@ -109,6 +112,11 @@ export class ShopComponent implements OnInit {
           this.pro = params['pro'];
         });
       }
+      // in both case listen to binded auctions
+      this.shopService.getPersonalAuctions().subscribe(auctions => {
+        this.itemAuctions = auctions;
+        this.cdr.detectChanges();
+      });
     });
   }
 
@@ -233,6 +241,21 @@ export class ShopComponent implements OnInit {
     }
   }
 
+  onCloturateAuction(auction: Auction): void {
+    if (auction.cloturate) {
+      this.shopService.cloturateAuction(this.itemAuctions.indexOf(auction));
+    } else {
+      this.toastrService.warning(
+        'Confirm auction completion by clicking the trash button again. Ensure the client has received the item before confirming.',
+        'Auction completion initiated',
+        {
+          timeOut: 3000
+        }
+      );
+      auction.cloturate = true;
+    }
+  }
+
   onCompleteLeave(order: ShopItem): void {
     order.completed = false;
   }
@@ -245,6 +268,14 @@ export class ShopComponent implements OnInit {
     order.single = false;
   }
 
+  onCloturateLeave(auction: Auction): void {
+    auction.cloturate = false;
+  }
+
+  onAuctionClick(auction: Auction): void {
+    this.auctionDisplay = auction;
+  }
+
   homeBaseUrl(): string {
     return this.router.createUrlTree(['']).toString();
   }
@@ -255,7 +286,11 @@ export class ShopComponent implements OnInit {
 
   onCreateOrder(order): void {
     this.orderWarning = false;
-    this.shopService.addShopItem(order);
+    if (order.orderType !== OrderType.AUCTION) {
+      this.shopService.addShopItem(order);
+    } else {
+      this.shopService.addAuctionItem(order);
+    }
   }
 
   openPlayer(): void {

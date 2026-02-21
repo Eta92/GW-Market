@@ -21,6 +21,7 @@ import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.c
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, take } from 'rxjs';
 import { InspectorService } from '@app/services/inspector.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-edit-order',
@@ -47,6 +48,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   public Price = Price;
   public isMiniature = false;
   public isAdvanced = false;
+  public isAuction = false;
   // weapons
   public isWeapon = false;
   public isLocked = true;
@@ -74,7 +76,12 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     const prices = this.fb.array([
-      this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })
+      this.fb.group({
+        type: [Price.PLAT],
+        price: [0, Validators.min(0)],
+        unit: [0, Validators.min(0)],
+        max: [null, Validators.min(1)]
+      })
     ]);
     this.form = this.fb.group({
       name: [this.preselect ? this.preselect.name : ''],
@@ -82,7 +89,10 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       hidden: [false],
       prices: prices,
       quantity: [1, Validators.min(1)],
-      description: ['']
+      description: [''],
+      // auction only
+      acknowledge: [false],
+      endTime: [formatDate(Date.now() + 7 * 24 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')]
     });
     this.formWeapon = this.fb.group({
       attribute: ['any', Validators.required],
@@ -114,6 +124,14 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
           this.loadOrder(this.original);
         }
       });
+    this.form.get('orderType')?.valueChanges.subscribe(value => {
+      this.isAuction = value === OrderType.AUCTION;
+      if (this.isAuction) {
+        while (this.getprices()?.value.length > 1) {
+          this.getprices().removeAt(1);
+        }
+      }
+    });
     this.refreshBindPrices();
   }
 
@@ -132,7 +150,12 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   loadOrder(order: ShopItem): void {
     while (this.getprices()?.value.length < order.prices.length) {
       this.getprices().push(
-        this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })
+        this.fb.group({
+          type: [Price.PLAT],
+          price: [0, Validators.min(0)],
+          unit: [0, Validators.min(0)],
+          max: [null, Validators.min(1)]
+        })
       );
     }
     order.item = this.itemService.getItemBase(order.name);
@@ -244,6 +267,10 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       this.toastrService.warning('Please check up the value fields', 'Form is invalid');
     } else if (order.name === '') {
       this.toastrService.error('Please first chose an item in the search bar', 'Item not selected');
+    } else if (order.orderType === OrderType.AUCTION && !order.acknowledge) {
+      this.toastrService.error('Please read and agree to the auction terms', 'Auction not acknowledged');
+    } else if (order.orderType === OrderType.AUCTION && new Date(order.endTime).getTime() <= Date.now()) {
+      this.toastrService.error('Please set an auction end time in the future', 'Auction end time not valid');
     } else {
       if (this.isWeapon) {
         order.weaponDetails = this.formWeapon.value;
