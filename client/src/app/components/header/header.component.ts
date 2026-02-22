@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Item, Shop } from '@app/models/shop.model';
+import { Item, OrderType, Shop } from '@app/models/shop.model';
 import { ShopService } from '@app/services/shop.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   @Output() selectItem = new EventEmitter<Item>();
 
   public shop: Shop;
+  public orderOpen = false;
 
   constructor(
     private router: Router,
@@ -55,7 +56,20 @@ export class HeaderComponent implements OnInit {
   }
 
   onPlaceOrder(): void {
-    this.placeOrder.emit();
+    if (this.router.url.includes('/item/')) {
+      this.placeOrder.emit();
+    } else {
+      this.orderOpen = true;
+    }
+  }
+
+  onCreateOrder(order): void {
+    if (order.orderType !== OrderType.AUCTION) {
+      this.shopService.addShopItem(order);
+    } else {
+      this.shopService.addAuctionItem(order);
+    }
+    this.router.navigate(['shop']);
   }
 
   refreshShop(): void {

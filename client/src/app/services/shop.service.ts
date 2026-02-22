@@ -60,7 +60,6 @@ export class ShopService {
         item.item = this.itemService.getItemBase(item.name);
       });
       this.activeShopSubject.set(activeShop);
-      this.socket.emit('getPersonalAuctions', shop.auctions);
       this.saveShop();
       this.toastrService.success('', 'Shop updated completed', {
         timeOut: 5000
@@ -80,7 +79,6 @@ export class ShopService {
           item.item = this.itemService.getItemBase(item.name);
         });
         this.activeShopSubject.set(shop);
-        this.socket.emit('getPersonalAuctions', shop.auctions);
         this.socket.emit('checkShopUpToDate', shop.uuid, shop.lastRefresh);
         if (shop.lastRefresh && Date.now() - shop.lastRefresh < 1000 * 60 * 15) {
           this.daybreakStart();

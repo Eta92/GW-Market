@@ -337,14 +337,6 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
   ></app-edit-many>
 </app-modal>
 
-<!-- New Order Component -->
-<app-new-order
-  [warning]="orderWarning"
-  [orderOpen]="orderOpen"
-  (createOrder)="onCreateOrder($event)"
-  (closeOrder)="orderOpen = false"
-></app-new-order>
-
 <!-- Player Selection Modal -->
 <app-modal [isOpen]="playerOpen" (closed)="playerOpen = false">
   <app-active-player
@@ -352,4 +344,128 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     (closeEdit)="playerOpen = false"
     (confirmPlayer)="onConfirmPlayer($event)"
   ></app-active-player>
+</app-modal>
+
+<!-- Order Detail Modal -->
+<app-modal [isOpen]="!!auctionDisplay" (closed)="auctionDisplay = null" contentClass="order-detail-content-wrapper">
+  <div class="order-detail-content auction-order">
+    <div class="order-detail-header">
+      <div class="order-type-badge auction">
+        <i class="fa fa-gavel"></i>
+        Auction
+      </div>
+      <button class="modal-close" (click)="auctionDisplay = null">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="order-detail-body">
+      <!-- Item Info -->
+      <div class="detail-item-row">
+        <img
+          class="detail-item-img"
+          [src]="getImageSource(auctionDisplay.item.name)"
+          [alt]="auctionDisplay.item?.name"
+        />
+        <div class="detail-item-info">
+          <span class="detail-item-name">{{ auctionDisplay.item?.name }}</span>
+          <span class="detail-item-qty">Quantity: <strong>1</strong></span>
+        </div>
+      </div>
+
+      <!-- Price Info -->
+      <div class="detail-price-section">
+        <div class="detail-price-row" *ngIf="auctionDisplay?.history && auctionDisplay.history?.length > 0">
+          <span class="detail-price-label">Last Bid Price</span>
+          <div class="detail-price-value">
+            <img [src]="auctionDisplay.currency | currencySource" class="detail-currency-icon" />
+            <span class="detail-price-amount">{{
+              auctionDisplay.history[auctionDisplay.history.length - 1]?.bid
+            }}</span>
+            <span class="detail-currency-name">{{ auctionDisplay.currency | priceToString }}</span>
+          </div>
+        </div>
+        <div
+          class="detail-price-row"
+          *ngIf="auctionDisplay && (!auctionDisplay.history || auctionDisplay.history?.length === 0)"
+        >
+          <span class="detail-price-label">Initial Auction Price</span>
+          <div class="detail-price-value">
+            <img [src]="auctionDisplay.currency | currencySource" class="detail-currency-icon" />
+            <span class="detail-price-amount">{{ auctionDisplay.startingPrice }}</span>
+            <span class="detail-currency-name">{{ auctionDisplay.currency | priceToString }}</span>
+          </div>
+        </div>
+        <div class="detail-price-row unit-price" *ngIf="auctionDisplay?.buyoutPrice">
+          <span class="detail-price-label">Buyout Price</span>
+          <div class="detail-price-value">
+            <span class="detail-price-decimal">{{ auctionDisplay.buyoutPrice }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seller Info -->
+      <div class="detail-seller-section">
+        <div class="detail-seller-row">
+          <div>
+            <span class="detail-seller-label -mt-1 mb-1 flex">Seller</span>
+            <div class="detail-seller-badges">
+              <!--span class="badge online" *ngIf="selectedAuction?.daybreakOnline">
+                <img src="/assets/img/online.png" /> Online
+              </span>
+              <span class="badge certified" *ngIf="selectedAuction?.authCertified">
+                <img src="/assets/img/certified.png" /> Certified
+              </span-->
+            </div>
+          </div>
+          <div class="detail-seller-value -mt-1.5">
+            <span class="detail-seller-name" [ngClass]="{ 'flex cursor-pointer underline': auctionDisplay?.shopId }"
+              >{{ auctionDisplay?.player }} ></span
+            >
+            <div class="detail-actions-right">
+              <!--button
+                class="detail-vote-btn positive"
+                (click)="reputationVote(selectedAuction, 'positive')"
+                title="Positive vote"
+              >
+                <span>{{ selectedAuction?.positives }}</span>
+                <i class="fa fa-thumbs-up"></i>
+              </button>
+              <button
+                class="detail-vote-btn negative"
+                (click)="reputationVote(selectedAuction, 'negative')"
+                title="Negative vote"
+              >
+                <span>{{ selectedAuction?.negatives }}</span>
+                <i class="fa fa-thumbs-down mt-1.5"></i>
+              </button-->
+            </div>
+          </div>
+        </div>
+        <div class="detail-seller-row" *ngIf="auctionDisplay?.history?.[auctionDisplay.history.length - 1]?.bid">
+          <span class="detail-seller-label">Top Bidder</span>
+          <span class="detail-seller-time">{{
+            auctionDisplay.history?.[auctionDisplay.history.length - 1]?.bidder
+          }}</span>
+        </div>
+        <div class="detail-seller-row" *ngIf="auctionDisplay?.endTime">
+          <span class="detail-seller-label">Remaining Time</span>
+          <span class="detail-seller-time">{{ auctionDisplay.endTime | formatLastUpdate: true }}</span>
+        </div>
+      </div>
+
+      <!-- Item Details (weapon, miniature, pre-searing) -->
+      <!-- <div class="detail-item-details-section" *ngIf="auctionDisplay && hasItemDetails(auctionDisplay)">
+        <app-item-details [item]="auctionDisplay.item" [details]="auctionDisplay.item.item"></app-item-details>
+      </div> -->
+
+      <!-- Notes Section (description only) -->
+      <div class="detail-notes-section" *ngIf="auctionDisplay?.item.description">
+        <span class="detail-notes-label">Notes</span>
+        <div class="detail-notes-content">
+          <p class="detail-description">{{ auctionDisplay.item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </app-modal>

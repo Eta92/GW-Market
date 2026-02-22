@@ -105,6 +105,7 @@ export class ShopComponent implements OnInit {
         // load personal shop
         this.shopService.getActiveShop().subscribe((shop: Shop) => {
           this.shop = shop;
+          this.storeService.requestSocket('getPersonalAuctions', shop.auctions);
           this.shopUpdate();
         });
         // auto switch to pro mode
@@ -282,15 +283,6 @@ export class ShopComponent implements OnInit {
 
   onHome(): void {
     this.router.navigate(['']);
-  }
-
-  onCreateOrder(order): void {
-    this.orderWarning = false;
-    if (order.orderType !== OrderType.AUCTION) {
-      this.shopService.addShopItem(order);
-    } else {
-      this.shopService.addAuctionItem(order);
-    }
   }
 
   openPlayer(): void {

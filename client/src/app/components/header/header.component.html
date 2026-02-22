@@ -106,3 +106,9 @@
     </div>
   </div>
 </header>
+
+<app-new-order
+  [orderOpen]="orderOpen"
+  (createOrder)="onCreateOrder($event)"
+  (closeOrder)="orderOpen = false"
+></app-new-order>

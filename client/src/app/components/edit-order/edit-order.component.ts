@@ -146,10 +146,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       this.loadOrder(this.original);
     }
     if (changes['preselect'] && this.preselect) {
-      this.item = this.preselect;
-      if (this.form) {
-        this.form.patchValue({ name: this.preselect.name });
-      }
+      this.onSelectItem(this.preselect);
     }
   }
 
@@ -168,9 +165,9 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.item = { ...order.item, img: undefined };
     this.form.patchValue(order);
     this.formOther.patchValue(order.orderDetails || {});
+    this.isWeapon = WeaponHelper.isWeapon(order.item);
     this.isMiniature = WeaponHelper.isMiniature(order.item);
-    if (WeaponHelper.isWeapon(order.item) && this.allItems) {
-      this.isWeapon = true;
+    if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(order.item.category);
       this.weaponLists = WeaponHelper.getItemList(order.item, this.allItems);
       this.formWeapon.patchValue(order.weaponDetails || {});
@@ -180,18 +177,17 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
 
   onSelectItem(item: Item): void {
     this.item = item;
-    this.form.patchValue({ name: item.name });
+    if (this.form) {
+      this.form.patchValue({ name: item.name });
+    }
     // Reset flags for new item
-    this.isWeapon = false;
-    this.isMiniature = false;
+    this.isWeapon = WeaponHelper.isWeapon(item);
+    this.isMiniature = WeaponHelper.isMiniature(item);
     // Set weapon flag if applicable
-    if (WeaponHelper.isWeapon(item)) {
-      this.isWeapon = true;
+    if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(item.category);
       this.weaponLists = WeaponHelper.getItemList(item, this.allItems);
     }
-    // Set miniature flag if applicable
-    this.isMiniature = WeaponHelper.isMiniature(item);
   }
 
   getImageSource(item: Item): string {

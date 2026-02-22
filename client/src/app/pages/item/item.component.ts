@@ -704,7 +704,11 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   onCreateOrder(order): void {
-    this.shopService.addShopItem(order);
+    if (order.orderType !== OrderType.AUCTION) {
+      this.shopService.addShopItem(order);
+    } else {
+      this.shopService.addAuctionItem(order);
+    }
     this.router.navigate(['shop']);
   }
 

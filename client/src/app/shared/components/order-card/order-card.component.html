@@ -49,6 +49,9 @@
       <button class="action-btn edit" (click)="onEditClick()" title="Edit" *ngIf="!auction">
         <i class="fa fa-pen"></i>
       </button>
+      <button class="action-btn edit" (click)="onAuctionClick()" title="Inspect" *ngIf="auction">
+        <i class="fa fa-info-circle"></i>
+      </button>
       <button
         *ngIf="!auction"
         class="action-btn visibility"

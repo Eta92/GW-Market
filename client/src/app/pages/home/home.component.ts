@@ -256,11 +256,6 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['shop']);
   }
 
-  onCreateOrder(order): void {
-    this.shopService.addShopItem(order);
-    this.router.navigate(['shop']);
-  }
-
   scroll(el: HTMLElement): void {
     el.scrollIntoView({ behavior: 'smooth' });
   }
