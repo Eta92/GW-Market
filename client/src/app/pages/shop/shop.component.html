@@ -309,6 +309,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     [original]="orderEdit"
     [confirm]="'Edit Order'"
     [maskSearch]="true"
+    [status]="!!orderEdit"
     (closeEdit)="orderEdit = null"
     (confirmOrder)="onEditOrder($event)"
   ></app-edit-order>

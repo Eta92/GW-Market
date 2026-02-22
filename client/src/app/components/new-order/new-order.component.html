@@ -3,6 +3,7 @@
   <app-edit-order
     [preselect]="preselect"
     [confirm]="'Create Order'"
+    [status]="orderOpen"
     (closeEdit)="onClose()"
     (confirmOrder)="onCreateOrder($event)"
   ></app-edit-order>

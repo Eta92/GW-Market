@@ -33,10 +33,12 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   @Input() original?: ShopItem;
   @Input() maskSearch = false;
   @Input() confirm: string;
+  @Input() status: boolean;
 
   @Output() closeEdit = new EventEmitter<void>();
   @Output() confirmOrder = new EventEmitter<ShopItem>();
 
+  public init = false;
   public form: UntypedFormGroup;
   public formWeapon: UntypedFormGroup;
   public formOther: UntypedFormGroup;
@@ -75,6 +77,11 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.forceInit();
+  }
+
+  private forceInit(): void {
+    this.init = true;
     const prices = this.fb.array([
       this.fb.group({
         type: [Price.PLAT],
@@ -111,10 +118,6 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     if (this.original) {
       this.loadOrder(this.original);
     }
-    this.storeService.getItemDetails().subscribe((item: Item) => {
-      this.item = item;
-      this.cdr.detectChanges();
-    });
     this.itemService
       .getAvailableTree()
       .pipe(take(1))
@@ -136,6 +139,9 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (!this.init && changes['status'] && this.status) {
+      this.forceInit();
+    }
     if (changes['original'] && this.original && this.form) {
       this.loadOrder(this.original);
     }
@@ -159,6 +165,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       );
     }
     order.item = this.itemService.getItemBase(order.name);
+    this.item = { ...order.item, img: undefined };
     this.form.patchValue(order);
     this.formOther.patchValue(order.orderDetails || {});
     this.isMiniature = WeaponHelper.isMiniature(order.item);
@@ -288,6 +295,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   resetForms(): void {
+    this.init = false;
     while (this.getprices()?.value.length > 1) {
       this.getprices().removeAt(1);
     }
