@@ -10,7 +10,11 @@ export const ItemDetailMap: Record<string, string> = {
   stats: 'Stats',
   effect: 'Effect',
   description: 'Description',
-  summoned_ally: 'Invocation'
+  summoned_ally: 'Invocation',
+  'OS only': 'OS only',
+  craftable: 'Craftable',
+  collector: 'Collector only',
+  quest: 'Quest only'
 };
 
 /**

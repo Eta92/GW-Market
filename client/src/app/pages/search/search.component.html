@@ -132,12 +132,12 @@
 
             <!-- Inscription Type -->
             <div class="sidebar-section">
-              <label class="section-label">Type</label>
-              <select class="filter-select" formControlName="inscription">
-                <option [ngValue]="null">Any type...</option>
-                <option [ngValue]="'true'">Inscription</option>
-                <option [ngValue]="'false'">Old School (OS)</option>
-              </select>
+              <label class="section-label">Inscription</label>
+              <app-toggle-group
+                [options]="inscriptionOptions"
+                [value]="form.get('inscription')?.value"
+                (valueChange)="form.patchValue({ inscription: $event })"
+              ></app-toggle-group>
             </div>
           </ng-container>
 

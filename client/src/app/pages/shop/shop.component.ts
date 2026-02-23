@@ -352,7 +352,7 @@ export class ShopComponent implements OnInit {
     if (this.shop.player === 'GWTrader') {
       this.toastrService.warning('Please first set a valid player name for your shop', 'Player invalid');
       this.playerWarning = true;
-    } else if (this.shop.items.length === 0) {
+    } else if (this.shop.items.length === 0 && !this.shop.uuid) {
       this.toastrService.warning('Please place at least one order before onlining your shop', 'No items');
       this.orderWarning = true;
     } else if (Date.now() - this.shop.lastRefresh < 60 * 1000) {

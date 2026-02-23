@@ -35,7 +35,12 @@
   <!-- Player Info Section -->
   <div class="player-info">
     <span class="player-name">{{ order.player }}</span>
-    <span class="player-time" *ngIf="order.lastRefresh">{{ order.lastRefresh | formatLastUpdate: true }}</span>
+    <span class="player-time" *ngIf="order.lastRefresh && !order.auction">{{
+      order.lastRefresh | formatLastUpdate
+    }}</span>
+    <span class="player-time" *ngIf="order.lastRefresh && order.auction"
+      >{{ order.lastRefresh | formatLastUpdate: true }} remaining</span
+    >
   </div>
 
   <!-- Badges (fixed width container for alignment) -->

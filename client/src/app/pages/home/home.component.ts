@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   public lastItems: Array<ShopItem> = [];
   public orderOpen = false;
   public availableMode: 'everything' | 'active' | 'sold' | 'bought' | 'auction' = 'everything';
-  public timeMode: 'online' | 'today' | 'week' | 'combined' = 'online';
+  public timeMode: 'online' | 'today' | 'week' | 'combined' = 'today';
   public viewMode: 'grid' | 'list' = 'grid';
   public availableTree: AvailableTree = {
     families: [],
