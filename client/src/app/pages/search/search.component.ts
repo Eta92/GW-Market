@@ -140,12 +140,11 @@ export class SearchComponent implements OnInit, OnDestroy {
       reqMin: [0],
       reqMax: [13],
       inscription: [null],
-      oldschool: [null],
+      legacy: [null],
       core: [null],
       prefix: [null],
       suffix: [null],
       preSearing: [null],
-      preNerf: [null],
       miniDedicated: [null],
       currency: [null],
       priceMin: [null],
@@ -190,7 +189,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (f.reqMin > 0) filter.reqMin = f.reqMin;
     if (f.reqMax < 13) filter.reqMax = f.reqMax;
     if (f.inscription !== null) filter.inscription = f.inscription === 'true';
-    if (f.oldschool !== null) filter.oldschool = f.oldschool === 'true';
+    if (f.legacy !== null) filter.legacy = f.legacy === 'true';
     if (f.core) filter.core = f.core;
     if (f.prefix) filter.prefix = f.prefix;
     if (f.suffix) filter.suffix = f.suffix;

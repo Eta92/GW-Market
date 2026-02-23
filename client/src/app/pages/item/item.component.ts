@@ -661,7 +661,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     if (this.tradeMessage) {
       navigator.clipboard.writeText(this.tradeMessage).then(() => {
         this.toastrService.success('Private trade message copied to clipboard', '', {
-          timeOut: 3000
+          timeOut: 5000
         });
       });
     }
@@ -751,7 +751,7 @@ export class ItemComponent implements OnInit, OnDestroy {
           'Your bid must be at least 1% higher rounded up than the current bid',
           'Bid Amount Error',
           {
-            timeOut: 3000
+            timeOut: 15000
           }
         );
       }

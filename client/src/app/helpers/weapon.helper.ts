@@ -61,7 +61,7 @@ export class WeaponHelper {
     if (!wd) return '';
     let info = `Req.${wd.requirement}`;
     if (wd.attribute) info += ` ${wd.attribute}`;
-    if (wd.oldschool) info += ' (OS)';
+    if (!wd.inscription) info += ' (OS)';
     if (wd.core) info += `, ${wd.core}`;
     if (wd.inscription) info += ' (Insc.)';
     return info.trim();

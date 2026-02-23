@@ -71,7 +71,7 @@ export interface OrderFilter {
   reqMin: number;
   reqMax: number;
   inscription: string;
-  oldschool: string;
+  legacy: string;
   core: string;
   prefix: string;
   suffix: string;
@@ -97,7 +97,6 @@ export interface SearchFilter {
   reqMin?: number;
   reqMax?: number;
   inscription?: boolean;
-  oldschool?: boolean;
   core?: string;
   prefix?: string;
   suffix?: string;
@@ -106,7 +105,7 @@ export interface SearchFilter {
   preSearing?: boolean;
 
   // Pre-nerf filter
-  preNerf?: boolean;
+  legacy?: boolean;
 
   // Miniature-specific filters
   miniDedicated?: boolean;
@@ -159,7 +158,7 @@ export interface SearchResultOrder {
   family: string;
   category: string;
   preSearing?: boolean;
-  preNerf?: boolean;
+  legacy?: boolean;
   dedicated?: boolean;
 }
 

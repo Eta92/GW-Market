@@ -188,7 +188,7 @@ export class ItemService {
 
   getItemImage(name: string): string {
     if (!this.itemNameBase[name]) {
-      if (this.treeLoaded && this.warningMap[name] !== true) {
+      if (this.treeLoaded && this.warningMap[name] !== true && name) {
         this.toastrService.warning(`The item ${name} seems to be outdated, please update it.`);
         this.warningMap[name] = true;
       }
@@ -200,7 +200,7 @@ export class ItemService {
 
   getItemBase(name: string, warning = true): BasicItem | null {
     if (!this.itemNameBase[name]) {
-      if (this.treeLoaded && warning && this.warningMap[name] !== true) {
+      if (this.treeLoaded && warning && this.warningMap[name] !== true && name) {
         this.toastrService.warning(`The item ${name} seems to be outdated, please update it.`);
         this.warningMap[name] = true;
       }

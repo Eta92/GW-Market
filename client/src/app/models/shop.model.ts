@@ -70,7 +70,6 @@ export interface WeaponDetails {
   attribute: string;
   requirement: number;
   inscription: boolean;
-  oldschool: boolean;
   core: string;
   prefix: string;
   suffix: string;

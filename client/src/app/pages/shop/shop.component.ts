@@ -44,7 +44,7 @@ export class ShopComponent implements OnInit {
     reqMin: 0,
     reqMax: 13,
     inscription: null,
-    oldschool: null,
+    legacy: null,
     core: null,
     prefix: null,
     suffix: null
@@ -194,7 +194,7 @@ export class ShopComponent implements OnInit {
       this.toastrService.warning(
         'Confirm completion by clicking the check button again',
         'Order validation initiated',
-        { timeOut: 3000 }
+        { timeOut: 10000 }
       );
       order.completed = true;
     }
@@ -205,7 +205,7 @@ export class ShopComponent implements OnInit {
       this.shopService.removeShopItem(this.shop.items.indexOf(order));
     } else {
       this.toastrService.warning('Confirm deletion by clicking the trash button again', 'Order removal initiated', {
-        timeOut: 3000
+        timeOut: 10000
       });
       order.removed = true;
     }
@@ -235,7 +235,7 @@ export class ShopComponent implements OnInit {
         'Confirm single completion by clicking the check button again',
         'Single validation initiated',
         {
-          timeOut: 3000
+          timeOut: 10000
         }
       );
       order.single = true;
@@ -250,7 +250,7 @@ export class ShopComponent implements OnInit {
         'Confirm auction completion by clicking the trash button again. Ensure the client has received the item before confirming.',
         'Auction completion initiated',
         {
-          timeOut: 3000
+          timeOut: 10000
         }
       );
       auction.cloturate = true;
@@ -483,8 +483,8 @@ export class ShopComponent implements OnInit {
           return false;
         }
       }
-      if (this.orderFilter.oldschool) {
-        if (!item.weaponDetails || item.weaponDetails.oldschool.toString() !== this.orderFilter.oldschool) {
+      if (this.orderFilter.legacy) {
+        if (!item.orderDetails || item.orderDetails.legacy.toString() !== this.orderFilter.legacy) {
           return false;
         }
       }

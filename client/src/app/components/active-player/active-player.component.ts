@@ -62,7 +62,7 @@ export class ActivePlayerComponent implements OnInit {
     if (this.secret) {
       navigator.clipboard.writeText(this.secret).then(() => {
         this.toastrService.success('Certification message copied to clipboard', '', {
-          timeOut: 3000
+          timeOut: 5000
         });
       });
     }
@@ -78,7 +78,7 @@ export class ActivePlayerComponent implements OnInit {
       this.confirmPlayer.emit(playerName);
     } else {
       this.toastrService.error('Please enter a valid player name (at least two names)', '', {
-        timeOut: 3000
+        timeOut: 10000
       });
     }
   }

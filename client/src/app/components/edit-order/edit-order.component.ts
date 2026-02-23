@@ -105,7 +105,6 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       attribute: ['any', Validators.required],
       requirement: [9, [Validators.min(0), Validators.max(13)]],
       inscription: [true],
-      oldschool: [false],
       core: [null],
       prefix: [null],
       suffix: [null]
@@ -308,7 +307,6 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       attribute: 'any',
       requirement: 9,
       inscription: true,
-      oldschool: false,
       core: null,
       prefix: null,
       suffix: null

@@ -109,18 +109,18 @@
             <span>New</span>
           </button>
           <button
-            class="sidebar-action-btn col-span-2"
+            class="col-span-2 sidebar-action-btn"
             (click)="orderEditAll = true"
             *ngIf="Array.isArray(shop?.items) && shop.items.length > 0"
           >
             <i class="fa fa-pen"></i>
             <span>Edit All Orders</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="loadDaybreakItems()">
+          <button class="col-span-2 sidebar-action-btn" (click)="loadDaybreakItems()">
             <i class="fa fa-rotate"></i>
             <span>Dump From Daybreak</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="getLink()">
+          <button class="col-span-2 sidebar-action-btn" (click)="getLink()">
             <i class="fa fa-link"></i>
             <span>Public Link</span>
           </button>
@@ -348,7 +348,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
 
 <!-- Order Detail Modal -->
 <app-modal [isOpen]="!!auctionDisplay" (closed)="auctionDisplay = null" contentClass="order-detail-content-wrapper">
-  <div class="order-detail-content auction-order">
+  <div *ngIf="!!auctionDisplay" class="order-detail-content auction-order">
     <div class="order-detail-header">
       <div class="order-type-badge auction">
         <i class="fa fa-gavel"></i>
@@ -364,11 +364,11 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
       <div class="detail-item-row">
         <img
           class="detail-item-img"
-          [src]="getImageSource(auctionDisplay.item.name)"
-          [alt]="auctionDisplay.item?.name"
+          [src]="getImageSource(auctionDisplay?.item?.name)"
+          [alt]="auctionDisplay?.item?.name"
         />
         <div class="detail-item-info">
-          <span class="detail-item-name">{{ auctionDisplay.item?.name }}</span>
+          <span class="detail-item-name">{{ auctionDisplay?.item?.name }}</span>
           <span class="detail-item-qty">Quantity: <strong>1</strong></span>
         </div>
       </div>
@@ -408,7 +408,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
       <div class="detail-seller-section">
         <div class="detail-seller-row">
           <div>
-            <span class="detail-seller-label -mt-1 mb-1 flex">Seller</span>
+            <span class="flex mb-1 -mt-1 detail-seller-label">Seller</span>
             <div class="detail-seller-badges">
               <!--span class="badge online" *ngIf="selectedAuction?.daybreakOnline">
                 <img src="/assets/img/online.png" /> Online

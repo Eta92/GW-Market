@@ -6,8 +6,8 @@
       Req.{{ wd.requirement }}
       <span class="attr" *ngIf="wd.attribute">{{ wd.attribute }}</span>
     </span>
-    <span class="detail-badge os" *ngIf="wd.oldschool"> <i class="fa fa-scroll"></i> OS </span>
     <span class="detail-badge insc" *ngIf="wd.inscription"> <i class="fa fa-pen-fancy"></i> Insc. </span>
+    <span class="detail-badge insc" *ngIf="!wd.inscription"> <i class="fa fa-scroll"></i> OS. </span>
     <span class="detail-badge core" *ngIf="wd.core">
       {{ wd.core }}
     </span>

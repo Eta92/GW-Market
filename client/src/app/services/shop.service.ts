@@ -62,7 +62,7 @@ export class ShopService {
       this.activeShopSubject.set(activeShop);
       this.saveShop();
       this.toastrService.success('', 'Shop updated completed', {
-        timeOut: 5000
+        timeOut: 10000
       });
       this.daybreakStart();
     });
@@ -105,7 +105,7 @@ export class ShopService {
       'Your new item will be visible for customers on next shop update',
       'Item added to your shop',
       {
-        timeOut: 3000
+        timeOut: 10000
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
@@ -117,7 +117,7 @@ export class ShopService {
     activeShop.items[index] = item;
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Item updated', {
-      timeOut: 3000
+      timeOut: 10000
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -128,7 +128,7 @@ export class ShopService {
     activeShop.items = activeShop.items.map((item, index) => ({ ...item, ...items[index] }));
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
-      timeOut: 3000
+      timeOut: 10000
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -139,7 +139,7 @@ export class ShopService {
     activeShop.items = [...activeShop.items, ...items];
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
-      timeOut: 3000
+      timeOut: 10000
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -153,7 +153,7 @@ export class ShopService {
       'The item will be cleared from item lists on next shop update',
       'Item removed from the shop',
       {
-        timeOut: 3000
+        timeOut: 10000
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
@@ -176,7 +176,7 @@ export class ShopService {
       'The item will be cleared from item lists on next shop update',
       'Item amount reduced from the shop',
       {
-        timeOut: 3000
+        timeOut: 10000
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
@@ -189,7 +189,7 @@ export class ShopService {
       this.socket.emit('bidAuction', { bidder: activeShop.uuid, auctionId: auction.uuid, amount });
     } else {
       this.toastrService.error('You must have a working shop before placing bids', 'Bid Error', {
-        timeOut: 3000
+        timeOut: 10000
       });
     }
   }
@@ -210,7 +210,7 @@ export class ShopService {
       'Customer will be able to contact you ingame via this character on next shop update',
       'Shop player updated',
       {
-        timeOut: 3000
+        timeOut: 10000
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
@@ -314,7 +314,7 @@ export class ShopService {
         'You need to have an active shop with certified characters to submit reputation votes.',
         '',
         {
-          timeOut: 5000
+          timeOut: 15000
         }
       );
     }
@@ -427,7 +427,7 @@ export class ShopService {
             [] as Array<{ name: string; quantity: number }>
           );
           this.toastrService.success('Successfully fetched items from Daybreak API', 'Daybreak items loaded', {
-            timeOut: 3000
+            timeOut: 10000
           });
           resolve(groupedItems);
         },
@@ -437,7 +437,7 @@ export class ShopService {
             'Make sure your Daybreak Launcher is running and you have the API enabled.',
             'Failed to connect to Daybreak API.',
             {
-              timeOut: 5000
+              timeOut: 15000
             }
           );
           reject(error);
