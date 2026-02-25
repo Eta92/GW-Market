@@ -922,6 +922,23 @@
   letter-spacing: 0.03em;
 }
 
+.detail-seller-price {
+  gap: 4px;
+  display: flex;
+  font-size: 0.875rem;
+  color: rgba($parchment, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 800;
+}
+
+.detail-history-currency-icon {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  object-fit: contain;
+}
+
 .detail-seller-value {
   display: flex;
   flex-direction: column;
@@ -970,6 +987,17 @@
 .detail-seller-time {
   font-size: 0.875rem;
   color: rgba($parchment, 0.7);
+}
+
+.detail-seller-history {
+  font-size: 0.75rem;
+  color: rgba($parchment, 0.5);
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: rgba($parchment, 0.7);
+  }
 }
 
 // Item Details section

@@ -109,18 +109,18 @@
             <span>New</span>
           </button>
           <button
-            class="col-span-2 sidebar-action-btn"
+            class="sidebar-action-btn col-span-2"
             (click)="orderEditAll = true"
             *ngIf="Array.isArray(shop?.items) && shop.items.length > 0"
           >
             <i class="fa fa-pen"></i>
             <span>Edit All Orders</span>
           </button>
-          <button class="col-span-2 sidebar-action-btn" (click)="loadDaybreakItems()">
+          <button class="sidebar-action-btn col-span-2" (click)="loadDaybreakItems()">
             <i class="fa fa-rotate"></i>
             <span>Dump From Daybreak</span>
           </button>
-          <button class="col-span-2 sidebar-action-btn" (click)="getLink()">
+          <button class="sidebar-action-btn col-span-2" (click)="getLink()">
             <i class="fa fa-link"></i>
             <span>Public Link</span>
           </button>
@@ -143,8 +143,8 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
             Destroy all?
           </span>
           <div class="confirm-buttons">
-            <button class="confirm-btn yes" (click)="onClearShop()">Yes</button>
-            <button class="confirm-btn no" (click)="clearShop = false">No</button>
+            <button class="erase-btn yes" (click)="onClearShop()">Yes</button>
+            <button class="erase-btn no" (click)="clearShop = false">No</button>
           </div>
         </div>
       </div>
@@ -408,7 +408,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
       <div class="detail-seller-section">
         <div class="detail-seller-row">
           <div>
-            <span class="flex mb-1 -mt-1 detail-seller-label">Seller</span>
+            <span class="detail-seller-label -mt-1 mb-1 flex">Seller</span>
             <div class="detail-seller-badges">
               <!--span class="badge online" *ngIf="selectedAuction?.daybreakOnline">
                 <img src="/assets/img/online.png" /> Online
@@ -444,10 +444,27 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
         </div>
         <div class="detail-seller-row" *ngIf="auctionDisplay?.history?.[auctionDisplay.history.length - 1]?.bid">
           <span class="detail-seller-label">Top Bidder</span>
+          <span class="detail-seller-history" (click)="toggleAuctionHistory()">history</span>
           <span class="detail-seller-time">{{
             auctionDisplay.history?.[auctionDisplay.history.length - 1]?.bidder
           }}</span>
         </div>
+        <ng-container *ngIf="auctionHistoryVisible">
+          <div class="detail-seller-row" *ngFor="let bid of auctionDisplay?.history?.slice().reverse()">
+            <span class="detail-seller-price">
+              <img [src]="auctionDisplay?.currency | currencySource" class="detail-history-currency-icon" />
+              {{ bid.bid }}
+            </span>
+            <span class="auction-history-time">{{ bid.time | formatLastUpdate }}</span>
+            <span
+              class="auction-history-time"
+              [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }"
+              (click)="goToShop(bid)"
+              >{{ bid?.bidder }}
+              <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+            ></span>
+          </div>
+        </ng-container>
         <div class="detail-seller-row" *ngIf="auctionDisplay?.endTime">
           <span class="detail-seller-label">Remaining Time</span>
           <span class="detail-seller-time">{{ auctionDisplay.endTime | formatLastUpdate: true }}</span>
@@ -455,17 +472,49 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
       </div>
 
       <!-- Item Details (weapon, miniature, pre-searing) -->
-      <!-- <div class="detail-item-details-section" *ngIf="auctionDisplay && hasItemDetails(auctionDisplay)">
+      <div class="detail-item-details-section" *ngIf="auctionDisplay && hasItemDetails(auctionDisplay)">
         <app-item-details [item]="auctionDisplay.item" [details]="auctionDisplay.item.item"></app-item-details>
-      </div> -->
+      </div>
 
       <!-- Notes Section (description only) -->
       <div class="detail-notes-section" *ngIf="auctionDisplay?.item.description">
         <span class="detail-notes-label">Notes</span>
         <div class="detail-notes-content">
-          <p class="detail-description">{{ auctionDisplay.item.description }}</p>
+          <p class="detail-description">{{ auctionDisplay?.item.description }}</p>
         </div>
       </div>
     </div>
+
+    <div
+      class="order-detail-footer"
+      *ngIf="auctionDisplay && !auctionDisplay.active && auctionDisplay.history?.length > 0"
+    >
+      <button class="detail-whisper-btn" (click)="contactWinner(auctionDisplay)">
+        <i class="fa fa-gavel"></i>
+        Contact Winner
+      </button>
+    </div>
   </div>
+
+  <!-- Whisper Popup -->
+  <app-modal [isOpen]="auctionPopup" (closed)="auctionPopup = false" contentClass="whisper-popup-content">
+    <div class="popup-content">
+      <div class="popup-header">
+        <img class="popup-img" [src]="getImageSource(auctionDisplay?.item.name)" />
+        <div class="popup-title">
+          <h3>Contact Player</h3>
+          <p>Copy message to whisper in-game</p>
+        </div>
+        <button class="popup-close" (click)="auctionPopup = false">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+
+      <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ auctionMessage }}</textarea>
+      <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
+        <i class="fa fa-copy"></i>
+        Copy Trade Message
+      </button>
+    </div>
+  </app-modal>
 </app-modal>

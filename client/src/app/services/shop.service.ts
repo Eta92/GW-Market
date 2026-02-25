@@ -67,6 +67,9 @@ export class ShopService {
       this.daybreakStart();
     });
     this.socket.on('PersonalAuctions', (auctions: Array<Auction>) => {
+      auctions.forEach(auction => {
+        auction.item.item = this.itemService?.getItemBase(auction.item.name);
+      });
       this.personalAuctionsSubject.set(auctions);
     });
     // rest of init
@@ -197,8 +200,8 @@ export class ShopService {
   cloturateAuction(index: number): void {
     const activeShop = this.activeShopSubject.value;
     const targetAuction = activeShop.auctions[index];
-    this.socket.emit('cloturateAuction', targetAuction);
-    activeShop.items.splice(index, 1);
+    this.socket.emit('cloturateAuction', activeShop.uuid, targetAuction);
+    activeShop.auctions.splice(index, 1);
     this.activeShopSubject.set(activeShop);
   }
 

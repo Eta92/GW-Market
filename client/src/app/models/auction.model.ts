@@ -11,12 +11,14 @@ export interface Auction {
   active?: boolean;
   startTime?: number;
   endTime: number;
-  history?: Array<{
-    bidder: string;
-    public: string;
-    bid: number;
-    time: number;
-  }>;
+  history?: Array<AuctionHistory>;
   // front only
   cloturate?: boolean;
+}
+
+export interface AuctionHistory {
+  bidder: string;
+  shopId: string;
+  bid: number;
+  time: number;
 }

@@ -2,8 +2,9 @@ import { Location } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { Auction } from '@app/models/auction.model';
+import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { OrderFilter } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 import { Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
@@ -30,6 +31,9 @@ export class ShopComponent implements OnInit {
   public orderEdit: ShopItem = null;
   public orderEditAll = false;
   public auctionDisplay: Auction = null;
+  public auctionPopup = false;
+  public auctionMessage = '';
+  public auctionHistoryVisible = false;
   public showCandle = false;
   public timeLeft = 0;
   public pendingChanges = 0;
@@ -275,6 +279,7 @@ export class ShopComponent implements OnInit {
 
   onAuctionClick(auction: Auction): void {
     this.auctionDisplay = auction;
+    this.auctionHistoryVisible = false;
   }
 
   homeBaseUrl(): string {
@@ -449,6 +454,36 @@ export class ShopComponent implements OnInit {
   onFilterChange(orderFilter: OrderFilter): void {
     this.orderFilter = orderFilter;
     this.updateItemList();
+  }
+
+  hasItemDetails(auction: Auction): boolean {
+    return WeaponHelper.hasItemDetails(auction.item.item, auction.item);
+  }
+
+  toggleAuctionHistory(): void {
+    this.auctionHistoryVisible = !this.auctionHistoryVisible;
+  }
+
+  goToShop(order: Auction | AuctionHistory): void {
+    if (order.shopId) {
+      window.open(`https://gwmarket.net/shop/showcase?public=${order.shopId}`, '_blank');
+    }
+  }
+
+  contactWinner(auction: Auction): void {
+    const winnerBid = auction.history?.[auction.history.length - 1];
+    this.auctionMessage = `/w ${winnerBid?.bidder}, Hi, You have won the auction of ${auction?.item.name} with a bid at ${winnerBid?.bid} ${UtilityHelper.priceToString(auction.currency)}. Are you available to trade?`;
+    this.auctionPopup = true;
+  }
+
+  copyMessage(): void {
+    if (this.auctionMessage) {
+      navigator.clipboard.writeText(this.auctionMessage).then(() => {
+        this.toastrService.success('Auction message copied to clipboard', '', {
+          timeOut: 5000
+        });
+      });
+    }
   }
 
   updateItemList(): void {

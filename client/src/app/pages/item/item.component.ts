@@ -18,8 +18,9 @@ import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ToastrService } from 'ngx-toastr';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { Auction } from '@app/models/auction.model';
+import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ItemService } from '@app/services/item.service';
 
 // Filter types
 export type OrderTypeFilter = 'all' | 'sell' | 'buy' | 'auction';
@@ -45,6 +46,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   public selectedOrder: ItemOrder | null = null;
   public selectedAuction: Auction | null = null;
   public auctionForm: FormGroup;
+  public auctionHistoryVisible = false;
 
   // Filters
   public orderTypeFilter: OrderTypeFilter = 'all';
@@ -76,6 +78,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private shopService: ShopService,
+    private itemService: ItemService,
     private storeService: StoreService,
     private toastrService: ToastrService,
     private cdr: ChangeDetectorRef
@@ -124,6 +127,9 @@ export class ItemComponent implements OnInit, OnDestroy {
         this.cdr.detectChanges();
       });
       this.storeService.getItemAuctions().subscribe((auctions: Array<Auction>) => {
+        auctions.forEach(auction => {
+          auction.item.item = this.itemService?.getItemBase(auction.item.name);
+        });
         this.allAuctions = auctions;
         this.allOrders.auctions = this.parseAuctions(auctions);
         this.currencyOrders = this.parseOrdersByCurrency();
@@ -596,6 +602,16 @@ export class ItemComponent implements OnInit, OnDestroy {
   openAuctionDetail(order: ItemOrder): void {
     const auction = this.allAuctions.find(a => a.uuid === order.auction);
     this.selectedAuction = auction;
+    this.auctionHistoryVisible = false;
+    if (auction) {
+      this.auctionForm
+        .get('bidAmount')
+        .setValue(auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice);
+    }
+  }
+
+  toggleAuctionHistory(): void {
+    this.auctionHistoryVisible = !this.auctionHistoryVisible;
   }
 
   closeOrderDetail(): void {
@@ -697,7 +713,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.router.navigate(['']);
   }
 
-  goToShop(order: ItemOrder | Auction): void {
+  goToShop(order: ItemOrder | Auction | AuctionHistory): void {
     if (order.shopId) {
       window.open(`https://gwmarket.net/shop/showcase?public=${order.shopId}`, '_blank');
     }

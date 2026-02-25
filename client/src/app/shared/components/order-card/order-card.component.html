@@ -44,16 +44,26 @@
       </div>
     </div>
 
+    <button class="action-btn edit" (click)="onAuctionClick()" title="Inspect" *ngIf="auction">
+      <i class="fa fa-info-circle"></i>
+    </button>
+    <button
+      *ngIf="auction && !auction.active"
+      class="action-btn danger"
+      [class.confirm]="auction?.cloturate"
+      (click)="onCloturateClick()"
+      (mouseleave)="onCloturateLeave()"
+      title="Cloturate"
+    >
+      <i class="fa fa-trash"></i>
+    </button>
+
     <!-- Actions (full) -->
     <div class="order-actions" *ngIf="!locked && !compact">
       <button class="action-btn edit" (click)="onEditClick()" title="Edit" *ngIf="!auction">
         <i class="fa fa-pen"></i>
       </button>
-      <button class="action-btn edit" (click)="onAuctionClick()" title="Inspect" *ngIf="auction">
-        <i class="fa fa-info-circle"></i>
-      </button>
       <button
-        *ngIf="!auction"
         class="action-btn visibility"
         [class.active]="order?.hidden"
         (click)="onHideClick()"
@@ -72,7 +82,6 @@
         <i class="fa fa-check"></i>
       </button>
       <button
-        *ngIf="!auction"
         class="action-btn success"
         [class.confirm]="order?.completed"
         (click)="onCompleteClick()"
@@ -82,7 +91,6 @@
         <i class="fa fa-check-double"></i>
       </button>
       <button
-        *ngIf="!auction || (auction && !auction.active)"
         class="action-btn danger"
         [class.confirm]="order?.removed"
         (click)="onRemoveClick()"

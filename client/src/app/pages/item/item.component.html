@@ -494,10 +494,27 @@
         </div>
         <div class="detail-seller-row" *ngIf="selectedAuction?.history?.[selectedAuction.history.length - 1]?.bid">
           <span class="detail-seller-label">Top Bidder</span>
+          <span class="detail-seller-history" (click)="toggleAuctionHistory()">history</span>
           <span class="detail-seller-time">{{
             selectedAuction.history?.[selectedAuction.history.length - 1]?.bidder
           }}</span>
         </div>
+        <ng-container *ngIf="auctionHistoryVisible">
+          <div class="detail-seller-row" *ngFor="let bid of selectedAuction?.history?.slice().reverse()">
+            <span class="detail-seller-price">
+              <img [src]="selectedAuction?.currency | currencySource" class="detail-history-currency-icon" />
+              {{ bid.bid }}
+            </span>
+            <span class="auction-history-time">{{ bid.time | formatLastUpdate }}</span>
+            <span
+              class="auction-history-time"
+              [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }"
+              (click)="goToShop(bid)"
+              >{{ bid?.bidder }}
+              <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+            ></span>
+          </div>
+        </ng-container>
         <div class="detail-seller-row" *ngIf="selectedAuction?.endTime">
           <span class="detail-seller-label">Remaining Time</span>
           <span class="detail-seller-time">{{ selectedAuction.endTime | formatLastUpdate: true }}</span>
