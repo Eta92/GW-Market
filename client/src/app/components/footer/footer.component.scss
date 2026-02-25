@@ -15,12 +15,6 @@ $parchment: #e8dcc4;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
 }
 
 .footer-left {
@@ -40,6 +34,10 @@ $parchment: #e8dcc4;
   color: $parchment;
   font-size: 12px;
   font-weight: 500;
+
+  @media (max-width: 320px) {
+    display: none;
+  }
 }
 
 .separator {
@@ -63,7 +61,7 @@ $parchment: #e8dcc4;
   color: rgba($parchment, 0.5);
   font-size: 11px;
 
-  @media (max-width: 640px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 }
@@ -98,7 +96,7 @@ $parchment: #e8dcc4;
 }
 
 // Extra small phones
-@media (max-width: 375px) {
+@media (max-width: 400px) {
   .site-footer {
     padding: 10px 14px;
   }

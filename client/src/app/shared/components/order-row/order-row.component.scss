@@ -81,12 +81,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   background: rgba($obsidian, 0.5);
   border: 1px solid rgba($gold, 0.35);
   border-radius: 5px;
   flex: 0 0 auto; // Fixed size
-  width: 90px; // Fixed width for consistency
+  width: 80px; // Fixed width for consistency
 
   .box-label {
     font-size: 0.5rem;
@@ -155,6 +155,27 @@
 // ============================================
 // PLAYER INFO
 // ============================================
+.group-name {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 200px;
+}
+
+.group-main {
+  display: flex;
+}
+
+.group-description {
+  font-style: italic;
+  font-weight: 400;
+  padding: 0 0.25rem 0 0.5rem;
+  font-size: 0.6rem;
+  margin-top: 2px;
+  margin-bottom: -6px;
+  color: rgba($parchment, 0.5);
+}
+
 .player-info {
   display: flex;
   flex-direction: column;
@@ -260,8 +281,7 @@
 // ============================================
 ::ng-deep app-item-details {
   flex: 0 0 100%;
-  padding-top: 0.5rem;
-  margin-top: 0.25rem;
+  padding-top: 0.25rem;
   border-top: 1px solid rgba($gold, 0.15);
 
   .item-details {
