@@ -19,6 +19,7 @@ export class StoreService {
   private itemOrdersSubject = new CurrentSubject<Array<ShopItem>>();
   private itemAuctionsSubject = new CurrentSubject<Array<Auction>>();
   private lastItemsSubject = new CurrentSubject<Array<ShopItem>>();
+  private lastAuctionsSubject = new CurrentSubject<Array<Auction>>();
   private shopSecretSubject = new CurrentSubject<{ uuid: string; secret: string }>();
   private searchOrdersSubject = new CurrentSubject<SearchResult>();
 
@@ -54,6 +55,9 @@ export class StoreService {
     });
     this.socket.on('GetLastItems', (data: Array<ShopItem>) => {
       this.lastItemsSubject.set(data);
+    });
+    this.socket.on('GetLastAuctions', (data: Array<Auction>) => {
+      this.lastAuctionsSubject.set(data);
     });
     this.socket.on('ShopCertificationSecret', (certificate: { uuid: string; secret: string }) => {
       this.shopSecretSubject.set(certificate);
@@ -114,6 +118,10 @@ export class StoreService {
 
   getLastItems(): Observable<Array<ShopItem>> {
     return this.lastItemsSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getLastAuctions(): Observable<Array<Auction>> {
+    return this.lastAuctionsSubject.asObservable().pipe(debounceTime(0));
   }
 
   getShopSecret(): Observable<{ uuid: string; secret: string }> {

@@ -91,6 +91,7 @@ export const VARIABLE_ATTRIBUTE = [
   'Communing',
   'Restoration Magic',
   // Paragon
+  'Leadership',
   'Command',
   'Motivation'
 ] as const;

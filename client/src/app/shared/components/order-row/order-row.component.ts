@@ -23,7 +23,11 @@ export class OrderRowComponent implements OnInit {
   public isActive = false;
 
   get fade(): string {
-    return UtilityHelper.getOldOpacity(this.order);
+    if (this.type === 'auction') {
+      return UtilityHelper.getAuctionOpacity(this.order.lastRefresh);
+    } else {
+      return UtilityHelper.getItemOpacity(this.order);
+    }
   }
 
   ngOnInit(): void {

@@ -145,10 +145,20 @@ export class UtilityHelper {
     }
   }
 
-  public static getOldOpacity(item: ShopItem | ItemOrder): string {
+  public static getItemOpacity(item: ShopItem | ItemOrder): string {
     if (!item.lastRefresh || Date.now() - item.lastRefresh < 1000 * 60 * 15) {
       return 'opacity-100';
     } else if (Date.now() - item.lastRefresh < 1000 * 60 * 60 * 12) {
+      return 'opacity-75';
+    } else {
+      return 'opacity-50';
+    }
+  }
+
+  public static getAuctionOpacity(endTime: number): string {
+    if (!endTime || endTime - Date.now() < 1000 * 60 * 15) {
+      return 'opacity-100';
+    } else if (endTime - Date.now() < 1000 * 60 * 60 * 24) {
       return 'opacity-75';
     } else {
       return 'opacity-50';

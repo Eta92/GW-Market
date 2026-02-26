@@ -38,10 +38,17 @@ export class FormatLastUpdatePipe implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'oldOpacity' })
-export class OldOpacityPipe implements PipeTransform {
+@Pipe({ name: 'itemOpacity' })
+export class ItemOpacityPipe implements PipeTransform {
   transform(item: ItemOrder | ShopItem): string {
-    return UtilityHelper.getOldOpacity(item);
+    return UtilityHelper.getItemOpacity(item);
+  }
+}
+
+@Pipe({ name: 'auctionOpacity' })
+export class AuctionOpacityPipe implements PipeTransform {
+  transform(time: number): string {
+    return UtilityHelper.getAuctionOpacity(time);
   }
 }
 
@@ -65,7 +72,8 @@ export const UTILITY_PIPES = [
   CurrencyNamePipe,
   PriceToStringPipe,
   FormatLastUpdatePipe,
-  OldOpacityPipe,
+  ItemOpacityPipe,
+  AuctionOpacityPipe,
   TimeToStringPipe,
   DecimalUnitPricePipe
 ];

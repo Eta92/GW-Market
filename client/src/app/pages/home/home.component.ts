@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@an
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
+import { Auction } from '@app/models/auction.model';
 import { Item, OrderType, ShopItem } from '@app/models/shop.model';
 import { AvailableCategory, AvailableFamily, AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
   public searchedItems: Array<Item> = [];
   public searchOpen = false;
   public lastItems: Array<ShopItem> = [];
+  public lastAuctions: Array<Auction> = [];
   public orderOpen = false;
   public availableMode: 'everything' | 'active' | 'sold' | 'bought' | 'auction' = 'everything';
   public timeMode: 'online' | 'today' | 'week' | 'combined' = 'today';
@@ -94,6 +96,10 @@ export class HomeComponent implements OnInit {
       this.lastItems = items;
       this.cdr.detectChanges();
     });
+    this.storeService.getLastAuctions().subscribe(auctions => {
+      this.lastAuctions = auctions;
+      this.cdr.detectChanges();
+    });
   }
 
   autoExplore(): void {
@@ -117,6 +123,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.storeService.requestSocket('getLastItemsByFamily', 'all');
     }
+    this.storeService.requestSocket('getLastAuctions');
     this.init = true;
   }
 
