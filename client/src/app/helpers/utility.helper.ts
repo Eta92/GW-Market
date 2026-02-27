@@ -204,11 +204,14 @@ export class UtilityHelper {
    * - TODAY: < 12 hours ago
    * - WEEK: older than 12 hours or no timestamp
    */
-  public static getTimeCategory(lastRefresh: number | undefined): Time {
+  public static getTimeCategory(lastRefresh: number | undefined, futur = false): Time {
     if (!lastRefresh) {
       return Time.WEEK;
     }
-    const diff = Date.now() - lastRefresh;
+    let diff = Date.now() - lastRefresh;
+    if (futur) {
+      diff = lastRefresh - Date.now();
+    }
     if (diff < 1000 * 60 * 15) {
       return Time.ONLINE;
     } else if (diff < 1000 * 60 * 60 * 12) {

@@ -671,6 +671,13 @@
   }
 }
 
+.popup-warning {
+  padding: 0 16px;
+  font-size: 0.65rem;
+  color: rgba($parchment, 0.7);
+  font-style: italic;
+}
+
 .popup-textarea {
   width: 100%;
   min-height: 100px;

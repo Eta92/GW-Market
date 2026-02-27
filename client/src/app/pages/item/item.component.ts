@@ -161,7 +161,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   getAuctionTime(item: Auction): Time {
-    return UtilityHelper.getTimeCategory(item.endTime);
+    return UtilityHelper.getTimeCategory(item.endTime, true);
   }
 
   parseOrders(items: Array<ShopItem>, sorting: boolean): Array<ItemPriceList> {
@@ -358,7 +358,7 @@ export class ItemComponent implements OnInit, OnDestroy {
           (a, b) => b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh
         );
         // Auctions: most recent first
-        timeBucket.auctions.sort((a, b) => b.lastRefresh - a.lastRefresh);
+        timeBucket.auctions.sort((a, b) => a.lastRefresh - b.lastRefresh);
       });
     });
 
@@ -566,7 +566,7 @@ export class ItemComponent implements OnInit, OnDestroy {
 
     // Sort auctions by time only
     timeMap.forEach(auctions => {
-      auctions.sort((a, b) => b.lastRefresh - a.lastRefresh);
+      auctions.sort((a, b) => a.lastRefresh - b.lastRefresh);
     });
 
     return [Time.ONLINE, Time.TODAY, Time.WEEK]

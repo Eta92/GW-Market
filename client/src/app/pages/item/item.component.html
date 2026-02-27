@@ -329,7 +329,7 @@
       <div class="detail-seller-section">
         <div class="detail-seller-row">
           <div>
-            <span class="detail-seller-label -mt-1 mb-1 flex">Player</span>
+            <span class="flex mb-1 -mt-1 detail-seller-label">Player</span>
             <div class="detail-seller-badges">
               <span class="badge online" *ngIf="selectedOrder?.daybreakOnline">
                 <img src="/assets/img/online.png" /> Online
@@ -345,7 +345,7 @@
               [ngClass]="{ 'flex cursor-pointer underline': selectedOrder?.shopId }"
               (click)="goToShop(selectedOrder)"
               >{{ selectedOrder?.player }}
-              <i *ngIf="selectedOrder?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+              <i *ngIf="selectedOrder?.shopId" class="mt-1 ml-1 -mb-1 no-underline fa fa-up-right-from-square"></i
             ></span>
             <div class="detail-actions-right">
               <button
@@ -454,7 +454,7 @@
       <div class="detail-seller-section">
         <div class="detail-seller-row">
           <div>
-            <span class="detail-seller-label -mt-1 mb-1 flex">Seller</span>
+            <span class="flex mb-1 -mt-1 detail-seller-label">Seller</span>
             <div class="detail-seller-badges">
               <!--span class="badge online" *ngIf="selectedAuction?.daybreakOnline">
                 <img src="/assets/img/online.png" /> Online
@@ -470,7 +470,7 @@
               [ngClass]="{ 'flex cursor-pointer underline': selectedAuction?.shopId }"
               (click)="goToShop(selectedAuction)"
               >{{ selectedAuction?.player }}
-              <i *ngIf="selectedAuction?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+              <i *ngIf="selectedAuction?.shopId" class="mt-1 ml-1 -mb-1 no-underline fa fa-up-right-from-square"></i
             ></span>
             <div class="detail-actions-right">
               <!--button
@@ -511,7 +511,7 @@
               [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }"
               (click)="goToShop(bid)"
               >{{ bid?.bidder }}
-              <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+              <i *ngIf="bid?.shopId" class="mt-1 ml-1 -mb-1 no-underline fa fa-up-right-from-square"></i
             ></span>
           </div>
         </ng-container>
@@ -536,7 +536,7 @@
     </div>
 
     <!-- auction new price -->
-    <div class="details-row px-8 pb-3" *ngIf="selectedAuction">
+    <div class="px-8 pb-3 details-row" *ngIf="selectedAuction">
       <div class="form-group">
         <label>Bid Amount</label>
         <app-qty-input
@@ -547,7 +547,7 @@
       </div>
     </div>
 
-    <div class="description-section px-8 pb-3">
+    <div class="px-8 pb-3 description-section">
       <div class="section-label">Auction Terms</div>
       <label class="auction-acknowledge">
         <input type="checkbox" formControlName="acknowledge" />
@@ -603,6 +603,9 @@
     </div>
 
     <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ tradeMessage }}</textarea>
+    <span class="popup-warning"
+      >If you modify the preset message, make sure the change is clearly communicated to the shop owner.</span
+    >
     <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
       <i class="fa fa-copy"></i>
       Copy Trade Message
