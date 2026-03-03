@@ -15,6 +15,7 @@ export class PreviewCardComponent {
   @Input() smallLabel = false;
 
   @Output() cardClick = new EventEmitter<void>();
+  @Output() cardOpen = new EventEmitter<void>();
 
   get displayPreviews(): string[] {
     return this.previews?.slice(0, 4) || [];
@@ -22,5 +23,9 @@ export class PreviewCardComponent {
 
   onClick(): void {
     this.cardClick.emit();
+  }
+
+  onMiddle(): void {
+    this.cardOpen.emit();
   }
 }

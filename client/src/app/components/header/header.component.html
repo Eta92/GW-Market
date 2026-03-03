@@ -2,7 +2,7 @@
 <header *ngIf="hero" class="hero-header bg-main bg-base">
   <div class="header-overlay">
     <div class="header-top">
-      <a class="logo-link" (click)="goToHome()">
+      <a class="logo-link" (click)="goToHome()" (appMiddle)="openToHome()">
         <img class="logo" src="/assets/img/trading.svg" alt="GW Market" />
       </a>
 
@@ -20,7 +20,7 @@
           <i class="fa fa-plus-circle"></i>
           <span>Place order</span>
         </button>
-        <button class="nav-btn" (click)="goToShop()">
+        <button class="nav-btn" (click)="goToShop()" (appMiddle)="openToShop()">
           <i class="fa fa-store"></i>
           <span>My shop</span>
         </button>
@@ -56,7 +56,7 @@
 <header *ngIf="!hero" class="site-header" [class.compact]="compact">
   <div class="header-content">
     <!-- Logo -->
-    <a class="logo-link" (click)="goToHome()">
+    <a class="logo-link" (click)="goToHome()" (appMiddle)="openToHome()">
       <img class="logo" src="/assets/img/trading.svg" alt="GW Market" />
     </a>
 
@@ -76,7 +76,7 @@
         <i class="fa fa-plus"></i>
         <span>Place Order</span>
       </button>
-      <button class="nav-btn" (click)="goToShop()">
+      <button class="nav-btn" (click)="goToShop()" (appMiddle)="openToShop()">
         <i class="fa fa-store"></i>
         <span>My Shop</span>
       </button>

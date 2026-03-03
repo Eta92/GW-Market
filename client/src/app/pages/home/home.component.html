@@ -80,6 +80,7 @@
                 [stats]="getStats(family)"
                 [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
                 (cardClick)="goToFamily(family)"
+                (cardOpen)="openToFamily(family)"
               ></app-preview-card>
             </div>
 
@@ -92,6 +93,7 @@
                 [stats]="getStats(category)"
                 [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
                 (cardClick)="goToCategory(category)"
+                (cardOpen)="openToCategory(category)"
               ></app-preview-card>
             </div>
 
@@ -106,6 +108,7 @@
                 [isSingleImage]="true"
                 [smallLabel]="true"
                 (cardClick)="goToItem(item)"
+                (cardOpen)="openToItem(item)"
               ></app-preview-card>
             </div>
           </ng-container>
@@ -178,7 +181,7 @@
             <i class="fa fa-clock"></i>
             Recent Listings
           </h2>
-          <span class="count self-end" *ngIf="lastItems.length">{{ lastItems.length }} items</span>
+          <span class="self-end count" *ngIf="lastItems.length">{{ lastItems.length }} items</span>
         </div>
 
         <div class="listings-container scroll">
@@ -189,6 +192,7 @@
             [class.selling]="shopItem.orderType === OrderType.SELL"
             [class.buying]="shopItem.orderType === OrderType.BUY"
             (click)="goToItem(shopItem)"
+            (appMiddle)="openToItem(shopItem)"
           >
             <!-- Badge + Time -->
             <div class="listing-header">
@@ -237,7 +241,7 @@
             <i class="fa fa-clock"></i>
             Auctions Closing Soon
           </h2>
-          <span class="count self-end" *ngIf="lastAuctions.length">{{ lastAuctions.length }} auctions</span>
+          <span class="self-end count" *ngIf="lastAuctions.length">{{ lastAuctions.length }} auctions</span>
         </div>
 
         <div class="listings-container scroll">
@@ -246,6 +250,7 @@
             class="listing-card frame auction"
             [ngClass]="auction.endTime | auctionOpacity"
             (click)="goToItem(auction.item)"
+            (appMiddle)="openToItem(auction.item)"
           >
             <!-- Badge + Time -->
             <div class="listing-header">

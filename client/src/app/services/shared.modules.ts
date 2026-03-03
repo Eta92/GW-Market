@@ -13,6 +13,7 @@ import { CurrencyDropdownComponent } from '@app/shared/components/currency-dropd
 import { ItemDetailsComponent } from '@app/shared/components/item-details/item-details.component';
 import { UTILITY_PIPES } from '@app/shared/pipes/utility.pipes';
 import { StopPropagationDirective } from '@app/shared/directives/stop-propagation.directive';
+import { MiddleclickDirective, RoutingDirective } from '@shared/directives/routing.directive';
 
 const SHARED_COMPONENTS = [
   ModalComponent,
@@ -24,6 +25,8 @@ const SHARED_COMPONENTS = [
   PreviewCardComponent,
   CurrencyDropdownComponent,
   ItemDetailsComponent,
+  RoutingDirective,
+  MiddleclickDirective,
   StopPropagationDirective,
   ...UTILITY_PIPES
 ];

@@ -239,6 +239,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  openToFamily(family: AvailableFamily): void {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree([], { relativeTo: this.activatedRoute, queryParams: { family: family.name } })
+    );
+    window.open(url, '_blank');
+  }
+
   goToCategory(category: AvailableCategory, refresh = true): void {
     this.availableCategory = category;
     this.availableList = 'item';
@@ -255,8 +262,23 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  openToCategory(category: AvailableCategory): void {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree([], {
+        relativeTo: this.activatedRoute,
+        queryParams: { family: this.availableFamily.name, category: category.name }
+      })
+    );
+    window.open(url, '_blank');
+  }
+
   goToItem(item: Item | ShopItem): void {
     this.router.navigate(['item', item.name]);
+  }
+
+  openToItem(item: Item | ShopItem): void {
+    const url = this.router.serializeUrl(this.router.createUrlTree(['item', item.name]));
+    window.open(url, '_blank');
   }
 
   goToShop(): void {

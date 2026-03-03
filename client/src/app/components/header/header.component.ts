@@ -42,8 +42,18 @@ export class HeaderComponent implements OnInit {
     this.homeClick.emit();
   }
 
+  openToHome(): void {
+    const url = this.router.serializeUrl(this.router.createUrlTree(['/']));
+    window.open(url, '_blank');
+  }
+
   goToShop(): void {
     this.router.navigate(['/shop']);
+  }
+
+  openToShop(): void {
+    const url = this.router.serializeUrl(this.router.createUrlTree(['/shop']));
+    window.open(url, '_blank');
   }
 
   goToSearch(): void {

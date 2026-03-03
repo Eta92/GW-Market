@@ -1,5 +1,7 @@
 .history
 .vscode
+.git-old
+.git-crash
 assets/data
 client/.angular
 client/dist
