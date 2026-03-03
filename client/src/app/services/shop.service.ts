@@ -231,6 +231,7 @@ export class ShopService {
       delete item.item;
       delete item.completed;
       delete item.removed;
+      delete item.single;
     });
     // stupid hotfix cause of name inside items
     copyShop.items = copyShop.items.filter(item => typeof item !== 'string' && item.name);
@@ -267,6 +268,7 @@ export class ShopService {
       delete item.item;
       delete item.completed;
       delete item.removed;
+      delete item.single;
     });
     this.socket.emit('refreshShop', activeShop);
   }

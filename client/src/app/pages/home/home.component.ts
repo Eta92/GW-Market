@@ -100,6 +100,14 @@ export class HomeComponent implements OnInit {
       this.lastAuctions = auctions;
       this.cdr.detectChanges();
     });
+
+    const modes = localStorage.getItem('home-modes');
+    if (modes) {
+      const parsed = JSON.parse(modes);
+      this.availableMode = parsed.availableMode || this.availableMode;
+      this.timeMode = parsed.timeMode || this.timeMode;
+      this.viewMode = parsed.viewMode || this.viewMode;
+    }
   }
 
   autoExplore(): void {
@@ -137,6 +145,30 @@ export class HomeComponent implements OnInit {
 
   getPreviewSources(previews: string[]): string[] {
     return (previews || []).map(name => this.getPreviewSource(name));
+  }
+
+  setAvailableMode(mode: string): void {
+    this.availableMode = mode as any;
+    localStorage.setItem(
+      'home-modes',
+      JSON.stringify({ availableMode: this.availableMode, timeMode: this.timeMode, viewMode: this.viewMode })
+    );
+  }
+
+  setTimeMode(mode: string): void {
+    this.timeMode = mode as any;
+    localStorage.setItem(
+      'home-modes',
+      JSON.stringify({ availableMode: this.availableMode, timeMode: this.timeMode, viewMode: this.viewMode })
+    );
+  }
+
+  setViewMode(mode: string): void {
+    this.viewMode = mode as any;
+    localStorage.setItem(
+      'home-modes',
+      JSON.stringify({ availableMode: this.availableMode, timeMode: this.timeMode, viewMode: this.viewMode })
+    );
   }
 
   active(list: any[]): typeof list {

@@ -156,6 +156,15 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.router.navigate(['public', url]);
   }
 
+  wikiCategory(item: Item): boolean {
+    return item.family !== 'service' && item.category !== 'Bundles' && item.category !== 'Very Special';
+  }
+
+  openWiki(): void {
+    const wikiUrl = `https://wiki.guildwars.com/wiki/${encodeURIComponent(this.item.name.replace(/ /g, '_'))}`;
+    window.open(wikiUrl, '_blank');
+  }
+
   getOrderTime(item: ItemOrder | ShopItem): Time {
     return UtilityHelper.getTimeCategory(item.lastRefresh);
   }

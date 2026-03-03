@@ -111,6 +111,17 @@
   color: rgba($parchment, 0.75);
 }
 
+.wiki-text {
+  font-size: 0.75rem;
+  color: rgba($gold, 0.75);
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: rgba($gold, 0.9);
+  }
+}
+
 // Sidebar Stats
 .sidebar-stats {
   display: flex;

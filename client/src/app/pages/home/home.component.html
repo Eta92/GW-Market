@@ -46,14 +46,14 @@
             <app-toggle-group
               [options]="availableModeOptions"
               [value]="availableMode"
-              (valueChange)="availableMode = $event"
+              (valueChange)="setAvailableMode($event)"
             ></app-toggle-group>
 
             <!-- Time Filter -->
             <app-toggle-group
               [options]="timeModeOptions"
               [value]="timeMode"
-              (valueChange)="timeMode = $event"
+              (valueChange)="setTimeMode($event)"
               styleClass="time-filter"
             ></app-toggle-group>
 
@@ -61,7 +61,7 @@
             <app-toggle-group
               [options]="viewModeOptions"
               [value]="viewMode"
-              (valueChange)="viewMode = $event"
+              (valueChange)="setViewMode($event)"
               styleClass="compact"
             ></app-toggle-group>
           </div>
@@ -82,6 +82,11 @@
                 (cardClick)="goToFamily(family)"
                 (cardOpen)="openToFamily(family)"
               ></app-preview-card>
+              <span *ngIf="active(availableTree.families).length === 0" class="empty-state box">
+                <i class="fa fa-inbox"></i>
+                <p>No family available</p>
+                <p>Maybe your filters are too restrictive</p>
+              </span>
             </div>
 
             <!-- Category Cards -->
@@ -95,6 +100,11 @@
                 (cardClick)="goToCategory(category)"
                 (cardOpen)="openToCategory(category)"
               ></app-preview-card>
+              <span *ngIf="active(availableFamily.categories).length === 0" class="empty-state box">
+                <i class="fa fa-inbox"></i>
+                <p>No category available</p>
+                <p>Maybe your filters are too restrictive</p>
+              </span>
             </div>
 
             <!-- Item Cards -->
@@ -110,6 +120,11 @@
                 (cardClick)="goToItem(item)"
                 (cardOpen)="openToItem(item)"
               ></app-preview-card>
+              <span *ngIf="active(availableCategory.items).length === 0" class="empty-state box">
+                <i class="fa fa-inbox"></i>
+                <p>No item available</p>
+                <p>Maybe your filters are too restrictive</p>
+              </span>
             </div>
           </ng-container>
 
@@ -121,6 +136,7 @@
                 *ngFor="let family of active(availableTree.families)"
                 class="explorer-item frame"
                 (click)="goToFamily(family)"
+                (appMiddle)="openToFamily(family)"
               >
                 <img class="explorer-icon" [src]="getPreviewSource(family.previews?.[0])" [alt]="family.name" />
                 <span class="explorer-name">{{ family.name }}</span>
@@ -140,6 +156,7 @@
                 *ngFor="let category of active(availableFamily.categories)"
                 class="explorer-item frame"
                 (click)="goToCategory(category)"
+                (appMiddle)="openToCategory(category)"
               >
                 <img class="explorer-icon" [src]="getPreviewSource(category.previews?.[0])" [alt]="category.name" />
                 <span class="explorer-name">{{ category.name }}</span>
@@ -159,6 +176,7 @@
                 *ngFor="let item of active(availableCategory.items)"
                 class="explorer-item frame"
                 (click)="goToItem(item)"
+                (appMiddle)="openToItem(item)"
               >
                 <img class="explorer-icon" [src]="getPreviewSource(item.name)" [alt]="item.name" />
                 <span class="explorer-name">{{ item.name }}</span>
@@ -181,7 +199,7 @@
             <i class="fa fa-clock"></i>
             Recent Listings
           </h2>
-          <span class="self-end count" *ngIf="lastItems.length">{{ lastItems.length }} items</span>
+          <span class="count self-end" *ngIf="lastItems.length">{{ lastItems.length }} items</span>
         </div>
 
         <div class="listings-container scroll">
@@ -241,7 +259,7 @@
             <i class="fa fa-clock"></i>
             Auctions Closing Soon
           </h2>
-          <span class="self-end count" *ngIf="lastAuctions.length">{{ lastAuctions.length }} auctions</span>
+          <span class="count self-end" *ngIf="lastAuctions.length">{{ lastAuctions.length }} auctions</span>
         </div>
 
         <div class="listings-container scroll">
