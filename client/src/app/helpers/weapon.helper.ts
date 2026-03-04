@@ -28,9 +28,9 @@ const WEAPON_UPGRADE_CONFIG: Record<string, { core: string[]; prefix: string | n
   'Rare Spears': { core: MARTIAL_INSCRIPTIONS, prefix: 'Spearhead', suffix: 'Spear Grip' },
   'Rare Swords': { core: MARTIAL_INSCRIPTIONS, prefix: 'Sword Hilt', suffix: 'Sword Pommel' },
   'Rare Bows': { core: MARTIAL_INSCRIPTIONS, prefix: 'Bowstring', suffix: 'Bow Grip' },
-  'Rare staves': { core: SPELLCASTING_INSCRIPTIONS, prefix: 'Staff Head', suffix: 'Staff Wrapping' },
+  'Rare Staves': { core: SPELLCASTING_INSCRIPTIONS, prefix: 'Staff Head', suffix: 'Staff Wrapping' },
   'Rare Wands': { core: SPELLCASTING_INSCRIPTIONS, prefix: null, suffix: 'Wand Wrapping' },
-  'Rare focus items': { core: FOCUS_INSCRIPTIONS, prefix: null, suffix: 'Focus Core' },
+  'Rare Focus Items': { core: FOCUS_INSCRIPTIONS, prefix: null, suffix: 'Focus Core' },
   'Rare Shields': { core: SHIELD_INSCRIPTIONS, prefix: null, suffix: 'Shield Handle' }
 };
 
