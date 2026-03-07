@@ -14,7 +14,13 @@ export const ItemDetailMap: Record<string, string> = {
   'OS only': 'OS only',
   craftable: 'Craftable',
   collector: 'Collector only',
-  quest: 'Quest only'
+  quest: 'Quest only',
+  boss: 'Boss drop',
+  chest: 'Chest drop',
+  box: 'Box drop',
+  endgame: 'Endgame reward',
+  special: 'Special location',
+  lowlevel: 'Non-max item'
 };
 
 /**
