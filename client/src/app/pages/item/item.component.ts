@@ -1,26 +1,20 @@
+import { formatDate } from '@angular/common';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import {
-  CurrencyGroup,
-  CurrencyOrders,
-  ItemOrder,
-  ItemOrders,
-  ItemPriceList,
-  Time,
-  TimeBucket
-} from '@app/models/order.model';
+import { Auction, AuctionHistory } from '@app/models/auction.model';
+import { CurrencyGroup, CurrencyOrders, ItemOrder, ItemOrders, ItemPriceList, Time, TimeBucket } from '@app/models/order.model';
+import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { ItemService } from '@app/services/item.service';
+import { MessageService } from '@app/services/message.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
-import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
+import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToastrService } from 'ngx-toastr';
-import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { Auction, AuctionHistory } from '@app/models/auction.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ItemService } from '@app/services/item.service';
 
 // Filter types
 export type OrderTypeFilter = 'all' | 'sell' | 'buy' | 'auction';
@@ -41,10 +35,13 @@ export class ItemComponent implements OnInit, OnDestroy {
   public name = '';
   public tradeMessage = '';
   public details: Array<string> = [];
-  public popup = false;
+  public whisperPopup = false;
+  public messagePopup = false;
+  public messageType: 'meet-at' | 'meet-over' | 'negociate' = 'meet-at';
   public orderOpen = false;
   public selectedOrder: ItemOrder | null = null;
   public selectedAuction: Auction | null = null;
+  public messageForm: FormGroup;
   public auctionForm: FormGroup;
   public auctionHistoryVisible = false;
 
@@ -70,6 +67,12 @@ export class ItemComponent implements OnInit, OnDestroy {
     { value: 'combined', label: 'Combined', icon: 'fa-list' }
   ];
 
+  public messageTypeOptions: ToggleOption[] = [
+    { value: 'meet-at', label: 'Meetup at', icon: 'fa-clock' },
+    { value: 'meet-over', label: 'Meetup during', icon: 'fa-hourglass-half' },
+    { value: 'negociate', label: 'Negotiate', icon: 'fa-handshake' }
+  ];
+
   selectedWhisperOrder: any = null;
   whisperQuantity: number = 1;
 
@@ -81,6 +84,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     private itemService: ItemService,
     private storeService: StoreService,
     private toastrService: ToastrService,
+    private messageService: MessageService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -143,6 +147,12 @@ export class ItemComponent implements OnInit, OnDestroy {
         bidAmount: [null, [Validators.required, Validators.min(1)]],
         acknowledge: [null, [Validators.required, Validators.requiredTrue]]
       });
+      this.messageForm = this.fb.group({
+        from: [formatDate(Date.now() + 1 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')],
+        to: [formatDate(Date.now() + 2 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')],
+        negociate: [0],
+        currency: [1]
+      });
       this.storeService.requestSocket('getItemOrders', decodedName);
       this.storeService.requestSocket('trackItem', decodedName);
     });
@@ -157,7 +167,9 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   wikiCategory(item: Item): boolean {
-    return item.family !== 'service' && item.category !== 'Bundles' && item.category !== 'Very Special';
+    if (item) {
+      return item.family !== 'service' && item.category !== 'Bundles' && item.category !== 'Very Special';
+    } else return false;
   }
 
   openWiki(): void {
@@ -359,13 +371,9 @@ export class ItemComponent implements OnInit, OnDestroy {
     currencyMap.forEach(currencyGroup => {
       currencyGroup.timeBuckets.forEach(timeBucket => {
         // Sell orders: lowest price first (best deal for buyer)
-        timeBucket.sellOrders.sort(
-          (a, b) => a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh
-        );
+        timeBucket.sellOrders.sort((a, b) => a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh);
         // Buy orders: highest price first (best deal for seller)
-        timeBucket.buyOrders.sort(
-          (a, b) => b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh
-        );
+        timeBucket.buyOrders.sort((a, b) => b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh);
         // Auctions: most recent first
         timeBucket.auctions.sort((a, b) => a.lastRefresh - b.lastRefresh);
       });
@@ -584,24 +592,15 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   getTotalSellOrders(): number {
-    return this.filteredCurrencies.reduce(
-      (sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.sellOrders.length, 0),
-      0
-    );
+    return this.filteredCurrencies.reduce((sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.sellOrders.length, 0), 0);
   }
 
   getTotalBuyOrders(): number {
-    return this.filteredCurrencies.reduce(
-      (sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.buyOrders.length, 0),
-      0
-    );
+    return this.filteredCurrencies.reduce((sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.buyOrders.length, 0), 0);
   }
 
   getTotalAuctions(): number {
-    return this.filteredCurrencies.reduce(
-      (sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.auctions.length, 0),
-      0
-    );
+    return this.filteredCurrencies.reduce((sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.auctions.length, 0), 0);
   }
 
   openOrderDetail(order: ItemOrder): void {
@@ -613,9 +612,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.selectedAuction = auction;
     this.auctionHistoryVisible = false;
     if (auction) {
-      this.auctionForm
-        .get('bidAmount')
-        .setValue(auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice);
+      this.auctionForm.get('bidAmount').setValue(auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice);
     }
   }
 
@@ -632,7 +629,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.selectedWhisperOrder = order;
     this.whisperQuantity = order.quantity;
     this.updateTradeMessage();
-    this.popup = true;
+    this.whisperPopup = true;
     this.storeService.requestSocket('logPurchase', {
       name: this.item.name,
       shop: this.shopService.getShopUuid(),
@@ -654,6 +651,24 @@ export class ItemComponent implements OnInit, OnDestroy {
     if (this.selectedOrder) {
       this.whisper(this.selectedOrder);
     }
+  }
+
+  message(order: ItemOrder): void {
+    this.selectedWhisperOrder = order;
+    this.messagePopup = true;
+  }
+
+  sendMessage(): void {
+    if (this.messageForm.valid) {
+      const formData = this.messageForm.value;
+      this.messageService.sendMessage(this.shopService.getShopUuid(), this.selectedWhisperOrder, this.messageType, formData);
+    } else {
+      this.toastrService.error('Please fill in all required fields before sending', 'Form Error', {
+        timeOut: 10000
+      });
+    }
+    this.messagePopup = false;
+    this.cdr.detectChanges();
   }
 
   reputationVote(order: ItemOrder, vote: 'positive' | 'negative'): void {
@@ -772,13 +787,9 @@ export class ItemComponent implements OnInit, OnDestroy {
       if (bidData.bidAmount >= minPrice) {
         this.shopService.bidAuction(auction, bidData.bidAmount);
       } else {
-        this.toastrService.error(
-          'Your bid must be at least 1% higher rounded up than the current bid',
-          'Bid Amount Error',
-          {
-            timeOut: 15000
-          }
-        );
+        this.toastrService.error('Your bid must be at least 1% higher rounded up than the current bid', 'Bid Amount Error', {
+          timeOut: 15000
+        });
       }
     }
   }

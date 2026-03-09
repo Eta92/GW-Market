@@ -1,3 +1,5 @@
+// @import '../../shared/styles/variables';
+
 // Design System Variables
 $gold: #d4a855;
 $gold-bright: #f0c674;
@@ -5,6 +7,8 @@ $gold-dim: #8b7355;
 $parchment: #e8dcc4;
 $amber: #c9873a;
 $copper: #b87333;
+$obsidian-light: #2a241f;
+$slate: #251d14;
 
 // Animations
 @keyframes fadeInUp {
@@ -453,6 +457,10 @@ $copper: #b87333;
   }
 }
 
+.msg-btn {
+  padding: 14px 17px;
+}
+
 .online-btn {
   background: linear-gradient(135deg, rgba($copper, 0.3) 0%, rgba($copper, 0.2) 100%);
   padding: 14px 17px;
@@ -517,6 +525,16 @@ $copper: #b87333;
     font-size: 12px;
     gap: 6px;
   }
+}
+
+.message-panel {
+  z-index: 100;
+  background: linear-gradient(180deg, rgba($slate, 0.9) 0%, rgba($obsidian-light, 0.9) 100%);
+  border: 1px solid rgba($gold, 0.5);
+  border-radius: 10px 0 0 0;
+  color: $parchment;
+  padding: 12px;
+  animation: fadeInUp 300ms ease-out both;
 }
 
 // ============================================

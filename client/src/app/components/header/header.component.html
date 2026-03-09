@@ -16,6 +16,19 @@
       </div>
 
       <div class="header-actions">
+        <button
+          class="nav-btn msg-btn place-order-btn relative overflow-hidden"
+          (click)="openMessages()"
+          *ngIf="messages?.length"
+        >
+          <i class="fa fa-envelope z-10 scale-125"></i>
+          <div
+            *ngIf="unreadMessages > 0"
+            class="absolute bottom-0.5 right-0.5 z-20 h-5 w-5 rounded-full bg-red-600 text-xs font-semibold leading-5 text-white opacity-80"
+          >
+            {{ unreadMessages }}
+          </div>
+        </button>
         <button class="nav-btn place-order-btn" (click)="onPlaceOrder()">
           <i class="fa fa-plus-circle"></i>
           <span>Place order</span>
@@ -72,6 +85,19 @@
 
     <!-- Actions -->
     <div class="header-actions">
+      <button
+        class="nav-btn msg-btn place-order-btn relative overflow-hidden"
+        (click)="openMessages()"
+        *ngIf="messages?.length"
+      >
+        <i class="fa fa-envelope z-10 scale-125"></i>
+        <div
+          *ngIf="unreadMessages > 0"
+          class="absolute bottom-0.5 right-0.5 z-20 h-5 w-5 rounded-full bg-red-600 text-xs font-semibold leading-5 text-white opacity-80"
+        >
+          {{ unreadMessages }}
+        </div>
+      </button>
       <button class="nav-btn place-order-btn" (click)="onPlaceOrder()">
         <i class="fa fa-plus"></i>
         <span>Place Order</span>
@@ -106,6 +132,33 @@
     </div>
   </div>
 </header>
+
+<div
+  *ngIf="messageOpen"
+  class="message-panel fixed bottom-0 right-0 flex flex-col gap-1"
+  [ngClass]="{ 'h-[calc(100vh_-_120px)] w-[465px]': hero, 'h-[calc(100vh_-_60px)] w-[415px]': !hero }"
+>
+  <div class="text-xl font-semibold">Messages and Notifications</div>
+  <app-toggle-group
+    [options]="readOptions"
+    [value]="readOption"
+    (valueChange)="setReadOption($event)"
+  ></app-toggle-group>
+  <app-toggle-group
+    [options]="messageOptions"
+    [value]="messageOption"
+    (valueChange)="setMessageOption($event)"
+  ></app-toggle-group>
+  <div class="flex flex-1 flex-col gap-1 overflow-y-auto">
+    <div *ngFor="let message of filteredMessages">
+      <app-message-card
+        [message]="message"
+        (readMessage)="onReadMessage($event)"
+        (deleteMessage)="onDeleteMessage($event)"
+      ></app-message-card>
+    </div>
+  </div>
+</div>
 
 <app-new-order
   [orderOpen]="orderOpen"

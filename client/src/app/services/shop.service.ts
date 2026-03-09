@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
 import { Router } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
 import { Observable, debounceTime } from 'rxjs';
 import { UtilService } from './util.service';
 
+import { HttpClient } from '@angular/common/http';
 import { CurrentSubject } from '@app/helpers/current.subject';
+import { UtilityHelper } from '@app/helpers/utility.helper';
+import { Auction } from '@app/models/auction.model';
 import { Shop, ShopItem } from '@app/models/shop.model';
 import { DateTime } from 'luxon';
-import { UtilityHelper } from '@app/helpers/utility.helper';
 import { ToastrService } from 'ngx-toastr';
-import { HttpClient } from '@angular/common/http';
 import { ItemService } from './item.service';
-import { Auction } from '@app/models/auction.model';
 
 @Injectable()
 export class ShopService {
@@ -83,6 +83,7 @@ export class ShopService {
         });
         this.activeShopSubject.set(shop);
         this.socket.emit('checkShopUpToDate', shop.uuid, shop.lastRefresh);
+        this.socket.emit('getMessages', shop.uuid);
         if (shop.lastRefresh && Date.now() - shop.lastRefresh < 1000 * 60 * 15) {
           this.daybreakStart();
         }
@@ -189,9 +190,15 @@ export class ShopService {
   bidAuction(auction: Auction, amount: number): void {
     const activeShop = this.activeShopSubject.value;
     if (activeShop) {
-      this.socket.emit('bidAuction', { bidder: activeShop.uuid, auctionId: auction.uuid, amount });
+      if (activeShop.certified?.length > 0) {
+        this.socket.emit('bidAuction', { bidder: activeShop.uuid, auctionId: auction.uuid, amount });
+      } else {
+        this.toastrService.error('You must have a certified character to place bids', 'Shop Not Certified', {
+          timeOut: 10000
+        });
+      }
     } else {
-      this.toastrService.error('You must have a working shop before placing bids', 'Bid Error', {
+      this.toastrService.error('You must have a working shop before placing bids', 'Shop Not Ready', {
         timeOut: 10000
       });
     }

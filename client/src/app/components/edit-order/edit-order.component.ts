@@ -1,27 +1,17 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
+import { formatDate } from '@angular/common';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
+import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
-import { LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-attributes';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
+import { LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-attributes';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, take } from 'rxjs';
-import { InspectorService } from '@app/services/inspector.service';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-edit-order',
@@ -85,9 +75,9 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     const prices = this.fb.array([
       this.fb.group({
         type: [Price.PLAT],
-        price: [0, Validators.min(0)],
-        unit: [0, Validators.min(0)],
-        max: [null, Validators.min(1)]
+        price: [0, [Validators.min(0), Validators.max(9999)]],
+        unit: [0, [Validators.min(0), Validators.max(9999)]],
+        max: [null, [Validators.min(1), Validators.max(9999)]]
       })
     ]);
     this.form = this.fb.group({
@@ -202,9 +192,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   addPrice(): void {
-    this.getprices().push(
-      this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })
-    );
+    this.getprices().push(this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] }));
     this.refreshBindPrices();
   }
 

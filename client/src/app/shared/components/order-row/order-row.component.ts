@@ -18,6 +18,7 @@ export class OrderRowComponent implements OnInit {
   @Output() rowClick = new EventEmitter<ItemOrder>();
   @Output() submitVote = new EventEmitter<{ order: ItemOrder; vote: 'positive' | 'negative' }>();
   @Output() whisperClick = new EventEmitter<ItemOrder>();
+  @Output() messageClick = new EventEmitter<ItemOrder>();
 
   public details = false;
   public isActive = false;
@@ -43,6 +44,11 @@ export class OrderRowComponent implements OnInit {
   onWhisper(event: Event): void {
     event.stopPropagation();
     this.whisperClick.emit(this.order);
+  }
+
+  onMessage(event: Event): void {
+    event.stopPropagation();
+    this.messageClick.emit(this.order);
   }
 
   onSubmitVote(event: Event, vote: 'positive' | 'negative'): void {

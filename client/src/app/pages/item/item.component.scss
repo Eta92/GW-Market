@@ -1,5 +1,6 @@
 // Import shared design system
 @import '../../shared/styles/variables';
+@import '../../shared/styles/form-controls';
 
 // ============================================
 // ITEM PAGE - Main Container
@@ -1756,4 +1757,30 @@
       letter-spacing: 0.05em;
     }
   }
+}
+
+.form-group {
+  @extend %form-group;
+  flex: 1;
+  min-width: 120px;
+}
+
+.form-input {
+  @extend %form-input;
+}
+
+.form-select {
+  @extend %form-select;
+}
+
+.toggle-group {
+  @extend %toggle-group;
+
+  .toggle-btn {
+    @extend %toggle-btn;
+  }
+}
+
+.custom-datetime {
+  color-scheme: dark; /* This will make the default icon (and date picker popup) white/light-colored */
 }

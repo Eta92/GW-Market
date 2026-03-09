@@ -44,8 +44,8 @@
 .currency-dropdown.open {
   .currency-selected {
     border-color: $gold;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 
     i {
       transform: rotate(180deg);
@@ -55,13 +55,12 @@
 
 .currency-options {
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: 0;
   right: 0;
   background: rgba($obsidian, 0.95);
   border: 1px solid $gold;
-  border-top: none;
-  border-radius: 0 0 $radius-md $radius-md;
+  border-radius: $radius-md $radius-md 0 0;
   z-index: 100;
   overflow: hidden;
 }

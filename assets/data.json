@@ -14227,6 +14227,51 @@
           "name": "Unique Scythes",
           "items": [
             {
+              "name": "Arachni's Scythe",
+              "chest": true,
+              "stats": [
+                "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor penetration 20% (Chance: 20%)\nHealth +30\nTwo-handed"
+              ],
+              "family": "unique",
+              "category": "Unique Scythes"
+            },
+            {
+              "name": "Asterius' Scythe",
+              "boss": true,
+              "stats": [
+                "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration: -1\nEnchantments last 20% longer\nTwo-handed"
+              ],
+              "family": "unique",
+              "category": "Unique Scythes"
+            },
+            {
+              "name": "Balthazar's Fury",
+              "boss": true,
+              "stats": [
+                "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15%\nArmor -10 (while attacking)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30\nTwo-handed"
+              ],
+              "family": "unique",
+              "category": "Unique Scythes"
+            },
+            {
+              "name": "Banana Scythe",
+              "quest": true,
+              "stats": [
+                "Blunt Damage: 10-10"
+              ],
+              "family": "unique",
+              "category": "Unique Scythes"
+            },
+            {
+              "name": "Brynn's Scythe",
+              "boss": true,
+              "stats": [
+                "Slashing damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Enchanted)\nArmor penetration 20% (Chance: 20%)\nHealth +30\nTwo-handed"
+              ],
+              "family": "unique",
+              "category": "Unique Scythes"
+            },
+            {
               "name": "Bubahl's Grasp",
               "stats": [
                 "Earth damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nArmor +7 (vs. physical damage)\nTwo-handed"
@@ -16664,6 +16709,88 @@
               "category": "Unique Swords"
             },
             {
+              "name": "Lissah's Edge",
+              "boss": true,
+              "stats": [
+                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
+              "name": "Lord Onrah's Sword",
+              "boss": true,
+              "lowlevel": true,
+              "stats": [
+                "Slashing damage: 10-13 (Requires 4 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +20"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
+              "name": "Mallyx's Edge",
+              "chest": true,
+              "stats": [
+                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
+              "name": "Mobrin's Blade",
+              "boss": true,
+              "stats": [
+                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15%\nEnergy -5\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
+              "name": "Murakai's Blade",
+              "chest": true,
+              "stats": [
+                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
+              "name": "Quivering Blade (weapon)",
+              "boss": true,
+              "stats": [
+                "Cold damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (vs. Hexed foes)\nHealth +30"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
+              "name": "Rajazan's Fervor",
+              "boss": true,
+              "stats": [
+                "Cold damage: 15-22 (Requires 9 Swordsmanship)\nEnchantments last 20% longer\nEnergy +5"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
+              "name": "Reaper's Blade",
+              "boss": true,
+              "stats": [
+                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance:20%)\nHealth +30"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
+              "name": "Rocktail's Stinger",
+              "boss": true,
+              "stats": [
+                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while in a Stance)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
+              ],
+              "family": "unique",
+              "category": "Unique Swords"
+            },
+            {
               "name": "Shak-Jarin's Sword",
               "stats": [
                 "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
@@ -16784,81 +16911,10 @@
               "category": "Unique Swords"
             },
             {
-              "name": "Deldrimor Sword (unique)",
-              "stats": [
-                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "Lissah's Edge",
-              "stats": [
-                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Enchanted)\nArmor penetration +20% (Chance: 20%)\nHealth +30"
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "The Holy Avenger",
-              "stats": [
-                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "Bartholos' Shining Blade",
-              "stats": [
-                "Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nDouble adrenaline gain (Chance: 10%)\nSwordsmanship +1 (Chance: 20% while using skills)"
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "Snakebite's Fang",
-              "stats": [
-                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLengthens Poison duration by 33%\nHealth +30"
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "Demrikov's Judgement",
-              "stats": [
-                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLengthens Crippled duration by 33%\nHealth +30"
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "Judgment",
+              "name": "Wahli's Blade",
+              "boss": true,
               "stats": [
                 "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nLife Draining: 3\nHealth regeneration -1\nHealth +30"
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "Imperial Dragon Sword",
-              "stats": [
-                "Lightning Dmg: 15-22 (Requires 9 Sword Mastery)\nDamage +15% (while Enchanted)\nHealth +30"
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "Decade Sword Distant Horizon",
-              "stats": [
-                "Slashing Dmg: 15-22 (Requires 9 Swordsmanship)\nDeals 20% additional damage during Festival events. No effect in PvP.\nArmor penetration +20% (Chance: 20%)\nHealth +30\nCrafted in tribute to an enduring legend."
-              ],
-              "family": "unique",
-              "category": "Unique Swords"
-            },
-            {
-              "name": "Silver Edge",
-              "stats": [
-                "Slashing damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
               ],
               "family": "unique",
               "category": "Unique Swords"
