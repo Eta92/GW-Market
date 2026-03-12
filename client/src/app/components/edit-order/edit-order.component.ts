@@ -102,7 +102,8 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.formOther = this.fb.group({
       dedicated: [false],
       legacy: [false],
-      pre: [false]
+      pre: [false],
+      note: ['']
     });
     if (this.original) {
       this.loadOrder(this.original);
@@ -301,7 +302,9 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     });
     this.formOther.reset({
       dedicated: false,
-      pre: false
+      legacy: false,
+      pre: false,
+      note: ''
     });
     this.isWeapon = false;
     this.isMiniature = false;

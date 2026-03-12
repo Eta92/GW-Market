@@ -79,6 +79,7 @@ export interface OrderDetails {
   dedicated: boolean;
   pre: boolean;
   legacy: boolean;
+  note: string;
 }
 
 export interface ShopPrice {

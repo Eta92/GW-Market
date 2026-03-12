@@ -22,8 +22,9 @@
     <!-- Item Info -->
     <div class="order-info">
       <span class="order-name" [title]="order?.name" (click)="onItemClick()">{{ order?.name }}</span>
-      <app-item-details *ngIf="showDetails" [item]="order" [details]="order?.item"></app-item-details>
+      <app-item-details class="mb-1" *ngIf="showDetails" [item]="order" [details]="order?.item"></app-item-details>
       <span class="desc-preview" *ngIf="order?.description && showDetails">{{ order.description }}</span>
+      <span class="desc-preview" *ngIf="order?.orderDetails?.note && showDetails && !locked">{{ order.orderDetails.note }}</span>
     </div>
 
     <!-- Price Classic -->
@@ -38,9 +39,7 @@
     <div class="order-price" *ngIf="auction">
       <div class="price-row">
         <img class="price-icon" [src]="auction.currency | currencySource" />
-        <span class="price-amount">{{
-          auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice
-        }}</span>
+        <span class="price-amount">{{ auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice }}</span>
       </div>
     </div>
 
@@ -108,9 +107,7 @@
       </button>
       <div class="actions-dropdown" *ngIf="menuOpen" (click)="$event.stopPropagation()">
         <div class="dropdown-inner">
-          <button class="dropdown-item" *ngIf="!auction" (click)="onEditClick(); closeMenu()">
-            <i class="fa fa-pen"></i> Edit
-          </button>
+          <button class="dropdown-item" *ngIf="!auction" (click)="onEditClick(); closeMenu()"><i class="fa fa-pen"></i> Edit</button>
           <button class="dropdown-item" *ngIf="!auction" (click)="onHideClick(); closeMenu()">
             <i class="fa" [class.fa-eye]="!order?.hidden" [class.fa-eye-slash]="order?.hidden"></i>
             {{ order?.hidden ? 'Show' : 'Hide' }}
