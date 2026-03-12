@@ -401,14 +401,14 @@ export class ShopService {
     }
   }
 
-  public async fetchDaybreakItems(): Promise<Array<{ name: string; quantity: number }>> {
+  public async fetchDaybreakItems(mode: 'stash' | 'inventory'): Promise<Array<{ name: string; quantity: number }>> {
     const prom = new Promise<Array<{ name: string; quantity: number }>>((resolve, reject) => {
       const items = [];
       this.http.get('http://localhost:5080/api/v1/rest/inventory').subscribe({
         next: data => {
           const allBags = (data as any)?.bags || [];
           allBags.forEach(bag => {
-            if (bag?.bagType === 'Storage') {
+            if ((bag?.bagType === 'Storage' && mode === 'stash') || (bag?.bagType === 'Inventory' && mode === 'inventory')) {
               bag.items?.forEach(item => {
                 const name = item?.decodedSingleName || item?.decodedCompleteName || item?.decodedName || '';
                 const parsedName =

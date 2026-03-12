@@ -64,6 +64,7 @@ export class ShopComponent implements OnInit {
 
   public playerOpen = false;
   public orderOpen = false;
+  public daybreakOpen = false;
 
   // View options
   public compactView = false;
@@ -147,8 +148,9 @@ export class ShopComponent implements OnInit {
     this.orderEditAll = false;
   }
 
-  async loadDaybreakItems(): Promise<void> {
-    const items = await this.shopService.fetchDaybreakItems();
+  async loadDaybreakItems(mode: 'stash' | 'inventory'): Promise<void> {
+    this.daybreakOpen = false;
+    const items = await this.shopService.fetchDaybreakItems(mode);
     this.daybreakItems = items;
     this.daybreakEdit = true;
     this.cdr.detectChanges();
@@ -195,11 +197,7 @@ export class ShopComponent implements OnInit {
         origin: PurchaseOrigin.SHOP
       } as Purchase);
     } else {
-      this.toastrService.warning(
-        'Confirm completion by clicking the check button again',
-        'Order validation initiated',
-        { timeOut: 10000 }
-      );
+      this.toastrService.warning('Confirm completion by clicking the check button again', 'Order validation initiated', { timeOut: 10000 });
       order.completed = true;
     }
   }
@@ -235,13 +233,9 @@ export class ShopComponent implements OnInit {
         origin: PurchaseOrigin.SHOP
       } as Purchase);
     } else {
-      this.toastrService.warning(
-        'Confirm single completion by clicking the check button again',
-        'Single validation initiated',
-        {
-          timeOut: 10000
-        }
-      );
+      this.toastrService.warning('Confirm single completion by clicking the check button again', 'Single validation initiated', {
+        timeOut: 10000
+      });
       order.single = true;
     }
   }
@@ -328,6 +322,11 @@ export class ShopComponent implements OnInit {
     }
   }
 
+  onDaybreakOpen(): void {
+    this.daybreakOpen = true;
+    this.cdr.detectChanges();
+  }
+
   exportShop(): void {
     this.shopService.exportShop();
   }
@@ -361,10 +360,7 @@ export class ShopComponent implements OnInit {
       this.toastrService.warning('Please place at least one order before onlining your shop', 'No items');
       this.orderWarning = true;
     } else if (Date.now() - this.shop.lastRefresh < 60 * 1000) {
-      this.toastrService.warning(
-        'Refreshing more than once a minute is a bit rude',
-        'Please be gentle with the server'
-      );
+      this.toastrService.warning('Refreshing more than once a minute is a bit rude', 'Please be gentle with the server');
     } else {
       this.shopService.enableShop();
     }

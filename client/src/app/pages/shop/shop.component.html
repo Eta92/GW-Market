@@ -116,7 +116,7 @@
             <i class="fa fa-pen"></i>
             <span>Edit All Orders</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="loadDaybreakItems()">
+          <button class="sidebar-action-btn col-span-2" (click)="onDaybreakOpen()">
             <i class="fa fa-rotate"></i>
             <span>Dump From Daybreak</span>
           </button>
@@ -302,6 +302,40 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
 
   <app-footer></app-footer>
 </div>
+
+<!-- Place Order Modal -->
+<app-modal [isOpen]="daybreakOpen" (closed)="daybreakOpen = false">
+  <div *ngIf="daybreakOpen" class="order-detail-content auction-order">
+    <div class="order-detail-header">
+      <div class="order-type-badge sell">
+        <i class="fa fa-file-import"></i>
+        Dump items from the game
+      </div>
+      <button class="modal-close" (click)="daybreakOpen = false">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="order-detail-body">
+      <!-- Item Info -->
+      <div class="detail-item-info">
+        To import your item from the game you need to use a custom launcher because base game do not include any
+        external access. The custom launcher working with GW Market is named Daybreak.
+      </div>
+    </div>
+
+    <div class="order-detail-footer flex flex-col gap-2">
+      <button class="detail-whisper-btn" (click)="loadDaybreakItems('inventory')">
+        <i class="fa fa-person-hiking"></i>
+        Import Inventory Items
+      </button>
+      <button class="detail-whisper-btn" (click)="loadDaybreakItems('stash')">
+        <i class="fa fa-boxes-stacked"></i>
+        Import Stash Items
+      </button>
+    </div>
+  </div>
+</app-modal>
 
 <!-- Edit Order Modal -->
 <app-modal [isOpen]="!!orderEdit" (closed)="orderEdit = null">
@@ -495,26 +529,26 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
       </button>
     </div>
   </div>
+</app-modal>
 
-  <!-- Whisper Popup -->
-  <app-modal [isOpen]="auctionPopup" (closed)="auctionPopup = false" contentClass="whisper-popup-content">
-    <div class="popup-content">
-      <div class="popup-header">
-        <img class="popup-img" [src]="getImageSource(auctionDisplay?.item.name)" />
-        <div class="popup-title">
-          <h3>Contact Player</h3>
-          <p>Copy message to whisper in-game</p>
-        </div>
-        <button class="popup-close" (click)="auctionPopup = false">
-          <i class="fa fa-times"></i>
-        </button>
+<!-- Whisper Popup -->
+<app-modal [isOpen]="auctionPopup" (closed)="auctionPopup = false" contentClass="whisper-popup-content">
+  <div class="popup-content">
+    <div class="popup-header">
+      <img class="popup-img" [src]="getImageSource(auctionDisplay?.item.name)" />
+      <div class="popup-title">
+        <h3>Contact Player</h3>
+        <p>Copy message to whisper in-game</p>
       </div>
-
-      <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ auctionMessage }}</textarea>
-      <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
-        <i class="fa fa-copy"></i>
-        Copy Trade Message
+      <button class="popup-close" (click)="auctionPopup = false">
+        <i class="fa fa-times"></i>
       </button>
     </div>
-  </app-modal>
+
+    <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ auctionMessage }}</textarea>
+    <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
+      <i class="fa fa-copy"></i>
+      Copy Trade Message
+    </button>
+  </div>
 </app-modal>
