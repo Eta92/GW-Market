@@ -8,13 +8,13 @@
     </span>
     <span class="detail-badge insc" *ngIf="wd.inscription"> <i class="fa fa-pen-fancy"></i> Insc. </span>
     <span class="detail-badge os" *ngIf="!wd.inscription"> <i class="fa fa-scroll"></i> OS. </span>
-    <span class="detail-badge core" *ngIf="wd.core">
+    <span class="detail-badge core" [title]="WeaponHelper.upgradeDescriptions[wd.core]" *ngIf="wd.core">
       {{ wd.core }}
     </span>
-    <span class="detail-badge mod prefix" *ngIf="wd.prefix">
+    <span class="detail-badge mod prefix" [title]="WeaponHelper.upgradeDescriptions[wd.prefix]" *ngIf="wd.prefix">
       {{ wd.prefix }}
     </span>
-    <span class="detail-badge mod suffix" *ngIf="wd.suffix">
+    <span class="detail-badge mod suffix" [title]="WeaponHelper.upgradeDescriptions[wd.suffix]" *ngIf="wd.suffix">
       {{ wd.suffix }}
     </span>
   </ng-container>

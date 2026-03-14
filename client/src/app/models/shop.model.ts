@@ -119,7 +119,16 @@ export interface Item {
 
 export interface BasicItem {
   name: string;
+  description?: string;
+  enhancement?: string;
+  condition?: string;
   img: string;
   family: string;
   category: string;
+}
+
+export interface Upgrade {
+  value: string;
+  description?: string;
+  img: string;
 }

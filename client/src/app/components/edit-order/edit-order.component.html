@@ -141,10 +141,23 @@
       <div class="form-row">
         <div class="form-group" style="flex: 2">
           <label>Core Modification</label>
-          <select class="form-select" formControlName="core">
+          <app-upgrade-dropdown
+            [upgradeOptions]="weaponLists.core"
+            [selectedUpgrade]="formWeapon.get('core')?.value"
+            (upgradeChange)="formWeapon.patchValue({ core: $event })"
+          ></app-upgrade-dropdown>
+          <!-- <select class="form-select" formControlName="core">
             <option [ngValue]="null">None</option>
-            <option *ngFor="let core of weaponLists.core" [ngValue]="core">{{ core }}</option>
-          </select>
+            <option *ngFor="let core of weaponLists.core" [ngValue]="core.value">
+              <div class="flex">
+                <img class="upgrade-icon" [src]="core.img" alt="{{ core.value }}" />
+                <div class="flex flex-col">
+                  <span>{{ core.value }}</span>
+                  <span class="upgrade-desc">{{ core.description }}</span>
+                </div>
+              </div>
+            </option>
+          </select> -->
         </div>
         <div class="form-group" style="flex: 2">
           <label>Inscription</label>
@@ -162,17 +175,27 @@
       <div class="form-row">
         <div class="form-group">
           <label>Prefix</label>
-          <select class="form-select" formControlName="prefix">
+          <app-upgrade-dropdown
+            [upgradeOptions]="weaponLists.prefix"
+            [selectedUpgrade]="formWeapon.get('prefix')?.value"
+            (upgradeChange)="formWeapon.patchValue({ prefix: $event })"
+          ></app-upgrade-dropdown>
+          <!-- <select class="form-select" formControlName="prefix">
             <option [ngValue]="null">None</option>
             <option *ngFor="let prefix of weaponLists.prefix" [ngValue]="prefix">{{ prefix }}</option>
-          </select>
+          </select> -->
         </div>
         <div class="form-group">
           <label>Suffix</label>
-          <select class="form-select" formControlName="suffix">
+          <app-upgrade-dropdown
+            [upgradeOptions]="weaponLists.suffix"
+            [selectedUpgrade]="formWeapon.get('suffix')?.value"
+            (upgradeChange)="formWeapon.patchValue({ suffix: $event })"
+          ></app-upgrade-dropdown>
+          <!-- <select class="form-select" formControlName="suffix">
             <option [ngValue]="null">None</option>
             <option *ngFor="let suffix of weaponLists.suffix" [ngValue]="suffix">{{ suffix }}</option>
-          </select>
+          </select> -->
         </div>
       </div>
     </div>

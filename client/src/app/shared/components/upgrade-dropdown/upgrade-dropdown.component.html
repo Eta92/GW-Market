@@ -1,0 +1,29 @@
+<div class="upgrade-dropdown" [class.open]="isOpen">
+  <button type="button" class="upgrade-selected" (click)="toggleDropdown($event)">
+    <img class="upgrade-icon" [src]="fullUpgrade()?.img || '../../../assets/items/upgrade/empty.png'" alt="" />
+    <div class="upgrade-content">
+      <span class="upgrade-name text-no-overflow">{{ fullUpgrade()?.value || 'Empty' }}</span>
+      <span class="upgrade-description text-no-overflow">{{ fullUpgrade()?.description }}</span>
+    </div>
+    <i class="fa fa-chevron-down"></i>
+  </button>
+  <div class="upgrade-options" *ngIf="isOpen">
+    <button type="button" class="upgrade-option" [class.selected]="!selectedUpgrade" (click)="selectUpgrade(null, $event)">
+      <img [src]="'../../../assets/items/upgrade/empty.png'" alt="" />
+      <span>Empty</span>
+    </button>
+    <button
+      type="button"
+      class="upgrade-option"
+      *ngFor="let upgrade of upgradeOptions"
+      [class.selected]="upgrade.value === selectedUpgrade"
+      (click)="selectUpgrade(upgrade, $event)"
+    >
+      <img [src]="upgrade.img" alt="" />
+      <div class="upgrade-content">
+        <span class="upgrade-name text-no-overflow">{{ upgrade.value }}</span>
+        <span class="upgrade-description text-no-overflow">{{ upgrade.description }}</span>
+      </div>
+    </button>
+  </div>
+</div>

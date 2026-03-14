@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { Item, OrderType, Price, ShopItem, Upgrade } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
@@ -46,7 +46,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   public isLocked = true;
   public attributes = VARIABLE_ATTRIBUTE;
   public lockWeapons = LOCKED_WEAPON;
-  public weaponLists: { core: Array<string>; prefix: Array<string>; suffix: Array<string> } = {
+  public weaponLists: { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } = {
     core: [],
     prefix: [],
     suffix: []
@@ -159,7 +159,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.isMiniature = WeaponHelper.isMiniature(order.item);
     if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(order.item.category);
-      this.weaponLists = WeaponHelper.getItemList(order.item, this.allItems);
+      this.weaponLists = WeaponHelper.getItemList(order.item, this.itemService.getUpgrades());
       this.formWeapon.patchValue(order.weaponDetails || {});
     }
     this.storeService.requestSocket('getItemDetails', order.name);
@@ -176,7 +176,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     // Set weapon flag if applicable
     if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(item.category);
-      this.weaponLists = WeaponHelper.getItemList(item, this.allItems);
+      this.weaponLists = WeaponHelper.getItemList(item, this.itemService.getUpgrades());
     }
   }
 

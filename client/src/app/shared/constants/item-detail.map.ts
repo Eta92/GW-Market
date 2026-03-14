@@ -10,6 +10,8 @@ export const ItemDetailMap: Record<string, string> = {
   stats: 'Stats',
   effect: 'Effect',
   description: 'Description',
+  enhancement: 'Enhancement',
+  condition: 'Condition',
   summoned_ally: 'Invocation',
   'OS only': 'OS only',
   craftable: 'Craftable',

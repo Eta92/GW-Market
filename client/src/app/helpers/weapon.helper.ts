@@ -1,22 +1,9 @@
-import { Item, ShopItem, WeaponDetails } from '@app/models/shop.model';
-import { AvailableTree } from '@app/models/tree.model';
+import { BasicItem, Item, ShopItem, Upgrade, WeaponDetails } from '@app/models/shop.model';
 
 // Inscription category sets
-const MARTIAL_INSCRIPTIONS = [
-  'All weapons Inscriptions',
-  'Martial weapons Inscriptions',
-  'All equippable items Inscriptions'
-];
-const SPELLCASTING_INSCRIPTIONS = [
-  'All weapons Inscriptions',
-  'Spellcasting weapons Inscriptions',
-  'All equippable items Inscriptions'
-];
-const FOCUS_INSCRIPTIONS = [
-  'Focus items or shields Inscriptions',
-  'Focus items Inscriptions',
-  'All equippable items Inscriptions'
-];
+const MARTIAL_INSCRIPTIONS = ['All weapons Inscriptions', 'Martial weapons Inscriptions', 'All equippable items Inscriptions'];
+const SPELLCASTING_INSCRIPTIONS = ['All weapons Inscriptions', 'Spellcasting weapons Inscriptions', 'All equippable items Inscriptions'];
+const FOCUS_INSCRIPTIONS = ['Focus items or shields Inscriptions', 'Focus items Inscriptions', 'All equippable items Inscriptions'];
 const SHIELD_INSCRIPTIONS = ['Focus items or shields Inscriptions', 'All equippable items Inscriptions'];
 
 // Weapon upgrade configuration: maps category to [coreInscriptions, prefixCategory, suffixCategory]
@@ -35,6 +22,8 @@ const WEAPON_UPGRADE_CONFIG: Record<string, { core: string[]; prefix: string | n
 };
 
 export class WeaponHelper {
+  static upgradeDescriptions: { [key: string]: string } = {};
+
   static isWeapon(item: Item): boolean {
     return item?.family === 'weapon';
   }
@@ -54,6 +43,14 @@ export class WeaponHelper {
     return false;
   }
 
+  static loadUpgradeDescriptions(upgradeFamily: { [key: string]: Array<BasicItem> }): void {
+    for (const category in upgradeFamily) {
+      for (const item of upgradeFamily[category]) {
+        WeaponHelper.upgradeDescriptions[item.name] = item.enhancement + (item.condition ? ` ${item.condition}` : '');
+      }
+    }
+  }
+
   /**
    * Format weapon details into a human-readable string.
    */
@@ -70,9 +67,12 @@ export class WeaponHelper {
   /**
    * Get available upgrade items for a weapon category.
    */
-  static getItemList(item: Item, completeTree: AvailableTree): { core: string[]; prefix: string[]; suffix: string[] } {
-    const upgrades = completeTree.families.find(fam => fam.name === 'upgrade')?.categories;
-    if (!upgrades) {
+  static getItemList(
+    item: Item,
+    upgradeFamily: { [key: string]: Array<BasicItem> }
+  ): { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } {
+    //const upgrades = completeTree.families.find(fam => fam.name === 'upgrade')?.categories;
+    if (!upgradeFamily) {
       return { core: [], prefix: [], suffix: [] };
     }
 
@@ -81,8 +81,12 @@ export class WeaponHelper {
       return { core: [], prefix: [], suffix: [] };
     }
 
-    const getItemNames = (categoryName: string): string[] =>
-      upgrades.find(cat => cat.name === categoryName)?.items.map(i => i.name) || [];
+    const getItemNames = (categoryName: string): Array<Upgrade> =>
+      upgradeFamily[categoryName]?.map(i => ({
+        value: i.name,
+        description: i.enhancement + (i.condition ? ` ${i.condition}` : ''),
+        img: i.img
+      })) || [];
 
     return {
       core: config.core.flatMap(getItemNames),

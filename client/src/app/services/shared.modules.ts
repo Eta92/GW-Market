@@ -14,6 +14,7 @@ import { ToggleGroupComponent } from '@app/shared/components/toggle-group/toggle
 import { StopPropagationDirective } from '@app/shared/directives/stop-propagation.directive';
 import { UTILITY_PIPES } from '@app/shared/pipes/utility.pipes';
 import { MessageCardComponent } from '@shared/components/message-card/message-card.component';
+import { UpgradeDropdownComponent } from '@shared/components/upgrade-dropdown/upgrade-dropdown.component';
 import { MiddleclickDirective, RoutingDirective } from '@shared/directives/routing.directive';
 
 const SHARED_COMPONENTS = [
@@ -25,6 +26,7 @@ const SHARED_COMPONENTS = [
   OrderRowComponent,
   PreviewCardComponent,
   CurrencyDropdownComponent,
+  UpgradeDropdownComponent,
   ItemDetailsComponent,
   MessageCardComponent,
   RoutingDirective,

@@ -28,4 +28,9 @@ export interface AvailableCategory extends TimeOrderCounts {
   items: Array<AvailableItem>;
 }
 
-export interface AvailableItem extends Item, TimeOrderCounts {}
+export interface AvailableItem extends Item, TimeOrderCounts {
+  description?: string;
+  enhancement?: string;
+  condition?: string;
+  hidden?: boolean;
+}

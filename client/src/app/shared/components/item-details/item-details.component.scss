@@ -64,6 +64,7 @@
     color: rgba($parchment, 0.75);
     border-color: rgba($parchment, 0.15);
     font-style: italic;
+    cursor: help;
   }
 
   // Mod badges (prefix/suffix)
@@ -71,6 +72,7 @@
     background: rgba(#4a90a4, 0.12);
     color: #7eb8c9;
     border-color: rgba(#4a90a4, 0.2);
+    cursor: help;
 
     &.prefix {
       border-left: 2px solid rgba(#4a90a4, 0.5);

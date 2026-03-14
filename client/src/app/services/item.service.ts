@@ -3,13 +3,14 @@ import { Socket } from 'ngx-socket-io';
 import { Observable, debounceTime, of } from 'rxjs';
 import { UtilService } from './util.service';
 
+import { HttpClient } from '@angular/common/http';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { AvailableTree, TimeOrderCounts } from '@app/models/tree.model';
-import { HttpClient } from '@angular/common/http';
-import { StoreService } from './store.service';
-import { ToastrService } from 'ngx-toastr';
+import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { BasicItem } from '@app/models/shop.model';
+import { AvailableTree, TimeOrderCounts } from '@app/models/tree.model';
+import { ToastrService } from 'ngx-toastr';
+import { StoreService } from './store.service';
 
 @Injectable()
 export class ItemService {
@@ -20,6 +21,7 @@ export class ItemService {
   private itemJsonUrl = 'assets/data.json';
   private itemJsonData: AvailableTree;
   private itemNameBase: { [key: string]: BasicItem } = {};
+  private itemUpgrades: { [key: string]: Array<BasicItem> } = {};
   private warningMap: { [key: string]: boolean } = {};
   private availableOrders: {
     [key: string]: TimeOrderCounts;
@@ -59,6 +61,7 @@ export class ItemService {
 
   loadAvailableTree(): void {
     if (this.itemJsonData) {
+      this.itemUpgrades = {};
       const activeTree = UtilityHelper.copy(this.itemJsonData) as AvailableTree;
       activeTree.families.forEach(family => {
         family.categories.forEach(category => {
@@ -71,12 +74,23 @@ export class ItemService {
           category.items.forEach(item => {
             this.itemNameBase[item.name] = {
               name: item.name,
+              description: item.description,
+              enhancement: item.enhancement,
+              condition: item.condition,
               category: category.name,
               family: family.name,
               img: item.img
                 ? '../../../assets/items/' + family.name + '/' + item.img.replace(/ /g, '_') + '.png'
                 : '../../../assets/items/' + family.name + '/' + item.name.replace(/ /g, '_') + '.png'
             };
+            if (family.name === 'upgrade') {
+              WeaponHelper.upgradeDescriptions[item.name] =
+                item.enhancement + (item.condition ? ` ${item.condition}` : '');
+              if (!this.itemUpgrades[category.name]) {
+                this.itemUpgrades[category.name] = [];
+              }
+              this.itemUpgrades[category.name].push(this.itemNameBase[item.name]);
+            }
             const orders = this.availableOrders?.[item.name];
             if (orders) {
               item.sellNow = orders.sellNow || 0;
@@ -100,6 +114,7 @@ export class ItemService {
               item.auctionWeek = 0;
             }
           });
+          category.items = category.items.filter(i => !i.hidden);
           category.sellNow = category.items.reduce((sum, i) => sum + (i.sellNow || 0), 0);
           category.buyNow = category.items.reduce((sum, i) => sum + (i.buyNow || 0), 0);
           category.auctionNow = category.items.reduce((sum, i) => sum + (i.auctionNow || 0), 0);
@@ -221,5 +236,9 @@ export class ItemService {
     } else {
       return this.readySubject.asObservable().pipe(debounceTime(0));
     }
+  }
+
+  getUpgrades(): { [key: string]: Array<BasicItem> } {
+    return this.itemUpgrades;
   }
 }
