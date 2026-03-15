@@ -68,8 +68,8 @@ export class ItemComponent implements OnInit, OnDestroy {
   ];
 
   public messageTypeOptions: ToggleOption[] = [
-    { value: 'meet-at', label: 'Meetup at', icon: 'fa-clock' },
-    { value: 'meet-over', label: 'Meetup during', icon: 'fa-hourglass-half' },
+    { value: 'meet-at', label: 'Time slot', icon: 'fa-clock' },
+    { value: 'meet-over', label: 'Time window', icon: 'fa-hourglass-half' },
     { value: 'negociate', label: 'Negotiate', icon: 'fa-handshake' }
   ];
 
