@@ -176,7 +176,7 @@
 .order-type-section {
   .order-type-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
   }
 
@@ -273,6 +273,25 @@
 
       .card-check {
         color: $buy-color;
+      }
+    }
+
+    // Auction Card Active
+    &.auction.active {
+      background: rgba($auction-color, 0.12);
+      border-color: rgba($auction-color, 0.5);
+
+      .card-icon {
+        background: rgba($auction-color, 0.2);
+        color: $auction-color;
+      }
+
+      .card-content .card-title {
+        color: $auction-color;
+      }
+
+      .card-check {
+        color: $auction-color;
       }
     }
   }
@@ -886,7 +905,8 @@
 
   // Sell variant
   &.sell,
-  &.buy {
+  &.buy,
+  &.auction {
     background: linear-gradient(135deg, $gold-dark 0%, $gold 100%);
     color: $obsidian;
     box-shadow: 0 4px 16px rgba($gold, 0.3);
@@ -1048,4 +1068,8 @@
     padding: 0.75rem 1.25rem;
     font-size: 0.85rem;
   }
+}
+
+.custom-datetime {
+  color-scheme: dark; /* This will make the default icon (and date picker popup) white/light-colored */
 }

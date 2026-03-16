@@ -3,13 +3,14 @@ import { Socket } from 'ngx-socket-io';
 import { Observable, debounceTime, of } from 'rxjs';
 import { UtilService } from './util.service';
 
+import { HttpClient } from '@angular/common/http';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { AvailableTree, TimeOrderCounts } from '@app/models/tree.model';
-import { HttpClient } from '@angular/common/http';
-import { StoreService } from './store.service';
-import { ToastrService } from 'ngx-toastr';
+import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { BasicItem } from '@app/models/shop.model';
+import { AvailableTree, TimeOrderCounts } from '@app/models/tree.model';
+import { ToastrService } from 'ngx-toastr';
+import { StoreService } from './store.service';
 
 @Injectable()
 export class ItemService {
@@ -20,6 +21,7 @@ export class ItemService {
   private itemJsonUrl = 'assets/data.json';
   private itemJsonData: AvailableTree;
   private itemNameBase: { [key: string]: BasicItem } = {};
+  private itemUpgrades: { [key: string]: Array<BasicItem> } = {};
   private warningMap: { [key: string]: boolean } = {};
   private availableOrders: {
     [key: string]: TimeOrderCounts;
@@ -59,6 +61,7 @@ export class ItemService {
 
   loadAvailableTree(): void {
     if (this.itemJsonData) {
+      this.itemUpgrades = {};
       const activeTree = UtilityHelper.copy(this.itemJsonData) as AvailableTree;
       activeTree.families.forEach(family => {
         family.categories.forEach(category => {
@@ -71,35 +74,56 @@ export class ItemService {
           category.items.forEach(item => {
             this.itemNameBase[item.name] = {
               name: item.name,
+              description: item.description,
+              enhancement: item.enhancement,
+              condition: item.condition,
               category: category.name,
               family: family.name,
               img: item.img
                 ? '../../../assets/items/' + family.name + '/' + item.img.replace(/ /g, '_') + '.png'
                 : '../../../assets/items/' + family.name + '/' + item.name.replace(/ /g, '_') + '.png'
             };
+            if (family.name === 'upgrade') {
+              WeaponHelper.upgradeDescriptions[item.name] =
+                item.enhancement + (item.condition ? ` ${item.condition}` : '');
+              if (!this.itemUpgrades[category.name]) {
+                this.itemUpgrades[category.name] = [];
+              }
+              this.itemUpgrades[category.name].push(this.itemNameBase[item.name]);
+            }
             const orders = this.availableOrders?.[item.name];
             if (orders) {
               item.sellNow = orders.sellNow || 0;
               item.buyNow = orders.buyNow || 0;
+              item.auctionNow = orders.auctionNow || 0;
               item.sellDay = orders.sellDay || 0;
               item.buyDay = orders.buyDay || 0;
+              item.auctionDay = orders.auctionDay || 0;
               item.sellWeek = orders.sellWeek || 0;
               item.buyWeek = orders.buyWeek || 0;
+              item.auctionWeek = orders.auctionWeek || 0;
             } else {
               item.sellNow = 0;
               item.buyNow = 0;
+              item.auctionNow = 0;
               item.sellDay = 0;
               item.buyDay = 0;
+              item.auctionDay = 0;
               item.sellWeek = 0;
               item.buyWeek = 0;
+              item.auctionWeek = 0;
             }
           });
+          category.items = category.items.filter(i => !i.hidden);
           category.sellNow = category.items.reduce((sum, i) => sum + (i.sellNow || 0), 0);
           category.buyNow = category.items.reduce((sum, i) => sum + (i.buyNow || 0), 0);
+          category.auctionNow = category.items.reduce((sum, i) => sum + (i.auctionNow || 0), 0);
           category.sellDay = category.items.reduce((sum, i) => sum + (i.sellDay || 0), 0);
           category.buyDay = category.items.reduce((sum, i) => sum + (i.buyDay || 0), 0);
+          category.auctionDay = category.items.reduce((sum, i) => sum + (i.auctionDay || 0), 0);
           category.sellWeek = category.items.reduce((sum, i) => sum + (i.sellWeek || 0), 0);
           category.buyWeek = category.items.reduce((sum, i) => sum + (i.buyWeek || 0), 0);
+          category.auctionWeek = category.items.reduce((sum, i) => sum + (i.auctionWeek || 0), 0);
           category.previews = [];
           let cattry = 0;
           while (category.previews.length < 4 && category.previews.length < category.items.length) {
@@ -124,10 +148,13 @@ export class ItemService {
         });
         family.sellNow = family.categories.reduce((sum, c) => sum + (c.sellNow || 0), 0);
         family.buyNow = family.categories.reduce((sum, c) => sum + (c.buyNow || 0), 0);
+        family.auctionNow = family.categories.reduce((sum, c) => sum + (c.auctionNow || 0), 0);
         family.sellDay = family.categories.reduce((sum, c) => sum + (c.sellDay || 0), 0);
         family.buyDay = family.categories.reduce((sum, c) => sum + (c.buyDay || 0), 0);
+        family.auctionDay = family.categories.reduce((sum, c) => sum + (c.auctionDay || 0), 0);
         family.sellWeek = family.categories.reduce((sum, c) => sum + (c.sellWeek || 0), 0);
         family.buyWeek = family.categories.reduce((sum, c) => sum + (c.buyWeek || 0), 0);
+        family.auctionWeek = family.categories.reduce((sum, c) => sum + (c.auctionWeek || 0), 0);
         family.previews = [];
         // there is no family with less then 4 items
         let famtry = 0;
@@ -147,10 +174,13 @@ export class ItemService {
       });
       activeTree.sellNow = activeTree.families.reduce((sum, f) => sum + (f.sellNow || 0), 0);
       activeTree.buyNow = activeTree.families.reduce((sum, f) => sum + (f.buyNow || 0), 0);
+      activeTree.auctionNow = activeTree.families.reduce((sum, f) => sum + (f.auctionNow || 0), 0);
       activeTree.sellDay = activeTree.families.reduce((sum, f) => sum + (f.sellDay || 0), 0);
       activeTree.buyDay = activeTree.families.reduce((sum, f) => sum + (f.buyDay || 0), 0);
+      activeTree.auctionDay = activeTree.families.reduce((sum, f) => sum + (f.auctionDay || 0), 0);
       activeTree.sellWeek = activeTree.families.reduce((sum, f) => sum + (f.sellWeek || 0), 0);
       activeTree.buyWeek = activeTree.families.reduce((sum, f) => sum + (f.buyWeek || 0), 0);
+      activeTree.auctionWeek = activeTree.families.reduce((sum, f) => sum + (f.auctionWeek || 0), 0);
       this.availableTreeSubject.set(activeTree);
       if (!this.treeLoaded) {
         this.treeLoaded = true;
@@ -173,7 +203,7 @@ export class ItemService {
 
   getItemImage(name: string): string {
     if (!this.itemNameBase[name]) {
-      if (this.treeLoaded && this.warningMap[name] !== true) {
+      if (this.treeLoaded && this.warningMap[name] !== true && name) {
         this.toastrService.warning(`The item ${name} seems to be outdated, please update it.`);
         this.warningMap[name] = true;
       }
@@ -185,7 +215,7 @@ export class ItemService {
 
   getItemBase(name: string, warning = true): BasicItem | null {
     if (!this.itemNameBase[name]) {
-      if (this.treeLoaded && warning && this.warningMap[name] !== true) {
+      if (this.treeLoaded && warning && this.warningMap[name] !== true && name) {
         this.toastrService.warning(`The item ${name} seems to be outdated, please update it.`);
         this.warningMap[name] = true;
       }
@@ -206,5 +236,9 @@ export class ItemService {
     } else {
       return this.readySubject.asObservable().pipe(debounceTime(0));
     }
+  }
+
+  getUpgrades(): { [key: string]: Array<BasicItem> } {
+    return this.itemUpgrades;
   }
 }

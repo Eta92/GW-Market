@@ -21,7 +21,8 @@ export class FilterOrderComponent implements OnInit {
   public orderTypeOptions: ToggleOption[] = [
     { value: null, label: 'All' },
     { value: 'sell', label: 'Sell', icon: 'fa-arrow-up', styleClass: 'sell' },
-    { value: 'buy', label: 'Buy', icon: 'fa-arrow-down', styleClass: 'buy' }
+    { value: 'buy', label: 'Buy', icon: 'fa-arrow-down', styleClass: 'buy' },
+    { value: 'auction', label: 'Auction', icon: 'fa-gavel', styleClass: 'auction' }
   ];
 
   constructor(
@@ -39,7 +40,7 @@ export class FilterOrderComponent implements OnInit {
       reqMin: [0, [Validators.min(0), Validators.max(13)]],
       reqMax: [13, [Validators.min(0), Validators.max(13)]],
       inscription: [null],
-      oldschool: [null],
+      legacy: [null],
       core: [null],
       prefix: [null],
       suffix: [null]

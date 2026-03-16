@@ -1,0 +1,133 @@
+@import '../../styles/variables';
+
+.message-card {
+  display: flex;
+  align-items: center;
+  background: rgba($obsidian-light, 0.8);
+  border: 1px solid rgba($gold, 0.3);
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  position: relative;
+
+  &:hover {
+    background: rgba($obsidian-light, 0.6);
+    filter: brightness(1.1);
+    box-shadow: 0 2px 8px rgba($gold, 0.2);
+  }
+
+  &.unread {
+    border-left: 3px solid $gold;
+  }
+}
+
+.message-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 4px;
+
+  &.avatar {
+    font-size: 1.25rem;
+    color: $gold-light;
+  }
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  flex: 1;
+
+  .message-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .message-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: $parchment;
+    }
+
+    .message-time {
+      font-size: 0.75rem;
+      color: rgba($parchment, 0.6);
+    }
+  }
+
+  .message-body {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: rgba($parchment, 0.8);
+    line-height: 1.2;
+  }
+}
+
+.message_unread {
+  color: rgba($gold, 0.8);
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 4px;
+  color: rgba($parchment, 0.6);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  i {
+    font-size: 0.7rem;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.15);
+    border-color: rgba($gold, 0.4);
+    color: $parchment;
+    transform: translateY(-1px);
+  }
+
+  &.danger {
+    &:hover {
+      background: rgba($danger-color, 0.15);
+      color: $danger-color;
+      border-color: rgba($danger-color, 0.4);
+    }
+
+    &.confirm {
+      background: rgba($danger-color, 0.25);
+      color: $danger-color;
+      border-color: rgba($danger-color, 0.6);
+      animation: confirm-blink-danger 0.4s ease-in-out infinite;
+    }
+  }
+}
+
+// Blinking animations for confirm state
+
+@keyframes confirm-blink-danger {
+  0%,
+  100% {
+    background: rgba($danger-color, 0.15);
+    border-color: rgba($danger-color, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    background: rgba($danger-color, 0.5);
+    border-color: $danger-color;
+    transform: scale(1.08);
+  }
+}

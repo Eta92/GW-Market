@@ -1,14 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
@@ -60,9 +50,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const prices = this.fb.array([
-      this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })
-    ]);
+    const prices = this.fb.array([this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })]);
     this.forms = this.fb.array([]);
     if (this.originals) {
       this.loadOrders(this.originals);
@@ -90,6 +78,9 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.originals && this.originals && this.forms) {
       this.loadOrders(this.originals);
+    }
+    if (changes.daybreaks && this.daybreaks && this.forms) {
+      this.loadDaybreaks(this.daybreaks);
     }
   }
 

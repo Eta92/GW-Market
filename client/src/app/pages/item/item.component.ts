@@ -1,26 +1,23 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import {
-  CurrencyGroup,
-  CurrencyOrders,
-  ItemOrder,
-  ItemOrders,
-  ItemPriceList,
-  Time,
-  TimeBucket
-} from '@app/models/order.model';
+import { Auction, AuctionHistory } from '@app/models/auction.model';
+import { CurrencyGroup, CurrencyOrders, ItemOrder, ItemOrders, ItemPriceList, Time, TimeBucket } from '@app/models/order.model';
+import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { ItemService } from '@app/services/item.service';
+import { MessageService } from '@app/services/message.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
-import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
+import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToastrService } from 'ngx-toastr';
-import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 
 // Filter types
-export type OrderTypeFilter = 'all' | 'sell' | 'buy';
+export type OrderTypeFilter = 'all' | 'sell' | 'buy' | 'auction';
 export type CurrencyFilter = 'all' | number[]; // 'all' or array of Price enum values
 export type ViewMode = 'combined' | 'separate';
 
@@ -29,16 +26,24 @@ export type ViewMode = 'combined' | 'separate';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent implements OnInit, OnDestroy {
   public item: Item;
-  public allOrders: ItemOrders = { sellOrders: [], buyOrders: [] };
+  public allItems: Array<ShopItem> = [];
+  public allAuctions: Array<Auction> = [];
+  public allOrders: ItemOrders = { sellOrders: [], buyOrders: [], auctions: [] };
   public currencyOrders: CurrencyOrders = { currencies: [] };
   public name = '';
   public tradeMessage = '';
   public details: Array<string> = [];
-  public popup = false;
+  public whisperPopup = false;
+  public messagePopup = false;
+  public messageType: 'meet-at' | 'meet-over' | 'negociate' = 'meet-at';
   public orderOpen = false;
   public selectedOrder: ItemOrder | null = null;
+  public selectedAuction: Auction | null = null;
+  public messageForm: FormGroup;
+  public auctionForm: FormGroup;
+  public auctionHistoryVisible = false;
 
   // Filters
   public orderTypeFilter: OrderTypeFilter = 'all';
@@ -48,6 +53,7 @@ export class ItemComponent implements OnInit {
   public currencyOptions: ToggleOption[] = [];
 
   public timeToString = UtilityHelper.timeToString;
+  public Date = Date;
 
   // Toggle options for filter buttons
   public orderTypeOptions: ToggleOption[] = [
@@ -61,17 +67,30 @@ export class ItemComponent implements OnInit {
     { value: 'combined', label: 'Combined', icon: 'fa-list' }
   ];
 
+  public messageTypeOptions: ToggleOption[] = [
+    { value: 'meet-at', label: 'Meetup at', icon: 'fa-clock' },
+    { value: 'meet-over', label: 'Meetup during', icon: 'fa-hourglass-half' },
+    { value: 'negociate', label: 'Negotiate', icon: 'fa-handshake' }
+  ];
+
   selectedWhisperOrder: any = null;
   whisperQuantity: number = 1;
 
   constructor(
+    private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private shopService: ShopService,
+    private itemService: ItemService,
     private storeService: StoreService,
     private toastrService: ToastrService,
+    private messageService: MessageService,
     private cdr: ChangeDetectorRef
   ) {}
+
+  ngOnDestroy(): void {
+    this.storeService.requestSocket('untrackItem', this.name);
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -79,6 +98,7 @@ export class ItemComponent implements OnInit {
       //const name = this.router.url.split('/').pop() || '';
       const decodedName = decodeURIComponent(this.name);
       this.storeService.getItemOrders().subscribe((items: Array<ShopItem>) => {
+        this.allItems = items;
         this.allOrders.sellOrders = this.parseOrders(
           items.filter(si => si.orderType === OrderType.SELL),
           true
@@ -88,7 +108,7 @@ export class ItemComponent implements OnInit {
           false
         );
         // Parse into new currency-based structure
-        this.currencyOrders = this.parseOrdersByCurrency(items);
+        this.currencyOrders = this.parseOrdersByCurrency();
         // Extract available currencies for filter
         this.availableCurrencies = this.currencyOrders.currencies.map(c => ({
           value: c.currency,
@@ -110,7 +130,31 @@ export class ItemComponent implements OnInit {
         this.addDetails(item);
         this.cdr.detectChanges();
       });
+      this.storeService.getItemAuctions().subscribe((auctions: Array<Auction>) => {
+        auctions.forEach(auction => {
+          auction.item.item = this.itemService?.getItemBase(auction.item.name);
+        });
+        this.allAuctions = auctions;
+        this.allOrders.auctions = this.parseAuctions(auctions);
+        this.currencyOrders = this.parseOrdersByCurrency();
+        if (this.selectedAuction) {
+          const auction = this.allAuctions.find(a => a.uuid === this.selectedAuction?.uuid);
+          this.selectedAuction = auction;
+        }
+        this.cdr.detectChanges();
+      });
+      this.auctionForm = this.fb.group({
+        bidAmount: [null, [Validators.required, Validators.min(1)]],
+        acknowledge: [null, [Validators.required, Validators.requiredTrue]]
+      });
+      this.messageForm = this.fb.group({
+        from: [formatDate(Date.now() + 1 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')],
+        to: [formatDate(Date.now() + 2 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')],
+        negociate: [0],
+        currency: [1]
+      });
       this.storeService.requestSocket('getItemOrders', decodedName);
+      this.storeService.requestSocket('trackItem', decodedName);
     });
   }
 
@@ -122,8 +166,23 @@ export class ItemComponent implements OnInit {
     this.router.navigate(['public', url]);
   }
 
+  wikiCategory(item: Item): boolean {
+    if (item) {
+      return item.family !== 'service' && item.category !== 'Bundles' && item.category !== 'Very Special';
+    } else return false;
+  }
+
+  openWiki(): void {
+    const wikiUrl = `https://wiki.guildwars.com/wiki/${encodeURIComponent(this.item.name.replace(/ /g, '_'))}`;
+    window.open(wikiUrl, '_blank');
+  }
+
   getOrderTime(item: ItemOrder | ShopItem): Time {
     return UtilityHelper.getTimeCategory(item.lastRefresh);
+  }
+
+  getAuctionTime(item: Auction): Time {
+    return UtilityHelper.getTimeCategory(item.endTime, true);
   }
 
   parseOrders(items: Array<ShopItem>, sorting: boolean): Array<ItemPriceList> {
@@ -174,7 +233,48 @@ export class ItemComponent implements OnInit {
     return itemPriceLists;
   }
 
-  parseOrdersByCurrency(items: Array<ShopItem>): CurrencyOrders {
+  parseAuctions(auctions: Array<Auction>): Array<ItemPriceList> {
+    const auctionPriceLists: Array<ItemPriceList> = [];
+    auctions.forEach(auction => {
+      const time = this.getAuctionTime(auction);
+      if (!auctionPriceLists.find(il => il.price === auction.currency)) {
+        auctionPriceLists.push({ price: auction.currency, orders: [] });
+      }
+      const auctionPriceList = auctionPriceLists.find(il => il.price === auction.currency);
+      if (!auctionPriceList?.orders.find(tl => tl.time === time)) {
+        auctionPriceList?.orders.push({ time: time, orders: [] });
+      }
+      const auctionTimeList = auctionPriceList?.orders.find(tl => tl.time === time);
+      auctionTimeList?.orders.push({
+        player: auction.player,
+        lastRefresh: auction.endTime,
+        daybreakOnline: false,
+        authCertified: true,
+        item: auction.item,
+        details: this.item,
+        orderType: OrderType.AUCTION,
+        price: {
+          type: auction.currency,
+          price: auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice
+        },
+        description: auction.item.description,
+        quantity: 1
+      });
+    });
+    auctionPriceLists.forEach(il => {
+      il.orders.sort((a, b) => {
+        return a.time - b.time;
+      });
+      il.orders.forEach(tl => {
+        tl.orders.sort((a, b) => b.lastRefresh - a.lastRefresh);
+      });
+    });
+    return auctionPriceLists;
+  }
+
+  parseOrdersByCurrency(): CurrencyOrders {
+    const items = this.allItems;
+    const auctions = this.allAuctions;
     const currencyMap = new Map<Price, CurrencyGroup>();
 
     items.forEach(item => {
@@ -185,9 +285,9 @@ export class ItemComponent implements OnInit {
             currency: price.type,
             currencyName: UtilityHelper.priceToString(price.type),
             timeBuckets: [
-              { time: Time.ONLINE, sellOrders: [], buyOrders: [] },
-              { time: Time.TODAY, sellOrders: [], buyOrders: [] },
-              { time: Time.WEEK, sellOrders: [], buyOrders: [] }
+              { time: Time.ONLINE, sellOrders: [], buyOrders: [], auctions: [] },
+              { time: Time.TODAY, sellOrders: [], buyOrders: [], auctions: [] },
+              { time: Time.WEEK, sellOrders: [], buyOrders: [], auctions: [] }
             ],
             totalOrders: 0
           });
@@ -225,17 +325,57 @@ export class ItemComponent implements OnInit {
       });
     });
 
+    auctions.forEach(auction => {
+      // Get or create currency group
+      if (!currencyMap.has(auction.currency)) {
+        currencyMap.set(auction.currency, {
+          currency: auction.currency,
+          currencyName: UtilityHelper.priceToString(auction.currency),
+          timeBuckets: [
+            { time: Time.ONLINE, sellOrders: [], buyOrders: [], auctions: [] },
+            { time: Time.TODAY, sellOrders: [], buyOrders: [], auctions: [] },
+            { time: Time.WEEK, sellOrders: [], buyOrders: [], auctions: [] }
+          ],
+          totalOrders: 0
+        });
+      }
+
+      const currencyGroup = currencyMap.get(auction.currency)!;
+      const time = this.getAuctionTime(auction);
+      const timeBucket = currencyGroup.timeBuckets.find(tb => tb.time === time)!;
+
+      const price = auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice;
+      const order: ItemOrder = {
+        auction: auction.uuid,
+        player: auction.player,
+        daybreakOnline: false,
+        authCertified: true,
+        positives: 0,
+        negatives: 0,
+        shopId: auction.shopId,
+        lastRefresh: auction.endTime,
+        item: auction.item as any,
+        details: this.item,
+        orderType: OrderType.AUCTION,
+        price: { type: auction.currency, price: price },
+        description: auction.item.description,
+        quantity: 1,
+        div_price: price,
+        div_quantity: 1
+      };
+      timeBucket.auctions.push(order);
+      currencyGroup.totalOrders++;
+    });
+
     // Sort orders within each time bucket
     currencyMap.forEach(currencyGroup => {
       currencyGroup.timeBuckets.forEach(timeBucket => {
         // Sell orders: lowest price first (best deal for buyer)
-        timeBucket.sellOrders.sort(
-          (a, b) => a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh
-        );
+        timeBucket.sellOrders.sort((a, b) => a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh);
         // Buy orders: highest price first (best deal for seller)
-        timeBucket.buyOrders.sort(
-          (a, b) => b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh
-        );
+        timeBucket.buyOrders.sort((a, b) => b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh);
+        // Auctions: most recent first
+        timeBucket.auctions.sort((a, b) => a.lastRefresh - b.lastRefresh);
       });
     });
 
@@ -252,7 +392,10 @@ export class ItemComponent implements OnInit {
   }
 
   countCurrencyOrders(currency: CurrencyGroup): number {
-    return currency.timeBuckets.reduce((sum, bucket) => sum + bucket.sellOrders.length + bucket.buyOrders.length, 0);
+    return currency.timeBuckets.reduce(
+      (sum, bucket) => sum + bucket.sellOrders.length + bucket.buyOrders.length + bucket.auctions.length,
+      0
+    );
   }
 
   // Filter methods
@@ -339,12 +482,17 @@ export class ItemComponent implements OnInit {
     return this.orderTypeFilter === 'all' || this.orderTypeFilter === 'buy';
   }
 
+  showAuctions(): boolean {
+    return this.orderTypeFilter === 'all' || this.orderTypeFilter === 'auction';
+  }
+
   getFilteredOrderCount(): number {
     let count = 0;
     this.filteredCurrencies.forEach(currency => {
       currency.timeBuckets.forEach(bucket => {
         if (this.showSellOrders()) count += bucket.sellOrders.length;
         if (this.showBuyOrders()) count += bucket.buyOrders.length;
+        if (this.showAuctions()) count += bucket.auctions.length;
       });
     });
     return count;
@@ -421,33 +569,67 @@ export class ItemComponent implements OnInit {
       .filter(bucket => bucket.orders.length > 0);
   }
 
+  getAllAuctionsByTime(): { time: Time; auctions: ItemOrder[] }[] {
+    const timeMap = new Map<Time, ItemOrder[]>();
+    [Time.ONLINE, Time.TODAY, Time.WEEK].forEach(t => timeMap.set(t, []));
+
+    this.filteredCurrencies.forEach(currency => {
+      currency.timeBuckets.forEach(bucket => {
+        bucket.auctions.forEach(auction => {
+          timeMap.get(bucket.time)?.push(auction);
+        });
+      });
+    });
+
+    // Sort auctions by time only
+    timeMap.forEach(auctions => {
+      auctions.sort((a, b) => a.lastRefresh - b.lastRefresh);
+    });
+
+    return [Time.ONLINE, Time.TODAY, Time.WEEK]
+      .map(time => ({ time, auctions: timeMap.get(time) || [] }))
+      .filter(bucket => bucket.auctions.length > 0);
+  }
+
   getTotalSellOrders(): number {
-    return this.filteredCurrencies.reduce(
-      (sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.sellOrders.length, 0),
-      0
-    );
+    return this.filteredCurrencies.reduce((sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.sellOrders.length, 0), 0);
   }
 
   getTotalBuyOrders(): number {
-    return this.filteredCurrencies.reduce(
-      (sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.buyOrders.length, 0),
-      0
-    );
+    return this.filteredCurrencies.reduce((sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.buyOrders.length, 0), 0);
+  }
+
+  getTotalAuctions(): number {
+    return this.filteredCurrencies.reduce((sum, c) => sum + c.timeBuckets.reduce((s, b) => s + b.auctions.length, 0), 0);
   }
 
   openOrderDetail(order: ItemOrder): void {
     this.selectedOrder = order;
   }
 
+  openAuctionDetail(order: ItemOrder): void {
+    const auction = this.allAuctions.find(a => a.uuid === order.auction);
+    this.selectedAuction = auction;
+    this.auctionHistoryVisible = false;
+    if (auction) {
+      this.auctionForm.get('bidAmount').setValue(auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice);
+    }
+  }
+
+  toggleAuctionHistory(): void {
+    this.auctionHistoryVisible = !this.auctionHistoryVisible;
+  }
+
   closeOrderDetail(): void {
     this.selectedOrder = null;
+    this.selectedAuction = null;
   }
 
   whisper(order: ItemOrder): void {
     this.selectedWhisperOrder = order;
     this.whisperQuantity = order.quantity;
     this.updateTradeMessage();
-    this.popup = true;
+    this.whisperPopup = true;
     this.storeService.requestSocket('logPurchase', {
       name: this.item.name,
       shop: this.shopService.getShopUuid(),
@@ -469,6 +651,24 @@ export class ItemComponent implements OnInit {
     if (this.selectedOrder) {
       this.whisper(this.selectedOrder);
     }
+  }
+
+  message(order: ItemOrder): void {
+    this.selectedWhisperOrder = order;
+    this.messagePopup = true;
+  }
+
+  sendMessage(): void {
+    if (this.messageForm.valid) {
+      const formData = this.messageForm.value;
+      this.messageService.sendMessage(this.shopService.getShopUuid(), this.selectedWhisperOrder, this.messageType, formData);
+    } else {
+      this.toastrService.error('Please fill in all required fields before sending', 'Form Error', {
+        timeOut: 10000
+      });
+    }
+    this.messagePopup = false;
+    this.cdr.detectChanges();
   }
 
   reputationVote(order: ItemOrder, vote: 'positive' | 'negative'): void {
@@ -501,7 +701,7 @@ export class ItemComponent implements OnInit {
     if (this.tradeMessage) {
       navigator.clipboard.writeText(this.tradeMessage).then(() => {
         this.toastrService.success('Private trade message copied to clipboard', '', {
-          timeOut: 3000
+          timeOut: 5000
         });
       });
     }
@@ -537,18 +737,22 @@ export class ItemComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  goToShop(order: ItemOrder): void {
+  goToShop(order: ItemOrder | Auction | AuctionHistory): void {
     if (order.shopId) {
       window.open(`https://gwmarket.net/shop/showcase?public=${order.shopId}`, '_blank');
     }
   }
 
   onCreateOrder(order): void {
-    this.shopService.addShopItem(order);
+    if (order.orderType !== OrderType.AUCTION) {
+      this.shopService.addShopItem(order);
+    } else {
+      this.shopService.addAuctionItem(order);
+    }
     this.router.navigate(['shop']);
   }
 
-  hasItemDetails(order: ItemOrder): boolean {
+  hasItemDetails(order: ItemOrder | Auction): boolean {
     return WeaponHelper.hasItemDetails(this.item, order.item);
   }
 
@@ -571,5 +775,22 @@ export class ItemComponent implements OnInit {
       });
     });
     return count;
+  }
+
+  bidAuction(auction: Auction): void {
+    if (this.auctionForm.valid) {
+      const bidData = this.auctionForm.value;
+      const minPrice =
+        auction.history && auction.history.length > 0
+          ? Math.ceil(auction.history[auction.history.length - 1]?.bid * 1.01)
+          : auction.startingPrice;
+      if (bidData.bidAmount >= minPrice) {
+        this.shopService.bidAuction(auction, bidData.bidAmount);
+      } else {
+        this.toastrService.error('Your bid must be at least 1% higher rounded up than the current bid', 'Bid Amount Error', {
+          timeOut: 15000
+        });
+      }
+    }
   }
 }

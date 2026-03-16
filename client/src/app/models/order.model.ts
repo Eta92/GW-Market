@@ -3,6 +3,7 @@ import { Item, OrderType, Price, ShopItem, ShopPrice } from './shop.model';
 export interface ItemOrders {
   sellOrders: Array<ItemPriceList>;
   buyOrders: Array<ItemPriceList>;
+  auctions: Array<ItemPriceList>;
 }
 
 export interface ItemPriceList {
@@ -26,6 +27,7 @@ export interface TimeBucket {
   time: Time;
   sellOrders: Array<ItemOrder>;
   buyOrders: Array<ItemOrder>;
+  auctions: Array<ItemOrder>;
 }
 
 export interface ItemTimeList {
@@ -46,6 +48,7 @@ export interface ItemOrder {
   // front only
   div_price?: number;
   div_quantity?: number;
+  auction?: string;
   // copy from shop
   lastRefresh?: number;
   positives?: number;
@@ -68,7 +71,7 @@ export interface OrderFilter {
   reqMin: number;
   reqMax: number;
   inscription: string;
-  oldschool: string;
+  legacy: string;
   core: string;
   prefix: string;
   suffix: string;
@@ -94,7 +97,6 @@ export interface SearchFilter {
   reqMin?: number;
   reqMax?: number;
   inscription?: boolean;
-  oldschool?: boolean;
   core?: string;
   prefix?: string;
   suffix?: string;
@@ -103,7 +105,7 @@ export interface SearchFilter {
   preSearing?: boolean;
 
   // Pre-nerf filter
-  preNerf?: boolean;
+  legacy?: boolean;
 
   // Miniature-specific filters
   miniDedicated?: boolean;
@@ -156,7 +158,7 @@ export interface SearchResultOrder {
   family: string;
   category: string;
   preSearing?: boolean;
-  preNerf?: boolean;
+  legacy?: boolean;
   dedicated?: boolean;
 }
 

@@ -46,14 +46,14 @@
             <app-toggle-group
               [options]="availableModeOptions"
               [value]="availableMode"
-              (valueChange)="availableMode = $event"
+              (valueChange)="setAvailableMode($event)"
             ></app-toggle-group>
 
             <!-- Time Filter -->
             <app-toggle-group
               [options]="timeModeOptions"
               [value]="timeMode"
-              (valueChange)="timeMode = $event"
+              (valueChange)="setTimeMode($event)"
               styleClass="time-filter"
             ></app-toggle-group>
 
@@ -61,7 +61,7 @@
             <app-toggle-group
               [options]="viewModeOptions"
               [value]="viewMode"
-              (valueChange)="viewMode = $event"
+              (valueChange)="setViewMode($event)"
               styleClass="compact"
             ></app-toggle-group>
           </div>
@@ -80,7 +80,13 @@
                 [stats]="getStats(family)"
                 [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
                 (cardClick)="goToFamily(family)"
+                (cardOpen)="openToFamily(family)"
               ></app-preview-card>
+              <span *ngIf="active(availableTree.families).length === 0" class="empty-state box">
+                <i class="fa fa-inbox"></i>
+                <p>No family available</p>
+                <p>Maybe your filters are too restrictive</p>
+              </span>
             </div>
 
             <!-- Category Cards -->
@@ -92,7 +98,13 @@
                 [stats]="getStats(category)"
                 [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
                 (cardClick)="goToCategory(category)"
+                (cardOpen)="openToCategory(category)"
               ></app-preview-card>
+              <span *ngIf="active(availableFamily.categories).length === 0" class="empty-state box">
+                <i class="fa fa-inbox"></i>
+                <p>No category available</p>
+                <p>Maybe your filters are too restrictive</p>
+              </span>
             </div>
 
             <!-- Item Cards -->
@@ -106,7 +118,13 @@
                 [isSingleImage]="true"
                 [smallLabel]="true"
                 (cardClick)="goToItem(item)"
+                (cardOpen)="openToItem(item)"
               ></app-preview-card>
+              <span *ngIf="active(availableCategory.items).length === 0" class="empty-state box">
+                <i class="fa fa-inbox"></i>
+                <p>No item available</p>
+                <p>Maybe your filters are too restrictive</p>
+              </span>
             </div>
           </ng-container>
 
@@ -118,6 +136,7 @@
                 *ngFor="let family of active(availableTree.families)"
                 class="explorer-item frame"
                 (click)="goToFamily(family)"
+                (appMiddle)="openToFamily(family)"
               >
                 <img class="explorer-icon" [src]="getPreviewSource(family.previews?.[0])" [alt]="family.name" />
                 <span class="explorer-name">{{ family.name }}</span>
@@ -137,6 +156,7 @@
                 *ngFor="let category of active(availableFamily.categories)"
                 class="explorer-item frame"
                 (click)="goToCategory(category)"
+                (appMiddle)="openToCategory(category)"
               >
                 <img class="explorer-icon" [src]="getPreviewSource(category.previews?.[0])" [alt]="category.name" />
                 <span class="explorer-name">{{ category.name }}</span>
@@ -156,6 +176,7 @@
                 *ngFor="let item of active(availableCategory.items)"
                 class="explorer-item frame"
                 (click)="goToItem(item)"
+                (appMiddle)="openToItem(item)"
               >
                 <img class="explorer-icon" [src]="getPreviewSource(item.name)" [alt]="item.name" />
                 <span class="explorer-name">{{ item.name }}</span>
@@ -185,10 +206,11 @@
           <div
             *ngFor="let shopItem of lastItems"
             class="listing-card frame"
-            [ngClass]="shopItem | oldOpacity"
+            [ngClass]="shopItem | itemOpacity"
             [class.selling]="shopItem.orderType === OrderType.SELL"
             [class.buying]="shopItem.orderType === OrderType.BUY"
             (click)="goToItem(shopItem)"
+            (appMiddle)="openToItem(shopItem)"
           >
             <!-- Badge + Time -->
             <div class="listing-header">
@@ -229,14 +251,68 @@
           </div>
         </div>
       </section>
+
+      <!-- Recent Auctions Section -->
+      <section class="listings-section auctions">
+        <div class="section-header !flex-row">
+          <h2 class="section-title">
+            <i class="fa fa-clock"></i>
+            Auctions Closing Soon
+          </h2>
+          <span class="count self-end" *ngIf="lastAuctions.length">{{ lastAuctions.length }} auctions</span>
+        </div>
+
+        <div class="listings-container scroll">
+          <div
+            *ngFor="let auction of lastAuctions"
+            class="listing-card frame auction"
+            [ngClass]="auction.endTime | auctionOpacity"
+            (click)="goToItem(auction.item)"
+            (appMiddle)="openToItem(auction.item)"
+          >
+            <!-- Badge + Time -->
+            <div class="listing-header">
+              <span class="order-badge auction"> Auction </span>
+              <span class="listing-time">{{ auction.endTime | formatLastUpdate: true }}</span>
+            </div>
+
+            <!-- Item Image -->
+            <img class="item-img" [src]="getPreviewSource(auction.item.name)" [alt]="auction.item.name" />
+
+            <!-- Item Details -->
+            <div class="listing-item">
+              <span class="item-name" [title]="auction.item.name">{{ auction.item.name }}</span>
+              <span class="item-qty">×{{ auction.item.quantity }}</span>
+            </div>
+
+            <!-- Price -->
+            <div class="listing-price">
+              <span class="price-header">{{ auction.history?.length > 0 ? 'Last Bid' : 'Starting Price' }}</span>
+              <div class="price-rows">
+                <div class="price-row">
+                  <img
+                    class="currency-icon"
+                    [src]="auction.currency | currencySource"
+                    [alt]="auction.currency | priceToString"
+                  />
+                  <span class="price-amount">{{
+                    auction.history?.length > 0
+                      ? auction.history[auction.history.length - 1].bid
+                      : auction.startingPrice
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="lastAuctions.length === 0" class="empty-state">
+            <i class="fa fa-inbox"></i>
+            <p>No recent listings</p>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 
   <app-footer></app-footer>
-
-  <app-new-order
-    [orderOpen]="orderOpen"
-    (createOrder)="onCreateOrder($event)"
-    (closeOrder)="orderOpen = false"
-  ></app-new-order>
 </div>

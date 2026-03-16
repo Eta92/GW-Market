@@ -77,6 +77,19 @@
     }
   }
 
+  &.auction {
+    &.active {
+      background: rgba($auction-color, 0.2);
+      color: $auction-color;
+      box-shadow: inset 0 0 0 1px rgba($auction-color, 0.3);
+    }
+
+    &:hover:not(.active) {
+      background: rgba($auction-color, 0.1);
+      color: $auction-color;
+    }
+  }
+
   &.danger {
     &.active {
       background: rgba($danger-color, 0.2);
@@ -158,7 +171,8 @@
           display: none;
         }
 
-        i, .toggle-img {
+        i,
+        .toggle-img {
           margin: 0;
         }
       }

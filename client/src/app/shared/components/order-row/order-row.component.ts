@@ -9,7 +9,7 @@ import { ItemOrder } from '@app/models/order.model';
 })
 export class OrderRowComponent implements OnInit {
   @Input() order: ItemOrder;
-  @Input() type: 'sell' | 'buy' = 'sell';
+  @Input() type: 'sell' | 'buy' | 'auction' = 'sell';
   @Input() hasNote = false;
   @Input() clickable = true;
   @Input() compact = false;
@@ -18,12 +18,17 @@ export class OrderRowComponent implements OnInit {
   @Output() rowClick = new EventEmitter<ItemOrder>();
   @Output() submitVote = new EventEmitter<{ order: ItemOrder; vote: 'positive' | 'negative' }>();
   @Output() whisperClick = new EventEmitter<ItemOrder>();
+  @Output() messageClick = new EventEmitter<ItemOrder>();
 
   public details = false;
   public isActive = false;
 
   get fade(): string {
-    return UtilityHelper.getOldOpacity(this.order);
+    if (this.type === 'auction') {
+      return UtilityHelper.getAuctionOpacity(this.order.lastRefresh);
+    } else {
+      return UtilityHelper.getItemOpacity(this.order);
+    }
   }
 
   ngOnInit(): void {
@@ -39,6 +44,11 @@ export class OrderRowComponent implements OnInit {
   onWhisper(event: Event): void {
     event.stopPropagation();
     this.whisperClick.emit(this.order);
+  }
+
+  onMessage(event: Event): void {
+    event.stopPropagation();
+    this.messageClick.emit(this.order);
   }
 
   onSubmitVote(event: Event, vote: 'positive' | 'negative'): void {

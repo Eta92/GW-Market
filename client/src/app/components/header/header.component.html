@@ -2,7 +2,7 @@
 <header *ngIf="hero" class="hero-header bg-main bg-base">
   <div class="header-overlay">
     <div class="header-top">
-      <a class="logo-link" (click)="goToHome()">
+      <a class="logo-link" (click)="goToHome()" (appMiddle)="openToHome()">
         <img class="logo" src="/assets/img/trading.svg" alt="GW Market" />
       </a>
 
@@ -16,11 +16,24 @@
       </div>
 
       <div class="header-actions">
+        <button
+          class="nav-btn msg-btn place-order-btn relative overflow-hidden"
+          (click)="openMessages()"
+          *ngIf="messages?.length"
+        >
+          <i class="fa fa-envelope z-10 scale-125"></i>
+          <div
+            *ngIf="unreadMessages > 0"
+            class="absolute bottom-0.5 right-0.5 z-20 h-5 w-5 rounded-full bg-red-600 text-xs font-semibold leading-5 text-white opacity-80"
+          >
+            {{ unreadMessages }}
+          </div>
+        </button>
         <button class="nav-btn place-order-btn" (click)="onPlaceOrder()">
           <i class="fa fa-plus-circle"></i>
           <span>Place order</span>
         </button>
-        <button class="nav-btn" (click)="goToShop()">
+        <button class="nav-btn" (click)="goToShop()" (appMiddle)="openToShop()">
           <i class="fa fa-store"></i>
           <span>My shop</span>
         </button>
@@ -56,7 +69,7 @@
 <header *ngIf="!hero" class="site-header" [class.compact]="compact">
   <div class="header-content">
     <!-- Logo -->
-    <a class="logo-link" (click)="goToHome()">
+    <a class="logo-link" (click)="goToHome()" (appMiddle)="openToHome()">
       <img class="logo" src="/assets/img/trading.svg" alt="GW Market" />
     </a>
 
@@ -72,13 +85,26 @@
 
     <!-- Actions -->
     <div class="header-actions">
+      <button
+        class="nav-btn msg-btn place-order-btn relative overflow-hidden"
+        (click)="openMessages()"
+        *ngIf="messages?.length"
+      >
+        <i class="fa fa-envelope z-10 scale-125"></i>
+        <div
+          *ngIf="unreadMessages > 0"
+          class="absolute bottom-0.5 right-0.5 z-20 h-5 w-5 rounded-full bg-red-600 text-xs font-semibold leading-5 text-white opacity-80"
+        >
+          {{ unreadMessages }}
+        </div>
+      </button>
       <button class="nav-btn place-order-btn" (click)="onPlaceOrder()">
         <i class="fa fa-plus"></i>
-        <span>Place Order</span>
+        <span>Place order</span>
       </button>
-      <button class="nav-btn" (click)="goToShop()">
+      <button class="nav-btn" (click)="goToShop()" (appMiddle)="openToShop()">
         <i class="fa fa-store"></i>
-        <span>My Shop</span>
+        <span>My shop</span>
       </button>
       <button class="nav-btn online-btn relative overflow-hidden" (click)="refreshShop()" *ngIf="shop?.lastRefresh">
         <div
@@ -106,3 +132,36 @@
     </div>
   </div>
 </header>
+
+<div
+  *ngIf="messageOpen"
+  class="message-panel fixed bottom-0 right-0 flex flex-col gap-1"
+  [ngClass]="{ 'h-[calc(100vh_-_120px)] w-[465px]': hero, 'h-[calc(100vh_-_60px)] w-[415px]': !hero }"
+>
+  <div class="text-xl font-semibold">Messages and Notifications</div>
+  <app-toggle-group
+    [options]="readOptions"
+    [value]="readOption"
+    (valueChange)="setReadOption($event)"
+  ></app-toggle-group>
+  <app-toggle-group
+    [options]="messageOptions"
+    [value]="messageOption"
+    (valueChange)="setMessageOption($event)"
+  ></app-toggle-group>
+  <div class="flex flex-1 flex-col gap-1 overflow-y-auto">
+    <div *ngFor="let message of filteredMessages">
+      <app-message-card
+        [message]="message"
+        (readMessage)="onReadMessage($event)"
+        (deleteMessage)="onDeleteMessage($event)"
+      ></app-message-card>
+    </div>
+  </div>
+</div>
+
+<app-new-order
+  [orderOpen]="orderOpen"
+  (createOrder)="onCreateOrder($event)"
+  (closeOrder)="orderOpen = false"
+></app-new-order>

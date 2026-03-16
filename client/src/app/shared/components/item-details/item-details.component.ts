@@ -14,6 +14,8 @@ export class ItemDetailsComponent {
   public isWeapon = WeaponHelper.isWeapon;
   public isMiniature = WeaponHelper.isMiniature;
 
+  public WeaponHelper = WeaponHelper;
+
   get shopItem(): ShopItem | null {
     if (!this.item) return null;
     // Check if it's a ShopItem by looking for ShopItem-specific properties

@@ -23,6 +23,12 @@
         <!-- Item Info -->
         <div class="item-info">
           <h1 class="item-name">{{ item?.name || 'Loading...' }}</h1>
+          <div class="item_meta" *ngIf="wikiCategory(item)" (click)="openWiki()">
+            <div class="meta-tag mb-2">
+              <i class="fa-brands fa-wikipedia-w"></i>
+              <span class="wiki-text">wiki link</span>
+            </div>
+          </div>
           <div class="item-meta" *ngIf="details.length > 0">
             <div class="meta-tag" *ngFor="let detail of details">
               <span class="meta-text">{{ detail }}</span>
@@ -108,6 +114,7 @@
                     (rowClick)="openOrderDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
                     (whisperClick)="whisper($event)"
+                    (messageClick)="message($event)"
                   ></app-order-row>
                 </div>
               </ng-container>
@@ -143,12 +150,49 @@
                     (rowClick)="openOrderDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
                     (whisperClick)="whisper($event)"
+                    (messageClick)="message($event)"
                   ></app-order-row>
                 </div>
               </ng-container>
               <div class="empty-section" *ngIf="getTotalBuyOrders() === 0">
                 <i class="fa fa-inbox"></i>
                 <span>No buy orders</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AUCTION SECTION -->
+          <div class="split-section auction-section">
+            <h2 class="section-title auction-title">
+              <i class="fa fa-gavel"></i>
+              Auctions
+              <span class="section-count">({{ getTotalAuctions() }})</span>
+            </h2>
+            <div class="split-orders-list scroll">
+              <ng-container *ngFor="let timeBucket of getAllAuctionsByTime()">
+                <div
+                  class="time-bucket-mini"
+                  [class.online-bucket]="timeBucket.time === 0"
+                  [class.today-bucket]="timeBucket.time === 1"
+                  [class.week-bucket]="timeBucket.time === 2"
+                >
+                  <div class="time-bucket-label-mini">{{ timeToString(timeBucket.time) }}</div>
+                  <app-order-row
+                    *ngFor="let auction of timeBucket.auctions"
+                    [order]="auction"
+                    [type]="'auction'"
+                    [hasNote]="!!auction.description || hasItemDetails(auction)"
+                    [showWeaponDetails]="hasItemDetails(auction)"
+                    (rowClick)="openAuctionDetail($event)"
+                    (submitVote)="reputationVote($event.order, $event.vote)"
+                    (whisperClick)="whisper($event)"
+                    (messageClick)="message($event)"
+                  ></app-order-row>
+                </div>
+              </ng-container>
+              <div class="empty-section" *ngIf="getTotalAuctions() === 0">
+                <i class="fa fa-inbox"></i>
+                <span>No auctions</span>
               </div>
             </div>
           </div>
@@ -192,6 +236,7 @@
                       (rowClick)="openOrderDetail($event)"
                       (submitVote)="reputationVote($event.order, $event.vote)"
                       (whisperClick)="whisper($event)"
+                      (messageClick)="message($event)"
                     ></app-order-row>
                   </div>
 
@@ -207,6 +252,7 @@
                       (rowClick)="openOrderDetail($event)"
                       (submitVote)="reputationVote($event.order, $event.vote)"
                       (whisperClick)="whisper($event)"
+                      (messageClick)="message($event)"
                     ></app-order-row>
                   </div>
                 </div>
@@ -362,8 +408,178 @@
   </div>
 </app-modal>
 
+<!-- Order Detail Modal -->
+<app-modal [isOpen]="!!selectedAuction" (closed)="closeOrderDetail()" contentClass="order-detail-content-wrapper">
+  <div class="order-detail-content auction-order" [formGroup]="auctionForm">
+    <div class="order-detail-header">
+      <div class="order-type-badge auction">
+        <i class="fa fa-gavel"></i>
+        Auction
+      </div>
+      <button class="modal-close" (click)="closeOrderDetail()">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="order-detail-body">
+      <!-- Item Info -->
+      <div class="detail-item-row">
+        <img class="detail-item-img" [src]="getImageSource(item)" [alt]="item?.name" />
+        <div class="detail-item-info">
+          <span class="detail-item-name">{{ item?.name }}</span>
+          <span class="detail-item-qty">Quantity: <strong>1</strong></span>
+        </div>
+      </div>
+
+      <!-- Price Info -->
+      <div class="detail-price-section">
+        <div class="detail-price-row" *ngIf="selectedAuction?.history && selectedAuction.history?.length > 0">
+          <span class="detail-price-label">Last Bid Price</span>
+          <div class="detail-price-value">
+            <img [src]="selectedAuction.currency | currencySource" class="detail-currency-icon" />
+            <span class="detail-price-amount">{{
+              selectedAuction.history[selectedAuction.history.length - 1]?.bid
+            }}</span>
+            <span class="detail-currency-name">{{ selectedAuction.currency | priceToString }}</span>
+          </div>
+        </div>
+        <div
+          class="detail-price-row"
+          *ngIf="selectedAuction && (!selectedAuction.history || selectedAuction.history?.length === 0)"
+        >
+          <span class="detail-price-label">Initial Auction Price</span>
+          <div class="detail-price-value">
+            <img [src]="selectedAuction.currency | currencySource" class="detail-currency-icon" />
+            <span class="detail-price-amount">{{ selectedAuction.startingPrice }}</span>
+            <span class="detail-currency-name">{{ selectedAuction.currency | priceToString }}</span>
+          </div>
+        </div>
+        <div class="detail-price-row unit-price" *ngIf="selectedAuction?.buyoutPrice">
+          <span class="detail-price-label">Buyout Price</span>
+          <div class="detail-price-value">
+            <span class="detail-price-decimal">{{ selectedAuction.buyoutPrice }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seller Info -->
+      <div class="detail-seller-section">
+        <div class="detail-seller-row">
+          <div>
+            <span class="detail-seller-label -mt-1 mb-1 flex">Seller</span>
+            <div class="detail-seller-badges">
+              <!--span class="badge online" *ngIf="selectedAuction?.daybreakOnline">
+                <img src="/assets/img/online.png" /> Online
+              </span>
+              <span class="badge certified" *ngIf="selectedAuction?.authCertified">
+                <img src="/assets/img/certified.png" /> Certified
+              </span-->
+            </div>
+          </div>
+          <div class="detail-seller-value -mt-1.5">
+            <span
+              class="detail-seller-name"
+              [ngClass]="{ 'flex cursor-pointer underline': selectedAuction?.shopId }"
+              (click)="goToShop(selectedAuction)"
+              >{{ selectedAuction?.player }}
+              <i *ngIf="selectedAuction?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+            ></span>
+            <div class="detail-actions-right">
+              <!--button
+                class="detail-vote-btn positive"
+                (click)="reputationVote(selectedAuction, 'positive')"
+                title="Positive vote"
+              >
+                <span>{{ selectedAuction?.positives }}</span>
+                <i class="fa fa-thumbs-up"></i>
+              </button>
+              <button
+                class="detail-vote-btn negative"
+                (click)="reputationVote(selectedAuction, 'negative')"
+                title="Negative vote"
+              >
+                <span>{{ selectedAuction?.negatives }}</span>
+                <i class="fa fa-thumbs-down mt-1.5"></i>
+              </button-->
+            </div>
+          </div>
+        </div>
+        <div class="detail-seller-row" *ngIf="selectedAuction?.history?.[selectedAuction.history.length - 1]?.bid">
+          <span class="detail-seller-label">Top Bidder</span>
+          <span class="detail-seller-history" (click)="toggleAuctionHistory()">history</span>
+          <span class="detail-seller-time">{{
+            selectedAuction.history?.[selectedAuction.history.length - 1]?.bidder
+          }}</span>
+        </div>
+        <ng-container *ngIf="auctionHistoryVisible">
+          <div class="detail-seller-row" *ngFor="let bid of selectedAuction?.history?.slice().reverse()">
+            <span class="detail-seller-price">
+              <img [src]="selectedAuction?.currency | currencySource" class="detail-history-currency-icon" />
+              {{ bid.bid }}
+            </span>
+            <span class="auction-history-time">{{ bid.time | formatLastUpdate }}</span>
+            <span
+              class="auction-history-time"
+              [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }"
+              (click)="goToShop(bid)"
+              >{{ bid?.bidder }}
+              <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+            ></span>
+          </div>
+        </ng-container>
+        <div class="detail-seller-row" *ngIf="selectedAuction?.endTime">
+          <span class="detail-seller-label">Remaining Time</span>
+          <span class="detail-seller-time">{{ selectedAuction.endTime | formatLastUpdate: true }}</span>
+        </div>
+      </div>
+
+      <!-- Item Details (weapon, miniature, pre-searing) -->
+      <div class="detail-item-details-section" *ngIf="selectedAuction && hasItemDetails(selectedAuction)">
+        <app-item-details [item]="selectedAuction.item" [details]="selectedAuction.item.item"></app-item-details>
+      </div>
+
+      <!-- Notes Section (description only) -->
+      <div class="detail-notes-section" *ngIf="selectedAuction?.item.description">
+        <span class="detail-notes-label">Notes</span>
+        <div class="detail-notes-content">
+          <p class="detail-description">{{ selectedAuction.item.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- auction new price -->
+    <div class="details-row px-8 pb-3" *ngIf="selectedAuction">
+      <div class="form-group">
+        <label>Bid Amount</label>
+        <app-qty-input
+          formControlName="bidAmount"
+          [min]="selectedAuction.history?.[selectedAuction.history.length - 1]?.bid || selectedAuction.startingPrice"
+          [max]="9999"
+        ></app-qty-input>
+      </div>
+    </div>
+
+    <div class="description-section px-8 pb-3">
+      <div class="section-label">Auction Terms</div>
+      <label class="auction-acknowledge">
+        <input type="checkbox" formControlName="acknowledge" />
+        <span class="custom-checkbox"></span>
+        I understand that auction bid cannot be removed after confirmation.<br />
+        Not fulfilling an auction may result in severe actions for your shop.<br />
+      </label>
+    </div>
+
+    <div class="order-detail-footer">
+      <button class="detail-whisper-btn" (click)="bidAuction(selectedAuction)">
+        <i class="fa fa-gavel"></i>
+        Bid on this auction
+      </button>
+    </div>
+  </div>
+</app-modal>
+
 <!-- Whisper Popup -->
-<app-modal [isOpen]="popup" (closed)="popup = false" contentClass="whisper-popup-content">
+<app-modal [isOpen]="whisperPopup" (closed)="whisperPopup = false" contentClass="whisper-popup-content">
   <div class="popup-content">
     <div class="popup-header">
       <img class="popup-img" [src]="getImageSource(item)" />
@@ -371,7 +587,7 @@
         <h3>Contact Player</h3>
         <p>Copy message to whisper in-game</p>
       </div>
-      <button class="popup-close" (click)="popup = false">
+      <button class="popup-close" (click)="whisperPopup = false">
         <i class="fa fa-times"></i>
       </button>
     </div>
@@ -399,9 +615,75 @@
     </div>
 
     <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ tradeMessage }}</textarea>
+    <span class="popup-warning"
+      >If you modify the preset message, make sure the change is clearly communicated to the shop owner.</span
+    >
     <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
       <i class="fa fa-copy"></i>
       Copy Trade Message
+    </button>
+  </div>
+</app-modal>
+
+<!-- Message Popup -->
+<app-modal [isOpen]="messagePopup" (closed)="messagePopup = false" contentClass="message-popup-content">
+  <div class="popup-content">
+    <div class="popup-header">
+      <img class="popup-img" [src]="getImageSource(item)" />
+      <div class="popup-title">
+        <h3>Send Message to Player</h3>
+      </div>
+      <button class="popup-close" (click)="messagePopup = false">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="popup-body p-3">
+      <div class="form-group">
+        <label for="messageType">Why do you want to contact this player ?</label>
+        <app-toggle-group [options]="messageTypeOptions" [value]="messageType" (valueChange)="messageType = $event"></app-toggle-group>
+      </div>
+
+      <div class="form-group" [formGroup]="messageForm">
+        <div class="message-form" *ngIf="messageType === 'meet-at'">
+          <div class="message-description py-1">
+            You have selected the "meetup at" template, this one is dedicated to trade selected item at a given time, select the time you
+            are available and send it.
+          </div>
+          <label for="from">Available Time</label>
+          <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
+        </div>
+        <div class="message-form" *ngIf="messageType === 'meet-over'">
+          <div class="message-description py-1">
+            You have selected the "meetup over" template, this one is dedicated to trade selected item at a given period, select the time
+            range you are available and send it.
+          </div>
+          <label for="from">Available From</label>
+          <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
+          <label for="to">Available Until</label>
+          <input type="datetime-local" formControlName="to" class="form-input custom-datetime w-full" />
+        </div>
+        <div class="message-form" *ngIf="messageType === 'negociate'">
+          <div class="message-description py-1">
+            You have selected the "negociate" template, this one is dedicated to negociate the price of an item, select the price and the
+            currency you find acceptable and send it.
+          </div>
+          <label for="negociate">Requested Price</label>
+          <input type="number" formControlName="negociate" class="form-input custom-datetime w-full" />
+          <label for="currency">Requested Currency</label>
+          <app-currency-dropdown
+            [selectedCurrency]="messageForm.get('currency')?.value"
+            (currencyChange)="messageForm.get('currency')?.setValue($event)"
+          ></app-currency-dropdown>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-warning">Message will be delivered via the website and is not modifiable.</div>
+    <div class="popup-warning">Ensure information is correct before sending.</div>
+    <button class="confirm-btn" title="Send Message" (click)="sendMessage()">
+      <i class="fa fa-envelope"></i>
+      Send Message
     </button>
   </div>
 </app-modal>

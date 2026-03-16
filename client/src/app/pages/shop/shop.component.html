@@ -51,7 +51,7 @@
           </div>
           <button class="shop-toggle-btn shop-refresh-btn" (click)="refreshShop()">
             <i class="fa fa-refresh"></i>
-            <span class="shop-refresh-text">{{ 'Refresh Shop' }}</span>
+            <span class="shop-refresh-text">{{ 'Refresh shop' }}</span>
           </button>
         </div>
 
@@ -72,7 +72,7 @@
           (click)="showCandle ? stopShop() : refreshShop()"
         >
           <i class="fa" [class.fa-power-off]="!showCandle" [class.fa-stop]="showCandle"></i>
-          <span>{{ showCandle ? 'Stop Shop' : 'Update Shop' }}</span>
+          <span>{{ showCandle ? 'Stop shop' : 'Update shop' }}</span>
         </button>
 
         <!-- Quick Stats -->
@@ -116,7 +116,7 @@
             <i class="fa fa-pen"></i>
             <span>Edit All Orders</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="loadDaybreakItems()">
+          <button class="sidebar-action-btn col-span-2" (click)="onDaybreakOpen()">
             <i class="fa fa-rotate"></i>
             <span>Dump From Daybreak</span>
           </button>
@@ -143,8 +143,8 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
             Destroy all?
           </span>
           <div class="confirm-buttons">
-            <button class="confirm-btn yes" (click)="onClearShop()">Yes</button>
-            <button class="confirm-btn no" (click)="clearShop = false">No</button>
+            <button class="erase-btn yes" (click)="onClearShop()">Yes</button>
+            <button class="erase-btn no" (click)="clearShop = false">No</button>
           </div>
         </div>
       </div>
@@ -184,13 +184,13 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <!-- Sell Orders Column -->
           <div
             class="orders-column sell-column"
-            [class.hidden]="orderFilter.orderType === 'buy'"
+            [class.hidden]="orderFilter.orderType === 'buy' || orderFilter.orderType === 'auction'"
             [class.full-width]="orderFilter.orderType === 'sell' || compactView"
             [class.compact-column]="compactView"
           >
             <h2 class="column-title">
               <i class="fa fa-arrow-up"></i>
-              Sell Orders
+              Sell orders
               <span class="order-count" *ngIf="sellOrders?.length">({{ sellOrders.length }})</span>
             </h2>
 
@@ -224,13 +224,13 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <!-- Buy Orders Column -->
           <div
             class="orders-column buy-column"
-            [class.hidden]="orderFilter.orderType === 'sell'"
+            [class.hidden]="orderFilter.orderType === 'sell' || orderFilter.orderType === 'auction'"
             [class.full-width]="orderFilter.orderType === 'buy' || compactView"
             [class.compact-column]="compactView"
           >
             <h2 class="column-title">
               <i class="fa fa-arrow-down"></i>
-              Buy Orders
+              Buy orders
               <span class="order-count" *ngIf="buyOrders?.length">({{ buyOrders.length }})</span>
             </h2>
 
@@ -260,6 +260,41 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
               <p>No buy orders</p>
             </div>
           </div>
+
+          <!-- Auction Column -->
+          <div
+            class="orders-column auction-column"
+            [class.hidden]="orderFilter.orderType === 'sell' || orderFilter.orderType === 'buy'"
+            [class.full-width]="orderFilter.orderType === 'auction' || compactView"
+            [class.compact-column]="compactView"
+          >
+            <h2 class="column-title">
+              <i class="fa fa-gavel"></i>
+              Auctions
+              <span class="order-count" *ngIf="itemAuctions?.length">({{ itemAuctions.length }})</span>
+            </h2>
+
+            <div class="orders-list scroll" *ngIf="itemAuctions?.length > 0">
+              <app-order-card
+                *ngFor="let auction of itemAuctions"
+                [order]="auction.item"
+                [auction]="auction"
+                [locked]="true"
+                [compact]="compactView || orderFilter.orderType === 'auction'"
+                [showDetails]="showDetails"
+                [imageSource]="getImageSource(auction.item.name)"
+                (itemClick)="goToItem($event)"
+                (auctionClick)="onAuctionClick($event)"
+                (cloturateClick)="onCloturateAuction($event)"
+                (cloturateLeave)="onCloturateLeave($event)"
+              ></app-order-card>
+            </div>
+
+            <div class="empty-orders" *ngIf="!itemAuctions?.length">
+              <i class="fa fa-gavel"></i>
+              <p>No item in auction</p>
+            </div>
+          </div>
         </div>
       </main>
     </div>
@@ -268,12 +303,47 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
   <app-footer></app-footer>
 </div>
 
+<!-- Place Order Modal -->
+<app-modal [isOpen]="daybreakOpen" (closed)="daybreakOpen = false">
+  <div *ngIf="daybreakOpen" class="order-detail-content auction-order">
+    <div class="order-detail-header">
+      <div class="order-type-badge sell">
+        <i class="fa fa-file-import"></i>
+        Dump items from the game
+      </div>
+      <button class="modal-close" (click)="daybreakOpen = false">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="order-detail-body">
+      <!-- Item Info -->
+      <div class="detail-item-info">
+        To import your item from the game you need to use a custom launcher because base game do not include any
+        external access. The custom launcher working with GW Market is named Daybreak.
+      </div>
+    </div>
+
+    <div class="order-detail-footer flex flex-col gap-2">
+      <button class="detail-whisper-btn" (click)="loadDaybreakItems('inventory')">
+        <i class="fa fa-person-hiking"></i>
+        Import Inventory Items
+      </button>
+      <button class="detail-whisper-btn" (click)="loadDaybreakItems('stash')">
+        <i class="fa fa-boxes-stacked"></i>
+        Import Stash Items
+      </button>
+    </div>
+  </div>
+</app-modal>
+
 <!-- Edit Order Modal -->
 <app-modal [isOpen]="!!orderEdit" (closed)="orderEdit = null">
   <app-edit-order
     [original]="orderEdit"
     [confirm]="'Edit Order'"
     [maskSearch]="true"
+    [status]="!!orderEdit"
     (closeEdit)="orderEdit = null"
     (confirmOrder)="onEditOrder($event)"
   ></app-edit-order>
@@ -301,14 +371,6 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
   ></app-edit-many>
 </app-modal>
 
-<!-- New Order Component -->
-<app-new-order
-  [warning]="orderWarning"
-  [orderOpen]="orderOpen"
-  (createOrder)="onCreateOrder($event)"
-  (closeOrder)="orderOpen = false"
-></app-new-order>
-
 <!-- Player Selection Modal -->
 <app-modal [isOpen]="playerOpen" (closed)="playerOpen = false">
   <app-active-player
@@ -316,4 +378,177 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     (closeEdit)="playerOpen = false"
     (confirmPlayer)="onConfirmPlayer($event)"
   ></app-active-player>
+</app-modal>
+
+<!-- Order Detail Modal -->
+<app-modal [isOpen]="!!auctionDisplay" (closed)="auctionDisplay = null" contentClass="order-detail-content-wrapper">
+  <div *ngIf="!!auctionDisplay" class="order-detail-content auction-order">
+    <div class="order-detail-header">
+      <div class="order-type-badge auction">
+        <i class="fa fa-gavel"></i>
+        Auction
+      </div>
+      <button class="modal-close" (click)="auctionDisplay = null">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="order-detail-body">
+      <!-- Item Info -->
+      <div class="detail-item-row">
+        <img
+          class="detail-item-img"
+          [src]="getImageSource(auctionDisplay?.item?.name)"
+          [alt]="auctionDisplay?.item?.name"
+        />
+        <div class="detail-item-info">
+          <span class="detail-item-name">{{ auctionDisplay?.item?.name }}</span>
+          <span class="detail-item-qty">Quantity: <strong>1</strong></span>
+        </div>
+      </div>
+
+      <!-- Price Info -->
+      <div class="detail-price-section">
+        <div class="detail-price-row" *ngIf="auctionDisplay?.history && auctionDisplay.history?.length > 0">
+          <span class="detail-price-label">Last Bid Price</span>
+          <div class="detail-price-value">
+            <img [src]="auctionDisplay.currency | currencySource" class="detail-currency-icon" />
+            <span class="detail-price-amount">{{
+              auctionDisplay.history[auctionDisplay.history.length - 1]?.bid
+            }}</span>
+            <span class="detail-currency-name">{{ auctionDisplay.currency | priceToString }}</span>
+          </div>
+        </div>
+        <div
+          class="detail-price-row"
+          *ngIf="auctionDisplay && (!auctionDisplay.history || auctionDisplay.history?.length === 0)"
+        >
+          <span class="detail-price-label">Initial Auction Price</span>
+          <div class="detail-price-value">
+            <img [src]="auctionDisplay.currency | currencySource" class="detail-currency-icon" />
+            <span class="detail-price-amount">{{ auctionDisplay.startingPrice }}</span>
+            <span class="detail-currency-name">{{ auctionDisplay.currency | priceToString }}</span>
+          </div>
+        </div>
+        <div class="detail-price-row unit-price" *ngIf="auctionDisplay?.buyoutPrice">
+          <span class="detail-price-label">Buyout Price</span>
+          <div class="detail-price-value">
+            <span class="detail-price-decimal">{{ auctionDisplay.buyoutPrice }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seller Info -->
+      <div class="detail-seller-section">
+        <div class="detail-seller-row">
+          <div>
+            <span class="detail-seller-label -mt-1 mb-1 flex">Seller</span>
+            <div class="detail-seller-badges">
+              <!--span class="badge online" *ngIf="selectedAuction?.daybreakOnline">
+                <img src="/assets/img/online.png" /> Online
+              </span>
+              <span class="badge certified" *ngIf="selectedAuction?.authCertified">
+                <img src="/assets/img/certified.png" /> Certified
+              </span-->
+            </div>
+          </div>
+          <div class="detail-seller-value -mt-1.5">
+            <span class="detail-seller-name" [ngClass]="{ 'flex cursor-pointer underline': auctionDisplay?.shopId }"
+              >{{ auctionDisplay?.player }} ></span
+            >
+            <div class="detail-actions-right">
+              <!--button
+                class="detail-vote-btn positive"
+                (click)="reputationVote(selectedAuction, 'positive')"
+                title="Positive vote"
+              >
+                <span>{{ selectedAuction?.positives }}</span>
+                <i class="fa fa-thumbs-up"></i>
+              </button>
+              <button
+                class="detail-vote-btn negative"
+                (click)="reputationVote(selectedAuction, 'negative')"
+                title="Negative vote"
+              >
+                <span>{{ selectedAuction?.negatives }}</span>
+                <i class="fa fa-thumbs-down mt-1.5"></i>
+              </button-->
+            </div>
+          </div>
+        </div>
+        <div class="detail-seller-row" *ngIf="auctionDisplay?.history?.[auctionDisplay.history.length - 1]?.bid">
+          <span class="detail-seller-label">Top Bidder</span>
+          <span class="detail-seller-history" (click)="toggleAuctionHistory()">history</span>
+          <span class="detail-seller-time">{{
+            auctionDisplay.history?.[auctionDisplay.history.length - 1]?.bidder
+          }}</span>
+        </div>
+        <ng-container *ngIf="auctionHistoryVisible">
+          <div class="detail-seller-row" *ngFor="let bid of auctionDisplay?.history?.slice().reverse()">
+            <span class="detail-seller-price">
+              <img [src]="auctionDisplay?.currency | currencySource" class="detail-history-currency-icon" />
+              {{ bid.bid }}
+            </span>
+            <span class="auction-history-time">{{ bid.time | formatLastUpdate }}</span>
+            <span
+              class="auction-history-time"
+              [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }"
+              (click)="goToShop(bid)"
+              >{{ bid?.bidder }}
+              <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+            ></span>
+          </div>
+        </ng-container>
+        <div class="detail-seller-row" *ngIf="auctionDisplay?.endTime">
+          <span class="detail-seller-label">Remaining Time</span>
+          <span class="detail-seller-time">{{ auctionDisplay.endTime | formatLastUpdate: true }}</span>
+        </div>
+      </div>
+
+      <!-- Item Details (weapon, miniature, pre-searing) -->
+      <div class="detail-item-details-section" *ngIf="auctionDisplay && hasItemDetails(auctionDisplay)">
+        <app-item-details [item]="auctionDisplay.item" [details]="auctionDisplay.item.item"></app-item-details>
+      </div>
+
+      <!-- Notes Section (description only) -->
+      <div class="detail-notes-section" *ngIf="auctionDisplay?.item.description">
+        <span class="detail-notes-label">Notes</span>
+        <div class="detail-notes-content">
+          <p class="detail-description">{{ auctionDisplay?.item.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="order-detail-footer"
+      *ngIf="auctionDisplay && !auctionDisplay.active && auctionDisplay.history?.length > 0"
+    >
+      <button class="detail-whisper-btn" (click)="contactWinner(auctionDisplay)">
+        <i class="fa fa-gavel"></i>
+        Contact Winner
+      </button>
+    </div>
+  </div>
+</app-modal>
+
+<!-- Whisper Popup -->
+<app-modal [isOpen]="auctionPopup" (closed)="auctionPopup = false" contentClass="whisper-popup-content">
+  <div class="popup-content">
+    <div class="popup-header">
+      <img class="popup-img" [src]="getImageSource(auctionDisplay?.item.name)" />
+      <div class="popup-title">
+        <h3>Contact Player</h3>
+        <p>Copy message to whisper in-game</p>
+      </div>
+      <button class="popup-close" (click)="auctionPopup = false">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ auctionMessage }}</textarea>
+    <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
+      <i class="fa fa-copy"></i>
+      Copy Trade Message
+    </button>
+  </div>
 </app-modal>

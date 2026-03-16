@@ -132,12 +132,12 @@
 
             <!-- Inscription Type -->
             <div class="sidebar-section">
-              <label class="section-label">Type</label>
-              <select class="filter-select" formControlName="inscription">
-                <option [ngValue]="null">Any type...</option>
-                <option [ngValue]="'true'">Inscription</option>
-                <option [ngValue]="'false'">Old School (OS)</option>
-              </select>
+              <label class="section-label">Inscription</label>
+              <app-toggle-group
+                [options]="inscriptionOptions"
+                [value]="form.get('inscription')?.value"
+                (valueChange)="form.patchValue({ inscription: $event })"
+              ></app-toggle-group>
             </div>
           </ng-container>
 
@@ -173,8 +173,8 @@
             <label class="section-label">Pre-Nerf</label>
             <app-toggle-group
               [options]="preNerfOptions"
-              [value]="form.get('preNerf')?.value"
-              (valueChange)="form.patchValue({ preNerf: $event })"
+              [value]="form.get('legacy')?.value"
+              (valueChange)="form.patchValue({ legacy: $event })"
             ></app-toggle-group>
           </div>
 
@@ -294,17 +294,17 @@
                 <div class="card-weapon-details" *ngIf="order.weaponDetails">
                   <span class="weapon-attr">{{ order.weaponDetails.attribute }}</span>
                   <span class="weapon-req">Q{{ order.weaponDetails.requirement }}</span>
-                  <!--<span class="weapon-type" *ngIf="order.weaponDetails.oldschool">OS</span>-->
+                  <span class="weapon-type" *ngIf="!order.weaponDetails.inscription">OS</span>
                   <span class="weapon-type" *ngIf="order.weaponDetails.inscription">Inscr</span>
                 </div>
 
                 <!-- Special Flags (Pre-Searing, Dedicated) -->
                 <div
                   class="card-special-flags"
-                  *ngIf="order.preSearing || order.preNerf || order.dedicated !== undefined"
+                  *ngIf="order.preSearing || order.legacy || order.dedicated !== undefined"
                 >
                   <span class="flag-pre" *ngIf="order.preSearing">Pre-Searing</span>
-                  <span class="flag-legacy" *ngIf="order.preNerf">Pre-Nerf</span>
+                  <span class="flag-legacy" *ngIf="order.legacy">Pre-Nerf</span>
                   <span class="flag-ded" *ngIf="order.dedicated === true">Dedicated</span>
                   <span class="flag-unded" *ngIf="order.dedicated === false">Undedicated</span>
                 </div>

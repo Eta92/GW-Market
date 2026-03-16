@@ -19,6 +19,7 @@ export interface Shop {
   items: Array<ShopItem>;
   certified?: Array<string>;
   reputation?: ShopReputation;
+  auctions?: Array<string>;
 }
 
 export interface ShopReputation {
@@ -53,6 +54,9 @@ export interface ShopItem {
   removed?: boolean;
   single?: boolean;
   import?: boolean;
+  // auction temp values
+  acknowledge?: boolean;
+  endTime?: number;
   // copy from shop
   daybreakOnline: boolean;
   authCertified: boolean;
@@ -66,7 +70,6 @@ export interface WeaponDetails {
   attribute: string;
   requirement: number;
   inscription: boolean;
-  oldschool: boolean;
   core: string;
   prefix: string;
   suffix: string;
@@ -76,6 +79,7 @@ export interface OrderDetails {
   dedicated: boolean;
   pre: boolean;
   legacy: boolean;
+  note: string;
 }
 
 export interface ShopPrice {
@@ -84,6 +88,8 @@ export interface ShopPrice {
   // copy from shopitem
   quantity?: number;
   unit?: number;
+  // only for auction
+  max?: number;
 }
 
 export enum Price {
@@ -96,7 +102,8 @@ export enum Price {
 
 export enum OrderType {
   SELL,
-  BUY
+  BUY,
+  AUCTION
 }
 
 export interface Item {
@@ -112,7 +119,16 @@ export interface Item {
 
 export interface BasicItem {
   name: string;
+  description?: string;
+  enhancement?: string;
+  condition?: string;
   img: string;
   family: string;
   category: string;
+}
+
+export interface Upgrade {
+  value: string;
+  description?: string;
+  img: string;
 }

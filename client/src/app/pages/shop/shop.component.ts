@@ -2,7 +2,9 @@ import { Location } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
+import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { OrderFilter } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 import { Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
@@ -22,11 +24,16 @@ export class ShopComponent implements OnInit {
   public shop: Shop;
   public sellOrders: Array<ShopItem> = [];
   public buyOrders: Array<ShopItem> = [];
+  public itemAuctions: Array<Auction> = [];
   public tradeMessage = '';
   public details: Array<string> = [];
   public popup = false;
   public orderEdit: ShopItem = null;
   public orderEditAll = false;
+  public auctionDisplay: Auction = null;
+  public auctionPopup = false;
+  public auctionMessage = '';
+  public auctionHistoryVisible = false;
   public showCandle = false;
   public timeLeft = 0;
   public pendingChanges = 0;
@@ -41,7 +48,7 @@ export class ShopComponent implements OnInit {
     reqMin: 0,
     reqMax: 13,
     inscription: null,
-    oldschool: null,
+    legacy: null,
     core: null,
     prefix: null,
     suffix: null
@@ -57,6 +64,7 @@ export class ShopComponent implements OnInit {
 
   public playerOpen = false;
   public orderOpen = false;
+  public daybreakOpen = false;
 
   // View options
   public compactView = false;
@@ -102,6 +110,7 @@ export class ShopComponent implements OnInit {
         // load personal shop
         this.shopService.getActiveShop().subscribe((shop: Shop) => {
           this.shop = shop;
+          this.storeService.requestSocket('getPersonalAuctions', shop.auctions);
           this.shopUpdate();
         });
         // auto switch to pro mode
@@ -109,6 +118,11 @@ export class ShopComponent implements OnInit {
           this.pro = params['pro'];
         });
       }
+      // in both case listen to binded auctions
+      this.shopService.getPersonalAuctions().subscribe(auctions => {
+        this.itemAuctions = auctions;
+        this.cdr.detectChanges();
+      });
     });
   }
 
@@ -134,8 +148,9 @@ export class ShopComponent implements OnInit {
     this.orderEditAll = false;
   }
 
-  async loadDaybreakItems(): Promise<void> {
-    const items = await this.shopService.fetchDaybreakItems();
+  async loadDaybreakItems(mode: 'stash' | 'inventory'): Promise<void> {
+    this.daybreakOpen = false;
+    const items = await this.shopService.fetchDaybreakItems(mode);
     this.daybreakItems = items;
     this.daybreakEdit = true;
     this.cdr.detectChanges();
@@ -182,11 +197,7 @@ export class ShopComponent implements OnInit {
         origin: PurchaseOrigin.SHOP
       } as Purchase);
     } else {
-      this.toastrService.warning(
-        'Confirm completion by clicking the check button again',
-        'Order validation initiated',
-        { timeOut: 3000 }
-      );
+      this.toastrService.warning('Confirm completion by clicking the check button again', 'Order validation initiated', { timeOut: 10000 });
       order.completed = true;
     }
   }
@@ -196,7 +207,7 @@ export class ShopComponent implements OnInit {
       this.shopService.removeShopItem(this.shop.items.indexOf(order));
     } else {
       this.toastrService.warning('Confirm deletion by clicking the trash button again', 'Order removal initiated', {
-        timeOut: 3000
+        timeOut: 10000
       });
       order.removed = true;
     }
@@ -222,14 +233,25 @@ export class ShopComponent implements OnInit {
         origin: PurchaseOrigin.SHOP
       } as Purchase);
     } else {
+      this.toastrService.warning('Confirm single completion by clicking the check button again', 'Single validation initiated', {
+        timeOut: 10000
+      });
+      order.single = true;
+    }
+  }
+
+  onCloturateAuction(auction: Auction): void {
+    if (auction.cloturate) {
+      this.shopService.cloturateAuction(this.itemAuctions.indexOf(auction));
+    } else {
       this.toastrService.warning(
-        'Confirm single completion by clicking the check button again',
-        'Single validation initiated',
+        'Confirm auction completion by clicking the trash button again. Ensure the client has received the item before confirming.',
+        'Auction completion initiated',
         {
-          timeOut: 3000
+          timeOut: 10000
         }
       );
-      order.single = true;
+      auction.cloturate = true;
     }
   }
 
@@ -245,17 +267,21 @@ export class ShopComponent implements OnInit {
     order.single = false;
   }
 
+  onCloturateLeave(auction: Auction): void {
+    auction.cloturate = false;
+  }
+
+  onAuctionClick(auction: Auction): void {
+    this.auctionDisplay = auction;
+    this.auctionHistoryVisible = false;
+  }
+
   homeBaseUrl(): string {
     return this.router.createUrlTree(['']).toString();
   }
 
   onHome(): void {
     this.router.navigate(['']);
-  }
-
-  onCreateOrder(order): void {
-    this.orderWarning = false;
-    this.shopService.addShopItem(order);
   }
 
   openPlayer(): void {
@@ -296,6 +322,11 @@ export class ShopComponent implements OnInit {
     }
   }
 
+  onDaybreakOpen(): void {
+    this.daybreakOpen = true;
+    this.cdr.detectChanges();
+  }
+
   exportShop(): void {
     this.shopService.exportShop();
   }
@@ -325,14 +356,11 @@ export class ShopComponent implements OnInit {
     if (this.shop.player === 'GWTrader') {
       this.toastrService.warning('Please first set a valid player name for your shop', 'Player invalid');
       this.playerWarning = true;
-    } else if (this.shop.items.length === 0) {
+    } else if (this.shop.items.length === 0 && !this.shop.uuid) {
       this.toastrService.warning('Please place at least one order before onlining your shop', 'No items');
       this.orderWarning = true;
     } else if (Date.now() - this.shop.lastRefresh < 60 * 1000) {
-      this.toastrService.warning(
-        'Refreshing more than once a minute is a bit rude',
-        'Please be gentle with the server'
-      );
+      this.toastrService.warning('Refreshing more than once a minute is a bit rude', 'Please be gentle with the server');
     } else {
       this.shopService.enableShop();
     }
@@ -424,6 +452,36 @@ export class ShopComponent implements OnInit {
     this.updateItemList();
   }
 
+  hasItemDetails(auction: Auction): boolean {
+    return WeaponHelper.hasItemDetails(auction.item.item, auction.item);
+  }
+
+  toggleAuctionHistory(): void {
+    this.auctionHistoryVisible = !this.auctionHistoryVisible;
+  }
+
+  goToShop(order: Auction | AuctionHistory): void {
+    if (order.shopId) {
+      window.open(`https://gwmarket.net/shop/showcase?public=${order.shopId}`, '_blank');
+    }
+  }
+
+  contactWinner(auction: Auction): void {
+    const winnerBid = auction.history?.[auction.history.length - 1];
+    this.auctionMessage = `/w ${winnerBid?.bidder}, Hi, You have won the auction of ${auction?.item.name} with a bid at ${winnerBid?.bid} ${UtilityHelper.priceToString(auction.currency)}. Are you available to trade?`;
+    this.auctionPopup = true;
+  }
+
+  copyMessage(): void {
+    if (this.auctionMessage) {
+      navigator.clipboard.writeText(this.auctionMessage).then(() => {
+        this.toastrService.success('Auction message copied to clipboard', '', {
+          timeOut: 5000
+        });
+      });
+    }
+  }
+
   updateItemList(): void {
     if (!this.shop?.items) return;
     const filteredItem = this.shop.items.filter(item => {
@@ -456,8 +514,8 @@ export class ShopComponent implements OnInit {
           return false;
         }
       }
-      if (this.orderFilter.oldschool) {
-        if (!item.weaponDetails || item.weaponDetails.oldschool.toString() !== this.orderFilter.oldschool) {
+      if (this.orderFilter.legacy) {
+        if (!item.orderDetails || item.orderDetails.legacy.toString() !== this.orderFilter.legacy) {
           return false;
         }
       }

@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Auction } from '@app/models/auction.model';
 import { OrderType, ShopItem } from '@app/models/shop.model';
 
 @Component({
@@ -11,6 +12,7 @@ export class OrderCardComponent {
   @Input() compact = false;
   @Input() showDetails = true;
   @Input() order: ShopItem;
+  @Input() auction?: Auction;
   @Input() priceLabel: 'ASKING' | 'PAYING' = 'ASKING';
   @Input() imageSource = '';
 
@@ -45,6 +47,7 @@ export class OrderCardComponent {
 
   @Output() itemClick = new EventEmitter<string>();
   @Output() editClick = new EventEmitter<ShopItem>();
+  @Output() auctionClick = new EventEmitter<Auction>();
   @Output() hideClick = new EventEmitter<ShopItem>();
   @Output() singleClick = new EventEmitter<ShopItem>();
   @Output() singleLeave = new EventEmitter<ShopItem>();
@@ -52,6 +55,8 @@ export class OrderCardComponent {
   @Output() completeLeave = new EventEmitter<ShopItem>();
   @Output() removeClick = new EventEmitter<ShopItem>();
   @Output() removeLeave = new EventEmitter<ShopItem>();
+  @Output() cloturateClick = new EventEmitter<Auction>();
+  @Output() cloturateLeave = new EventEmitter<Auction>();
 
   get completeTitle(): string {
     return this.priceLabel === 'ASKING' ? 'Mark as Sold' : 'Mark as Bought';
@@ -63,6 +68,10 @@ export class OrderCardComponent {
 
   onEditClick(): void {
     this.editClick.emit(this.order);
+  }
+
+  onAuctionClick(): void {
+    this.auctionClick.emit(this.auction);
   }
 
   onHideClick(): void {
@@ -91,5 +100,13 @@ export class OrderCardComponent {
 
   onSingleLeave(): void {
     this.singleLeave.emit(this.order);
+  }
+
+  onCloturateClick(): void {
+    this.cloturateClick.emit(this.auction);
+  }
+
+  onCloturateLeave(): void {
+    this.cloturateLeave.emit(this.auction);
   }
 }

@@ -35,7 +35,7 @@ const configIo: SocketIoConfig = { url: window.location.origin, options: {} };
     }),
     SocketIoModule.forRoot(configIo),
     ToastrModule.forRoot({
-      timeOut: 5000,
+      timeOut: 10000,
       positionClass: 'toast-bottom-center',
       preventDuplicates: true
     }),

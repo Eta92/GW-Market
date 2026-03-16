@@ -1,0 +1,109 @@
+@import '../../styles/variables';
+
+.upgrade-dropdown {
+  position: relative;
+}
+
+.upgrade-selected {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 46px;
+  padding: 0 $spacing-md;
+  background: rgba($obsidian, 0.6);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: $radius-md;
+  color: $parchment;
+  cursor: pointer;
+  transition: all $transition-base;
+  width: 100%;
+
+  &:hover {
+    border-color: rgba($gold, 0.4);
+    background: rgba($obsidian, 0.8);
+  }
+
+  .upgrade-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  i {
+    position: absolute;
+    right: $spacing-md;
+    font-size: 0.75rem;
+    color: rgba($parchment, 0.5);
+    transition: transform $transition-base;
+  }
+}
+
+.upgrade-dropdown.open {
+  .upgrade-selected {
+    border-color: $gold;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    i {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.upgrade-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba($obsidian, 0.95);
+  border: 1px solid $gold;
+  border-radius: 0 0 $radius-md $radius-md;
+  z-index: 100;
+  max-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.upgrade-option {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: $parchment;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  img {
+    align-self: start;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.1);
+  }
+
+  &.selected {
+    background: rgba($gold, 0.2);
+    color: $gold-light;
+  }
+}
+
+.upgrade-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .upgrade-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .upgrade-description {
+    font-size: 0.5rem;
+    color: rgba($parchment, 0.7);
+  }
+}

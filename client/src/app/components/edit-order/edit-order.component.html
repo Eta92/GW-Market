@@ -68,11 +68,32 @@
             ></i>
           </div>
         </button>
+        <button
+          *ngIf="!maskSearch"
+          class="order-type-card auction"
+          [class.active]="form.get('orderType')?.value === OrderType.AUCTION"
+          (click)="form.patchValue({ orderType: OrderType.AUCTION })"
+        >
+          <div class="card-icon">
+            <i class="fa fa-gavel"></i>
+          </div>
+          <div class="card-content">
+            <span class="card-title">Auction</span>
+            <span class="card-desc">Create an auction</span>
+          </div>
+          <div class="card-check">
+            <i
+              class="fa"
+              [class.fa-circle]="form.get('orderType')?.value !== OrderType.AUCTION"
+              [class.fa-check-circle]="form.get('orderType')?.value === OrderType.AUCTION"
+            ></i>
+          </div>
+        </button>
       </div>
     </div>
 
     <!-- Quantity & Visibility Row -->
-    <div class="details-row">
+    <div class="details-row" *ngIf="!isAuction">
       <div class="form-group quantity-group">
         <label>Quantity</label>
         <app-qty-input formControlName="quantity" [min]="1" [max]="9999"></app-qty-input>
@@ -85,6 +106,14 @@
           [value]="form.get('hidden')?.value"
           (valueChange)="form.patchValue({ hidden: $event })"
         ></app-toggle-group>
+      </div>
+    </div>
+
+    <!-- auction end date -->
+    <div class="details-row" *ngIf="isAuction">
+      <div class="form-group">
+        <label>Auction End Date</label>
+        <input type="datetime-local" class="form-input custom-datetime" formControlName="endTime" />
       </div>
     </div>
 
@@ -112,10 +141,23 @@
       <div class="form-row">
         <div class="form-group" style="flex: 2">
           <label>Core Modification</label>
-          <select class="form-select" formControlName="core">
+          <app-upgrade-dropdown
+            [upgradeOptions]="weaponLists.core"
+            [selectedUpgrade]="formWeapon.get('core')?.value"
+            (upgradeChange)="formWeapon.patchValue({ core: $event })"
+          ></app-upgrade-dropdown>
+          <!-- <select class="form-select" formControlName="core">
             <option [ngValue]="null">None</option>
-            <option *ngFor="let core of weaponLists.core" [ngValue]="core">{{ core }}</option>
-          </select>
+            <option *ngFor="let core of weaponLists.core" [ngValue]="core.value">
+              <div class="flex">
+                <img class="upgrade-icon" [src]="core.img" alt="{{ core.value }}" />
+                <div class="flex flex-col">
+                  <span>{{ core.value }}</span>
+                  <span class="upgrade-desc">{{ core.description }}</span>
+                </div>
+              </div>
+            </option>
+          </select> -->
         </div>
         <div class="form-group" style="flex: 2">
           <label>Inscription</label>
@@ -133,17 +175,27 @@
       <div class="form-row">
         <div class="form-group">
           <label>Prefix</label>
-          <select class="form-select" formControlName="prefix">
+          <app-upgrade-dropdown
+            [upgradeOptions]="weaponLists.prefix"
+            [selectedUpgrade]="formWeapon.get('prefix')?.value"
+            (upgradeChange)="formWeapon.patchValue({ prefix: $event })"
+          ></app-upgrade-dropdown>
+          <!-- <select class="form-select" formControlName="prefix">
             <option [ngValue]="null">None</option>
             <option *ngFor="let prefix of weaponLists.prefix" [ngValue]="prefix">{{ prefix }}</option>
-          </select>
+          </select> -->
         </div>
         <div class="form-group">
           <label>Suffix</label>
-          <select class="form-select" formControlName="suffix">
+          <app-upgrade-dropdown
+            [upgradeOptions]="weaponLists.suffix"
+            [selectedUpgrade]="formWeapon.get('suffix')?.value"
+            (upgradeChange)="formWeapon.patchValue({ suffix: $event })"
+          ></app-upgrade-dropdown>
+          <!-- <select class="form-select" formControlName="suffix">
             <option [ngValue]="null">None</option>
             <option *ngFor="let suffix of weaponLists.suffix" [ngValue]="suffix">{{ suffix }}</option>
-          </select>
+          </select> -->
         </div>
       </div>
     </div>
@@ -201,13 +253,23 @@
             ></app-toggle-group>
           </div>
         </div>
+        <div class="form-group mt-2">
+          <label>Personal Note</label>
+          <input type="text" class="form-input" formControlName="note" placeholder="Private note for this order (only visible to you)" />
+        </div>
       </div>
     </div>
 
     <!-- Pricing Section -->
     <div class="pricing-section">
       <div class="section-label">
-        <span>{{ form.get('orderType')?.value === OrderType.SELL ? 'Asking Price' : 'Willing to Pay' }}</span>
+        <span>{{
+          form.get('orderType')?.value === OrderType.SELL
+            ? 'Asking Price'
+            : form.get('orderType')?.value === OrderType.BUY
+              ? 'Willing to Pay'
+              : 'Starting Bid'
+        }}</span>
       </div>
       <div class="prices-container" formArrayName="prices">
         <div class="price-card" *ngFor="let price of getprices().controls; let i = index" [formGroupName]="i">
@@ -219,14 +281,28 @@
             ></app-currency-dropdown>
           </div>
           <div class="price-inputs">
-            <div class="price-field">
+            <div class="price-field" *ngIf="isAuction">
+              <label *ngIf="i === 0">Starting Price</label>
+              <div class="input-with-icon">
+                <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
+                <input type="number" class="form-input price-input" formControlName="price" min="1" max="9999" placeholder="0" />
+              </div>
+            </div>
+            <div class="price-field" *ngIf="isAuction">
+              <label *ngIf="i === 0">Buyout Price (opt.)</label>
+              <div class="input-with-icon">
+                <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
+                <input type="number" class="form-input price-input" formControlName="max" min="0" max="9999" placeholder="0" />
+              </div>
+            </div>
+            <div class="price-field" *ngIf="!isAuction">
               <label *ngIf="i === 0">Per Unit</label>
               <div class="input-with-icon">
                 <img class="input-currency-icon" [src]="price.get('type')?.value | currencySource" alt="" />
-                <input type="number" class="form-input price-input" formControlName="unit" min="0" placeholder="0" />
+                <input type="number" class="form-input price-input" formControlName="unit" min="0" max="9999" placeholder="0" />
               </div>
             </div>
-            <div class="price-field">
+            <div class="price-field" *ngIf="!isAuction">
               <div *ngIf="i === 0" class="flex justify-between">
                 <label>Total</label>
                 <!-- Price Inspector -->
@@ -245,17 +321,11 @@
               </div>
             </div>
           </div>
-          <button
-            type="button"
-            class="remove-price-btn"
-            *ngIf="getprices().controls.length > 1"
-            (click)="removePrice(i)"
-            title="Remove"
-          >
+          <button type="button" class="remove-price-btn" *ngIf="getprices().controls.length > 1" (click)="removePrice(i)" title="Remove">
             <i class="fa fa-times"></i>
           </button>
         </div>
-        <button type="button" class="add-price-btn" (click)="addPrice()">
+        <button *ngIf="!isAuction" type="button" class="add-price-btn" (click)="addPrice()">
           <i class="fa fa-plus"></i>
           <span>Add Currency</span>
         </button>
@@ -272,6 +342,17 @@
         rows="3"
       ></textarea>
     </div>
+
+    <div class="description-section" *ngIf="isAuction">
+      <div class="section-label">Auction Terms</div>
+      <label class="auction-acknowledge">
+        <input type="checkbox" formControlName="acknowledge" />
+        <span class="custom-checkbox"></span>
+        I understand that auction orders cannot be edited or canceled after creation.<br />
+        Not fulfilling an auction may result in severe actions for your shop.<br />
+        Also current pending shop changes will be discarded.
+      </label>
+    </div>
   </div>
 
   <!-- Modal Footer -->
@@ -284,12 +365,14 @@
       class="confirm-btn"
       [class.sell]="form.get('orderType')?.value === OrderType.SELL"
       [class.buy]="form.get('orderType')?.value === OrderType.BUY"
+      [class.auction]="form.get('orderType')?.value === OrderType.AUCTION"
       (click)="validateOrder()"
     >
       <i
         class="fa"
         [class.fa-arrow-up]="form.get('orderType')?.value === OrderType.SELL"
         [class.fa-arrow-down]="form.get('orderType')?.value === OrderType.BUY"
+        [class.fa-gavel]="form.get('orderType')?.value === OrderType.AUCTION"
       ></i>
       {{ confirm || 'Create Order' }}
     </button>

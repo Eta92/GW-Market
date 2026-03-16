@@ -145,7 +145,7 @@ export class UtilityHelper {
     }
   }
 
-  public static getOldOpacity(item: ShopItem | ItemOrder): string {
+  public static getItemOpacity(item: ShopItem | ItemOrder): string {
     if (!item.lastRefresh || Date.now() - item.lastRefresh < 1000 * 60 * 15) {
       return 'opacity-100';
     } else if (Date.now() - item.lastRefresh < 1000 * 60 * 60 * 12) {
@@ -155,8 +155,21 @@ export class UtilityHelper {
     }
   }
 
-  public static formatLastUpdate(timestamp: number): string {
-    const diff = Date.now() - timestamp;
+  public static getAuctionOpacity(endTime: number): string {
+    if (!endTime || endTime - Date.now() < 1000 * 60 * 15) {
+      return 'opacity-100';
+    } else if (endTime - Date.now() < 1000 * 60 * 60 * 24) {
+      return 'opacity-75';
+    } else {
+      return 'opacity-50';
+    }
+  }
+
+  public static formatLastUpdate(timestamp: number, futur = false): string {
+    let diff = Date.now() - timestamp;
+    if (futur) {
+      diff = timestamp - Date.now();
+    }
     if (diff < 1000 * 60) {
       return 'now';
     } else if (diff < 1000 * 60 * 60) {
@@ -191,11 +204,14 @@ export class UtilityHelper {
    * - TODAY: < 12 hours ago
    * - WEEK: older than 12 hours or no timestamp
    */
-  public static getTimeCategory(lastRefresh: number | undefined): Time {
+  public static getTimeCategory(lastRefresh: number | undefined, futur = false): Time {
     if (!lastRefresh) {
       return Time.WEEK;
     }
-    const diff = Date.now() - lastRefresh;
+    let diff = Date.now() - lastRefresh;
+    if (futur) {
+      diff = lastRefresh - Date.now();
+    }
     if (diff < 1000 * 60 * 15) {
       return Time.ONLINE;
     } else if (diff < 1000 * 60 * 60 * 12) {

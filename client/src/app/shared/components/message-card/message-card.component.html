@@ -1,0 +1,23 @@
+<div class="message-card" [ngClass]="{ unread: !message.read }" (click)="onMessageClick()">
+  <!-- [appRouting]="item" -->
+  <div class="message-img" *ngIf="isItem()" appRouting [routing]="getItemLink()">
+    <img [src]="getImageSource(message.data[0])" />
+  </div>
+  <div class="message-img avatar" *ngIf="!isItem()">
+    <i class="fa fa-user"></i>
+  </div>
+  <div class="message-content">
+    <div class="message-header">
+      <span class="message-title">{{ getMessageTitle() }}</span>
+      <span class="message-time">{{ message.time | formatLastUpdate }}</span>
+    </div>
+    <div class="message-body">
+      {{ getMessageContent() }}
+    </div>
+    <div class="message-contact" *ngIf="isContactPossible()">
+      <span class="flex cursor-pointer underline" appRouting [routing]="getPlayerLink()"
+        >{{ message.senderName }} <i class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+      ></span>
+    </div>
+  </div>
+</div>

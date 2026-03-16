@@ -42,6 +42,7 @@
 .content-wrapper {
   display: grid;
   grid-template-columns: 1fr 720px;
+  grid-template-rows: 1fr 300px;
   height: 100%;
   background: rgba(0, 0, 0, 0.35);
 
@@ -61,12 +62,17 @@
     grid-template-columns: 1fr;
     height: auto;
   }
+
+  @media (max-height: 800px) {
+    grid-template-rows: 1fr 1fr;
+  }
 }
 
 // ============================================
 // CATEGORIES SECTION
 // ============================================
 .categories-section {
+  grid-row: span 2;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -674,12 +680,17 @@
 // LISTINGS SECTION - Vertical Card Design
 // ============================================
 .listings-section {
+  grid-row: span 1;
   display: flex;
   flex-direction: column;
   background: rgba(0, 0, 0, 0.35);
   border-left: 1px solid rgba($gold, 0.15);
   padding: 20px;
   overflow: hidden;
+
+  &.auctions {
+    padding-top: 0;
+  }
 
   @media (max-width: 1024px) {
     border-left: none;
@@ -689,6 +700,14 @@
 
   @media (max-width: 768px) {
     padding: 16px;
+  }
+
+  @media (max-height: 600px) {
+    grid-row: span 2;
+
+    &.auctions {
+      display: none;
+    }
   }
 
   .section-header {
@@ -746,6 +765,9 @@
   &.buying {
     border-left: 4px solid $buy-color;
   }
+  &.auction {
+    border-left: 4px solid $auction-color;
+  }
 }
 
 // Header: Badge + Time (now a column)
@@ -772,6 +794,11 @@
 
   &.buy {
     background: linear-gradient(135deg, $buy-dark, $buy-color);
+    color: white;
+  }
+
+  &.auction {
+    background: linear-gradient(135deg, $auction-dark, $auction-color);
     color: white;
   }
 }
@@ -890,6 +917,10 @@
   p {
     margin: 0;
     font-size: 15px;
+  }
+
+  &.box {
+    padding: 20px;
   }
 }
 

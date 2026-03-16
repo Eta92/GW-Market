@@ -1,5 +1,6 @@
 // Import shared design system
 @import '../../shared/styles/variables';
+@import '../../shared/styles/form-controls';
 
 // ============================================
 // ITEM PAGE - Main Container
@@ -111,6 +112,17 @@
   color: rgba($parchment, 0.75);
 }
 
+.wiki-text {
+  font-size: 0.75rem;
+  color: rgba($gold, 0.75);
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: rgba($gold, 0.9);
+  }
+}
+
 // Sidebar Stats
 .sidebar-stats {
   display: flex;
@@ -147,6 +159,12 @@
     background: rgba($buy-color, 0.15);
     border: 1px solid rgba($buy-color, 0.4);
     color: $buy-color;
+  }
+
+  &.auction {
+    background: rgba($auction-color, 0.15);
+    border: 1px solid rgba($auction-color, 0.4);
+    color: $auction-color;
   }
 }
 
@@ -228,6 +246,7 @@
 .split-columns-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr 1fr;
   gap: 1rem;
   height: 100%;
 }
@@ -264,6 +283,16 @@
   background: rgba($buy-color, 0.12);
   border: 1px solid rgba($buy-color, 0.35);
   color: $buy-color;
+}
+
+.auction-section .section-title {
+  background: rgba($auction-color, 0.12);
+  border: 1px solid rgba($auction-color, 0.35);
+  color: $auction-color;
+}
+
+.sell-section {
+  grid-row: span 2;
 }
 
 .section-count {
@@ -557,6 +586,10 @@
   &.buy-label {
     color: $buy-color;
   }
+
+  &.auction-label {
+    color: $auction-color;
+  }
 }
 
 // Empty states
@@ -650,6 +683,13 @@
   }
 }
 
+.popup-warning {
+  padding: 0 16px;
+  font-size: 0.65rem;
+  color: rgba($parchment, 0.7);
+  font-style: italic;
+}
+
 .popup-textarea {
   width: 100%;
   min-height: 100px;
@@ -687,6 +727,10 @@
 
   &.buy-order {
     border-color: rgba($buy-color, 0.5);
+  }
+
+  &.auction-order {
+    border-color: rgba($auction-color, 0.5);
   }
 }
 
@@ -735,6 +779,12 @@
     background: rgba($buy-color, 0.2);
     border: 1px solid rgba($buy-color, 0.5);
     color: $buy-color;
+  }
+
+  &.auction {
+    background: rgba($auction-color, 0.2);
+    border: 1px solid rgba($auction-color, 0.5);
+    color: $auction-color;
   }
 }
 
@@ -891,6 +941,23 @@
   letter-spacing: 0.03em;
 }
 
+.detail-seller-price {
+  gap: 4px;
+  display: flex;
+  font-size: 0.875rem;
+  color: rgba($parchment, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 800;
+}
+
+.detail-history-currency-icon {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  object-fit: contain;
+}
+
 .detail-seller-value {
   display: flex;
   flex-direction: column;
@@ -939,6 +1006,17 @@
 .detail-seller-time {
   font-size: 0.875rem;
   color: rgba($parchment, 0.7);
+}
+
+.detail-seller-history {
+  font-size: 0.75rem;
+  color: rgba($parchment, 0.5);
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: rgba($parchment, 0.7);
+  }
 }
 
 // Item Details section
@@ -1650,4 +1728,59 @@
   font-weight: 700;
   font-size: 1rem;
   color: $gold-light;
+}
+
+// Section Labels
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba($parchment, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.details-row {
+  display: flex;
+  gap: 1.5rem;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba($parchment, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+}
+
+.form-group {
+  @extend %form-group;
+  flex: 1;
+  min-width: 120px;
+}
+
+.form-input {
+  @extend %form-input;
+}
+
+.form-select {
+  @extend %form-select;
+}
+
+.toggle-group {
+  @extend %toggle-group;
+
+  .toggle-btn {
+    @extend %toggle-btn;
+  }
+}
+
+.custom-datetime {
+  color-scheme: dark; /* This will make the default icon (and date picker popup) white/light-colored */
 }

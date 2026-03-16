@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
 import { Router } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
 import { Observable, debounceTime } from 'rxjs';
 import { UtilService } from './util.service';
 
+import { HttpClient } from '@angular/common/http';
 import { CurrentSubject } from '@app/helpers/current.subject';
+import { UtilityHelper } from '@app/helpers/utility.helper';
+import { Auction } from '@app/models/auction.model';
 import { Shop, ShopItem } from '@app/models/shop.model';
 import { DateTime } from 'luxon';
-import { UtilityHelper } from '@app/helpers/utility.helper';
 import { ToastrService } from 'ngx-toastr';
-import { HttpClient } from '@angular/common/http';
 import { ItemService } from './item.service';
 
 @Injectable()
@@ -22,6 +23,7 @@ export class ShopService {
   private pendingChangesSubject = new CurrentSubject<number>();
   private activeShopSubject = new CurrentSubject<Shop>();
   private publicShopSubject = new CurrentSubject<Shop>();
+  private personalAuctionsSubject = new CurrentSubject<Array<Auction>>();
 
   constructor(
     private http: HttpClient,
@@ -51,7 +53,8 @@ export class ShopService {
         daybreakOnline: shop.daybreakOnline,
         authCertified: shop.certified?.includes(this.activeShopSubject.value.player),
         certified: shop.certified,
-        items: shop.items
+        items: shop.items,
+        auctions: shop.auctions
       };
       activeShop.items.forEach(item => {
         item.item = this.itemService.getItemBase(item.name);
@@ -59,12 +62,19 @@ export class ShopService {
       this.activeShopSubject.set(activeShop);
       this.saveShop();
       this.toastrService.success('', 'Shop updated completed', {
-        timeOut: 5000
+        timeOut: 10000
       });
       this.daybreakStart();
     });
+    this.socket.on('PersonalAuctions', (auctions: Array<Auction>) => {
+      auctions.forEach(auction => {
+        auction.item.item = this.itemService?.getItemBase(auction.item.name);
+      });
+      this.personalAuctionsSubject.set(auctions);
+    });
     // rest of init
     this.itemService.getReady().subscribe(ready => {
+      // load shop from cache
       const shopString = localStorage.getItem('personalShop');
       if (shopString) {
         const shop = JSON.parse(shopString) as Shop;
@@ -73,6 +83,7 @@ export class ShopService {
         });
         this.activeShopSubject.set(shop);
         this.socket.emit('checkShopUpToDate', shop.uuid, shop.lastRefresh);
+        this.socket.emit('getMessages', shop.uuid);
         if (shop.lastRefresh && Date.now() - shop.lastRefresh < 1000 * 60 * 15) {
           this.daybreakStart();
         }
@@ -86,6 +97,7 @@ export class ShopService {
     });
     this.socket.on('GetPublicShop', (shop: Shop) => {
       this.publicShopSubject.set(shop);
+      this.socket.emit('getPersonalAuctions', shop.auctions);
     });
   }
 
@@ -97,7 +109,7 @@ export class ShopService {
       'Your new item will be visible for customers on next shop update',
       'Item added to your shop',
       {
-        timeOut: 3000
+        timeOut: 10000
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
@@ -109,7 +121,7 @@ export class ShopService {
     activeShop.items[index] = item;
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Item updated', {
-      timeOut: 3000
+      timeOut: 10000
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -120,7 +132,7 @@ export class ShopService {
     activeShop.items = activeShop.items.map((item, index) => ({ ...item, ...items[index] }));
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
-      timeOut: 3000
+      timeOut: 10000
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -131,7 +143,7 @@ export class ShopService {
     activeShop.items = [...activeShop.items, ...items];
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
-      timeOut: 3000
+      timeOut: 10000
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -145,7 +157,7 @@ export class ShopService {
       'The item will be cleared from item lists on next shop update',
       'Item removed from the shop',
       {
-        timeOut: 3000
+        timeOut: 10000
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
@@ -168,11 +180,36 @@ export class ShopService {
       'The item will be cleared from item lists on next shop update',
       'Item amount reduced from the shop',
       {
-        timeOut: 3000
+        timeOut: 10000
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
+  }
+
+  bidAuction(auction: Auction, amount: number): void {
+    const activeShop = this.activeShopSubject.value;
+    if (activeShop) {
+      if (activeShop.certified?.length > 0) {
+        this.socket.emit('bidAuction', { bidder: activeShop.uuid, auctionId: auction.uuid, amount });
+      } else {
+        this.toastrService.error('You must have a certified character to place bids', 'Shop Not Certified', {
+          timeOut: 10000
+        });
+      }
+    } else {
+      this.toastrService.error('You must have a working shop before placing bids', 'Shop Not Ready', {
+        timeOut: 10000
+      });
+    }
+  }
+
+  cloturateAuction(index: number): void {
+    const activeShop = this.activeShopSubject.value;
+    const targetAuction = activeShop.auctions[index];
+    this.socket.emit('cloturateAuction', activeShop.uuid, targetAuction);
+    activeShop.auctions.splice(index, 1);
+    this.activeShopSubject.set(activeShop);
   }
 
   updateShopName(name: string): void {
@@ -183,7 +220,7 @@ export class ShopService {
       'Customer will be able to contact you ingame via this character on next shop update',
       'Shop player updated',
       {
-        timeOut: 3000
+        timeOut: 10000
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
@@ -201,6 +238,7 @@ export class ShopService {
       delete item.item;
       delete item.completed;
       delete item.removed;
+      delete item.single;
     });
     // stupid hotfix cause of name inside items
     copyShop.items = copyShop.items.filter(item => typeof item !== 'string' && item.name);
@@ -237,6 +275,7 @@ export class ShopService {
       delete item.item;
       delete item.completed;
       delete item.removed;
+      delete item.single;
     });
     this.socket.emit('refreshShop', activeShop);
   }
@@ -251,6 +290,10 @@ export class ShopService {
 
   getActiveShop(): Observable<Shop> {
     return this.activeShopSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getPersonalAuctions(): Observable<Array<Auction>> {
+    return this.personalAuctionsSubject.asObservable().pipe(debounceTime(0));
   }
 
   getPublicShop(): Observable<Shop> {
@@ -283,9 +326,27 @@ export class ShopService {
         'You need to have an active shop with certified characters to submit reputation votes.',
         '',
         {
-          timeOut: 5000
+          timeOut: 15000
         }
       );
+    }
+  }
+
+  public addAuctionItem(item: ShopItem): void {
+    const activeShop = this.activeShopSubject.value;
+    if (!activeShop.uuid) {
+      this.toastrService.error('You need to have an active shop to create an auction.', 'Shop not valid');
+    } else if (!activeShop.certified || activeShop.certified.length === 0) {
+      this.toastrService.error('You need to have certified characters to create an auction.', 'Shop not valid');
+    } else {
+      const auction = {
+        item: item,
+        currency: item.prices[0].type,
+        startingPrice: item.prices[0].price,
+        buyoutPrice: item.prices[0].max,
+        endTime: new Date(item.endTime).getTime()
+      } as Auction;
+      this.socket.emit('createAuction', activeShop.uuid, auction);
     }
   }
 
@@ -340,14 +401,14 @@ export class ShopService {
     }
   }
 
-  public async fetchDaybreakItems(): Promise<Array<{ name: string; quantity: number }>> {
+  public async fetchDaybreakItems(mode: 'stash' | 'inventory'): Promise<Array<{ name: string; quantity: number }>> {
     const prom = new Promise<Array<{ name: string; quantity: number }>>((resolve, reject) => {
       const items = [];
       this.http.get('http://localhost:5080/api/v1/rest/inventory').subscribe({
         next: data => {
           const allBags = (data as any)?.bags || [];
           allBags.forEach(bag => {
-            if (bag?.bagType === 'Storage') {
+            if ((bag?.bagType === 'Storage' && mode === 'stash') || (bag?.bagType === 'Inventory' && mode === 'inventory')) {
               bag.items?.forEach(item => {
                 const name = item?.decodedSingleName || item?.decodedCompleteName || item?.decodedName || '';
                 const parsedName =
@@ -378,7 +439,7 @@ export class ShopService {
             [] as Array<{ name: string; quantity: number }>
           );
           this.toastrService.success('Successfully fetched items from Daybreak API', 'Daybreak items loaded', {
-            timeOut: 3000
+            timeOut: 10000
           });
           resolve(groupedItems);
         },
@@ -388,7 +449,7 @@ export class ShopService {
             'Make sure your Daybreak Launcher is running and you have the API enabled.',
             'Failed to connect to Daybreak API.',
             {
-              timeOut: 5000
+              timeOut: 15000
             }
           );
           reject(error);

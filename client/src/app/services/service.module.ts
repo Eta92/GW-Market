@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
+import { InspectorService } from './inspector.service';
+import { ItemService } from './item.service';
+import { MessageService } from './message.service';
+import { ShopService } from './shop.service';
 import { StoreService } from './store.service';
 import { ToasterService } from './toaster.service';
 import { UtilService } from './util.service';
-import { ShopService } from './shop.service';
-import { ItemService } from './item.service';
-import { InspectorService } from './inspector.service';
 
 @NgModule({
-  providers: [InspectorService, ItemService, ShopService, StoreService, ToasterService, UtilService]
+  providers: [InspectorService, ItemService, MessageService, ShopService, StoreService, ToasterService, UtilService]
 })
 export class ServiceModule {}

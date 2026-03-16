@@ -799,6 +799,10 @@ $filter-spacing: 1rem;
   &.buy {
     color: lighten($buy-color, 20%);
   }
+
+  &.auction {
+    color: lighten($auction-color, 20%);
+  }
 }
 
 // Results Grid
@@ -851,6 +855,11 @@ $filter-spacing: 1rem;
 
   &.buy {
     background: rgba($buy-color, 0.9);
+    color: white;
+  }
+
+  &.auction {
+    background: rgba($auction-color, 0.9);
     color: white;
   }
 }

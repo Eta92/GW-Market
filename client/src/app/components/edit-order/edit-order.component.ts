@@ -1,26 +1,17 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
+import { formatDate } from '@angular/common';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { Item, OrderType, Price, ShopItem, Upgrade } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
+import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
-import { LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-attributes';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
+import { LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-attributes';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, take } from 'rxjs';
-import { InspectorService } from '@app/services/inspector.service';
 
 @Component({
   selector: 'app-edit-order',
@@ -32,10 +23,12 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   @Input() original?: ShopItem;
   @Input() maskSearch = false;
   @Input() confirm: string;
+  @Input() status: boolean;
 
   @Output() closeEdit = new EventEmitter<void>();
   @Output() confirmOrder = new EventEmitter<ShopItem>();
 
+  public init = false;
   public form: UntypedFormGroup;
   public formWeapon: UntypedFormGroup;
   public formOther: UntypedFormGroup;
@@ -47,12 +40,13 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   public Price = Price;
   public isMiniature = false;
   public isAdvanced = false;
+  public isAuction = false;
   // weapons
   public isWeapon = false;
   public isLocked = true;
   public attributes = VARIABLE_ATTRIBUTE;
   public lockWeapons = LOCKED_WEAPON;
-  public weaponLists: { core: Array<string>; prefix: Array<string>; suffix: Array<string> } = {
+  public weaponLists: { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } = {
     core: [],
     prefix: [],
     suffix: []
@@ -73,8 +67,18 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.forceInit();
+  }
+
+  private forceInit(): void {
+    this.init = true;
     const prices = this.fb.array([
-      this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })
+      this.fb.group({
+        type: [Price.PLAT],
+        price: [0, [Validators.min(0), Validators.max(9999)]],
+        unit: [0, [Validators.min(0), Validators.max(9999)]],
+        max: [null, [Validators.min(1), Validators.max(9999)]]
+      })
     ]);
     this.form = this.fb.group({
       name: [this.preselect ? this.preselect.name : ''],
@@ -82,13 +86,15 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       hidden: [false],
       prices: prices,
       quantity: [1, Validators.min(1)],
-      description: ['']
+      description: [''],
+      // auction only
+      acknowledge: [false],
+      endTime: [formatDate(Date.now() + 7 * 24 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')]
     });
     this.formWeapon = this.fb.group({
       attribute: ['any', Validators.required],
       requirement: [9, [Validators.min(0), Validators.max(13)]],
       inscription: [true],
-      oldschool: [false],
       core: [null],
       prefix: [null],
       suffix: [null]
@@ -96,15 +102,12 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.formOther = this.fb.group({
       dedicated: [false],
       legacy: [false],
-      pre: [false]
+      pre: [false],
+      note: ['']
     });
     if (this.original) {
       this.loadOrder(this.original);
     }
-    this.storeService.getItemDetails().subscribe((item: Item) => {
-      this.item = item;
-      this.cdr.detectChanges();
-    });
     this.itemService
       .getAvailableTree()
       .pipe(take(1))
@@ -114,35 +117,49 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
           this.loadOrder(this.original);
         }
       });
+    this.form.get('orderType')?.valueChanges.subscribe(value => {
+      this.isAuction = value === OrderType.AUCTION;
+      if (this.isAuction) {
+        while (this.getprices()?.value.length > 1) {
+          this.getprices().removeAt(1);
+        }
+      }
+    });
     this.refreshBindPrices();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (!this.init && changes['status'] && this.status) {
+      this.forceInit();
+    }
     if (changes['original'] && this.original && this.form) {
       this.loadOrder(this.original);
     }
     if (changes['preselect'] && this.preselect) {
-      this.item = this.preselect;
-      if (this.form) {
-        this.form.patchValue({ name: this.preselect.name });
-      }
+      this.onSelectItem(this.preselect);
     }
   }
 
   loadOrder(order: ShopItem): void {
     while (this.getprices()?.value.length < order.prices.length) {
       this.getprices().push(
-        this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })
+        this.fb.group({
+          type: [Price.PLAT],
+          price: [0, Validators.min(0)],
+          unit: [0, Validators.min(0)],
+          max: [null, Validators.min(1)]
+        })
       );
     }
     order.item = this.itemService.getItemBase(order.name);
+    this.item = { ...order.item, img: undefined };
     this.form.patchValue(order);
     this.formOther.patchValue(order.orderDetails || {});
+    this.isWeapon = WeaponHelper.isWeapon(order.item);
     this.isMiniature = WeaponHelper.isMiniature(order.item);
-    if (WeaponHelper.isWeapon(order.item) && this.allItems) {
-      this.isWeapon = true;
+    if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(order.item.category);
-      this.weaponLists = WeaponHelper.getItemList(order.item, this.allItems);
+      this.weaponLists = WeaponHelper.getItemList(order.item, this.itemService.getUpgrades());
       this.formWeapon.patchValue(order.weaponDetails || {});
     }
     this.storeService.requestSocket('getItemDetails', order.name);
@@ -150,18 +167,17 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
 
   onSelectItem(item: Item): void {
     this.item = item;
-    this.form.patchValue({ name: item.name });
-    // Reset flags for new item
-    this.isWeapon = false;
-    this.isMiniature = false;
-    // Set weapon flag if applicable
-    if (WeaponHelper.isWeapon(item)) {
-      this.isWeapon = true;
-      this.isLocked = LOCKED_WEAPON.includes(item.category);
-      this.weaponLists = WeaponHelper.getItemList(item, this.allItems);
+    if (this.form) {
+      this.form.patchValue({ name: item.name });
     }
-    // Set miniature flag if applicable
+    // Reset flags for new item
+    this.isWeapon = WeaponHelper.isWeapon(item);
     this.isMiniature = WeaponHelper.isMiniature(item);
+    // Set weapon flag if applicable
+    if (this.isWeapon && this.allItems) {
+      this.isLocked = LOCKED_WEAPON.includes(item.category);
+      this.weaponLists = WeaponHelper.getItemList(item, this.itemService.getUpgrades());
+    }
   }
 
   getImageSource(item: Item): string {
@@ -177,9 +193,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   addPrice(): void {
-    this.getprices().push(
-      this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] })
-    );
+    this.getprices().push(this.fb.group({ type: [Price.PLAT], price: [0, Validators.min(0)], unit: [0, Validators.min(0)] }));
     this.refreshBindPrices();
   }
 
@@ -244,6 +258,10 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       this.toastrService.warning('Please check up the value fields', 'Form is invalid');
     } else if (order.name === '') {
       this.toastrService.error('Please first chose an item in the search bar', 'Item not selected');
+    } else if (order.orderType === OrderType.AUCTION && !order.acknowledge) {
+      this.toastrService.error('Please read and agree to the auction terms', 'Auction not acknowledged');
+    } else if (order.orderType === OrderType.AUCTION && new Date(order.endTime).getTime() <= Date.now()) {
+      this.toastrService.error('Please set an auction end time in the future', 'Auction end time not valid');
     } else {
       if (this.isWeapon) {
         order.weaponDetails = this.formWeapon.value;
@@ -261,6 +279,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   resetForms(): void {
+    this.init = false;
     while (this.getprices()?.value.length > 1) {
       this.getprices().removeAt(1);
     }
@@ -277,14 +296,15 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       attribute: 'any',
       requirement: 9,
       inscription: true,
-      oldschool: false,
       core: null,
       prefix: null,
       suffix: null
     });
     this.formOther.reset({
       dedicated: false,
-      pre: false
+      legacy: false,
+      pre: false,
+      note: ''
     });
     this.isWeapon = false;
     this.isMiniature = false;
