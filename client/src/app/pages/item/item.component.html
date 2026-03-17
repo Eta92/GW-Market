@@ -129,7 +129,7 @@
           <div class="split-section buy-section">
             <h2 class="section-title buy-title">
               <i class="fa fa-arrow-down"></i>
-              Buy Orders
+              Buy orders
               <span class="section-count">({{ getTotalBuyOrders() }})</span>
             </h2>
             <div class="split-orders-list scroll">
@@ -327,7 +327,7 @@
           </div>
         </div>
         <div class="detail-price-row unit-price">
-          <span class="detail-price-label">Price per Item</span>
+          <span class="detail-price-label">Price per item</span>
           <div class="detail-price-value">
             <span class="detail-price-decimal">{{
               selectedOrder.price.price | decimalUnitPrice: selectedOrder.quantity
@@ -422,7 +422,7 @@
     </div>
 
     <div class="order-detail-body">
-      <!-- Item Info -->
+      <!-- Item info -->
       <div class="detail-item-row">
         <img class="detail-item-img" [src]="getImageSource(item)" [alt]="item?.name" />
         <div class="detail-item-info">
@@ -550,7 +550,7 @@
     <!-- auction new price -->
     <div class="details-row px-8 pb-3" *ngIf="selectedAuction">
       <div class="form-group">
-        <label>Bid Amount</label>
+        <label>Bid amount</label>
         <app-qty-input
           formControlName="bidAmount"
           [min]="selectedAuction.history?.[selectedAuction.history.length - 1]?.bid || selectedAuction.startingPrice"
@@ -564,8 +564,8 @@
       <label class="auction-acknowledge">
         <input type="checkbox" formControlName="acknowledge" />
         <span class="custom-checkbox"></span>
-        I understand that auction bid cannot be removed after confirmation.<br />
-        Not fulfilling an auction may result in severe actions for your shop.<br />
+        I understand that my auction bid cannot be removed after confirming it.<br />
+        Not comlying with the outcome of an auction may lead to consequences applied to your shop.<br />
       </label>
     </div>
 
@@ -620,7 +620,7 @@
     >
     <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
       <i class="fa fa-copy"></i>
-      Copy Trade Message
+      Copy trade message
     </button>
   </div>
 </app-modal>
@@ -631,7 +631,7 @@
     <div class="popup-header">
       <img class="popup-img" [src]="getImageSource(item)" />
       <div class="popup-title">
-        <h3>Send Message to Player</h3>
+        <h3>Send Message to player</h3>
       </div>
       <button class="popup-close" (click)="messagePopup = false">
         <i class="fa fa-times"></i>
@@ -640,23 +640,21 @@
 
     <div class="popup-body p-3">
       <div class="form-group">
-        <label for="messageType">Why do you want to contact this player ?</label>
+        <label for="messageType">Why do you want to contact this player?</label>
         <app-toggle-group [options]="messageTypeOptions" [value]="messageType" (valueChange)="messageType = $event"></app-toggle-group>
       </div>
 
       <div class="form-group" [formGroup]="messageForm">
         <div class="message-form" *ngIf="messageType === 'meet-at'">
           <div class="message-description py-1">
-            You have selected the "meetup at" template, this one is dedicated to trade selected item at a given time, select the time you
-            are available and send it.
+            You have selected the “Time slot” template. Use it to arrange a trade for the selected item at a specific time. Select when you are available and send the message.
           </div>
-          <label for="from">Available Time</label>
+          <label for="from">Available time</label>
           <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
         </div>
         <div class="message-form" *ngIf="messageType === 'meet-over'">
           <div class="message-description py-1">
-            You have selected the "meetup over" template, this one is dedicated to trade selected item at a given period, select the time
-            range you are available and send it.
+            You have selected the “Time Window” template. Use it to arrange a trade for the selected item within a specific time period. Select the time range in which you are available and send the message.
           </div>
           <label for="from">Available From</label>
           <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
@@ -665,8 +663,7 @@
         </div>
         <div class="message-form" *ngIf="messageType === 'negociate'">
           <div class="message-description py-1">
-            You have selected the "negociate" template, this one is dedicated to negociate the price of an item, select the price and the
-            currency you find acceptable and send it.
+            You have selected the “Negotiate” template. Use it to negotiate the price of the selected item. Choose the price and currency you find acceptable, then send the message.
           </div>
           <label for="negociate">Requested Price</label>
           <input type="number" formControlName="negociate" class="form-input custom-datetime w-full" />
@@ -683,7 +680,7 @@
     <div class="popup-warning">Ensure information is correct before sending.</div>
     <button class="confirm-btn" title="Send Message" (click)="sendMessage()">
       <i class="fa fa-envelope"></i>
-      Send Message
+      Send message
     </button>
   </div>
 </app-modal>
