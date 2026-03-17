@@ -309,6 +309,14 @@
         "description": "The full set of collector items needed to trade for the 5 Gifts of the traveler of the next week."
       },
       {
+        "name": "Ministerial Commendation",
+        "description": "A Ministerial Commendation is a type of reward trophy given out by members of the Ministry of Purity in exchange for completing various tasks during Winds of Change."
+      },
+      {
+        "name": "Blessing of War",
+        "description": "Give this to Zaishen Weapon Masters in the Isle of the Nameless to receive Balthazar's weaponry."
+      },
+      {
         "name": "Margonite Gemstone",
         "description": "The Margonite Gemstone is one of a set of 4 gemstones used to obtain either a Coffer of Whispers or Armbrace of Truth."
       },
@@ -427,6 +435,10 @@
       {
         "name": "Unid Gold",
         "description": "Gold non-identified item, used to increase the Wisdom tile progression and get weapon upgrades."
+      },
+      {
+        "name": "Celestial Sigil",
+        "description": "Use to purchase a Guild Hall"
       }
     ]
   }
