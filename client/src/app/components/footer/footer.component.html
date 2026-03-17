@@ -2,8 +2,8 @@
   <div class="footer-content">
     <div class="footer-left">
       <span class="copyright">&copy; 2026 GW Market</span>
-      <span class="separator">&bull;</span>
-      <a routerLink="/about" class="footer-link">About & Legal</a>
+      <!-- <span class="separator">&bull;</span>
+      <a routerLink="/about" class="footer-link">About & Legal</a> -->
 
       <span class="legal"
         ><span class="separator mr-2">&bull;</span>ArenaNet LLC, Guild Wars, the logo and the backgrounds are registered
@@ -11,12 +11,17 @@
       >
     </div>
     <div class="footer-right">
-      <div>Feedback & Support</div>
+      <div routerLink="/about" (click)="goTo('about')">Learn More</div>
+      <a routerLink="/about" (click)="goTo('about')" class="social-link" title="Learn More">
+        <i class="fa fa-book-atlas"></i>
+      </a>
+      <div></div>
+      <div href="https://discord.gg/a4pPyJ3paN" target="_blank">Feedback & Support</div>
       <a href="https://discord.gg/a4pPyJ3paN" target="_blank" class="social-link" title="Join Discord">
         <i class="fab fa-discord"></i>
       </a>
       <div></div>
-      <div>Help (Q/A)</div>
+      <div routerLink="/help" (click)="goTo('help')">Help (Q/A)</div>
       <a routerLink="/help" (click)="goTo('help')" class="social-link" title="Questions and Answers">
         <i class="fa fa-circle-question"></i>
       </a>

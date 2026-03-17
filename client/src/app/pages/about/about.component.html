@@ -1,10 +1,6 @@
-<div class="about-page font-fritz scroll">
+<div class="about-page scroll font-fritz">
   <!-- Header -->
-  <app-header
-    [showSearch]="true"
-    [showFeatures]="false"
-    [compact]="true"
-  ></app-header>
+  <app-header [showSearch]="true" [showFeatures]="false" [compact]="true"></app-header>
 
   <!-- Page Title -->
   <div class="page-title-section">
@@ -24,15 +20,13 @@
           </div>
           <div class="card-body">
             <p>
-              ArenaNet LLC, Guild Wars and the logo and the backgrounds are registered trademarks.
-              All rights are reserved worldwide.
+              ArenaNet LLC, Guild Wars and the logo and the backgrounds are registered trademarks. All rights are
+              reserved worldwide.
             </p>
+            <p>This site has no official link with ArenaNet LLC or Guild Wars.</p>
             <p>
-              This site has no official link with ArenaNet LLC or Guild Wars.
-            </p>
-            <p>
-              All artwork, screenshots, characters or other recognizable features of the intellectual
-              property relating to these trademarks are likewise the intellectual property of ArenaNet LLC.
+              All artwork, screenshots, characters or other recognizable features of the intellectual property relating
+              to these trademarks are likewise the intellectual property of ArenaNet LLC.
             </p>
           </div>
         </section>
@@ -40,16 +34,21 @@
         <!-- Support Section -->
         <section class="info-card">
           <div class="card-header">
-            <i class="fa fa-headset"></i>
-            <h2>Customer Support & Feedback</h2>
+            <i class="fas fa-lightbulb"></i>
+            <h2>Concept and Philosophy</h2>
           </div>
           <div class="card-body">
-            <p>For assistance or to help us improve, join our Discord community:</p>
-            <a class="link-btn discord" href="https://discord.gg/a4pPyJ3paN" target="_blank">
-              <i class="fab fa-discord"></i>
-              <span>Join Discord Server</span>
-              <i class="fa fa-external-link"></i>
-            </a>
+            <p>
+              The concept of the website is to let player make shop and offer items which will be displayed on the site.
+            </p>
+            <p>
+              Each player then can set his shop online to notify he is available to trade with. (the timer of 15min is
+              arbitrary and not mandatory to get requests)
+            </p>
+            <p>
+              All the items remain visible for one week after their last onlining, and are displayed from newest to
+              oldest in addition of from cheapest to most expensive.
+            </p>
           </div>
         </section>
 
@@ -61,7 +60,8 @@
           </div>
           <div class="card-body">
             <p class="policy-text">
-              Any attempt to circumvent the principles of this site will be strictly prohibited and may result in appropriate action.
+              Any attempt to circumvent the principles of this site will be strictly prohibited and may result in
+              appropriate action.
             </p>
             <div class="policy-warning">
               <i class="fa fa-ban"></i>
@@ -94,7 +94,7 @@
             <div class="partner">
               <div class="partner-info">
                 <h3>GW ToolBox</h3>
-                <p>In-game tools and pricing APIs</p>
+                <p>In-game tools with market support and pricing APIs</p>
               </div>
               <a class="link-btn toolbox" href="https://www.gwtoolbox.com/" target="_blank">
                 <i class="fa fa-toolbox"></i>
@@ -102,6 +102,33 @@
                 <i class="fa fa-external-link"></i>
               </a>
             </div>
+            <div class="partner">
+              <div class="partner-info">
+                <h3>GW Reforged Community</h3>
+                <p>Guides, Tools, Builds, Maps and much more</p>
+              </div>
+              <a class="link-btn toolbox" href="https://guildwarshispano.es/" target="_blank">
+                <i class="fa fa-book-atlas"></i>
+                <span>Website</span>
+                <i class="fa fa-external-link"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-headset"></i>
+            <h2>Customer Support & Feedback</h2>
+          </div>
+          <div class="card-body">
+            <p>For assistance or to help us improve, join our Discord community:</p>
+            <a class="link-btn discord" href="https://discord.gg/a4pPyJ3paN" target="_blank">
+              <i class="fab fa-discord"></i>
+              <span>Join Discord Server</span>
+              <i class="fa fa-external-link"></i>
+            </a>
           </div>
         </section>
 
@@ -116,31 +143,19 @@
             <ul class="roadmap-list">
               <li>
                 <i class="fa fa-circle-dot"></i>
-                <span>Retrieve shop using player name</span>
+                <span>Add charts to track all price historics</span>
               </li>
               <li>
                 <i class="fa fa-circle-dot"></i>
-                <span>Reputation system for shops</span>
+                <span>Refine reputation system</span>
               </li>
               <li>
                 <i class="fa fa-circle-dot"></i>
-                <span>Advanced search filters</span>
+                <span>Extend the messaging system</span>
               </li>
               <li>
                 <i class="fa fa-circle-dot"></i>
-                <span>Dump complete inventory with Daybreak</span>
-              </li>
-              <li>
-                <i class="fa fa-circle-dot"></i>
-                <span>List display for items on home page</span>
-              </li>
-              <li>
-                <i class="fa fa-circle-dot"></i>
-                <span>Pre-formatted message service</span>
-              </li>
-              <li>
-                <i class="fa fa-circle-dot"></i>
-                <span>Link GW ToolBox trader quotes</span>
+                <span>Build more interactions with the game</span>
               </li>
             </ul>
           </div>

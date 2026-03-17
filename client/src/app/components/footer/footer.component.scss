@@ -61,7 +61,7 @@ $parchment: #e8dcc4;
   color: rgba($parchment, 0.5);
   font-size: 11px;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 }
@@ -71,6 +71,16 @@ $parchment: #e8dcc4;
   color: $parchment;
   display: flex;
   gap: 16px;
+
+  div {
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 150ms ease;
+
+    &:hover {
+      color: $gold;
+    }
+  }
 }
 
 .social-link {
@@ -129,7 +139,7 @@ $parchment: #e8dcc4;
   }
 }
 
-@media (max-width: 1375px) {
+@media (max-width: 1400px) {
   .footer-right {
     div {
       display: none;
