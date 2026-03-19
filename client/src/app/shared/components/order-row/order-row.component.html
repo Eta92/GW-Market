@@ -10,14 +10,23 @@
 >
   <!-- Info Boxes Group (expands together) -->
   <div class="info-group">
+    <!-- Unit Price Box -->
+    <div class="info-box price-box" *ngIf="type !== 'auction' && !focusBundle">
+      <span class="box-label">{{ order?.quantity > 1 ? 'EACH' : 'PRICE' }}</span>
+      <div class="box-value-row">
+        <img class="currency-icon" [src]="order.price.type | currencySource" alt="" />
+        <span class="box-value">{{ order.price.price | decimalUnitPrice: order.quantity }}</span>
+      </div>
+    </div>
+
     <!-- Quantity Box -->
-    <div class="info-box qty-box">
+    <div class="info-box qty-box" *ngIf="order?.quantity > 1">
       <span class="box-label">QTY</span>
       <span class="box-value">{{ order.quantity }}</span>
     </div>
 
     <!-- Total Price Box with Currency -->
-    <div class="info-box price-box">
+    <div class="info-box" [ngClass]="{ 'price-box': focusBundle, 'unit-box': !focusBundle }" *ngIf="order?.quantity > 1">
       <span class="box-label">TOTAL</span>
       <div class="box-value-row">
         <img class="currency-icon" [src]="order.price.type | currencySource" alt="" />
@@ -26,9 +35,12 @@
     </div>
 
     <!-- Unit Price Box -->
-    <div class="info-box unit-box" *ngIf="type !== 'auction'">
+    <div class="info-box unit-box" *ngIf="type !== 'auction' && focusBundle">
       <span class="box-label">EACH</span>
-      <span class="box-value">{{ order.price.price | decimalUnitPrice: order.quantity }}</span>
+      <div class="box-value-row">
+        <img class="currency-icon" [src]="order.price.type | currencySource" alt="" />
+        <span class="box-value">{{ order.price.price | decimalUnitPrice: order.quantity }}</span>
+      </div>
     </div>
   </div>
 
@@ -37,9 +49,7 @@
       <!-- Player Info Section -->
       <div class="player-info">
         <span class="player-name">{{ order.player }}</span>
-        <span class="player-time" *ngIf="order.lastRefresh && !order.auction">{{
-          order.lastRefresh | formatLastUpdate
-        }}</span>
+        <span class="player-time" *ngIf="order.lastRefresh && !order.auction">{{ order.lastRefresh | formatLastUpdate }}</span>
         <span class="player-time" *ngIf="order.lastRefresh && order.auction"
           >{{ order.lastRefresh | formatLastUpdate: true }} remaining</span
         >

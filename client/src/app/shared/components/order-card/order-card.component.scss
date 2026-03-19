@@ -162,6 +162,12 @@
   color: $gold-light;
 }
 
+.price-unit {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba($parchment, 0.7);
+}
+
 .order-actions {
   display: flex;
   gap: 0.25rem;

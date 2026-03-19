@@ -28,6 +28,7 @@ export type ViewMode = 'combined' | 'separate';
 })
 export class ItemComponent implements OnInit, OnDestroy {
   public item: Item;
+  public focusBundle = false;
   public allItems: Array<ShopItem> = [];
   public allAuctions: Array<Auction> = [];
   public allOrders: ItemOrders = { sellOrders: [], buyOrders: [], auctions: [] };
@@ -72,6 +73,8 @@ export class ItemComponent implements OnInit, OnDestroy {
     { value: 'meet-over', label: 'Time window', icon: 'fa-hourglass-half' },
     { value: 'negociate', label: 'Negotiate', icon: 'fa-handshake' }
   ];
+
+  private bundleFamilies = ['special', 'consumable', 'tome', 'rune', 'material'];
 
   selectedWhisperOrder: any = null;
   whisperQuantity: number = 1;
@@ -127,6 +130,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       });
       this.storeService.getItemDetails().subscribe((item: Item) => {
         this.item = item;
+        this.focusBundle = this.bundleFamilies.includes(item.family);
         this.addDetails(item);
         this.cdr.detectChanges();
       });

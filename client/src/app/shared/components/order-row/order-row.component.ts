@@ -13,6 +13,7 @@ export class OrderRowComponent implements OnInit {
   @Input() hasNote = false;
   @Input() clickable = true;
   @Input() compact = false;
+  @Input() focusBundle = false;
   @Input() showWeaponDetails = false;
 
   @Output() rowClick = new EventEmitter<ItemOrder>();

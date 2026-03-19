@@ -95,7 +95,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     line-height: 1;
-    margin-bottom: 0.125rem;
+    margin-bottom: 0.25rem;
   }
 
   .box-value {
@@ -215,6 +215,7 @@
   gap: 0.25rem;
   min-width: 32px;
   flex-shrink: 0;
+  margin-right: 8px;
 }
 
 .badge-icon {

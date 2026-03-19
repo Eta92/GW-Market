@@ -32,6 +32,7 @@
       <div class="price-row" *ngFor="let price of order?.prices">
         <img class="price-icon" [src]="price.type | currencySource" />
         <span class="price-amount">{{ price.price }}</span>
+        <span class="price-unit" *ngIf="order?.quantity > 1">({{ price.unit }})</span>
       </div>
     </div>
 

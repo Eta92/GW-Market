@@ -73,11 +73,7 @@
         </div>
 
         <div class="filter-group view-mode-group" *ngIf="orderTypeFilter === 'all'">
-          <app-toggle-group
-            [options]="viewModeOptions"
-            [value]="viewMode"
-            (valueChange)="setViewMode($event)"
-          ></app-toggle-group>
+          <app-toggle-group [options]="viewModeOptions" [value]="viewMode" (valueChange)="setViewMode($event)"></app-toggle-group>
         </div>
 
         <div class="filter-summary">
@@ -111,6 +107,7 @@
                     [type]="'sell'"
                     [hasNote]="!!order.description || hasItemDetails(order)"
                     [showWeaponDetails]="hasItemDetails(order)"
+                    [focusBundle]="focusBundle"
                     (rowClick)="openOrderDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
                     (whisperClick)="whisper($event)"
@@ -147,6 +144,7 @@
                     [type]="'buy'"
                     [hasNote]="!!order.description || hasItemDetails(order)"
                     [showWeaponDetails]="hasItemDetails(order)"
+                    [focusBundle]="focusBundle"
                     (rowClick)="openOrderDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
                     (whisperClick)="whisper($event)"
@@ -183,6 +181,7 @@
                     [type]="'auction'"
                     [hasNote]="!!auction.description || hasItemDetails(auction)"
                     [showWeaponDetails]="hasItemDetails(auction)"
+                    [focusBundle]="focusBundle"
                     (rowClick)="openAuctionDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
                     (whisperClick)="whisper($event)"
@@ -219,9 +218,7 @@
                 >
                   <div class="time-bucket-header">
                     <span class="time-bucket-label">{{ timeToString(timeBucket.time) }}</span>
-                    <span class="time-bucket-count">
-                      {{ timeBucket.sellOrders.length + timeBucket.buyOrders.length }} orders
-                    </span>
+                    <span class="time-bucket-count"> {{ timeBucket.sellOrders.length + timeBucket.buyOrders.length }} orders </span>
                   </div>
 
                   <!-- SELL ORDERS in this time bucket -->
@@ -233,6 +230,7 @@
                       [type]="'sell'"
                       [hasNote]="!!order.description || hasItemDetails(order)"
                       [showWeaponDetails]="hasItemDetails(order)"
+                      [focusBundle]="focusBundle"
                       (rowClick)="openOrderDetail($event)"
                       (submitVote)="reputationVote($event.order, $event.vote)"
                       (whisperClick)="whisper($event)"
@@ -249,6 +247,7 @@
                       [type]="'buy'"
                       [hasNote]="!!order.description || hasItemDetails(order)"
                       [showWeaponDetails]="hasItemDetails(order)"
+                      [focusBundle]="focusBundle"
                       (rowClick)="openOrderDetail($event)"
                       (submitVote)="reputationVote($event.order, $event.vote)"
                       (whisperClick)="whisper($event)"
@@ -281,22 +280,10 @@
 
 <!-- Order Detail Modal -->
 <app-modal [isOpen]="!!selectedOrder" (closed)="closeOrderDetail()" contentClass="order-detail-content-wrapper">
-  <div
-    class="order-detail-content"
-    [class.sell-order]="selectedOrder?.orderType === 0"
-    [class.buy-order]="selectedOrder?.orderType === 1"
-  >
+  <div class="order-detail-content" [class.sell-order]="selectedOrder?.orderType === 0" [class.buy-order]="selectedOrder?.orderType === 1">
     <div class="order-detail-header">
-      <div
-        class="order-type-badge"
-        [class.sell]="selectedOrder?.orderType === 0"
-        [class.buy]="selectedOrder?.orderType === 1"
-      >
-        <i
-          class="fa"
-          [class.fa-arrow-up]="selectedOrder?.orderType === 0"
-          [class.fa-arrow-down]="selectedOrder?.orderType === 1"
-        ></i>
+      <div class="order-type-badge" [class.sell]="selectedOrder?.orderType === 0" [class.buy]="selectedOrder?.orderType === 1">
+        <i class="fa" [class.fa-arrow-up]="selectedOrder?.orderType === 0" [class.fa-arrow-down]="selectedOrder?.orderType === 1"></i>
         {{ selectedOrder?.orderType === 0 ? 'Selling' : 'Buying' }}
       </div>
       <button class="modal-close" (click)="closeOrderDetail()">
@@ -329,9 +316,7 @@
         <div class="detail-price-row unit-price">
           <span class="detail-price-label">Price per item</span>
           <div class="detail-price-value">
-            <span class="detail-price-decimal">{{
-              selectedOrder.price.price | decimalUnitPrice: selectedOrder.quantity
-            }}</span>
+            <span class="detail-price-decimal">{{ selectedOrder.price.price | decimalUnitPrice: selectedOrder.quantity }}</span>
             <span class="detail-price-fraction">({{ selectedOrder.div_price }}:{{ selectedOrder.div_quantity }})</span>
           </div>
         </div>
@@ -343,12 +328,8 @@
           <div>
             <span class="detail-seller-label -mt-1 mb-1 flex">Player</span>
             <div class="detail-seller-badges">
-              <span class="badge online" *ngIf="selectedOrder?.daybreakOnline">
-                <img src="/assets/img/online.png" /> Online
-              </span>
-              <span class="badge certified" *ngIf="selectedOrder?.authCertified">
-                <img src="/assets/img/certified.png" /> Certified
-              </span>
+              <span class="badge online" *ngIf="selectedOrder?.daybreakOnline"> <img src="/assets/img/online.png" /> Online </span>
+              <span class="badge certified" *ngIf="selectedOrder?.authCertified"> <img src="/assets/img/certified.png" /> Certified </span>
             </div>
           </div>
           <div class="detail-seller-value -mt-1.5">
@@ -360,19 +341,11 @@
               <i *ngIf="selectedOrder?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
             ></span>
             <div class="detail-actions-right">
-              <button
-                class="detail-vote-btn positive"
-                (click)="reputationVote(selectedOrder, 'positive')"
-                title="Positive vote"
-              >
+              <button class="detail-vote-btn positive" (click)="reputationVote(selectedOrder, 'positive')" title="Positive vote">
                 <span>{{ selectedOrder?.positives }}</span>
                 <i class="fa fa-thumbs-up"></i>
               </button>
-              <button
-                class="detail-vote-btn negative"
-                (click)="reputationVote(selectedOrder, 'negative')"
-                title="Negative vote"
-              >
+              <button class="detail-vote-btn negative" (click)="reputationVote(selectedOrder, 'negative')" title="Negative vote">
                 <span>{{ selectedOrder?.negatives }}</span>
                 <i class="fa fa-thumbs-down mt-1.5"></i>
               </button>
@@ -437,16 +410,11 @@
           <span class="detail-price-label">Last Bid Price</span>
           <div class="detail-price-value">
             <img [src]="selectedAuction.currency | currencySource" class="detail-currency-icon" />
-            <span class="detail-price-amount">{{
-              selectedAuction.history[selectedAuction.history.length - 1]?.bid
-            }}</span>
+            <span class="detail-price-amount">{{ selectedAuction.history[selectedAuction.history.length - 1]?.bid }}</span>
             <span class="detail-currency-name">{{ selectedAuction.currency | priceToString }}</span>
           </div>
         </div>
-        <div
-          class="detail-price-row"
-          *ngIf="selectedAuction && (!selectedAuction.history || selectedAuction.history?.length === 0)"
-        >
+        <div class="detail-price-row" *ngIf="selectedAuction && (!selectedAuction.history || selectedAuction.history?.length === 0)">
           <span class="detail-price-label">Initial Auction Price</span>
           <div class="detail-price-value">
             <img [src]="selectedAuction.currency | currencySource" class="detail-currency-icon" />
@@ -507,9 +475,7 @@
         <div class="detail-seller-row" *ngIf="selectedAuction?.history?.[selectedAuction.history.length - 1]?.bid">
           <span class="detail-seller-label">Top Bidder</span>
           <span class="detail-seller-history" (click)="toggleAuctionHistory()">history</span>
-          <span class="detail-seller-time">{{
-            selectedAuction.history?.[selectedAuction.history.length - 1]?.bidder
-          }}</span>
+          <span class="detail-seller-time">{{ selectedAuction.history?.[selectedAuction.history.length - 1]?.bidder }}</span>
         </div>
         <ng-container *ngIf="auctionHistoryVisible">
           <div class="detail-seller-row" *ngFor="let bid of selectedAuction?.history?.slice().reverse()">
@@ -518,12 +484,8 @@
               {{ bid.bid }}
             </span>
             <span class="auction-history-time">{{ bid.time | formatLastUpdate }}</span>
-            <span
-              class="auction-history-time"
-              [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }"
-              (click)="goToShop(bid)"
-              >{{ bid?.bidder }}
-              <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+            <span class="auction-history-time" [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }" (click)="goToShop(bid)"
+              >{{ bid?.bidder }} <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
             ></span>
           </div>
         </ng-container>
@@ -615,9 +577,7 @@
     </div>
 
     <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ tradeMessage }}</textarea>
-    <span class="popup-warning"
-      >If you modify the preset message, make sure the change is clearly communicated to the shop owner.</span
-    >
+    <span class="popup-warning">If you modify the preset message, make sure the change is clearly communicated to the shop owner.</span>
     <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
       <i class="fa fa-copy"></i>
       Copy trade message
@@ -647,14 +607,16 @@
       <div class="form-group" [formGroup]="messageForm">
         <div class="message-form" *ngIf="messageType === 'meet-at'">
           <div class="message-description py-1">
-            You have selected the “Time slot” template. Use it to arrange a trade for the selected item at a specific time. Select when you are available and send the message.
+            You have selected the “Time slot” template. Use it to arrange a trade for the selected item at a specific time. Select when you
+            are available and send the message.
           </div>
           <label for="from">Available time</label>
           <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
         </div>
         <div class="message-form" *ngIf="messageType === 'meet-over'">
           <div class="message-description py-1">
-            You have selected the “Time Window” template. Use it to arrange a trade for the selected item within a specific time period. Select the time range in which you are available and send the message.
+            You have selected the “Time Window” template. Use it to arrange a trade for the selected item within a specific time period.
+            Select the time range in which you are available and send the message.
           </div>
           <label for="from">Available From</label>
           <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
@@ -663,7 +625,8 @@
         </div>
         <div class="message-form" *ngIf="messageType === 'negociate'">
           <div class="message-description py-1">
-            You have selected the “Negotiate” template. Use it to negotiate the price of the selected item. Choose the price and currency you find acceptable, then send the message.
+            You have selected the “Negotiate” template. Use it to negotiate the price of the selected item. Choose the price and currency
+            you find acceptable, then send the message.
           </div>
           <label for="negociate">Requested Price</label>
           <input type="number" formControlName="negociate" class="form-input custom-datetime w-full" />
