@@ -30,7 +30,7 @@
         <div class="topbar-divider"></div>
 
         <!-- Sort Group -->
-        <app-sort-order (updateSort)="onUpdateSort($event)"> </app-sort-order>
+        <app-sort-order (updateSort)="onUpdateSort($event)" [linked]="form"> </app-sort-order>
       </div>
 
       <!-- MAIN LAYOUT: Sidebar + Results -->

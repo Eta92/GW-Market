@@ -2,7 +2,7 @@
 .vscode
 .git-old
 .git-crash
-assets/data
+assets/data.json
 client/.angular
 client/dist
 client/node_modules

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { OrderSort } from '@app/models/order.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
@@ -12,6 +12,7 @@ import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
   styleUrls: ['./sort-order.component.scss']
 })
 export class SortOrderComponent implements OnInit {
+  @Input() linked: FormGroup;
   @Output() updateSort = new EventEmitter<OrderSort>();
 
   public form: UntypedFormGroup;
@@ -37,8 +38,17 @@ export class SortOrderComponent implements OnInit {
       sortOrder: ['desc']
     });
 
+    if (!this.linked) {
+      if (localStorage.getItem('sortOrder')) {
+        this.form.patchValue(JSON.parse(localStorage.getItem('sortOrder')));
+      }
+    } else {
+      this.form.patchValue(this.linked.value);
+    }
+
     this.form.valueChanges.subscribe(values => {
       this.updateSort.emit(values);
+      localStorage.setItem('sortOrder', JSON.stringify(values));
     });
   }
 }

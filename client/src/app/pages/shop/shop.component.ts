@@ -128,6 +128,9 @@ export class ShopComponent implements OnInit {
         this.cdr.detectChanges();
       });
     });
+    if (localStorage.getItem('sortOrder')) {
+      this.sortOrder = JSON.parse(localStorage.getItem('sortOrder'));
+    }
   }
 
   // Populate item details for filtering
@@ -459,6 +462,7 @@ export class ShopComponent implements OnInit {
   onSortChange(sortOrder: OrderSort): void {
     this.sortOrder = sortOrder;
     this.updateItemList();
+    localStorage.setItem('sortOrder', JSON.stringify(sortOrder));
   }
 
   hasItemDetails(auction: Auction): boolean {

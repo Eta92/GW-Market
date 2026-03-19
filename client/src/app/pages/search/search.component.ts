@@ -158,10 +158,18 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.form.get('family').valueChanges.subscribe(() => {
       this.form.get('category').setValue(null);
     });
+    this.form.valueChanges.subscribe(value => {
+      localStorage.setItem('searchForm', JSON.stringify(value));
+    });
+    if (localStorage.getItem('searchForm')) {
+      this.form.patchValue(JSON.parse(localStorage.getItem('searchForm')));
+      this.onSearch();
+    }
   }
 
   onUpdateSort(sort: OrderSort): void {
     this.form.patchValue(sort);
+    localStorage.setItem('searchForm', JSON.stringify(this.form.value));
   }
 
   onSearch(): void {
