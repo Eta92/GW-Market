@@ -1,0 +1,70 @@
+// Import shared design system
+@import '../../shared/styles/variables';
+
+// Consistent input height
+$input-height: 36px;
+$topbar-height: 38px;
+
+// Sort Group
+.topbar-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+
+  @media (max-width: 600px) {
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .sort-label {
+    font-size: 0.75rem;
+    color: rgba($parchment, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  // Override toggle group in top bar
+  ::ng-deep .toggle-group {
+    height: $topbar-height !important;
+    padding: 3px;
+    gap: 2px;
+
+    .toggle-btn {
+      height: calc(#{$topbar-height} - 6px) !important;
+      padding: 0 0.75rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  .sort-order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $topbar-height;
+    height: $topbar-height;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba($gold, 0.35);
+    border-radius: 6px;
+    color: $gold;
+    cursor: pointer;
+    transition: all 200ms ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background: rgba($gold, 0.15);
+      border-color: $gold;
+    }
+
+    i {
+      font-size: 0.9rem;
+    }
+  }
+}

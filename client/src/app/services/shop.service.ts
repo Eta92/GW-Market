@@ -94,10 +94,20 @@ export class ShopService {
         };
         this.activeShopSubject.set(shop);
       }
+      // refresh public shop item
+      const publicShop = this.publicShopSubject.value;
+      publicShop.items.forEach(item => {
+        item.item = this.itemService.getItemBase(item.name);
+      });
+      this.publicShopSubject.set(publicShop);
     });
     this.socket.on('GetPublicShop', (shop: Shop) => {
-      this.publicShopSubject.set(shop);
-      this.socket.emit('getPersonalAuctions', shop.auctions);
+      const publicShop = { ...shop };
+      publicShop.items.forEach(item => {
+        item.item = this.itemService.getItemBase(item.name);
+      });
+      this.publicShopSubject.set(publicShop);
+      this.socket.emit('getPersonalAuctions', publicShop.auctions);
     });
   }
 
@@ -105,13 +115,9 @@ export class ShopService {
     const activeShop = this.activeShopSubject.value;
     activeShop.items.push(item);
     this.activeShopSubject.set(activeShop);
-    this.toastrService.success(
-      'Your new item will be visible for customers on next shop update',
-      'Item added to your shop',
-      {
-        timeOut: 10000
-      }
-    );
+    this.toastrService.success('Your new item will be visible for customers on next shop update', 'Item added to your shop', {
+      timeOut: 10000
+    });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
   }
@@ -153,13 +159,9 @@ export class ShopService {
     const activeShop = this.activeShopSubject.value;
     activeShop.items.splice(index, 1);
     this.activeShopSubject.set(activeShop);
-    this.toastrService.success(
-      'The item will be cleared from item lists on next shop update',
-      'Item removed from the shop',
-      {
-        timeOut: 10000
-      }
-    );
+    this.toastrService.success('The item will be cleared from item lists on next shop update', 'Item removed from the shop', {
+      timeOut: 10000
+    });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
   }
@@ -176,13 +178,9 @@ export class ShopService {
       }))
     };
     this.activeShopSubject.set(activeShop);
-    this.toastrService.success(
-      'The item will be cleared from item lists on next shop update',
-      'Item amount reduced from the shop',
-      {
-        timeOut: 10000
-      }
-    );
+    this.toastrService.success('The item will be cleared from item lists on next shop update', 'Item amount reduced from the shop', {
+      timeOut: 10000
+    });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
   }
@@ -322,13 +320,9 @@ export class ShopService {
         comment: comment || ''
       });
     } else {
-      this.toastrService.error(
-        'You need to have an active shop with certified characters to submit reputation votes.',
-        '',
-        {
-          timeOut: 15000
-        }
-      );
+      this.toastrService.error('You need to have an active shop with certified characters to submit reputation votes.', '', {
+        timeOut: 15000
+      });
     }
   }
 

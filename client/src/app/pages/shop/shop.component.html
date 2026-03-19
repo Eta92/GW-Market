@@ -30,12 +30,8 @@
           <span class="player-label">{{ showcase ? 'SHOP OF' : showCandle ? 'SHOP LIVE' : 'MY SHOP' }}</span>
           <h1 class="player-name">{{ shop?.player || 'No Player' }}</h1>
           <div class="player-badges" *ngIf="shop?.daybreakOnline || shop?.authCertified">
-            <span class="badge online" *ngIf="shop?.daybreakOnline">
-              <img src="../../../assets/img/online.png" /> Online
-            </span>
-            <span class="badge certified" *ngIf="shop?.authCertified">
-              <img src="../../../assets/img/certified.png" /> Certified
-            </span>
+            <span class="badge online" *ngIf="shop?.daybreakOnline"> <img src="../../../assets/img/online.png" /> Online </span>
+            <span class="badge certified" *ngIf="shop?.authCertified"> <img src="../../../assets/img/certified.png" /> Certified </span>
           </div>
         </div>
 
@@ -65,12 +61,7 @@
         </div>
 
         <!-- Enable/Stop Toggle -->
-        <button
-          *ngIf="!showcase"
-          class="shop-toggle-btn"
-          [class.active]="showCandle"
-          (click)="showCandle ? stopShop() : refreshShop()"
-        >
+        <button *ngIf="!showcase" class="shop-toggle-btn" [class.active]="showCandle" (click)="showCandle ? stopShop() : refreshShop()">
           <i class="fa" [class.fa-power-off]="!showCandle" [class.fa-stop]="showCandle"></i>
           <span>{{ showCandle ? 'Stop shop' : 'Update shop' }}</span>
         </button>
@@ -125,13 +116,7 @@
             <span>Public Link</span>
           </button>
 
-          <textarea
-            *ngIf="showLink"
-            class="sidebar-action-btn col-span-2 h-[70px]"
-            #area
-            (focus)="area.select()"
-            readonly
-          >
+          <textarea *ngIf="showLink" class="sidebar-action-btn col-span-2 h-[70px]" #area (focus)="area.select()" readonly>
 https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           >
         </div>
@@ -154,7 +139,8 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     <div class="content-area">
       <!-- FILTER BAR -->
       <section class="filter-bar">
-        <app-filter-order (updateFilter)="onFilterChange($event)"></app-filter-order>
+        <app-filter-order (updateFilter)="onFilterChange($event)" [simple]="true"></app-filter-order>
+        <app-sort-order (updateSort)="onSortChange($event)"></app-sort-order>
         <div class="view-options">
           <button
             class="view-option-btn"
@@ -319,8 +305,8 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     <div class="order-detail-body">
       <!-- Item Info -->
       <div class="detail-item-info">
-        To import your item from the game you need to use a custom launcher because base game do not include any
-        external access. The custom launcher working with GW Market is named Daybreak.
+        To import your item from the game you need to use a custom launcher because base game do not include any external access. The custom
+        launcher working with GW Market is named Daybreak.
       </div>
     </div>
 
@@ -373,11 +359,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
 
 <!-- Player Selection Modal -->
 <app-modal [isOpen]="playerOpen" (closed)="playerOpen = false">
-  <app-active-player
-    [shop]="shop"
-    (closeEdit)="playerOpen = false"
-    (confirmPlayer)="onConfirmPlayer($event)"
-  ></app-active-player>
+  <app-active-player [shop]="shop" (closeEdit)="playerOpen = false" (confirmPlayer)="onConfirmPlayer($event)"></app-active-player>
 </app-modal>
 
 <!-- Order Detail Modal -->
@@ -396,11 +378,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     <div class="order-detail-body">
       <!-- Item Info -->
       <div class="detail-item-row">
-        <img
-          class="detail-item-img"
-          [src]="getImageSource(auctionDisplay?.item?.name)"
-          [alt]="auctionDisplay?.item?.name"
-        />
+        <img class="detail-item-img" [src]="getImageSource(auctionDisplay?.item?.name)" [alt]="auctionDisplay?.item?.name" />
         <div class="detail-item-info">
           <span class="detail-item-name">{{ auctionDisplay?.item?.name }}</span>
           <span class="detail-item-qty">Quantity: <strong>1</strong></span>
@@ -413,16 +391,11 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           <span class="detail-price-label">Last Bid Price</span>
           <div class="detail-price-value">
             <img [src]="auctionDisplay.currency | currencySource" class="detail-currency-icon" />
-            <span class="detail-price-amount">{{
-              auctionDisplay.history[auctionDisplay.history.length - 1]?.bid
-            }}</span>
+            <span class="detail-price-amount">{{ auctionDisplay.history[auctionDisplay.history.length - 1]?.bid }}</span>
             <span class="detail-currency-name">{{ auctionDisplay.currency | priceToString }}</span>
           </div>
         </div>
-        <div
-          class="detail-price-row"
-          *ngIf="auctionDisplay && (!auctionDisplay.history || auctionDisplay.history?.length === 0)"
-        >
+        <div class="detail-price-row" *ngIf="auctionDisplay && (!auctionDisplay.history || auctionDisplay.history?.length === 0)">
           <span class="detail-price-label">Initial Auction Price</span>
           <div class="detail-price-value">
             <img [src]="auctionDisplay.currency | currencySource" class="detail-currency-icon" />
@@ -479,9 +452,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
         <div class="detail-seller-row" *ngIf="auctionDisplay?.history?.[auctionDisplay.history.length - 1]?.bid">
           <span class="detail-seller-label">Top Bidder</span>
           <span class="detail-seller-history" (click)="toggleAuctionHistory()">history</span>
-          <span class="detail-seller-time">{{
-            auctionDisplay.history?.[auctionDisplay.history.length - 1]?.bidder
-          }}</span>
+          <span class="detail-seller-time">{{ auctionDisplay.history?.[auctionDisplay.history.length - 1]?.bidder }}</span>
         </div>
         <ng-container *ngIf="auctionHistoryVisible">
           <div class="detail-seller-row" *ngFor="let bid of auctionDisplay?.history?.slice().reverse()">
@@ -490,12 +461,8 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
               {{ bid.bid }}
             </span>
             <span class="auction-history-time">{{ bid.time | formatLastUpdate }}</span>
-            <span
-              class="auction-history-time"
-              [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }"
-              (click)="goToShop(bid)"
-              >{{ bid?.bidder }}
-              <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+            <span class="auction-history-time" [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }" (click)="goToShop(bid)"
+              >{{ bid?.bidder }} <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
             ></span>
           </div>
         </ng-container>
@@ -519,10 +486,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
       </div>
     </div>
 
-    <div
-      class="order-detail-footer"
-      *ngIf="auctionDisplay && !auctionDisplay.active && auctionDisplay.history?.length > 0"
-    >
+    <div class="order-detail-footer" *ngIf="auctionDisplay && !auctionDisplay.active && auctionDisplay.history?.length > 0">
       <button class="detail-whisper-btn" (click)="contactWinner(auctionDisplay)">
         <i class="fa fa-gavel"></i>
         Contact Winner

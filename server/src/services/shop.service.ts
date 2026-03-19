@@ -1,10 +1,10 @@
-import { Item, OrderType, Price, Shop, ShopItem, ShopPrice } from '../models/shop.model';
+import { nanoid } from 'nanoid';
+import { Server as SocketServer } from 'socket.io';
+import { PriceInspection } from '../models/inspection.model';
 import { SearchAggregations, SearchFilter, SearchResult, SearchResultOrder } from '../models/search.model';
+import { Item, OrderType, Price, Shop, ShopItem, ShopPrice } from '../models/shop.model';
 import { TimeOrderCounts } from '../models/tree.model';
 import { ItemService } from './item.service';
-import { Server as SocketServer } from 'socket.io';
-import { nanoid } from 'nanoid';
-import { PriceInspection } from '../models/inspection.model';
 
 // Time thresholds in milliseconds
 const TIME_ONLINE = 1000 * 60 * 15; // 15 minutes
@@ -560,7 +560,7 @@ export class ShopService {
   private static sortSearchOrders(orders: SearchResultOrder[], filter: SearchFilter): void {
     const sortBy = filter.sortBy || 'time';
     const sortOrder = filter.sortOrder || 'desc';
-    const multiplier = sortOrder === 'asc' ? 1 : -1;
+    const multiplier = sortOrder === 'asc' ? -1 : 1;
 
     orders.sort((a, b) => {
       switch (sortBy) {

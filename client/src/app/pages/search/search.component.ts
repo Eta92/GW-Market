@@ -1,15 +1,15 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { SearchFilter, SearchResult, SearchResultOrder, Time } from '@app/models/order.model';
+import { OrderSort, SearchFilter, SearchResult, SearchResultOrder, Time } from '@app/models/order.model';
 import { OrderType, Price } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -43,14 +43,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     { value: 'online', label: 'Online', icon: 'fa-circle', styleClass: 'online' },
     { value: 'today', label: 'Today', icon: 'fa-sun', styleClass: 'today' },
     { value: 'week', label: 'This Week', icon: 'fa-calendar', styleClass: 'week' }
-  ];
-
-  public sortByOptions: ToggleOption[] = [
-    { value: 'time', label: 'Recent' },
-    { value: 'price', label: 'Total Price' },
-    { value: 'priceEach', label: 'Unit Price' },
-    { value: 'quantity', label: 'Quantity' },
-    { value: 'name', label: 'Name' }
   ];
 
   public currencyOptions: ToggleOption[] = [
@@ -166,6 +158,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.form.get('family').valueChanges.subscribe(() => {
       this.form.get('category').setValue(null);
     });
+  }
+
+  onUpdateSort(sort: OrderSort): void {
+    this.form.patchValue(sort);
   }
 
   onSearch(): void {

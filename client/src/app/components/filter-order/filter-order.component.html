@@ -3,12 +3,7 @@
   <div class="filter-group search-group">
     <div class="filter-input-wrapper">
       <i class="fa fa-search"></i>
-      <input
-        type="text"
-        formControlName="name"
-        placeholder="Search orders..."
-        class="filter-input"
-      />
+      <input type="text" formControlName="name" placeholder="Search orders..." class="filter-input" />
     </div>
   </div>
 
@@ -45,27 +40,13 @@
   <!-- Requirement Range (Only for weapon/unique families) -->
   <div class="filter-group req-group" *ngIf="showReqFilter">
     <span class="req-label">Req.</span>
-    <input
-      type="number"
-      class="filter-input-small"
-      formControlName="reqMin"
-      min="0"
-      max="13"
-      placeholder="0"
-    />
+    <input type="number" class="filter-input-small" formControlName="reqMin" min="0" max="13" placeholder="0" />
     <span class="req-separator">-</span>
-    <input
-      type="number"
-      class="filter-input-small"
-      formControlName="reqMax"
-      min="0"
-      max="13"
-      placeholder="13"
-    />
+    <input type="number" class="filter-input-small" formControlName="reqMax" min="0" max="13" placeholder="13" />
   </div>
 
   <!-- Upgrade-specific Filters (Only for upgrade family) -->
-  <div class="filter-group upgrade-filters" *ngIf="showUpgradeFilters">
+  <div class="filter-group upgrade-filters" *ngIf="showUpgradeFilters && !simple">
     <select class="filter-select" formControlName="core">
       <option [ngValue]="null">Inscription...</option>
       <option *ngFor="let core of getCores()" [ngValue]="core">{{ core }}</option>

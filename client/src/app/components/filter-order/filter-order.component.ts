@@ -1,10 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { OrderFilter } from '@app/models/order.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
-import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
+import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
 
 @Component({
   selector: 'app-filter-order',
@@ -12,6 +12,7 @@ import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.c
   styleUrls: ['./filter-order.component.scss']
 })
 export class FilterOrderComponent implements OnInit {
+  @Input() simple = false;
   @Output() updateFilter = new EventEmitter<OrderFilter>();
 
   public form: UntypedFormGroup;

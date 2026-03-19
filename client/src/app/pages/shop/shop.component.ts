@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { Auction, AuctionHistory } from '@app/models/auction.model';
-import { OrderFilter } from '@app/models/order.model';
+import { OrderFilter, OrderSort } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
 import { Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
@@ -52,6 +52,10 @@ export class ShopComponent implements OnInit {
     core: null,
     prefix: null,
     suffix: null
+  };
+  public sortOrder: OrderSort = {
+    sortBy: 'time',
+    sortOrder: 'desc'
   };
 
   public playerControl: UntypedFormControl = new UntypedFormControl('');
@@ -452,6 +456,11 @@ export class ShopComponent implements OnInit {
     this.updateItemList();
   }
 
+  onSortChange(sortOrder: OrderSort): void {
+    this.sortOrder = sortOrder;
+    this.updateItemList();
+  }
+
   hasItemDetails(auction: Auction): boolean {
     return WeaponHelper.hasItemDetails(auction.item.item, auction.item);
   }
@@ -546,7 +555,35 @@ export class ShopComponent implements OnInit {
       return true;
     });
 
-    this.sellOrders = filteredItem.filter(si => si.orderType === OrderType.SELL);
-    this.buyOrders = filteredItem.filter(si => si.orderType === OrderType.BUY);
+    let sortedOrders = [...filteredItem];
+    if (this.sortOrder.sortBy === 'time' && this.sortOrder.sortOrder === 'asc') {
+      sortedOrders = [...filteredItem].reverse();
+    } else {
+      const multiplier = this.sortOrder.sortOrder === 'asc' ? -1 : 1;
+      sortedOrders.sort((a, b) => {
+        switch (this.sortOrder.sortBy) {
+          case 'name':
+            return multiplier * a.name.localeCompare(b.name);
+          case 'quantity':
+            return multiplier * (a.quantity - b.quantity);
+          case 'price': {
+            return multiplier * ((a.prices[0]?.price || 0) - (b.prices[0]?.price || 0));
+          }
+          case 'priceEach': {
+            const priceA = a.prices[0]?.price || 0;
+            const priceB = b.prices[0]?.price || 0;
+            const eachA = priceA / (a.quantity || 1);
+            const eachB = priceB / (b.quantity || 1);
+            return multiplier * (eachA - eachB);
+          }
+          default:
+            return 0;
+        }
+      });
+    }
+
+    this.sellOrders = sortedOrders.filter(si => si.orderType === OrderType.SELL);
+    this.buyOrders = sortedOrders.filter(si => si.orderType === OrderType.BUY);
+    this.cdr.detectChanges();
   }
 }

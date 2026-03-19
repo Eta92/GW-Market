@@ -77,6 +77,11 @@ export interface OrderFilter {
   suffix: string;
 }
 
+export interface OrderSort {
+  sortBy: string;
+  sortOrder: 'asc' | 'desc';
+}
+
 // ================================
 // GLOBAL SEARCH TYPES
 // ================================

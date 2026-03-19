@@ -30,26 +30,7 @@
         <div class="topbar-divider"></div>
 
         <!-- Sort Group -->
-        <div class="topbar-sort">
-          <span class="sort-label">Sort:</span>
-          <app-toggle-group
-            [options]="sortByOptions"
-            [value]="form.get('sortBy')?.value"
-            (valueChange)="form.patchValue({ sortBy: $event })"
-          ></app-toggle-group>
-          <button
-            type="button"
-            class="sort-order-btn"
-            (click)="form.patchValue({ sortOrder: form.get('sortOrder')?.value === 'asc' ? 'desc' : 'asc' })"
-            [title]="form.get('sortOrder')?.value === 'asc' ? 'Ascending' : 'Descending'"
-          >
-            <i
-              class="fa"
-              [class.fa-sort-amount-up]="form.get('sortOrder')?.value === 'asc'"
-              [class.fa-sort-amount-down]="form.get('sortOrder')?.value === 'desc'"
-            ></i>
-          </button>
-        </div>
+        <app-sort-order (updateSort)="onUpdateSort($event)"> </app-sort-order>
       </div>
 
       <!-- MAIN LAYOUT: Sidebar + Results -->
@@ -251,9 +232,7 @@
                 <span class="meta-item sell">
                   <i class="fa fa-arrow-up"></i> {{ searchResult.aggregations.byOrderType.sell }} selling
                 </span>
-                <span class="meta-item buy">
-                  <i class="fa fa-arrow-down"></i> {{ searchResult.aggregations.byOrderType.buy }} buying
-                </span>
+                <span class="meta-item buy"> <i class="fa fa-arrow-down"></i> {{ searchResult.aggregations.byOrderType.buy }} buying </span>
               </div>
             </div>
 
@@ -268,11 +247,7 @@
                 (click)="goToItem(order)"
               >
                 <!-- Order Badge -->
-                <div
-                  class="card-badge"
-                  [class.sell]="order.orderType === OrderType.SELL"
-                  [class.buy]="order.orderType === OrderType.BUY"
-                >
+                <div class="card-badge" [class.sell]="order.orderType === OrderType.SELL" [class.buy]="order.orderType === OrderType.BUY">
                   {{ order.orderType === OrderType.SELL ? 'WTS' : 'WTB' }}
                 </div>
 
@@ -299,10 +274,7 @@
                 </div>
 
                 <!-- Special Flags (Pre-Searing, Dedicated) -->
-                <div
-                  class="card-special-flags"
-                  *ngIf="order.preSearing || order.legacy || order.dedicated !== undefined"
-                >
+                <div class="card-special-flags" *ngIf="order.preSearing || order.legacy || order.dedicated !== undefined">
                   <span class="flag-pre" *ngIf="order.preSearing">Pre-Searing</span>
                   <span class="flag-legacy" *ngIf="order.legacy">Pre-Nerf</span>
                   <span class="flag-ded" *ngIf="order.dedicated === true">Dedicated</span>
@@ -312,15 +284,9 @@
                 <!-- Prices -->
                 <div class="card-prices">
                   <div class="price-row" *ngFor="let price of order.prices">
-                    <img
-                      class="currency-icon"
-                      [src]="getCurrencySource(price.type)"
-                      [alt]="priceToString(price.type)"
-                    />
+                    <img class="currency-icon" [src]="getCurrencySource(price.type)" [alt]="priceToString(price.type)" />
                     <span class="price-amount">{{ price.price }}</span>
-                    <span class="price-each" *ngIf="getUnitPrice(price.price, order.quantity) as unitPrice">
-                      · {{ unitPrice }} ea
-                    </span>
+                    <span class="price-each" *ngIf="getUnitPrice(price.price, order.quantity) as unitPrice"> · {{ unitPrice }} ea </span>
                   </div>
                 </div>
 

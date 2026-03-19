@@ -1,0 +1,20 @@
+<div class="topbar-sort" [formGroup]="form">
+  <span class="sort-label">Sort:</span>
+  <app-toggle-group
+    [options]="sortByOptions"
+    [value]="form.get('sortBy')?.value"
+    (valueChange)="form.patchValue({ sortBy: $event })"
+  ></app-toggle-group>
+  <button
+    type="button"
+    class="sort-order-btn"
+    (click)="form.patchValue({ sortOrder: form.get('sortOrder')?.value === 'asc' ? 'desc' : 'asc' })"
+    [title]="form.get('sortOrder')?.value === 'asc' ? 'Ascending' : 'Descending'"
+  >
+    <i
+      class="fa"
+      [class.fa-sort-amount-up]="form.get('sortOrder')?.value === 'asc'"
+      [class.fa-sort-amount-down]="form.get('sortOrder')?.value === 'desc'"
+    ></i>
+  </button>
+</div>
