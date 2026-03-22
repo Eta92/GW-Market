@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public loading = false;
   public hasSearched = false;
   public sidebarOpen = false;
+  public isAdvanced = false;
 
   public OrderType = OrderType;
   public Price = Price;
@@ -149,6 +150,8 @@ export class SearchComponent implements OnInit, OnDestroy {
       priceMax: [null],
       priceEachMin: [null],
       priceEachMax: [null],
+      goldMin: [null],
+      goldMax: [null],
       timeRange: ['all'],
       onlineOnly: [false],
       certifiedOnly: [false],
@@ -210,6 +213,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (f.priceMax) filter.priceMax = Number(f.priceMax);
     if (f.priceEachMin) filter.priceEachMin = Number(f.priceEachMin);
     if (f.priceEachMax) filter.priceEachMax = Number(f.priceEachMax);
+    if (f.goldMin) filter.goldMin = Number(f.goldMin);
+    if (f.goldMax) filter.goldMax = Number(f.goldMax);
     if (f.timeRange && f.timeRange !== 'all') filter.timeRange = f.timeRange;
     if (f.onlineOnly) filter.onlineOnly = true;
     if (f.certifiedOnly) filter.certifiedOnly = true;

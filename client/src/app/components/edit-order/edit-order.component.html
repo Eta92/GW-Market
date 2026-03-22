@@ -242,7 +242,7 @@
             ></app-toggle-group>
           </div>
           <div class="form-group">
-            <label>Pre-Nerf Item</label>
+            <label>Pre-Nerf Item *</label>
             <app-toggle-group
               [options]="[
                 { value: false, label: 'Normal' },
@@ -251,6 +251,17 @@
               [value]="formOther.get('legacy')?.value"
               (valueChange)="formOther.patchValue({ legacy: $event })"
             ></app-toggle-group>
+          </div>
+        </div>
+        <div class="form-row mt-2">
+          <div class="form-group">
+            <label>Vendor gold value</label>
+            <input type="number" class="form-input" formControlName="goldPrice" min="0" placeholder="0" />
+          </div>
+          <div class="form-group">
+            <div class="explicative mt-7">
+              * Very old items pre-ballancing including modifiers no longer available and lower requirements.
+            </div>
           </div>
         </div>
         <div class="form-group mt-2">

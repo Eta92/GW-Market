@@ -139,24 +139,44 @@
             </div>
           </ng-container>
 
-          <!-- Pre-Searing -->
-          <div class="sidebar-section">
-            <label class="section-label">Pre-Searing</label>
-            <app-toggle-group
-              [options]="preSearingOptions"
-              [value]="form.get('preSearing')?.value"
-              (valueChange)="form.patchValue({ preSearing: $event })"
-            ></app-toggle-group>
-          </div>
+          <!-- Advanced Settings -->
+          <div class="advanced-section">
+            <div class="advanced-toggle" (click)="isAdvanced = !isAdvanced">
+              <i class="fa fa-gear"></i>
+              <span>Advanced Options</span>
+              <i class="fa" [class.fa-chevron-down]="!isAdvanced" [class.fa-chevron-up]="isAdvanced"></i>
+            </div>
+            <div class="advanced-content" *ngIf="isAdvanced">
+              <!-- Pre-Searing -->
+              <div class="sidebar-section">
+                <label class="section-label">Pre-Searing</label>
+                <app-toggle-group
+                  [options]="preSearingOptions"
+                  [value]="form.get('preSearing')?.value"
+                  (valueChange)="form.patchValue({ preSearing: $event })"
+                ></app-toggle-group>
+              </div>
 
-          <!-- Pre-Nerf -->
-          <div class="sidebar-section">
-            <label class="section-label">Pre-Nerf</label>
-            <app-toggle-group
-              [options]="preNerfOptions"
-              [value]="form.get('legacy')?.value"
-              (valueChange)="form.patchValue({ legacy: $event })"
-            ></app-toggle-group>
+              <!-- Pre-Nerf -->
+              <div class="sidebar-section">
+                <label class="section-label">Pre-Nerf</label>
+                <app-toggle-group
+                  [options]="preNerfOptions"
+                  [value]="form.get('legacy')?.value"
+                  (valueChange)="form.patchValue({ legacy: $event })"
+                ></app-toggle-group>
+              </div>
+
+              <!-- Gold Price -->
+              <div class="sidebar-section">
+                <label class="section-label">Gold Price</label>
+                <div class="range-inputs">
+                  <input type="number" formControlName="goldMin" placeholder="Min" class="filter-input" min="0" />
+                  <span class="range-separator">to</span>
+                  <input type="number" formControlName="goldMax" placeholder="Max" class="filter-input" min="0" />
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Currency -->

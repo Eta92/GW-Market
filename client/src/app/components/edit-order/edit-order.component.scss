@@ -769,6 +769,13 @@
   }
 }
 
+.explicative {
+  text-align: justify;
+  font-size: 0.75rem;
+  color: rgba($parchment, 0.5);
+  font-style: italic;
+}
+
 // Advanced Section
 .advanced-section {
   .advanced-toggle {

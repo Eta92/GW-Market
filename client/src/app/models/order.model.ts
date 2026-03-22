@@ -121,6 +121,8 @@ export interface SearchFilter {
   priceMax?: number;
   priceEachMin?: number;
   priceEachMax?: number;
+  goldMin?: number;
+  goldMax?: number;
 
   // Time/status filters
   timeRange?: 'online' | 'today' | 'week' | 'all';

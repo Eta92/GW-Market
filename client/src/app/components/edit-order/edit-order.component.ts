@@ -103,7 +103,8 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       dedicated: [false],
       legacy: [false],
       pre: [false],
-      note: ['']
+      note: [''],
+      goldPrice: [null, Validators.min(0)]
     });
     if (this.original) {
       this.loadOrder(this.original);
