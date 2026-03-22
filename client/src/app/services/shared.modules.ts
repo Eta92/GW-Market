@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PipeModule } from '@app/pipes/pipe.module';
 import { CurrencyDropdownComponent } from '@app/shared/components/currency-dropdown/currency-dropdown.component';
 import { ItemDetailsComponent } from '@app/shared/components/item-details/item-details.component';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
@@ -37,7 +38,7 @@ const SHARED_COMPONENTS = [
 
 @NgModule({
   declarations: [...SHARED_COMPONENTS],
-  imports: [CommonModule],
+  imports: [CommonModule, PipeModule],
   exports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule, ...SHARED_COMPONENTS]
 })
 export class SharedModule {}

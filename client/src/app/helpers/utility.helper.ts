@@ -1,5 +1,5 @@
 import { ItemOrder, Time } from '@app/models/order.model';
-import { Item, Price, ShopItem } from '@app/models/shop.model';
+import { Item, Price, ShopItem, ShopPrice } from '@app/models/shop.model';
 
 export class UtilityHelper {
   static copy(item): any {
@@ -218,6 +218,19 @@ export class UtilityHelper {
       return Time.TODAY;
     } else {
       return Time.WEEK;
+    }
+  }
+
+  public static relativePrice(price: ShopPrice): number {
+    switch (price.type) {
+      case Price.PLAT:
+      case Price.BD:
+        return price.price;
+      case Price.ECTO:
+      case Price.ZKEY:
+        return price.price * 10;
+      case Price.ARM:
+        return price.price * 100;
     }
   }
 }

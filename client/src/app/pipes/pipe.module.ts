@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { DatePipe, EnumToArrayPipe, EnumToKeyValuePipe, TimePipe } from './utility.pipe';
+import { DatePipe, EnumToArrayPipe, EnumToKeyValuePipe, MaxDigitPipe, TimePipe } from './utility.pipe';
 
 @NgModule({
-  declarations: [EnumToArrayPipe, EnumToKeyValuePipe, DatePipe, TimePipe],
-  exports: [EnumToArrayPipe, EnumToKeyValuePipe, DatePipe, TimePipe]
+  declarations: [EnumToArrayPipe, EnumToKeyValuePipe, DatePipe, TimePipe, MaxDigitPipe],
+  exports: [EnumToArrayPipe, EnumToKeyValuePipe, DatePipe, TimePipe, MaxDigitPipe]
 })
 export class PipeModule {}

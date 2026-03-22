@@ -53,3 +53,17 @@ export class EnumToKeyValuePipe implements PipeTransform {
     return array;
   }
 }
+
+@Pipe({
+  name: 'maxDigit'
+})
+export class MaxDigitPipe implements PipeTransform {
+  transform(value: number, maxDigits: number): string {
+    if (value === null || value === undefined) {
+      return null;
+    }
+    return Intl.NumberFormat(navigator.language, {
+      maximumFractionDigits: maxDigits
+    }).format(value);
+  }
+}

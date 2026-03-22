@@ -495,6 +495,8 @@ export class ShopComponent implements OnInit {
     }
   }
 
+  private relativePrice = UtilityHelper.relativePrice;
+
   updateItemList(): void {
     if (!this.shop?.items) return;
     const filteredItem = this.shop.items.filter(item => {
@@ -571,11 +573,11 @@ export class ShopComponent implements OnInit {
           case 'quantity':
             return multiplier * (a.quantity - b.quantity);
           case 'price': {
-            return multiplier * ((a.prices[0]?.price || 0) - (b.prices[0]?.price || 0));
+            return multiplier * ((this.relativePrice(a.prices[0]) || 0) - (this.relativePrice(b.prices[0]) || 0));
           }
           case 'priceEach': {
-            const priceA = a.prices[0]?.price || 0;
-            const priceB = b.prices[0]?.price || 0;
+            const priceA = this.relativePrice(a.prices[0]) || 0;
+            const priceB = this.relativePrice(b.prices[0]) || 0;
             const eachA = priceA / (a.quantity || 1);
             const eachB = priceB / (b.quantity || 1);
             return multiplier * (eachA - eachB);

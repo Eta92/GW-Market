@@ -189,6 +189,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     return UtilityHelper.getTimeCategory(item.endTime, true);
   }
 
+  private relativePrice = UtilityHelper.relativePrice;
   parseOrders(items: Array<ShopItem>, sorting: boolean): Array<ItemPriceList> {
     const itemPriceLists: Array<ItemPriceList> = [];
     items.forEach(item => {
@@ -229,8 +230,8 @@ export class ItemComponent implements OnInit, OnDestroy {
       il.orders.forEach(tl => {
         tl.orders.sort((a, b) => {
           return sorting
-            ? a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh
-            : b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh;
+            ? this.relativePrice(a.price) / a.quantity - this.relativePrice(b.price) / b.quantity || b.lastRefresh - a.lastRefresh
+            : this.relativePrice(b.price) / b.quantity - this.relativePrice(a.price) / a.quantity || b.lastRefresh - a.lastRefresh;
         });
       });
     });
@@ -375,9 +376,13 @@ export class ItemComponent implements OnInit, OnDestroy {
     currencyMap.forEach(currencyGroup => {
       currencyGroup.timeBuckets.forEach(timeBucket => {
         // Sell orders: lowest price first (best deal for buyer)
-        timeBucket.sellOrders.sort((a, b) => a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh);
+        timeBucket.sellOrders.sort(
+          (a, b) => this.relativePrice(a.price) / a.quantity - this.relativePrice(b.price) / b.quantity || b.lastRefresh - a.lastRefresh
+        );
         // Buy orders: highest price first (best deal for seller)
-        timeBucket.buyOrders.sort((a, b) => b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh);
+        timeBucket.buyOrders.sort(
+          (a, b) => this.relativePrice(b.price) / b.quantity - this.relativePrice(a.price) / a.quantity || b.lastRefresh - a.lastRefresh
+        );
         // Auctions: most recent first
         timeBucket.auctions.sort((a, b) => a.lastRefresh - b.lastRefresh);
       });
@@ -542,7 +547,9 @@ export class ItemComponent implements OnInit, OnDestroy {
 
     // Sort orders within each time bucket by unit price (lowest first for sell)
     timeMap.forEach(orders => {
-      orders.sort((a, b) => a.price.price / a.quantity - b.price.price / b.quantity || b.lastRefresh - a.lastRefresh);
+      orders.sort(
+        (a, b) => this.relativePrice(a.price) / a.quantity - this.relativePrice(b.price) / b.quantity || b.lastRefresh - a.lastRefresh
+      );
     });
 
     return [Time.ONLINE, Time.TODAY, Time.WEEK]
