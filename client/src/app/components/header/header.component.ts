@@ -95,6 +95,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/item', item.name]);
   }
 
+  onSelectShop(shop: string): void {
+    this.router.navigate(['/shop/showcase'], { queryParams: { public: shop } });
+  }
+
   // order
 
   onPlaceOrder(): void {

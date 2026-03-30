@@ -22,6 +22,12 @@ export interface Shop {
   auctions?: Array<string>;
 }
 
+export interface ShopLink {
+  name: string;
+  publicId: string;
+  match?: number;
+}
+
 export interface ShopReputation {
   positive: number;
   negative: number;

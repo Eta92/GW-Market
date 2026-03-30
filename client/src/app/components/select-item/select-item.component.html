@@ -11,15 +11,14 @@
       (keydown)="manualTargeting($event)"
       (click)="inputClick(); $event.stopPropagation()"
     />
-    <span *ngIf="searchControl.value" class="search-hint">
-      Press Enter to search
-    </span>
+    <span *ngIf="searchControl.value" class="search-hint"> Press Enter to search </span>
   </div>
 
   <!-- Dropdown Results - Positioned relative to container -->
   <div
-    *ngIf="searchedItems.length > 0 && searchOpen"
+    *ngIf="(searchedItems.length > 0 || searchedShops.length > 0) && searchOpen"
     class="search-dropdown"
+    (mouseleave)="searchOpen = false"
   >
     <div
       class="search-result"
@@ -29,17 +28,29 @@
     >
       <div class="result-info">
         <span class="result-name">
-          <b>{{ item.name.substring(0, item.match) }}</b>{{ item.name.substring(item.match) }}
+          <b>{{ item.name.substring(0, item.match) }}</b
+          >{{ item.name.substring(item.match) }}
         </span>
       </div>
       <img class="result-image" [src]="getImageSource(item)" [alt]="item.name" />
     </div>
-  </div>
-</div>
 
-<!-- Backdrop to close dropdown -->
-<div
-  *ngIf="searchOpen"
-  class="search-backdrop"
-  (click)="close()"
-></div>
+    <div
+      class="search-result"
+      [class.highlighted]="manualTarget === searchedItems.length + j + 1"
+      *ngFor="let shop of searchedShops; let j = index"
+      (click)="onClickShop(shop)"
+    >
+      <div class="result-info">
+        <span class="result-name">
+          <b>{{ shop.name.substring(0, shop.match) }}</b
+          >{{ shop.name.substring(shop.match) }}
+        </span>
+      </div>
+      <i class="fa fa-user result-icon"></i>
+    </div>
+  </div>
+
+  <!-- Backdrop to close dropdown -->
+  <div *ngIf="searchOpen" class="search-backdrop" (click)="close()"></div>
+</div>

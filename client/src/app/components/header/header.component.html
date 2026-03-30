@@ -8,7 +8,7 @@
 
       <div class="search-group" *ngIf="showSearch">
         <div class="search-wrapper">
-          <app-select-item (selectItem)="onSelectItem($event)"></app-select-item>
+          <app-select-item (selectItem)="onSelectItem($event)" (selectShop)="onSelectShop($event)" [includeShop]="true"></app-select-item>
         </div>
         <button class="advanced-search-btn" (click)="goToSearch()" title="Advanced Search">
           <i class="fa fa-sliders-h"></i>
@@ -76,7 +76,7 @@
     <!-- Search -->
     <div class="search-group" *ngIf="showSearch">
       <div class="search-wrapper">
-        <app-select-item (selectItem)="onSelectItem($event)"></app-select-item>
+        <app-select-item (selectItem)="onSelectItem($event)" (selectShop)="onSelectShop($event)" [includeShop]="true"></app-select-item>
       </div>
       <button class="advanced-search-btn" (click)="goToSearch()" title="Advanced Search">
         <i class="fa fa-sliders-h"></i>

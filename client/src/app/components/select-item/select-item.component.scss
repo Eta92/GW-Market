@@ -39,8 +39,9 @@
   &:focus {
     outline: none;
     border-color: var(--gwt-gold);
-    box-shadow: 0 0 0 3px rgba(212, 168, 85, 0.1),
-                0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow:
+      0 0 0 3px rgba(212, 168, 85, 0.1),
+      0 4px 20px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -50,6 +51,16 @@
   font-size: 11px;
   color: var(--gwt-gold-dim);
   opacity: 0.7;
+}
+
+.search-mask {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(var(--gwt-obsidian-rgb), 0.2);
 }
 
 // Dropdown - Uses absolute positioning relative to container
@@ -63,8 +74,9 @@
   background: var(--gwt-obsidian);
   border: 1px solid var(--gwt-gold-dim);
   border-radius: 6px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
-              0 0 0 1px rgba(212, 168, 85, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(212, 168, 85, 0.1);
   z-index: 1000;
   animation: slideDown 0.15s ease-out;
 
@@ -132,6 +144,13 @@
   width: 40px;
   height: 40px;
   object-fit: contain;
+  flex-shrink: 0;
+}
+
+.result-icon {
+  font-size: 24px;
+  padding: 10px;
+  color: var(--gwt-gold-dim);
   flex-shrink: 0;
 }
 

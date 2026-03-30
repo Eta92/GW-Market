@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
 import { Router } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
 import { Observable, debounceTime } from 'rxjs';
 import { UtilService } from './util.service';
 
 import { CurrentSubject } from '@app/helpers/current.subject';
-import { Item, ShopItem } from '@app/models/shop.model';
-import { SearchFilter, SearchResult } from '@app/models/order.model';
 import { Auction } from '@app/models/auction.model';
+import { SearchFilter, SearchResult } from '@app/models/order.model';
+import { Item, ShopItem, ShopLink } from '@app/models/shop.model';
 
 @Injectable()
 export class StoreService {
   private init = false;
   //private commentsSubscribe
   private searchItemSubject = new CurrentSubject<Array<Item>>();
+  private searchShopSubject = new CurrentSubject<Array<ShopLink>>();
   private itemDetailSubject = new CurrentSubject<Item>();
   private itemsDetailSubject = new CurrentSubject<Array<Item>>();
   private itemOrdersSubject = new CurrentSubject<Array<ShopItem>>();
@@ -40,6 +41,9 @@ export class StoreService {
   storeInit(): void {
     this.socket.on('GetItemSearch', (data: Array<Item>) => {
       this.searchItemSubject.set(data);
+    });
+    this.socket.on('GetShopSearch', (data: Array<ShopLink>) => {
+      this.searchShopSubject.set(data);
     });
     this.socket.on('GetItemDetails', (data: Item) => {
       this.itemDetailSubject.set(data);
@@ -95,6 +99,10 @@ export class StoreService {
 
   getSearchItems(): Observable<Array<Item>> {
     return this.searchItemSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getSearchShops(): Observable<Array<ShopLink>> {
+    return this.searchShopSubject.asObservable().pipe(debounceTime(0));
   }
 
   getItemDetails(): Observable<Item> {
