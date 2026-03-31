@@ -19,11 +19,11 @@ export class CurrencyDropdownComponent {
   Price = Price;
 
   currencies: CurrencyOption[] = [
-    { value: Price.PLAT, name: 'Platinum' },
-    { value: Price.ECTO, name: 'Ectoplasm' },
+    { value: Price.PLAT, name: 'Golden Phoenix Feather' },
+    { value: Price.ECTO, name: 'Bobo' },
     //{ value: Price.ZKEY, name: 'Zaishen Key' },
-    { value: Price.ARM, name: 'Armbraces' },
-    { value: Price.BD, name: 'Black Dye' }
+    { value: Price.ARM, name: 'Black Moa Chick' },
+    { value: Price.BD, name: 'Beautiful Pearl' }
   ];
 
   @HostListener('document:click')

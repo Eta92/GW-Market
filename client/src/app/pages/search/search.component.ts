@@ -48,11 +48,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public currencyOptions: ToggleOption[] = [
     { value: null, label: 'All' },
-    { value: Price.PLAT, label: 'Plat', imgSrc: UtilityHelper.getCurrencySource(Price.PLAT) },
-    { value: Price.ECTO, label: 'Ecto', imgSrc: UtilityHelper.getCurrencySource(Price.ECTO) },
+    { value: Price.PLAT, label: 'Feather', imgSrc: UtilityHelper.getCurrencySource(Price.PLAT) },
+    { value: Price.ECTO, label: 'Bobo', imgSrc: UtilityHelper.getCurrencySource(Price.ECTO) },
     //{ value: Price.ZKEY, label: 'Zkey', imgSrc: UtilityHelper.getCurrencySource(Price.ZKEY) },
-    { value: Price.ARM, label: 'Arm', imgSrc: UtilityHelper.getCurrencySource(Price.ARM) },
-    { value: Price.BD, label: 'BD', imgSrc: UtilityHelper.getCurrencySource(Price.BD) }
+    { value: Price.ARM, label: 'Moa', imgSrc: UtilityHelper.getCurrencySource(Price.ARM) },
+    { value: Price.BD, label: 'Pearl', imgSrc: UtilityHelper.getCurrencySource(Price.BD) }
   ];
 
   public preSearingOptions: ToggleOption[] = [

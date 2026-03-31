@@ -101,34 +101,34 @@ export class UtilityHelper {
   public static priceToString(price: Price): string {
     switch (price) {
       case Price.PLAT:
-        return 'Plat';
+        return 'Feather';
       case Price.ECTO:
-        return 'Ecto';
+        return 'Bobo';
       case Price.ARM:
-        return 'Ambrace';
+        return 'Moa';
       case Price.ZKEY:
-        return 'Zkey';
+        return 'Bobo';
       case Price.BD:
-        return 'BlackDye';
+        return 'Pearl';
     }
   }
 
   public static getCurrencySource(price: Price): string {
-    return '../../../assets/items/currency/' + price.toString() + '.png';
+    return '../../../assets/items/currency/fool/' + price.toString() + '.png';
   }
 
   public static getCurrencyName(price: Price): string {
     switch (price) {
       case Price.PLAT:
-        return 'Platinum';
+        return 'Golden Phoenix Feather';
       case Price.ECTO:
-        return 'Ectoplasm';
+        return 'Bobo';
       case Price.ZKEY:
-        return 'Zaishen Key';
+        return 'Bobo';
       case Price.ARM:
-        return 'Armbraces';
+        return 'Black Moa Chick';
       case Price.BD:
-        return 'Black Dye';
+        return 'Beautiful Pearl';
       default:
         return 'Currency';
     }
