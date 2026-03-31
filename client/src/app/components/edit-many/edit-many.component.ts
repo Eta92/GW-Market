@@ -35,7 +35,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
   public availablePrices: Array<{ type: Price; label: string; icon: number; active: boolean }> = [
     { type: Price.PLAT, label: 'Plat', icon: 0, active: true },
     { type: Price.ECTO, label: 'Ecto', icon: 1, active: true },
-    { type: Price.ZKEY, label: 'ZKey', icon: 2, active: false },
+    //{ type: Price.ZKEY, label: 'ZKey', icon: 2, active: false },
     { type: Price.ARM, label: 'Arm', icon: 3, active: false },
     { type: Price.BD, label: 'BD', icon: 4, active: false }
   ];

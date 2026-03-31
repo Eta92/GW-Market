@@ -21,7 +21,7 @@ export class CurrencyDropdownComponent {
   currencies: CurrencyOption[] = [
     { value: Price.PLAT, name: 'Platinum' },
     { value: Price.ECTO, name: 'Ectoplasm' },
-    { value: Price.ZKEY, name: 'Zaishen Key' },
+    //{ value: Price.ZKEY, name: 'Zaishen Key' },
     { value: Price.ARM, name: 'Armbraces' },
     { value: Price.BD, name: 'Black Dye' }
   ];

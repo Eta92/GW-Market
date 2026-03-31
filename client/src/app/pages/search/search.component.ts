@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     { value: null, label: 'All' },
     { value: Price.PLAT, label: 'Plat', imgSrc: UtilityHelper.getCurrencySource(Price.PLAT) },
     { value: Price.ECTO, label: 'Ecto', imgSrc: UtilityHelper.getCurrencySource(Price.ECTO) },
-    { value: Price.ZKEY, label: 'Zkey', imgSrc: UtilityHelper.getCurrencySource(Price.ZKEY) },
+    //{ value: Price.ZKEY, label: 'Zkey', imgSrc: UtilityHelper.getCurrencySource(Price.ZKEY) },
     { value: Price.ARM, label: 'Arm', imgSrc: UtilityHelper.getCurrencySource(Price.ARM) },
     { value: Price.BD, label: 'BD', imgSrc: UtilityHelper.getCurrencySource(Price.BD) }
   ];
