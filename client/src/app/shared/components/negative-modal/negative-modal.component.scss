@@ -1,0 +1,192 @@
+@import '../../styles/variables';
+@import '../../styles/form-controls';
+
+// ============================================
+// NEGATIVE MODAL
+// ============================================
+
+.negative-modal-content {
+  background: $obsidian-light;
+  border: 2px solid rgba($danger-color, 0.4);
+  border-radius: 8px;
+  max-width: 440px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+// HEADER
+.negative-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba($danger-color, 0.08);
+  border-bottom: 1px solid rgba($danger-color, 0.2);
+}
+
+.negative-modal-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($danger-color, 0.15);
+  border: 1px solid rgba($danger-color, 0.35);
+  border-radius: 50%;
+  color: $danger-color;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.negative-modal-title {
+  flex: 1;
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $parchment;
+  }
+
+  p {
+    margin: 0.25rem 0 0;
+    font-size: 0.78rem;
+    color: rgba($parchment, 0.55);
+  }
+}
+
+.negative-modal-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($gold, 0.08);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: 4px;
+  color: $gold-light;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background: rgba($gold, 0.18);
+    border-color: $gold;
+  }
+}
+
+// BODY
+.negative-modal-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.negative-form-group {
+  @extend %form-group;
+}
+
+.negative-select {
+  @extend %form-select;
+  width: 100%;
+}
+
+.negative-information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba($warning-color, 0.07);
+  border: 1px solid rgba($warning-color, 0.25);
+  border-radius: $radius-md;
+}
+
+.negative-information-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: rgba($parchment, 0.7);
+  font-size: 0.72rem;
+  font-style: italic;
+  line-height: 1.5;
+
+  i {
+    color: rgba($gold, 0.5);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+  }
+}
+
+// FOOTER
+.negative-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba($gold, 0.12);
+  background: rgba($obsidian, 0.3);
+
+  i {
+    margin-top: 0.25rem;
+  }
+}
+
+.negative-cancel-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: transparent;
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: $radius-md;
+  color: rgba($parchment, 0.65);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background: rgba($gold, 0.08);
+    border-color: rgba($gold, 0.5);
+    color: $parchment;
+  }
+}
+
+.negative-confirm-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: linear-gradient(135deg, $danger-dark 0%, $danger-color 100%);
+  border: none;
+  border-radius: $radius-md;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all $transition-base;
+  box-shadow: 0 4px 14px rgba($danger-color, 0.3);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba($danger-color, 0.4);
+    background: linear-gradient(135deg, $danger-color 0%, lighten($danger-color, 10%) 100%);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}

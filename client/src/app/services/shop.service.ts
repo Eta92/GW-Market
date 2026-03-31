@@ -8,7 +8,10 @@ import { HttpClient } from '@angular/common/http';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { Auction } from '@app/models/auction.model';
+import { ReputationReason } from '@app/models/reputation.model';
 import { Shop, ShopItem } from '@app/models/shop.model';
+import { NegativeModalComponent } from '@shared/components/negative-modal/negative-modal.component';
+import { ModalService } from '@shared/modal/services/modal.service';
 import { DateTime } from 'luxon';
 import { ToastrService } from 'ngx-toastr';
 import { ItemService } from './item.service';
@@ -28,6 +31,7 @@ export class ShopService {
   constructor(
     private http: HttpClient,
     private utilService: UtilService,
+    private modalService: ModalService,
     private toastrService: ToastrService,
     private itemService: ItemService,
     private socket: Socket,
@@ -310,15 +314,31 @@ export class ShopService {
     return this.activeShopSubject?.value?.uuid || '';
   }
 
-  submitReputationVote(target: string, vote: 'positive' | 'negative', comment?: string): void {
+  submitReputationVote(target: string, vote: 'positive' | 'negative'): void {
     const activeShop = this.activeShopSubject.value;
     if (activeShop?.uuid && activeShop?.certified?.length > 0) {
-      this.socket.emit('submitReputationVote', {
-        shop: activeShop.uuid,
-        target: target,
-        type: vote,
-        comment: comment || ''
-      });
+      if (vote === 'positive') {
+        this.socket.emit('submitReputationVote', {
+          shop: activeShop.uuid,
+          target: target,
+          type: vote,
+          reason: ReputationReason.NONE
+        });
+      } else {
+        this.modalService
+          .open(NegativeModalComponent, {})
+          .onResult()
+          .subscribe((res: ReputationReason) => {
+            if (res) {
+              this.socket.emit('submitReputationVote', {
+                shop: activeShop.uuid,
+                target: target,
+                type: vote,
+                reason: res
+              });
+            }
+          });
+      }
     } else {
       this.toastrService.error('You need to have an active shop with certified characters to submit reputation votes.', '', {
         timeOut: 15000

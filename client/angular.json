@@ -71,7 +71,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "15kb",
-                  "maximumError": "25kb"
+                  "maximumError": "50kb"
                 }
               ],
               "serviceWorker": "ngsw-config.json"

@@ -341,6 +341,156 @@
   color: $parchment;
 }
 
+.stat-value-sm {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.sidebar-last-seen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 0.75rem;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 6px;
+}
+
+.sidebar-last-seen-label {
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.7);
+}
+
+.sidebar-last-seen-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  i {
+    font-size: 0.75rem;
+    margin: 0 4px;
+    color: $gold-dim;
+  }
+}
+
+.sidebar-last-seen-value {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $parchment;
+}
+
+.sidebar-vote {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 6px;
+}
+
+.sidebar-vote-label {
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.7);
+}
+
+.sidebar-vote-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.sidebar-certified {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 6px;
+}
+
+.sidebar-certified-label {
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.7);
+  margin-bottom: 0.375rem;
+}
+
+.certified-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.1s ease;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+}
+
+.certified-icon {
+  font-size: 0.75rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $gold-dim;
+  flex-shrink: 0;
+}
+
+.certified-name {
+  font-size: 0.8rem;
+  color: $parchment;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-vote-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 8px;
+  height: 28px;
+  flex: 1;
+  background: rgba($obsidian, 0.5);
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: 4px;
+  color: rgba($parchment, 0.6);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+
+  i {
+    font-size: 0.7rem;
+  }
+
+  span {
+    font-size: 0.6rem;
+    font-weight: 600;
+  }
+
+  &.positive:hover {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: #4caf50;
+    color: #4caf50;
+    transform: scale(1.05);
+  }
+
+  &.negative:hover {
+    background: rgba(244, 67, 54, 0.3);
+    border-color: #f44336;
+    color: #f44336;
+    transform: scale(1.05);
+  }
+}
+
 // Sidebar Actions - 2x2 grid
 .sidebar-actions {
   display: grid;

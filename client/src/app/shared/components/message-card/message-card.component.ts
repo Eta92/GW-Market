@@ -100,7 +100,7 @@ export class MessageCardComponent {
       case MessageType.REPUTATION_UP:
         return 'You received a positive reputation vote from ' + this.message.senderName + '. Feel free to send them a vote as well.';
       case MessageType.REPUTATION_DOWN:
-        return 'You sadly received a negative reputation vote '; // for the reason: "' + data[2] +'". We hope this is an helpful feedback.';
+        return 'You sadly received a negative reputation vote  for the reason: "' + data[2] + '". We hope this is an helpful feedback.';
       case MessageType.AUCTION_WON:
         return (
           'Congratulations! You won the auction for ' +

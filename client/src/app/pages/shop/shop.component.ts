@@ -592,4 +592,8 @@ export class ShopComponent implements OnInit {
     this.buyOrders = sortedOrders.filter(si => si.orderType === OrderType.BUY);
     this.cdr.detectChanges();
   }
+
+  reputationVote(vote: 'positive' | 'negative'): void {
+    this.shopService.submitReputationVote(this.shop.player, vote);
+  }
 }

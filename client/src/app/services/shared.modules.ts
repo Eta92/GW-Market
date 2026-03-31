@@ -6,6 +6,7 @@ import { PipeModule } from '@app/pipes/pipe.module';
 import { CurrencyDropdownComponent } from '@app/shared/components/currency-dropdown/currency-dropdown.component';
 import { ItemDetailsComponent } from '@app/shared/components/item-details/item-details.component';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
+import { NegativeModalComponent } from '@app/shared/components/negative-modal/negative-modal.component';
 import { OrderCardComponent } from '@app/shared/components/order-card/order-card.component';
 import { OrderRowComponent } from '@app/shared/components/order-row/order-row.component';
 import { PreviewCardComponent } from '@app/shared/components/preview-card/preview-card.component';
@@ -17,6 +18,7 @@ import { UTILITY_PIPES } from '@app/shared/pipes/utility.pipes';
 import { MessageCardComponent } from '@shared/components/message-card/message-card.component';
 import { UpgradeDropdownComponent } from '@shared/components/upgrade-dropdown/upgrade-dropdown.component';
 import { MiddleclickDirective, RoutingDirective } from '@shared/directives/routing.directive';
+import { ModalModule } from '@shared/modal/modal.module';
 
 const SHARED_COMPONENTS = [
   ModalComponent,
@@ -30,6 +32,7 @@ const SHARED_COMPONENTS = [
   UpgradeDropdownComponent,
   ItemDetailsComponent,
   MessageCardComponent,
+  NegativeModalComponent,
   RoutingDirective,
   MiddleclickDirective,
   StopPropagationDirective,
@@ -38,7 +41,7 @@ const SHARED_COMPONENTS = [
 
 @NgModule({
   declarations: [...SHARED_COMPONENTS],
-  imports: [CommonModule, PipeModule],
+  imports: [CommonModule, FormsModule, PipeModule, ModalModule],
   exports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule, ...SHARED_COMPONENTS]
 })
 export class SharedModule {}

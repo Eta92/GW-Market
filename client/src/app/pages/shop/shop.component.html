@@ -80,6 +80,39 @@
           </div>
         </div>
 
+        <!-- Last Connection -->
+        <div *ngIf="shop?.lastRefresh" class="sidebar-last-seen">
+          <span class="sidebar-last-seen-label">Last seen</span>
+          <div class="sidebar-last-seen-row">
+            <i class="fa fa-clock"></i>
+            <span class="sidebar-last-seen-value">{{ shop.lastRefresh | formatLastUpdate }} ago</span>
+          </div>
+        </div>
+
+        <!-- Reputation (showcase only) -->
+        <div *ngIf="showcase" class="sidebar-vote">
+          <div class="sidebar-vote-label">Reputation</div>
+          <div class="sidebar-vote-buttons">
+            <button class="sidebar-vote-btn positive" (click)="reputationVote('positive')" title="Positive vote">
+              <span>{{ shop?.reputation?.positive || 0 }}</span>
+              <i class="fa fa-thumbs-up"></i>
+            </button>
+            <button class="sidebar-vote-btn negative" (click)="reputationVote('negative')" title="Negative vote">
+              <span>{{ shop?.reputation?.negative || 0 }}</span>
+              <i class="fa fa-thumbs-down"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Certified Characters -->
+        <div *ngIf="showcase && shop?.certified?.length > 0" class="sidebar-certified">
+          <div class="sidebar-certified-label">All Characters</div>
+          <div class="certified-row" *ngFor="let player of shop.certified">
+            <i class="fa fa-user certified-icon"></i>
+            <span class="certified-name" [title]="player">{{ player }}</span>
+          </div>
+        </div>
+
         <!-- Action Buttons -->
         <div *ngIf="!showcase" class="sidebar-actions">
           <button class="sidebar-action-btn" [class.warning]="playerWarning" (click)="openPlayer()">

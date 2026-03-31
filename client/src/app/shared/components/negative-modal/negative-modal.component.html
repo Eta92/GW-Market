@@ -1,0 +1,48 @@
+<div class="negative-modal-content">
+  <!-- HEADER -->
+  <div class="negative-modal-header">
+    <div class="negative-modal-icon">
+      <i class="fa fa-thumbs-down"></i>
+    </div>
+    <div class="negative-modal-title">
+      <h3>Downvote Player</h3>
+      <p>Select a reason for the negative vote</p>
+    </div>
+    <button class="negative-modal-close" (click)="cancel()">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+
+  <!-- BODY -->
+  <div class="negative-modal-body">
+    <div class="negative-form-group">
+      <label for="reason-select">Reason</label>
+      <select id="reason-select" class="negative-select" [(ngModel)]="selectedReason">
+        <option *ngFor="let reason of reasons" [ngValue]="reason">{{ reasonToText(reason) }}</option>
+      </select>
+    </div>
+
+    <div class="negative-information">
+      <div class="negative-information-row">
+        <i class="fa fa-info-circle"></i>
+        In case the issue escalades, you can keep a screenshot to cover your side of the story.
+      </div>
+      <div class="negative-information-row">
+        <i class="fa fa-info-circle"></i>
+        If you think the issue requires more than a downvote, please report it in the support discord.
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="negative-modal-footer">
+    <button class="negative-cancel-btn" (click)="cancel()">
+      <i class="fa fa-xmark"></i>
+      Cancel
+    </button>
+    <button class="negative-confirm-btn" [disabled]="selectedReason === ReputationReason.NONE" (click)="confirm(selectedReason)">
+      <i class="fa fa-thumbs-down"></i>
+      Confirm Report
+    </button>
+  </div>
+</div>
