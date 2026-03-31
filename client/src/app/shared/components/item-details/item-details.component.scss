@@ -83,6 +83,17 @@
     }
   }
 
+  // Gold Price badge
+  &.gold {
+    background: rgba($gold, 0.15);
+    color: rgba($gold, 0.9);
+    border-color: rgba($gold, 0.25);
+
+    i {
+      color: rgba($gold, 0.8);
+    }
+  }
+
   // Miniature badges
   &.mini {
     &.dedicated {

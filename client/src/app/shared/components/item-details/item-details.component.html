@@ -19,6 +19,11 @@
     </span>
   </ng-container>
 
+  <!-- Gold count -->
+  <span class="detail-badge gold" *ngIf="shopItem?.orderDetails?.goldPrice">
+    <i class="fa fa-coins"></i> {{ shopItem?.orderDetails?.goldPrice }}</span
+  >
+
   <!-- Miniature Details -->
   <span
     class="detail-badge mini"
@@ -26,21 +31,13 @@
     [class.dedicated]="shopItem?.orderDetails?.dedicated"
     [class.undedicated]="!shopItem?.orderDetails?.dedicated"
   >
-    <i
-      class="fa"
-      [class.fa-star]="shopItem?.orderDetails?.dedicated"
-      [class.fa-star-half-alt]="!shopItem?.orderDetails?.dedicated"
-    ></i>
+    <i class="fa" [class.fa-star]="shopItem?.orderDetails?.dedicated" [class.fa-star-half-alt]="!shopItem?.orderDetails?.dedicated"></i>
     {{ shopItem?.orderDetails?.dedicated ? 'Dedicated' : 'Undedicated' }}
   </span>
 
   <!-- Pre-Searing Flag -->
-  <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.pre">
-    <i class="fa fa-sun"></i> Pre-Searing
-  </span>
+  <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.pre"> <i class="fa fa-sun"></i> Pre-Searing </span>
 
   <!-- Pre-Nerf Flag -->
-  <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.legacy">
-    <i class="fa fa-lock"></i> Pre-Nerf
-  </span>
+  <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.legacy"> <i class="fa fa-lock"></i> Pre-Nerf </span>
 </div>

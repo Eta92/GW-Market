@@ -86,6 +86,7 @@ export interface OrderDetails {
   pre: boolean;
   legacy: boolean;
   note: string;
+  goldPrice: number;
 }
 
 export interface ShopPrice {
