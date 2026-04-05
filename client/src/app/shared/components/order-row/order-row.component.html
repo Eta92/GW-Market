@@ -19,6 +19,14 @@
       </div>
     </div>
 
+    <div class="info-box price-box" *ngIf="type === 'auction'">
+      <span class="box-label">{{ order?.hasBid ? 'LAST BID' : 'PRICE' }}</span>
+      <div class="box-value-row">
+        <img class="currency-icon" [src]="order.price.type | currencySource" alt="" />
+        <span class="box-value">{{ order.price.price }}</span>
+      </div>
+    </div>
+
     <!-- Quantity Box -->
     <div class="info-box qty-box" *ngIf="order?.quantity > 1">
       <span class="box-label">QTY</span>

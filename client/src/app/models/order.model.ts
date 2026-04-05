@@ -49,6 +49,7 @@ export interface ItemOrder {
   div_price?: number;
   div_quantity?: number;
   auction?: string;
+  hasBid?: boolean;
   // copy from shop
   lastRefresh?: number;
   positives?: number;

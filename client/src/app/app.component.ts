@@ -38,8 +38,14 @@ export class AppComponent implements OnInit, OnDestroy {
         this.swUpdate.activateUpdate().then(() => document.location.reload());
       });
 
+    // Force reload when the service worker enters an unrecoverable state
+    this.swUpdate.unrecoverable.subscribe(() => document.location.reload());
+
+    // Check immediately on startup so users get the latest version on every page load
+    this.swUpdate.checkForUpdate();
+
     // Poll for updates every 15 minutes
-    interval(15 * 60 * 1000).subscribe(() => this.swUpdate.checkForUpdate());
+    interval(30 * 60 * 1000).subscribe(() => this.swUpdate.checkForUpdate());
   }
 
   public isWrongDomain =

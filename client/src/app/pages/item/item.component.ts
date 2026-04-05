@@ -363,6 +363,7 @@ export class ItemComponent implements OnInit, OnDestroy {
         details: this.item,
         orderType: OrderType.AUCTION,
         price: { type: auction.currency, price: price },
+        hasBid: !!auction.history?.length,
         description: auction.item.description,
         quantity: 1,
         div_price: price,
