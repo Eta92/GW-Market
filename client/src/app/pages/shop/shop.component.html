@@ -66,17 +66,34 @@
           <span>{{ showCandle ? 'Stop shop' : 'Update shop' }}</span>
         </button>
 
+        <!-- Offline Notification Toggle -->
+        <label *ngIf="!showcase" class="notify-offline-toggle" (click)="toggleNotifyOnOffline()">
+          <span class="notify-offline-checkbox" [class.checked]="notifyOnOffline">
+            <i class="fa" [class.fa-bell]="notifyOnOffline" [class.fa-bell-slash]="!notifyOnOffline"></i>
+          </span>
+          <span class="notify-offline-label">Notify when shop goes offline</span>
+        </label>
+
         <!-- Quick Stats -->
         <div class="sidebar-stats">
           <div class="stat-row">
             <span class="stat-icon sell"><i class="fa fa-arrow-up"></i></span>
             <span class="stat-label">Selling</span>
-            <span class="stat-value">{{ sellOrders?.length || 0 }}</span>
+            <span class="stat-value">{{
+              totalOrders.sell !== sellOrders.length ? sellOrders.length + '/' + totalOrders.sell : totalOrders.sell
+            }}</span>
           </div>
           <div class="stat-row">
             <span class="stat-icon buy"><i class="fa fa-arrow-down"></i></span>
             <span class="stat-label">Buying</span>
-            <span class="stat-value">{{ buyOrders?.length || 0 }}</span>
+            <span class="stat-value">{{
+              totalOrders.buy !== buyOrders.length ? buyOrders.length + '/' + totalOrders.buy : totalOrders.buy
+            }}</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-icon auction"><i class="fa fa-gavel"></i></span>
+            <span class="stat-label">Auctions</span>
+            <span class="stat-value">{{ totalOrders?.auctions || 0 }}</span>
           </div>
         </div>
 

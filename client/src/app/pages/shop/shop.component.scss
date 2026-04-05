@@ -284,6 +284,59 @@
   }
 }
 
+// Offline notification toggle
+.notify-offline-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  background: rgba($obsidian, 0.4);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+  user-select: none;
+
+  &:hover {
+    background: rgba($obsidian, 0.6);
+    border-color: rgba($gold, 0.35);
+  }
+}
+
+.notify-offline-checkbox {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid rgba($gold, 0.3);
+  background: rgba($obsidian, 0.6);
+  color: rgba($gold, 0.4);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  &.checked {
+    background: rgba($live-color, 0.2);
+    border-color: rgba($live-color, 0.5);
+    color: $live-color;
+  }
+}
+
+.notify-offline-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba($gold, 0.7);
+  line-height: 1.2;
+}
+
 // Sidebar Stats
 .sidebar-stats {
   display: flex;
@@ -322,6 +375,12 @@
     color: $buy-color;
   }
 
+  &.auction {
+    background: rgba($auction-color, 0.15);
+    border: 1px solid rgba($auction-color, 0.4);
+    color: $auction-color;
+  }
+
   &.changes {
     background: rgba($gold, 0.15);
     border: 1px solid rgba($gold, 0.4);
@@ -336,7 +395,8 @@
 }
 
 .stat-value {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  line-height: 20px;
   font-weight: 600;
   color: $parchment;
 }

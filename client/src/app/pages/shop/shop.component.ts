@@ -57,6 +57,11 @@ export class ShopComponent implements OnInit {
     sortBy: 'time',
     sortOrder: 'desc'
   };
+  public totalOrders = {
+    sell: 0,
+    buy: 0,
+    auctions: 0
+  };
 
   public playerControl: UntypedFormControl = new UntypedFormControl('');
   public playerEdit = false;
@@ -74,6 +79,9 @@ export class ShopComponent implements OnInit {
   public compactView = false;
   public showDetails = true;
   public showViewOptionsHelp = false;
+
+  // Desktop notifications
+  public notifyOnOffline = false;
 
   public OrderType = OrderType;
   public Array = Array;
@@ -131,6 +139,7 @@ export class ShopComponent implements OnInit {
     if (localStorage.getItem('sortOrder')) {
       this.sortOrder = JSON.parse(localStorage.getItem('sortOrder'));
     }
+    this.notifyOnOffline = localStorage.getItem('notifyOnOffline') === 'true';
   }
 
   // Populate item details for filtering
@@ -377,6 +386,46 @@ export class ShopComponent implements OnInit {
     this.shopService.disableShop();
   }
 
+  async toggleNotifyOnOffline(): Promise<void> {
+    if (this.notifyOnOffline) {
+      // Disable
+      this.notifyOnOffline = false;
+      localStorage.setItem('notifyOnOffline', 'false');
+      return;
+    }
+    if (!('Notification' in window)) {
+      this.toastrService.warning('Desktop notifications are not supported by your browser', 'Notifications unavailable');
+      return;
+    }
+    let permission = Notification.permission;
+    if (permission === 'denied') {
+      this.toastrService.warning('Notifications are blocked. Please allow them in your browser settings.', 'Permission denied');
+      return;
+    }
+    if (permission === 'default') {
+      permission = await Notification.requestPermission();
+    }
+    if (permission === 'granted') {
+      this.notifyOnOffline = true;
+      localStorage.setItem('notifyOnOffline', 'true');
+      new Notification('GW Market – Notifications enabled', {
+        body: 'You will receive a notification when your shop goes offline.',
+        icon: '/assets/icons/manifest/icon-192x192.png'
+      });
+    } else {
+      this.toastrService.warning('Notifications are blocked. Please allow them in your browser settings.', 'Permission denied');
+    }
+  }
+
+  private sendOfflineNotification(): void {
+    if (this.notifyOnOffline && Notification.permission === 'granted') {
+      new Notification('GW Market – Shop offline', {
+        body: `Your shop (${this.shop?.player || 'Unknown'}) is no longer online.`,
+        icon: '/assets/icons/manifest/icon-192x192.png'
+      });
+    }
+  }
+
   refreshCandle(): void {
     if (this.shop.lastRefresh + 15 * 60 * 1000 > Date.now()) {
       this.showCandle = true;
@@ -394,6 +443,7 @@ export class ShopComponent implements OnInit {
     } else {
       this.showCandle = false;
       this.timeLeft = 0;
+      this.timerActive = false;
       this.cdr.detectChanges();
     }
   }
@@ -405,7 +455,9 @@ export class ShopComponent implements OnInit {
       this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
       if (this.timeLeft < 0) {
         this.showCandle = false;
+        this.timerActive = false;
         this.timeLeft = 0;
+        this.sendOfflineNotification();
         return;
       }
       setTimeout(() => {
@@ -587,7 +639,11 @@ export class ShopComponent implements OnInit {
         }
       });
     }
-
+    this.totalOrders = {
+      sell: this.shop.items.filter(si => si.orderType === OrderType.SELL).length,
+      buy: this.shop.items.filter(si => si.orderType === OrderType.BUY).length,
+      auctions: this.shop.auctions ? this.shop.auctions.length : 0
+    };
     this.sellOrders = sortedOrders.filter(si => si.orderType === OrderType.SELL);
     this.buyOrders = sortedOrders.filter(si => si.orderType === OrderType.BUY);
     this.cdr.detectChanges();
