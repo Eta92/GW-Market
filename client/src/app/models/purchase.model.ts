@@ -19,6 +19,7 @@ export interface PurchasePrice {
 export enum PurchaseOrigin {
   CLIENT,
   SHOP,
+  TOOLBOX,
   MERCHANT,
   KAMADAN
 }

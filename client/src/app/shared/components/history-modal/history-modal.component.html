@@ -1,0 +1,54 @@
+<div class="history-modal">
+  <!-- HEADER -->
+  <div class="history-modal__header">
+    <div class="history-modal__header-left">
+      <i class="fa fa-chart-line"></i>
+      <div class="history-modal__header-meta">
+        <span class="history-modal__subtitle">Price History</span>
+        <span class="history-modal__count" *ngIf="hasData"> {{ history.length }} trade{{ history.length > 1 ? 's' : '' }} </span>
+      </div>
+    </div>
+
+    <span class="history-modal__item-name">{{ name }}</span>
+
+    <div class="history-modal__header-right">
+      <button
+        class="history-modal__rates-toggle"
+        *ngIf="hasData && presentTypes.length"
+        [class.active]="showRates"
+        (click)="showRates = !showRates"
+        title="Toggle exchange rates"
+      >
+        <i class="fa fa-sliders"></i>
+      </button>
+      <button class="history-modal__close" (click)="cancel()">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MULTIPLIER BAR -->
+  <div class="history-modal__multipliers" *ngIf="showRates && hasData && presentTypes.length">
+    <span class="history-modal__multipliers-label"> <i class="fa fa-coins"></i> Rates (× Plat) </span>
+    <div class="history-modal__multipliers-inputs">
+      <div class="history-modal__multiplier-item" *ngFor="let type of presentTypes">
+        <label>{{ priceLabels[type] }}</label>
+        <input type="number" min="1" step="1" [(ngModel)]="multipliers[type]" (ngModelChange)="onMultipliersChange()" />
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="history-modal__body">
+    <div *ngIf="hasData; else noData" class="history-modal__chart-wrapper">
+      <div echarts [options]="chartOptions" class="history-modal__chart" [style.height.px]="420"></div>
+    </div>
+
+    <ng-template #noData>
+      <div class="history-modal__empty">
+        <i class="fa fa-chart-line history-modal__empty-icon"></i>
+        <p>No price history available for this item.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

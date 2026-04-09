@@ -180,8 +180,63 @@
   color: $parchment;
 }
 
-// ============================================
-// CONTENT AREA
+// Price History Button
+.history-button-wrapper {
+  padding: 0.75rem;
+  padding-top: 0;
+  margin-top: auto;
+}
+
+.history-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  background: linear-gradient(135deg, rgba($gold-dark, 0.18) 0%, rgba($obsidian, 0.6) 100%);
+  border: 1px solid rgba($gold, 0.4);
+  border-radius: 6px;
+  color: $gold-light;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s;
+
+  // Inner highlight line at top
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba($gold, 0.5), transparent);
+    pointer-events: none;
+  }
+
+  i {
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($gold-dark, 0.35) 0%, rgba($obsidian-light, 0.8) 100%);
+    border-color: rgba($gold, 0.75);
+    color: $gold-bright;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
 // ============================================
 .content-area {
   flex: 1;

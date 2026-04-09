@@ -18,7 +18,7 @@ export class PreviewCardComponent {
   @Output() cardOpen = new EventEmitter<void>();
 
   get displayPreviews(): string[] {
-    return this.previews?.slice(0, 4) || [];
+    return this.previews?.slice(0, 4).map(preview => preview.replace(/ /g, '_')) || [];
   }
 
   onClick(): void {

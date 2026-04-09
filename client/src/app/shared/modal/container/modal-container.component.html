@@ -1,5 +1,5 @@
-<div class="modal">
-  <div class="modal-content" [ngClass]="size" [class.bg]="!options?.noBg">
+<div class="modal" (click)="options?.keepOpen ? null : close()">
+  <div class="modal-content" [ngClass]="size" [class.bg]="!options?.noBg" (click)="$event.stopPropagation()">
     <ng-template #modalContainer></ng-template>
   </div>
 </div>

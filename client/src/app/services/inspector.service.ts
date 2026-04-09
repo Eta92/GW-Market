@@ -6,6 +6,8 @@ import { UtilService } from './util.service';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { PriceInspection } from '@app/models/order.model';
 import { OrderType } from '@app/models/shop.model';
+import { HistoryModalComponent } from '@shared/components/history-modal/history-modal.component';
+import { ModalService } from '@shared/modal/services/modal.service';
 
 @Injectable()
 export class InspectorService {
@@ -17,6 +19,7 @@ export class InspectorService {
 
   constructor(
     private utilService: UtilService,
+    private modalService: ModalService,
     private socket: Socket
   ) {
     this.utilService.getReady().subscribe(ready => {
@@ -32,6 +35,19 @@ export class InspectorService {
     // sockets
     this.socket.on('GetPriceInspection', data => {
       this.inspectionSubject.set({ ...data, itemName: this.itemName });
+    });
+    this.socket.on('GetPriceHistory', data => {
+      this.modalService
+        .open(
+          HistoryModalComponent,
+          {
+            name: data[0]?.name || this.itemName,
+            history: data
+          },
+          'footer'
+        )
+        .onResult()
+        .subscribe();
     });
   }
 

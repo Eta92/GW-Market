@@ -135,11 +135,15 @@ export class ShopComponent implements OnInit {
         this.itemAuctions = auctions;
         this.cdr.detectChanges();
       });
+      if (this.showcase) {
+        this.notifyOnOffline = false;
+      } else {
+        this.notifyOnOffline = localStorage.getItem('notifyOnOffline') === 'true';
+      }
     });
     if (localStorage.getItem('sortOrder')) {
       this.sortOrder = JSON.parse(localStorage.getItem('sortOrder'));
     }
-    this.notifyOnOffline = localStorage.getItem('notifyOnOffline') === 'true';
   }
 
   // Populate item details for filtering

@@ -21,7 +21,7 @@ export class ModalService {
   open<T extends Modal>(
     component: Type<T>,
     inputs?: any,
-    size?: 'small' | 'large' | 'xl' | 'fullscreen',
+    size?: 'small' | 'large' | 'xl' | 'fullscreen' | 'footer',
     options?: { noBg?: boolean; keepOpen?: boolean }
   ): ModalRef {
     this.setupModalContainerDiv();

@@ -13,6 +13,7 @@ export class ModalRef {
     private modal: ComponentRef<Modal>
   ) {
     this.modal.instance.modalInstance = this;
+    this.modalContainer.instance.modalRef = this;
   }
 
   close(output: any): void {

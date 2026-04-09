@@ -100,10 +100,12 @@ export class ShopService {
       }
       // refresh public shop item
       const publicShop = this.publicShopSubject.value;
-      publicShop.items.forEach(item => {
-        item.item = this.itemService.getItemBase(item.name);
-      });
-      this.publicShopSubject.set(publicShop);
+      if (publicShop) {
+        publicShop.items.forEach(item => {
+          item.item = this.itemService.getItemBase(item.name);
+        });
+        this.publicShopSubject.set(publicShop);
+      }
     });
     this.socket.on('GetPublicShop', (shop: Shop) => {
       const publicShop = { ...shop };

@@ -38,4 +38,12 @@
     height: 99vh;
     width: 99vw;
   }
+
+  &.footer {
+    height: fit-content;
+    width: 100vw;
+    align-self: end;
+    padding: 16px;
+    background: transparent;
+  }
 }

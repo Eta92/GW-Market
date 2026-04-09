@@ -1,5 +1,6 @@
 import { Component, ComponentRef, Type, ViewChild, ViewContainerRef } from '@angular/core';
 
+import { ModalRef } from '../models/modal-ref.model';
 import { Modal } from '../models/modal.model';
 
 @Component({
@@ -11,9 +12,14 @@ export class ModalContainerComponent {
 
   public size: string;
   public options: { noBg: boolean; keepOpen: boolean };
+  public modalRef: ModalRef;
 
   createModal<T extends Modal>(component: Type<T>): ComponentRef<T> {
     this.modalContainer.clear();
     return this.modalContainer.createComponent(component);
+  }
+
+  close(): void {
+    this.modalRef?.dismiss(undefined);
   }
 }

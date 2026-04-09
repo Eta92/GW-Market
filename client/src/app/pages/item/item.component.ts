@@ -805,4 +805,8 @@ export class ItemComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  openHistoryModal(): void {
+    this.storeService.requestSocket('getPriceHistory', this.item.name);
+  }
 }
