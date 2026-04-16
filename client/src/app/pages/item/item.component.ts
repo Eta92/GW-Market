@@ -130,7 +130,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       });
       this.storeService.getItemDetails().subscribe((item: Item) => {
         this.item = item;
-        this.focusBundle = this.bundleFamilies.includes(item.family);
+        this.focusBundle = this.bundleFamilies.includes(item?.family);
         this.addDetails(item);
         this.cdr.detectChanges();
       });

@@ -79,7 +79,12 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true,
+              "sourceMap": {
+                "scripts": true,
+                "styles": true,
+                "vendor": true,
+                "hidden": false
+              },
               "namedChunks": true,
               "serviceWorker": "ngsw-config.json"
             }

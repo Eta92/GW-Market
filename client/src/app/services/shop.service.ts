@@ -274,7 +274,6 @@ export class ShopService {
     this.pendingChangesSubject.set(this.pendingChanges);
     const activeShop = UtilityHelper.copy(this.activeShopSubject.value);
     activeShop.daybreakOnline = this.daybreakOnline;
-    activeShop.items = activeShop.items.filter(item => !item.hidden);
     activeShop.items.forEach(item => {
       delete item.item;
       delete item.completed;
@@ -426,9 +425,9 @@ export class ShopService {
           allBags.forEach(bag => {
             if ((bag?.bagType === 'Storage' && mode === 'stash') || (bag?.bagType === 'Inventory' && mode === 'inventory')) {
               bag.items?.forEach(item => {
-                const name = item?.decodedSingleName || item?.decodedCompleteName || item?.decodedName || '';
+                const completeName = item?.decodedSingleName || item?.decodedCompleteName || item?.decodedName || '';
                 const parsedName =
-                  name
+                  completeName
                     .replace(/<[^>]+>(.*?)<\/[^>]+>/, '$1')
                     .replace(/\"/gi, '')
                     .replace(/Inscription: /, '') || '';
@@ -437,6 +436,14 @@ export class ShopService {
                     name: parsedName || '',
                     quantity: item?.quantity || 0
                   });
+                } else {
+                  const basicName = item?.decodedName || '';
+                  if (this.itemService.getItemBase(basicName, false)) {
+                    items.push({
+                      name: basicName || '',
+                      quantity: item?.quantity || 0
+                    });
+                  }
                 }
               });
             }

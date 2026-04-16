@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
@@ -12,13 +12,16 @@ import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss']
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   public pro = false;
   public showcase = false;
   public shop: Shop;
@@ -101,40 +104,58 @@ export class ShopComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.timerActive = false;
+  }
+
   ngOnInit(): void {
-    this.shopService.getPendingChanges().subscribe(pendingChanges => {
-      this.pendingChanges = pendingChanges;
-      this.cdr.detectChanges();
-    });
-    this.activatedRoute.url.subscribe(urlSegments => {
+    this.shopService
+      .getPendingChanges()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(pendingChanges => {
+        this.pendingChanges = pendingChanges;
+        this.cdr.detectChanges();
+      });
+    this.activatedRoute.url.pipe(takeUntil(this.destroy$)).subscribe(urlSegments => {
       this.showcase = urlSegments.some(segment => segment.path.toLowerCase() === 'showcase');
       if (this.showcase) {
         // load showcase shop
-        this.activatedRoute.queryParams.subscribe(params => {
+        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
           const publicId = params['public'];
           this.storeService.requestSocket('getPublicShop', publicId);
-          this.shopService.getPublicShop().subscribe((shop: Shop) => {
-            this.shop = shop;
-            this.shopUpdate();
-          });
+          this.shopService
+            .getPublicShop()
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((shop: Shop) => {
+              this.shop = shop;
+              this.shopUpdate();
+            });
         });
       } else {
         // load personal shop
-        this.shopService.getActiveShop().subscribe((shop: Shop) => {
-          this.shop = shop;
-          this.storeService.requestSocket('getPersonalAuctions', shop.auctions);
-          this.shopUpdate();
-        });
+        this.shopService
+          .getActiveShop()
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((shop: Shop) => {
+            this.shop = shop;
+            this.storeService.requestSocket('getPersonalAuctions', shop.auctions);
+            this.shopUpdate();
+          });
         // auto switch to pro mode
-        this.activatedRoute.queryParams.subscribe(params => {
+        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
           this.pro = params['pro'];
         });
       }
       // in both case listen to binded auctions
-      this.shopService.getPersonalAuctions().subscribe(auctions => {
-        this.itemAuctions = auctions;
-        this.cdr.detectChanges();
-      });
+      this.shopService
+        .getPersonalAuctions()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(auctions => {
+          this.itemAuctions = auctions;
+          this.cdr.detectChanges();
+        });
       if (this.showcase) {
         this.notifyOnOffline = false;
       } else {
@@ -453,6 +474,7 @@ export class ShopComponent implements OnInit {
   }
 
   private timerActive = false;
+  private timerLoop = 0;
   refreshTimer(): void {
     if (this.showCandle && this.timeLeft > 0) {
       this.timerActive = true;
@@ -464,9 +486,13 @@ export class ShopComponent implements OnInit {
         this.sendOfflineNotification();
         return;
       }
-      setTimeout(() => {
-        this.refreshTimer();
-      }, 1000);
+      if (this.timerLoop === 0) {
+        this.timerLoop = 1;
+        setTimeout(() => {
+          this.timerLoop = 0;
+          this.refreshTimer();
+        }, 1000);
+      }
       this.cdr.detectChanges();
     }
   }
