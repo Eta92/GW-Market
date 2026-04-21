@@ -116,6 +116,7 @@
                     [hasNote]="!!order.description || hasItemDetails(order)"
                     [showWeaponDetails]="hasItemDetails(order)"
                     [focusBundle]="focusBundle"
+                    [vote]="itemVote(order)"
                     (rowClick)="openOrderDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
                     (whisperClick)="whisper($event)"

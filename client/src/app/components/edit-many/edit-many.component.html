@@ -51,7 +51,10 @@
           <img *ngIf="items[i]" [src]="getImageSource(items[i].name)" [alt]="items[i]?.name" />
         </div>
         <div class="header-title text-no-overflow">
-          <div class="item-name" *ngIf="items[i]" [title]="items[i].name">{{ items[i].name }}</div>
+          <div class="item-name" *ngIf="items[i]" [title]="items[i].name">
+            {{ items[i].name }}
+            <span class="gh">{{ weaponDetail(i) }}</span>
+          </div>
           <div class="item-name empty" *ngIf="!items[i]">Select an item below</div>
         </div>
 
@@ -134,11 +137,7 @@
             >
               <i class="fa fa-eye"></i> Visible
             </button>
-            <button
-              class="type-btn mask"
-              [class.active]="formGroup.get('hidden')?.value"
-              (click)="formGroup.patchValue({ hidden: true })"
-            >
+            <button class="type-btn mask" [class.active]="formGroup.get('hidden')?.value" (click)="formGroup.patchValue({ hidden: true })">
               <i class="fa fa-eye-slash"></i> Hidden
             </button>
           </div>
@@ -146,13 +145,7 @@
 
         <!-- Notes -->
         <div class="gi">
-          <input
-            id="description-{{ i }}"
-            class="notes-inline"
-            type="text"
-            formControlName="description"
-            placeholder="Notes..."
-          />
+          <input id="description-{{ i }}" class="notes-inline" type="text" formControlName="description" placeholder="Notes..." />
         </div>
       </div>
     </ng-container>

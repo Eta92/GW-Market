@@ -9,7 +9,7 @@ import { CurrentSubject } from '@app/helpers/current.subject';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { Auction } from '@app/models/auction.model';
 import { ReputationReason } from '@app/models/reputation.model';
-import { Shop, ShopItem } from '@app/models/shop.model';
+import { DaybreakItem, Shop, ShopItem } from '@app/models/shop.model';
 import { NegativeModalComponent } from '@shared/components/negative-modal/negative-modal.component';
 import { ModalService } from '@shared/modal/services/modal.service';
 import { DateTime } from 'luxon';
@@ -58,7 +58,9 @@ export class ShopService {
         authCertified: shop.certified?.includes(this.activeShopSubject.value.player),
         certified: shop.certified,
         items: shop.items,
-        auctions: shop.auctions
+        auctions: shop.auctions,
+        reputation: shop.reputation,
+        notations: shop.notations
       };
       activeShop.items.forEach(item => {
         item.item = this.itemService.getItemBase(item.name);
@@ -284,8 +286,9 @@ export class ShopService {
   }
 
   disableShop(): void {
-    const activeShop = this.activeShopSubject.value;
-    activeShop.lastRefresh = Date.now() - 1000 * 60 * 15;
+    const activeShop = { ...this.activeShopSubject.value };
+    const bonus = activeShop.reputation ? activeShop.reputation.positive - activeShop.reputation.negative : 0;
+    activeShop.lastRefresh = Date.now() - 1000 * 60 * (15 + bonus);
     this.activeShopSubject.set(activeShop);
     this.saveShop();
     this.socket.emit('closeShop', activeShop.uuid);
@@ -416,8 +419,19 @@ export class ShopService {
     }
   }
 
-  public async fetchDaybreakItems(mode: 'stash' | 'inventory'): Promise<Array<{ name: string; quantity: number }>> {
-    const prom = new Promise<Array<{ name: string; quantity: number }>>((resolve, reject) => {
+  private buildItemFromName(name: string, item: any): DaybreakItem {
+    const requirement = item.properties?.find(p => p.propertyType === 'Requirement');
+    return {
+      name: name,
+      quantity: item?.quantity || 0,
+      attribute: requirement?.attribute || null,
+      requirement: requirement?.requirement || null,
+      inscription: item?.inscribable || false
+    };
+  }
+
+  public async fetchDaybreakItems(mode: 'stash' | 'inventory'): Promise<Array<DaybreakItem>> {
+    const prom = new Promise<Array<DaybreakItem>>((resolve, reject) => {
       const items = [];
       this.http.get('http://localhost:5080/api/v1/rest/inventory').subscribe({
         next: data => {
@@ -432,35 +446,32 @@ export class ShopService {
                     .replace(/\"/gi, '')
                     .replace(/Inscription: /, '') || '';
                 if (this.itemService.getItemBase(parsedName, false)) {
-                  items.push({
-                    name: parsedName || '',
-                    quantity: item?.quantity || 0
-                  });
+                  items.push(this.buildItemFromName(parsedName || '', item));
                 } else {
                   const basicName = item?.decodedName || '';
                   if (this.itemService.getItemBase(basicName, false)) {
-                    items.push({
-                      name: basicName || '',
-                      quantity: item?.quantity || 0
-                    });
+                    items.push(this.buildItemFromName(basicName || '', item));
                   }
                 }
               });
             }
           });
 
-          const groupedItems = items.reduce(
-            (acc, item) => {
-              const existing = acc.find(i => i.name === item.name);
-              if (existing) {
-                existing.quantity += item.quantity;
-              } else {
-                acc.push({ ...item });
-              }
-              return acc;
-            },
-            [] as Array<{ name: string; quantity: number }>
-          );
+          const groupedItems = items.reduce((acc, item) => {
+            const existing = acc.find(
+              i =>
+                i.name === item.name &&
+                i.attribute === item.attribute &&
+                i.requirement === item.requirement &&
+                i.inscription === item.inscription
+            );
+            if (existing) {
+              existing.quantity += item.quantity;
+            } else {
+              acc.push({ ...item });
+            }
+            return acc;
+          }, [] as Array<DaybreakItem>);
           this.toastrService.success('Successfully fetched items from Daybreak API', 'Daybreak items loaded', {
             timeOut: 10000
           });

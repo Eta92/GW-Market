@@ -15,6 +15,7 @@ export class OrderRowComponent implements OnInit {
   @Input() compact = false;
   @Input() focusBundle = false;
   @Input() showWeaponDetails = false;
+  @Input() vote: null | 'positive' | 'negative' = null;
 
   @Output() rowClick = new EventEmitter<ItemOrder>();
   @Output() submitVote = new EventEmitter<{ order: ItemOrder; vote: 'positive' | 'negative' }>();
@@ -55,5 +56,11 @@ export class OrderRowComponent implements OnInit {
   onSubmitVote(event: Event, vote: 'positive' | 'negative'): void {
     event.stopPropagation();
     this.submitVote.emit({ order: this.order, vote });
+    // fake the number incrementation
+    if (vote === 'positive') {
+      this.order.positives = (this.order.positives || 0) + 1;
+    } else {
+      this.order.negatives = (this.order.negatives || 0) + 1;
+    }
   }
 }

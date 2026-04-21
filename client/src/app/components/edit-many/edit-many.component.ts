@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { DaybreakItem, Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
@@ -15,7 +15,7 @@ import { Subscription, take } from 'rxjs';
 })
 export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
   @Input() originals?: Array<ShopItem>;
-  @Input() daybreaks?: Array<{ name: string; quantity: number }>;
+  @Input() daybreaks?: Array<DaybreakItem>;
   @Input() confirm: string;
 
   @Output() closeEdit = new EventEmitter<void>();
@@ -105,7 +105,14 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
           hidden: [order.hidden],
           prices: this.fb.array(prices),
           quantity: [order.quantity, Validators.min(1)],
-          description: [order.description]
+          description: [order.description],
+          weaponDetails: order.weaponDetails
+            ? this.fb.group({
+                attribute: [order.weaponDetails.attribute || null],
+                requirement: [order.weaponDetails.requirement || null],
+                inscription: [order.weaponDetails.inscription || false]
+              })
+            : undefined
         });
       });
       this.forms = this.fb.array(orderArray);
@@ -113,7 +120,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  loadDaybreaks(daybreaks: Array<{ name: string; quantity: number }>): void {
+  loadDaybreaks(daybreaks: Array<DaybreakItem>): void {
     if (this.allItems) {
       this.items = daybreaks
         .map(db => db.name)
@@ -134,7 +141,14 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
           hidden: [false],
           prices: this.fb.array(prices),
           quantity: [db.quantity, Validators.min(1)],
-          description: ['']
+          description: [''],
+          weaponDetails: db.attribute
+            ? this.fb.group({
+                attribute: [db.attribute || null],
+                requirement: [db.requirement || null],
+                inscription: [db.inscription || false]
+              })
+            : undefined
         });
       });
       this.forms = this.fb.array(orderArray);
@@ -231,6 +245,13 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
       this.inspectorService.requestInspection(itemName, orderType);
     }
     this.cdr.detectChanges();
+  }
+
+  weaponDetail(index: number): string {
+    const item = this.forms.at(index).value;
+    return item.weaponDetails
+      ? `${item.weaponDetails.attribute} ${item.weaponDetails.requirement} ${item.weaponDetails.inscription ? 'Ins. ' : ''}`
+      : '';
   }
 
   get gridColumns(): string {

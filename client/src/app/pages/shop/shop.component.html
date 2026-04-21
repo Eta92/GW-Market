@@ -39,11 +39,11 @@
         <div class="sidebar-timer" *ngIf="showCandle && !showcase">
           <div class="timer-header">
             <i class="fa fa-clock"></i>
-            <span class="timer-label">Online time</span>
+            <span class="timer-label">Highlight time</span>
           </div>
           <span class="timer-value">{{ formatTime(timeLeft) }}</span>
           <div class="timer-bar">
-            <div class="timer-fill" [style.width.%]="(timeLeft / (15 * 60 * 1000)) * 100"></div>
+            <div class="timer-fill" [style.width.%]="(timeLeft / personalHighlight) * 100"></div>
           </div>
           <button class="shop-toggle-btn shop-refresh-btn" (click)="refreshShop()">
             <i class="fa fa-refresh"></i>
@@ -71,7 +71,7 @@
           <span class="notify-offline-checkbox" [class.checked]="notifyOnOffline">
             <i class="fa" [class.fa-bell]="notifyOnOffline" [class.fa-bell-slash]="!notifyOnOffline"></i>
           </span>
-          <span class="notify-offline-label">Notify when shop goes offline</span>
+          <span class="notify-offline-label">Notify when your shop lose highlight</span>
         </label>
 
         <!-- Quick Stats -->

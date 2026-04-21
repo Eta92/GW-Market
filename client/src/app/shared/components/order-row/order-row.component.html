@@ -85,11 +85,21 @@
           </button>
         </div>
         <div class="action-row">
-          <button class="action-btn vote-btn positive" (click)="onSubmitVote($event, 'positive')" title="Positive vote">
+          <button
+            class="action-btn vote-btn positive"
+            [class.upvoted]="vote === 'positive'"
+            (click)="onSubmitVote($event, 'positive')"
+            title="Positive vote"
+          >
             <span>{{ order.positives }}</span
             ><i class="fa fa-thumbs-up -mt-0.5"></i>
           </button>
-          <button class="action-btn vote-btn negative" (click)="onSubmitVote($event, 'negative')" title="Negative vote">
+          <button
+            class="action-btn vote-btn negative"
+            [class.downvoted]="vote === 'negative'"
+            (click)="onSubmitVote($event, 'negative')"
+            title="Negative vote"
+          >
             <span>{{ order.negatives }}</span
             ><i class="fa fa-thumbs-down mt-0.5"></i>
           </button>

@@ -19,6 +19,7 @@ export interface Shop {
   items: Array<ShopItem>;
   certified?: Array<string>;
   reputation?: ShopReputation;
+  notations?: { [key: string]: 'positive' | 'negative' };
   auctions?: Array<string>;
 }
 
@@ -138,4 +139,12 @@ export interface Upgrade {
   value: string;
   description?: string;
   img: string;
+}
+
+export interface DaybreakItem {
+  name: string;
+  quantity: number;
+  attribute?: string;
+  requirement?: number;
+  inscription?: boolean;
 }

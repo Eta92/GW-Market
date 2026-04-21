@@ -7,7 +7,7 @@ import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { OrderFilter, OrderSort } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
+import { DaybreakItem, Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
@@ -25,6 +25,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   public pro = false;
   public showcase = false;
   public shop: Shop;
+  public personalHighlight = 15 * 60 * 1000;
   public sellOrders: Array<ShopItem> = [];
   public buyOrders: Array<ShopItem> = [];
   public itemAuctions: Array<Auction> = [];
@@ -41,7 +42,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   public timeLeft = 0;
   public pendingChanges = 0;
   public daybreakEdit = false;
-  public daybreakItems: Array<{ name: string; quantity: number }>;
+  public daybreakItems: Array<DaybreakItem> = [];
   public orderFilter: OrderFilter = {
     name: '',
     orderType: null,
@@ -169,6 +170,8 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   // Populate item details for filtering
   private shopUpdate(): void {
+    const bonus = this.shop.reputation ? this.shop.reputation.positive - this.shop.reputation.negative : 0;
+    this.personalHighlight = (15 + bonus) * 60 * 1000;
     if (this.shop?.items) {
       this.updateItemList();
       this.refreshCandle();
@@ -445,17 +448,17 @@ export class ShopComponent implements OnInit, OnDestroy {
   private sendOfflineNotification(): void {
     if (this.notifyOnOffline && Notification.permission === 'granted') {
       new Notification('GW Market – Shop offline', {
-        body: `Your shop (${this.shop?.player || 'Unknown'}) is no longer online.`,
+        body: `Your shop (${this.shop?.player || 'Unknown'}) is no longer highlighted.`,
         icon: '/assets/icons/manifest/icon-192x192.png'
       });
     }
   }
 
   refreshCandle(): void {
-    if (this.shop.lastRefresh + 15 * 60 * 1000 > Date.now()) {
+    if (this.shop.lastRefresh + this.personalHighlight > Date.now()) {
       this.showCandle = true;
-      this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
-      const percentLeft = this.timeLeft / (15 * 60 * 1000);
+      this.timeLeft = this.shop.lastRefresh + this.personalHighlight - Date.now();
+      const percentLeft = this.timeLeft / this.personalHighlight;
       if (this.candleRef && this.candleRef.nativeElement) {
         this.candleRef.nativeElement.style.animation = 'none';
         setTimeout(() => {
@@ -478,7 +481,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   refreshTimer(): void {
     if (this.showCandle && this.timeLeft > 0) {
       this.timerActive = true;
-      this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
+      this.timeLeft = this.shop.lastRefresh + this.personalHighlight - Date.now();
       if (this.timeLeft < 0) {
         this.showCandle = false;
         this.timerActive = false;

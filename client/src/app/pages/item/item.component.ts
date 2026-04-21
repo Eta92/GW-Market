@@ -7,7 +7,7 @@ import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { CurrencyGroup, CurrencyOrders, ItemOrder, ItemOrders, ItemPriceList, Time, TimeBucket } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { Item, OrderType, Price, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { MessageService } from '@app/services/message.service';
 import { ShopService } from '@app/services/shop.service';
@@ -33,6 +33,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   public allAuctions: Array<Auction> = [];
   public allOrders: ItemOrders = { sellOrders: [], buyOrders: [], auctions: [] };
   public currencyOrders: CurrencyOrders = { currencies: [] };
+  public myShop: Shop;
   public name = '';
   public tradeMessage = '';
   public details: Array<string> = [];
@@ -147,6 +148,12 @@ export class ItemComponent implements OnInit, OnDestroy {
         }
         this.cdr.detectChanges();
       });
+      this.shopService.getActiveShop().subscribe(activeShop => {
+        if (activeShop) {
+          this.myShop = activeShop;
+          this.cdr.detectChanges();
+        }
+      });
       this.auctionForm = this.fb.group({
         bidAmount: [null, [Validators.required, Validators.min(1)]],
         acknowledge: [null, [Validators.required, Validators.requiredTrue]]
@@ -182,7 +189,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   getOrderTime(item: ItemOrder | ShopItem): Time {
-    return UtilityHelper.getTimeCategory(item.lastRefresh);
+    return UtilityHelper.getTimeCategory(item.lastRefresh, false, item.positives - item.negatives);
   }
 
   getAuctionTime(item: Auction): Time {
@@ -808,5 +815,10 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   openHistoryModal(): void {
     this.storeService.requestSocket('getPriceHistory', this.item.name);
+  }
+
+  itemVote(order: ItemOrder): null | 'positive' | 'negative' {
+    if (!this.myShop || !this.myShop.notations) return null;
+    return this.myShop.notations[order.shopId] || null;
   }
 }

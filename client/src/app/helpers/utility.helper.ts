@@ -137,7 +137,7 @@ export class UtilityHelper {
   public static timeToString(time: Time): string {
     switch (time) {
       case Time.ONLINE:
-        return 'online';
+        return 'recent';
       case Time.TODAY:
         return 'today';
       case Time.WEEK:
@@ -204,7 +204,7 @@ export class UtilityHelper {
    * - TODAY: < 12 hours ago
    * - WEEK: older than 12 hours or no timestamp
    */
-  public static getTimeCategory(lastRefresh: number | undefined, futur = false): Time {
+  public static getTimeCategory(lastRefresh: number | undefined, futur = false, bonus = 0): Time {
     if (!lastRefresh) {
       return Time.WEEK;
     }
@@ -212,7 +212,7 @@ export class UtilityHelper {
     if (futur) {
       diff = lastRefresh - Date.now();
     }
-    if (diff < 1000 * 60 * 15) {
+    if (diff < 1000 * 60 * (15 + bonus)) {
       return Time.ONLINE;
     } else if (diff < 1000 * 60 * 60 * 12) {
       return Time.TODAY;
