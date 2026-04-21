@@ -158,14 +158,31 @@ export class SearchComponent implements OnInit, OnDestroy {
       sortBy: ['time'],
       sortOrder: ['desc']
     });
-    this.form.get('family').valueChanges.subscribe(() => {
+    this.form.get('family').valueChanges.subscribe(value => {
       this.form.get('category').setValue(null);
+      if (value !== 'weapon' && value !== 'unique') {
+        this.form.get('attribute').setValue(null);
+        this.form.get('reqMin').setValue(0);
+        this.form.get('reqMax').setValue(13);
+        this.form.get('inscription').setValue(null);
+        this.form.get('core').setValue(null);
+        this.form.get('prefix').setValue(null);
+        this.form.get('suffix').setValue(null);
+      }
     });
     this.form.valueChanges.subscribe(value => {
       localStorage.setItem('searchForm', JSON.stringify(value));
     });
     if (localStorage.getItem('searchForm')) {
       this.form.patchValue(JSON.parse(localStorage.getItem('searchForm')));
+      if (
+        this.form.get('legacy').value ||
+        this.form.get('preSearing').value ||
+        this.form.get('goldMin').value ||
+        this.form.get('goldMax').value
+      ) {
+        this.isAdvanced = true;
+      }
       this.onSearch();
     }
   }
@@ -173,6 +190,16 @@ export class SearchComponent implements OnInit, OnDestroy {
   onUpdateSort(sort: OrderSort): void {
     this.form.patchValue(sort);
     localStorage.setItem('searchForm', JSON.stringify(this.form.value));
+  }
+
+  toggleAdvanced(): void {
+    this.isAdvanced = !this.isAdvanced;
+    if (!this.isAdvanced) {
+      this.form.get('legacy').setValue(null);
+      this.form.get('preSearing').setValue(null);
+      this.form.get('goldMin').setValue(null);
+      this.form.get('goldMax').setValue(null);
+    }
   }
 
   onSearch(): void {
