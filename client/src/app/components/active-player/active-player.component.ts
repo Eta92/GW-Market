@@ -41,7 +41,7 @@ export class ActivePlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: [this.shop ? this.shop.player : '', Validators.pattern(/.*\s+.*/)]
+      name: [this.shop ? this.shop.player : '', Validators.pattern(/^.{3,}$/)]
     });
     this.storeService.getShopSecret().subscribe((certificate: { uuid: string; secret: string }) => {
       if (certificate) {
@@ -77,7 +77,7 @@ export class ActivePlayerComponent implements OnInit {
       const playerName = this.form.get('name')?.value;
       this.confirmPlayer.emit(playerName);
     } else {
-      this.toastrService.error('Please enter a valid player name (at least two names)', '', {
+      this.toastrService.error('Please enter a valid player name (at least 3 characters)', '', {
         timeOut: 10000
       });
     }

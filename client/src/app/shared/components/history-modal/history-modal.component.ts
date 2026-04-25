@@ -15,11 +15,11 @@ export const PRICE_LABELS: Record<Price, string> = {
 };
 
 const ORIGIN_LABELS: Record<PurchaseOrigin, string> = {
-  [PurchaseOrigin.CLIENT]: 'Client',
-  [PurchaseOrigin.SHOP]: 'Shop',
-  [PurchaseOrigin.TOOLBOX]: 'Toolbox',
-  [PurchaseOrigin.MERCHANT]: 'Merchant',
-  [PurchaseOrigin.KAMADAN]: 'Kamadan'
+  [PurchaseOrigin.CLIENT]: 'Customer request',
+  [PurchaseOrigin.SHOP]: 'Shop confirmation',
+  [PurchaseOrigin.TOOLBOX]: 'Toolbox request',
+  [PurchaseOrigin.MERCHANT]: 'Merchant data',
+  [PurchaseOrigin.KAMADAN]: 'Kamadan chat'
 };
 
 const ORDER_TYPE_LABELS: Record<OrderType, string> = {
@@ -158,7 +158,7 @@ export class HistoryModalComponent extends Modal {
         textStyle: { color: '#f4e8c1', fontSize: 12 },
         formatter: (params: any): string => {
           const d: ChartDataPoint = params.data;
-          const date = new Date(d.value[0]).toLocaleDateString('fr-FR', {
+          const date = new Date(d.value[0]).toLocaleDateString(undefined, {
             day: '2-digit',
             month: 'short',
             year: 'numeric'
@@ -202,7 +202,7 @@ export class HistoryModalComponent extends Modal {
         axisLine: { lineStyle: { color: '#3a3430' } },
         axisLabel: {
           color: '#a08060',
-          formatter: (v: number): string => new Date(v).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' })
+          formatter: (v: number): string => new Date(v).toLocaleDateString(undefined, { day: '2-digit', month: 'short' })
         },
         splitLine: { lineStyle: { color: '#2a241f' } }
       },

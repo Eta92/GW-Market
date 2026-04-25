@@ -41,6 +41,20 @@
   <!-- BODY -->
   <div class="history-modal__body">
     <div *ngIf="hasData; else noData" class="history-modal__chart-wrapper">
+      <div class="history-modal__shape-legend">
+        <span class="history-modal__shape-legend-item">
+          <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="#6b7280" /></svg>
+          Sell order
+        </span>
+        <span class="history-modal__shape-legend-item">
+          <svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" fill="#6b7280" /></svg>
+          Buy order
+        </span>
+        <!--span class="history-modal__shape-legend-item">
+          <svg width="12" height="12" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="#6b7280"/></svg>
+          Auction
+        </span-->
+      </div>
       <div echarts [options]="chartOptions" class="history-modal__chart" [style.height.px]="420"></div>
     </div>
 
