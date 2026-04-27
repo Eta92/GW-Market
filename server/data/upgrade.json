@@ -1749,6 +1749,7 @@
       },
       {
         "name": "Brawn over Brains",
+        "enhancement": "Damage +10...15%",
         "condition": "Energy -5",
         "img": "All weapons Inscriptions"
       },

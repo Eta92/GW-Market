@@ -11,6 +11,7 @@ import { OrderCardComponent } from '@app/shared/components/order-card/order-card
 import { OrderRowComponent } from '@app/shared/components/order-row/order-row.component';
 import { PreviewCardComponent } from '@app/shared/components/preview-card/preview-card.component';
 import { QtyInputComponent } from '@app/shared/components/qty-input/qty-input.component';
+import { ReplyModalComponent } from '@app/shared/components/reply-modal/reply-modal.component';
 import { StatsDisplayComponent } from '@app/shared/components/stats-display/stats-display.component';
 import { ToggleGroupComponent } from '@app/shared/components/toggle-group/toggle-group.component';
 import { StopPropagationDirective } from '@app/shared/directives/stop-propagation.directive';
@@ -36,6 +37,7 @@ const SHARED_COMPONENTS = [
   MessageCardComponent,
   HistoryModalComponent,
   NegativeModalComponent,
+  ReplyModalComponent,
   RoutingDirective,
   MiddleclickDirective,
   StopPropagationDirective,
@@ -44,7 +46,14 @@ const SHARED_COMPONENTS = [
 
 @NgModule({
   declarations: [...SHARED_COMPONENTS],
-  imports: [CommonModule, FormsModule, PipeModule, ModalModule, NgxEchartsModule.forRoot({ echarts: () => import('echarts') })],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PipeModule,
+    ModalModule,
+    NgxEchartsModule.forRoot({ echarts: () => import('echarts') })
+  ],
   exports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule, NgxEchartsModule, ...SHARED_COMPONENTS]
 })
 export class SharedModule {}

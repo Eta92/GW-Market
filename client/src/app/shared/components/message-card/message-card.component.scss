@@ -41,6 +41,13 @@
   }
 }
 
+.message-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
 .message-content {
   display: flex;
   flex-direction: column;
@@ -98,6 +105,18 @@
     border-color: rgba($gold, 0.4);
     color: $parchment;
     transform: translateY(-1px);
+  }
+
+  &.reply {
+    margin-left: auto;
+    width: auto;
+    padding: 0 8px;
+    gap: 4px;
+    &:hover {
+      background: rgba($gold, 0.15);
+      border-color: rgba($gold, 0.5);
+      color: $gold-light;
+    }
   }
 
   &.danger {

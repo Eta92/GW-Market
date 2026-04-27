@@ -166,7 +166,18 @@ export class HeaderComponent implements OnInit {
         }
         if (
           this.messageOption === 'message' &&
-          ![MessageType.MEETUP_AT, MessageType.MEETUP_OVER, MessageType.NEGOCIATE].includes(message.type)
+          ![
+            MessageType.MEETUP_AT,
+            MessageType.MEETUP_OVER,
+            MessageType.MEETUP_COUNTER_AT,
+            MessageType.MEETUP_COUNTER_OVER,
+            MessageType.MEETUP_ACCEPT,
+            MessageType.MEETUP_REFUSE,
+            MessageType.NEGOCIATE,
+            MessageType.NEGOCIATE_ACCEPT,
+            MessageType.NEGOCIATE_REFUSE,
+            MessageType.NEGOCIATE_COUNTER
+          ].includes(message.type)
         ) {
           return false;
         }
@@ -198,5 +209,9 @@ export class HeaderComponent implements OnInit {
   public onDeleteMessage(message: Message): void {
     this.messageService.deleteMessage(this.shop, message);
     this.filterMessages();
+  }
+
+  public onReplyMessage(message: Message): void {
+    this.messageService.replyToMessage(this.shop.uuid, message);
   }
 }

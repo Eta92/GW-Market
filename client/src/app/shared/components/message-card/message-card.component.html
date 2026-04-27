@@ -14,10 +14,15 @@
     <div class="message-body">
       {{ getMessageContent() }}
     </div>
-    <div class="message-contact" *ngIf="isContactPossible()">
-      <span class="flex cursor-pointer underline" appRouting [routing]="getPlayerLink()"
-        >{{ message.senderName }} <i class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
-      ></span>
+    <div class="message-footer">
+      <div class="message-contact" *ngIf="isContactPossible()">
+        <span class="flex cursor-pointer underline" appRouting [routing]="getPlayerLink()"
+          >{{ message.senderName }} <i class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+        ></span>
+      </div>
+      <button *ngIf="isReplyPossible()" class="action-btn reply" title="Reply to this message" (click)="replyMessage.emit(message)">
+        <i class="fa fa-reply"></i> Reply
+      </button>
     </div>
   </div>
 </div>

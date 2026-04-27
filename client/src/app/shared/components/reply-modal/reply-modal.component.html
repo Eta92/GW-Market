@@ -1,0 +1,96 @@
+<div class="popup-content" [formGroup]="replyForm">
+  <!-- Header -->
+  <div class="popup-header">
+    <img class="popup-img" [src]="getImageSource()" />
+    <div class="popup-title">
+      <h3>Reply to Message</h3>
+      <p>Respond to {{ senderName() }}'s request</p>
+    </div>
+    <button class="popup-close" (click)="cancel()">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+
+  <div class="popup-body p-3">
+    <!-- Reply Type Selection -->
+    <div class="form-group">
+      <label>How do you want to reply?</label>
+      <app-toggle-group
+        [options]="replyToggleOptions"
+        [value]="selectedMessageType"
+        (valueChange)="selectedMessageType = $event"
+      ></app-toggle-group>
+    </div>
+
+    <div class="form-group">
+      <!-- Accept / Refuse: just a confirm message -->
+      <div class="message-form" *ngIf="isAcceptOrRefuse()">
+        <div class="message-description py-1">
+          You are about to send your reply directly. No additional input is required — the original message data will be reused.
+        </div>
+      </div>
+
+      <!-- New Meetup: Time Slot (MEETUP_AT) - used for auction replies -->
+      <div class="message-form" *ngIf="isMeetAt">
+        <div class="message-description py-1">
+          Propose a specific time to complete the auction trade. Select when you are available and send the message.
+        </div>
+        <label for="from">Available Time</label>
+        <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
+      </div>
+
+      <!-- New Meetup: Time Window (MEETUP_OVER) - used for auction replies -->
+      <div class="message-form" *ngIf="isMeetOver">
+        <div class="message-description py-1">
+          Propose a time window to complete the auction trade. Select the time range in which you are available and send the message.
+        </div>
+        <label for="from">Available From</label>
+        <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
+        <label for="to">Available Until</label>
+        <input type="datetime-local" formControlName="to" class="form-input custom-datetime w-full" />
+      </div>
+
+      <!-- Counter: Time Slot (MEETUP_COUNTER_AT) -->
+      <div class="message-form" *ngIf="isCounterAt">
+        <div class="message-description py-1">
+          Propose a new specific time slot for the trade. Select when you are available and send your counter-proposal.
+        </div>
+        <label for="from">Proposed Time</label>
+        <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
+      </div>
+
+      <!-- Counter: Time Window (MEETUP_COUNTER_OVER) -->
+      <div class="message-form" *ngIf="isCounterOver">
+        <div class="message-description py-1">
+          Propose a new time window for the trade. Select the time range in which you are available and send your counter-proposal.
+        </div>
+        <label for="from">Available From</label>
+        <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
+        <label for="to">Available Until</label>
+        <input type="datetime-local" formControlName="to" class="form-input custom-datetime w-full" />
+      </div>
+
+      <!-- Counter: Negotiate price (NEGOCIATE_COUNTER) -->
+      <div class="message-form" *ngIf="isNegociateCounter">
+        <div class="message-description py-1">
+          Propose a counter-offer price. Choose the price and currency you find acceptable, then send your reply.
+        </div>
+        <label for="negociate">Counter Price</label>
+        <input type="number" formControlName="negociate" class="form-input custom-datetime w-full" />
+        <label for="currency">Currency</label>
+        <app-currency-dropdown
+          [selectedCurrency]="replyForm.get('currency')?.value"
+          (currencyChange)="replyForm.get('currency')?.setValue($event)"
+        ></app-currency-dropdown>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-warning">Reply will be delivered via the website and is not modifiable.</div>
+  <div class="popup-warning">Ensure your reply is correct before sending.</div>
+
+  <button class="confirm-btn" title="Send Reply" (click)="sendReply()" [disabled]="!selectedMessageType">
+    <i class="fa fa-reply"></i>
+    Send Reply
+  </button>
+</div>

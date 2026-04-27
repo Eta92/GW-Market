@@ -14,6 +14,7 @@ export class MessageCardComponent {
 
   @Output() readMessage = new EventEmitter<Message>();
   @Output() deleteMessage = new EventEmitter<Message>();
+  @Output() replyMessage = new EventEmitter<Message>();
 
   public deleting = false;
 
@@ -85,6 +86,48 @@ export class MessageCardComponent {
           new Date(parseInt(data[2])).toLocaleString() +
           '. Try to connect during this time frame to complete the trade.'
         );
+      case MessageType.MEETUP_ACCEPT:
+        return (
+          'The player ' +
+          this.message.senderName +
+          ' accepted the trade meetup for the item ' +
+          data[0] +
+          ' you proposed at ' +
+          new Date(parseInt(data[1])).toLocaleString() +
+          '. Try to connect with them to complete the trade.'
+        );
+      case MessageType.MEETUP_REFUSE:
+        return (
+          'The player ' +
+          this.message.senderName +
+          ' refused the trade meetup for the item ' +
+          data[0] +
+          ' you proposed at ' +
+          new Date(parseInt(data[1])).toLocaleString() +
+          ' without proposing another date. You can try to propose another meetup or contact them in-game.'
+        );
+      case MessageType.MEETUP_COUNTER_AT:
+        return (
+          'The player ' +
+          this.message.senderName +
+          ' proposed another time for the trade meetup of the item ' +
+          data[0] +
+          ' at ' +
+          new Date(parseInt(data[1])).toLocaleString() +
+          '. Try to connect with them to complete the trade.'
+        );
+      case MessageType.MEETUP_COUNTER_OVER:
+        return (
+          'The player ' +
+          this.message.senderName +
+          ' proposed another time frame for the trade meetup of the item ' +
+          data[0] +
+          ' from ' +
+          new Date(parseInt(data[1])).toLocaleString() +
+          ' to ' +
+          new Date(parseInt(data[2])).toLocaleString() +
+          '. Try to connect with them to complete the trade.'
+        );
       case MessageType.NEGOCIATE:
         return (
           'The player ' +
@@ -96,6 +139,42 @@ export class MessageCardComponent {
           ' ' +
           UtilityHelper.priceToString(parseInt(data[2]) as Price) +
           '. Try to connect with them to accept or refuse the offer.'
+        );
+      case MessageType.NEGOCIATE_ACCEPT:
+        return (
+          'The player ' +
+          this.message.senderName +
+          ' accepted the negociated offer for the item ' +
+          data[0] +
+          ' with a price of ' +
+          data[1] +
+          ' ' +
+          UtilityHelper.priceToString(parseInt(data[2]) as Price) +
+          ' you proposed. Try to connect with them to complete the trade.'
+        );
+      case MessageType.NEGOCIATE_REFUSE:
+        return (
+          'The player ' +
+          this.message.senderName +
+          ' refused the negociated offer for the item ' +
+          data[0] +
+          ' with a price of ' +
+          data[1] +
+          ' ' +
+          UtilityHelper.priceToString(parseInt(data[2]) as Price) +
+          ' without proposing another offer. You can try to connect with them to negotiate further.'
+        );
+      case MessageType.NEGOCIATE_COUNTER:
+        return (
+          'The player ' +
+          this.message.senderName +
+          ' proposed a counter offer for the item ' +
+          data[0] +
+          ' with a price of ' +
+          data[1] +
+          ' ' +
+          UtilityHelper.priceToString(parseInt(data[2]) as Price) +
+          '. Try to connect with them to negotiate further.'
         );
       case MessageType.REPUTATION_UP:
         return 'You received a positive reputation vote from ' + this.message.senderName + '. Feel free to send them a vote as well.';
@@ -158,8 +237,28 @@ export class MessageCardComponent {
     return [
       MessageType.MEETUP_AT,
       MessageType.MEETUP_OVER,
+      MessageType.MEETUP_COUNTER_AT,
+      MessageType.MEETUP_COUNTER_OVER,
+      MessageType.MEETUP_ACCEPT,
+      MessageType.MEETUP_REFUSE,
       MessageType.NEGOCIATE,
+      MessageType.NEGOCIATE_COUNTER,
+      MessageType.NEGOCIATE_ACCEPT,
+      MessageType.NEGOCIATE_REFUSE,
       MessageType.REPUTATION_UP,
+      MessageType.AUCTION_WON,
+      MessageType.AUCTION_END
+    ].includes(this.message.type);
+  }
+
+  isReplyPossible(): boolean {
+    return [
+      MessageType.MEETUP_AT,
+      MessageType.MEETUP_OVER,
+      MessageType.MEETUP_COUNTER_AT,
+      MessageType.MEETUP_COUNTER_OVER,
+      MessageType.NEGOCIATE,
+      MessageType.NEGOCIATE_COUNTER,
       MessageType.AUCTION_WON,
       MessageType.AUCTION_END
     ].includes(this.message.type);

@@ -1,0 +1,140 @@
+@import '../../styles/variables';
+@import '../../styles/form-controls';
+
+.popup-content {
+  background: $obsidian-light;
+  border: 2px solid rgba($gold, 0.4);
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba($gold, 0.1);
+  border-bottom: 1px solid rgba($gold, 0.2);
+}
+
+.popup-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: rgba($obsidian, 0.5);
+  padding: 4px;
+}
+
+.popup-title {
+  flex: 1;
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $parchment;
+  }
+
+  p {
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+    color: rgba($parchment, 0.6);
+  }
+}
+
+.popup-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: 4px;
+  color: $gold-light;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+  }
+}
+
+.popup-body {
+  padding: 1rem;
+}
+
+.form-group {
+  @extend %form-group;
+  margin-bottom: 0.75rem;
+}
+
+.form-input {
+  @extend %form-input;
+}
+
+.toggle-group {
+  @extend %toggle-group;
+
+  .toggle-btn {
+    @extend %toggle-btn;
+  }
+}
+
+.custom-datetime {
+  color-scheme: dark;
+}
+
+.message-form {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.message-description {
+  font-size: 0.75rem;
+  color: rgba($parchment, 0.55);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.popup-warning {
+  padding: 0 16px 4px;
+  font-size: 0.65rem;
+  color: rgba($parchment, 0.7);
+  font-style: italic;
+}
+
+.confirm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: calc(100% - 2rem);
+  margin: 0.75rem 1rem 1rem;
+  padding: 0.65rem 1rem;
+  background: linear-gradient(135deg, $gold 0%, $gold-light 100%);
+  color: $obsidian;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
