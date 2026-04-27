@@ -39,7 +39,7 @@
         <div class="sidebar-timer" *ngIf="showCandle && !showcase">
           <div class="timer-header">
             <i class="fa fa-clock"></i>
-            <span class="timer-label">Highlight time</span>
+            <span class="timer-label">Visibility timer</span>
           </div>
           <span class="timer-value">{{ formatTime(timeLeft) }}</span>
           <div class="timer-bar">
@@ -71,7 +71,7 @@
           <span class="notify-offline-checkbox" [class.checked]="notifyOnOffline">
             <i class="fa" [class.fa-bell]="notifyOnOffline" [class.fa-bell-slash]="!notifyOnOffline"></i>
           </span>
-          <span class="notify-offline-label">Notify when your shop lose highlight</span>
+          <span class="notify-offline-label">Notify when your shop loses visibility</span>
         </label>
 
         <!-- Quick Stats -->
@@ -123,7 +123,7 @@
 
         <!-- Certified Characters -->
         <div *ngIf="showcase && shop?.certified?.length > 0" class="sidebar-certified">
-          <div class="sidebar-certified-label">All Characters</div>
+          <div class="sidebar-certified-label">All characters</div>
           <div class="certified-row" *ngFor="let player of shop.certified">
             <i class="fa fa-user certified-icon"></i>
             <span class="certified-name" [title]="player">{{ player }}</span>
@@ -155,7 +155,7 @@
             *ngIf="Array.isArray(shop?.items) && shop.items.length > 0"
           >
             <i class="fa fa-pen"></i>
-            <span>Edit All Orders</span>
+            <span>Edit all orders</span>
           </button>
           <button class="sidebar-action-btn col-span-2" (click)="onDaybreakOpen()">
             <i class="fa fa-rotate"></i>
@@ -163,7 +163,7 @@
           </button>
           <button class="sidebar-action-btn col-span-2" (click)="getLink()">
             <i class="fa fa-link"></i>
-            <span>Public Link</span>
+            <span>Public link</span>
           </button>
 
           <textarea *ngIf="showLink" class="sidebar-action-btn col-span-2 h-[70px]" #area (focus)="area.select()" readonly>
@@ -355,19 +355,19 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     <div class="order-detail-body">
       <!-- Item Info -->
       <div class="detail-item-info">
-        To import your item from the game you need to use a custom launcher because base game do not include any external access. The custom
-        launcher working with GW Market is named Daybreak.
+        To import your item from the game you need to use a custom launcher. The base game does not provide any external access/API. The custom
+        launcher integrated with GW Market is Daybreak.
       </div>
     </div>
 
     <div class="order-detail-footer flex flex-col gap-2">
       <button class="detail-whisper-btn" (click)="loadDaybreakItems('inventory')">
         <i class="fa fa-person-hiking"></i>
-        Import Inventory Items
+        Import inventory items
       </button>
       <button class="detail-whisper-btn" (click)="loadDaybreakItems('stash')">
         <i class="fa fa-boxes-stacked"></i>
-        Import Stash Items
+        Import stash items
       </button>
     </div>
   </div>
@@ -446,7 +446,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           </div>
         </div>
         <div class="detail-price-row" *ngIf="auctionDisplay && (!auctionDisplay.history || auctionDisplay.history?.length === 0)">
-          <span class="detail-price-label">Initial Auction Price</span>
+          <span class="detail-price-label">Initial auction price</span>
           <div class="detail-price-value">
             <img [src]="auctionDisplay.currency | currencySource" class="detail-currency-icon" />
             <span class="detail-price-amount">{{ auctionDisplay.startingPrice }}</span>
@@ -454,7 +454,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
           </div>
         </div>
         <div class="detail-price-row unit-price" *ngIf="auctionDisplay?.buyoutPrice">
-          <span class="detail-price-label">Buyout Price</span>
+          <span class="detail-price-label">Buyout price</span>
           <div class="detail-price-value">
             <span class="detail-price-decimal">{{ auctionDisplay.buyoutPrice }}</span>
           </div>
