@@ -355,6 +355,60 @@
       {
         "name": "Hammer of Kathandrax",
         "description": "The Hammer of Kathandrax, also called Kathandrax's Crusher, is the required quest item for completing Kathandrax's Crusher. Can be use to rush the maximize a character's rank in the Survivor title track."
+      },
+      {
+        "name": "Moss Spider Egg",
+        "description": "The Moss Spider Egg is an item used to obtain the Moss Spider as a charmable animal."
+      },
+      {
+        "name": "Imperial Panda License",
+        "description": "The Imperial Panda License is an item used to obtain the Panda as a charmable animal by presenting it to Emryd the Tamer."
+      }
+    ]
+  },
+  {
+    "type": "Polymock Piece",
+    "description": "Polymock pieces are used to invoke creatures in the Polymock mini-game",
+    "items": [
+      {
+        "name": "Mirage Iboga Polymock Piece",
+        "description": "Quest reward from Polymock: Defeat Master Hoff.",
+        "stats": []
+      },
+      {
+        "name": "Gaki Polymock Piece",
+        "description": "This piece drops as a reward from Destroyer Chest and Dragrimmar Chest.",
+        "stats": []
+      },
+      {
+        "name": "Mantis Dreamweaver Polymock Piece",
+        "description": "This piece drops as a reward from Arachni's Spoils, Eldritch Chest and the Zoldark's Chest.",
+        "stats": []
+      },
+      {
+        "name": "Mursaat Elementalist Polymock Piece",
+        "description": "This piece drops as a reward from Hierophant's Chest.",
+        "stats": []
+      },
+      {
+        "name": "Naga Shaman Polymock Piece",
+        "description": "This piece drops as a reward from Havok's Chest, the Mountain Heart Chest, and the Bogroot Chest.",
+        "stats": []
+      },
+      {
+        "name": "Ruby Djinn Polymock Piece",
+        "description": "This piece drops as a reward from Murakai's Chest, Hidesplitter's Chest and Chest of Kathandrax.",
+        "stats": []
+      },
+      {
+        "name": "Stone Rain Polymock Piece",
+        "description": "This piece drops as a reward from Arachni's Spoils, Fendi's Chest, Oola's Chest, and the Prismatic Chest.",
+        "stats": []
+      },
+      {
+        "name": "Wind Rider Polymock Piece",
+        "description": "This piece drops as a reward from the Chest of Burrows and Murakai's Chest.",
+        "stats": []
       }
     ]
   },
@@ -439,6 +493,10 @@
       {
         "name": "Celestial Sigil",
         "description": "Use to purchase a Guild Hall"
+      },
+      {
+        "name": "Monumental Tapestry",
+        "description": "Used to unlock a single monument inside the Hall of Monuments."
       }
     ]
   }
