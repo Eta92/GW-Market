@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./help.component.scss']
 })
 export class HelpComponent {
+  @ViewChild('categoryNav') categoryNav!: ElementRef;
+
+  selectedCategory: string = '';
+
   constructor(private router: Router) {}
+
+  selectCategory(category: string): void {
+    this.selectedCategory = category;
+    setTimeout(() => {
+      this.categoryNav?.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
 
   goHome(): void {
     this.router.navigate(['']);

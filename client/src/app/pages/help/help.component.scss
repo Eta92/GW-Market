@@ -28,12 +28,8 @@ $slate: #1a1a1e;
 // PAGE TITLE SECTION
 // ============================================
 .page-title-section {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
-  padding: 48px 24px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
+  padding: 36px 24px;
   text-align: center;
   border-bottom: 1px solid rgba($gold, 0.15);
 }
@@ -78,11 +74,7 @@ $slate: #1a1a1e;
 // INFO CARDS
 // ============================================
 .info-card {
-  background: linear-gradient(
-    145deg,
-    rgba(26, 26, 30, 0.95) 0%,
-    rgba(18, 18, 20, 0.98) 100%
-  );
+  background: linear-gradient(145deg, rgba(26, 26, 30, 0.95) 0%, rgba(18, 18, 20, 0.98) 100%);
   border: 1px solid rgba($gold, 0.2);
   border-radius: 8px;
   overflow: hidden;
@@ -90,8 +82,9 @@ $slate: #1a1a1e;
 
   &:hover {
     border-color: rgba($gold, 0.35);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                0 0 40px rgba($gold, 0.05);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 0 40px rgba($gold, 0.05);
   }
 }
 
@@ -134,6 +127,77 @@ $slate: #1a1a1e;
 }
 
 // ============================================
+// CATEGORY NAVIGATION
+// ============================================
+.category-nav {
+  padding: 0 24px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.category-nav-label {
+  text-align: center;
+  color: rgba($parchment, 0.8);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.category-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: rgba($gold, 0.06);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: 6px;
+  color: rgba($parchment, 0.75);
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  white-space: nowrap;
+
+  i {
+    font-size: 15px;
+    color: $gold-dim;
+    transition: color 200ms ease;
+  }
+
+  &:hover {
+    background: rgba($gold, 0.12);
+    border-color: rgba($gold, 0.45);
+    color: $parchment;
+
+    i {
+      color: $gold;
+    }
+  }
+
+  &.active {
+    background: rgba($gold, 0.15);
+    border-color: $gold;
+    color: $gold-bright;
+    box-shadow: 0 0 16px rgba($gold, 0.15);
+
+    i {
+      color: $gold-bright;
+    }
+  }
+}
+
+// ============================================
 // LINK BUTTONS
 // ============================================
 .link-btn {
@@ -155,7 +219,7 @@ $slate: #1a1a1e;
   }
 
   &.discord {
-    background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+    background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
     color: white;
 
     &:hover {

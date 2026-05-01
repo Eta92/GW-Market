@@ -18,7 +18,9 @@
             <h2>What is the goal of this site?</h2>
           </div>
           <div class="card-body">
-            <p>Give players an easy way to trade items via an organized marketplace. Let spamming in Kamadan be a thing of the past.</p>
+            <p>
+              Give players an <b>easy way to trade items</b> via an organized marketplace. Let spamming in Kamadan be a thing of the past.
+            </p>
           </div>
         </section>
 
@@ -29,12 +31,76 @@
           </div>
           <div class="card-body">
             <p>
-              Type the name of the item in the search bar or browse the recent orders. Once you have found one with the right price, you can
-              click a button to copy & paste a messages to the vendor in-game.
+              Type the name of the item in the <b>search</b> bar or <b>browse</b> the recent orders. Once you have found one with the right
+              price, you can click the <b>chat icon</b> to copy & paste a message to the vendor in-game. Alternatively you can suggest
+              meetings times and more (see section Messages & Interactions)
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column -->
+      <div class="content-column">
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I set up my shop? How do I post orders?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              <b>No log-in or account is required.</b> No data can be stolen. Simply create an item order, set your character name, and
+              update your shop. The data is stored in the browser's cache, but you are recommended to save it to file, or bind it to a
+              character via the certification process.
             </p>
           </div>
         </section>
 
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>This Q/A is useless, how do I get real help?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              Join the discord server
+              <a href="https://discord.gg/a4pPyJ3paN" class="text-gwt-light underline" target="_blank" title="Join Discord"
+                >https://discord.gg/a4pPyJ3paN</a
+              >
+              reserved for feedbacks and support, we will be happy to solve your issues.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Category Navigation -->
+  <div class="category-nav" id="category" #categoryNav>
+    <p class="category-nav-label">Explore the help section you need by clicking a category below.</p>
+    <div class="category-buttons">
+      <button class="category-button" [class.active]="selectedCategory === 'shop'" (click)="selectCategory('shop')">
+        <i class="fa fa-store"></i>
+        <span>Shop &amp; Listings</span>
+      </button>
+      <button class="category-button" [class.active]="selectedCategory === 'certification'" (click)="selectCategory('certification')">
+        <i class="fa fa-id-card"></i>
+        <span>Certification &amp; Accounts</span>
+      </button>
+      <button class="category-button" [class.active]="selectedCategory === 'messages'" (click)="selectCategory('messages')">
+        <i class="fa fa-comments"></i>
+        <span>Messages &amp; Interactions</span>
+      </button>
+      <button class="category-button" [class.active]="selectedCategory === 'integrations'" (click)="selectCategory('integrations')">
+        <i class="fa fa-plug"></i>
+        <span>Third Party Integrations</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Shop & Listings -->
+  <main class="page-content" *ngIf="selectedCategory === 'shop'">
+    <div class="content-grid">
+      <div class="content-column">
         <section class="info-card">
           <div class="card-header">
             <i class="fa fa-circle-question"></i>
@@ -51,13 +117,14 @@
         <section class="info-card">
           <div class="card-header">
             <i class="fa fa-circle-question"></i>
-            <h2>How do I set up my shop? How do I post orders?</h2>
+            <h2>What does being highlighted mean for my shop?</h2>
           </div>
           <div class="card-body">
             <p>
-              <b>No log-in or account is required.</b> No data can be stolen. Simply create an item order, set your character name, and
-              refresh your shop. To keep your shop data at hand regularly export your json file, so when cookies or the cache get cleared,
-              you can simply reimport your stock.
+              Currently, it is an arbitrary <b>15 min timer</b> during which your shop items are promoted the most (recent section). You can
+              enable notifications to alert you, when your shop is expiring. You can also tell by the decreasing level within the power
+              button icon on the top right of your market page. Your last updated shop time will be shown to players looking for items.
+              Don't worry, your items will stay visible for one week, and are saved in your shop until you delete them.
             </p>
           </div>
         </section>
@@ -65,18 +132,63 @@
         <section class="info-card">
           <div class="card-header">
             <i class="fa fa-circle-question"></i>
-            <h2>What does being highlighted mean for my shop?</h2>
+            <h2>How do I get the blue certified badge?</h2>
           </div>
           <div class="card-body">
-            <p>
-              Currently, it is an arbitrary <b>15 min timer</b> during which your shop items are promoted the most in the "recent" section.
-              Don't worry, they will stay visible for one week, and are saved in your shop until you delete them.
-            </p>
+            <p>The blue badge is a feature linked to the player certification, see more in <i>Certification & Accounts</i> section.</p>
           </div>
         </section>
       </div>
 
-      <!-- Right Column -->
+      <div class="content-column">
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>Why is my shop empty?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              If your shop appears empty, it is usually because your browser cache was cleared. Your shop data is stored in your browser
+              cache, not on the website. To avoid losing it, regularly export your data so you can reimport your listings at any time. You
+              can also bring your shop data back by certifying a character you already certified before.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>Reputation system</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              Once certified, you may collect and give reputation votes. You can do this by clicking the thumbs up and down on other
+              player's profiles. You may only use it once per account. You will also be notified within your messages about received votes
+              and can return the favour by clicking the arrow leading to their shop next to their name. Down votes require a provided
+              reason. We also encourage you to screenshot unusual interactions to discourage bad behaviour.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I get the green online badge?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              The online badge is a feature linked to the usage of Daybreak custom launcher, see more in
+              <i>Third Party Integrations</i> section.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Certification & Accounts -->
+  <main class="page-content" *ngIf="selectedCategory === 'certification'">
+    <div class="content-grid">
       <div class="content-column">
         <section class="info-card">
           <div class="card-header">
@@ -108,15 +220,218 @@
         <section class="info-card">
           <div class="card-header">
             <i class="fa fa-circle-question"></i>
-            <h2>How do I get the green online badge?</h2>
+            <h2>Why is there no option to delete a character?</h2>
           </div>
           <div class="card-body">
             <p>
-              You need to use a custom launcher named Daybreak and open the API in the options. This lets the web-browser chat with your
-              game. It also tracks your character switch automatically. Here is the Github page:
-              <a href="https://github.com/gwdevhub/Daybreak" class="text-gwt-light underline" target="_blank" title="Join Discord"
+              In order to make sure that people deliver upon their offers and auctions, we need to ensure a level of accountability. This is
+              for the protection of all other players. Hence, we also recommend you do not use a PVP char for verification.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class="content-column">
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I swap in between registered characters/accounts?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              By pressing player on the left you can open the certification menu and swap in between. While using Daybreak this change is
+              automatic. You can also do multiple accounts (not recommended with Daybreak however. See details in other section.)
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>Can I use multiple accounts?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              Yes, if you are entering your items manually, there should be no obstacles. However, should you decide to use Daybreak this
+              might come with limitations. While you can run multiple clients, only one account is reliably tracked for online status
+              (usually the first one launched). For the best experience, use one account for trading and avoid switching between clients
+              mid-session.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Messages & Interactions -->
+  <main class="page-content" *ngIf="selectedCategory === 'messages'">
+    <div class="content-grid">
+      <div class="content-column">
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I contact a player?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              Use the search bar or filters to find the item you want, then chose a listing. Next to the player's name, you will see a
+              <b>chat icon</b> and a <b>letter icon</b>. <br /><br />
+              Click the <b>chat icon</b> to open a window with a pre-typed in-game whisper, which you can copy and send to the online player
+              in Guild Wars. The <b>letter icon</b> opens the full interaction menu, where you can view and manage requests such as time
+              slot, time window, or negotiate.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>What are "time slot", "time window", and "negotiate" requests?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              These are the different ways a player can interact with your listing:
+              <br /><br />
+              <b>Time slot</b> – a specific time is proposed for the trade<br />
+              <b>Time window</b> – a flexible time range is proposed<br />
+              <b>Negotiate</b> – gives the opportunity to propose a counter offer <br /><br />
+              The <b>letter icon</b> opens the full menu with the request details.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How does the notifications panel work?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              This panel shows all interactions with your shop. Since there is no open chat on the site, notifications such as time slot,
+              time window, or negotiate requests will appear here. Use the provided character name to contact the player in-game and
+              complete the trade.
+              <br /><br />
+              After a completed trade, you may also receive <b>reputation notifications</b>, allowing both buyer and seller to leave
+              feedback for each other.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class="content-column">
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I reply to requests?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              The notifications now come with the option to reply. You may accept the proposed time or offer. You can also decline or make
+              other proposals. Please use the provided templates. Free text on the website can not be implemented as it would require legal
+              supervision. You are free to contact people in-game with whatever message you deem suitable.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I mark a notification as read?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              By clicking once on the left highlighted part of the message or on the message itself you can mark it as read. This depends on
+              the browser you use.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How are time slots handled across time zones?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              Your time zone is automatically determined by your browser/operating system. When you propose a time (e.g.
+              <b>18:30</b>), it is shown in your local time and automatically converted to the other player's local time on their side.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>Someone is trying to deceive me with reference to the market?!</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              Deception may include items I am not offering, altered prices with no indication of it being a counter-offer or not adhering
+              to a bidding offer. If it is clear, this person contacted you in the context of this website, please take a screenshot and
+              submit in on the matching channel in the support discord. In clear cases, actions against this user can be taken.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Third Party Integrations -->
+  <main class="page-content" *ngIf="selectedCategory === 'integrations'">
+    <div class="content-grid">
+      <div class="content-column">
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I access the market through toolbox?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              Navigate to settings. In the section labeled windows. There is a market browser, which you can enable. You may add it to your
+              main window or open it to be accessible at all times.
+            </p>
+          </div>
+        </section>
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I find items in the market?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              You may search for keywords to find your desired item. Currently, the search here is less refined than the website one. This
+              is subject to change.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I contact someone?</h2>
+          </div>
+          <div class="card-body">
+            <p>After selecting the item on the left, you may use the whisper button on the right to contact that player.</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="content-column">
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>How do I set up Daybreak?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              Daybreak is a custom launcher and open the API in the options. This lets the web-browser chat with your game. Here is the
+              Github page where you can download it: <br />
+              <a href="https://github.com/gwdevhub/Daybreak" class="text-gwt-light underline" target="_blank" title="Daybreak on Github"
                 >https://github.com/gwdevhub/Daybreak</a
               >
+              <br />
+              First enable Daybreak API in the mods manager, then launch Guild Wars through <b>Daybreak</b> , make sure
+              <b>localhost (127.0.0.1)</b> is not blocked by browser extensions, and open the account you want tracked <b>first</b>.
             </p>
           </div>
         </section>
@@ -124,12 +439,14 @@
         <section class="info-card">
           <div class="card-header">
             <i class="fa fa-circle-question"></i>
-            <h2>I receive in-game messages not matching my offers, what to do?</h2>
+            <h2>Why am I shown offline or on the wrong account? Does Daybreak support multiple accounts?</h2>
           </div>
           <div class="card-body">
             <p>
-              If you are sure it is not a badly updated item, please take a screenshot and post it in the dedicated channel on the support
-              discord. We will do our best to prevent such actions.
+              This is usually caused by blocked localhost, launching the wrong client first, or a delayed refresh. GWMarket typically reads
+              a single <b>first active client / port</b> such as <b>5080 –5100</b>, so if the wrong account is tracked, close all clients
+              and launch the correct one first. Multi-accounting with daybreak is challenging. For the smoothest setup, use one account for
+              trading and avoid switching characters mid-session.
             </p>
           </div>
         </section>
@@ -137,15 +454,25 @@
         <section class="info-card">
           <div class="card-header">
             <i class="fa fa-circle-question"></i>
-            <h2>This Q/A is useless, how do I get real help?</h2>
+            <h2>Why is my status delayed or not updating instantly?</h2>
           </div>
           <div class="card-body">
             <p>
-              Join the discord server
-              <a href="https://discord.gg/a4pPyJ3paN" class="text-gwt-light underline" target="_blank" title="Join Discord"
-                >https://discord.gg/a4pPyJ3paN</a
-              >
-              reserved for feedbacks and support, we will be happy to solve your issues.
+              Status checks are not instant, so online or offline updates can take up to one minute to appear. The market tries for a
+              maximum of 3 minutes before the shop is shown offline. To relaunch the process, refresh the page with <b>F5</b>.
+            </p>
+          </div>
+        </section>
+
+        <section class="info-card">
+          <div class="card-header">
+            <i class="fa fa-circle-question"></i>
+            <h2>Why did Daybreak stop working in PvP or after switching characters?</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              PvP restrictions are intended behaviour and not a bug. Character switching and some launch parameters may also be inconsistent
+              depending on setup. If tracking breaks, relaunch the client you want tracked first and refresh the page.
             </p>
           </div>
         </section>
