@@ -5,6 +5,8 @@ $parchment: #e8dcc4;
 
 .site-footer {
   flex-shrink: 0;
+  position: relative;
+  z-index: 120;
   background: rgba(0, 0, 0, 0.8);
   border-top: 1px solid rgba($gold, 0.2);
   padding: 12px 24px;
@@ -81,6 +83,18 @@ $parchment: #e8dcc4;
       color: $gold;
     }
   }
+
+  .footer-action-link {
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 150ms ease;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: $gold;
+    }
+  }
 }
 
 .social-link {
@@ -141,7 +155,8 @@ $parchment: #e8dcc4;
 
 @media (max-width: 1400px) {
   .footer-right {
-    div {
+    div,
+    .footer-action-link {
       display: none;
     }
   }

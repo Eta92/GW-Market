@@ -5,7 +5,8 @@ export interface Purchase {
   shop: string; // shop uuid
   prices: Array<PurchasePrice>;
   orderType: OrderType;
-  date: number;
+  listedTime?: number;
+  date?: number;
   origin: PurchaseOrigin;
 }
 

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { Auction } from '@app/models/auction.model';
+import { Purchase } from '@app/models/purchase.model';
 import { ReputationReason } from '@app/models/reputation.model';
 import { DaybreakItem, Shop, ShopItem } from '@app/models/shop.model';
 import { NegativeModalComponent } from '@shared/components/negative-modal/negative-modal.component';
@@ -27,6 +28,7 @@ export class ShopService {
   private activeShopSubject = new CurrentSubject<Shop>();
   private publicShopSubject = new CurrentSubject<Shop>();
   private personalAuctionsSubject = new CurrentSubject<Array<Auction>>();
+  private purchasesSubject = new CurrentSubject<Array<Purchase>>();
 
   constructor(
     private http: HttpClient,
@@ -116,6 +118,9 @@ export class ShopService {
       });
       this.publicShopSubject.set(publicShop);
       this.socket.emit('getPersonalAuctions', publicShop.auctions);
+    });
+    this.socket.on('GetShopHistory', (purchases: Array<Purchase>) => {
+      this.purchasesSubject.set(purchases);
     });
   }
 
@@ -308,6 +313,10 @@ export class ShopService {
 
   getPendingChanges(): Observable<number> {
     return this.pendingChangesSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getPurchases(): Observable<Array<Purchase>> {
+    return this.purchasesSubject.asObservable().pipe(debounceTime(0));
   }
 
   getdaybreakOnline(): boolean {

@@ -154,14 +154,6 @@
   flex-shrink: 0;
 }
 
-// Backdrop
-.search-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  background: transparent;
-}
-
 // Animation
 @keyframes slideDown {
   from {

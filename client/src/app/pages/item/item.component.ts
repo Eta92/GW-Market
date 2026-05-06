@@ -15,6 +15,8 @@ import { StoreService } from '@app/services/store.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 // Filter types
 export type OrderTypeFilter = 'all' | 'sell' | 'buy' | 'auction';
@@ -76,6 +78,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   ];
 
   private bundleFamilies = ['special', 'consumable', 'tome', 'rune', 'material'];
+  private destroy$ = new Subject<void>();
 
   selectedWhisperOrder: any = null;
   whisperQuantity: number = 1;
@@ -93,67 +96,81 @@ export class ItemComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
     this.storeService.requestSocket('untrackItem', this.name);
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.name = params.name || '';
       //const name = this.router.url.split('/').pop() || '';
       const decodedName = decodeURIComponent(this.name);
-      this.storeService.getItemOrders().subscribe((items: Array<ShopItem>) => {
-        this.allItems = items;
-        this.allOrders.sellOrders = this.parseOrders(
-          items.filter(si => si.orderType === OrderType.SELL),
-          true
-        );
-        this.allOrders.buyOrders = this.parseOrders(
-          items.filter(si => si.orderType === OrderType.BUY),
-          false
-        );
-        // Parse into new currency-based structure
-        this.currencyOrders = this.parseOrdersByCurrency();
-        // Extract available currencies for filter
-        this.availableCurrencies = this.currencyOrders.currencies.map(c => ({
-          value: c.currency,
-          name: c.currencyName
-        }));
-        // Build currency toggle options
-        this.currencyOptions = [
-          { value: 'all', label: 'All' },
-          ...this.currencyOrders.currencies.map(c => ({
+      this.storeService
+        .getItemOrders()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((items: Array<ShopItem>) => {
+          this.allItems = items;
+          this.allOrders.sellOrders = this.parseOrders(
+            items.filter(si => si.orderType === OrderType.SELL),
+            true
+          );
+          this.allOrders.buyOrders = this.parseOrders(
+            items.filter(si => si.orderType === OrderType.BUY),
+            false
+          );
+          // Parse into new currency-based structure
+          this.currencyOrders = this.parseOrdersByCurrency();
+          // Extract available currencies for filter
+          this.availableCurrencies = this.currencyOrders.currencies.map(c => ({
             value: c.currency,
-            label: c.currencyName,
-            imgSrc: UtilityHelper.getCurrencySource(c.currency)
-          }))
-        ];
-        this.cdr.detectChanges();
-      });
-      this.storeService.getItemDetails().subscribe((item: Item) => {
-        this.item = item;
-        this.focusBundle = this.bundleFamilies.includes(item?.family);
-        this.addDetails(item);
-        this.cdr.detectChanges();
-      });
-      this.storeService.getItemAuctions().subscribe((auctions: Array<Auction>) => {
-        auctions.forEach(auction => {
-          auction.item.item = this.itemService?.getItemBase(auction.item.name);
-        });
-        this.allAuctions = auctions;
-        this.allOrders.auctions = this.parseAuctions(auctions);
-        this.currencyOrders = this.parseOrdersByCurrency();
-        if (this.selectedAuction) {
-          const auction = this.allAuctions.find(a => a.uuid === this.selectedAuction?.uuid);
-          this.selectedAuction = auction;
-        }
-        this.cdr.detectChanges();
-      });
-      this.shopService.getActiveShop().subscribe(activeShop => {
-        if (activeShop) {
-          this.myShop = activeShop;
+            name: c.currencyName
+          }));
+          // Build currency toggle options
+          this.currencyOptions = [
+            { value: 'all', label: 'All' },
+            ...this.currencyOrders.currencies.map(c => ({
+              value: c.currency,
+              label: c.currencyName,
+              imgSrc: UtilityHelper.getCurrencySource(c.currency)
+            }))
+          ];
           this.cdr.detectChanges();
-        }
-      });
+        });
+      this.storeService
+        .getItemDetails()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((item: Item) => {
+          this.item = item;
+          this.focusBundle = this.bundleFamilies.includes(item?.family);
+          this.addDetails(item);
+          this.cdr.detectChanges();
+        });
+      this.storeService
+        .getItemAuctions()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((auctions: Array<Auction>) => {
+          auctions.forEach(auction => {
+            auction.item.item = this.itemService?.getItemBase(auction.item.name);
+          });
+          this.allAuctions = auctions;
+          this.allOrders.auctions = this.parseAuctions(auctions);
+          this.currencyOrders = this.parseOrdersByCurrency();
+          if (this.selectedAuction) {
+            const auction = this.allAuctions.find(a => a.uuid === this.selectedAuction?.uuid);
+            this.selectedAuction = auction;
+          }
+          this.cdr.detectChanges();
+        });
+      this.shopService
+        .getActiveShop()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(activeShop => {
+          if (activeShop) {
+            this.myShop = activeShop;
+            this.cdr.detectChanges();
+          }
+        });
       this.auctionForm = this.fb.group({
         bidAmount: [null, [Validators.required, Validators.min(1)]],
         acknowledge: [null, [Validators.required, Validators.requiredTrue]]
@@ -164,6 +181,7 @@ export class ItemComponent implements OnInit, OnDestroy {
         negociate: [0],
         currency: [1]
       });
+      this.storeService.setSearchedItemName(decodedName);
       this.storeService.requestSocket('getItemOrders', decodedName);
       this.storeService.requestSocket('trackItem', decodedName);
     });
@@ -225,6 +243,7 @@ export class ItemComponent implements OnInit, OnDestroy {
           price: price,
           description: item.description,
           quantity: item.quantity,
+          listedTime: item.listedTime,
           div_price: Math.round(price.price / pgcd),
           div_quantity: Math.round(item.quantity / pgcd)
         });
@@ -324,6 +343,7 @@ export class ItemComponent implements OnInit, OnDestroy {
           price: price,
           description: item.description,
           quantity: item.quantity,
+          listedTime: item.listedTime,
           div_price: Math.round(price.price / pgcd),
           div_quantity: Math.round(item.quantity / pgcd)
         };
@@ -661,7 +681,7 @@ export class ItemComponent implements OnInit, OnDestroy {
         } as PurchasePrice
       ],
       orderType: order.orderType,
-      date: Date.now(),
+      listedTime: order.listedTime,
       origin: PurchaseOrigin.CLIENT
     } as Purchase);
   }

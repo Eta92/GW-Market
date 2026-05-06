@@ -36,6 +36,7 @@
 }
 
 .sidebar-inner {
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -181,14 +182,7 @@
 }
 
 // Price History Button
-.history-button-wrapper {
-  padding: 0.75rem;
-  padding-top: 0;
-  margin-top: auto;
-}
-
 .history-button {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1420,6 +1414,10 @@
 // RESPONSIVE - Mobile
 // ============================================
 @media (max-width: 750px) {
+  .sm-hide {
+    display: none;
+  }
+
   .sidebar-inner {
     padding: 0.625rem 1rem;
     gap: 0.75rem;
@@ -1429,7 +1427,6 @@
   }
 
   .item-visual {
-    order: 0;
     flex: 0 0 auto;
   }
 
@@ -1440,7 +1437,6 @@
   }
 
   .item-info {
-    order: 1;
     flex: 1 1 auto;
     text-align: left;
     min-width: 120px;
@@ -1464,7 +1460,6 @@
   }
 
   .sidebar-stats {
-    order: 2;
     padding: 0.5rem 0.625rem;
     gap: 0.625rem;
   }
@@ -1531,6 +1526,10 @@
 // RESPONSIVE - Extra small
 // ============================================
 @media (max-width: 480px) {
+  .xs-hide {
+    display: none;
+  }
+
   .sidebar-inner {
     padding: 0.5rem 0.625rem;
     gap: 0.625rem;

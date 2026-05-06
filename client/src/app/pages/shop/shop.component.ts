@@ -70,7 +70,6 @@ export class ShopComponent implements OnInit, OnDestroy {
   public playerControl: UntypedFormControl = new UntypedFormControl('');
   public playerEdit = false;
   public clearShop = false;
-  public showLink = false;
 
   public orderWarning = false;
   public playerWarning = false;
@@ -78,6 +77,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   public playerOpen = false;
   public orderOpen = false;
   public daybreakOpen = false;
+  public dataOpen = false;
 
   // View options
   public compactView = false;
@@ -162,6 +162,13 @@ export class ShopComponent implements OnInit, OnDestroy {
       } else {
         this.notifyOnOffline = localStorage.getItem('notifyOnOffline') === 'true';
       }
+      // listen for purchases history
+      this.shopService
+        .getPurchases()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(purchases => {
+          this.exportPurchasesCsv(purchases);
+        });
     });
     if (localStorage.getItem('sortOrder')) {
       this.sortOrder = JSON.parse(localStorage.getItem('sortOrder'));
@@ -237,7 +244,7 @@ export class ShopComponent implements OnInit, OnDestroy {
             }) as PurchasePrice
         ),
         orderType: order.orderType,
-        date: Date.now(),
+        listedTime: order.listedTime,
         origin: PurchaseOrigin.SHOP
       } as Purchase);
     } else {
@@ -273,7 +280,7 @@ export class ShopComponent implements OnInit, OnDestroy {
             }) as PurchasePrice
         ),
         orderType: order.orderType,
-        date: Date.now(),
+        listedTime: order.listedTime,
         origin: PurchaseOrigin.SHOP
       } as Purchase);
     } else {
@@ -375,6 +382,69 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.shopService.exportShop();
   }
 
+  requestPurchasesExport(): void {
+    if (!this.shop?.uuid) {
+      this.toastrService.warning('Your shop must be online at least once to have purchase history.', 'No history available');
+      return;
+    }
+    this.storeService.requestSocket('getShopHistory', this.shop.uuid);
+  }
+
+  exportPurchasesCsv(purchases: Array<Purchase>): void {
+    if (!purchases?.length) {
+      this.toastrService.warning('No purchase history found for this shop.', 'Nothing to export');
+      return;
+    }
+    const orderTypeLabels = ['Sell', 'Buy', 'Auction'];
+    const now = new Date().toISOString().slice(0, 10);
+    const priceLabels = ['Platinum', 'Ecto', 'Zkey', 'Armbraces', 'Black Dye'];
+    const rows: string[] = ['Date,Name,Quantity,Order Type,Price,Listed Time'];
+    for (const p of purchases) {
+      const priceStr = p.prices?.map(p => `${priceLabels[p.type] ?? p.type}: ${p.totalPrice}`).join(' | ') ?? '';
+      const row = [
+        p.date ? new Date(p.date).toISOString() : '',
+        `"${(p.name ?? '').replace(/"/g, '""')}"`,
+        p.prices[0]?.quantity ?? 1,
+        orderTypeLabels[p.orderType] ?? p.orderType,
+        priceStr,
+        p.listedTime ? new Date(p.listedTime).toISOString() : ''
+      ].join(',');
+      rows.push(row);
+    }
+    this.downloadCsv(rows.join('\n'), `GWMarket-Purchases-${this.shop.player}-${now}.csv`);
+  }
+
+  exportItemsCsv(): void {
+    if (!this.shop?.items?.length) return;
+    const priceLabels = ['Platinum', 'Ecto', 'Zkey', 'Armbraces', 'Black Dye'];
+    const orderTypeLabels = ['Sell', 'Buy', 'Auction'];
+    const now = new Date().toISOString().slice(0, 10);
+    const rows: string[] = ['Name,Order Type,Quantity,Price,Description,Listed Time'];
+    for (const item of this.shop.items) {
+      const priceStr = item.prices?.map(p => `${priceLabels[p.type] ?? p.type}: ${p.price}`).join(' | ') ?? '';
+      const row = [
+        `"${(item.name ?? '').replace(/"/g, '""')}"`,
+        orderTypeLabels[item.orderType] ?? item.orderType,
+        item.quantity ?? 1,
+        `"${priceStr}"`,
+        `"${(item.description ?? '').replace(/"/g, '""')}"`,
+        item.listedTime ? new Date(item.listedTime).toISOString() : ''
+      ].join(',');
+      rows.push(row);
+    }
+    this.downloadCsv(rows.join('\n'), `GWMarket-Items-${this.shop.player}-${now}.csv`);
+  }
+
+  private downloadCsv(content: string, filename: string): void {
+    const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.click();
+    window.URL.revokeObjectURL(url);
+  }
+
   onImport(event: Event): void {
     const files = (event.target as HTMLInputElement).files;
     if (files === undefined || files.length === 0) {
@@ -387,6 +457,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       const importedShop = JSON.parse(content) as Shop;
       this.shopService.importShop(importedShop);
       this.playerControl.setValue(importedShop.player);
+      this.dataOpen = false;
     };
     reader.readAsText(file);
   }
@@ -531,9 +602,10 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.location.go(url);
   }
 
-  getLink(): void {
+  copyLink(): void {
     if (this.shop?.publicId) {
-      this.showLink = true;
+      navigator.clipboard.writeText(`https://gwmarket.net/shop/showcase?public=${this.shop.publicId}`);
+      this.toastrService.success('Public link has been copied to your clipboard, ready to paste it!');
     } else {
       this.toastrService.error('Public link is not ready, refresh your shop first.');
     }

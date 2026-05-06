@@ -12,6 +12,7 @@ import { Item, ShopItem, ShopLink } from '@app/models/shop.model';
 @Injectable()
 export class StoreService {
   private init = false;
+  private searchedItemName = '';
   //private commentsSubscribe
   private searchItemSubject = new CurrentSubject<Array<Item>>();
   private searchShopSubject = new CurrentSubject<Array<ShopLink>>();
@@ -51,8 +52,10 @@ export class StoreService {
     this.socket.on('GetItemsDetails', (data: Array<Item>) => {
       this.itemsDetailSubject.set(data);
     });
-    this.socket.on('GetItemOrders', (data: Array<ShopItem>) => {
-      this.itemOrdersSubject.set(data);
+    this.socket.on('GetItemOrders', (data: Array<ShopItem>, itemName: string) => {
+      if (itemName === this.searchedItemName) {
+        this.itemOrdersSubject.set(data);
+      }
     });
     this.socket.on('GetItemAuctions', (data: Array<Auction>) => {
       this.itemAuctionsSubject.set(data);
@@ -95,6 +98,10 @@ export class StoreService {
         // }
       });
     }
+  }
+
+  setSearchedItemName(name: string): void {
+    this.searchedItemName = name;
   }
 
   getSearchItems(): Observable<Array<Item>> {

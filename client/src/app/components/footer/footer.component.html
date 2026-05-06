@@ -16,8 +16,22 @@
         <i class="fa fa-book-atlas"></i>
       </a>
       <div></div>
-      <div href="https://discord.gg/a4pPyJ3paN" target="_blank">Feedback & Support</div>
-      <a href="https://discord.gg/a4pPyJ3paN" target="_blank" class="social-link" title="Join Discord">
+      <a
+        href="https://discord.gg/a4pPyJ3paN"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-action-link"
+        (click)="openExternal($event, 'https://discord.gg/a4pPyJ3paN')"
+        >Feedback & Support</a
+      >
+      <a
+        href="https://discord.gg/a4pPyJ3paN"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+        title="Join Discord"
+        (click)="openExternal($event, 'https://discord.gg/a4pPyJ3paN')"
+      >
         <i class="fab fa-discord"></i>
       </a>
       <div></div>

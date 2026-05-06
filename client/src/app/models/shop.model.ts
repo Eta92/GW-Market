@@ -55,6 +55,7 @@ export interface ShopItem {
   quantity: number;
   orderDetails?: OrderDetails;
   weaponDetails?: WeaponDetails;
+  listedTime?: number;
   // front only
   item?: Item;
   completed?: boolean;

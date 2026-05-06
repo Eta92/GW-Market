@@ -45,6 +45,7 @@ export interface ItemOrder {
   price: ShopPrice;
   description: string;
   quantity: number;
+  listedTime?: number;
   // front only
   div_price?: number;
   div_quantity?: number;

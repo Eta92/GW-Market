@@ -67,7 +67,7 @@
         </button>
 
         <!-- Offline Notification Toggle -->
-        <label *ngIf="!showcase" class="notify-offline-toggle" (click)="toggleNotifyOnOffline()">
+        <label *ngIf="!showcase" class="notify-offline-toggle sm-hide" (click)="toggleNotifyOnOffline()">
           <span class="notify-offline-checkbox" [class.checked]="notifyOnOffline">
             <i class="fa" [class.fa-bell]="notifyOnOffline" [class.fa-bell-slash]="!notifyOnOffline"></i>
           </span>
@@ -75,7 +75,7 @@
         </label>
 
         <!-- Quick Stats -->
-        <div class="sidebar-stats">
+        <div class="sidebar-stats xs-hide">
           <div class="stat-row">
             <span class="stat-icon sell"><i class="fa fa-arrow-up"></i></span>
             <span class="stat-label">Selling</span>
@@ -98,7 +98,7 @@
         </div>
 
         <!-- Last Connection -->
-        <div *ngIf="shop?.lastRefresh" class="sidebar-last-seen">
+        <div *ngIf="shop?.lastRefresh && !showCandle" class="sidebar-last-seen sm-hide">
           <span class="sidebar-last-seen-label">Last seen</span>
           <div class="sidebar-last-seen-row">
             <i class="fa fa-clock"></i>
@@ -107,7 +107,7 @@
         </div>
 
         <!-- Reputation (showcase only) -->
-        <div *ngIf="showcase" class="sidebar-vote">
+        <div *ngIf="showcase" class="sidebar-vote xs-hide">
           <div class="sidebar-vote-label">Reputation</div>
           <div class="sidebar-vote-buttons">
             <button class="sidebar-vote-btn positive" (click)="reputationVote('positive')" title="Positive vote">
@@ -132,22 +132,13 @@
 
         <!-- Action Buttons -->
         <div *ngIf="!showcase" class="sidebar-actions">
-          <button class="sidebar-action-btn" [class.warning]="playerWarning" (click)="openPlayer()">
+          <button class="sidebar-action-btn col-span-2" [class.warning]="playerWarning" (click)="openPlayer()">
             <i class="fa fa-user"></i>
-            <span>Player</span>
+            <span>Player Management</span>
           </button>
-          <button class="sidebar-action-btn" (click)="import.click()">
-            <i class="fa fa-upload"></i>
-            <span>Import</span>
-          </button>
-          <input #import class="hidden" type="file" accept=".json" (change)="onImport($event)" />
-          <button class="sidebar-action-btn" (click)="exportShop()">
-            <i class="fa fa-download"></i>
-            <span>Export</span>
-          </button>
-          <button class="sidebar-action-btn danger" (click)="clearShop = true">
-            <i class="fa fa-fire"></i>
-            <span>New</span>
+          <button class="sidebar-action-btn col-span-2" (click)="dataOpen = true">
+            <i class="fa fa-database"></i>
+            <span>Import / Export</span>
           </button>
           <button
             class="sidebar-action-btn col-span-2"
@@ -161,26 +152,10 @@
             <i class="fa fa-rotate"></i>
             <span>Dump From Daybreak</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="getLink()">
+          <button class="sidebar-action-btn col-span-2" (click)="copyLink()">
             <i class="fa fa-link"></i>
-            <span>Public Link</span>
+            <span>Copy Public Link</span>
           </button>
-
-          <textarea *ngIf="showLink" class="sidebar-action-btn col-span-2 h-[70px]" #area (focus)="area.select()" readonly>
-https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
-          >
-        </div>
-
-        <!-- Clear Confirmation -->
-        <div class="confirm-inline" *ngIf="clearShop">
-          <span class="confirm-warning">
-            <i class="fa fa-exclamation-triangle"></i>
-            Destroy all?
-          </span>
-          <div class="confirm-buttons">
-            <button class="erase-btn yes" (click)="onClearShop()">Yes</button>
-            <button class="erase-btn no" (click)="clearShop = false">No</button>
-          </div>
         </div>
       </div>
     </aside>
@@ -188,10 +163,10 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
     <!-- CONTENT AREA -->
     <div class="content-area">
       <!-- FILTER BAR -->
-      <section class="filter-bar">
+      <section class="filter-bar xs-hide">
         <app-filter-order (updateFilter)="onFilterChange($event)" [simple]="true"></app-filter-order>
         <app-sort-order (updateSort)="onSortChange($event)"></app-sort-order>
-        <div class="view-options">
+        <div class="view-options sm-hide">
           <button
             class="view-option-btn"
             [class.active]="compactView"
@@ -209,7 +184,7 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
             <i class="fa fa-tags"></i>
           </button>
         </div>
-        <div class="filter-summary">
+        <div class="filter-summary sm-hide">
           <span class="order-total">{{ (sellOrders?.length || 0) + (buyOrders?.length || 0) }} orders</span>
         </div>
       </section>
@@ -545,7 +520,72 @@ https://gwmarket.net/shop/showcase?public={{ shop.publicId }}</textarea
   </div>
 </app-modal>
 
-<!-- Whisper Popup -->
+<!-- Data Management Modal -->
+<app-modal [isOpen]="dataOpen" (closed)="dataOpen = false; clearShop = false" contentClass="whisper-popup-content">
+  <div class="popup-content data-modal-content">
+    <div class="popup-header">
+      <div class="popup-title">
+        <h3>Shop Data</h3>
+        <p>Import, export and manage your shop data</p>
+      </div>
+      <button class="popup-close" (click)="dataOpen = false">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="data-tiles">
+      <!-- Import -->
+      <div class="data-tile" (click)="import.click()">
+        <i class="fa fa-upload data-tile-icon"></i>
+        <span class="data-tile-label">Import Shop</span>
+        <span class="data-tile-desc">Load orders from a JSON file</span>
+      </div>
+      <input #import class="hidden" type="file" accept=".json" (change)="onImport($event)" />
+
+      <!-- Export JSON -->
+      <div class="data-tile" (click)="exportShop()">
+        <i class="fa fa-download data-tile-icon"></i>
+        <span class="data-tile-label">Export Shop</span>
+        <span class="data-tile-desc">Save all orders as a JSON file</span>
+      </div>
+
+      <!-- Export Items CSV -->
+      <div class="data-tile" (click)="exportItemsCsv()">
+        <i class="fa fa-file-csv data-tile-icon"></i>
+        <span class="data-tile-label">Export Items</span>
+        <span class="data-tile-desc">Download your listings as a CSV</span>
+      </div>
+
+      <!-- Export Purchases CSV -->
+      <div class="data-tile" (click)="requestPurchasesExport()">
+        <i class="fa fa-clock-rotate-left data-tile-icon"></i>
+        <span class="data-tile-label">Export Purchases</span>
+        <span class="data-tile-desc">Download your sales history as a CSV</span>
+      </div>
+
+      <!-- New Shop -->
+      <div class="data-tile data-tile-danger" (click)="clearShop = true">
+        <i class="fa fa-fire data-tile-icon"></i>
+        <span class="data-tile-label">New Shop</span>
+        <span class="data-tile-desc">Destroy all orders and start fresh</span>
+      </div>
+    </div>
+
+    <!-- Inline confirmation -->
+    <div class="data-modal-confirm" *ngIf="clearShop">
+      <span class="confirm-warning">
+        <i class="fa fa-exclamation-triangle"></i>
+        Destroy all orders? This cannot be undone.
+      </span>
+      <div class="confirm-buttons">
+        <button class="erase-btn yes" (click)="onClearShop(); dataOpen = false">Yes, destroy</button>
+        <button class="erase-btn no" (click)="clearShop = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+</app-modal>
+
+<!-- Auction Popup -->
 <app-modal [isOpen]="auctionPopup" (closed)="auctionPopup = false" contentClass="whisper-popup-content">
   <div class="popup-content">
     <div class="popup-header">

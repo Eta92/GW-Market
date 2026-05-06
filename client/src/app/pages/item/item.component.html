@@ -37,26 +37,26 @@
         </div>
 
         <!-- Quick Stats -->
-        <div class="sidebar-stats">
-          <div class="stat-row">
-            <span class="stat-icon sell"><i class="fa fa-arrow-up"></i></span>
-            <span class="stat-label">Selling</span>
-            <span class="stat-value">{{ getTotalSellOrders() }}</span>
+        <div class="flex h-full flex-col">
+          <div class="sidebar-stats">
+            <div class="stat-row">
+              <span class="stat-icon sell"><i class="fa fa-arrow-up"></i></span>
+              <span class="stat-label">Selling</span>
+              <span class="stat-value">{{ getTotalSellOrders() }}</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-icon buy"><i class="fa fa-arrow-down"></i></span>
+              <span class="stat-label">Buying</span>
+              <span class="stat-value">{{ getTotalBuyOrders() }}</span>
+            </div>
           </div>
-          <div class="stat-row">
-            <span class="stat-icon buy"><i class="fa fa-arrow-down"></i></span>
-            <span class="stat-label">Buying</span>
-            <span class="stat-value">{{ getTotalBuyOrders() }}</span>
-          </div>
+          <div class="sm-hide flex-grow"></div>
+          <!-- Price History Button -->
+          <button class="history-button" (click)="openHistoryModal()">
+            <i class="fa fa-chart-line"></i>
+            Price History
+          </button>
         </div>
-      </div>
-
-      <!-- Price History Button -->
-      <div class="history-button-wrapper">
-        <button class="history-button" (click)="openHistoryModal()">
-          <i class="fa fa-chart-line"></i>
-          Price History
-        </button>
       </div>
     </aside>
 

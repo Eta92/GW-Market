@@ -12,4 +12,9 @@ export class FooterComponent {
   goTo(path: string): void {
     this.router.navigate([path]);
   }
+
+  openExternal(event: MouseEvent, url: string): void {
+    event.stopPropagation();
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
 }

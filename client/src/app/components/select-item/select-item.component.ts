@@ -1,4 +1,15 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { Item, ShopLink } from '@app/models/shop.model';
@@ -30,6 +41,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
   private inputChange: Subscription;
 
   @ViewChild('search') private searchRef: ElementRef<HTMLInputElement>;
+  @ViewChild('main') private mainRef: ElementRef<HTMLElement>;
 
   constructor(
     private storeService: StoreService,
@@ -133,5 +145,13 @@ export class SelectItemComponent implements OnInit, OnDestroy {
 
   close(): void {
     this.searchOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const target = event.target as Node;
+    if (this.searchOpen && this.mainRef && !this.mainRef.nativeElement.contains(target)) {
+      this.close();
+    }
   }
 }
