@@ -497,6 +497,22 @@
       {
         "name": "Monumental Tapestry",
         "description": "Used to unlock a single monument inside the Hall of Monuments."
+      },
+      {
+        "name": "Small Equipment Pack",
+        "description": "Holds 5 items. Stores both armor and weapons that have been customized to this character, and also any armor or weapons that have yet to be customized."
+      },
+      {
+        "name": "Light Equipment Pack",
+        "description": "Holds 10 items. Stores both armor and weapons that have been customized to this character, and also any armor or weapons that have yet to be customized."
+      },
+      {
+        "name": "Large Equipment Pack",
+        "description": "Holds 15 items. Stores both armor and weapons that have been customized to this character, and also any armor or weapons that have yet to be customized."
+      },
+      {
+        "name": "Heavy Equipment Pack",
+        "description": "Holds 20 items. Stores both armor and weapons that have been customized to this character, and also any armor or weapons that have yet to be customized."
       }
     ]
   }
