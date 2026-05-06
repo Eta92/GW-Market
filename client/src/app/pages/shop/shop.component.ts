@@ -245,7 +245,9 @@ export class ShopComponent implements OnInit, OnDestroy {
         ),
         orderType: order.orderType,
         listedTime: order.listedTime,
-        origin: PurchaseOrigin.SHOP
+        origin: PurchaseOrigin.SHOP,
+        weaponDetails: order.weaponDetails,
+        orderDetails: order.orderDetails
       } as Purchase);
     } else {
       this.toastrService.warning('Confirm completion by clicking the check button again', 'Order validation initiated', { timeOut: 10000 });
@@ -281,7 +283,9 @@ export class ShopComponent implements OnInit, OnDestroy {
         ),
         orderType: order.orderType,
         listedTime: order.listedTime,
-        origin: PurchaseOrigin.SHOP
+        origin: PurchaseOrigin.SHOP,
+        weaponDetails: order.weaponDetails,
+        orderDetails: order.orderDetails
       } as Purchase);
     } else {
       this.toastrService.warning('Confirm single completion by clicking the check button again', 'Single validation initiated', {
@@ -396,9 +400,12 @@ export class ShopComponent implements OnInit, OnDestroy {
       return;
     }
     const orderTypeLabels = ['Sell', 'Buy', 'Auction'];
+    const originLabels = ['Customer', 'Validation'];
     const now = new Date().toISOString().slice(0, 10);
     const priceLabels = ['Platinum', 'Ecto', 'Zkey', 'Armbraces', 'Black Dye'];
-    const rows: string[] = ['Date,Name,Quantity,Order Type,Price,Listed Time'];
+    const rows: string[] = [
+      'Date,Name,Quantity,Order Type,Origin,Price,Listed Time,Attribute,Requirement,Inscribible,Core,Prefix,Suffix,Dedicated,Pre-Ascalon,Legacy,Gold value,Note'
+    ];
     for (const p of purchases) {
       const priceStr = p.prices?.map(p => `${priceLabels[p.type] ?? p.type}: ${p.totalPrice}`).join(' | ') ?? '';
       const row = [
@@ -406,8 +413,20 @@ export class ShopComponent implements OnInit, OnDestroy {
         `"${(p.name ?? '').replace(/"/g, '""')}"`,
         p.prices[0]?.quantity ?? 1,
         orderTypeLabels[p.orderType] ?? p.orderType,
+        originLabels[p.origin] ?? p.origin,
         priceStr,
-        p.listedTime ? new Date(p.listedTime).toISOString() : ''
+        p.listedTime ? new Date(p.listedTime).toISOString() : '',
+        p.weaponDetails?.attribute ?? '',
+        p.weaponDetails?.requirement ?? '',
+        p.weaponDetails?.inscription ?? '',
+        p.weaponDetails?.core ?? '',
+        p.weaponDetails?.prefix ?? '',
+        p.weaponDetails?.suffix ?? '',
+        p.orderDetails?.dedicated ?? '',
+        p.orderDetails?.pre ?? '',
+        p.orderDetails?.legacy ?? '',
+        p.orderDetails?.goldPrice ?? '',
+        p.orderDetails?.note ?? ''
       ].join(',');
       rows.push(row);
     }

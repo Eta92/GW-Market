@@ -1,4 +1,4 @@
-import { OrderType, Price } from './shop.model';
+import { OrderDetails, OrderType, Price, WeaponDetails } from './shop.model';
 
 export interface Purchase {
   name: string; // item name
@@ -8,6 +8,8 @@ export interface Purchase {
   listedTime?: number;
   date?: number;
   origin: PurchaseOrigin;
+  weaponDetails?: WeaponDetails;
+  orderDetails?: OrderDetails;
 }
 
 export interface PurchasePrice {
