@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { OrderType, Price } from '@app/models/shop.model';
+import { OrderDetails, OrderType, Price, WeaponDetails } from '@app/models/shop.model';
 import { Modal } from '@shared/modal/models/modal.model';
 import type { EChartsOption } from 'echarts';
 
@@ -48,11 +48,24 @@ const ORIGIN_COLORS: Record<PurchaseOrigin, string> = {
 
 const DEFAULT_MULTIPLIERS: Record<Price, number> = {
   [Price.PLAT]: 1,
-  [Price.ECTO]: 9,
-  [Price.ZKEY]: 6,
-  [Price.ARM]: 100,
+  [Price.ECTO]: 12,
+  [Price.ZKEY]: 15,
+  [Price.ARM]: 200,
   [Price.BD]: 1
 };
+
+// ── Notable events rendered as vertical lines ────────────────────────────────
+
+export interface ChartEvent {
+  /** Timestamp (ms) of the event */
+  date: number;
+  /** Short label shown on the line */
+  label: string;
+  /** Optional longer description shown in the tooltip */
+  description?: string;
+  /** CSS hex color for the line and label */
+  color: string;
+}
 
 // ── Data point stored per ECharts point ───────────────────────────────────────
 
@@ -62,6 +75,8 @@ interface ChartDataPoint {
   orderType: OrderType;
   origin: PurchaseOrigin;
   shop: string;
+  weaponDetails?: WeaponDetails;
+  orderDetails?: OrderDetails;
 }
 
 @Component({
@@ -80,6 +95,23 @@ export class HistoryModalComponent extends Modal {
   public multipliers: Record<Price, number> = { ...DEFAULT_MULTIPLIERS };
   public presentTypes: Price[] = [];
   public readonly priceLabels = PRICE_LABELS;
+
+  // ── Notable events (vertical marker lines) ─────────────────────────────────
+  // Pre-populated with illustrative examples; pass `events` via modal inputs to override.
+  public events: ChartEvent[] = [
+    {
+      date: new Date('2026-04-06').getTime(),
+      label: 'Start of graphs',
+      description: 'Introduction of the history graph, the data is player dependent and can never be fully trusted',
+      color: '#22c55e'
+    },
+    {
+      date: new Date('2026-05-07').getTime(),
+      label: 'Major upgrade',
+      description: 'Includes more data about traded items, and patched a rare bug introducing wrong prices',
+      color: '#f97316'
+    }
+  ];
 
   constructor() {
     super();
@@ -119,7 +151,8 @@ export class HistoryModalComponent extends Modal {
       if (!purchase.prices.length) return;
 
       // Normalize: sum all price components → platinum equiv → convert to ecto equiv
-      const normalizedPlat = purchase.prices.reduce((sum, pp) => sum + pp.unitPrice * (this.multipliers[pp.type] ?? 1), 0);
+      const normalizedPlat =
+        purchase.prices.reduce((sum, pp) => sum + pp.unitPrice * (this.multipliers[pp.type] ?? 1), 0) / purchase.prices[0].quantity;
       const normalizedEcto = Math.round((normalizedPlat / this.multipliers[Price.ECTO]) * 100) / 100;
 
       seriesMap.get(purchase.origin)?.push({
@@ -127,7 +160,9 @@ export class HistoryModalComponent extends Modal {
         prices: purchase.prices,
         orderType: purchase.orderType,
         origin: purchase.origin,
-        shop: purchase.shop
+        shop: purchase.shop,
+        weaponDetails: purchase.weaponDetails,
+        orderDetails: purchase.orderDetails
       });
     });
 
@@ -145,6 +180,59 @@ export class HistoryModalComponent extends Modal {
       const avg = win.reduce((s, q) => s + q.value[1], 0) / win.length;
       return [t, Math.round(avg * 100) / 100];
     });
+  }
+
+  private buildEventSeries(): any[] {
+    if (!this.events.length) return [];
+    return [
+      {
+        name: '__events__',
+        type: 'line' as const,
+        data: [],
+        silent: false,
+        tooltip: { show: false } as any,
+        markLine: {
+          silent: false,
+          symbol: 'none',
+          animation: false,
+          tooltip: {
+            show: true,
+            backgroundColor: '#2a241f',
+            borderColor: '#d4a853',
+            borderWidth: 1,
+            textStyle: { color: '#f4e8c1', fontSize: 12 },
+            formatter: (params: any): string => {
+              const ev: ChartEvent = params.data._event;
+              const date = new Date(ev.date).toLocaleDateString(undefined, {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+              });
+              return `
+                <div style="min-width:160px">
+                  <div style="color:${ev.color};font-weight:600;margin-bottom:4px">${ev.label}</div>
+                  <div style="color:#a08060;margin-bottom:4px">${date}</div>
+                  ${ev.description ? `<div style="color:#f4e8c1">${ev.description}</div>` : ''}
+                </div>`;
+            }
+          } as any,
+          data: this.events.map(ev => ({
+            _event: ev,
+            xAxis: ev.date,
+            lineStyle: { color: ev.color, type: 'dashed' as const, width: 1.5, opacity: 0.7 },
+            label: {
+              show: true,
+              position: 'insideEndTop' as const,
+              formatter: ev.label,
+              color: ev.color,
+              fontSize: 10,
+              rotate: 90,
+              distance: 4
+            }
+          }))
+        }
+      }
+    ];
   }
 
   private buildOptions(origins: PurchaseOrigin[], seriesMap: Map<PurchaseOrigin, ChartDataPoint[]>): EChartsOption {
@@ -175,18 +263,61 @@ export class HistoryModalComponent extends Modal {
             )
             .join('<br/>');
 
+          // ── Left column (always present) ────────────────────────────────
+          const leftCol = `
+            <div style="color:#d4a853;font-weight:600;margin-bottom:6px">${date}</div>
+            <div style="margin-bottom:6px">${pricesHtml}</div>
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px">
+              <span style="color:#a08060">≈</span>
+              <strong style="color:#22c55e">${d.value[1]} Ecto</strong>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <span style="color:#a08060">Order:</span>
+              <span style="color:${orderColor};font-weight:600">${orderLabel}</span>
+            </div>`;
+
+          // ── Right column (weapon / order details) ─────────────────────────
+          const w_rows: string[] = [];
+          const o_rows: string[] = [];
+
+          if (d.weaponDetails) {
+            const w = d.weaponDetails;
+            w_rows.push(
+              `<div style="color:#d4a853;font-weight:600;margin-bottom:6px">Weapon ${w.inscription ? 'Inscribable' : 'Old School'}</div>`
+            );
+            if (w.attribute && w.attribute !== 'any')
+              w_rows.push(`<div><span style="color:#a08060">Attr:</span> <span style="color:#f4e8c1">${w.attribute}</span></div>`);
+            if (w.requirement)
+              w_rows.push(`<div><span style="color:#a08060">Req:</span> <span style="color:#f4e8c1">${w.requirement}</span></div>`);
+            if (w.core) w_rows.push(`<div><span style="color:#a08060">Core:</span> <span style="color:#f4e8c1">${w.core}</span></div>`);
+            if (w.prefix)
+              w_rows.push(`<div><span style="color:#a08060">Prefix:</span> <span style="color:#f4e8c1">${w.prefix}</span></div>`);
+            if (w.suffix)
+              w_rows.push(`<div><span style="color:#a08060">Suffix:</span> <span style="color:#f4e8c1">${w.suffix}</span></div>`);
+          }
+
+          if (d.orderDetails) {
+            const o = d.orderDetails;
+            if (o.dedicated) o_rows.push(`<div style="color:#a08060">Dedicated</div>`);
+            if (o.pre) o_rows.push(`<div style="color:#a08060">Pre-searing</div>`);
+            if (o.legacy) o_rows.push(`<div style="color:#a08060">Legacy</div>`);
+            if (o.goldPrice)
+              o_rows.push(`<div><span style="color:#a08060">Gold:</span> <span style="color:#f4e8c1">${o.goldPrice}</span></div>`);
+            if (o_rows.length > 0) {
+              o_rows.unshift(`<div style="color:#d4a853;font-weight:600;margin-bottom:6px">Details</div>`);
+              if (w_rows.length) o_rows.unshift(`<div style="margin-top:6px"></div>`);
+            }
+          }
+
+          const rightCol =
+            w_rows.length + o_rows.length
+              ? `<div style="padding-left:10px;margin-left:10px;border-left:1px solid #3a3430;min-width:140px">${[...w_rows, ...o_rows].join('')}</div>`
+              : '';
+
           return `
-            <div style="min-width:180px">
-              <div style="color:#d4a853;font-weight:600;margin-bottom:6px">${date}</div>
-              <div style="margin-bottom:6px">${pricesHtml}</div>
-              <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px">
-                <span style="color:#a08060">≈</span>
-                <strong style="color:#22c55e">${d.value[1]} Ecto</strong>
-              </div>
-              <div style="display:flex;gap:8px;align-items:center">
-                <span style="color:#a08060">Order:</span>
-                <span style="color:${orderColor};font-weight:600">${orderLabel}</span>
-              </div>
+            <div style="display:flex;gap:0;min-width:180px">
+              <div style="flex:0 0 auto">${leftCol}</div>
+              ${rightCol}
             </div>`;
         }
       },
@@ -214,44 +345,47 @@ export class HistoryModalComponent extends Modal {
         axisLabel: { color: '#a08060' },
         splitLine: { lineStyle: { color: '#2a241f' } }
       },
-      series: origins.flatMap(origin => {
-        const points = seriesMap.get(origin)!;
-        const color = ORIGIN_COLORS[origin];
-        const label = ORIGIN_LABELS[origin];
-        const trend = this.computeTrend(points);
-        return [
-          // ── Scatter cloud (no connecting line) ─────────────────────────────
-          {
-            name: label,
-            type: 'line' as const,
-            data: points as any[],
-            lineStyle: { width: 0, opacity: 0 },
-            showSymbol: true,
-            symbol: (value: any, params: any): string => {
-              const d = params.data as ChartDataPoint;
-              if (d.orderType === OrderType.BUY) return 'rect';
-              if (d.orderType === OrderType.AUCTION) return 'diamond';
-              return 'circle';
+      series: [
+        ...this.buildEventSeries(),
+        ...origins.flatMap(origin => {
+          const points = seriesMap.get(origin)!;
+          const color = ORIGIN_COLORS[origin];
+          const label = ORIGIN_LABELS[origin];
+          const trend = this.computeTrend(points);
+          return [
+            // ── Scatter cloud (no connecting line) ─────────────────────────────
+            {
+              name: label,
+              type: 'line' as const,
+              data: points as any[],
+              lineStyle: { width: 0, opacity: 0 },
+              showSymbol: true,
+              symbol: (value: any, params: any): string => {
+                const d = params.data as ChartDataPoint;
+                if (d.orderType === OrderType.BUY) return 'rect';
+                if (d.orderType === OrderType.AUCTION) return 'diamond';
+                return 'circle';
+              },
+              symbolSize: 10,
+              itemStyle: { color },
+              emphasis: { scale: 1.4 }
             },
-            symbolSize: 10,
-            itemStyle: { color },
-            emphasis: { scale: 1.4 }
-          },
-          // ── 7-day rolling average trend (same name → same legend toggle) ───
-          {
-            name: label,
-            type: 'line' as const,
-            data: trend as any[],
-            smooth: true,
-            showSymbol: false,
-            lineStyle: { color, width: 2, opacity: 0.4 },
-            itemStyle: { color, opacity: 0 },
-            silent: true,
-            tooltip: { show: false } as any,
-            emphasis: { disabled: true } as any
-          }
-        ];
-      })
+            // ── 7-day rolling average trend (same name → same legend toggle) ───
+            {
+              name: label,
+              type: 'line' as const,
+              data: trend as any[],
+              smooth: true,
+              showSymbol: false,
+              lineStyle: { color, width: 2, opacity: 0.4 },
+              itemStyle: { color, opacity: 0 },
+              silent: true,
+              tooltip: { show: false } as any,
+              emphasis: { disabled: true } as any
+            }
+          ];
+        })
+      ]
     };
   }
 
