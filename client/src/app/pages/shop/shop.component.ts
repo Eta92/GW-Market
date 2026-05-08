@@ -84,6 +84,9 @@ export class ShopComponent implements OnInit, OnDestroy {
   public showDetails = true;
   public showViewOptionsHelp = false;
 
+  // Image cache: item name => image path, populated in updateItemList
+  public imageCache: Record<string, string> = {};
+
   // Desktop notifications
   public notifyOnOffline = false;
 
@@ -93,6 +96,18 @@ export class ShopComponent implements OnInit, OnDestroy {
   @ViewChild('player') private playerRef: ElementRef<HTMLElement>;
   @ViewChild('candle') private candleRef: ElementRef<HTMLElement>;
   @ViewChild('timer') private timerRef: ElementRef<HTMLElement>;
+
+  private cdPending = false;
+
+  /** Coalesces multiple rapid detectChanges calls into one per microtask. */
+  private scheduleDetect(): void {
+    if (this.cdPending) return;
+    this.cdPending = true;
+    Promise.resolve().then(() => {
+      this.cdPending = false;
+      this.cdr.detectChanges();
+    });
+  }
 
   constructor(
     private router: Router,
@@ -117,7 +132,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(pendingChanges => {
         this.pendingChanges = pendingChanges;
-        this.cdr.detectChanges();
+        this.scheduleDetect();
       });
     this.activatedRoute.url.pipe(takeUntil(this.destroy$)).subscribe(urlSegments => {
       this.showcase = urlSegments.some(segment => segment.path.toLowerCase() === 'showcase');
@@ -155,7 +170,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this.destroy$))
         .subscribe(auctions => {
           this.itemAuctions = auctions;
-          this.cdr.detectChanges();
+          this.scheduleDetect();
         });
       if (this.showcase) {
         this.notifyOnOffline = false;
@@ -182,7 +197,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     if (this.shop?.items) {
       this.updateItemList();
       this.refreshCandle();
-      this.cdr.detectChanges();
+      this.scheduleDetect();
     }
   }
 
@@ -204,7 +219,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     const items = await this.shopService.fetchDaybreakItems(mode);
     this.daybreakItems = items;
     this.daybreakEdit = true;
-    this.cdr.detectChanges();
+    this.scheduleDetect();
   }
 
   onImportDaybreaks(orders: Array<ShopItem>): void {
@@ -379,7 +394,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   onDaybreakOpen(): void {
     this.daybreakOpen = true;
-    this.cdr.detectChanges();
+    this.scheduleDetect();
   }
 
   exportShop(): void {
@@ -404,7 +419,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     const now = new Date().toISOString().slice(0, 10);
     const priceLabels = ['Platinum', 'Ecto', 'Zkey', 'Armbraces', 'Black Dye'];
     const rows: string[] = [
-      'Date,Name,Quantity,Order Type,Origin,Price,Listed Time,Attribute,Requirement,Inscribible,Core,Prefix,Suffix,Dedicated,Pre-Ascalon,Legacy,Gold value,Note'
+      'Date,Name,Quantity,Order Type,Origin,Price,Listed Time,Attribute,Requirement,Inscribable,Core,Prefix,Suffix,Dedicated,Pre-Ascalon,Legacy,Gold value,Note'
     ];
     for (const p of purchases) {
       const priceStr = p.prices?.map(p => `${priceLabels[p.type] ?? p.type}: ${p.totalPrice}`).join(' | ') ?? '';
@@ -562,7 +577,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       this.showCandle = false;
       this.timeLeft = 0;
       this.timerActive = false;
-      this.cdr.detectChanges();
+      this.scheduleDetect();
     }
   }
 
@@ -586,7 +601,7 @@ export class ShopComponent implements OnInit, OnDestroy {
           this.refreshTimer();
         }, 1000);
       }
-      this.cdr.detectChanges();
+      this.scheduleDetect();
     }
   }
 
@@ -763,17 +778,46 @@ export class ShopComponent implements OnInit, OnDestroy {
         }
       });
     }
+    // Count unfiltered totals in a single pass
+    let totalSell = 0;
+    let totalBuy = 0;
+    for (const si of this.shop.items) {
+      if (si.orderType === OrderType.SELL) totalSell++;
+      else if (si.orderType === OrderType.BUY) totalBuy++;
+    }
     this.totalOrders = {
-      sell: this.shop.items.filter(si => si.orderType === OrderType.SELL).length,
-      buy: this.shop.items.filter(si => si.orderType === OrderType.BUY).length,
+      sell: totalSell,
+      buy: totalBuy,
       auctions: this.shop.auctions ? this.shop.auctions.length : 0
     };
-    this.sellOrders = sortedOrders.filter(si => si.orderType === OrderType.SELL);
-    this.buyOrders = sortedOrders.filter(si => si.orderType === OrderType.BUY);
-    this.cdr.detectChanges();
+
+    // Split into sell/buy and build image cache in a single pass
+    const sellOrders: ShopItem[] = [];
+    const buyOrders: ShopItem[] = [];
+    const cache: Record<string, string> = {};
+    for (const order of sortedOrders) {
+      if (order.orderType === OrderType.SELL) sellOrders.push(order);
+      else if (order.orderType === OrderType.BUY) buyOrders.push(order);
+      if (!(order.name in cache)) {
+        cache[order.name] = this.itemService.getItemImage(order.name) || '';
+      }
+    }
+    this.sellOrders = sellOrders;
+    this.buyOrders = buyOrders;
+    this.imageCache = cache;
+
+    this.scheduleDetect();
   }
 
   reputationVote(vote: 'positive' | 'negative'): void {
     this.shopService.submitReputationVote(this.shop.player, vote);
+  }
+
+  trackByOrder(_index: number, order: ShopItem): number | string {
+    return order.listedTime ?? _index;
+  }
+
+  trackByAuction(_index: number, auction: Auction): string | number {
+    return auction.uuid ?? _index;
   }
 }

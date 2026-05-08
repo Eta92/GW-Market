@@ -1,11 +1,12 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Auction } from '@app/models/auction.model';
 import { OrderType, ShopItem } from '@app/models/shop.model';
 
 @Component({
   selector: 'app-order-card',
   templateUrl: './order-card.component.html',
-  styleUrls: ['./order-card.component.scss']
+  styleUrls: ['./order-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrderCardComponent {
   @Input() locked = false;
@@ -18,22 +19,12 @@ export class OrderCardComponent {
 
   menuOpen = false;
 
-  constructor(private elementRef: ElementRef) {}
-
   get isSelling(): boolean {
     return this.order?.orderType === OrderType.SELL;
   }
 
   get isSingleRemoval(): boolean {
     return this.order?.quantity > 1 && this.order?.prices.every(price => price.unit % 1 === 0);
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    // Only close if click is outside this component
-    if (this.menuOpen && !this.elementRef.nativeElement.contains(event.target)) {
-      this.menuOpen = false;
-    }
   }
 
   toggleMenu(event: Event): void {

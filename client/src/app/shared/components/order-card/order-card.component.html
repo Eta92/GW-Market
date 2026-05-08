@@ -106,6 +106,7 @@
       <button class="action-btn menu-btn" (click)="toggleMenu($event)" title="Actions">
         <i class="fa fa-ellipsis-v"></i>
       </button>
+      <div class="dropdown-backdrop" *ngIf="menuOpen" (click)="closeMenu()"></div>
       <div class="actions-dropdown" *ngIf="menuOpen" (click)="$event.stopPropagation()">
         <div class="dropdown-inner">
           <button class="dropdown-item" *ngIf="!auction" (click)="onEditClick(); closeMenu()"><i class="fa fa-pen"></i> Edit</button>

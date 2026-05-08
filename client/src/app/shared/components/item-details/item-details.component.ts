@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { Item, ShopItem } from '@app/models/shop.model';
 
 @Component({
   selector: 'app-item-details',
   templateUrl: './item-details.component.html',
-  styleUrls: ['./item-details.component.scss']
+  styleUrls: ['./item-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemDetailsComponent {
   @Input() item: Item | ShopItem;
@@ -19,12 +20,7 @@ export class ItemDetailsComponent {
   get shopItem(): ShopItem | null {
     if (!this.item) return null;
     // Check if it's a ShopItem by looking for ShopItem-specific properties
-    if (
-      'orderType' in this.item ||
-      'weaponDetails' in this.item ||
-      'orderDetails' in this.item ||
-      'prices' in this.item
-    ) {
+    if ('orderType' in this.item || 'weaponDetails' in this.item || 'orderDetails' in this.item || 'prices' in this.item) {
       return this.item as ShopItem;
     }
     return null;

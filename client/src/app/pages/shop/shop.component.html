@@ -207,12 +207,12 @@
 
             <div class="orders-list scroll" *ngIf="sellOrders?.length > 0">
               <app-order-card
-                *ngFor="let order of sellOrders"
+                *ngFor="let order of sellOrders; trackBy: trackByOrder"
                 [locked]="showcase"
                 [compact]="compactView || orderFilter.orderType === 'sell'"
                 [showDetails]="showDetails"
                 [order]="order"
-                [imageSource]="getImageSource(order.name)"
+                [imageSource]="imageCache[order.name]"
                 [priceLabel]="'ASKING'"
                 (itemClick)="goToItem($event)"
                 (editClick)="editOrder($event)"
@@ -247,12 +247,12 @@
 
             <div class="orders-list scroll" *ngIf="buyOrders?.length > 0">
               <app-order-card
-                *ngFor="let order of buyOrders"
+                *ngFor="let order of buyOrders; trackBy: trackByOrder"
                 [order]="order"
                 [locked]="showcase"
                 [compact]="compactView || orderFilter.orderType === 'buy'"
                 [showDetails]="showDetails"
-                [imageSource]="getImageSource(order.name)"
+                [imageSource]="imageCache[order.name]"
                 [priceLabel]="'PAYING'"
                 (itemClick)="goToItem($event)"
                 (editClick)="editOrder($event)"
@@ -287,13 +287,13 @@
 
             <div class="orders-list scroll" *ngIf="itemAuctions?.length > 0">
               <app-order-card
-                *ngFor="let auction of itemAuctions"
+                *ngFor="let auction of itemAuctions; trackBy: trackByAuction"
                 [order]="auction.item"
                 [auction]="auction"
                 [locked]="true"
                 [compact]="compactView || orderFilter.orderType === 'auction'"
                 [showDetails]="showDetails"
-                [imageSource]="getImageSource(auction.item.name)"
+                [imageSource]="imageCache[auction.item.name]"
                 (itemClick)="goToItem($event)"
                 (auctionClick)="onAuctionClick($event)"
                 (cloturateClick)="onCloturateAuction($event)"

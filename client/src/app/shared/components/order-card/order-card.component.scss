@@ -277,6 +277,12 @@
   }
 }
 
+.dropdown-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
 .actions-dropdown {
   position: absolute;
   top: 100%;
