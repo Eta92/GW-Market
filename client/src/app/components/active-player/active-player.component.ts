@@ -24,6 +24,7 @@ export class ActivePlayerComponent implements OnInit {
   get shop(): Shop {
     return this._shop;
   }
+  @Input() isPendingChanges: boolean;
 
   @Output() closeEdit = new EventEmitter<void>();
   @Output() confirmPlayer = new EventEmitter<string>();

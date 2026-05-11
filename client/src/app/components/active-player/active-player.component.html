@@ -49,6 +49,13 @@
         <span>Certify a New Character</span>
       </button>
 
+      <div class="data-modal-confirm" *ngIf="isPendingChanges">
+        <span class="confirm-warning">
+          <i class="fa fa-exclamation-triangle"></i>
+          You have unsaved changes. Please update your shop first before certifying to avoid losing them.
+        </span>
+      </div>
+
       <!-- Secret Code Display -->
       <div class="secret-display" *ngIf="secret">
         <label class="secret-label">
@@ -61,6 +68,10 @@
             <i class="fa fa-copy"></i>
           </button>
         </div>
+        <p class="input-hint small-hint">
+          <i class="fa fa-info-circle"></i>
+          In case the character is offline, please report it on the Discord.
+        </p>
       </div>
     </div>
 
@@ -86,11 +97,7 @@
           (click)="form.patchValue({ name: name })"
         >
           <div class="char-radio">
-            <i
-              class="fa"
-              [class.fa-circle]="form.get('name')?.value !== name"
-              [class.fa-circle-dot]="form.get('name')?.value === name"
-            ></i>
+            <i class="fa" [class.fa-circle]="form.get('name')?.value !== name" [class.fa-circle-dot]="form.get('name')?.value === name"></i>
           </div>
           <span class="char-name">{{ name }}</span>
           <i class="fa fa-certificate char-badge"></i>

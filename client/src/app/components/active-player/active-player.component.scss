@@ -22,11 +22,7 @@ $success-color: $sell-color;
   max-height: 90dvh;
   overflow-y: auto;
   overflow-x: hidden;
-  background: linear-gradient(
-    145deg,
-    rgba($obsidian, 0.98) 0%,
-    rgba($obsidian-light, 0.98) 100%
-  );
+  background: linear-gradient(145deg, rgba($obsidian, 0.98) 0%, rgba($obsidian-light, 0.98) 100%);
   border: 2px solid rgba($gold, 0.6);
   border-radius: 16px;
   box-shadow:
@@ -58,11 +54,7 @@ $success-color: $sell-color;
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
-  background: linear-gradient(
-    180deg,
-    rgba($obsidian, 1) 0%,
-    rgba($obsidian, 0.98) 100%
-  );
+  background: linear-gradient(180deg, rgba($obsidian, 1) 0%, rgba($obsidian, 0.98) 100%);
   border-bottom: 1px solid rgba($gold, 0.25);
 
   .header-content {
@@ -198,20 +190,24 @@ $success-color: $sell-color;
       }
     }
   }
+}
 
-  .input-hint {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-    font-size: 0.8rem;
-    color: rgba($parchment, 0.5);
-    font-style: italic;
+.input-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: rgba($parchment, 0.5);
+  font-style: italic;
 
-    i {
-      font-size: 0.7rem;
-      color: rgba($gold, 0.5);
-    }
+  i {
+    font-size: 0.7rem;
+    color: rgba($gold, 0.5);
+  }
+
+  &.small-hint {
+    font-size: 0.7rem;
   }
 }
 
@@ -276,6 +272,31 @@ $success-color: $sell-color;
 
     &:active {
       transform: translateY(0);
+    }
+  }
+}
+
+.data-modal-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 8px;
+  border-radius: 12px;
+  padding: 1rem 1rem 1.25rem;
+  border: 1px solid rgba(#e74c3c, 0.3);
+  background: rgba(#e74c3c, 0.06);
+
+  .confirm-warning {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #e74c3c;
+    font-weight: 600;
+
+    i {
+      font-size: 1rem;
     }
   }
 }
@@ -492,11 +513,7 @@ $success-color: $sell-color;
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
   border-top: 1px solid rgba($gold, 0.15);
-  background: linear-gradient(
-    180deg,
-    rgba($obsidian, 0.95) 0%,
-    rgba($obsidian, 1) 100%
-  );
+  background: linear-gradient(180deg, rgba($obsidian, 0.95) 0%, rgba($obsidian, 1) 100%);
 }
 
 .cancel-btn {

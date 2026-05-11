@@ -592,6 +592,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         this.timerActive = false;
         this.timeLeft = 0;
         this.sendOfflineNotification();
+        this.scheduleDetect();
         return;
       }
       if (this.timerLoop === 0) {

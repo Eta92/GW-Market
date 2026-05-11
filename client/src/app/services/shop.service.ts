@@ -293,7 +293,7 @@ export class ShopService {
   disableShop(): void {
     const activeShop = { ...this.activeShopSubject.value };
     const bonus = activeShop.reputation ? activeShop.reputation.positive - activeShop.reputation.negative : 0;
-    activeShop.lastRefresh = Date.now() - 1000 * 60 * (15 + bonus);
+    activeShop.lastRefresh = Date.now() - 1000 * 60 * (15 + bonus - 0.1); // remove one minute from timer so server has one minute to do the update
     this.activeShopSubject.set(activeShop);
     this.saveShop();
     this.socket.emit('closeShop', activeShop.uuid);

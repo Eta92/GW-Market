@@ -384,7 +384,12 @@
 
 <!-- Player Selection Modal -->
 <app-modal [isOpen]="playerOpen" (closed)="playerOpen = false">
-  <app-active-player [shop]="shop" (closeEdit)="playerOpen = false" (confirmPlayer)="onConfirmPlayer($event)"></app-active-player>
+  <app-active-player
+    [shop]="shop"
+    [isPendingChanges]="pendingChanges > 0"
+    (closeEdit)="playerOpen = false"
+    (confirmPlayer)="onConfirmPlayer($event)"
+  ></app-active-player>
 </app-modal>
 
 <!-- Order Detail Modal -->
