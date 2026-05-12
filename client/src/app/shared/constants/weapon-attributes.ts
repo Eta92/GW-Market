@@ -98,12 +98,14 @@ export const VARIABLE_ATTRIBUTE = [
 
 export type VariableAttribute = (typeof VARIABLE_ATTRIBUTE)[number];
 
-export const LOCKED_WEAPON = [
-  'Rare Axes',
-  'Rare Daggers',
-  'Rare Hammers',
-  'Rare Scythes',
-  'Rare Spears',
-  'Rare Swords',
-  'Rare Bows'
-];
+export const LOCKED_WEAPON = ['Rare Axes', 'Rare Daggers', 'Rare Hammers', 'Rare Scythes', 'Rare Spears', 'Rare Swords', 'Rare Bows'];
+
+export const WEAPON_ATTRIBUTE_MAP: Record<string, WeaponAttribute> = {
+  'Rare Axes': 'Axe Mastery',
+  'Rare Daggers': 'Dagger Mastery',
+  'Rare Hammers': 'Hammer Mastery',
+  'Rare Scythes': 'Scythe Mastery',
+  'Rare Spears': 'Spear Mastery',
+  'Rare Swords': 'Swordsmanship',
+  'Rare Bows': 'Marksmanship'
+};

@@ -12,6 +12,7 @@ import { Purchase } from '@app/models/purchase.model';
 import { ReputationReason } from '@app/models/reputation.model';
 import { DaybreakItem, Shop, ShopItem } from '@app/models/shop.model';
 import { NegativeModalComponent } from '@shared/components/negative-modal/negative-modal.component';
+import { LOCKED_WEAPON, WEAPON_ATTRIBUTE_MAP } from '@shared/constants/weapon-attributes';
 import { ModalService } from '@shared/modal/services/modal.service';
 import { DateTime } from 'luxon';
 import { ToastrService } from 'ngx-toastr';
@@ -198,31 +199,6 @@ export class ShopService {
     this.saveShop();
   }
 
-  bidAuction(auction: Auction, amount: number): void {
-    const activeShop = this.activeShopSubject.value;
-    if (activeShop) {
-      if (activeShop.certified?.length > 0) {
-        this.socket.emit('bidAuction', { bidder: activeShop.uuid, auctionId: auction.uuid, amount });
-      } else {
-        this.toastrService.error('You must have a certified character to place bids', 'Shop Not Certified', {
-          timeOut: 10000
-        });
-      }
-    } else {
-      this.toastrService.error('You must have a working shop before placing bids', 'Shop Not Ready', {
-        timeOut: 10000
-      });
-    }
-  }
-
-  cloturateAuction(index: number): void {
-    const activeShop = this.activeShopSubject.value;
-    const targetAuction = activeShop.auctions[index];
-    this.socket.emit('cloturateAuction', activeShop.uuid, targetAuction);
-    activeShop.auctions.splice(index, 1);
-    this.activeShopSubject.set(activeShop);
-  }
-
   updateShopName(name: string): void {
     const activeShop = this.activeShopSubject.value;
     activeShop.player = name;
@@ -282,12 +258,22 @@ export class ShopService {
     const activeShop = UtilityHelper.copy(this.activeShopSubject.value);
     activeShop.daybreakOnline = this.daybreakOnline;
     activeShop.items.forEach(item => {
+      this.assignAttribute(item);
       delete item.item;
       delete item.completed;
       delete item.removed;
       delete item.single;
     });
     this.socket.emit('refreshShop', activeShop);
+  }
+
+  assignAttribute(item: ShopItem): void {
+    if (item.weaponDetails && item.weaponDetails.attribute === 'any') {
+      const baseItem = this.itemService.getItemBase(item.name);
+      if (baseItem?.family === 'weapon' && LOCKED_WEAPON.includes(baseItem.category)) {
+        item.weaponDetails.attribute = WEAPON_ATTRIBUTE_MAP[baseItem.category];
+      }
+    }
   }
 
   disableShop(): void {
@@ -297,34 +283,6 @@ export class ShopService {
     this.activeShopSubject.set(activeShop);
     this.saveShop();
     this.socket.emit('closeShop', activeShop.uuid);
-  }
-
-  getActiveShop(): Observable<Shop> {
-    return this.activeShopSubject.asObservable().pipe(debounceTime(0));
-  }
-
-  getPersonalAuctions(): Observable<Array<Auction>> {
-    return this.personalAuctionsSubject.asObservable().pipe(debounceTime(0));
-  }
-
-  getPublicShop(): Observable<Shop> {
-    return this.publicShopSubject.asObservable().pipe(debounceTime(0));
-  }
-
-  getPendingChanges(): Observable<number> {
-    return this.pendingChangesSubject.asObservable().pipe(debounceTime(0));
-  }
-
-  getPurchases(): Observable<Array<Purchase>> {
-    return this.purchasesSubject.asObservable().pipe(debounceTime(0));
-  }
-
-  getdaybreakOnline(): boolean {
-    return this.daybreakOnline;
-  }
-
-  getShopUuid(): string {
-    return this.activeShopSubject?.value?.uuid || '';
   }
 
   submitReputationVote(target: string, vote: 'positive' | 'negative'): void {
@@ -359,6 +317,10 @@ export class ShopService {
     }
   }
 
+  // ===============
+  // region Auctions
+  // ===============
+
   public addAuctionItem(item: ShopItem): void {
     const activeShop = this.activeShopSubject.value;
     if (!activeShop.uuid) {
@@ -377,14 +339,73 @@ export class ShopService {
     }
   }
 
+  bidAuction(auction: Auction, amount: number): void {
+    const activeShop = this.activeShopSubject.value;
+    if (activeShop) {
+      if (activeShop.certified?.length > 0) {
+        this.socket.emit('bidAuction', { bidder: activeShop.uuid, auctionId: auction.uuid, amount });
+      } else {
+        this.toastrService.error('You must have a certified character to place bids', 'Shop Not Certified', {
+          timeOut: 10000
+        });
+      }
+    } else {
+      this.toastrService.error('You must have a working shop before placing bids', 'Shop Not Ready', {
+        timeOut: 10000
+      });
+    }
+  }
+
+  cloturateAuction(index: number): void {
+    const activeShop = this.activeShopSubject.value;
+    const targetAuction = activeShop.auctions[index];
+    this.socket.emit('cloturateAuction', activeShop.uuid, targetAuction);
+    activeShop.auctions.splice(index, 1);
+    this.activeShopSubject.set(activeShop);
+  }
+
+  // ===============
+  // region Subjects
+  // ===============
+
+  getActiveShop(): Observable<Shop> {
+    return this.activeShopSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getPersonalAuctions(): Observable<Array<Auction>> {
+    return this.personalAuctionsSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getPublicShop(): Observable<Shop> {
+    return this.publicShopSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getPendingChanges(): Observable<number> {
+    return this.pendingChangesSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getPurchases(): Observable<Array<Purchase>> {
+    return this.purchasesSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getdaybreakOnline(): boolean {
+    return this.daybreakOnline;
+  }
+
+  getShopUuid(): string {
+    return this.activeShopSubject?.value?.uuid || '';
+  }
+
+  // ===================
+  // region Daybreak API
+  // ===================
+
   private daybreakStart(): void {
     if (!this.daybreakLinked) {
       this.daybreakMaxTry = 3;
       this.maintainDaybreakLink();
     }
   }
-
-  // Daybreak API
   private daybreakMaxTry = 3;
   private maintainDaybreakLink(): void {
     const activeShop = this.activeShopSubject.value;
