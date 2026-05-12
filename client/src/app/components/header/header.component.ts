@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message, MessageType } from '@app/models/message.model';
-import { Item, OrderType, Shop } from '@app/models/shop.model';
+import { BasicItem, OrderType, Shop } from '@app/models/shop.model';
 import { MessageService } from '@app/services/message.service';
 import { ShopService } from '@app/services/shop.service';
 import { ToggleOption } from '@shared/components/toggle-group/toggle-group.component';
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() homeClick = new EventEmitter<void>();
   @Output() placeOrder = new EventEmitter<void>();
-  @Output() selectItem = new EventEmitter<Item>();
+  @Output() selectItem = new EventEmitter<BasicItem>();
 
   public shop: Shop;
   public orderOpen = false;
@@ -90,7 +90,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/search']);
   }
 
-  onSelectItem(item: Item): void {
+  onSelectItem(item: BasicItem): void {
     this.selectItem.emit(item);
     this.router.navigate(['/item', item.name]);
   }

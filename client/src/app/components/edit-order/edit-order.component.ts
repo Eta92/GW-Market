@@ -1,9 +1,8 @@
 import { formatDate } from '@angular/common';
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { Item, OrderType, Price, ShopItem, Upgrade } from '@app/models/shop.model';
+import { BasicItem, OrderType, Price, ShopItem, Upgrade } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
@@ -19,7 +18,7 @@ import { Subscription, take } from 'rxjs';
   styleUrls: ['./edit-order.component.scss']
 })
 export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() preselect?: Item;
+  @Input() preselect?: BasicItem;
   @Input() original?: ShopItem;
   @Input() maskSearch = false;
   @Input() confirm: string;
@@ -32,7 +31,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   public form: UntypedFormGroup;
   public formWeapon: UntypedFormGroup;
   public formOther: UntypedFormGroup;
-  public item: Item;
+  public item: BasicItem;
   public bindPrices: Array<Subscription> = [];
 
   public allItems: AvailableTree;
@@ -153,7 +152,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       );
     }
     order.item = this.itemService.getItemBase(order.name);
-    this.item = { ...order.item, img: undefined };
+    this.item = { ...order.item };
     this.form.patchValue(order);
     this.formOther.patchValue(order.orderDetails || {});
     this.isWeapon = WeaponHelper.isWeapon(order.item);
@@ -163,10 +162,9 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       this.weaponLists = WeaponHelper.getItemList(order.item, this.itemService.getUpgrades());
       this.formWeapon.patchValue(order.weaponDetails || {});
     }
-    this.storeService.requestSocket('getItemDetails', order.name);
   }
 
-  onSelectItem(item: Item): void {
+  onSelectItem(item: BasicItem): void {
     this.item = item;
     if (this.form) {
       this.form.patchValue({ name: item.name });
@@ -179,10 +177,6 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       this.isLocked = LOCKED_WEAPON.includes(item.category);
       this.weaponLists = WeaponHelper.getItemList(item, this.itemService.getUpgrades());
     }
-  }
-
-  getImageSource(item: Item): string {
-    return UtilityHelper.getImage(item);
   }
 
   selectCurrency(index: number, currency: Price): void {

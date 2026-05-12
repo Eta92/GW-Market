@@ -4,7 +4,7 @@ import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { Auction } from '@app/models/auction.model';
-import { Item, OrderType, ShopItem } from '@app/models/shop.model';
+import { BasicItem, OrderType, ShopItem } from '@app/models/shop.model';
 import { AvailableCategory, AvailableFamily, AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
@@ -20,7 +20,7 @@ import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.c
 export class HomeComponent implements OnInit {
   public init = false;
   public searchControl: UntypedFormControl = new UntypedFormControl('');
-  public searchedItems: Array<Item> = [];
+  public searchedItems: Array<BasicItem> = [];
   public searchOpen = false;
   public lastItems: Array<ShopItem> = [];
   public lastAuctions: Array<Auction> = [];
@@ -82,7 +82,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.storeService.resetItemDetails();
     this.activatedRoute.queryParams.subscribe(params => {
       this.queryFamily = params['family'];
       this.queryCategory = params['category'];
@@ -135,7 +134,7 @@ export class HomeComponent implements OnInit {
     this.init = true;
   }
 
-  getImageSource(item: Item): string {
+  getImageSource(item: BasicItem): string {
     return UtilityHelper.getImage(item);
   }
 
@@ -304,11 +303,11 @@ export class HomeComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  goToItem(item: Item | ShopItem): void {
+  goToItem(item: BasicItem | ShopItem): void {
     this.router.navigate(['item', item.name]);
   }
 
-  openToItem(item: Item | ShopItem): void {
+  openToItem(item: BasicItem | ShopItem): void {
     const url = this.router.serializeUrl(this.router.createUrlTree(['item', item.name]));
     window.open(url, '_blank');
   }

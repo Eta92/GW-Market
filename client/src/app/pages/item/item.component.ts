@@ -7,7 +7,7 @@ import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { CurrencyGroup, CurrencyOrders, ItemOrder, ItemOrders, ItemPriceList, Time, TimeBucket } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { Item, OrderType, Price, Shop, ShopItem } from '@app/models/shop.model';
+import { BasicItem, OrderType, Price, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { MessageService } from '@app/services/message.service';
 import { ShopService } from '@app/services/shop.service';
@@ -29,7 +29,7 @@ export type ViewMode = 'combined' | 'separate';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit, OnDestroy {
-  public item: Item;
+  public item: BasicItem;
   public focusBundle = false;
   public allItems: Array<ShopItem> = [];
   public allAuctions: Array<Auction> = [];
@@ -106,6 +106,15 @@ export class ItemComponent implements OnInit, OnDestroy {
       this.name = params.name || '';
       //const name = this.router.url.split('/').pop() || '';
       const decodedName = decodeURIComponent(this.name);
+      this.itemService
+        .getReady()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(ready => {
+          this.item = this.itemService?.getItemBase(decodedName);
+          this.focusBundle = this.bundleFamilies.includes(this.item?.family);
+          this.addDetails(this.item);
+          this.cdr.detectChanges();
+        });
       this.storeService
         .getItemOrders()
         .pipe(takeUntil(this.destroy$))
@@ -135,15 +144,6 @@ export class ItemComponent implements OnInit, OnDestroy {
               imgSrc: UtilityHelper.getCurrencySource(c.currency)
             }))
           ];
-          this.cdr.detectChanges();
-        });
-      this.storeService
-        .getItemDetails()
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((item: Item) => {
-          this.item = item;
-          this.focusBundle = this.bundleFamilies.includes(item?.family);
-          this.addDetails(item);
           this.cdr.detectChanges();
         });
       this.storeService
@@ -187,7 +187,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     });
   }
 
-  getImageSource(item: Item): string {
+  getImageSource(item: BasicItem): string {
     return UtilityHelper.getImage(item);
   }
 
@@ -195,7 +195,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.router.navigate(['public', url]);
   }
 
-  wikiCategory(item: Item): boolean {
+  wikiCategory(item: BasicItem): boolean {
     if (item) {
       return item.family !== 'service' && item.category !== 'Bundles' && item.category !== 'Very Special';
     } else return false;
@@ -748,12 +748,12 @@ export class ItemComponent implements OnInit, OnDestroy {
     }
   }
 
-  addDetails(item: Item): void {
+  addDetails(item: BasicItem): void {
     if (!item) return;
     this.details = [];
     for (const key in ItemDetailMap) {
-      if (item[key as keyof Item]) {
-        this.details.push(`${ItemDetailMap[key]}: ${item[key as keyof Item]}`);
+      if (item[key as keyof BasicItem]) {
+        this.details.push(`${ItemDetailMap[key]}: ${item[key as keyof BasicItem]}`);
       }
     }
   }
@@ -766,7 +766,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     event.stopPropagation();
   }
 
-  onSelectItem(item: Item): void {
+  onSelectItem(item: BasicItem): void {
     this.router.navigate(['item', item.name]);
   }
 

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { DaybreakItem, Item, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { BasicItem, DaybreakItem, OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
@@ -39,7 +39,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
     { type: Price.ARM, label: 'Moa', icon: 3, active: false },
     { type: Price.BD, label: 'Pearl', icon: 4, active: false }
   ];
-  public items: Array<Item> = [];
+  public items: Array<BasicItem> = [];
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -89,7 +89,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
       this.items = orders
         .map(order => order.name)
         .map(name => this.itemService.getItemBase(name))
-        .filter(item => item !== null) as Array<Item>;
+        .filter(item => item !== null) as Array<BasicItem>;
       const orderArray = orders.map(order => {
         const prices = this.availablePrices.map(p => {
           const existingPrice = order.prices.find(op => op.type === p.type);
@@ -125,7 +125,7 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
       this.items = daybreaks
         .map(db => db.name)
         .map(name => this.itemService.getItemBase(name))
-        .filter(item => item !== null) as Array<Item>;
+        .filter(item => item !== null) as Array<BasicItem>;
       const orderArray = daybreaks.map(db => {
         const prices = this.availablePrices.map(p => {
           return this.fb.group({

@@ -12,7 +12,8 @@ import {
 } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { Item, ShopLink } from '@app/models/shop.model';
+import { BasicItem, ShopLink } from '@app/models/shop.model';
+import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
 import { Subscription, debounceTime } from 'rxjs';
 
@@ -27,11 +28,11 @@ export class SelectItemComponent implements OnInit, OnDestroy {
   @Input() offsetY = 0;
   @Input() includeShop = false;
 
-  @Output() selectItem = new EventEmitter<Item>();
+  @Output() selectItem = new EventEmitter<BasicItem>();
   @Output() selectShop = new EventEmitter<string>();
 
   public searchControl: UntypedFormControl = new UntypedFormControl('');
-  public searchedItems: Array<Item> = [];
+  public searchedItems: Array<BasicItem> = [];
   public searchedShops: Array<ShopLink> = [];
   public searchOpen = false;
   public manualTarget = 0;
@@ -44,13 +45,15 @@ export class SelectItemComponent implements OnInit, OnDestroy {
   @ViewChild('main') private mainRef: ElementRef<HTMLElement>;
 
   constructor(
+    private itemService: ItemService,
     private storeService: StoreService,
     private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.itemChange = this.storeService.getSearchItems().subscribe((items: Array<Item>) => {
-      this.searchedItems = [...items];
+    this.itemChange = this.storeService.getSearchItems().subscribe((items: Array<BasicItem>) => {
+      // merge server result with basic data
+      this.searchedItems = items.map(item => this.itemService.getItemBase(item.name));
       const toMatch = this.searchControl.value.toLowerCase();
       if (toMatch.length > 0) {
         this.searchedItems.forEach(item => {
@@ -75,7 +78,11 @@ export class SelectItemComponent implements OnInit, OnDestroy {
         this.searchOpen = true;
         this.manualTarget = 0;
         this.storeService.requestSocket('searchItems', value);
-        this.storeService.requestSocket('searchShops', value);
+        if (this.includeShop) {
+          this.storeService.requestSocket('searchShops', value);
+        } else {
+          this.searchedShops = [];
+        }
       } else {
         this.searchOpen = false;
         this.searchedItems = [];
@@ -127,7 +134,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
     }
   }
 
-  onClick(item: Item): void {
+  onClick(item: BasicItem): void {
     this.searchControl.setValue(item.name, { emitEvent: false });
     this.selectItem.emit(item);
     this.close();
@@ -139,7 +146,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
     this.close();
   }
 
-  getImageSource(item: Item): string {
+  getImageSource(item: BasicItem): string {
     return UtilityHelper.getImage(item);
   }
 

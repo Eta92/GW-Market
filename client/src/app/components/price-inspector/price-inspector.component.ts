@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { PriceInspection } from '@app/models/order.model';
-import { Item } from '@app/models/shop.model';
 import { InspectorService } from '@app/services/inspector.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,7 +11,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./price-inspector.component.scss']
 })
 export class PriceInspectorComponent implements OnInit {
-  public item?: Item;
   public active: boolean;
   public inspection: PriceInspection;
 

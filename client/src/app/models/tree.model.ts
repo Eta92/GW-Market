@@ -1,4 +1,4 @@
-import { Item } from './shop.model';
+import { BasicItem } from './shop.model';
 
 export interface TimeOrderCounts {
   sellNow: number; // < 15 min
@@ -28,7 +28,7 @@ export interface AvailableCategory extends TimeOrderCounts {
   items: Array<AvailableItem>;
 }
 
-export interface AvailableItem extends Item, TimeOrderCounts {
+export interface AvailableItem extends BasicItem, TimeOrderCounts {
   description?: string;
   enhancement?: string;
   condition?: string;

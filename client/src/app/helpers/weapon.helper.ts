@@ -1,4 +1,4 @@
-import { BasicItem, Item, ShopItem, Upgrade, WeaponDetails } from '@app/models/shop.model';
+import { BasicItem, ShopItem, Upgrade, WeaponDetails } from '@app/models/shop.model';
 
 // Inscription category sets
 const MARTIAL_INSCRIPTIONS = ['All weapons Inscriptions', 'Martial weapons Inscriptions', 'All equippable items Inscriptions'];
@@ -24,18 +24,18 @@ const WEAPON_UPGRADE_CONFIG: Record<string, { core: string[]; prefix: string | n
 export class WeaponHelper {
   static upgradeDescriptions: { [key: string]: string } = {};
 
-  static isWeapon(item: Item): boolean {
+  static isWeapon(item: BasicItem): boolean {
     return item?.family === 'weapon';
   }
 
-  static isMiniature(item: Item): boolean {
+  static isMiniature(item: BasicItem): boolean {
     return item?.family === 'miniature';
   }
 
   /**
    * Check if an order has displayable item details (weapon stats, miniature dedication, pre-searing).
    */
-  static hasItemDetails(item: Item, shopItem?: ShopItem): boolean {
+  static hasItemDetails(item: BasicItem, shopItem?: ShopItem): boolean {
     if (WeaponHelper.isWeapon(item) && shopItem?.weaponDetails) return true;
     if (WeaponHelper.isMiniature(item)) return true;
     if (shopItem?.orderDetails?.pre) return true;
@@ -68,7 +68,7 @@ export class WeaponHelper {
    * Get available upgrade items for a weapon category.
    */
   static getItemList(
-    item: Item,
+    item: BasicItem,
     upgradeFamily: { [key: string]: Array<BasicItem> }
   ): { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } {
     //const upgrades = completeTree.families.find(fam => fam.name === 'upgrade')?.categories;

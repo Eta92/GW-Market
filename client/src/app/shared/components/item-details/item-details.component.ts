@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { Item, ShopItem } from '@app/models/shop.model';
+import { BasicItem, ShopItem } from '@app/models/shop.model';
 
 @Component({
   selector: 'app-item-details',
@@ -9,8 +9,8 @@ import { Item, ShopItem } from '@app/models/shop.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemDetailsComponent {
-  @Input() item: Item | ShopItem;
-  @Input() details: Item;
+  @Input() item: ShopItem;
+  @Input() details: BasicItem;
 
   public isWeapon = WeaponHelper.isWeapon;
   public isMiniature = WeaponHelper.isMiniature;

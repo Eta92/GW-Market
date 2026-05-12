@@ -16,14 +16,14 @@
         <!-- Item Visual -->
         <div class="item-visual">
           <div class="item-frame">
-            <img class="item-image" [src]="getImageSource(item)" [alt]="item?.name" />
+            <img class="item-image" [src]="item?.img" [alt]="item?.name" />
           </div>
         </div>
 
         <!-- Item Info -->
         <div class="item-info">
           <h1 class="item-name">{{ item?.name || 'Loading...' }}</h1>
-          <div class="item_meta" *ngIf="wikiCategory(item)" (click)="openWiki()">
+          <div class="item_meta" *ngIf="wikiCategory(item) || item?.wiki" (click)="openWiki()">
             <div class="meta-tag mb-2">
               <i class="fa-brands fa-wikipedia-w"></i>
               <span class="wiki-text">wiki link</span>
@@ -303,7 +303,7 @@
     <div class="order-detail-body">
       <!-- Item Info -->
       <div class="detail-item-row">
-        <img class="detail-item-img" [src]="getImageSource(item)" [alt]="item?.name" />
+        <img class="detail-item-img" [src]="item?.img" [alt]="item?.name" />
         <div class="detail-item-info">
           <span class="detail-item-name">{{ item?.name }}</span>
           <span class="detail-item-qty"
@@ -406,7 +406,7 @@
     <div class="order-detail-body">
       <!-- Item info -->
       <div class="detail-item-row">
-        <img class="detail-item-img" [src]="getImageSource(item)" [alt]="item?.name" />
+        <img class="detail-item-img" [src]="item?.img" [alt]="item?.name" />
         <div class="detail-item-info">
           <span class="detail-item-name">{{ item?.name }}</span>
           <span class="detail-item-qty">Quantity: <strong>1</strong></span>
@@ -553,7 +553,7 @@
 <app-modal [isOpen]="whisperPopup" (closed)="whisperPopup = false" contentClass="whisper-popup-content">
   <div class="popup-content">
     <div class="popup-header">
-      <img class="popup-img" [src]="getImageSource(item)" />
+      <img class="popup-img" [src]="item?.img" />
       <div class="popup-title">
         <h3>Contact Player</h3>
         <p>Copy message to whisper in-game</p>
@@ -598,7 +598,7 @@
 <app-modal [isOpen]="messagePopup" (closed)="messagePopup = false" contentClass="message-popup-content">
   <div class="popup-content">
     <div class="popup-header">
-      <img class="popup-img" [src]="getImageSource(item)" />
+      <img class="popup-img" [src]="item?.img" />
       <div class="popup-title">
         <h3>Send Message to player</h3>
       </div>

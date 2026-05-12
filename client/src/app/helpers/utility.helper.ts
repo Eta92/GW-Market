@@ -1,5 +1,5 @@
 import { ItemOrder, Time } from '@app/models/order.model';
-import { Item, Price, ShopItem, ShopPrice } from '@app/models/shop.model';
+import { BasicItem, Price, ShopItem, ShopPrice } from '@app/models/shop.model';
 
 export class UtilityHelper {
   static copy(item): any {
@@ -89,7 +89,7 @@ export class UtilityHelper {
     return a;
   }
 
-  public static getImage(item: Item): string {
+  public static getImage(item: BasicItem): string {
     if (!item) return '';
     if (item['img']) {
       return '../../../assets/items/' + item.family + '/' + item.img.replace(/ /g, '_') + '.png';

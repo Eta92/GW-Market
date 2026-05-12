@@ -32,7 +32,7 @@
 
         <ng-container *ngFor="let time of times; let t = index">
           <div class="gi" *ngIf="inspection[time][i].quantity">
-            {{ inspection[time][i].price + ' (' + inspection[time][i].quantity + ')' }}
+            {{ inspection[time][i].price + ' (x' + inspection[time][i].quantity + ')' }}
           </div>
           <div class="gi" *ngIf="!inspection[time][i].quantity">-</div>
         </ng-container>

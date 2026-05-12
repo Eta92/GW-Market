@@ -7,17 +7,15 @@ import { UtilService } from './util.service';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { Auction } from '@app/models/auction.model';
 import { SearchFilter, SearchResult } from '@app/models/order.model';
-import { Item, ShopItem, ShopLink } from '@app/models/shop.model';
+import { BasicItem, ShopItem, ShopLink } from '@app/models/shop.model';
 
 @Injectable()
 export class StoreService {
   private init = false;
   private searchedItemName = '';
   //private commentsSubscribe
-  private searchItemSubject = new CurrentSubject<Array<Item>>();
+  private searchItemSubject = new CurrentSubject<Array<BasicItem>>();
   private searchShopSubject = new CurrentSubject<Array<ShopLink>>();
-  private itemDetailSubject = new CurrentSubject<Item>();
-  private itemsDetailSubject = new CurrentSubject<Array<Item>>();
   private itemOrdersSubject = new CurrentSubject<Array<ShopItem>>();
   private itemAuctionsSubject = new CurrentSubject<Array<Auction>>();
   private lastItemsSubject = new CurrentSubject<Array<ShopItem>>();
@@ -40,17 +38,11 @@ export class StoreService {
   }
 
   storeInit(): void {
-    this.socket.on('GetItemSearch', (data: Array<Item>) => {
+    this.socket.on('GetItemSearch', (data: Array<BasicItem>) => {
       this.searchItemSubject.set(data);
     });
     this.socket.on('GetShopSearch', (data: Array<ShopLink>) => {
       this.searchShopSubject.set(data);
-    });
-    this.socket.on('GetItemDetails', (data: Item) => {
-      this.itemDetailSubject.set(data);
-    });
-    this.socket.on('GetItemsDetails', (data: Array<Item>) => {
-      this.itemsDetailSubject.set(data);
     });
     this.socket.on('GetItemOrders', (data: Array<ShopItem>, itemName: string) => {
       if (itemName === this.searchedItemName) {
@@ -104,23 +96,12 @@ export class StoreService {
     this.searchedItemName = name;
   }
 
-  getSearchItems(): Observable<Array<Item>> {
+  getSearchItems(): Observable<Array<BasicItem>> {
     return this.searchItemSubject.asObservable().pipe(debounceTime(0));
   }
 
   getSearchShops(): Observable<Array<ShopLink>> {
     return this.searchShopSubject.asObservable().pipe(debounceTime(0));
-  }
-
-  getItemDetails(): Observable<Item> {
-    return this.itemDetailSubject.asObservable().pipe(debounceTime(0));
-  }
-  resetItemDetails(): void {
-    this.itemDetailSubject.set(null);
-  }
-
-  getItemsDetails(): Observable<Array<Item>> {
-    return this.itemsDetailSubject.asObservable().pipe(debounceTime(0));
   }
 
   getItemOrders(): Observable<Array<ShopItem>> {

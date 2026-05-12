@@ -3,7 +3,7 @@
   <div class="modal-header">
     <div class="header-left">
       <div class="item-preview" [class.empty]="!item" [class.has-item]="item">
-        <img *ngIf="item" [src]="getImageSource(item)" [alt]="item?.name" />
+        <img *ngIf="item" [src]="item?.img" [alt]="item?.name" />
         <i *ngIf="!item" class="fa fa-cube"></i>
       </div>
       <div class="header-title">

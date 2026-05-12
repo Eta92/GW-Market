@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { Item, Price, ShopItem } from '@app/models/shop.model';
 import { ItemOrder } from '@app/models/order.model';
+import { BasicItem, Price, ShopItem } from '@app/models/shop.model';
 
 @Pipe({ name: 'itemImage' })
 export class ItemImagePipe implements PipeTransform {
-  transform(item: Item | null | undefined): string {
+  transform(item: BasicItem | null | undefined): string {
     return item ? UtilityHelper.getImage(item) : '';
   }
 }

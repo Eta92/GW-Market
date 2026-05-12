@@ -7,7 +7,7 @@ import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { OrderFilter, OrderSort } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { DaybreakItem, Item, OrderType, Shop, ShopItem } from '@app/models/shop.model';
+import { BasicItem, DaybreakItem, OrderType, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
@@ -617,11 +617,11 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.router.navigate(['/item', itemName]);
   }
 
-  isWeapon(item: Item): boolean {
+  isWeapon(item: BasicItem): boolean {
     return WeaponHelper.isWeapon(item);
   }
 
-  isMiniature(item: Item): boolean {
+  isMiniature(item: BasicItem): boolean {
     return WeaponHelper.isMiniature(item);
   }
 

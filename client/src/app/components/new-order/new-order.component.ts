@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { Item, ShopItem } from '@app/models/shop.model';
+import { BasicItem, ShopItem } from '@app/models/shop.model';
 
 @Component({
   selector: 'app-new-order',
@@ -7,7 +7,7 @@ import { Item, ShopItem } from '@app/models/shop.model';
   styleUrls: ['./new-order.component.scss']
 })
 export class NewOrderComponent {
-  @Input() preselect?: Item;
+  @Input() preselect?: BasicItem;
   @Input() warning? = false;
   @Input() orderOpen = false;
   @Output() createOrder = new EventEmitter<ShopItem>();

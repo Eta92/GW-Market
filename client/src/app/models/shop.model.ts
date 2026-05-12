@@ -57,7 +57,7 @@ export interface ShopItem {
   weaponDetails?: WeaponDetails;
   listedTime?: number;
   // front only
-  item?: Item;
+  item?: BasicItem;
   completed?: boolean;
   removed?: boolean;
   single?: boolean;
@@ -115,17 +115,6 @@ export enum OrderType {
   AUCTION
 }
 
-export interface Item {
-  name: string;
-  img: string;
-  family: string;
-  category: string;
-  // front only
-  match?: number;
-  orderDetails?: OrderDetails;
-  weaponDetails?: WeaponDetails;
-}
-
 export interface BasicItem {
   name: string;
   description?: string;
@@ -134,6 +123,9 @@ export interface BasicItem {
   img: string;
   family: string;
   category: string;
+  wiki?: string;
+  // for search only
+  match?: number;
 }
 
 export interface Upgrade {
