@@ -1,0 +1,355 @@
+// Import shared design system
+@import '../../shared/styles/variables';
+@import '../../shared/styles/form-controls';
+
+// ============================================
+// OVERVIEW PAGE - Main Container
+// ============================================
+.item-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $obsidian;
+  overflow: hidden;
+}
+
+// ============================================
+// PAGE LAYOUT
+// ============================================
+.page-layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+// ============================================
+// OVERVIEW GRID - full area
+// ============================================
+.overview-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  overflow: hidden;
+  min-height: 0;
+}
+
+// ============================================
+// PANEL BASE
+// ============================================
+.panel {
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &--dark {
+    background: $obsidian-light;
+    border: 1px solid rgba($gold, 0.2);
+  }
+
+  &--gold {
+    background: rgba($gold, 0.55);
+    border: 1px solid rgba($gold-dark, 0.5);
+  }
+
+  &--chart {
+    background: $obsidian-light;
+    border: 1px solid rgba($gold, 0.18);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0.5rem 0.75rem 0.5rem;
+  }
+}
+
+// ============================================
+// TOP ROW
+// ============================================
+.top-row {
+  display: flex;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  min-height: 320px;
+}
+
+// -- Left column (stats + range stacked) --
+.left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+}
+
+// -- Stats block --
+.stats-block {
+  flex: 0 0 auto;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-width: 280px;
+}
+
+.stats-title {
+  color: $gold;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba($gold, 0.25);
+}
+
+.stats-header {
+  display: grid;
+  grid-template-columns: 5rem 1fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
+
+  .stats-label {
+    color: $parchment;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .stats-col-label {
+    color: $gold;
+    font-size: 0.85rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+}
+
+.stats-divider {
+  height: 1px;
+  background: rgba($gold, 0.2);
+  margin: 0.25rem 0;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: 5rem 1fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
+
+  .stats-row-label {
+    color: $parchment-muted;
+    font-size: 0.8rem;
+    text-align: right;
+    padding-right: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+.stat-cell {
+  background: rgba($gold, 0.1);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: $radius-sm;
+  color: $gold-bright;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 0.25rem;
+
+  &--highlight {
+    background: rgba($gold, 0.22);
+    border-color: rgba($gold, 0.55);
+    color: $gold-bright;
+    font-size: 1.8rem;
+    box-shadow: 0 0 10px rgba($gold, 0.15);
+  }
+}
+
+// -- Center block --
+.center-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.supervisor-block {
+  flex: 1;
+  min-height: 100px;
+}
+
+.supervisor-title {
+  color: $parchment;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.range-panel {
+  margin-top: auto;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+}
+
+.range-label {
+  color: $gold;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.range-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.range-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: $radius-sm;
+  color: $parchment-muted;
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  transition: all 150ms ease;
+
+  &:hover {
+    border-color: $gold;
+    color: $gold;
+  }
+
+  &.active {
+    background: rgba($gold, 0.2);
+    border-color: $gold;
+    color: $gold-bright;
+  }
+}
+
+// -- Ladder blocks --
+.ladder-block {
+  flex: 0 0 220px;
+  align-self: stretch;
+  padding: 0.75rem;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.ladder-title {
+  color: $gold;
+  font-size: 0.75rem;
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba($gold, 0.25);
+  flex-shrink: 0;
+}
+
+.ladder-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+
+  .ladder-th {
+    color: $gold-dim;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.3rem;
+    border-bottom: 1px solid rgba($gold, 0.2);
+    text-align: right;
+
+    &--name {
+      text-align: left;
+    }
+  }
+}
+
+.ladder-row {
+  border-bottom: 1px solid rgba($gold, 0.08);
+
+  &:hover:not(.ladder-row--empty) {
+    background: rgba($gold, 0.07);
+  }
+
+  &--empty {
+    opacity: 0.3;
+  }
+}
+
+.ladder-rank {
+  color: $gold-dim;
+  text-align: right;
+  padding: 0.3rem 0.4rem;
+  width: 1.5rem;
+}
+
+.ladder-name {
+  color: $parchment-muted;
+  text-align: left;
+  padding: 0.3rem 0.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 120px;
+}
+
+.ladder-value {
+  color: $gold-bright;
+  text-align: right;
+  padding: 0.3rem 0.4rem;
+  font-weight: 600;
+}
+
+// ============================================
+// BOTTOM ROW
+// ============================================
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.chart-block {
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+.chart-title {
+  color: $gold;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 0 2px 16px;
+  border-bottom: 1px solid rgba($gold, 0.2);
+  flex-shrink: 0;
+}
+
+.chart-canvas {
+  flex: 1;
+  min-height: 120px;
+  width: 100%;
+  height: 100%;
+}
+
+.chart-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $gold-dim;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}

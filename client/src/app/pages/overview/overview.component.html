@@ -1,0 +1,133 @@
+<div class="item-page scroll font-fritz">
+  <!-- HEADER -->
+  <app-header [showSearch]="true" [showFeatures]="false" [compact]="true"></app-header>
+
+  <!-- MAIN LAYOUT -->
+  <div class="page-layout">
+    <div class="overview-grid">
+      <!-- ===================== TOP ROW ===================== -->
+      <div class="top-row">
+        <!-- LEFT COLUMN: Stats + Range -->
+        <div class="left-col">
+          <!-- STATS BLOCK -->
+          <div class="panel panel--dark stats-block">
+            <div class="stats-title">Market Big Numbers</div>
+            <div class="stats-header">
+              <span class="stats-label"></span>
+              <span class="stats-col-label">Shops</span>
+              <span class="stats-col-label">Items</span>
+            </div>
+            <div class="stats-row">
+              <span class="stats-row-label">Active</span>
+              <span class="stat-cell stat-cell--highlight">{{ overview?.totalShopActive ?? '–' }}</span>
+              <span class="stat-cell stat-cell--highlight">{{ overview?.totalItemActive ?? '–' }}</span>
+            </div>
+            <div class="stats-row">
+              <span class="stats-row-label">Day</span>
+              <span class="stat-cell">{{ overview?.totalShopDay ?? '–' }}</span>
+              <span class="stat-cell">{{ overview?.totalItemDay ?? '–' }}</span>
+            </div>
+            <div class="stats-row">
+              <span class="stats-row-label">Week</span>
+              <span class="stat-cell">{{ overview?.totalShopWeek ?? '–' }}</span>
+              <span class="stat-cell">{{ overview?.totalItemWeek ?? '–' }}</span>
+            </div>
+          </div>
+          <!-- RANGE BLOCK -->
+          <div class="panel panel--dark range-panel">
+            <span class="range-label">Range</span>
+            <div class="range-btns">
+              <button class="range-btn" [class.active]="range === 'all'" (click)="setRange('all')">all</button>
+              <button class="range-btn" [class.active]="range === 'week'" (click)="setRange('week')">week</button>
+              <button class="range-btn" [class.active]="range === 'day'" (click)="setRange('day')">day</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTER: SUPERVISOR -->
+        <div class="center-block">
+          <div class="panel panel--dark supervisor-block">
+            <span class="supervisor-title">GW Market<br />Supervisor</span>
+          </div>
+        </div>
+
+        <!-- LEADERBOARDS -->
+        <div class="panel panel--dark ladder-block">
+          <div class="ladder-title">Item Ladder</div>
+          <table class="ladder-table">
+            <thead>
+              <tr>
+                <th class="ladder-th">#</th>
+                <th class="ladder-th ladder-th--name">Shop</th>
+                <th class="ladder-th">Items</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let entry of overview?.leaderboardItem; let i = index" class="ladder-row">
+                <td class="ladder-rank">{{ i + 1 }}</td>
+                <td class="ladder-name">{{ entry.shopName }}</td>
+                <td class="ladder-value">{{ entry.value }}</td>
+              </tr>
+              <tr *ngFor="let _ of [].constructor(10 - (overview?.leaderboardItem?.length ?? 0))" class="ladder-row ladder-row--empty">
+                <td class="ladder-rank">–</td>
+                <td class="ladder-name">–</td>
+                <td class="ladder-value">–</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel panel--dark ladder-block">
+          <div class="ladder-title">Reputation Ladder</div>
+          <table class="ladder-table">
+            <thead>
+              <tr>
+                <th class="ladder-th">#</th>
+                <th class="ladder-th ladder-th--name">Shop</th>
+                <th class="ladder-th">Rep</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let entry of overview?.leaderboardReputation; let i = index" class="ladder-row">
+                <td class="ladder-rank">{{ i + 1 }}</td>
+                <td class="ladder-name">{{ entry.shopName }}</td>
+                <td class="ladder-value">{{ entry.value }}</td>
+              </tr>
+              <tr
+                *ngFor="let _ of [].constructor(10 - (overview?.leaderboardReputation?.length ?? 0))"
+                class="ladder-row ladder-row--empty"
+              >
+                <td class="ladder-rank">–</td>
+                <td class="ladder-name">–</td>
+                <td class="ladder-value">–</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===================== BOTTOM ROW ===================== -->
+      <div class="bottom-row">
+        <div class="panel panel--chart chart-block">
+          <span class="chart-title">Purchase count history</span>
+          <div echarts [options]="chartPurchase" class="chart-canvas" *ngIf="chartPurchase"></div>
+          <div class="chart-empty" *ngIf="!chartPurchase">No data yet</div>
+        </div>
+        <div class="panel panel--chart chart-block">
+          <span class="chart-title">Market connections history</span>
+          <div echarts [options]="chartConnections" class="chart-canvas" *ngIf="chartConnections"></div>
+          <div class="chart-empty" *ngIf="!chartConnections">No data yet</div>
+        </div>
+        <div class="panel panel--chart chart-block">
+          <span class="chart-title">Reputation count history</span>
+          <div echarts [options]="chartReputation" class="chart-canvas" *ngIf="chartReputation"></div>
+          <div class="chart-empty" *ngIf="!chartReputation">No data yet</div>
+        </div>
+        <div class="panel panel--chart chart-block">
+          <span class="chart-title">Shop update history</span>
+          <div echarts [options]="chartRefreshes" class="chart-canvas" *ngIf="chartRefreshes"></div>
+          <div class="chart-empty" *ngIf="!chartRefreshes">No data yet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

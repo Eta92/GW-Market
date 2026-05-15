@@ -7,6 +7,7 @@ import { UtilService } from './util.service';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { Auction } from '@app/models/auction.model';
 import { SearchFilter, SearchResult } from '@app/models/order.model';
+import { Overview } from '@app/models/overview.model';
 import { BasicItem, ShopItem, ShopLink } from '@app/models/shop.model';
 
 @Injectable()
@@ -22,6 +23,7 @@ export class StoreService {
   private lastAuctionsSubject = new CurrentSubject<Array<Auction>>();
   private shopSecretSubject = new CurrentSubject<{ uuid: string; secret: string }>();
   private searchOrdersSubject = new CurrentSubject<SearchResult>();
+  private overviewSubject = new CurrentSubject<Overview>();
 
   constructor(
     private utilService: UtilService,
@@ -63,6 +65,9 @@ export class StoreService {
     });
     this.socket.on('SearchOrdersResult', (data: SearchResult) => {
       this.searchOrdersSubject.set(data);
+    });
+    this.socket.on('GetOverview', (data: Overview) => {
+      this.overviewSubject.set(data);
     });
   }
 
@@ -122,6 +127,10 @@ export class StoreService {
 
   getShopSecret(): Observable<{ uuid: string; secret: string }> {
     return this.shopSecretSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getOverview(): Observable<Overview> {
+    return this.overviewSubject.asObservable().pipe(debounceTime(0));
   }
 
   // ================================
