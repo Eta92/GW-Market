@@ -79,6 +79,7 @@ export class ItemService {
               condition: item.condition,
               category: category.name,
               family: family.name,
+              wiki: item.wiki,
               img: item.img
                 ? '../../../assets/items/' + family.name + '/' + item.img.replace(/ /g, '_') + '.png'
                 : '../../../assets/items/' + family.name + '/' + item.name.replace(/ /g, '_') + '.png'

@@ -5,43 +5,53 @@
     "items": [
       {
         "name": "Prophecies Normal",
-        "description": "A standard difficulty mission run of the Prophecies campaign."
+        "description": "A standard difficulty mission run of the Prophecies campaign.",
+        "wiki": "Cooperative Mission"
       },
       {
         "name": "Prophecies Hard",
-        "description": "A hard difficulty mission run of the Prophecies campaign."
+        "description": "A hard difficulty mission run of the Prophecies campaign.",
+        "wiki": "Cooperative Mission"
       },
       {
         "name": "Factions Normal",
-        "description": "A standard difficulty mission run of the Factions campaign."
+        "description": "A standard difficulty mission run of the Factions campaign.",
+        "wiki": "Cooperative Mission"
       },
       {
         "name": "Factions Hard",
-        "description": "A hard difficulty mission run of the Factions campaign."
+        "description": "A hard difficulty mission run of the Factions campaign.",
+        "wiki": "Cooperative Mission"
       },
       {
         "name": "Nightfall Normal",
-        "description": "A standard difficulty mission run of the Nightfall campaign."
+        "description": "A standard difficulty mission run of the Nightfall campaign.",
+        "wiki": "Cooperative Mission"
       },
       {
         "name": "Nightfall Hard",
-        "description": "A hard difficulty mission run of the Nightfall campaign."
+        "description": "A hard difficulty mission run of the Nightfall campaign.",
+        "wiki": "Cooperative Mission"
       },
       {
         "name": "EotN Normal",
-        "description": "A standard difficulty mission run of the Eye of the North campaign."
+        "description": "A standard difficulty mission run of the Eye of the North campaign.",
+        "wiki": "Cooperative Mission"
       },
       {
         "name": "EotN Hard",
-        "description": "A hard difficulty mission run of the Eye of the North campaign."
+        "description": "A hard difficulty mission run of the Eye of the North campaign.",
+        "wiki": "Cooperative Mission"
       },
       {
         "name": "Dungeon Normal",
-        "description": "A standard difficulty dungeon run of the Eye of the North campaign."
+        "description": "A standard difficulty dungeon run of the Eye of the North campaign.",
+        "wiki": "Dungeon"
       },
       {
         "name": "Dungeon Hard",
-        "description": "A hard difficulty dungeon run of the Eye of the North campaign."
+        "description": "A hard difficulty dungeon run of the Eye of the North campaign.",
+        "wiki": "Dungeon"
       }
     ]
   },
@@ -50,29 +60,19 @@
     "description": "The Vanquisher title tracks are granted to a character who clears all explorable areas of foes in hard mode. There is one single-tiered title track for each campaign. Acquiring all of them will complete the Legendary Vanquisher title track. These titles can be displayed in the \"Honor\" monument.",
     "items": [
       {
-        "name": "Vanquisher XS",
-        "description": "Clearing a hard zone containing 0-100 foes.",
-        "img": "Vanquisher"
+        "name": "Vanquisher small",
+        "description": "Clearing a hard zone containing 0-150 foes.",
+        "wiki": "Vanquisher"
       },
       {
-        "name": "Vanquisher S",
-        "description": "Clearing a hard zone containing 100-200 foes.",
-        "img": "Vanquisher"
+        "name": "Vanquisher classic",
+        "description": "Clearing a hard zone containing 150-300 foes.",
+        "wiki": "Vanquisher"
       },
       {
-        "name": "Vanquisher M",
-        "description": "Clearing a hard zone containing 200-300 foes.",
-        "img": "Vanquisher"
-      },
-      {
-        "name": "Vanquisher L",
-        "description": "Clearing a hard zone containing 300-400 foes.",
-        "img": "Vanquisher"
-      },
-      {
-        "name": "Vanquisher XL",
-        "description": "Clearing a hard zone containing 400+ foes.",
-        "img": "Vanquisher"
+        "name": "Vanquisher large",
+        "description": "Clearing a hard zone containing 300+ foes.",
+        "wiki": "Vanquisher"
       }
     ]
   },
@@ -195,32 +195,38 @@
       {
         "name": "Fissure of Woe",
         "description": "Complete all missions of the Fissure of Woe",
-        "img": "Fissure_of_Woe"
+        "img": "Fissure_of_Woe",
+        "wiki": "The Fissure of Woe"
       },
       {
         "name": "Underworld",
         "description": "Complete all missions of the Underworld",
-        "img": "Underworld"
+        "img": "Underworld",
+        "wiki": "The Underworld"
       },
       {
         "name": "Sorrow's Furnace",
         "description": "Defeat Iron Forgeman in Sorrow's Furnace",
-        "img": "Iron_Forgeman"
+        "img": "Iron_Forgeman",
+        "wiki": "Sorrow's Furnace"
       },
       {
         "name": "Urgoz's Warren",
         "description": "Defeat Urgoz in Urgoz's Warren",
-        "img": "Urgoz"
+        "img": "Urgoz",
+        "wiki": "Urgoz's Warren"
       },
       {
         "name": "The Deep",
         "description": "Defeat Kanaxai in The Deep",
-        "img": "Kanaxai"
+        "img": "Kanaxai",
+        "wiki": "The Deep"
       },
       {
         "name": "DoA / Mallyx",
         "description": "Clear the 4 domains of anguish then defeat Mallyx the Unyielding in the final fight.",
-        "img": "Mallyx_the_Unyielding"
+        "img": "Mallyx_the_Unyielding",
+        "wiki": "Domain of Anguish"
       }
     ]
   },
@@ -230,15 +236,18 @@
     "items": [
       {
         "name": "Proof of Triumph",
-        "description": "While a player is carried this item, the bosses possessing unique PvE-only elite skills that can only be captured from them this way will spawn"
+        "description": "While a player is carried this item, the bosses possessing unique PvE-only elite skills that can only be captured from them this way will spawn",
+        "wiki": "Proof of Triumph"
       },
       {
         "name": "Obsidian armor",
-        "description": "Bring you to the Eternal Forgemaster in the Fissure of Woe to craft you obsidian armor."
+        "description": "Bring you to the Eternal Forgemaster in the Fissure of Woe to craft you obsidian armor.",
+        "wiki": "Eternal Forgemaster"
       },
       {
         "name": "Infusion",
-        "description": "Bring you to the Ancient Seer to infuse your armor against the Mursaats."
+        "description": "Bring you to the Ancient Seer to infuse your armor against the Mursaats.",
+        "wiki": "Infusion"
       }
     ]
   },
@@ -248,35 +257,43 @@
     "items": [
       {
         "name": "Sunspear",
-        "description": "Farm to boost your Sunspear rank. Price set for 1000 points."
+        "description": "Farm to boost your Sunspear rank. Price set for 1000 points.",
+        "wiki": "Sunspear rank"
       },
       {
         "name": "Lightbringer",
-        "description": "Farm to boost your Lightbringer rank. Price set for 1000 points."
+        "description": "Farm to boost your Lightbringer rank. Price set for 1000 points.",
+        "wiki": "Lightbringer rank"
       },
       {
         "name": "Norn",
-        "description": "Farm to boost your Norn rank. Price set for 1000 points."
+        "description": "Farm to boost your Norn rank. Price set for 1000 points.",
+        "wiki": "Norn rank"
       },
       {
         "name": "Ebon Vanguard",
-        "description": "Farm to boost your Ebon Vanguard rank. Price set for 1000 points."
+        "description": "Farm to boost your Ebon Vanguard rank. Price set for 1000 points.",
+        "wiki": "Ebon Vanguard rank"
       },
       {
         "name": "Asura",
-        "description": "Farm to boost your Asura rank. Price set for 1000 points."
+        "description": "Farm to boost your Asura rank. Price set for 1000 points.",
+        "wiki": "Asura rank"
       },
       {
         "name": "Deldrimor",
-        "description": "Farm to boost your Deldrimor rank. Price set for 1000 points."
+        "description": "Farm to boost your Deldrimor rank. Price set for 1000 points.",
+        "wiki": "Deldrimor rank"
       },
       {
         "name": "Luxon",
-        "description": "Farm to boost your Luxon rank. Price set for 1000 points."
+        "description": "Farm to boost your Luxon rank. Price set for 1000 points.",
+        "wiki": "Allegiance rank"
       },
       {
         "name": "Kurzick",
-        "description": "Farm to boost your Kurzick rank. Price set for 1000 points."
+        "description": "Farm to boost your Kurzick rank. Price set for 1000 points.",
+        "wiki": "Allegiance rank"
       }
     ]
   }

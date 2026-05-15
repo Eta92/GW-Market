@@ -202,7 +202,9 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   openWiki(): void {
-    const wikiUrl = `https://wiki.guildwars.com/wiki/${encodeURIComponent(this.item.name.replace(/ /g, '_'))}`;
+    const wikiUrl = this.item.wiki
+      ? `https://wiki.guildwars.com/wiki/${encodeURIComponent(this.item.wiki.replace(/ /g, '_'))}`
+      : `https://wiki.guildwars.com/wiki/${encodeURIComponent(this.item.name.replace(/ /g, '_'))}`;
     window.open(wikiUrl, '_blank');
   }
 
