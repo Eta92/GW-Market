@@ -30,6 +30,7 @@ export class ShopService {
   private publicShopSubject = new CurrentSubject<Shop>();
   private personalAuctionsSubject = new CurrentSubject<Array<Auction>>();
   private purchasesSubject = new CurrentSubject<Array<Purchase>>();
+  private activePlayer = new CurrentSubject<string>();
 
   constructor(
     private http: HttpClient,
@@ -74,6 +75,9 @@ export class ShopService {
         timeOut: 10000
       });
       this.daybreakStart();
+    });
+    this.socket.on('RefreshPlayer', (player: string) => {
+      this.activePlayer.set(player);
     });
     this.socket.on('PersonalAuctions', (auctions: Array<Auction>) => {
       auctions.forEach(auction => {
@@ -386,6 +390,10 @@ export class ShopService {
 
   getPurchases(): Observable<Array<Purchase>> {
     return this.purchasesSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getActivePlayer(): Observable<string> {
+    return this.activePlayer.asObservable().pipe(debounceTime(0));
   }
 
   getdaybreakOnline(): boolean {

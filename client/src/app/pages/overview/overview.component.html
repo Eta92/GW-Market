@@ -63,7 +63,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let entry of overview?.leaderboardItem; let i = index" class="ladder-row">
+              <tr *ngFor="let entry of overview?.leaderboardItem; let i = index" (click)="goToShop(entry)" class="ladder-row">
                 <td class="ladder-rank">{{ i + 1 }}</td>
                 <td class="ladder-name">{{ entry.shopName }}</td>
                 <td class="ladder-value">{{ entry.value }}</td>
@@ -87,7 +87,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let entry of overview?.leaderboardReputation; let i = index" class="ladder-row">
+              <tr *ngFor="let entry of overview?.leaderboardReputation; let i = index" (click)="goToShop(entry)" class="ladder-row">
                 <td class="ladder-rank">{{ i + 1 }}</td>
                 <td class="ladder-name">{{ entry.shopName }}</td>
                 <td class="ladder-value">{{ entry.value }}</td>

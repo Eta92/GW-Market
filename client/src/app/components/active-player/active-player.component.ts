@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Shop } from '@app/models/shop.model';
+import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -35,6 +36,7 @@ export class ActivePlayerComponent implements OnInit {
 
   constructor(
     private fb: UntypedFormBuilder,
+    private shopService: ShopService,
     private storeService: StoreService,
     private toastrService: ToastrService,
     private cdr: ChangeDetectorRef
@@ -48,6 +50,11 @@ export class ActivePlayerComponent implements OnInit {
       if (certificate) {
         this.secret = this.whisperBase + certificate.uuid + '|' + certificate.secret;
         this.cdr.detectChanges();
+      }
+    });
+    this.shopService.getActivePlayer().subscribe(player => {
+      if (player) {
+        this.form.patchValue({ name: player });
       }
     });
   }

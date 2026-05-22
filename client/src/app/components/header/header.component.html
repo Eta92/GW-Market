@@ -16,11 +16,7 @@
       </div>
 
       <div class="header-actions">
-        <button
-          class="nav-btn msg-btn place-order-btn relative overflow-hidden"
-          (click)="openMessages()"
-          *ngIf="messages?.length"
-        >
+        <button class="nav-btn msg-btn place-order-btn relative overflow-hidden" (click)="openMessages()" *ngIf="messages?.length">
           <i class="fa fa-envelope z-10 scale-125"></i>
           <div
             *ngIf="unreadMessages > 0"
@@ -38,10 +34,7 @@
           <span>My shop</span>
         </button>
         <button class="nav-btn online-btn relative overflow-hidden" (click)="refreshShop()" *ngIf="shop?.lastRefresh">
-          <div
-            class="online-bg absolute bottom-0 left-0 w-full"
-            [style.height.%]="(timeLeft / (15 * 60 * 1000)) * 100"
-          ></div>
+          <div class="online-bg absolute bottom-0 left-0 w-full" [style.height.%]="(timeLeft / ((15 + bonus) * 60 * 1000)) * 100"></div>
           <i class="fa fa-power-off hover:fa-sync z-10"></i>
         </button>
       </div>
@@ -85,11 +78,7 @@
 
     <!-- Actions -->
     <div class="header-actions">
-      <button
-        class="nav-btn msg-btn place-order-btn relative overflow-hidden"
-        (click)="openMessages()"
-        *ngIf="messages?.length"
-      >
+      <button class="nav-btn msg-btn place-order-btn relative overflow-hidden" (click)="openMessages()" *ngIf="messages?.length">
         <i class="fa fa-envelope z-10 scale-125"></i>
         <div
           *ngIf="unreadMessages > 0"
@@ -107,10 +96,7 @@
         <span>My shop</span>
       </button>
       <button class="nav-btn online-btn relative overflow-hidden" (click)="refreshShop()" *ngIf="shop?.lastRefresh">
-        <div
-          class="online-bg absolute bottom-0 left-0 w-full"
-          [style.height.%]="(timeLeft / (15 * 60 * 1000)) * 100"
-        ></div>
+        <div class="online-bg absolute bottom-0 left-0 w-full" [style.height.%]="(timeLeft / ((15 + bonus) * 60 * 1000)) * 100"></div>
         <i class="fa fa-power-off hover:fa-sync z-10"></i>
       </button>
     </div>
@@ -139,16 +125,8 @@
   [ngClass]="{ 'h-[calc(100vh_-_120px)] w-[465px]': hero, 'h-[calc(100vh_-_60px)] w-[415px]': !hero }"
 >
   <div class="text-xl font-semibold">Messages and Notifications</div>
-  <app-toggle-group
-    [options]="readOptions"
-    [value]="readOption"
-    (valueChange)="setReadOption($event)"
-  ></app-toggle-group>
-  <app-toggle-group
-    [options]="messageOptions"
-    [value]="messageOption"
-    (valueChange)="setMessageOption($event)"
-  ></app-toggle-group>
+  <app-toggle-group [options]="readOptions" [value]="readOption" (valueChange)="setReadOption($event)"></app-toggle-group>
+  <app-toggle-group [options]="messageOptions" [value]="messageOption" (valueChange)="setMessageOption($event)"></app-toggle-group>
   <div class="flex flex-1 flex-col gap-1 overflow-y-auto">
     <div *ngFor="let message of filteredMessages">
       <app-message-card
@@ -161,8 +139,4 @@
   </div>
 </div>
 
-<app-new-order
-  [orderOpen]="orderOpen"
-  (createOrder)="onCreateOrder($event)"
-  (closeOrder)="orderOpen = false"
-></app-new-order>
+<app-new-order [orderOpen]="orderOpen" (createOrder)="onCreateOrder($event)" (closeOrder)="orderOpen = false"></app-new-order>

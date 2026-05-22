@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   @Output() selectItem = new EventEmitter<BasicItem>();
 
   public shop: Shop;
+  public bonus = 0;
   public orderOpen = false;
   public messageOpen = false;
   public messages: Array<Message>;
@@ -53,7 +54,8 @@ export class HeaderComponent implements OnInit {
     this.shopService.getActiveShop().subscribe(shop => {
       this.shop = shop;
       if (this.shop && this.shop.lastRefresh && !this.timerActive) {
-        this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
+        this.bonus = this.shop.reputation ? this.shop.reputation.positive - this.shop.reputation.negative : 0;
+        this.timeLeft = this.shop.lastRefresh + (15 + this.bonus) * 60 * 1000 - Date.now();
         this.refreshTimer();
       }
     });
@@ -129,7 +131,7 @@ export class HeaderComponent implements OnInit {
   refreshTimer(): void {
     if (this.timeLeft > 0) {
       this.timerActive = true;
-      this.timeLeft = this.shop.lastRefresh + 15 * 60 * 1000 - Date.now();
+      this.timeLeft = this.shop.lastRefresh + (15 + this.bonus) * 60 * 1000 - Date.now();
       if (this.timeLeft < 0) {
         this.timeLeft = 0;
         return;

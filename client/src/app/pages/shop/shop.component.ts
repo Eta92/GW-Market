@@ -196,7 +196,9 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.personalHighlight = (15 + bonus) * 60 * 1000;
     if (this.shop?.items) {
       this.updateItemList();
-      this.refreshCandle();
+      if (!this.showcase) {
+        this.refreshCandle();
+      }
       this.scheduleDetect();
     }
   }

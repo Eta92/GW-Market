@@ -4,6 +4,7 @@
  */
 export const ItemDetailMap: Record<string, string> = {
   family: 'Family',
+  category: 'Category',
   'duration_(mins)': 'Duration (mins)',
   'applies_to...': 'Applies to',
   region: 'Usable in',

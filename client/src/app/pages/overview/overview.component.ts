@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Overview, OverviewData } from '@app/models/overview.model';
+import { LeaderboardShop, Overview, OverviewData } from '@app/models/overview.model';
 import { StoreService } from '@app/services/store.service';
 import type { EChartsOption } from 'echarts';
 import { ToastrService } from 'ngx-toastr';
@@ -56,6 +56,12 @@ export class OverviewComponent implements OnInit {
     this.range = r;
     this.buildCharts();
     this.cdr.detectChanges();
+  }
+
+  goToShop(entry: LeaderboardShop): void {
+    if (entry.publicId) {
+      window.open(`https://gwmarket.net/shop/showcase?public=${entry.publicId}`, '_blank');
+    }
   }
 
   private filterAndAggregate(data: Array<OverviewData>): Array<OverviewData> {

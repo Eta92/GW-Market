@@ -9,6 +9,7 @@ import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { BasicItem } from '@app/models/shop.model';
 import { AvailableTree, TimeOrderCounts } from '@app/models/tree.model';
+import { ItemDetailMap } from '@shared/constants/item-detail.map';
 import { ToastrService } from 'ngx-toastr';
 import { StoreService } from './store.service';
 
@@ -72,18 +73,18 @@ export class ItemService {
             img: '../../../assets/items/' + family.name + '/' + category.name.replace(/ /g, '_') + '.png'
           };
           category.items.forEach(item => {
-            this.itemNameBase[item.name] = {
-              name: item.name,
-              description: item.description,
-              enhancement: item.enhancement,
-              condition: item.condition,
-              category: category.name,
-              family: family.name,
-              wiki: item.wiki,
-              img: item.img
-                ? '../../../assets/items/' + family.name + '/' + item.img.replace(/ /g, '_') + '.png'
-                : '../../../assets/items/' + family.name + '/' + item.name.replace(/ /g, '_') + '.png'
+            const builtItem: any = {
+              name: item.name
             };
+            Object.keys(ItemDetailMap).forEach(key => {
+              if (item[key]) {
+                builtItem[key] = item[key];
+              }
+            });
+            builtItem.img = item.img
+              ? '../../../assets/items/' + family.name + '/' + item.img.replace(/ /g, '_') + '.png'
+              : '../../../assets/items/' + family.name + '/' + item.name.replace(/ /g, '_') + '.png';
+            this.itemNameBase[item.name] = builtItem as BasicItem;
             if (family.name === 'upgrade') {
               WeaponHelper.upgradeDescriptions[item.name] =
                 item.enhancement + (item.condition ? ` ${item.condition}` : '');

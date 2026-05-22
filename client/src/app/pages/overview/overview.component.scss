@@ -274,6 +274,7 @@
 }
 
 .ladder-row {
+  cursor: pointer;
   border-bottom: 1px solid rgba($gold, 0.08);
 
   &:hover:not(.ladder-row--empty) {
