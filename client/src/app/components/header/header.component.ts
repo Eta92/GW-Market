@@ -4,6 +4,7 @@ import { Message, MessageType } from '@app/models/message.model';
 import { BasicItem, OrderType, Shop } from '@app/models/shop.model';
 import { MessageService } from '@app/services/message.service';
 import { ShopService } from '@app/services/shop.service';
+import { StoreService } from '@app/services/store.service';
 import { ToggleOption } from '@shared/components/toggle-group/toggle-group.component';
 
 @Component({
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
   public messages: Array<Message>;
   public filteredMessages: Array<Message>;
   public unreadMessages = 0;
+  public showOverlay = false;
 
   public readOption: 'all' | 'unread' = 'all';
   public readOptions: ToggleOption[] = [
@@ -46,6 +48,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private shopService: ShopService,
+    private storeService: StoreService,
     private messageService: MessageService,
     private cdr: ChangeDetectorRef
   ) {}
@@ -65,6 +68,14 @@ export class HeaderComponent implements OnInit {
       this.filterMessages();
       this.cdr.detectChanges();
     });
+    this.storeService.getOverlay().subscribe(overlay => {
+      this.showOverlay = overlay;
+      this.cdr.detectChanges();
+    });
+  }
+
+  hideOverlay(): void {
+    this.storeService.setOverlay(false);
   }
 
   // navigation
@@ -183,7 +194,10 @@ export class HeaderComponent implements OnInit {
         ) {
           return false;
         }
-        if (this.messageOption === 'reputation' && ![MessageType.REPUTATION_UP, MessageType.REPUTATION_DOWN].includes(message.type)) {
+        if (
+          this.messageOption === 'reputation' &&
+          ![MessageType.REPUTATION_UP, MessageType.REPUTATION_DOWN, MessageType.REPUTATION_REVERT].includes(message.type)
+        ) {
           return false;
         }
         if (

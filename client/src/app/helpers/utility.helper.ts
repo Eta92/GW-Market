@@ -170,7 +170,9 @@ export class UtilityHelper {
     if (futur) {
       diff = timestamp - Date.now();
     }
-    if (diff < 1000 * 60) {
+    if (diff < 0) {
+      return new Date(timestamp).toLocaleString();
+    } else if (diff < 1000 * 60) {
       return 'now';
     } else if (diff < 1000 * 60 * 60) {
       const minutes = Math.floor(diff / (1000 * 60));

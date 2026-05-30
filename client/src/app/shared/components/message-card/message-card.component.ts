@@ -57,6 +57,8 @@ export class MessageCardComponent {
         return 'Auction Success';
       case MessageType.AUCTION_FAIL:
         return 'Auction Failure';
+      case MessageType.REPUTATION_REVERT:
+        return 'Reputation Reverted';
     }
     return '';
   }
@@ -229,6 +231,8 @@ export class MessageCardComponent {
         return (
           'The auction for ' + data[0] + ' has ended without any bids. You can try to relist it or lower the price to attract more players.'
         );
+      case MessageType.REPUTATION_REVERT:
+        return 'A previous reputation vote has been reverted, Your reputation has been updated accordingly.';
     }
     return '';
   }

@@ -75,7 +75,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
 
     this.inputChange = this.searchControl.valueChanges.pipe(debounceTime(300)).subscribe((value: string) => {
       if (value.length > 2) {
-        this.searchOpen = true;
+        this.updatePanelState(true);
         this.manualTarget = 0;
         this.storeService.requestSocket('searchItems', value);
         if (this.includeShop) {
@@ -84,9 +84,13 @@ export class SelectItemComponent implements OnInit, OnDestroy {
           this.searchedShops = [];
         }
       } else {
-        this.searchOpen = false;
+        this.updatePanelState(false);
         this.searchedItems = [];
       }
+    });
+    this.storeService.getOverlay().subscribe(show => {
+      this.searchOpen = show;
+      this.cdr.detectChanges();
     });
 
     // Auto-focus search on load
@@ -98,6 +102,11 @@ export class SelectItemComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.itemChange?.unsubscribe();
     this.shopChange?.unsubscribe();
+  }
+
+  updatePanelState(show: boolean): void {
+    this.searchOpen = show;
+    this.storeService.setOverlay(show);
   }
 
   manualTargeting(event: KeyboardEvent): void {
@@ -130,7 +139,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
 
   inputClick(): void {
     if (this.searchedItems.length > 0) {
-      this.searchOpen = true;
+      this.updatePanelState(true);
     }
   }
 
@@ -151,7 +160,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
   }
 
   close(): void {
-    this.searchOpen = false;
+    this.updatePanelState(false);
   }
 
   @HostListener('document:click', ['$event'])

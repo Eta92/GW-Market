@@ -516,7 +516,7 @@
       </div>
     </div>
 
-    <div class="order-detail-footer" *ngIf="auctionDisplay && !auctionDisplay.active && auctionDisplay.history?.length > 0">
+    <div class="order-detail-footer" *ngIf="auctionDisplay && !showcase && !auctionDisplay.active && auctionDisplay.history?.length > 0">
       <button class="detail-whisper-btn" (click)="contactWinner(auctionDisplay)">
         <i class="fa fa-gavel"></i>
         Contact Winner

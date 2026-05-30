@@ -1,4 +1,5 @@
 <!-- Hero Mode: Full background with overlay -->
+<div class="modal-overlay" *ngIf="showOverlay" (click)="hideOverlay()"></div>
 <header *ngIf="hero" class="hero-header bg-main bg-base">
   <div class="header-overlay">
     <div class="header-top">

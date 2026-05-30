@@ -52,7 +52,6 @@ $slate: #251d14;
 .hero-header {
   flex-shrink: 0;
   position: relative;
-  z-index: 100;
   min-height: 220px;
   background-position: center -300px;
   background-size: 100% auto;
@@ -92,7 +91,6 @@ $slate: #251d14;
 // ============================================
 .site-header {
   position: relative;
-  z-index: 100;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 100%);
   border-bottom: 1px solid rgba($gold, 0.2);
   padding: 1.25rem 2rem;
@@ -227,6 +225,14 @@ $slate: #251d14;
     max-width: none;
     min-width: 0;
   }
+}
+
+// Modal Overlay — sits above page content but below search (z-index: 100)
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.55);
 }
 
 // Search Wrapper

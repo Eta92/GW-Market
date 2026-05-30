@@ -15,11 +15,7 @@
   </div>
 
   <!-- Dropdown Results - Positioned relative to container -->
-  <div
-    *ngIf="(searchedItems.length > 0 || searchedShops.length > 0) && searchOpen"
-    class="search-dropdown"
-    (mouseleave)="searchOpen = false"
-  >
+  <div *ngIf="(searchedItems.length > 0 || searchedShops.length > 0) && searchOpen" class="search-dropdown">
     <div
       class="search-result"
       [class.highlighted]="manualTarget === i + 1"

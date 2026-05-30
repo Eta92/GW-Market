@@ -15,6 +15,7 @@ export class StoreService {
   private init = false;
   private searchedItemName = '';
   //private commentsSubscribe
+  private overlaySubject = new CurrentSubject<boolean>();
   private searchItemSubject = new CurrentSubject<Array<BasicItem>>();
   private searchShopSubject = new CurrentSubject<Array<ShopLink>>();
   private itemOrdersSubject = new CurrentSubject<Array<ShopItem>>();
@@ -99,6 +100,14 @@ export class StoreService {
 
   setSearchedItemName(name: string): void {
     this.searchedItemName = name;
+  }
+
+  setOverlay(value: boolean): void {
+    this.overlaySubject.set(value);
+  }
+
+  getOverlay(): Observable<boolean> {
+    return this.overlaySubject.asObservable().pipe(debounceTime(0));
   }
 
   getSearchItems(): Observable<Array<BasicItem>> {
