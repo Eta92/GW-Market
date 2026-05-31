@@ -8,7 +8,7 @@ import { CurrentSubject } from '@app/helpers/current.subject';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { BasicItem } from '@app/models/shop.model';
-import { AvailableTree, TimeOrderCounts } from '@app/models/tree.model';
+import { AvailableCategory, AvailableFamily, AvailableTree, TimeOrderCounts } from '@app/models/tree.model';
 import { ItemDetailMap } from '@shared/constants/item-detail.map';
 import { ToastrService } from 'ngx-toastr';
 import { StoreService } from './store.service';
@@ -23,11 +23,14 @@ export class ItemService {
   private itemJsonData: AvailableTree;
   private itemNameBase: { [key: string]: BasicItem } = {};
   private itemUpgrades: { [key: string]: Array<BasicItem> } = {};
+  private legacyUpgrades: { [key: string]: BasicItem } = {};
   private warningMap: { [key: string]: boolean } = {};
   private availableOrders: {
     [key: string]: TimeOrderCounts;
   } = {};
+  private upgradeInheritance: { [key: string]: Array<string> } = {};
   private availableTreeSubject = new CurrentSubject<AvailableTree>();
+  private legacyUpgradeSubject = new CurrentSubject<Array<BasicItem>>();
 
   constructor(
     private http: HttpClient,
@@ -60,12 +63,25 @@ export class ItemService {
     this.socket.emit('getAvailableOrders');
   }
 
+  loadInheritance(category: AvailableCategory, family: AvailableFamily): Array<string> {
+    if (category.inherit) {
+      const inherited = family.categories.find(c => c.name === category.inherit);
+      if (inherited) {
+        const total = [category.inherit, ...this.loadInheritance(inherited, family)];
+        this.upgradeInheritance[category.name] = total;
+        return total;
+      }
+    }
+    return [];
+  }
+
   loadAvailableTree(): void {
     if (this.itemJsonData) {
       this.itemUpgrades = {};
       const activeTree = UtilityHelper.copy(this.itemJsonData) as AvailableTree;
       activeTree.families.forEach(family => {
         family.categories.forEach(category => {
+          this.loadInheritance(category, family);
           this.itemNameBase[category.name] = {
             name: category.name,
             category: category.name,
@@ -174,6 +190,9 @@ export class ItemService {
           }
         }
       });
+      activeTree.legacyUpgrades.forEach(upgrade => {
+        this.legacyUpgrades[upgrade.name] = upgrade;
+      });
       activeTree.sellNow = activeTree.families.reduce((sum, f) => sum + (f.sellNow || 0), 0);
       activeTree.buyNow = activeTree.families.reduce((sum, f) => sum + (f.buyNow || 0), 0);
       activeTree.auctionNow = activeTree.families.reduce((sum, f) => sum + (f.auctionNow || 0), 0);
@@ -184,6 +203,7 @@ export class ItemService {
       activeTree.buyWeek = activeTree.families.reduce((sum, f) => sum + (f.buyWeek || 0), 0);
       activeTree.auctionWeek = activeTree.families.reduce((sum, f) => sum + (f.auctionWeek || 0), 0);
       this.availableTreeSubject.set(activeTree);
+      this.legacyUpgradeSubject.set(Object.values(this.legacyUpgrades));
       if (!this.treeLoaded) {
         this.treeLoaded = true;
         this.setReady();
@@ -197,6 +217,16 @@ export class ItemService {
 
   getAvailableTree(): Observable<AvailableTree> {
     return this.availableTreeSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getLegacyUpgrades(): Observable<Array<BasicItem>> {
+    return this.legacyUpgradeSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getLegacyUpgradeDescription(name: string): string {
+    const u = this.legacyUpgrades[name];
+    if (!u) return name;
+    return [u.enhancement, u.condition].filter(Boolean).join(' / ');
   }
 
   resetItemWarnings(): void {
@@ -242,5 +272,9 @@ export class ItemService {
 
   getUpgrades(): { [key: string]: Array<BasicItem> } {
     return this.itemUpgrades;
+  }
+
+  getCategoryInheritance(): { [key: string]: Array<string> } {
+    return this.upgradeInheritance;
   }
 }

@@ -253,6 +253,25 @@
             ></app-toggle-group>
           </div>
         </div>
+        <!-- Legacy Mods -->
+        <div class="legacy-mods-section" *ngIf="formOther.get('legacy')?.value">
+          <div class="legacy-mod-row" *ngFor="let mod of legacyModValues; let i = index">
+            <app-upgrade-dropdown
+              class="w-full"
+              [upgradeOptions]="legacyUpgradeOptions"
+              [selectedUpgrade]="mod"
+              (upgradeChange)="updateLegacyMod(i, $event)"
+            ></app-upgrade-dropdown>
+            <button type="button" class="remove-mod-btn" (click)="removeLegacyMod(i)" title="Remove">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+          <button type="button" class="add-mod-btn" (click)="addLegacyMod()">
+            <i class="fa fa-plus"></i>
+            <span>Add Legacy Mod</span>
+          </button>
+        </div>
+
         <div class="form-row mt-2">
           <div class="form-group">
             <label>Vendor gold value</label>

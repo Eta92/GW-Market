@@ -14,6 +14,7 @@ export interface TimeOrderCounts {
 
 export interface AvailableTree extends TimeOrderCounts {
   families: Array<AvailableFamily>;
+  legacyUpgrades?: Array<BasicItem>;
 }
 
 export interface AvailableFamily extends TimeOrderCounts {
@@ -24,6 +25,7 @@ export interface AvailableFamily extends TimeOrderCounts {
 
 export interface AvailableCategory extends TimeOrderCounts {
   name: string;
+  inherit?: string;
   previews: Array<string>;
   items: Array<AvailableItem>;
 }

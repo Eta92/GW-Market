@@ -692,6 +692,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   private relativePrice = UtilityHelper.relativePrice;
 
   updateItemList(): void {
+    const categoryInheritance = this.itemService.getCategoryInheritance();
     if (!this.shop?.items) return;
     const filteredItem = this.shop.items.filter(item => {
       if (this.orderFilter.name && !item.name.toLowerCase().includes(this.orderFilter.name.toLowerCase())) {
@@ -700,7 +701,11 @@ export class ShopComponent implements OnInit, OnDestroy {
       if (this.orderFilter.family && item.item?.family !== this.orderFilter.family) {
         return false;
       }
-      if (this.orderFilter.category && item.item?.category !== this.orderFilter.category) {
+      if (
+        this.orderFilter.category &&
+        item.item?.category !== this.orderFilter.category &&
+        !categoryInheritance[item.item?.category]?.includes(this.orderFilter.category)
+      ) {
         return false;
       }
       if (this.orderFilter.attribute) {

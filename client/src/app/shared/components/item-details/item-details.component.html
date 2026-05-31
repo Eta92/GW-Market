@@ -36,8 +36,15 @@
   </span>
 
   <!-- Pre-Searing Flag -->
-  <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.pre"> <i class="fa fa-sun"></i> Pre-Searing </span>
+  <span class="detail-badge os" *ngIf="shopItem?.orderDetails?.pre"> <i class="fa fa-sun"></i> Pre-Searing </span>
 
   <!-- Pre-Nerf Flag -->
-  <span class="detail-badge presearing" *ngIf="shopItem?.orderDetails?.legacy"> <i class="fa fa-lock"></i> Pre-Nerf </span>
+  <span class="detail-badge os" *ngIf="shopItem?.orderDetails?.legacy"> <i class="fa fa-lock"></i> Pre-Nerf </span>
+
+  <!-- Legacy Mods -->
+  <ng-container *ngIf="shopItem?.orderDetails?.legacyMods?.length">
+    <span class="detail-badge legacy-mod" *ngFor="let mod of shopItem.orderDetails.legacyMods" [title]="legacyModDescription(mod)">
+      {{ mod }}
+    </span>
+  </ng-container>
 </div>

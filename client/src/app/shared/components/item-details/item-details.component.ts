@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { BasicItem, ShopItem } from '@app/models/shop.model';
+import { ItemService } from '@app/services/item.service';
 
 @Component({
   selector: 'app-item-details',
@@ -16,6 +17,12 @@ export class ItemDetailsComponent {
   public isMiniature = WeaponHelper.isMiniature;
 
   public WeaponHelper = WeaponHelper;
+
+  constructor(private itemService: ItemService) {}
+
+  legacyModDescription(name: string): string {
+    return this.itemService.getLegacyUpgradeDescription(name);
+  }
 
   get shopItem(): ShopItem | null {
     if (!this.item) return null;

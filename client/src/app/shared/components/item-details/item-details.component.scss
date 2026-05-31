@@ -127,6 +127,18 @@
       color: #ffcc00;
     }
   }
+
+  // Legacy mod badge
+  &.legacy-mod {
+    background: rgba(#e67e22, 0.12);
+    color: #e8924a;
+    border-color: rgba(#e67e22, 0.28);
+    cursor: help;
+
+    i {
+      color: #e67e22;
+    }
+  }
 }
 
 // Responsive
