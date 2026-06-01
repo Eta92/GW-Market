@@ -126,6 +126,22 @@
                 <p>Maybe your filters are too restrictive</p>
               </span>
             </div>
+            <div *ngIf="availableList === 'item' && availableCategory.inheritedItems?.length">
+              <span class="section-title">Items also compatible</span>
+              <div class="cards-grid items">
+                <app-preview-card
+                  *ngFor="let item of active(availableCategory.inheritedItems)"
+                  [previews]="[getPreviewSource(item.name)]"
+                  [label]="item.name"
+                  [stats]="getStats(item)"
+                  [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
+                  [isSingleImage]="true"
+                  [smallLabel]="true"
+                  (cardClick)="goToItem(item)"
+                  (cardOpen)="openToItem(item)"
+                ></app-preview-card>
+              </div>
+            </div>
           </ng-container>
 
           <!-- ========== LIST VIEW (Explorer Style) ========== -->
@@ -186,6 +202,26 @@
                   containerClass="explorer-stats"
                 ></app-stats-display>
                 <i class="fa fa-chevron-right nav-arrow"></i>
+              </div>
+            </div>
+            <div *ngIf="availableList === 'item' && availableCategory.inheritedItems?.length">
+              <span class="section-title">Items also compatible</span>
+              <div class="explorer-list">
+                <div
+                  *ngFor="let item of active(availableCategory.inheritedItems)"
+                  class="explorer-item frame"
+                  (click)="goToItem(item)"
+                  (appMiddle)="openToItem(item)"
+                >
+                  <img class="explorer-icon" [src]="getPreviewSource(item.name)" [alt]="item.name" />
+                  <span class="explorer-name">{{ item.name }}</span>
+                  <app-stats-display
+                    [mode]="timeMode === 'combined' ? 'combined' : 'basic'"
+                    [stats]="getStats(item)"
+                    containerClass="explorer-stats"
+                  ></app-stats-display>
+                  <i class="fa fa-chevron-right nav-arrow"></i>
+                </div>
               </div>
             </div>
           </ng-container>

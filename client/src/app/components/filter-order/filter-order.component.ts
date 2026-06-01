@@ -100,7 +100,7 @@ export class FilterOrderComponent implements OnInit {
     }
     return [
       ...(upgrades.find(cat => cat.name === 'All equippable items Inscriptions')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'All weapons Inscriptions')?.items.map(i => i.name) || []),
+      ...(upgrades.find(cat => cat.name === 'All weapon types Inscriptions')?.items.map(i => i.name) || []),
       ...(upgrades.find(cat => cat.name === 'Martial weapons Inscriptions')?.items.map(i => i.name) || []),
       ...(upgrades.find(cat => cat.name === 'Spellcasting weapons Inscriptions')?.items.map(i => i.name) || []),
       ...(upgrades.find(cat => cat.name === 'Focus items or shields Inscriptions')?.items.map(i => i.name) || []),

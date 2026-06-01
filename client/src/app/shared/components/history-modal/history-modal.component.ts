@@ -152,7 +152,7 @@ export class HistoryModalComponent extends Modal {
 
       // Normalize: sum all price components → platinum equiv → convert to ecto equiv
       const normalizedPlat =
-        purchase.prices.reduce((sum, pp) => sum + pp.unitPrice * (this.multipliers[pp.type] ?? 1), 0) / purchase.prices[0].quantity;
+        purchase.prices.reduce((sum, pp) => sum + pp.unitPrice * (this.multipliers[pp.type] ?? 1), 0) / purchase.prices.length;
       const normalizedEcto = Math.round((normalizedPlat / this.multipliers[Price.ECTO]) * 100) / 100;
 
       seriesMap.get(purchase.origin)?.push({

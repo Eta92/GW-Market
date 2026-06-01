@@ -27,6 +27,7 @@ export interface AvailableCategory extends TimeOrderCounts {
   name: string;
   inherit?: string;
   previews: Array<string>;
+  inheritedItems?: Array<AvailableItem>;
   items: Array<AvailableItem>;
 }
 

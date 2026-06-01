@@ -1,8 +1,12 @@
 import { BasicItem, ShopItem, Upgrade, WeaponDetails } from '@app/models/shop.model';
 
 // Inscription category sets
-const MARTIAL_INSCRIPTIONS = ['All weapons Inscriptions', 'Martial weapons Inscriptions', 'All equippable items Inscriptions'];
-const SPELLCASTING_INSCRIPTIONS = ['All weapons Inscriptions', 'Spellcasting weapons Inscriptions', 'All equippable items Inscriptions'];
+const MARTIAL_INSCRIPTIONS = ['All weapon types Inscriptions', 'Martial weapons Inscriptions', 'All equippable items Inscriptions'];
+const SPELLCASTING_INSCRIPTIONS = [
+  'All weapon types Inscriptions',
+  'Spellcasting weapons Inscriptions',
+  'All equippable items Inscriptions'
+];
 const FOCUS_INSCRIPTIONS = ['Focus items or shields Inscriptions', 'Focus items Inscriptions', 'All equippable items Inscriptions'];
 const SHIELD_INSCRIPTIONS = ['Focus items or shields Inscriptions', 'All equippable items Inscriptions'];
 

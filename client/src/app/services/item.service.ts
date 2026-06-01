@@ -29,6 +29,7 @@ export class ItemService {
     [key: string]: TimeOrderCounts;
   } = {};
   private upgradeInheritance: { [key: string]: Array<string> } = {};
+  private revertedInheritance: { [key: string]: Array<string> } = {};
   private availableTreeSubject = new CurrentSubject<AvailableTree>();
   private legacyUpgradeSubject = new CurrentSubject<Array<BasicItem>>();
 
@@ -73,6 +74,18 @@ export class ItemService {
       }
     }
     return [];
+  }
+
+  loadRevertedInheritance(): void {
+    for (const category in this.upgradeInheritance) {
+      const parents = this.upgradeInheritance[category];
+      parents.forEach(parent => {
+        if (!this.revertedInheritance[parent]) {
+          this.revertedInheritance[parent] = [];
+        }
+        this.revertedInheritance[parent].push(category);
+      });
+    }
   }
 
   loadAvailableTree(): void {
@@ -192,6 +205,21 @@ export class ItemService {
       });
       activeTree.legacyUpgrades.forEach(upgrade => {
         this.legacyUpgrades[upgrade.name] = upgrade;
+      });
+      this.loadRevertedInheritance();
+      activeTree.families.forEach(family => {
+        family.categories.forEach(category => {
+          const inheritances = this.upgradeInheritance[category.name] || [];
+          inheritances.forEach(inherit => {
+            const inheritedCategory = family.categories.find(c => c.name === inherit);
+            if (inheritedCategory) {
+              if (!category.inheritedItems) {
+                category.inheritedItems = [];
+              }
+              category.inheritedItems.push(...inheritedCategory.items);
+            }
+          });
+        });
       });
       activeTree.sellNow = activeTree.families.reduce((sum, f) => sum + (f.sellNow || 0), 0);
       activeTree.buyNow = activeTree.families.reduce((sum, f) => sum + (f.buyNow || 0), 0);

@@ -67,6 +67,10 @@ export class StoreService {
     this.socket.on('SearchOrdersResult', (data: SearchResult) => {
       this.searchOrdersSubject.set(data);
     });
+    this.socket.on('LoadMoreResults', (data: SearchResult) => {
+      const globalResults = [...this.searchOrdersSubject.value.orders, ...data.orders];
+      this.searchOrdersSubject.set({ ...data, orders: globalResults });
+    });
     this.socket.on('GetOverview', (data: Overview) => {
       this.overviewSubject.set(data);
     });
@@ -154,6 +158,10 @@ export class StoreService {
         this.socket.emit('searchOrders', filter);
       });
     }
+  }
+
+  loadMoreOrders(previousResult: SearchResult): void {
+    this.socket.emit('loadMoreResults', previousResult);
   }
 
   getSearchOrders(): Observable<SearchResult> {

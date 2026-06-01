@@ -9,6 +9,7 @@ import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
+import { ToastrService } from 'ngx-toastr';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 
 @Component({
@@ -85,6 +86,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private storeService: StoreService,
     private itemService: ItemService,
+    private toastrService: ToastrService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -317,10 +319,12 @@ export class SearchComponent implements OnInit, OnDestroy {
   // Pagination
   loadMore(): void {
     if (!this.searchResult) return;
-    const filter = this.buildFilter();
-    filter.offset = this.searchResult.orders.length;
+    if (Date.now() - this.searchResult.date > Time.ONLINE) {
+      this.toastrService.error('This search is too old to be extended, please make a new search.', 'Search Expired');
+      return;
+    }
     this.loading = true;
-    this.storeService.searchOrders(filter);
+    this.storeService.loadMoreOrders(this.searchResult);
   }
 
   get hasMore(): boolean {

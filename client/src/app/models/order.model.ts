@@ -141,6 +141,9 @@ export interface SearchFilter {
 }
 
 export interface SearchResult {
+  id: string;
+  page: number;
+  date?: number;
   orders: Array<SearchResultOrder>;
   total: number;
   aggregations: SearchAggregations;
