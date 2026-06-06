@@ -148,6 +148,11 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
                 requirement: [db.requirement || null],
                 inscription: [db.inscription || false]
               })
+            : undefined,
+          orderDetails: db.attribute
+            ? this.fb.group({
+                goldPrice: [db.goldPrice || null]
+              })
             : undefined
         });
       });

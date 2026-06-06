@@ -27,6 +27,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
   @Input() height = 48;
   @Input() offsetY = 0;
   @Input() includeShop = false;
+  @Input() autoFocus = false;
 
   @Output() selectItem = new EventEmitter<BasicItem>();
   @Output() selectShop = new EventEmitter<string>();
@@ -94,9 +95,11 @@ export class SelectItemComponent implements OnInit, OnDestroy {
     });
 
     // Auto-focus search on load
-    setTimeout(() => {
-      this.searchRef?.nativeElement?.focus();
-    }, 100);
+    if (this.autoFocus) {
+      setTimeout(() => {
+        this.searchRef?.nativeElement?.focus();
+      }, 100);
+    }
   }
 
   ngOnDestroy(): void {

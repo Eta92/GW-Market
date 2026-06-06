@@ -25,6 +25,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   public pro = false;
   public showcase = false;
   public shop: Shop;
+  public myShop: Shop;
   public personalHighlight = 15 * 60 * 1000;
   public sellOrders: Array<ShopItem> = [];
   public buyOrders: Array<ShopItem> = [];
@@ -73,6 +74,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   public orderWarning = false;
   public playerWarning = false;
+  public voteWarning = false;
 
   public playerOpen = false;
   public orderOpen = false;
@@ -147,6 +149,15 @@ export class ShopComponent implements OnInit, OnDestroy {
             .subscribe((shop: Shop) => {
               this.shop = shop;
               this.shopUpdate();
+            });
+          this.shopService
+            .getActiveShop()
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(activeShop => {
+              if (activeShop) {
+                this.myShop = activeShop;
+                this.cdr.detectChanges();
+              }
             });
         });
       } else {
@@ -818,7 +829,26 @@ export class ShopComponent implements OnInit, OnDestroy {
   }
 
   reputationVote(vote: 'positive' | 'negative'): void {
-    this.shopService.submitReputationVote(this.shop.player, vote);
+    if (this.shopVote() === vote) {
+      if (this.voteWarning) {
+        this.shopService.submitReputationVote(this.shop.player, vote);
+        this.voteWarning = false;
+      } else {
+        this.toastrService.warning(`Click again to remove your ${vote} vote for this shop`, 'Reputation removal initiated');
+        this.voteWarning = true;
+      }
+    } else {
+      this.shopService.submitReputationVote(this.shop.player, vote);
+    }
+  }
+
+  reputationLeave(): void {
+    this.voteWarning = false;
+  }
+
+  shopVote(): null | 'positive' | 'negative' {
+    if (!this.myShop || !this.myShop.notations) return null;
+    return this.myShop.notations[this.shop.publicId] || null;
   }
 
   trackByOrder(_index: number, order: ShopItem): number | string {

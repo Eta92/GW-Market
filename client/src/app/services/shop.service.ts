@@ -464,7 +464,8 @@ export class ShopService {
       quantity: item?.quantity || 0,
       attribute: requirement?.attribute || null,
       requirement: requirement?.requirement || null,
-      inscription: item?.inscribable || false
+      inscription: item?.inscribable || false,
+      goldPrice: item?.value || null
     };
   }
 

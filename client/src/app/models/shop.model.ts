@@ -141,4 +141,5 @@ export interface DaybreakItem {
   attribute?: string;
   requirement?: number;
   inscription?: boolean;
+  goldPrice?: number;
 }

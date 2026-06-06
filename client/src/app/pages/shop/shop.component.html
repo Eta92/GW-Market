@@ -110,11 +110,25 @@
         <div *ngIf="showcase" class="sidebar-vote xs-hide">
           <div class="sidebar-vote-label">Reputation</div>
           <div class="sidebar-vote-buttons">
-            <button class="sidebar-vote-btn positive" (click)="reputationVote('positive')" title="Positive vote">
+            <button
+              class="sidebar-vote-btn positive"
+              (click)="reputationVote('positive')"
+              (mouseleave)="reputationLeave()"
+              [class.upvoted]="shopVote() === 'positive'"
+              [class.confirm]="voteWarning && shopVote() === 'positive'"
+              title="Positive vote"
+            >
               <span>{{ shop?.reputation?.positive || 0 }}</span>
               <i class="fa fa-thumbs-up"></i>
             </button>
-            <button class="sidebar-vote-btn negative" (click)="reputationVote('negative')" title="Negative vote">
+            <button
+              class="sidebar-vote-btn negative"
+              (click)="reputationVote('negative')"
+              (mouseleave)="reputationLeave()"
+              [class.downvoted]="shopVote() === 'negative'"
+              [class.confirm]="voteWarning && shopVote() === 'negative'"
+              title="Negative vote"
+            >
               <span>{{ shop?.reputation?.negative || 0 }}</span>
               <i class="fa fa-thumbs-down"></i>
             </button>

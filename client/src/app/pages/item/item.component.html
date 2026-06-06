@@ -117,8 +117,10 @@
                     [showWeaponDetails]="hasItemDetails(order)"
                     [focusBundle]="focusBundle"
                     [vote]="itemVote(order)"
+                    [voteWarning]="voteWarning"
                     (rowClick)="openOrderDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
+                    (leaveVote)="reputationLeave()"
                     (whisperClick)="whisper($event)"
                     (messageClick)="message($event)"
                   ></app-order-row>

@@ -285,6 +285,24 @@
     color: #f44336;
     transform: scale(1.05);
   }
+  &.confirm {
+    background: #2a3a2a;
+    color: rgba($gold, 0.8);
+    animation: confirm-blink-dropdown 0.4s ease-in-out infinite;
+
+    i {
+      color: rgba($gold, 0.8);
+    }
+  }
+}
+@keyframes confirm-blink-dropdown {
+  0%,
+  100% {
+    background: #3a2525;
+  }
+  50% {
+    background: #4a3030;
+  }
 }
 
 // ============================================

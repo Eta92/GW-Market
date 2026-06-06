@@ -48,6 +48,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   public messageForm: FormGroup;
   public auctionForm: FormGroup;
   public auctionHistoryVisible = false;
+  public voteWarning = false;
 
   // Filters
   public orderTypeFilter: OrderTypeFilter = 'all';
@@ -714,10 +715,6 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  reputationVote(order: ItemOrder, vote: 'positive' | 'negative'): void {
-    this.shopService.submitReputationVote(order.player, vote);
-  }
-
   updateTradeMessage(): void {
     if (!this.selectedWhisperOrder) return;
 
@@ -839,6 +836,24 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   openHistoryModal(): void {
     this.storeService.requestSocket('getPriceHistory', this.item.name);
+  }
+
+  reputationVote(order: ItemOrder, vote: 'positive' | 'negative'): void {
+    if (this.itemVote(order) === vote) {
+      if (this.voteWarning) {
+        this.shopService.submitReputationVote(order.player, vote);
+        this.voteWarning = false;
+      } else {
+        this.toastrService.warning(`Click again to remove your ${vote} vote for this shop`, 'Reputation removal initiated');
+        this.voteWarning = true;
+      }
+    } else {
+      this.shopService.submitReputationVote(order.player, vote);
+    }
+  }
+
+  reputationLeave(): void {
+    this.voteWarning = false;
   }
 
   itemVote(order: ItemOrder): null | 'positive' | 'negative' {

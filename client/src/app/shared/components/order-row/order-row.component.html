@@ -88,7 +88,9 @@
           <button
             class="action-btn vote-btn positive"
             [class.upvoted]="vote === 'positive'"
+            [class.confirm]="voteWarning && vote === 'positive'"
             (click)="onSubmitVote($event, 'positive')"
+            (mouseleave)="leaveVote.emit()"
             title="Positive vote"
           >
             <span>{{ order.positives }}</span
@@ -97,7 +99,9 @@
           <button
             class="action-btn vote-btn negative"
             [class.downvoted]="vote === 'negative'"
+            [class.confirm]="voteWarning && vote === 'negative'"
             (click)="onSubmitVote($event, 'negative')"
+            (mouseleave)="leaveVote.emit()"
             title="Negative vote"
           >
             <span>{{ order.negatives }}</span
