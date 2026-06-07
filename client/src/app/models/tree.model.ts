@@ -1,4 +1,4 @@
-import { BasicItem } from './shop.model';
+import { BasicItem } from './item.model';
 
 export interface TimeOrderCounts {
   sellNow: number; // < 15 min
@@ -14,7 +14,7 @@ export interface TimeOrderCounts {
 
 export interface AvailableTree extends TimeOrderCounts {
   families: Array<AvailableFamily>;
-  legacyUpgrades?: Array<BasicItem>;
+  exoticUpgrades?: Array<BasicItem>;
 }
 
 export interface AvailableFamily extends TimeOrderCounts {

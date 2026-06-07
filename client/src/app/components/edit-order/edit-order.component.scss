@@ -767,6 +767,70 @@
       letter-spacing: 0.05em;
     }
   }
+
+  .legacy-mods-section {
+    .legacy-mod-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      .form-select {
+        flex: 1;
+      }
+
+      .remove-mod-btn {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(#e74c3c, 0.1);
+        border: 1px solid rgba(#e74c3c, 0.4);
+        border-radius: 8px;
+        color: rgba(#e74c3c, 0.8);
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+
+        &:hover {
+          background: rgba(#e74c3c, 0.2);
+          border-color: #e74c3c;
+          color: #e74c3c;
+        }
+      }
+    }
+
+    .add-mod-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.6rem 1rem;
+      background: transparent;
+      border: 1px dashed rgba($gold, 0.3);
+      border-radius: 10px;
+      color: rgba($gold, 0.7);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      i {
+        font-size: 0.75rem;
+      }
+
+      &:hover {
+        background: rgba($gold, 0.08);
+        border-color: $gold;
+        border-style: solid;
+        color: $gold;
+      }
+    }
+  }
 }
 
 .explicative {
@@ -813,72 +877,6 @@
     background: rgba($obsidian-light, 0.3);
     border: 1px solid rgba($gold, 0.1);
     border-radius: 10px;
-
-    .legacy-mods-section {
-      margin-top: 1rem;
-
-      .legacy-mod-row {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-
-        .form-select {
-          flex: 1;
-        }
-
-        .remove-mod-btn {
-          width: 36px;
-          height: 36px;
-          min-width: 36px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(#e74c3c, 0.1);
-          border: 1px solid rgba(#e74c3c, 0.4);
-          border-radius: 8px;
-          color: rgba(#e74c3c, 0.8);
-          font-size: 0.85rem;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          flex-shrink: 0;
-
-          &:hover {
-            background: rgba(#e74c3c, 0.2);
-            border-color: #e74c3c;
-            color: #e74c3c;
-          }
-        }
-      }
-
-      .add-mod-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-        padding: 0.6rem 1rem;
-        background: transparent;
-        border: 1px dashed rgba($gold, 0.3);
-        border-radius: 10px;
-        color: rgba($gold, 0.7);
-        font-size: 0.85rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.2s ease;
-
-        i {
-          font-size: 0.75rem;
-        }
-
-        &:hover {
-          background: rgba($gold, 0.08);
-          border-color: $gold;
-          border-style: solid;
-          color: $gold;
-        }
-      }
-    }
   }
 }
 

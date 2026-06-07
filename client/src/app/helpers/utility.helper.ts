@@ -1,5 +1,6 @@
+import { BasicItem } from '@app/models/item.model';
 import { ItemOrder, Time } from '@app/models/order.model';
-import { BasicItem, Price, ShopItem, ShopPrice } from '@app/models/shop.model';
+import { Price, ShopItem, ShopPrice } from '@app/models/shop.model';
 
 export class UtilityHelper {
   static copy(item): any {

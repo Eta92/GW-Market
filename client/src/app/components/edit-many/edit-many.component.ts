@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormArray, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { BasicItem, DaybreakItem, OrderType, Price, ShopItem } from '@app/models/shop.model';
+import { BasicItem, DaybreakItem } from '@app/models/item.model';
+import { OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';

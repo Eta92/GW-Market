@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { OrderDetails, WeaponDetails } from '@app/models/item.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { OrderDetails, OrderType, Price, WeaponDetails } from '@app/models/shop.model';
+import { OrderType, Price } from '@app/models/shop.model';
 import { Modal } from '@shared/modal/models/modal.model';
 import type { EChartsOption } from 'echarts';
 
@@ -300,7 +301,6 @@ export class HistoryModalComponent extends Modal {
             const o = d.orderDetails;
             if (o.dedicated) o_rows.push(`<div style="color:#a08060">Dedicated</div>`);
             if (o.pre) o_rows.push(`<div style="color:#a08060">Pre-searing</div>`);
-            if (o.legacy) o_rows.push(`<div style="color:#a08060">Legacy</div>`);
             if (o.goldPrice)
               o_rows.push(`<div><span style="color:#a08060">Gold:</span> <span style="color:#f4e8c1">${o.goldPrice}</span></div>`);
             if (o_rows.length > 0) {

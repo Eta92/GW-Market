@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Vampiric Strength",
+    "enhancement": "Damage +10...15%",
+    "condition": "Health regeneration: -1",
+    "img": "Old weapons Inscriptions",
+    "hidden": true
+  },
+  {
+    "name": "Zealous Strength",
+    "enhancement": "Damage +10...15%",
+    "condition": "Energy regeneration: -1",
+    "img": "Old weapons Inscriptions",
+    "hidden": true
+  },
+  {
+    "name": "Protection from REPLACE",
+    "enhancement": "Armor +10 vs. REPLACE",
+    "variations": ["Charrs", "Demons", "Dragons", "Dwarves", "Giants", "Ogres", "Plants", "Tengu", "Trolls", "Undead", "Skeletons"],
+    "img": "Old weapons Inscriptions",
+    "hidden": true
+  },
+  {
+    "name": "Faster casting of REPLACE",
+    "enhancement": "Halves casting time of spells linked to REPLACE attribute",
+    "variations": [
+      "Divine Favor",
+      "Healing Prayers",
+      "Protection Prayers",
+      "Smiting Prayers",
+      "Soul Reaping",
+      "Blood Magic",
+      "Curses",
+      "Death Magic",
+      "Fast Casting",
+      "Domination Magic",
+      "Illusion Magic",
+      "Inspiration Magic",
+      "Energy Storage",
+      "Air Magic",
+      "Earth Magic",
+      "Fire Magic",
+      "Water Magic",
+      "Spawning power",
+      "Channeling Magic",
+      "Communing",
+      "Restoration Magic"
+    ],
+    "condition": "chance 20%",
+    "img": "Old weapons Inscriptions",
+    "hidden": true
+  },
+  {
+    "name": "Faster recharge of REPLACE",
+    "enhancement": "Halves recharge time of spells linked to REPLACE attribute",
+    "variations": [
+      "Divine Favor",
+      "Healing Prayers",
+      "Protection Prayers",
+      "Smiting Prayers",
+      "Soul Reaping",
+      "Blood Magic",
+      "Curses",
+      "Death Magic",
+      "Fast Casting",
+      "Domination Magic",
+      "Illusion Magic",
+      "Inspiration Magic",
+      "Energy Storage",
+      "Air Magic",
+      "Earth Magic",
+      "Fire Magic",
+      "Water Magic",
+      "Spawning power",
+      "Channeling Magic",
+      "Communing",
+      "Restoration Magic"
+    ],
+    "condition": "chance 20%",
+    "img": "Old weapons Inscriptions",
+    "hidden": true
+  },
+  {
+    "name": "Powerfull REPLACE",
+    "enhancement": "+1 to REPLACE attribute when using skills",
+    "variations": [
+      "Divine Favor",
+      "Healing Prayers",
+      "Protection Prayers",
+      "Smiting Prayers",
+      "Soul Reaping",
+      "Blood Magic",
+      "Curses",
+      "Death Magic",
+      "Fast Casting",
+      "Domination Magic",
+      "Illusion Magic",
+      "Inspiration Magic",
+      "Energy Storage",
+      "Air Magic",
+      "Earth Magic",
+      "Fire Magic",
+      "Water Magic",
+      "Spawning power",
+      "Channeling Magic",
+      "Communing",
+      "Restoration Magic"
+    ],
+    "condition": "chance 20%",
+    "img": "Old weapons Inscriptions",
+    "hidden": true
+  },
+  {
+    "name": "REPLACE recovery",
+    "enhancement": "Reduce duration of REPLACE condition on you by 20%",
+    "variations": ["Bleeding", "Blindness", "Burning", "Craked Armor", "Cripple", "Dazed", "Deep Wound", "Disease", "Poison", "Weakness"],
+    "img": "Old weapons Inscriptions",
+    "hidden": true
+  }
+]

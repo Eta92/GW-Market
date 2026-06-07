@@ -1,4 +1,5 @@
-import { BasicItem, OrderType, Price, ShopItem, ShopPrice } from './shop.model';
+import { BasicItem } from './item.model';
+import { OrderType, Price, ShopItem, ShopPrice } from './shop.model';
 
 export interface ItemOrders {
   sellOrders: Array<ItemPriceList>;
@@ -73,7 +74,7 @@ export interface OrderFilter {
   reqMin: number;
   reqMax: number;
   inscription: string;
-  legacy: string;
+  exotic: string;
   core: string;
   prefix: string;
   suffix: string;
@@ -110,9 +111,6 @@ export interface SearchFilter {
 
   // Pre-searing filter
   preSearing?: boolean;
-
-  // Pre-nerf filter
-  legacy?: boolean;
 
   // Miniature-specific filters
   miniDedicated?: boolean;
@@ -170,8 +168,8 @@ export interface SearchResultOrder {
   family: string;
   category: string;
   preSearing?: boolean;
-  legacy?: boolean;
   dedicated?: boolean;
+  item?: BasicItem;
 }
 
 export interface SearchAggregations {

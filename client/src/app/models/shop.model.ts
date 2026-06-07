@@ -1,3 +1,5 @@
+import { BasicItem, OrderDetails, WeaponDetails } from './item.model';
+
 export interface Account {
   nickname: string;
   lastOnline: number;
@@ -49,7 +51,7 @@ export interface ShopItem {
   player: string;
   name: string;
   orderType: OrderType;
-  hidden: boolean;
+  hidden?: boolean;
   prices: Array<ShopPrice>;
   description: string;
   quantity: number;
@@ -73,25 +75,6 @@ export interface ShopItem {
   lastRefresh?: number;
   shopId?: string;
 }
-
-export interface WeaponDetails {
-  attribute: string;
-  requirement: number;
-  inscription: boolean;
-  core: string;
-  prefix: string;
-  suffix: string;
-}
-
-export interface OrderDetails {
-  dedicated: boolean;
-  pre: boolean;
-  legacy: boolean;
-  note: string;
-  goldPrice: number;
-  legacyMods?: Array<string>;
-}
-
 export interface ShopPrice {
   type: Price;
   price: number;
@@ -114,32 +97,4 @@ export enum OrderType {
   SELL,
   BUY,
   AUCTION
-}
-
-export interface BasicItem {
-  name: string;
-  description?: string;
-  enhancement?: string;
-  condition?: string;
-  img: string;
-  family: string;
-  category: string;
-  wiki?: string;
-  // for search only
-  match?: number;
-}
-
-export interface Upgrade {
-  value: string;
-  description?: string;
-  img: string;
-}
-
-export interface DaybreakItem {
-  name: string;
-  quantity: number;
-  attribute?: string;
-  requirement?: number;
-  inscription?: boolean;
-  goldPrice?: number;
 }

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { BasicItem } from '@app/models/shop.model';
+import { BasicItem } from '@app/models/item.model';
 import { AvailableCategory, AvailableFamily, AvailableTree, TimeOrderCounts } from '@app/models/tree.model';
 import { ItemDetailMap } from '@shared/constants/item-detail.map';
 import { ToastrService } from 'ngx-toastr';
@@ -23,7 +23,7 @@ export class ItemService {
   private itemJsonData: AvailableTree;
   private itemNameBase: { [key: string]: BasicItem } = {};
   private itemUpgrades: { [key: string]: Array<BasicItem> } = {};
-  private legacyUpgrades: { [key: string]: BasicItem } = {};
+  private exoticUpgrades: { [key: string]: BasicItem } = {};
   private warningMap: { [key: string]: boolean } = {};
   private availableOrders: {
     [key: string]: TimeOrderCounts;
@@ -31,7 +31,7 @@ export class ItemService {
   private upgradeInheritance: { [key: string]: Array<string> } = {};
   private revertedInheritance: { [key: string]: Array<string> } = {};
   private availableTreeSubject = new CurrentSubject<AvailableTree>();
-  private legacyUpgradeSubject = new CurrentSubject<Array<BasicItem>>();
+  private exoticUpgradeSubject = new CurrentSubject<Array<BasicItem>>();
 
   constructor(
     private http: HttpClient,
@@ -203,8 +203,8 @@ export class ItemService {
           }
         }
       });
-      activeTree.legacyUpgrades.forEach(upgrade => {
-        this.legacyUpgrades[upgrade.name] = upgrade;
+      activeTree.exoticUpgrades.forEach(upgrade => {
+        this.exoticUpgrades[upgrade.name] = upgrade;
       });
       this.loadRevertedInheritance();
       activeTree.families.forEach(family => {
@@ -231,7 +231,7 @@ export class ItemService {
       activeTree.buyWeek = activeTree.families.reduce((sum, f) => sum + (f.buyWeek || 0), 0);
       activeTree.auctionWeek = activeTree.families.reduce((sum, f) => sum + (f.auctionWeek || 0), 0);
       this.availableTreeSubject.set(activeTree);
-      this.legacyUpgradeSubject.set(Object.values(this.legacyUpgrades));
+      this.exoticUpgradeSubject.set(Object.values(this.exoticUpgrades));
       if (!this.treeLoaded) {
         this.treeLoaded = true;
         this.setReady();
@@ -247,12 +247,12 @@ export class ItemService {
     return this.availableTreeSubject.asObservable().pipe(debounceTime(0));
   }
 
-  getLegacyUpgrades(): Observable<Array<BasicItem>> {
-    return this.legacyUpgradeSubject.asObservable().pipe(debounceTime(0));
+  getExoticUpgrades(): Observable<Array<BasicItem>> {
+    return this.exoticUpgradeSubject.asObservable().pipe(debounceTime(0));
   }
 
-  getLegacyUpgradeDescription(name: string): string {
-    const u = this.legacyUpgrades[name];
+  getExoticUpgradeDescription(name: string): string {
+    const u = this.exoticUpgrades[name];
     if (!u) return name;
     return [u.enhancement, u.condition].filter(Boolean).join(' / ');
   }

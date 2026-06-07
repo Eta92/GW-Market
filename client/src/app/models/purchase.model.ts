@@ -1,4 +1,5 @@
-import { OrderDetails, OrderType, Price, WeaponDetails } from './shop.model';
+import { OrderDetails, WeaponDetails } from './item.model';
+import { OrderType, Price } from './shop.model';
 
 export interface Purchase {
   name: string; // item name

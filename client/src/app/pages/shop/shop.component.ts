@@ -5,9 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { Auction, AuctionHistory } from '@app/models/auction.model';
+import { BasicItem, DaybreakItem } from '@app/models/item.model';
 import { OrderFilter, OrderSort } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { BasicItem, DaybreakItem, OrderType, Shop, ShopItem } from '@app/models/shop.model';
+import { OrderType, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
@@ -53,7 +54,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     reqMin: 0,
     reqMax: 13,
     inscription: null,
-    legacy: null,
+    exotic: null,
     core: null,
     prefix: null,
     suffix: null
@@ -432,7 +433,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     const now = new Date().toISOString().slice(0, 10);
     const priceLabels = ['Platinum', 'Ecto', 'Zkey', 'Armbraces', 'Black Dye'];
     const rows: string[] = [
-      'Date,Name,Quantity,Order Type,Origin,Price,Listed Time,Attribute,Requirement,Inscribable,Core,Prefix,Suffix,Dedicated,Pre-Ascalon,Legacy,Gold value,Note'
+      'Date,Name,Quantity,Order Type,Origin,Price,Listed Time,Attribute,Requirement,Inscribable,Core,Prefix,Suffix,Dedicated,Pre-Ascalon,Gold value,Note'
     ];
     for (const p of purchases) {
       const priceStr = p.prices?.map(p => `${priceLabels[p.type] ?? p.type}: ${p.totalPrice}`).join(' | ') ?? '';
@@ -452,7 +453,6 @@ export class ShopComponent implements OnInit, OnDestroy {
         p.weaponDetails?.suffix ?? '',
         p.orderDetails?.dedicated ?? '',
         p.orderDetails?.pre ?? '',
-        p.orderDetails?.legacy ?? '',
         p.orderDetails?.goldPrice ?? '',
         p.orderDetails?.note ?? ''
       ].join(',');
@@ -735,27 +735,27 @@ export class ShopComponent implements OnInit, OnDestroy {
         }
       }
       if (this.orderFilter.inscription) {
-        if (!item.weaponDetails || item.weaponDetails.inscription.toString() !== this.orderFilter.inscription) {
+        if (!item.weaponDetails || item.weaponDetails?.inscription?.toString() !== this.orderFilter.inscription) {
           return false;
         }
       }
-      if (this.orderFilter.legacy) {
-        if (!item.orderDetails || item.orderDetails.legacy.toString() !== this.orderFilter.legacy) {
+      if (this.orderFilter.exotic !== null) {
+        if (!item.weaponDetails || !item.weaponDetails?.extraMods?.includes(this.orderFilter.exotic)) {
           return false;
         }
       }
       if (this.orderFilter.core) {
-        if (!item.weaponDetails || item.weaponDetails.core !== this.orderFilter.core) {
+        if (!item.weaponDetails || item.weaponDetails?.core !== this.orderFilter.core) {
           return false;
         }
       }
       if (this.orderFilter.prefix) {
-        if (!item.weaponDetails || item.weaponDetails.prefix !== this.orderFilter.prefix) {
+        if (!item.weaponDetails || item.weaponDetails?.prefix !== this.orderFilter.prefix) {
           return false;
         }
       }
       if (this.orderFilter.suffix) {
-        if (!item.weaponDetails || item.weaponDetails.suffix !== this.orderFilter.suffix) {
+        if (!item.weaponDetails || item.weaponDetails?.suffix !== this.orderFilter.suffix) {
           return false;
         }
       }

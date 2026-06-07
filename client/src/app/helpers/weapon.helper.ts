@@ -1,4 +1,5 @@
-import { BasicItem, ShopItem, Upgrade, WeaponDetails } from '@app/models/shop.model';
+import { BasicItem, Upgrade, WeaponDetails } from '@app/models/item.model';
+import { ShopItem } from '@app/models/shop.model';
 
 // Inscription category sets
 const MARTIAL_INSCRIPTIONS = ['All weapon types Inscriptions', 'Martial weapons Inscriptions', 'All equippable items Inscriptions'];
@@ -43,7 +44,6 @@ export class WeaponHelper {
     if (WeaponHelper.isWeapon(item) && shopItem?.weaponDetails) return true;
     if (WeaponHelper.isMiniature(item)) return true;
     if (shopItem?.orderDetails?.pre) return true;
-    if (shopItem?.orderDetails?.legacy) return true;
     return false;
   }
 

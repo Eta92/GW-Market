@@ -41,8 +41,8 @@ export class FilterOrderComponent implements OnInit {
       reqMin: [0, [Validators.min(0), Validators.max(13)]],
       reqMax: [13, [Validators.min(0), Validators.max(13)]],
       inscription: [null],
-      legacy: [null],
       core: [null],
+      exotic: [null],
       prefix: [null],
       suffix: [null]
     });

@@ -142,6 +142,7 @@
         <div class="form-group" style="flex: 2">
           <label>Core Modification</label>
           <app-upgrade-dropdown
+            [ngClass]="{ 'pointer-events-none opacity-0': isOldSchool }"
             [upgradeOptions]="weaponLists.core"
             [selectedUpgrade]="formWeapon.get('core')?.value"
             (upgradeChange)="formWeapon.patchValue({ core: $event })"
@@ -163,13 +164,32 @@
           <label>Inscription</label>
           <app-toggle-group
             [options]="[
-              { value: true, label: 'Inscribable', icon: 'fa-scroll' },
-              { value: false, label: 'Classic' }
+              { value: true, label: 'Inscribable', icon: 'fa-pen-fancy' },
+              { value: false, label: 'OldSchool', icon: 'fa-scroll' }
             ]"
             [value]="formWeapon.get('inscription')?.value"
             (valueChange)="formWeapon.patchValue({ inscription: $event })"
           ></app-toggle-group>
         </div>
+      </div>
+
+      <!-- Legacy Mods -->
+      <div class="legacy-mods-section" *ngIf="isOldSchool">
+        <div class="legacy-mod-row" *ngFor="let mod of extraModValues; let i = index">
+          <app-upgrade-dropdown
+            class="w-full"
+            [upgradeOptions]="generalUpgradeOptions"
+            [selectedUpgrade]="mod"
+            (upgradeChange)="updateExtraMod(i, $event)"
+          ></app-upgrade-dropdown>
+          <button type="button" class="remove-mod-btn" (click)="removeExtraMod(i)" title="Remove">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
+        <button type="button" class="add-mod-btn" (click)="addExtraMod()">
+          <i class="fa fa-plus"></i>
+          <span>Add Extra Mod</span>
+        </button>
       </div>
 
       <div class="form-row">
@@ -229,7 +249,11 @@
         <i class="fa" [class.fa-chevron-down]="!isAdvanced" [class.fa-chevron-up]="isAdvanced"></i>
       </div>
       <div class="advanced-content" *ngIf="isAdvanced">
-        <div class="form-row">
+        <div class="form-row mt-2">
+          <div class="form-group">
+            <label>Vendor gold value</label>
+            <input type="number" class="form-input" formControlName="goldPrice" min="0" placeholder="0" />
+          </div>
           <div class="form-group">
             <label>Pre-Searing Item</label>
             <app-toggle-group
@@ -240,47 +264,6 @@
               [value]="formOther.get('pre')?.value"
               (valueChange)="formOther.patchValue({ pre: $event })"
             ></app-toggle-group>
-          </div>
-          <div class="form-group">
-            <label>Pre-Nerf Item *</label>
-            <app-toggle-group
-              [options]="[
-                { value: false, label: 'Normal' },
-                { value: true, label: 'Legacy' }
-              ]"
-              [value]="formOther.get('legacy')?.value"
-              (valueChange)="formOther.patchValue({ legacy: $event })"
-            ></app-toggle-group>
-          </div>
-        </div>
-        <!-- Legacy Mods -->
-        <div class="legacy-mods-section" *ngIf="formOther.get('legacy')?.value">
-          <div class="legacy-mod-row" *ngFor="let mod of legacyModValues; let i = index">
-            <app-upgrade-dropdown
-              class="w-full"
-              [upgradeOptions]="legacyUpgradeOptions"
-              [selectedUpgrade]="mod"
-              (upgradeChange)="updateLegacyMod(i, $event)"
-            ></app-upgrade-dropdown>
-            <button type="button" class="remove-mod-btn" (click)="removeLegacyMod(i)" title="Remove">
-              <i class="fa fa-trash"></i>
-            </button>
-          </div>
-          <button type="button" class="add-mod-btn" (click)="addLegacyMod()">
-            <i class="fa fa-plus"></i>
-            <span>Add Legacy Mod</span>
-          </button>
-        </div>
-
-        <div class="form-row mt-2">
-          <div class="form-group">
-            <label>Vendor gold value</label>
-            <input type="number" class="form-input" formControlName="goldPrice" min="0" placeholder="0" />
-          </div>
-          <div class="form-group">
-            <div class="explicative mt-7">
-              * Very old items pre-ballancing including modifiers no longer available and lower requirements.
-            </div>
           </div>
         </div>
         <div class="form-group mt-2">

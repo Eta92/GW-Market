@@ -5,6 +5,12 @@
   flex-wrap: wrap;
   gap: 0.35rem;
   margin-top: 0.25rem;
+
+  &.center {
+    justify-content: center;
+    margin-top: -0.25rem;
+    margin-bottom: 0.25rem;
+  }
 }
 
 .detail-badge {

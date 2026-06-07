@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { UtilityHelper } from '@app/helpers/utility.helper';
+import { BasicItem } from '@app/models/item.model';
 import { ItemOrder } from '@app/models/order.model';
-import { BasicItem, Price, ShopItem } from '@app/models/shop.model';
+import { Price, ShopItem } from '@app/models/shop.model';
 
 @Pipe({ name: 'itemImage' })
 export class ItemImagePipe implements PipeTransform {

@@ -2,7 +2,8 @@ import { formatDate } from '@angular/common';
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { BasicItem, OrderType, Price, ShopItem, Upgrade } from '@app/models/shop.model';
+import { BasicItem, Upgrade } from '@app/models/item.model';
+import { OrderType, Price, ShopItem } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
 import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
@@ -28,6 +29,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   @Output() confirmOrder = new EventEmitter<ShopItem>();
 
   public init = false;
+  public loading = false;
   public form: UntypedFormGroup;
   public formWeapon: UntypedFormGroup;
   public formOther: UntypedFormGroup;
@@ -37,6 +39,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   public allItems: AvailableTree;
   public OrderType = OrderType;
   public Price = Price;
+  public isOldSchool = false;
   public isMiniature = false;
   public isAdvanced = false;
   public isAuction = false;
@@ -56,9 +59,10 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     { value: true, label: 'Hidden', icon: 'fa-eye-slash' }
   ];
 
-  public legacyUpgrades: Array<BasicItem> = [];
-  public legacyModValues: string[] = [];
-  public legacyUpgradeOptions: Array<Upgrade> = [];
+  public exoticUpgrades: Array<BasicItem> = [];
+  public extraModValues: string[] = [];
+  public exoticUpgradeOptions: Array<Upgrade> = [];
+  public generalUpgradeOptions: Array<Upgrade> = [];
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -71,13 +75,15 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this.forceInit();
-    this.itemService.getLegacyUpgrades().subscribe(upgrades => {
-      this.legacyUpgrades = upgrades;
-      this.legacyUpgradeOptions = upgrades.map(u => ({
+    this.itemService.getExoticUpgrades().subscribe(upgrades => {
+      this.exoticUpgrades = upgrades;
+      this.exoticUpgradeOptions = upgrades.map(u => ({
         value: u.name,
         description: [u.enhancement, u.condition].filter(Boolean).join(' / '),
         img: '../../../assets/items/upgrade/' + u.img.replace(/ /g, '_') + '.png'
       }));
+      this.generalUpgradeOptions = [...this.weaponLists.core, ...this.exoticUpgradeOptions];
+      this.cdr.markForCheck();
     });
   }
 
@@ -108,15 +114,14 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       inscription: [true],
       core: [null],
       prefix: [null],
-      suffix: [null]
+      suffix: [null],
+      extraMods: [[]]
     });
     this.formOther = this.fb.group({
       dedicated: [false],
-      legacy: [false],
       pre: [false],
       note: [''],
-      goldPrice: [null, Validators.min(0)],
-      legacyMods: [[]]
+      goldPrice: [null, Validators.min(0)]
     });
     if (this.original) {
       this.loadOrder(this.original);
@@ -133,9 +138,29 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.form.get('orderType')?.valueChanges.subscribe(value => {
       this.isAuction = value === OrderType.AUCTION;
       if (this.isAuction) {
-        while (this.getprices()?.value.length > 1) {
+        while (this.getprices().controls.length > 1) {
           this.getprices().removeAt(1);
         }
+      }
+    });
+    this.formWeapon.get('inscription')?.valueChanges.subscribe(value => {
+      this.isOldSchool = !value;
+      if (!this.loading) {
+        if (this.isOldSchool) {
+          this.extraModValues = [];
+          const previousMod = this.formWeapon.get('core')?.value;
+          if (previousMod) {
+            this.extraModValues = [previousMod];
+          }
+          this.formWeapon.patchValue({ extraMods: this.extraModValues, core: null });
+        } else {
+          const previousMods = this.formWeapon.get('extraMods')?.value || [];
+          const compatibleMods = this.weaponLists.core.map(mod => mod.value);
+          const coreMods = previousMods.filter(mod => compatibleMods.includes(mod));
+          const coreMod = coreMods.length > 0 ? coreMods[0] : null;
+          this.formWeapon.patchValue({ core: coreMod, extraMods: [] });
+        }
+        this.cdr.markForCheck();
       }
     });
     this.refreshBindPrices();
@@ -154,7 +179,8 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   loadOrder(order: ShopItem): void {
-    while (this.getprices()?.value.length < order.prices.length) {
+    this.loading = true;
+    while (this.getprices().controls.length < order.prices.length) {
       this.getprices().push(
         this.fb.group({
           type: [Price.PLAT],
@@ -168,15 +194,17 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.item = { ...order.item };
     this.form.patchValue(order);
     this.formOther.patchValue(order.orderDetails || {});
-    this.legacyModValues = [...(order.orderDetails?.legacyMods || [])];
-    this.formOther.patchValue({ legacyMods: this.legacyModValues });
     this.isWeapon = WeaponHelper.isWeapon(order.item);
     this.isMiniature = WeaponHelper.isMiniature(order.item);
     if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(order.item.category);
       this.weaponLists = WeaponHelper.getItemList(order.item, this.itemService.getUpgrades());
+      this.generalUpgradeOptions = [...this.weaponLists.core, ...this.exoticUpgradeOptions];
+      this.extraModValues = [...(order.weaponDetails?.extraMods || [])];
       this.formWeapon.patchValue(order.weaponDetails || {});
     }
+    this.loading = false;
+    this.cdr.markForCheck();
   }
 
   onSelectItem(item: BasicItem): void {
@@ -191,6 +219,8 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(item.category);
       this.weaponLists = WeaponHelper.getItemList(item, this.itemService.getUpgrades());
+      this.generalUpgradeOptions = [...this.weaponLists.core, ...this.exoticUpgradeOptions];
+      this.cdr.markForCheck();
     }
   }
 
@@ -202,19 +232,19 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     return this.form.get('prices') as UntypedFormArray;
   }
 
-  addLegacyMod(): void {
-    this.legacyModValues = [...this.legacyModValues, null];
-    this.formOther.patchValue({ legacyMods: this.legacyModValues });
+  addExtraMod(): void {
+    this.extraModValues = [...this.extraModValues, null];
+    this.formWeapon.patchValue({ extraMods: this.extraModValues });
   }
 
-  removeLegacyMod(index: number): void {
-    this.legacyModValues = this.legacyModValues.filter((_, i) => i !== index);
-    this.formOther.patchValue({ legacyMods: this.legacyModValues });
+  removeExtraMod(index: number): void {
+    this.extraModValues = this.extraModValues.filter((_, i) => i !== index);
+    this.formWeapon.patchValue({ extraMods: this.extraModValues });
   }
 
-  updateLegacyMod(index: number, value: string): void {
-    this.legacyModValues = this.legacyModValues.map((v, i) => (i === index ? value : v));
-    this.formOther.patchValue({ legacyMods: this.legacyModValues });
+  updateExtraMod(index: number, value: string): void {
+    this.extraModValues = this.extraModValues.map((v, i) => (i === index ? value : v));
+    this.formWeapon.patchValue({ extraMods: this.extraModValues });
   }
 
   addPrice(): void {
@@ -305,7 +335,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
 
   resetForms(): void {
     this.init = false;
-    while (this.getprices()?.value.length > 1) {
+    while (this.getprices().controls.length > 1) {
       this.getprices().removeAt(1);
     }
     this.form.reset({
@@ -323,17 +353,17 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       inscription: true,
       core: null,
       prefix: null,
-      suffix: null
+      suffix: null,
+      extraMods: []
     });
-    this.legacyModValues = [];
+    this.extraModValues = [];
     this.formOther.reset({
       dedicated: false,
-      legacy: false,
       pre: false,
-      note: '',
-      legacyMods: []
+      note: ''
     });
     this.isWeapon = false;
+    this.isOldSchool = false;
     this.isMiniature = false;
     this.isLocked = true;
   }

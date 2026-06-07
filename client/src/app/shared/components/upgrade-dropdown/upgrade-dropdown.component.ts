@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { Price, Upgrade } from '@app/models/shop.model';
+import { Upgrade } from '@app/models/item.model';
+import { Price } from '@app/models/shop.model';
 
 export interface CurrencyOption {
   value: Price;

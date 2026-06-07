@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
-import { BasicItem, ShopItem } from '@app/models/shop.model';
+import { BasicItem, DetailItem } from '@app/models/item.model';
+import { ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 
 @Component({
@@ -9,19 +10,29 @@ import { ItemService } from '@app/services/item.service';
   styleUrls: ['./item-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemDetailsComponent {
-  @Input() item: ShopItem;
+export class ItemDetailsComponent implements OnChanges {
+  @Input() item: DetailItem;
   @Input() details: BasicItem;
+  @Input() center = false;
 
   public isWeapon = WeaponHelper.isWeapon;
   public isMiniature = WeaponHelper.isMiniature;
 
   public WeaponHelper = WeaponHelper;
 
-  constructor(private itemService: ItemService) {}
+  constructor(
+    private itemService: ItemService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  legacyModDescription(name: string): string {
-    return this.itemService.getLegacyUpgradeDescription(name);
+  ngOnChanges(changes: SimpleChanges): void {
+    if ((changes.item && this.item) || (changes.details && this.details) || (changes.center && this.center)) {
+      this.cdr.detectChanges();
+    }
+  }
+
+  exoticModDescription(name: string): string {
+    return this.itemService.getExoticUpgradeDescription(name);
   }
 
   get shopItem(): ShopItem | null {
@@ -42,9 +53,6 @@ export class ItemDetailsComponent {
 
     // Has pre-searing flag
     if (this.shopItem?.orderDetails?.pre) return true;
-
-    // Has pre-nerf flag
-    if (this.shopItem?.orderDetails?.legacy) return true;
 
     return false;
   }

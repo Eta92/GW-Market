@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { BasicItem, ShopItem } from '@app/models/shop.model';
+import { BasicItem } from '@app/models/item.model';
+import { ShopItem } from '@app/models/shop.model';
 
 @Component({
   selector: 'app-new-order',

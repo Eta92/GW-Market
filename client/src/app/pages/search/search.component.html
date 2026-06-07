@@ -157,16 +157,6 @@
                 ></app-toggle-group>
               </div>
 
-              <!-- Pre-Nerf -->
-              <div class="sidebar-section">
-                <label class="section-label">Pre-Nerf</label>
-                <app-toggle-group
-                  [options]="preNerfOptions"
-                  [value]="form.get('legacy')?.value"
-                  (valueChange)="form.patchValue({ legacy: $event })"
-                ></app-toggle-group>
-              </div>
-
               <!-- Gold Price -->
               <div class="sidebar-section">
                 <label class="section-label">Gold Price</label>
@@ -285,21 +275,23 @@
                   </div>
                 </div>
 
+                <!-- Item Details -->
+                <app-item-details class="mb-1" [item]="order" [details]="order?.item" [center]="true"></app-item-details>
+
                 <!-- Weapon Details -->
-                <div class="card-weapon-details" *ngIf="order.weaponDetails">
+                <!-- <div class="card-weapon-details" *ngIf="order.weaponDetails">
                   <span class="weapon-attr">{{ order.weaponDetails.attribute }}</span>
                   <span class="weapon-req">Q{{ order.weaponDetails.requirement }}</span>
                   <span class="weapon-type" *ngIf="!order.weaponDetails.inscription">OS</span>
                   <span class="weapon-type" *ngIf="order.weaponDetails.inscription">Inscr</span>
-                </div>
+                </div> -->
 
                 <!-- Special Flags (Pre-Searing, Dedicated) -->
-                <div class="card-special-flags" *ngIf="order.preSearing || order.legacy || order.dedicated !== undefined">
+                <!-- <div class="card-special-flags" *ngIf="order.preSearing || order.dedicated !== undefined">
                   <span class="flag-pre" *ngIf="order.preSearing">Pre-Searing</span>
-                  <span class="flag-legacy" *ngIf="order.legacy">Pre-Nerf</span>
                   <span class="flag-ded" *ngIf="order.dedicated === true">Dedicated</span>
                   <span class="flag-unded" *ngIf="order.dedicated === false">Undedicated</span>
-                </div>
+                </div> -->
 
                 <!-- Prices -->
                 <div class="card-prices">

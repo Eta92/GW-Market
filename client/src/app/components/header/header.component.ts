@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { BasicItem } from '@app/models/item.model';
 import { Message, MessageType } from '@app/models/message.model';
-import { BasicItem, OrderType, Shop } from '@app/models/shop.model';
+import { OrderType, Shop } from '@app/models/shop.model';
 import { MessageService } from '@app/services/message.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';

@@ -68,16 +68,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     { value: false, label: 'Undedicated' }
   ];
 
-  public preNerfOptions: ToggleOption[] = [
-    { value: null, label: 'Any' },
-    { value: true, label: 'Legacy', icon: 'fa-lock' },
-    { value: false, label: 'Normal' }
-  ];
-
   public inscriptionOptions: ToggleOption[] = [
     { value: null, label: 'Any' },
     { value: true, label: 'Inscriptible', icon: 'fa-pen-fancy' },
-    { value: false, label: 'Classic (OS)', icon: 'fa-scroll' }
+    { value: false, label: 'OldSchool', icon: 'fa-scroll' }
   ];
 
   constructor(
@@ -101,6 +95,15 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.storeService.getSearchOrders().subscribe((result: SearchResult) => {
       if (result) {
         this.searchResult = result;
+        this.searchResult.orders.forEach(order => {
+          // generate a basic item to avoid waiting for item service to load
+          order.item = {
+            name: order.name,
+            family: order.family,
+            category: order.category,
+            img: ''
+          };
+        });
         this.loading = false;
         this.hasSearched = true;
         this.cdr.detectChanges();
@@ -141,7 +144,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       reqMin: [0],
       reqMax: [13],
       inscription: [null],
-      legacy: [null],
       core: [null],
       prefix: [null],
       suffix: [null],
@@ -177,12 +179,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     });
     if (localStorage.getItem('searchForm')) {
       this.form.patchValue(JSON.parse(localStorage.getItem('searchForm')));
-      if (
-        this.form.get('legacy').value ||
-        this.form.get('preSearing').value ||
-        this.form.get('goldMin').value ||
-        this.form.get('goldMax').value
-      ) {
+      if (this.form.get('preSearing').value || this.form.get('goldMin').value || this.form.get('goldMax').value) {
         this.isAdvanced = true;
       }
       this.onSearch();
@@ -197,7 +194,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   toggleAdvanced(): void {
     this.isAdvanced = !this.isAdvanced;
     if (!this.isAdvanced) {
-      this.form.get('legacy').setValue(null);
       this.form.get('preSearing').setValue(null);
       this.form.get('goldMin').setValue(null);
       this.form.get('goldMax').setValue(null);
@@ -231,7 +227,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (f.reqMin > 0) filter.reqMin = f.reqMin;
     if (f.reqMax < 13) filter.reqMax = f.reqMax;
     if (f.inscription !== null) filter.inscription = f.inscription;
-    if (f.legacy !== null) filter.legacy = f.legacy;
     if (f.core) filter.core = f.core;
     if (f.prefix) filter.prefix = f.prefix;
     if (f.suffix) filter.suffix = f.suffix;

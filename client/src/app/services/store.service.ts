@@ -6,9 +6,10 @@ import { UtilService } from './util.service';
 
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { Auction } from '@app/models/auction.model';
+import { BasicItem } from '@app/models/item.model';
 import { SearchFilter, SearchResult } from '@app/models/order.model';
 import { Overview } from '@app/models/overview.model';
-import { BasicItem, ShopItem, ShopLink } from '@app/models/shop.model';
+import { ShopItem, ShopLink } from '@app/models/shop.model';
 
 @Injectable()
 export class StoreService {

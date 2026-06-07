@@ -12,7 +12,8 @@ import {
 } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { UtilityHelper } from '@app/helpers/utility.helper';
-import { BasicItem, ShopLink } from '@app/models/shop.model';
+import { BasicItem } from '@app/models/item.model';
+import { ShopLink } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
 import { Subscription, debounceTime } from 'rxjs';
