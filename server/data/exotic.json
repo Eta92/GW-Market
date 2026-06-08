@@ -15,7 +15,7 @@
   },
   {
     "name": "Protection from REPLACE",
-    "enhancement": "Armor +10 vs. REPLACE",
+    "enhancement": "Armor +5...10 vs. REPLACE",
     "variations": ["Charrs", "Demons", "Dragons", "Dwarves", "Giants", "Ogres", "Plants", "Tengu", "Trolls", "Undead", "Skeletons"],
     "img": "Old weapons Inscriptions",
     "hidden": true
@@ -46,7 +46,7 @@
       "Communing",
       "Restoration Magic"
     ],
-    "condition": "chance 20%",
+    "condition": "chance 10...20%",
     "img": "Old weapons Inscriptions",
     "hidden": true
   },
@@ -76,7 +76,7 @@
       "Communing",
       "Restoration Magic"
     ],
-    "condition": "chance 20%",
+    "condition": "chance 10...20%",
     "img": "Old weapons Inscriptions",
     "hidden": true
   },
@@ -106,7 +106,7 @@
       "Communing",
       "Restoration Magic"
     ],
-    "condition": "chance 20%",
+    "condition": "chance 10...20%",
     "img": "Old weapons Inscriptions",
     "hidden": true
   },

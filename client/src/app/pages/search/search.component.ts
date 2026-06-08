@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
+import { WeaponHelper } from '@app/helpers/weapon.helper';
+import { Upgrade } from '@app/models/item.model';
 import { OrderSort, SearchFilter, SearchResult, SearchResultOrder, Time } from '@app/models/order.model';
 import { OrderType, Price } from '@app/models/shop.model';
 import { AvailableTree } from '@app/models/tree.model';
@@ -74,6 +76,16 @@ export class SearchComponent implements OnInit, OnDestroy {
     { value: false, label: 'OldSchool', icon: 'fa-scroll' }
   ];
 
+  public isWeapon = false;
+  public isOldSchool = false;
+    public weaponLists: { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } = {
+      core: [],
+      prefix: [],
+      suffix: []
+    };
+  public exoticUpgrades: Array<Upgrade> = [];
+
+
   constructor(
     private fb: UntypedFormBuilder,
     private router: Router,
@@ -89,6 +101,17 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     this.itemService.getAvailableTree().subscribe((tree: AvailableTree) => {
       this.allItems = tree;
+      if (this.isWeapon) {
+        this.refreshWeaponUpgrades();
+      }
+      this.cdr.detectChanges();
+    });
+    this.itemService.getExoticUpgrades().subscribe(upgrades => {
+      this.exoticUpgrades = upgrades.map(u => ({
+        value: u.name,
+        description: [u.enhancement, u.condition].filter(Boolean).join(' / '),
+        img: '../../../assets/items/upgrade/' + u.img.replace(/ /g, '_') + '.png'
+      }));
       this.cdr.detectChanges();
     });
 
@@ -145,6 +168,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       reqMax: [13],
       inscription: [null],
       core: [null],
+      exotic: [null],
       prefix: [null],
       suffix: [null],
       preSearing: [null],
@@ -170,12 +194,18 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.form.get('reqMax').setValue(13);
         this.form.get('inscription').setValue(null);
         this.form.get('core').setValue(null);
+        this.form.get('exotic').setValue(null);
         this.form.get('prefix').setValue(null);
         this.form.get('suffix').setValue(null);
       }
     });
     this.form.valueChanges.subscribe(value => {
       localStorage.setItem('searchForm', JSON.stringify(value));
+      this.isWeapon = value.family === 'weapon';
+      if (this.isWeapon) {
+        this.isOldSchool = value.inscription === false;
+        this.refreshWeaponUpgrades();
+      }
     });
     if (localStorage.getItem('searchForm')) {
       this.form.patchValue(JSON.parse(localStorage.getItem('searchForm')));
@@ -189,6 +219,11 @@ export class SearchComponent implements OnInit, OnDestroy {
   onUpdateSort(sort: OrderSort): void {
     this.form.patchValue(sort);
     localStorage.setItem('searchForm', JSON.stringify(this.form.value));
+  }
+
+  refreshWeaponUpgrades(): void {
+    this.weaponLists = WeaponHelper.getItemList(this.form.get('category').value, this.itemService.getUpgrades());
+    this.cdr.detectChanges();
   }
 
   toggleAdvanced(): void {
@@ -228,6 +263,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (f.reqMax < 13) filter.reqMax = f.reqMax;
     if (f.inscription !== null) filter.inscription = f.inscription;
     if (f.core) filter.core = f.core;
+    if (f.exotic) filter.exotic = f.exotic;
     if (f.prefix) filter.prefix = f.prefix;
     if (f.suffix) filter.suffix = f.suffix;
     if (f.preSearing !== null) filter.preSearing = f.preSearing;

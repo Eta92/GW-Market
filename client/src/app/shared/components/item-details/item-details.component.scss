@@ -32,21 +32,21 @@
   }
 
   .attr {
-    color: rgba($parchment, 0.7);
+    color: rgba($parchment, 0.8);
     font-weight: 400;
   }
 
   // Requirement badge
   &.req {
-    background: rgba($gold, 0.12);
-    border-color: rgba($gold, 0.2);
+    background: rgba($gold, 0.2);
+    border-color: rgba($gold, 0.4);
   }
 
   // Old School badge
   &.os {
-    background: rgba(#b8860b, 0.15);
-    color: #d4a853;
-    border-color: rgba(#b8860b, 0.25);
+    background: rgba(#b8860b, 0.2);
+    color: rgba($parchment, 0.8);
+    border-color: rgba(#b8860b, 0.4);
 
     i {
       color: #c9a227;
@@ -55,9 +55,9 @@
 
   // Inscribable badge
   &.insc {
-    background: rgba(#9370db, 0.12);
-    color: #b19cd9;
-    border-color: rgba(#9370db, 0.2);
+    background: rgba(#9370db, 0.2);
+    color: rgba($parchment, 0.8);
+    border-color: rgba(#9370db, 0.4);
 
     i {
       color: #a587d4;
@@ -66,34 +66,25 @@
 
   // Core skin badge
   &.core {
-    background: rgba($parchment, 0.08);
-    color: rgba($parchment, 0.75);
-    border-color: rgba($parchment, 0.15);
-    font-style: italic;
+    background: rgba(#9370db, 0.2);
+    color: rgba($parchment, 0.8);
+    border-color: rgba(#9370db, 0.4);
     cursor: help;
   }
 
   // Mod badges (prefix/suffix)
   &.mod {
-    background: rgba(#4a90a4, 0.12);
-    color: #7eb8c9;
-    border-color: rgba(#4a90a4, 0.2);
+    background: rgba(#4a90a4, 0.2);
+    color: rgba($parchment, 0.8);
+    border-color: rgba(#4a90a4, 0.4);
     cursor: help;
-
-    &.prefix {
-      border-left: 2px solid rgba(#4a90a4, 0.5);
-    }
-
-    &.suffix {
-      border-right: 2px solid rgba(#4a90a4, 0.5);
-    }
   }
 
   // Gold Price badge
   &.gold {
-    background: rgba($gold, 0.15);
-    color: rgba($gold, 0.9);
-    border-color: rgba($gold, 0.25);
+    background: rgba($gold, 0.2);
+    color: rgba($parchment, 0.8);
+    border-color: rgba($gold, 0.4);
 
     i {
       color: rgba($gold, 0.8);
@@ -103,9 +94,9 @@
   // Miniature badges
   &.mini {
     &.dedicated {
-      background: rgba($sell-color, 0.12);
-      color: $sell-color;
-      border-color: rgba($sell-color, 0.25);
+      background: rgba($sell-color, 0.2);
+      color: rgba($parchment, 0.8);
+      border-color: rgba($sell-color, 0.4);
 
       i {
         color: $sell-color;
@@ -113,9 +104,9 @@
     }
 
     &.undedicated {
-      background: rgba($parchment, 0.08);
-      color: rgba($parchment, 0.65);
-      border-color: rgba($parchment, 0.15);
+      background: rgba($parchment, 0.2);
+      color: rgba($parchment, 0.8);
+      border-color: rgba($parchment, 0.4);
 
       i {
         color: rgba($parchment, 0.5);
@@ -125,9 +116,9 @@
 
   // Pre-Searing badge
   &.presearing {
-    background: rgba(#ffd700, 0.12);
-    color: #ffd700;
-    border-color: rgba(#ffd700, 0.25);
+    background: rgba(#ffd700, 0.2);
+    color: rgba($parchment, 0.8);
+    border-color: rgba(#ffd700, 0.4);
 
     i {
       color: #ffcc00;
@@ -135,10 +126,10 @@
   }
 
   // Legacy mod badge
-  &.legacy-mod {
-    background: rgba(#e67e22, 0.12);
-    color: #e8924a;
-    border-color: rgba(#e67e22, 0.28);
+  &.exotic {
+    background: rgba(#e67e22, 0.2);
+    color: rgba($parchment, 0.8);
+    border-color: rgba(#e67e22, 0.4);
     cursor: help;
 
     i {

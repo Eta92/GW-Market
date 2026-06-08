@@ -120,6 +120,46 @@
                 (valueChange)="form.patchValue({ inscription: $event })"
               ></app-toggle-group>
             </div>
+
+            <!-- Core -->
+            <div class="sidebar-section" *ngIf="isWeapon">
+              <label class="section-label">Core</label>
+              <app-upgrade-dropdown
+                [selectedUpgrade]="form.get('core')?.value"
+                [upgradeOptions]="weaponLists.core"
+                (upgradeChange)="form.patchValue({ core: $event })"
+              ></app-upgrade-dropdown>
+            </div>
+
+            <!-- Exotic -->
+            <div class="sidebar-section" *ngIf="isWeapon && isOldSchool">
+              <label class="section-label">Exotic</label>
+              <app-upgrade-dropdown
+                [selectedUpgrade]="form.get('exotic')?.value"
+                [upgradeOptions]="exoticUpgrades"
+                (upgradeChange)="form.patchValue({ exotic: $event })"
+              ></app-upgrade-dropdown>
+            </div>
+
+            <!-- Prefix -->
+            <div class="sidebar-section" *ngIf="isWeapon">
+              <label class="section-label">Prefix</label>
+              <app-upgrade-dropdown
+                [selectedUpgrade]="form.get('prefix')?.value"
+                [upgradeOptions]="weaponLists.prefix"
+                (upgradeChange)="form.patchValue({ prefix: $event })"
+              ></app-upgrade-dropdown>
+            </div>
+
+            <!-- Suffix -->
+            <div class="sidebar-section" *ngIf="isWeapon">
+              <label class="section-label">Suffix</label>
+              <app-upgrade-dropdown
+                [selectedUpgrade]="form.get('suffix')?.value"
+                [upgradeOptions]="weaponLists.suffix"
+                (upgradeChange)="form.patchValue({ suffix: $event })"
+              ></app-upgrade-dropdown>
+            </div>
           </ng-container>
 
           <!-- Miniature Filters (conditional) -->

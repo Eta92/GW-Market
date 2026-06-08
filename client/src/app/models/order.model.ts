@@ -106,6 +106,7 @@ export interface SearchFilter {
   reqMax?: number;
   inscription?: boolean;
   core?: string;
+  exotic?: string;
   prefix?: string;
   suffix?: string;
 

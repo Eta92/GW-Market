@@ -26,6 +26,16 @@ const WEAPON_UPGRADE_CONFIG: Record<string, { core: string[]; prefix: string | n
   'Rare Shields': { core: SHIELD_INSCRIPTIONS, prefix: null, suffix: 'Shield Handle' }
 };
 
+const ALL_UPGRADES = Object.values(WEAPON_UPGRADE_CONFIG).reduce(
+  (acc, config) => {
+    acc.core = [...acc.core, ...config.core].filter((insc, index, self) => self.indexOf(insc) === index); // Unique core inscriptions
+    if (config.prefix) acc.prefix.push(config.prefix);
+    acc.suffix.push(config.suffix);
+    return acc;
+  },
+  { core: [], prefix: [], suffix: [] } as { core: string[]; prefix: string[]; suffix: string[] }
+);
+
 export class WeaponHelper {
   static upgradeDescriptions: { [key: string]: string } = {};
 
@@ -72,16 +82,11 @@ export class WeaponHelper {
    * Get available upgrade items for a weapon category.
    */
   static getItemList(
-    item: BasicItem,
+    category: string,
     upgradeFamily: { [key: string]: Array<BasicItem> }
   ): { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } {
     //const upgrades = completeTree.families.find(fam => fam.name === 'upgrade')?.categories;
     if (!upgradeFamily) {
-      return { core: [], prefix: [], suffix: [] };
-    }
-
-    const config = WEAPON_UPGRADE_CONFIG[item.category];
-    if (!config) {
       return { core: [], prefix: [], suffix: [] };
     }
 
@@ -92,10 +97,19 @@ export class WeaponHelper {
         img: i.img
       })) || [];
 
-    return {
-      core: config.core.flatMap(getItemNames),
-      prefix: config.prefix ? getItemNames(config.prefix) : [],
-      suffix: getItemNames(config.suffix)
-    };
+    const config = WEAPON_UPGRADE_CONFIG[category];
+    if (!config) {
+      return {
+        core: ALL_UPGRADES.core.flatMap(getItemNames),
+        prefix: ALL_UPGRADES.prefix.flatMap(getItemNames),
+        suffix: ALL_UPGRADES.suffix.flatMap(getItemNames)
+      };
+    } else {
+      return {
+        core: config.core.flatMap(getItemNames),
+        prefix: config.prefix ? getItemNames(config.prefix) : [],
+        suffix: getItemNames(config.suffix)
+      };
+    }
   }
 }

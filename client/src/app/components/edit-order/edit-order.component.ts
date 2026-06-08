@@ -198,9 +198,17 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.isMiniature = WeaponHelper.isMiniature(order.item);
     if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(order.item.category);
-      this.weaponLists = WeaponHelper.getItemList(order.item, this.itemService.getUpgrades());
+      this.isOldSchool = order.weaponDetails ? !order.weaponDetails.inscription : false;
+      this.weaponLists = WeaponHelper.getItemList(order.item?.category, this.itemService.getUpgrades());
       this.generalUpgradeOptions = [...this.weaponLists.core, ...this.exoticUpgradeOptions];
       this.extraModValues = [...(order.weaponDetails?.extraMods || [])];
+      // only patch previous old school item wit core instead of extra mod
+      if (this.isOldSchool && order.weaponDetails?.core) {
+        this.addExtraMod();
+        order.weaponDetails.extraMods = [order.weaponDetails.core];
+        this.extraModValues = this.extraModValues.map((v, i) => (i === 0 ? order.weaponDetails.core : v));
+        order.weaponDetails.core = null;
+      }
       this.formWeapon.patchValue(order.weaponDetails || {});
     }
     this.loading = false;
@@ -218,7 +226,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     // Set weapon flag if applicable
     if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(item.category);
-      this.weaponLists = WeaponHelper.getItemList(item, this.itemService.getUpgrades());
+      this.weaponLists = WeaponHelper.getItemList(item?.category, this.itemService.getUpgrades());
       this.generalUpgradeOptions = [...this.weaponLists.core, ...this.exoticUpgradeOptions];
       this.cdr.markForCheck();
     }
