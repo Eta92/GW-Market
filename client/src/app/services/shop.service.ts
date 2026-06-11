@@ -269,6 +269,9 @@ export class ShopService {
       delete item.removed;
       delete item.single;
     });
+    if (!activeShop.recruiter && localStorage.getItem('recruiter')) {
+      activeShop.recruiter = { shopId: localStorage.getItem('recruiter') };
+    }
     this.socket.emit('refreshShop', activeShop);
   }
 

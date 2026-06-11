@@ -23,6 +23,15 @@ export interface Shop {
   reputation?: ShopReputation;
   notations?: { [key: string]: 'positive' | 'negative' };
   auctions?: Array<string>;
+  recruiter?: Recruit;
+  recruits?: Array<Recruit>;
+}
+
+export interface Recruit {
+  name?: string;
+  shopId: string;
+  points?: number;
+  lastRefresh?: number;
 }
 
 export interface ShopLink {

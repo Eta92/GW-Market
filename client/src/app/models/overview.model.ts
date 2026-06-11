@@ -7,6 +7,7 @@ export interface Overview {
   totalItemWeek: number;
   leaderboardItem: Array<LeaderboardShop>;
   leaderboardReputation: Array<LeaderboardShop>;
+  leaderboardRecruit: Array<LeaderboardShop>;
   // leaderboardAffiliation: Array<LeaderboardShop>;
   customerHistory: Array<OverviewData>;
   shopHistory: Array<OverviewData>;

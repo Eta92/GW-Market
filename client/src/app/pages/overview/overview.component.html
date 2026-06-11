@@ -103,6 +103,30 @@
             </tbody>
           </table>
         </div>
+        <div class="panel panel--dark ladder-block">
+          <div class="ladder-title">Recruitment Ladder</div>
+          <table class="ladder-table">
+            <thead>
+              <tr>
+                <th class="ladder-th">#</th>
+                <th class="ladder-th ladder-th--name">Shop</th>
+                <th class="ladder-th">Recruit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let entry of overview?.leaderboardRecruit; let i = index" (click)="goToShop(entry)" class="ladder-row">
+                <td class="ladder-rank">{{ i + 1 }}</td>
+                <td class="ladder-name">{{ entry.shopName }}</td>
+                <td class="ladder-value">{{ entry.value }}</td>
+              </tr>
+              <tr *ngFor="let _ of [].constructor(10 - (overview?.leaderboardRecruit?.length ?? 0))" class="ladder-row ladder-row--empty">
+                <td class="ladder-rank">–</td>
+                <td class="ladder-name">–</td>
+                <td class="ladder-value">–</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <!-- ===================== BOTTOM ROW ===================== -->

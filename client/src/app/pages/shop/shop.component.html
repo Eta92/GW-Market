@@ -166,9 +166,9 @@
             <i class="fa fa-rotate"></i>
             <span>Dump From Daybreak</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="copyLink()">
+          <button class="sidebar-action-btn col-span-2" (click)="onPublicOpen()">
             <i class="fa fa-link"></i>
-            <span>Copy Public Link</span>
+            <span>Get Promote Link</span>
           </button>
         </div>
       </div>
@@ -623,5 +623,75 @@
       <i class="fa fa-copy"></i>
       Copy Trade Message
     </button>
+  </div>
+</app-modal>
+
+<!-- Public Promotion Modal -->
+<app-modal [isOpen]="publicOpen" (closed)="publicOpen = false" contentClass="whisper-popup-content">
+  <div class="popup-content data-modal-content" *ngIf="shop">
+    <div class="popup-header">
+      <div class="popup-title">
+        <h3>Shop Promotion</h3>
+        <p>Share your shop and get recruitment points</p>
+      </div>
+      <button class="popup-close" (click)="publicOpen = false">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="popup-body">
+      <h3 class="popup-section-name">Public Shop Link</h3>
+      <div class="popup-section">
+        <button class="confirm-btn" title="Copy to clipboard" (click)="copyLink()">
+          <i class="fa fa-copy"></i>
+          Copy Public Shop Link
+        </button>
+        <p class="input-hint">
+          <i class="fa fa-info-circle"></i>
+          Using this link people will have a direct access to all the item you are offering
+        </p>
+      </div>
+
+      <h3 class="popup-section-name">Recruits</h3>
+      <div class="popup-section">
+        <p class="input-hint">
+          <i class="fa fa-info-circle"></i>
+          People using your link will automatically make you their recruiter when creating their shop.
+        </p>
+        <p class="input-hint">
+          <i class="fa fa-info-circle"></i>
+          Each <b>active</b> recruit will grant points according to the number of items they offer.
+        </p>
+        <p class="popup-section-name">List of your recruits :</p>
+        <div class="char-grid" *ngIf="shop.recruits?.length > 0">
+          <div class="char-card" *ngFor="let recruit of shop.recruits">
+            <div class="char-avatar">
+              <i class="fa fa-user"></i>
+            </div>
+            <span class="char-name">{{ recruit.name }}</span>
+            <span class="char-points">{{ recruit.points }}</span>
+          </div>
+        </div>
+        <p class="input-hint" *ngIf="!shop.recruits || shop.recruits?.length === 0">
+          <i class="fa fa-info-circle"></i>
+          You don't have any recruit yet. Share your link to get recruits and climb the leaderboard!
+        </p>
+      </div>
+
+      <h3 class="popup-section-name" *ngIf="shop.recruiter">Recruiter</h3>
+
+      <div class="popup-section" *ngIf="shop.recruiter">
+        <!--p class="input-hint">
+          <i class="fa fa-info-circle"></i>
+          Your recruiter has been automatically assigned. If it doesn't match reality, you can change it below.
+        </p-->
+        <div class="char-card">
+          <div class="char-avatar">
+            <i class="fa fa-user"></i>
+          </div>
+          <span class="char-name">{{ shop.recruiter }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </app-modal>

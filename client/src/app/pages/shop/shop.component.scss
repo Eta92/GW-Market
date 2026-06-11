@@ -2152,6 +2152,46 @@
   }
 }
 
+.popup-body {
+  padding: 1rem;
+
+  .input-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+    color: rgba($parchment, 0.5);
+    font-style: italic;
+
+    i {
+      font-size: 0.7rem;
+      color: rgba($gold, 0.5);
+    }
+
+    &.small-hint {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.popup-section-name {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba($parchment, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0.5rem 0;
+}
+
+.popup-section {
+  padding: 1rem;
+  background: rgba($obsidian-light, 0.2);
+  border: 1px solid rgba($gold, 0.15);
+  border-radius: 12px;
+}
+
 .popup-close {
   width: 32px;
   height: 32px;
@@ -2223,6 +2263,23 @@
   }
 }
 
+.char-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.char-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: rgba($obsidian-light, 0.5);
+  border: 1px solid rgba($gold, 0.2);
+  border-radius: 10px;
+  text-align: left;
+}
 // ============================================
 // DATA MODAL TILES
 // ============================================

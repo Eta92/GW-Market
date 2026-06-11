@@ -78,13 +78,12 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public isWeapon = false;
   public isOldSchool = false;
-    public weaponLists: { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } = {
-      core: [],
-      prefix: [],
-      suffix: []
-    };
+  public weaponLists: { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } = {
+    core: [],
+    prefix: [],
+    suffix: []
+  };
   public exoticUpgrades: Array<Upgrade> = [];
-
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -197,6 +196,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.form.get('exotic').setValue(null);
         this.form.get('prefix').setValue(null);
         this.form.get('suffix').setValue(null);
+        this.onSearch();
       }
     });
     this.form.valueChanges.subscribe(value => {
@@ -394,6 +394,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (f.priceEachMin || f.priceEachMax) count++;
     if (f.onlineOnly) count++;
     if (f.certifiedOnly) count++;
+    if (f.core) count++;
+    if (f.exotic) count++;
+    if (f.prefix) count++;
+    if (f.suffix) count++;
 
     return count;
   }

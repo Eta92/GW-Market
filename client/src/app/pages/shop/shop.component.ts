@@ -81,6 +81,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   public orderOpen = false;
   public daybreakOpen = false;
   public dataOpen = false;
+  public publicOpen = false;
 
   // View options
   public compactView = false;
@@ -160,6 +161,9 @@ export class ShopComponent implements OnInit, OnDestroy {
                 this.cdr.detectChanges();
               }
             });
+          if (params['recruit'] === 'true') {
+            localStorage.setItem('recruiter', publicId);
+          }
         });
       } else {
         // load personal shop
@@ -411,6 +415,10 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.scheduleDetect();
   }
 
+  onPublicOpen(): void {
+    this.publicOpen = true;
+  }
+
   exportShop(): void {
     this.shopService.exportShop();
   }
@@ -652,7 +660,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   copyLink(): void {
     if (this.shop?.publicId) {
-      navigator.clipboard.writeText(`https://gwmarket.net/shop/showcase?public=${this.shop.publicId}`);
+      navigator.clipboard.writeText(`https://gwmarket.net/shop/showcase?public=${this.shop.publicId}&recruit=true`);
       this.toastrService.success('Public link has been copied to your clipboard, ready to paste it!');
     } else {
       this.toastrService.error('Public link is not ready, refresh your shop first.');
@@ -848,7 +856,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   shopVote(): null | 'positive' | 'negative' {
     if (!this.myShop || !this.myShop.notations) return null;
-    return this.myShop.notations[this.shop.publicId] || null;
+    return this.myShop.notations[this.shop?.publicId] || null;
   }
 
   trackByOrder(_index: number, order: ShopItem): number | string {

@@ -280,7 +280,7 @@ export class MessageCardComponent {
   }
 
   isItem(): boolean {
-    return ![MessageType.REPUTATION_UP, MessageType.REPUTATION_DOWN].includes(this.message.type);
+    return ![MessageType.REPUTATION_UP, MessageType.REPUTATION_DOWN, MessageType.REPUTATION_REVERT].includes(this.message.type);
   }
 
   getImageSource(itemName: string): string {
