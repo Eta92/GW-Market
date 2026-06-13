@@ -8,7 +8,7 @@ import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { BasicItem, DaybreakItem } from '@app/models/item.model';
 import { OrderFilter, OrderSort } from '@app/models/order.model';
 import { Purchase, PurchaseOrigin, PurchasePrice } from '@app/models/purchase.model';
-import { OrderType, Shop, ShopItem } from '@app/models/shop.model';
+import { OrderType, Recruit, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
@@ -865,5 +865,9 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   trackByAuction(_index: number, auction: Auction): string | number {
     return auction.uuid ?? _index;
+  }
+
+  oldRecruit(recruit: Recruit): boolean {
+    return Date.now() - recruit.lastRefresh > 1000 * 60 * 60 * 24 * 7;
   }
 }

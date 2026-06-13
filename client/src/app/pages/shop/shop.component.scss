@@ -2275,10 +2275,40 @@
   gap: 0.75rem;
   width: 100%;
   padding: 0.875rem 1rem;
-  background: rgba($obsidian-light, 0.5);
+  background: rgba($obsidian-light, 0.6);
   border: 1px solid rgba($gold, 0.2);
   border-radius: 10px;
   text-align: left;
+
+  .char-avatar {
+    font-size: 0.9rem;
+    color: rgba($gold, 0.6);
+    pointer-events: none;
+    transition: color 0.2s ease;
+  }
+
+  .char-name {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: $parchment;
+    font-family: inherit;
+  }
+
+  .char-last {
+    flex: 1;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba($parchment, 0.75);
+    font-family: inherit;
+  }
+
+  .char-points {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $parchment;
+    font-family: inherit;
+  }
 }
 // ============================================
 // DATA MODAL TILES

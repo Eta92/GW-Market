@@ -664,11 +664,12 @@
         </p>
         <p class="popup-section-name">List of your recruits :</p>
         <div class="char-grid" *ngIf="shop.recruits?.length > 0">
-          <div class="char-card" *ngFor="let recruit of shop.recruits">
+          <div class="char-card" *ngFor="let recruit of shop.recruits" [ngClass]="{ 'opacity-60': oldRecruit(recruit) }">
             <div class="char-avatar">
               <i class="fa fa-user"></i>
             </div>
             <span class="char-name">{{ recruit.name }}</span>
+            <span class="char-last">{{ recruit.lastRefresh | formatLastUpdate }}</span>
             <span class="char-points">{{ recruit.points }}</span>
           </div>
         </div>
@@ -679,17 +680,18 @@
       </div>
 
       <h3 class="popup-section-name" *ngIf="shop.recruiter">Recruiter</h3>
-
       <div class="popup-section" *ngIf="shop.recruiter">
         <!--p class="input-hint">
           <i class="fa fa-info-circle"></i>
           Your recruiter has been automatically assigned. If it doesn't match reality, you can change it below.
         </p-->
-        <div class="char-card">
+        <div class="char-card" [ngClass]="{ 'opacity-60': oldRecruit(shop.recruiter) }">
           <div class="char-avatar">
             <i class="fa fa-user"></i>
           </div>
-          <span class="char-name">{{ shop.recruiter }}</span>
+          <span class="char-name">{{ shop.recruiter.name }}</span>
+          <span class="char-last">{{ shop.recruiter.lastRefresh | formatLastUpdate }}</span>
+          <span class="char-points opacity-0">{{ shop.recruiter.points }}</span>
         </div>
       </div>
     </div>

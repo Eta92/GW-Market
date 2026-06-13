@@ -33,6 +33,8 @@ export class ShopService {
   private purchasesSubject = new CurrentSubject<Array<Purchase>>();
   private activePlayer = new CurrentSubject<string>();
 
+  private TIME_WEEK = 1000 * 60 * 60 * 24 * 7;
+
   constructor(
     private http: HttpClient,
     private utilService: UtilService,
@@ -65,7 +67,38 @@ export class ShopService {
         items: shop.items,
         auctions: shop.auctions,
         reputation: shop.reputation,
-        notations: shop.notations
+        notations: shop.notations,
+        recruiter: shop.recruiter,
+        // {
+        //   name: 'test recruiter',
+        //   shopId: 'fkljhfer',
+        //   points: 3,
+        //   lastRefresh: Date.now()
+        // },
+        recruits: shop.recruits
+          // [{
+          //     name: 'test recruit',
+          //     shopId: 'fkljhfer',
+          //     points: 8,
+          //     lastRefresh: Date.now()
+          //   },
+          //   {
+          //     name: 'test recruit 2',
+          //     shopId: 'fkljhfer',
+          //     points: 2,
+          //     lastRefresh: Date.now()
+          //   },
+          //   {
+          //     name: 'test recruit 3',
+          //     shopId: 'fkljhfer',
+          //     points: 4,
+          //     lastRefresh: Date.now() - this.TIME_WEEK * 2
+          //   }]
+          .sort(
+            (a, b) =>
+              (Date.now() - b.lastRefresh < this.TIME_WEEK ? 1 : 0) - (Date.now() - a.lastRefresh < this.TIME_WEEK ? 1 : 0) ||
+              b.points - a.points
+          )
       };
       activeShop.items.forEach(item => {
         item.item = this.itemService.getItemBase(item.name);
