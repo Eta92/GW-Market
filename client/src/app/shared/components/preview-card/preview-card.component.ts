@@ -13,9 +13,11 @@ export class PreviewCardComponent {
   @Input() statsMode: 'basic' | 'combined' = 'basic';
   @Input() isSingleImage = false;
   @Input() smallLabel = false;
+  @Input() favorites: string[];
 
   @Output() cardClick = new EventEmitter<void>();
   @Output() cardOpen = new EventEmitter<void>();
+  @Output() toggleFavorite = new EventEmitter<void>();
 
   get displayPreviews(): string[] {
     return this.previews?.slice(0, 4).map(preview => preview.replace(/ /g, '_')) || [];
@@ -27,5 +29,14 @@ export class PreviewCardComponent {
 
   onMiddle(): void {
     this.cardOpen.emit();
+  }
+
+  onFavoriteToggle(evt: MouseEvent): void {
+    this.toggleFavorite.emit();
+    evt.stopPropagation();
+  }
+
+  isFavorite(): boolean {
+    return this.favorites?.includes(this.label);
   }
 }

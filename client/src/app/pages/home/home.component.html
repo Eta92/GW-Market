@@ -21,6 +21,7 @@
               <span *ngIf="availableList === 'family'">Item Categories</span>
               <span *ngIf="availableList === 'category'">{{ availableFamily?.name }}</span>
               <span *ngIf="availableList === 'item'">{{ availableCategory?.name }}</span>
+              <span *ngIf="availableList === 'favorite'">Favorites</span>
             </h2>
 
             <!-- Breadcrumb -->
@@ -36,6 +37,9 @@
               <ng-container *ngIf="availableList === 'item'">
                 <i class="fa fa-angle-right sep"></i>
                 <span class="crumb current">{{ availableCategory?.name }}</span>
+              </ng-container>
+              <ng-container *ngIf="availableList === 'favorite'">
+                <span class="crumb current">Favorites</span>
               </ng-container>
             </nav>
           </div>
@@ -82,6 +86,15 @@
                 (cardClick)="goToFamily(family)"
                 (cardOpen)="openToFamily(family)"
               ></app-preview-card>
+              <app-preview-card
+                *ngIf="availableFavorite && favorites.length > 0"
+                [previews]="getPreviewSources(availableFavorite.previews)"
+                [label]="availableFavorite.name"
+                [stats]="getStats(availableFavorite)"
+                [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
+                (cardClick)="goToFavorite()"
+                (cardOpen)="openToFavorite()"
+              ></app-preview-card>
               <span *ngIf="active(availableTree.families).length === 0" class="empty-state box">
                 <i class="fa fa-inbox"></i>
                 <p>No family available</p>
@@ -117,8 +130,10 @@
                 [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
                 [isSingleImage]="true"
                 [smallLabel]="true"
+                [favorites]="favorites"
                 (cardClick)="goToItem(item)"
                 (cardOpen)="openToItem(item)"
+                (toggleFavorite)="toggleFavorite(item.name)"
               ></app-preview-card>
               <span *ngIf="active(availableCategory.items).length === 0" class="empty-state box">
                 <i class="fa fa-inbox"></i>
@@ -137,10 +152,34 @@
                   [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
                   [isSingleImage]="true"
                   [smallLabel]="true"
+                  [favorites]="favorites"
                   (cardClick)="goToItem(item)"
                   (cardOpen)="openToItem(item)"
+                  (toggleFavorite)="toggleFavorite(item.name)"
                 ></app-preview-card>
               </div>
+            </div>
+
+            <!-- Favorite List -->
+            <div *ngIf="availableList === 'favorite'" class="cards-grid items">
+              <app-preview-card
+                *ngFor="let item of active(availableFavorite.items)"
+                [previews]="[getPreviewSource(item.name)]"
+                [label]="item.name"
+                [stats]="getStats(item)"
+                [statsMode]="timeMode === 'combined' ? 'combined' : 'basic'"
+                [isSingleImage]="true"
+                [smallLabel]="true"
+                [favorites]="favorites"
+                (cardClick)="goToItem(item)"
+                (cardOpen)="openToItem(item)"
+                (toggleFavorite)="toggleFavorite(item.name)"
+              ></app-preview-card>
+              <span *ngIf="active(availableFavorite.items).length === 0" class="empty-state box">
+                <i class="fa fa-inbox"></i>
+                <p>No item available</p>
+                <p>Maybe your filters are too restrictive</p>
+              </span>
             </div>
           </ng-container>
 
@@ -196,6 +235,9 @@
               >
                 <img class="explorer-icon" [src]="getPreviewSource(item.name)" [alt]="item.name" />
                 <span class="explorer-name">{{ item.name }}</span>
+                <div class="card-favorite" (click)="toggleFavorite(item.name, $event)">
+                  <i class="fa-star" [class.fas]="isFavorite(item.name)" [class.far]="!isFavorite(item.name)"></i>
+                </div>
                 <app-stats-display
                   [mode]="timeMode === 'combined' ? 'combined' : 'basic'"
                   [stats]="getStats(item)"
@@ -222,6 +264,28 @@
                   ></app-stats-display>
                   <i class="fa fa-chevron-right nav-arrow"></i>
                 </div>
+              </div>
+            </div>
+
+            <!-- Favorite List -->
+            <div *ngIf="availableList === 'favorite'" class="explorer-list">
+              <div
+                *ngFor="let item of active(availableFavorite.items)"
+                class="explorer-item frame"
+                (click)="goToItem(item)"
+                (appMiddle)="openToItem(item)"
+              >
+                <img class="explorer-icon" [src]="getPreviewSource(item.name)" [alt]="item.name" />
+                <span class="explorer-name">{{ item.name }}</span>
+                <div class="card-favorite" (click)="toggleFavorite(item.name, $event)">
+                  <i class="fa-star" [class.fas]="isFavorite(item.name)" [class.far]="!isFavorite(item.name)"></i>
+                </div>
+                <app-stats-display
+                  [mode]="timeMode === 'combined' ? 'combined' : 'basic'"
+                  [stats]="getStats(item)"
+                  containerClass="explorer-stats"
+                ></app-stats-display>
+                <i class="fa fa-chevron-right nav-arrow"></i>
               </div>
             </div>
           </ng-container>

@@ -115,6 +115,15 @@ $parchment: #e8dcc4;
   }
 }
 
+.card-favorite {
+  position: absolute;
+  color: rgba($gold, 0.6);
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+}
+
 // Responsive
 @media (max-width: 375px) {
   .item-card {

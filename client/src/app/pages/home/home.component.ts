@@ -6,12 +6,13 @@ import { UtilityHelper } from '@app/helpers/utility.helper';
 import { Auction } from '@app/models/auction.model';
 import { BasicItem } from '@app/models/item.model';
 import { OrderType, ShopItem } from '@app/models/shop.model';
-import { AvailableCategory, AvailableFamily, AvailableTree } from '@app/models/tree.model';
+import { AvailableCategory, AvailableFamily, AvailableItem, AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
 import { StatsData } from '@app/shared/components/stats-display/stats-display.component';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -43,9 +44,12 @@ export class HomeComponent implements OnInit {
   };
   public availableFamily: AvailableFamily;
   public availableCategory: AvailableCategory;
+  public availableFavorite: AvailableCategory;
   public availableList = 'family';
   public queryFamily: string;
   public queryCategory: string;
+  public queryFavorite: boolean;
+  public favorites: string[] = JSON.parse(localStorage.getItem('favorites') || '[]');
 
   public OrderType = OrderType;
 
@@ -79,6 +83,7 @@ export class HomeComponent implements OnInit {
     private shopService: ShopService,
     private storeService: StoreService,
     private itemService: ItemService,
+    private toastrService: ToastrService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -86,6 +91,7 @@ export class HomeComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.queryFamily = params['family'];
       this.queryCategory = params['category'];
+      this.queryFavorite = params['favorite'] === 'true';
       this.itemService.getAvailableTree().subscribe(tree => {
         this.availableTree = tree;
         this.autoExplore();
@@ -111,7 +117,11 @@ export class HomeComponent implements OnInit {
   }
 
   autoExplore(): void {
-    if (this.queryFamily) {
+    if (this.queryFavorite) {
+      this.availableList = 'favorite';
+      this.storeService.requestSocket('getLastItemsByFavorite', this.favorites);
+      this.createFavoriteTree();
+    } else if (this.queryFamily) {
       const family = this.availableTree.families.find(f => f.name === this.queryFamily);
       if (family) {
         this.goToFamily(family, false);
@@ -131,7 +141,10 @@ export class HomeComponent implements OnInit {
     } else {
       this.storeService.requestSocket('getLastItemsByFamily', 'all');
     }
-    this.storeService.requestSocket('getLastAuctions');
+    if (this.favorites.length > 0) {
+      this.createFavoriteTree();
+    }
+    // this.storeService.requestSocket('getLastAuctions'); // now cover by lastItemCall
     this.init = true;
   }
 
@@ -304,6 +317,49 @@ export class HomeComponent implements OnInit {
     window.open(url, '_blank');
   }
 
+  goToFavorite(): void {
+    this.availableList = 'favorite';
+    const url = this.router.createUrlTree([], { relativeTo: this.activatedRoute, queryParams: { favorite: true } }).toString();
+    this.location.go(url);
+    this.queryFavorite = true;
+    this.storeService.requestSocket('getLastItemsByFavorite', this.favorites);
+  }
+
+  openToFavorite(): void {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree([], { relativeTo: this.activatedRoute, queryParams: { favorite: true } })
+    );
+    window.open(url, '_blank');
+  }
+
+  createFavoriteTree(): void {
+    const items: Array<AvailableItem> = this.favorites
+      .map(name => {
+        const base = this.itemService.getItemBase(name);
+        const availableItem: AvailableItem = this.availableTree.families
+          .find(f => f.name === base.family)
+          ?.categories.find(c => c.name === base.category)
+          ?.items.find(i => i.name === name);
+        return availableItem || null;
+      })
+      .filter(item => item !== null) as Array<AvailableItem>;
+    const previews: string[] = this.favorites.slice(0, 4);
+    this.availableFavorite = {
+      name: 'Favorites',
+      previews,
+      items,
+      sellNow: items.reduce((sum, i) => sum + (i.sellNow || 0), 0),
+      buyNow: items.reduce((sum, i) => sum + (i.buyNow || 0), 0),
+      auctionNow: items.reduce((sum, i) => sum + (i.auctionNow || 0), 0),
+      sellDay: items.reduce((sum, i) => sum + (i.sellDay || 0), 0),
+      buyDay: items.reduce((sum, i) => sum + (i.buyDay || 0), 0),
+      auctionDay: items.reduce((sum, i) => sum + (i.auctionDay || 0), 0),
+      sellWeek: items.reduce((sum, i) => sum + (i.sellWeek || 0), 0),
+      buyWeek: items.reduce((sum, i) => sum + (i.buyWeek || 0), 0),
+      auctionWeek: items.reduce((sum, i) => sum + (i.auctionWeek || 0), 0)
+    };
+  }
+
   goToItem(item: BasicItem | ShopItem): void {
     this.router.navigate(['item', item.name]);
   }
@@ -315,6 +371,31 @@ export class HomeComponent implements OnInit {
 
   goToShop(): void {
     this.router.navigate(['shop']);
+  }
+
+  toggleFavorite(itemName: string, evt?: MouseEvent): void {
+    const index = this.favorites.indexOf(itemName);
+    if (index > -1) {
+      this.favorites.splice(index, 1);
+    } else {
+      if (this.favorites.length >= 20) {
+        this.toastrService.error(
+          'You can only have up to 20 favorites. Please remove some before adding new ones.',
+          'Favorites limit reached'
+        );
+        return;
+      }
+      this.favorites.push(itemName);
+    }
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+    if (evt) {
+      evt.stopPropagation();
+    }
+    this.createFavoriteTree();
+  }
+
+  isFavorite(itemName: string): boolean {
+    return this.favorites.includes(itemName);
   }
 
   scroll(el: HTMLElement): void {

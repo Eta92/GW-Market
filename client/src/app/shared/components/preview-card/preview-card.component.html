@@ -14,4 +14,7 @@
   </ng-container>
   <div class="card-label" [class.small]="smallLabel">{{ label }}</div>
   <app-stats-display [mode]="statsMode" [stats]="stats"></app-stats-display>
+  <div class="card-favorite" *ngIf="favorites" (click)="onFavoriteToggle($event)">
+    <i class="fa-star" [class.fas]="isFavorite()" [class.far]="!isFavorite()"></i>
+  </div>
 </div>
