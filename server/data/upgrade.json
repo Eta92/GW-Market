@@ -1,508 +1,5 @@
 [
   {
-    "type": "Axe Haft",
-    "enhancement": "An Axe Haft is the prefix upgrade for an axe",
-    "items": [
-      {
-        "name": "Barbed Axe Haft",
-        "enhancement": "Lengthens Bleeding duration on foes by 33%",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Cruel Axe Haft",
-        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Crippling Axe Haft",
-        "enhancement": "Lengthens Crippled duration on foes by 33%",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Heavy Axe Haft",
-        "enhancement": "Lengthens Weakness duration on foes by 33%",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Poisonous Axe Haft",
-        "enhancement": "Lengthens Poison duration on foes by 33%",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Ebon Axe Haft",
-        "enhancement": "Earth damage",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Fiery Axe Haft",
-        "enhancement": "Fire damage",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Icy Axe Haft",
-        "enhancement": "Cold damage",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Shocking Axe Haft",
-        "enhancement": "Lightning damage",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Furious Axe Haft",
-        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Sundering Axe Haft",
-        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Vampiric Axe Haft",
-        "enhancement": "Life Draining: 1...3, Health regeneration: -1",
-        "img": "Axe Haft"
-      },
-      {
-        "name": "Zealous Axe Haft",
-        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
-        "img": "Axe Haft"
-      }
-    ]
-  },
-  {
-    "type": "Hammer Haft",
-    "enhancement": "A Hammer Haft is the prefix upgrade for a hammer.",
-    "items": [
-      {
-        "name": "Cruel Hammer Haft",
-        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Heavy Hammer Haft",
-        "enhancement": "Lengthens Weakness duration on foes by 33%",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Ebon Hammer Haft",
-        "enhancement": "Earth damage",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Fiery Hammer Haft",
-        "enhancement": "Fire damage",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Icy Hammer Haft",
-        "enhancement": "Cold damage",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Shocking Hammer Haft",
-        "enhancement": "Lightning damage",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Furious Hammer Haft",
-        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Sundering Hammer Haft",
-        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Vampiric Hammer Haft",
-        "enhancement": "Life Draining: 1...5, Health regeneration: -1",
-        "img": "Hammer Haft"
-      },
-      {
-        "name": "Zealous Hammer Haft",
-        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
-        "img": "Hammer Haft"
-      }
-    ]
-  },
-  {
-    "type": "Sword Hilt",
-    "enhancement": "A Sword Hilt is the prefix upgrade for a sword. ",
-    "items": [
-      {
-        "name": "Barbed Sword Hilt",
-        "enhancement": "Lengthens Bleeding duration on foes by 33%",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Cruel Sword Hilt",
-        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Crippling Sword Hilt",
-        "enhancement": "Lengthens Crippled duration on foes by 33%",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Poisonous Sword Hilt",
-        "enhancement": "Lengthens Poison duration on foes by 33%",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Ebon Sword Hilt",
-        "enhancement": "Earth damage",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Fiery Sword Hilt",
-        "enhancement": "Fire damage",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Icy Sword Hilt",
-        "enhancement": "Cold damage",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Shocking Sword Hilt",
-        "enhancement": "Lightning damage",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Furious Sword Hilt",
-        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Sundering Sword Hilt",
-        "enhancement": "Armor penetration  20% (Chance: 10...20%)",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Vampiric Sword Hilt",
-        "enhancement": "Life Draining: 1...3, Health regeneration: -1",
-        "img": "Sword Hilt"
-      },
-      {
-        "name": "Zealous Sword Hilt",
-        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
-        "img": "Sword Hilt"
-      }
-    ]
-  },
-  {
-    "type": "Dagger Tang",
-    "enhancement": "A Dagger Tang is the prefix upgrade for a pair of daggers.",
-    "items": [
-      {
-        "name": "Barbed Dagger Tang",
-        "enhancement": "Lengthens Bleeding duration on foes by 33%",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Cruel Dagger Tang",
-        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Crippling Dagger Tang",
-        "enhancement": "Lengthens Crippled duration on foes by 33%",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Poisonous Dagger Tang",
-        "enhancement": "Lengthens Poison duration on foes by 33%",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Silencing Dagger Tang",
-        "enhancement": "Lengthens Dazed duration on foes by 33%",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Ebon Dagger Tang",
-        "enhancement": "Earth damage",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Fiery Dagger Tang",
-        "enhancement": "Fire damage",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Icy Dagger Tang",
-        "enhancement": "Cold damage",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Shocking Dagger Tang",
-        "enhancement": "Lightning damage",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Furious Dagger Tang",
-        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Sundering Dagger Tang",
-        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Vampiric Dagger Tang",
-        "enhancement": "Life Draining: 1...3, Health regeneration: -1",
-        "img": "Dagger Tang"
-      },
-      {
-        "name": "Zealous Dagger Tang",
-        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
-        "img": "Dagger Tang"
-      }
-    ]
-  },
-  {
-    "type": "Scythe Snathe",
-    "enhancement": "A Scythe Snathe is the prefix upgrade for a scythe.",
-    "items": [
-      {
-        "name": "Barbed Scythe Snathe",
-        "enhancement": "Lengthens Bleeding duration on foes by 33%",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Cruel Scythe Snathe",
-        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Crippling Scythe Snathe",
-        "enhancement": "Lengthens Crippled duration on foes by 33%",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Heavy Scythe Snathe",
-        "enhancement": "Lengthens Weakness duration on foes by 33%",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Poisonous Scythe Snathe",
-        "enhancement": "Lengthens Poison duration on foes by 33%",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Ebon Scythe Snathe",
-        "enhancement": "Earth damage",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Fiery Scythe Snathe",
-        "enhancement": "Fire damage",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Icy Scythe Snathe",
-        "enhancement": "Cold damage",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Shocking Scythe Snathe",
-        "enhancement": "Lightning damage",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Furious Scythe Snathe",
-        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Sundering Scythe Snathe",
-        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Vampiric Scythe Snathe",
-        "enhancement": "Life Draining: 1...5, Health regeneration: -1",
-        "img": "Scythe Snathe"
-      },
-      {
-        "name": "Zealous Scythe Snathe",
-        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
-        "img": "Scythe Snathe"
-      }
-    ]
-  },
-  {
-    "type": "Bowstring",
-    "enhancement": "A Bowstring is the prefix upgrade component for a bow",
-    "items": [
-      {
-        "name": "Barbed Bowstring",
-        "enhancement": "Lengthens Bleeding duration on foes by 33%",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Crippling Bowstring",
-        "enhancement": "Lengthens Crippled duration on foes by 33%",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Poisonous Bowstring",
-        "enhancement": "Lengthens Poison duration on foes by 33%",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Silencing Bowstring",
-        "enhancement": "Lengthens Dazed duration on foes by 33%",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Ebon Bowstring",
-        "enhancement": "Earth damage",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Fiery Bowstring",
-        "enhancement": "Fire damage",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Icy Bowstring",
-        "enhancement": "Cold damage",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Shocking Bowstring",
-        "enhancement": "Lightning damage",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Sundering Bowstring",
-        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Vampiric Bowstring",
-        "enhancement": "Life draining: 1...5, Health regeneration: -1",
-        "img": "Bowstring"
-      },
-      {
-        "name": "Zealous Bowstring",
-        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
-        "img": "Bowstring"
-      }
-    ]
-  },
-  {
-    "type": "Spearhead",
-    "enhancement": "A Spearhead is the prefix upgrade for a spear",
-    "items": [
-      {
-        "name": "Barbed Spearhead",
-        "enhancement": "Lengthens Bleeding duration on foes by 33%",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Cruel Spearhead",
-        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Crippling Spearhead",
-        "enhancement": "Lengthens Crippled duration on foes by 33%",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Heavy Spearhead",
-        "enhancement": "Lengthens Weakness duration on foes by 33%",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Poisonous Spearhead",
-        "enhancement": "Lengthens Poison duration on foes by 33%",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Silencing Spearhead",
-        "enhancement": "Lengthens Dazed duration on foes by 33%",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Ebon Spearhead",
-        "enhancement": "Earth damage",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Fiery Spearhead",
-        "enhancement": "Fire damage",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Icy Spearhead",
-        "enhancement": "Cold damage",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Shocking Spearhead",
-        "enhancement": "Lightning damage",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Furious Spearhead",
-        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Sundering Spearhead",
-        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Vampiric Spearhead",
-        "enhancement": "Life Draining: 1...3, Health regeneration: -1",
-        "img": "Spearhead"
-      },
-      {
-        "name": "Zealous Spearhead",
-        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
-        "img": "Spearhead"
-      }
-    ]
-  },
-  {
-    "type": "Staff Head",
-    "enhancement": "A Staff Head is the prefix upgrade for a staff. ",
-    "items": [
-      {
-        "name": "Adept Staff Head",
-        "enhancement": "Halves casting time of spells of item's attribute (Chance: 10-20%)",
-        "img": "Staff Head"
-      },
-      {
-        "name": "Defensive Staff Head",
-        "enhancement": "Armor +4-5",
-        "img": "Staff Head"
-      },
-      {
-        "name": "Hale Staff Head",
-        "enhancement": "Health +10-30",
-        "img": "Staff Head"
-      },
-      {
-        "name": "Insightful Staff Head",
-        "enhancement": "Energy +1-5",
-        "img": "Staff Head"
-      },
-      {
-        "name": "Swift Staff Head",
-        "enhancement": "Halves casting time of spells (Chance: 2-10%)",
-        "img": "Staff Head"
-      }
-    ]
-  },
-  {
     "type": "Axe Grip",
     "enhancement": "An Axe Grip is the suffix upgrade for an axe.",
     "items": [
@@ -644,456 +141,73 @@
     ]
   },
   {
-    "type": "Hammer Grip",
-    "enhancement": "A Hammer Grip is the suffix upgrade for a hammer.",
+    "type": "Axe Haft",
+    "enhancement": "An Axe Haft is the prefix upgrade for an axe",
     "items": [
       {
-        "name": "Hammer Grip of Defense",
-        "enhancement": "Armor +4...5",
-        "img": "Hammer Grip"
+        "name": "Barbed Axe Haft",
+        "enhancement": "Lengthens Bleeding duration on foes by 33%",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Shelter",
-        "enhancement": "Armor +4...7 (vs. physical damage)",
-        "img": "Hammer Grip"
+        "name": "Cruel Axe Haft",
+        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Warding",
-        "enhancement": "Armor +4...7 (vs. elemental damage)",
-        "img": "Hammer Grip"
+        "name": "Crippling Axe Haft",
+        "enhancement": "Lengthens Crippled duration on foes by 33%",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Enchanting",
-        "enhancement": "Enchantments last 10...20% longer",
-        "img": "Hammer Grip"
+        "name": "Heavy Axe Haft",
+        "enhancement": "Lengthens Weakness duration on foes by 33%",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Fortitude",
-        "enhancement": "Health +10...30",
-        "img": "Hammer Grip"
+        "name": "Poisonous Axe Haft",
+        "enhancement": "Lengthens Poison duration on foes by 33%",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Hammer Mastery",
-        "enhancement": "Hammer Mastery +1 (10...20% chance while using skills)",
-        "img": "Hammer Grip"
+        "name": "Ebon Axe Haft",
+        "enhancement": "Earth damage",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Charrslaying",
-        "enhancement": "Damage +10...20% (vs. Charr)",
-        "img": "Hammer Grip"
+        "name": "Fiery Axe Haft",
+        "enhancement": "Fire damage",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Demonslaying",
-        "enhancement": "Damage +10...20% (vs. Demon)",
-        "img": "Hammer Grip"
+        "name": "Icy Axe Haft",
+        "enhancement": "Cold damage",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Dragonslaying",
-        "enhancement": "Damage +10...20% (vs. Dragon)",
-        "img": "Hammer Grip"
+        "name": "Shocking Axe Haft",
+        "enhancement": "Lightning damage",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Dwarfslaying",
-        "enhancement": "Damage +10...20% (vs. Dwarf)",
-        "img": "Hammer Grip"
+        "name": "Furious Axe Haft",
+        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Giantslaying",
-        "enhancement": "Damage +10...20% (vs. Giant)",
-        "img": "Hammer Grip"
+        "name": "Sundering Axe Haft",
+        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Ogreslaying",
-        "enhancement": "Damage +10...20% (vs. Ogre)",
-        "img": "Hammer Grip"
+        "name": "Vampiric Axe Haft",
+        "enhancement": "Life Draining: 1...3, Health regeneration: -1",
+        "img": "Axe Haft"
       },
       {
-        "name": "Hammer Grip of Pruning",
-        "enhancement": "Damage +10...20% (vs. Plant)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of Tenguslaying",
-        "enhancement": "Damage +10...20% (vs. Tengu)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of Trollslaying",
-        "enhancement": "Damage +10...20% (vs. Troll)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of Deathbane",
-        "enhancement": "Damage +10...20% (vs. Undead)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of Skeletonslaying",
-        "enhancement": "Damage +10...20% (vs. Skeleton)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Warrior",
-        "enhancement": "Strength: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Ranger",
-        "enhancement": "Expertise: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Monk",
-        "enhancement": "Divine Favor: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Necromancer",
-        "enhancement": "Soul Reaping: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Mesmer",
-        "enhancement": "Fast Casting: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Elementalist",
-        "enhancement": "Energy Storage: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Assassin",
-        "enhancement": "Critical Strikes: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Ritualist",
-        "enhancement": "Spawning Power: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Paragon",
-        "enhancement": "Leadership: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      },
-      {
-        "name": "Hammer Grip of the Dervish",
-        "enhancement": "Mysticism: 4...5 (if lower)",
-        "img": "Hammer Grip"
-      }
-    ]
-  },
-  {
-    "type": "Sword Pommel",
-    "enhancement": "A Sword Pommel is the suffix upgrade for a sword.",
-    "items": [
-      {
-        "name": "Sword Pommel of Defense",
-        "enhancement": "Armor +4...5",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Shelter",
-        "enhancement": "Armor +4...7 (vs. physical damage)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Warding",
-        "enhancement": "Armor +4...7 (vs. elemental damage)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Enchanting",
-        "enhancement": "Enchantments last 10...20% longer",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Fortitude",
-        "enhancement": "Health +20...30",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Swordsmanship",
-        "enhancement": "Swordsmanship +1 (10...20% chance while using skills)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Charrslaying",
-        "enhancement": "Damage +10...20% (vs. Charr)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Demonslaying",
-        "enhancement": "Damage +10...20% (vs. Demon)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Dragonslaying",
-        "enhancement": "Damage +10...20% (vs. Dragon)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Dwarfslaying",
-        "enhancement": "Damage +10...20% (vs. Dwarf)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Giantslaying",
-        "enhancement": "Damage +10...20% (vs. Giant)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Ogreslaying",
-        "enhancement": "Damage +10...20% (vs. Ogre)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Pruning",
-        "enhancement": "Damage +10...20% (vs. Plant)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Tenguslaying",
-        "enhancement": "Damage +10...20% (vs. Tengu)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Trollslaying",
-        "enhancement": "Damage +10...20% (vs. Troll)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Deathbane",
-        "enhancement": "Damage +10...20% (vs. Undead)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of Skeletonslaying",
-        "enhancement": "Damage +10...20% (vs. Skeleton)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Warrior",
-        "enhancement": "Strength: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Ranger",
-        "enhancement": "Expertise: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Monk",
-        "enhancement": "Divine Favor: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Necromancer",
-        "enhancement": "Soul Reaping: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Mesmer",
-        "enhancement": "Fast Casting: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Elementalist",
-        "enhancement": "Energy Storage: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Assassin",
-        "enhancement": "Critical Strikes: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Ritualist",
-        "enhancement": "Spawning Power: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Paragon",
-        "enhancement": "Leadership: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      },
-      {
-        "name": "Sword Pommel of the Dervish",
-        "enhancement": "Mysticism: 4...5 (if lower)",
-        "img": "Sword Pommel"
-      }
-    ]
-  },
-  {
-    "type": "Dagger Handle",
-    "enhancement": "A Dagger Handle is the suffix upgrade for a dagger.",
-    "items": [
-      {
-        "name": "Dagger Handle of Defense",
-        "enhancement": "Armor +4...5",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of Shelter",
-        "enhancement": "Armor +4...7 (vs. physical damage)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of Warding",
-        "enhancement": "Armor +4...7 (vs. elemental damage)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of Enchanting",
-        "enhancement": "Enchantments last 10...20% longer",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of Fortitude",
-        "enhancement": "Health +20...30",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of Dagger Mastery",
-        "enhancement": "Dagger Mastery +1 (10...20% chance while using skills)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Warrior",
-        "enhancement": "Strength: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Ranger",
-        "enhancement": "Expertise: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Monk",
-        "enhancement": "Divine Favor: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Necromancer",
-        "enhancement": "Soul Reaping: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Mesmer",
-        "enhancement": "Fast Casting: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Elementalist",
-        "enhancement": "Energy Storage: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Assassin",
-        "enhancement": "Critical Strikes: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Ritualist",
-        "enhancement": "Spawning Power: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Paragon",
-        "enhancement": "Leadership: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      },
-      {
-        "name": "Dagger Handle of the Dervish",
-        "enhancement": "Mysticism: 4...5 (if lower)",
-        "img": "Dagger Handle"
-      }
-    ]
-  },
-  {
-    "type": "Scythe Grip",
-    "enhancement": "A Scythe Grip is the suffix upgrade for a scythe.",
-    "items": [
-      {
-        "name": "Scythe Grip of Defense",
-        "enhancement": "Armor +4...5",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of Shelter",
-        "enhancement": "Armor +4...7 (vs. physical damage)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of Warding",
-        "enhancement": "Armor +4...7 (vs. elemental damage)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of Enchanting",
-        "enhancement": "Enchantments last 10...20% longer",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of Fortitude",
-        "enhancement": "Health +20...30",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of Scythe Mastery",
-        "enhancement": "Scythe Mastery +1 (10...20% chance while using skills)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Warrior",
-        "enhancement": "Strength: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Ranger",
-        "enhancement": "Expertise: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Monk",
-        "enhancement": "Divine Favor: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Necromancer",
-        "enhancement": "Soul Reaping: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Mesmer",
-        "enhancement": "Fast Casting: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Elementalist",
-        "enhancement": "Energy Storage: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Assassin",
-        "enhancement": "Critical Strikes: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Ritualist",
-        "enhancement": "Spawning Power: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Paragon",
-        "enhancement": "Leadership: 4...5 (if lower)",
-        "img": "Scythe Grip"
-      },
-      {
-        "name": "Scythe Grip of the Dervish",
-        "enhancement": "Mysticism: 4...5 (if lower)",
-        "img": "Scythe Grip"
+        "name": "Zealous Axe Haft",
+        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
+        "img": "Axe Haft"
       }
     ]
   },
@@ -1239,6 +353,640 @@
     ]
   },
   {
+    "type": "Bowstring",
+    "enhancement": "A Bowstring is the prefix upgrade component for a bow",
+    "items": [
+      {
+        "name": "Barbed Bowstring",
+        "enhancement": "Lengthens Bleeding duration on foes by 33%",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Crippling Bowstring",
+        "enhancement": "Lengthens Crippled duration on foes by 33%",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Poisonous Bowstring",
+        "enhancement": "Lengthens Poison duration on foes by 33%",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Silencing Bowstring",
+        "enhancement": "Lengthens Dazed duration on foes by 33%",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Ebon Bowstring",
+        "enhancement": "Earth damage",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Fiery Bowstring",
+        "enhancement": "Fire damage",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Icy Bowstring",
+        "enhancement": "Cold damage",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Shocking Bowstring",
+        "enhancement": "Lightning damage",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Sundering Bowstring",
+        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Vampiric Bowstring",
+        "enhancement": "Life draining: 1...5, Health regeneration: -1",
+        "img": "Bowstring"
+      },
+      {
+        "name": "Zealous Bowstring",
+        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
+        "img": "Bowstring"
+      }
+    ]
+  },
+  {
+    "type": "Dagger Handle",
+    "enhancement": "A Dagger Handle is the suffix upgrade for a dagger.",
+    "items": [
+      {
+        "name": "Dagger Handle of Defense",
+        "enhancement": "Armor +4...5",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of Shelter",
+        "enhancement": "Armor +4...7 (vs. physical damage)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of Warding",
+        "enhancement": "Armor +4...7 (vs. elemental damage)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of Enchanting",
+        "enhancement": "Enchantments last 10...20% longer",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of Fortitude",
+        "enhancement": "Health +20...30",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of Dagger Mastery",
+        "enhancement": "Dagger Mastery +1 (10...20% chance while using skills)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Warrior",
+        "enhancement": "Strength: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Ranger",
+        "enhancement": "Expertise: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Monk",
+        "enhancement": "Divine Favor: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Necromancer",
+        "enhancement": "Soul Reaping: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Mesmer",
+        "enhancement": "Fast Casting: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Elementalist",
+        "enhancement": "Energy Storage: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Assassin",
+        "enhancement": "Critical Strikes: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Ritualist",
+        "enhancement": "Spawning Power: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Paragon",
+        "enhancement": "Leadership: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      },
+      {
+        "name": "Dagger Handle of the Dervish",
+        "enhancement": "Mysticism: 4...5 (if lower)",
+        "img": "Dagger Handle"
+      }
+    ]
+  },
+  {
+    "type": "Dagger Tang",
+    "enhancement": "A Dagger Tang is the prefix upgrade for a pair of daggers.",
+    "items": [
+      {
+        "name": "Barbed Dagger Tang",
+        "enhancement": "Lengthens Bleeding duration on foes by 33%",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Cruel Dagger Tang",
+        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Crippling Dagger Tang",
+        "enhancement": "Lengthens Crippled duration on foes by 33%",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Poisonous Dagger Tang",
+        "enhancement": "Lengthens Poison duration on foes by 33%",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Silencing Dagger Tang",
+        "enhancement": "Lengthens Dazed duration on foes by 33%",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Ebon Dagger Tang",
+        "enhancement": "Earth damage",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Fiery Dagger Tang",
+        "enhancement": "Fire damage",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Icy Dagger Tang",
+        "enhancement": "Cold damage",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Shocking Dagger Tang",
+        "enhancement": "Lightning damage",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Furious Dagger Tang",
+        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Sundering Dagger Tang",
+        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Vampiric Dagger Tang",
+        "enhancement": "Life Draining: 1...3, Health regeneration: -1",
+        "img": "Dagger Tang"
+      },
+      {
+        "name": "Zealous Dagger Tang",
+        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
+        "img": "Dagger Tang"
+      }
+    ]
+  },
+  {
+    "type": "Focus Core",
+    "enhancement": "A Focus Core is the suffix upgrade for a focus.",
+    "items": [
+      {
+        "name": "Focus Core of Swiftness",
+        "enhancement": "Halves casting time of spells (Chance: 5-10%)",
+        "img": "Focus Core"
+      },
+      {
+        "name": "Focus Core of Aptitude",
+        "enhancement": "Halves casting time of item's attribute spells (Chance: 10-20%)",
+        "img": "Focus Core"
+      },
+      {
+        "name": "Focus Core of Fortitude",
+        "enhancement": "Health +10-30",
+        "img": "Focus Core"
+      },
+      {
+        "name": "Focus Core of Devotion",
+        "enhancement": "Health +30-45 (while Enchanted)",
+        "img": "Focus Core"
+      },
+      {
+        "name": "Focus Core of Endurance",
+        "enhancement": "Health +30-45 (while in a Stance)",
+        "img": "Focus Core"
+      },
+      {
+        "name": "Focus Core of Valor",
+        "enhancement": "Health +45-60 (while Hexed)",
+        "img": "Focus Core"
+      }
+    ]
+  },
+  {
+    "type": "Hammer Grip",
+    "enhancement": "A Hammer Grip is the suffix upgrade for a hammer.",
+    "items": [
+      {
+        "name": "Hammer Grip of Defense",
+        "enhancement": "Armor +4...5",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Shelter",
+        "enhancement": "Armor +4...7 (vs. physical damage)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Warding",
+        "enhancement": "Armor +4...7 (vs. elemental damage)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Enchanting",
+        "enhancement": "Enchantments last 10...20% longer",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Fortitude",
+        "enhancement": "Health +10...30",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Hammer Mastery",
+        "enhancement": "Hammer Mastery +1 (10...20% chance while using skills)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Charrslaying",
+        "enhancement": "Damage +10...20% (vs. Charr)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Demonslaying",
+        "enhancement": "Damage +10...20% (vs. Demon)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Dragonslaying",
+        "enhancement": "Damage +10...20% (vs. Dragon)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Dwarfslaying",
+        "enhancement": "Damage +10...20% (vs. Dwarf)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Giantslaying",
+        "enhancement": "Damage +10...20% (vs. Giant)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Ogreslaying",
+        "enhancement": "Damage +10...20% (vs. Ogre)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Pruning",
+        "enhancement": "Damage +10...20% (vs. Plant)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Tenguslaying",
+        "enhancement": "Damage +10...20% (vs. Tengu)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Trollslaying",
+        "enhancement": "Damage +10...20% (vs. Troll)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Deathbane",
+        "enhancement": "Damage +10...20% (vs. Undead)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of Skeletonslaying",
+        "enhancement": "Damage +10...20% (vs. Skeleton)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Warrior",
+        "enhancement": "Strength: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Ranger",
+        "enhancement": "Expertise: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Monk",
+        "enhancement": "Divine Favor: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Necromancer",
+        "enhancement": "Soul Reaping: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Mesmer",
+        "enhancement": "Fast Casting: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Elementalist",
+        "enhancement": "Energy Storage: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Assassin",
+        "enhancement": "Critical Strikes: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Ritualist",
+        "enhancement": "Spawning Power: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Paragon",
+        "enhancement": "Leadership: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      },
+      {
+        "name": "Hammer Grip of the Dervish",
+        "enhancement": "Mysticism: 4...5 (if lower)",
+        "img": "Hammer Grip"
+      }
+    ]
+  },
+  {
+    "type": "Hammer Haft",
+    "enhancement": "A Hammer Haft is the prefix upgrade for a hammer.",
+    "items": [
+      {
+        "name": "Cruel Hammer Haft",
+        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Heavy Hammer Haft",
+        "enhancement": "Lengthens Weakness duration on foes by 33%",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Ebon Hammer Haft",
+        "enhancement": "Earth damage",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Fiery Hammer Haft",
+        "enhancement": "Fire damage",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Icy Hammer Haft",
+        "enhancement": "Cold damage",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Shocking Hammer Haft",
+        "enhancement": "Lightning damage",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Furious Hammer Haft",
+        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Sundering Hammer Haft",
+        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Vampiric Hammer Haft",
+        "enhancement": "Life Draining: 1...5, Health regeneration: -1",
+        "img": "Hammer Haft"
+      },
+      {
+        "name": "Zealous Hammer Haft",
+        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
+        "img": "Hammer Haft"
+      }
+    ]
+  },
+  {
+    "type": "Scythe Grip",
+    "enhancement": "A Scythe Grip is the suffix upgrade for a scythe.",
+    "items": [
+      {
+        "name": "Scythe Grip of Defense",
+        "enhancement": "Armor +4...5",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of Shelter",
+        "enhancement": "Armor +4...7 (vs. physical damage)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of Warding",
+        "enhancement": "Armor +4...7 (vs. elemental damage)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of Enchanting",
+        "enhancement": "Enchantments last 10...20% longer",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of Fortitude",
+        "enhancement": "Health +20...30",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of Scythe Mastery",
+        "enhancement": "Scythe Mastery +1 (10...20% chance while using skills)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Warrior",
+        "enhancement": "Strength: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Ranger",
+        "enhancement": "Expertise: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Monk",
+        "enhancement": "Divine Favor: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Necromancer",
+        "enhancement": "Soul Reaping: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Mesmer",
+        "enhancement": "Fast Casting: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Elementalist",
+        "enhancement": "Energy Storage: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Assassin",
+        "enhancement": "Critical Strikes: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Ritualist",
+        "enhancement": "Spawning Power: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Paragon",
+        "enhancement": "Leadership: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      },
+      {
+        "name": "Scythe Grip of the Dervish",
+        "enhancement": "Mysticism: 4...5 (if lower)",
+        "img": "Scythe Grip"
+      }
+    ]
+  },
+  {
+    "type": "Scythe Snathe",
+    "enhancement": "A Scythe Snathe is the prefix upgrade for a scythe.",
+    "items": [
+      {
+        "name": "Barbed Scythe Snathe",
+        "enhancement": "Lengthens Bleeding duration on foes by 33%",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Cruel Scythe Snathe",
+        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Crippling Scythe Snathe",
+        "enhancement": "Lengthens Crippled duration on foes by 33%",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Heavy Scythe Snathe",
+        "enhancement": "Lengthens Weakness duration on foes by 33%",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Poisonous Scythe Snathe",
+        "enhancement": "Lengthens Poison duration on foes by 33%",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Ebon Scythe Snathe",
+        "enhancement": "Earth damage",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Fiery Scythe Snathe",
+        "enhancement": "Fire damage",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Icy Scythe Snathe",
+        "enhancement": "Cold damage",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Shocking Scythe Snathe",
+        "enhancement": "Lightning damage",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Furious Scythe Snathe",
+        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Sundering Scythe Snathe",
+        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Vampiric Scythe Snathe",
+        "enhancement": "Life Draining: 1...5, Health regeneration: -1",
+        "img": "Scythe Snathe"
+      },
+      {
+        "name": "Zealous Scythe Snathe",
+        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
+        "img": "Scythe Snathe"
+      }
+    ]
+  },
+  {
+    "type": "Shield Handle",
+    "enhancement": "A Shield Handle is the suffix upgrade for a shield.",
+    "items": [
+      {
+        "name": "Shield Handle of Fortitude",
+        "enhancement": "Health +10-30",
+        "img": "Shield Handle"
+      },
+      {
+        "name": "Shield Handle of Devotion",
+        "enhancement": "Health +30-45 (while Enchanted)",
+        "img": "Shield Handle"
+      },
+      {
+        "name": "Shield Handle of Endurance",
+        "enhancement": "Health +30-45 (while in a Stance)",
+        "img": "Shield Handle"
+      },
+      {
+        "name": "Shield Handle of Valor",
+        "enhancement": "Health +45-60 (while Hexed)",
+        "img": "Shield Handle"
+      }
+    ]
+  },
+  {
     "type": "Spear Grip",
     "enhancement": "A Spear Grip is the suffix upgrade for a spear.",
     "items": [
@@ -1321,6 +1069,113 @@
         "name": "Spear Grip of the Dervish",
         "enhancement": "Mysticism: 4...5 (if lower)",
         "img": "Spear Grip"
+      }
+    ]
+  },
+  {
+    "type": "Spearhead",
+    "enhancement": "A Spearhead is the prefix upgrade for a spear",
+    "items": [
+      {
+        "name": "Barbed Spearhead",
+        "enhancement": "Lengthens Bleeding duration on foes by 33%",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Cruel Spearhead",
+        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Crippling Spearhead",
+        "enhancement": "Lengthens Crippled duration on foes by 33%",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Heavy Spearhead",
+        "enhancement": "Lengthens Weakness duration on foes by 33%",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Poisonous Spearhead",
+        "enhancement": "Lengthens Poison duration on foes by 33%",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Silencing Spearhead",
+        "enhancement": "Lengthens Dazed duration on foes by 33%",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Ebon Spearhead",
+        "enhancement": "Earth damage",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Fiery Spearhead",
+        "enhancement": "Fire damage",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Icy Spearhead",
+        "enhancement": "Cold damage",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Shocking Spearhead",
+        "enhancement": "Lightning damage",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Furious Spearhead",
+        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Sundering Spearhead",
+        "enhancement": "Armor penetration +20% (Chance: 10...20%)",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Vampiric Spearhead",
+        "enhancement": "Life Draining: 1...3, Health regeneration: -1",
+        "img": "Spearhead"
+      },
+      {
+        "name": "Zealous Spearhead",
+        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
+        "img": "Spearhead"
+      }
+    ]
+  },
+  {
+    "type": "Staff Head",
+    "enhancement": "A Staff Head is the prefix upgrade for a staff. ",
+    "items": [
+      {
+        "name": "Adept Staff Head",
+        "enhancement": "Halves casting time of spells of item's attribute (Chance: 10-20%)",
+        "img": "Staff Head"
+      },
+      {
+        "name": "Defensive Staff Head",
+        "enhancement": "Armor +4-5",
+        "img": "Staff Head"
+      },
+      {
+        "name": "Hale Staff Head",
+        "enhancement": "Health +10-30",
+        "img": "Staff Head"
+      },
+      {
+        "name": "Insightful Staff Head",
+        "enhancement": "Energy +1-5",
+        "img": "Staff Head"
+      },
+      {
+        "name": "Swift Staff Head",
+        "enhancement": "Halves casting time of spells (Chance: 2-10%)",
+        "img": "Staff Head"
       }
     ]
   },
@@ -1586,6 +1441,213 @@
     ]
   },
   {
+    "type": "Sword Hilt",
+    "enhancement": "A Sword Hilt is the prefix upgrade for a sword. ",
+    "items": [
+      {
+        "name": "Barbed Sword Hilt",
+        "enhancement": "Lengthens Bleeding duration on foes by 33%",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Cruel Sword Hilt",
+        "enhancement": "Lengthens Deep Wound duration on foes by 33%",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Crippling Sword Hilt",
+        "enhancement": "Lengthens Crippled duration on foes by 33%",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Poisonous Sword Hilt",
+        "enhancement": "Lengthens Poison duration on foes by 33%",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Ebon Sword Hilt",
+        "enhancement": "Earth damage",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Fiery Sword Hilt",
+        "enhancement": "Fire damage",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Icy Sword Hilt",
+        "enhancement": "Cold damage",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Shocking Sword Hilt",
+        "enhancement": "Lightning damage",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Furious Sword Hilt",
+        "enhancement": "Double adrenaline on hit (Chance: 2...10%)",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Sundering Sword Hilt",
+        "enhancement": "Armor penetration  20% (Chance: 10...20%)",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Vampiric Sword Hilt",
+        "enhancement": "Life Draining: 1...3, Health regeneration: -1",
+        "img": "Sword Hilt"
+      },
+      {
+        "name": "Zealous Sword Hilt",
+        "enhancement": "Energy gain on hit: 1, Energy regeneration: -1",
+        "img": "Sword Hilt"
+      }
+    ]
+  },
+  {
+    "type": "Sword Pommel",
+    "enhancement": "A Sword Pommel is the suffix upgrade for a sword.",
+    "items": [
+      {
+        "name": "Sword Pommel of Defense",
+        "enhancement": "Armor +4...5",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Shelter",
+        "enhancement": "Armor +4...7 (vs. physical damage)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Warding",
+        "enhancement": "Armor +4...7 (vs. elemental damage)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Enchanting",
+        "enhancement": "Enchantments last 10...20% longer",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Fortitude",
+        "enhancement": "Health +20...30",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Swordsmanship",
+        "enhancement": "Swordsmanship +1 (10...20% chance while using skills)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Charrslaying",
+        "enhancement": "Damage +10...20% (vs. Charr)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Demonslaying",
+        "enhancement": "Damage +10...20% (vs. Demon)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Dragonslaying",
+        "enhancement": "Damage +10...20% (vs. Dragon)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Dwarfslaying",
+        "enhancement": "Damage +10...20% (vs. Dwarf)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Giantslaying",
+        "enhancement": "Damage +10...20% (vs. Giant)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Ogreslaying",
+        "enhancement": "Damage +10...20% (vs. Ogre)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Pruning",
+        "enhancement": "Damage +10...20% (vs. Plant)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Tenguslaying",
+        "enhancement": "Damage +10...20% (vs. Tengu)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Trollslaying",
+        "enhancement": "Damage +10...20% (vs. Troll)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Deathbane",
+        "enhancement": "Damage +10...20% (vs. Undead)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of Skeletonslaying",
+        "enhancement": "Damage +10...20% (vs. Skeleton)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Warrior",
+        "enhancement": "Strength: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Ranger",
+        "enhancement": "Expertise: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Monk",
+        "enhancement": "Divine Favor: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Necromancer",
+        "enhancement": "Soul Reaping: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Mesmer",
+        "enhancement": "Fast Casting: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Elementalist",
+        "enhancement": "Energy Storage: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Assassin",
+        "enhancement": "Critical Strikes: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Ritualist",
+        "enhancement": "Spawning Power: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Paragon",
+        "enhancement": "Leadership: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      },
+      {
+        "name": "Sword Pommel of the Dervish",
+        "enhancement": "Mysticism: 4...5 (if lower)",
+        "img": "Sword Pommel"
+      }
+    ]
+  },
+  {
     "type": "Wand Wrapping",
     "enhancement": "A Wand Wrapping is the suffix upgrade for a wand.",
     "items": [
@@ -1652,129 +1714,69 @@
     ]
   },
   {
-    "type": "Shield Handle",
-    "enhancement": "A Shield Handle is the suffix upgrade for a shield.",
-    "items": [
-      {
-        "name": "Shield Handle of Fortitude",
-        "enhancement": "Health +10-30",
-        "img": "Shield Handle"
-      },
-      {
-        "name": "Shield Handle of Devotion",
-        "enhancement": "Health +30-45 (while Enchanted)",
-        "img": "Shield Handle"
-      },
-      {
-        "name": "Shield Handle of Endurance",
-        "enhancement": "Health +30-45 (while in a Stance)",
-        "img": "Shield Handle"
-      },
-      {
-        "name": "Shield Handle of Valor",
-        "enhancement": "Health +45-60 (while Hexed)",
-        "img": "Shield Handle"
-      }
-    ]
-  },
-  {
-    "type": "Focus Core",
-    "enhancement": "A Focus Core is the suffix upgrade for a focus.",
-    "items": [
-      {
-        "name": "Focus Core of Swiftness",
-        "enhancement": "Halves casting time of spells (Chance: 5-10%)",
-        "img": "Focus Core"
-      },
-      {
-        "name": "Focus Core of Aptitude",
-        "enhancement": "Halves casting time of item's attribute spells (Chance: 10-20%)",
-        "img": "Focus Core"
-      },
-      {
-        "name": "Focus Core of Fortitude",
-        "enhancement": "Health +10-30",
-        "img": "Focus Core"
-      },
-      {
-        "name": "Focus Core of Devotion",
-        "enhancement": "Health +30-45 (while Enchanted)",
-        "img": "Focus Core"
-      },
-      {
-        "name": "Focus Core of Endurance",
-        "enhancement": "Health +30-45 (while in a Stance)",
-        "img": "Focus Core"
-      },
-      {
-        "name": "Focus Core of Valor",
-        "enhancement": "Health +45-60 (while Hexed)",
-        "img": "Focus Core"
-      }
-    ]
-  },
-  {
-    "type": "All weapons Inscriptions",
+    "type": "All weapon types Inscriptions",
+    "inherit": "All equippable items Inscriptions",
     "enhancement": "Inscriptions that can be applied to any weapons.",
     "items": [
       {
         "name": "Strength and Honor",
         "enhancement": "Damage +10...15%",
         "condition": "(while Health is above 50%)",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       },
       {
         "name": "Guided by Fate",
         "enhancement": "Damage +10...15%",
         "condition": "(while Enchanted)",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       },
       {
         "name": "Dance with Death",
         "enhancement": "Damage +10...15%",
         "condition": "(while in a Stance)",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       },
       {
         "name": "Too Much Information",
         "enhancement": "Damage +10...15%",
         "condition": "(vs. Hexed foes)",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       },
       {
         "name": "To the Pain!",
         "enhancement": "Damage +14...15%",
         "condition": "Armor -10 (while attacking)",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       },
       {
         "name": "Brawn over Brains",
         "enhancement": "Damage +10...15%",
         "condition": "Energy -5",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       },
       {
         "name": "Vengeance is Mine",
         "enhancement": "Damage +10...20%",
         "condition": "(while Health is below 50%)",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       },
       {
         "name": "Don't Fear the Reaper",
         "enhancement": "Damage +10...20%",
         "condition": "(while Hexed)",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       },
       {
         "name": "Don't Think Twice",
         "enhancement": "Halves casting time of spells",
         "condition": "(Chance: 5...10%)",
-        "img": "All weapons Inscriptions"
+        "img": "All weapon types Inscriptions"
       }
     ]
   },
   {
     "type": "Martial weapons Inscriptions",
+    "inherit": "All weapon types Inscriptions",
     "enhancement": "Inscriptions that can be applied to martial weapons.",
     "items": [
       {
@@ -1787,25 +1789,12 @@
         "enhancement": "Halves skill recharge of spells",
         "condition": "(Chance: 5...10%)",
         "img": "Martial weapons Inscriptions"
-      },
-      {
-        "name": "Dual Vampiric",
-        "enhancement": "Damage +10...15%",
-        "condition": "Health regeneration: -1",
-        "img": "Old weapons Inscriptions",
-        "hidden": true
-      },
-      {
-        "name": "Dual Zealous",
-        "enhancement": "Damage +10...15%",
-        "condition": "Energy regeneration -1",
-        "img": "Old weapons Inscriptions",
-        "hidden": true
       }
     ]
   },
   {
     "type": "Spellcasting weapons Inscriptions",
+    "inherit": "All weapon types Inscriptions",
     "enhancement": "Inscriptions that can be applied to spellcasting weapons.",
     "items": [
       {
@@ -1848,6 +1837,7 @@
   },
   {
     "type": "Focus items or shields Inscriptions",
+    "inherit": "All equippable items Inscriptions",
     "enhancement": "Inscriptions that can be applied to focus items or shields.",
     "items": [
       {
@@ -1966,6 +1956,7 @@
   },
   {
     "type": "Focus items Inscriptions",
+    "inherit": "Focus items or shields Inscriptions",
     "enhancement": "Inscriptions that can be applied to focus items.",
     "items": [
       {

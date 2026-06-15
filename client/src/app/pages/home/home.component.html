@@ -29,6 +29,7 @@
               <span class="crumb clickable" (click)="goToAll()">All</span>
               <i class="fa fa-angle-right sep"></i>
               <span
+                *ngIf="availableList !== 'favorite'"
                 class="crumb"
                 [class.clickable]="availableList === 'item'"
                 (click)="availableList === 'item' && goToFamily(availableFamily)"
@@ -293,7 +294,7 @@
       </section>
 
       <!-- Recent Listings Section -->
-      <section class="listings-section">
+      <section class="listings-section" [ngClass]="{ 'full-list': lastAuctions.length === 0 }">
         <div class="section-header !flex-row">
           <h2 class="section-title">
             <i class="fa fa-clock"></i>
@@ -353,13 +354,13 @@
       </section>
 
       <!-- Recent Auctions Section -->
-      <section class="listings-section auctions">
+      <section class="listings-section auctions" *ngIf="lastAuctions.length">
         <div class="section-header !flex-row">
           <h2 class="section-title">
             <i class="fa fa-clock"></i>
             Auctions Closing Soon
           </h2>
-          <span class="count self-end" *ngIf="lastAuctions.length">{{ lastAuctions.length }} auctions</span>
+          <span class="count self-end">{{ lastAuctions.length }} auctions</span>
         </div>
 
         <div class="listings-container scroll">
@@ -390,15 +391,9 @@
               <span class="price-header">{{ auction.history?.length > 0 ? 'Last Bid' : 'Starting Price' }}</span>
               <div class="price-rows">
                 <div class="price-row">
-                  <img
-                    class="currency-icon"
-                    [src]="auction.currency | currencySource"
-                    [alt]="auction.currency | priceToString"
-                  />
+                  <img class="currency-icon" [src]="auction.currency | currencySource" [alt]="auction.currency | priceToString" />
                   <span class="price-amount">{{
-                    auction.history?.length > 0
-                      ? auction.history[auction.history.length - 1].bid
-                      : auction.startingPrice
+                    auction.history?.length > 0 ? auction.history[auction.history.length - 1].bid : auction.startingPrice
                   }}</span>
                 </div>
               </div>

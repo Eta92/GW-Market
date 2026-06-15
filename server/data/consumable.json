@@ -72,6 +72,11 @@
         "death_penalty": "",
         "notes": "Does not recharge skills",
         "sweet_points": 1
+      },
+      {
+        "name": "Scroll of Resurrection",
+        "applies_to...": "Party",
+        "description": "Double-click to resurrect all dead party members within earshot at 25% Health and Energy."
       }
     ]
   },
@@ -222,6 +227,11 @@
         "benefit": "Lunar Blessing (chance)+1 all attributes",
         "duration_(min)": "∞",
         "sweet_points": ""
+      },
+      {
+        "name": "Flame of Balthazar",
+        "applies_to...": "User",
+        "benefit": "Receive 1000 Balthazar faction when used"
       }
     ]
   },

@@ -694,6 +694,10 @@
   padding: 20px;
   overflow: hidden;
 
+  &.full-list {
+    grid-row: span 2;
+  }
+
   &.auctions {
     padding-top: 0;
   }

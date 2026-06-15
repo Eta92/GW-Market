@@ -351,6 +351,32 @@
       {
         "name": "Glacial Stone",
         "description": "100 Glacial Stones can be traded for the Glacial Gauntlets"
+      }
+    ]
+  },
+  {
+    "type": "Quest Items",
+    "description": "Items that are needed for quest but also have a market value for faster repeats.",
+    "items": [
+      {
+        "name": "Top Left Map Piece",
+        "description": "A piece of a map. You need the 4 part and bring them to Koris Deeprunner in Umbral Grotto.",
+        "img": "Map Piece"
+      },
+      {
+        "name": "Top Right Map Piece",
+        "description": "A piece of a map. You need the 4 part and bring them to Koris Deeprunner in Umbral Grotto.",
+        "img": "Map Piece"
+      },
+      {
+        "name": "Bottom Left Map Piece",
+        "description": "A piece of a map. You need the 4 part and bring them to Koris Deeprunner in Umbral Grotto.",
+        "img": "Map Piece"
+      },
+      {
+        "name": "Bottom Right Map Piece",
+        "description": "A piece of a map. You need the 4 part and bring them to Koris Deeprunner in Umbral Grotto.",
+        "img": "Map Piece"
       },
       {
         "name": "Hammer of Kathandrax",

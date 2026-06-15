@@ -137,7 +137,7 @@
           <div class="split-section buy-section">
             <h2 class="section-title buy-title">
               <i class="fa fa-arrow-down"></i>
-              Buy orders
+              Buy Orders
               <span class="section-count">({{ getTotalBuyOrders() }})</span>
             </h2>
             <div class="split-orders-list scroll">
@@ -325,7 +325,7 @@
           </div>
         </div>
         <div class="detail-price-row unit-price">
-          <span class="detail-price-label">Price per item</span>
+          <span class="detail-price-label">Price per Item</span>
           <div class="detail-price-value">
             <span class="detail-price-decimal">{{ selectedOrder.price.price | decimalUnitPrice: selectedOrder.quantity }}</span>
             <span class="detail-price-fraction">({{ selectedOrder.div_price }}:{{ selectedOrder.div_quantity }})</span>
@@ -406,7 +406,7 @@
     </div>
 
     <div class="order-detail-body">
-      <!-- Item info -->
+      <!-- Item Info -->
       <div class="detail-item-row">
         <img class="detail-item-img" [src]="item?.img" [alt]="item?.name" />
         <div class="detail-item-info">
@@ -523,7 +523,7 @@
     <!-- auction new price -->
     <div class="details-row px-8 pb-3" *ngIf="selectedAuction">
       <div class="form-group">
-        <label>Bid amount</label>
+        <label>Bid Amount</label>
         <app-qty-input
           formControlName="bidAmount"
           [min]="selectedAuction.history?.[selectedAuction.history.length - 1]?.bid || selectedAuction.startingPrice"
@@ -537,8 +537,8 @@
       <label class="auction-acknowledge">
         <input type="checkbox" formControlName="acknowledge" />
         <span class="custom-checkbox"></span>
-        I understand that my auction bid cannot be removed after confirming it.<br />
-        Not comlying with the outcome of an auction may lead to consequences applied to your shop.<br />
+        I understand that auction bid cannot be removed after confirmation.<br />
+        Not fulfilling an auction may result in severe actions for your shop.<br />
       </label>
     </div>
 
@@ -591,7 +591,7 @@
     <span class="popup-warning">If you modify the preset message, make sure the change is clearly communicated to the shop owner.</span>
     <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
       <i class="fa fa-copy"></i>
-      Copy trade message
+      Copy Trade Message
     </button>
   </div>
 </app-modal>
@@ -602,7 +602,7 @@
     <div class="popup-header">
       <img class="popup-img" [src]="item?.img" />
       <div class="popup-title">
-        <h3>Send Message to player</h3>
+        <h3>Send Message to Player</h3>
       </div>
       <button class="popup-close" (click)="messagePopup = false">
         <i class="fa fa-times"></i>
@@ -611,7 +611,7 @@
 
     <div class="popup-body p-3">
       <div class="form-group">
-        <label for="messageType">Why do you want to contact this player?</label>
+        <label for="messageType">Why do you want to contact this player ?</label>
         <app-toggle-group [options]="messageTypeOptions" [value]="messageType" (valueChange)="messageType = $event"></app-toggle-group>
       </div>
 
@@ -621,7 +621,7 @@
             You have selected the “Time slot” template. Use it to arrange a trade for the selected item at a specific time. Select when you
             are available and send the message.
           </div>
-          <label for="from">Available time</label>
+          <label for="from">Available Time</label>
           <input type="datetime-local" formControlName="from" class="form-input custom-datetime w-full" />
         </div>
         <div class="message-form" *ngIf="messageType === 'meet-over'">
@@ -654,7 +654,7 @@
     <div class="popup-warning">Ensure information is correct before sending.</div>
     <button class="confirm-btn" title="Send Message" (click)="sendMessage()">
       <i class="fa fa-envelope"></i>
-      Send message
+      Send Message
     </button>
   </div>
 </app-modal>

@@ -1,3 +1,5 @@
+import { ReputationReason } from './reputation.model';
+
 export interface Account {
   nickname: string;
   lastOnline: number;
@@ -13,13 +15,45 @@ export interface Shop {
   uuid?: string;
   publicId?: string;
   player: string;
+  lastIP?: string;
   lastRefresh?: number;
   daybreakOnline?: boolean;
   items: Array<ShopItem>;
+  auctions?: Array<string>;
   certified?: Array<string>;
+  reputation?: ShopReputation;
+  notations?: { [key: string]: 'positive' | 'negative' };
+  recruiter?: Recruit;
+  recruits?: Array<Recruit>;
+  // back only
+  _id?: string;
+}
+
+export interface Recruit {
+  name?: string;
+  shopId: string;
+  points?: number;
+  lastRefresh?: number;
+}
+
+export interface ShopReputation {
+  positive: number;
+  negative: number;
+  usedPoints: number;
+  history: Array<ShopHistory>;
+  lastReset: number;
+}
+
+export interface ShopHistory {
+  date: number;
+  from: string; // must be player name to avoid sending uuids
+  name: string; // must be player name to avoid sending uuids
+  type: 'positive' | 'negative';
+  reason: ReputationReason;
 }
 
 export interface ShopItem {
+  id?: string;
   name: string;
   orderType: OrderType;
   prices: Array<ShopPrice>;
@@ -27,27 +61,33 @@ export interface ShopItem {
   quantity: number;
   weaponDetails?: WeaponDetails;
   orderDetails?: OrderDetails;
+  hidden?: boolean;
+  listedTime?: number;
   // copy from shop
   player?: string;
   daybreakOnline?: boolean;
   authCertified?: boolean;
+  positives?: number;
+  negatives?: number;
+  shopId?: string;
   lastRefresh?: number;
 }
 
 export interface OrderDetails {
   dedicated?: boolean;
   pre?: boolean;
-  legacy?: boolean;
+  note?: string;
+  goldPrice?: number;
 }
 
 export interface WeaponDetails {
   attribute: string;
   requirement: number;
   inscription: boolean;
-  oldschool: boolean;
   core: string | null;
   prefix: string | null;
   suffix: string | null;
+  extraMods?: Array<string>;
 }
 
 export interface ShopPrice {
@@ -68,6 +108,7 @@ export enum Price {
 export enum OrderType {
   SELL,
   BUY,
+  AUCTION,
 }
 
 export interface Item {
@@ -77,4 +118,5 @@ export interface Item {
   type: string;
   rarity: string;
   level: number;
+  hidden?: boolean;
 }

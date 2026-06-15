@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import { SearchAggregations, SearchFilter, SearchResult, SearchResultOrder } from '../models/search.model';
 import { Item, OrderType, Price, ShopItem, ShopPrice } from '../models/shop.model';
 import { ItemService } from './item.service';
@@ -9,6 +10,8 @@ const TIME_TODAY = 1000 * 60 * 60 * 12; // 12 hours
 const TIME_WEEK = 1000 * 60 * 60 * 24 * 7; // 7 days
 
 export class SearchService {
+  private static cachedRequests: { [key: string]: SearchResult } = {};
+
   private static getDedicatedStatus(order: ShopItem): boolean | undefined {
     let isDedicated = order.orderDetails?.dedicated;
     if (isDedicated === undefined) {
@@ -41,7 +44,7 @@ export class SearchService {
 
     if (filter.query && filter.query.trim()) {
       // Use Flexsearch for text search, get more results for filtering
-      const searchResults = ItemService.searchItemsWithLimit(filter.query, 200);
+      const searchResults = ItemService.searchItems(filter.query, 200);
       itemNames = searchResults.map((item) => item.name);
     } else {
       // Search all items
@@ -50,11 +53,13 @@ export class SearchService {
 
     // Filter by family/category at item level first (optimization)
     if (filter.family || filter.category) {
+      const categoryInheritances = ItemService.categoryInheritances;
       itemNames = itemNames.filter((name) => {
         const item = ItemService.getItem(name);
         if (!item) return false;
         if (filter.family && item.family !== filter.family) return false;
-        if (filter.category && item.category !== filter.category) return false;
+        if (filter.category && item.category !== filter.category && !categoryInheritances[filter.category]?.includes(item.category))
+          return false;
         return true;
       });
     }
@@ -72,7 +77,6 @@ export class SearchService {
         // Determine special flags
         const isPreSearing = order.orderDetails?.pre === true || itemMeta.category === 'Pre-Searing';
         const isDedicated = itemMeta.family === 'miniature' ? this.getDedicatedStatus(order) : undefined;
-        const isLegacy = order.orderDetails?.legacy === true;
 
         // Build enriched result
         const resultOrder: SearchResultOrder = {
@@ -89,7 +93,6 @@ export class SearchService {
           family: itemMeta.family,
           category: itemMeta.category,
           preSearing: isPreSearing || undefined,
-          legacy: isLegacy || undefined,
           dedicated: isDedicated,
         };
 
@@ -127,15 +130,45 @@ export class SearchService {
     }
 
     // Pagination
+    const id = nanoid(10);
     const total = matchingOrders.length;
-    const offset = filter.offset || 0;
-    const limit = filter.limit || 50;
-    const paginatedOrders = matchingOrders.slice(offset, offset + limit);
+    const paginatedOrders = matchingOrders.slice(0, 50);
 
-    return {
-      orders: paginatedOrders,
+    SearchService.cachedRequests[id] = {
+      id,
+      orders: matchingOrders,
+      date: Date.now(),
+      page: 1,
       total,
       aggregations,
+    };
+
+    return {
+      id,
+      orders: paginatedOrders,
+      page: 1,
+      total,
+      aggregations,
+    };
+  }
+
+  public static loadMoreResults(previousResult: SearchResult): SearchResult {
+    for (const key in SearchService.cachedRequests) {
+      if (Date.now() - SearchService.cachedRequests[key].date > TIME_ONLINE) {
+        delete SearchService.cachedRequests[key];
+      }
+    }
+    const previousCached = SearchService.cachedRequests[previousResult.id];
+    if (!previousCached) {
+      return null;
+    }
+    const offset = previousResult.page * 50;
+    const paginatedOrders = previousCached.orders.slice(offset, offset + 50);
+
+    return {
+      ...previousResult,
+      page: previousResult.page + 1,
+      orders: paginatedOrders,
     };
   }
 
@@ -171,7 +204,8 @@ export class SearchService {
     if (filter.reqMin !== undefined && (!wd || wd.requirement < filter.reqMin)) return false;
     if (filter.reqMax !== undefined && (!wd || wd.requirement > filter.reqMax)) return false;
     if (filter.inscription !== undefined && (!wd || wd.inscription !== filter.inscription)) return false;
-    if (filter.core && (!wd || wd.core !== filter.core)) return false;
+    if (filter.core && (!wd || (wd.core !== filter.core && !wd.extraMods?.includes(filter.core)))) return false;
+    if (filter.exotic && (!wd || (wd.core !== filter.exotic && !wd.extraMods?.includes(filter.exotic)))) return false;
     if (filter.prefix && (!wd || wd.prefix !== filter.prefix)) return false;
     if (filter.suffix && (!wd || wd.suffix !== filter.suffix)) return false;
 
@@ -181,14 +215,6 @@ export class SearchService {
       const isPreSearing = order.orderDetails?.pre === true || item.category === 'Pre-Searing';
       if (filter.preSearing && !isPreSearing) return false;
       if (!filter.preSearing && isPreSearing) return false;
-    }
-
-    // Pre-Nerf filter (check orderDetails.legacy or item category)
-    if (filter.legacy !== undefined) {
-      // First check orderDetails.legacy if available
-      const isLegacy = order.orderDetails?.legacy === true;
-      if (filter.legacy && !isLegacy) return false;
-      if (!filter.legacy && isLegacy) return false;
     }
 
     // Miniature dedicated filter

@@ -50,18 +50,18 @@ Open your browser and navigate to: `http://localhost:3026`
 
 ```
 GW-Market/
-├── client/                 # Angular 18 frontend
+├── client/                # Angular 18 frontend
 │   ├── src/
 │   │   ├── app/           # Angular components and services
 │   │   └── prerendered/   # Pre-rendered pages for SEO
 │   └── dist/              # Built output
-├── server/                 # Node.js/Express backend
+├── server/                # Node.js/Express backend
 │   ├── app.ts             # Main server entry point
 │   ├── src/
 │   │   ├── services/      # Business logic services
 │   │   └── models/        # Data models
 │   └── data/              # Static data files (items, etc.)
-└── assets/                 # Static assets (images, fonts)
+└── assets/                # Static assets (images, fonts)
 ```
 
 ## Environment Configuration
@@ -79,21 +79,21 @@ serverPort = "3026"
 
 ### Client Scripts
 
-| Command | Description |
-|---------|-------------|
+| Command         | Description              |
+| --------------- | ------------------------ |
 | `npm run start` | Start Angular dev server |
-| `npm run once` | Single development build |
-| `npm run watch` | Watch mode build |
-| `npm run prod` | Production build |
-| `npm run lint` | Run ESLint |
-| `npm run test` | Run unit tests |
+| `npm run once`  | Single development build |
+| `npm run watch` | Watch mode build         |
+| `npm run prod`  | Production build         |
+| `npm run lint`  | Run ESLint               |
+| `npm run test`  | Run unit tests           |
 
 ### Server Scripts
 
-| Command | Description |
-|---------|-------------|
+| Command         | Description                             |
+| --------------- | --------------------------------------- |
 | `npm run start` | Start server with nodemon (auto-reload) |
-| `npm run debug` | Start server with Node.js debugger |
+| `npm run debug` | Start server with Node.js debugger      |
 
 ## Troubleshooting
 

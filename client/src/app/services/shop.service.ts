@@ -75,30 +75,29 @@ export class ShopService {
         //   points: 3,
         //   lastRefresh: Date.now()
         // },
-        recruits: shop.recruits
-          // [{
-          //     name: 'test recruit',
-          //     shopId: 'fkljhfer',
-          //     points: 8,
-          //     lastRefresh: Date.now()
-          //   },
-          //   {
-          //     name: 'test recruit 2',
-          //     shopId: 'fkljhfer',
-          //     points: 2,
-          //     lastRefresh: Date.now()
-          //   },
-          //   {
-          //     name: 'test recruit 3',
-          //     shopId: 'fkljhfer',
-          //     points: 4,
-          //     lastRefresh: Date.now() - this.TIME_WEEK * 2
-          //   }]
-          .sort(
-            (a, b) =>
-              (Date.now() - b.lastRefresh < this.TIME_WEEK ? 1 : 0) - (Date.now() - a.lastRefresh < this.TIME_WEEK ? 1 : 0) ||
-              b.points - a.points
-          )
+        recruits: shop.recruits?.sort(
+          (a, b) =>
+            (Date.now() - b.lastRefresh < this.TIME_WEEK ? 1 : 0) - (Date.now() - a.lastRefresh < this.TIME_WEEK ? 1 : 0) ||
+            b.points - a.points
+        )
+        // [{
+        //     name: 'test recruit',
+        //     shopId: 'fkljhfer',
+        //     points: 8,
+        //     lastRefresh: Date.now()
+        //   },
+        //   {
+        //     name: 'test recruit 2',
+        //     shopId: 'fkljhfer',
+        //     points: 2,
+        //     lastRefresh: Date.now()
+        //   },
+        //   {
+        //     name: 'test recruit 3',
+        //     shopId: 'fkljhfer',
+        //     points: 4,
+        //     lastRefresh: Date.now() - this.TIME_WEEK * 2
+        //   }]
       };
       activeShop.items.forEach(item => {
         item.item = this.itemService.getItemBase(item.name);

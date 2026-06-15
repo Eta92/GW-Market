@@ -47,7 +47,7 @@
           </div>
           <button class="shop-toggle-btn shop-refresh-btn" (click)="refreshShop()">
             <i class="fa fa-refresh"></i>
-            <span class="shop-refresh-text">{{ 'Refresh shop' }}</span>
+            <span class="shop-refresh-text">{{ 'Refresh Shop' }}</span>
           </button>
         </div>
 
@@ -63,7 +63,7 @@
         <!-- Enable/Stop Toggle -->
         <button *ngIf="!showcase" class="shop-toggle-btn" [class.active]="showCandle" (click)="showCandle ? stopShop() : refreshShop()">
           <i class="fa" [class.fa-power-off]="!showCandle" [class.fa-stop]="showCandle"></i>
-          <span>{{ showCandle ? 'Stop shop' : 'Update shop' }}</span>
+          <span>{{ showCandle ? 'Stop Shop' : 'Update Shop' }}</span>
         </button>
 
         <!-- Offline Notification Toggle -->

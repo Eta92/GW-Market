@@ -16,16 +16,13 @@ export interface SearchFilter {
   reqMin?: number; // Minimum requirement (0-13)
   reqMax?: number; // Maximum requirement (0-13)
   inscription?: boolean; // undefined = any, true = inscr, false = OS
-  oldschool?: boolean; // true = OS only
   core?: string; // Specific inscription name
+  exotic?: string; // Specific exotic mod name
   prefix?: string; // Specific prefix mod
   suffix?: string; // Specific suffix mod
 
   // Pre-Searing filter
   preSearing?: boolean; // true = pre-searing only, false = post-searing only
-
-  // Pre-Nerf filter
-  preNerf?: boolean; // true = legacy only, false = normal only
 
   // Miniature-specific filters
   miniDedicated?: boolean; // true = dedicated, false = undedicated
@@ -36,6 +33,8 @@ export interface SearchFilter {
   priceMax?: number; // Maximum total price
   priceEachMin?: number; // Minimum price per unit
   priceEachMax?: number; // Maximum price per unit
+  goldMin?: number; // Minimum price in gold
+  goldMax?: number; // Maximum price in gold
 
   // Time/status filters
   timeRange?: 'online' | 'today' | 'week' | 'all';
@@ -52,7 +51,10 @@ export interface SearchFilter {
 }
 
 export interface SearchResult {
+  id: string; // Unique ID for this search result (can be used for caching)
   orders: Array<SearchResultOrder>;
+  page: number; // Current page number (starting from 1)
+  date?: number; // Timestamp to clear search result after some time
   total: number; // Total matching (before pagination)
   aggregations: SearchAggregations;
 }
@@ -77,7 +79,6 @@ export interface SearchResultOrder {
   // Special flags
   preSearing?: boolean;
   dedicated?: boolean;
-  preNerf?: boolean;
 }
 
 // Re-export WeaponDetails for convenience

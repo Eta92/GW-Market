@@ -115,8 +115,7 @@ export class ItemService {
               : '../../../assets/items/' + family.name + '/' + item.name.replace(/ /g, '_') + '.png';
             this.itemNameBase[item.name] = builtItem as BasicItem;
             if (family.name === 'upgrade') {
-              WeaponHelper.upgradeDescriptions[item.name] =
-                item.enhancement + (item.condition ? ` ${item.condition}` : '');
+              WeaponHelper.upgradeDescriptions[item.name] = item.enhancement + (item.condition ? ` ${item.condition}` : '');
               if (!this.itemUpgrades[category.name]) {
                 this.itemUpgrades[category.name] = [];
               }
