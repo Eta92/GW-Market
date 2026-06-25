@@ -35,7 +35,7 @@ export class MongoService {
         SyncHelper.initShops();
         SyncHelper.initAuctions();
         SyncHelper.initMessages();
-        SyncHelper.initBans();
+        // SyncHelper.initBans();
         console.log('Mongo database is ready');
       })
       .catch((err) => {

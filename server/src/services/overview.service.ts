@@ -89,7 +89,6 @@ export class OverviewService {
         overview.totalShopDay++;
         overview.totalItemDay += shop.items.length;
         const activeLimit = now - (15 + repScore) * 60 * 1000;
-        console.log('active limit for shop ' + shop.player + ' is ' + new Date(activeLimit).toISOString());
         if (shop.lastRefresh && shop.lastRefresh >= activeLimit) {
           overview.totalShopActive++;
           overview.totalItemActive += shop.items.length;

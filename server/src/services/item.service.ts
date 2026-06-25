@@ -1,5 +1,6 @@
 import { Index } from 'flexsearch';
 import { Item } from '../models/shop.model';
+import { KamadanService } from './kamadan.service';
 
 const fs = require('fs');
 
@@ -40,6 +41,7 @@ export class ItemService {
     });
     //this.allItems.filter((item) => !item.hidden).forEach((item, i) => this.searchIndex.add(i, item.name));
     this.itemInit = true;
+    KamadanService.init(this.allItemMap);
   };
 
   private static loadSpecial = () => {

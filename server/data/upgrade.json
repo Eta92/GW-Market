@@ -2032,7 +2032,7 @@
         "img": "Focus items Inscriptions"
       },
       {
-        "name": "Inscription Forget Me Not",
+        "name": "Forget Me Not",
         "enhancement": "Halves skill recharge of spells of item's attribute",
         "condition": "(Chance: 10...20%)",
         "img": "Focus items Inscriptions"

@@ -242,6 +242,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   onClear(): void {
+    localStorage.removeItem('searchForm');
     this.initForm();
     this.searchResult = null;
     this.hasSearched = false;

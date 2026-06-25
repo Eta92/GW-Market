@@ -139,7 +139,7 @@ export class SocketService {
         'submitReputationVote',
         (vote: { shop: string; target: string; type: 'positive' | 'negative'; reason: ReputationReason }) => {
           // if (!BanService.isBanned(vote.shop, socket)) {
-          //   ShopService.submitReputationVote(vote.shop, vote.target, vote.type, vote.reason, socket);
+          ShopService.submitReputationVote(vote.shop, vote.target, vote.type, vote.reason, socket);
           // }
         }
       );
@@ -173,13 +173,13 @@ export class SocketService {
 
       socket.on('createAuction', (shopId: string, auction: Auction) => {
         // if (!BanService.isBanned(shopId, socket)) {
-        //   ShopService.createAuction(shopId, auction, socket);
+        ShopService.createAuction(shopId, auction, socket);
         // }
       });
 
       socket.on('bidAuction', (data: { bidder: string; auctionId: string; amount: number }) => {
         // if (!BanService.isBanned(data.bidder, socket)) {
-        //   AuctionService.bidAuction(data.auctionId, data.bidder, data.amount);
+        AuctionService.bidAuction(data.auctionId, data.bidder, data.amount);
         // }
       });
 

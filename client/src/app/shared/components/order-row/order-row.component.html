@@ -68,8 +68,9 @@
 
       <!-- Badges (fixed width container for alignment) -->
       <div class="badges">
-        <img class="badge-icon" src="/assets/img/online.png" title="Online" *ngIf="order.daybreakOnline && isActive" />
-        <img class="badge-icon" src="/assets/img/certified.png" title="Certified" *ngIf="order.authCertified" />
+        <img class="badge-icon" src="/assets/img/online.png" title="Online via Daybreak" *ngIf="order.daybreakOnline && isActive" />
+        <img class="badge-icon" src="/assets/img/certified.png" title="Character Certified" *ngIf="order.authCertified" />
+        <img class="badge-icon" src="/assets/img/kamadan.png" title="From Kamadan chat /!\ Error probable" *ngIf="order.kamadanChat" />
       </div>
 
       <div *ngIf="details" class="h-10 w-full bg-red-600"></div>

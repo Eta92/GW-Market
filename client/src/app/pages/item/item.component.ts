@@ -211,7 +211,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   getOrderTime(item: ItemOrder | ShopItem): Time {
-    return UtilityHelper.getTimeCategory(item.lastRefresh, false, item.positives - item.negatives);
+    return UtilityHelper.getTimeCategory(item.lastRefresh, false, item.positives || item.negatives ? item.positives - item.negatives : 0);
   }
 
   getAuctionTime(item: Auction): Time {
@@ -237,6 +237,7 @@ export class ItemComponent implements OnInit, OnDestroy {
           player: item.player,
           daybreakOnline: item.daybreakOnline,
           authCertified: item.authCertified,
+          kamadanChat: item.kamadanChat,
           positives: item.positives,
           negatives: item.negatives,
           shopId: item.shopId,
@@ -285,6 +286,7 @@ export class ItemComponent implements OnInit, OnDestroy {
         lastRefresh: auction.endTime,
         daybreakOnline: false,
         authCertified: true,
+        kamadanChat: false,
         item: auction.item,
         details: this.item,
         orderType: OrderType.AUCTION,
@@ -337,6 +339,7 @@ export class ItemComponent implements OnInit, OnDestroy {
           player: item.player,
           daybreakOnline: item.daybreakOnline,
           authCertified: item.authCertified,
+          kamadanChat: item.kamadanChat,
           positives: item.positives,
           negatives: item.negatives,
           shopId: item.shopId,
@@ -386,6 +389,7 @@ export class ItemComponent implements OnInit, OnDestroy {
         player: auction.player,
         daybreakOnline: false,
         authCertified: true,
+        kamadanChat: false,
         positives: 0,
         negatives: 0,
         shopId: auction.shopId,

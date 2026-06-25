@@ -67,6 +67,7 @@ export interface ShopItem {
   player?: string;
   daybreakOnline?: boolean;
   authCertified?: boolean;
+  kamadanChat?: boolean;
   positives?: number;
   negatives?: number;
   shopId?: string;

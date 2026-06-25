@@ -67,7 +67,8 @@ export class ApiService {
 
     app.post('/api/shop/purchase/', async function (req, res) {
       const reqBody = req.body as TBPurchase;
-      if (req.body && req.body.name && req.body.price && req.body.orderType) {
+      console.log('Received purchase data from Toolbox:', reqBody);
+      if (reqBody && reqBody.name?.length && reqBody.price !== undefined && reqBody.orderType !== undefined) {
         const purchase = {
           name: reqBody.name,
           orderType: reqBody.orderType,
@@ -82,6 +83,7 @@ export class ApiService {
           date: Date.now(),
           origin: PurchaseOrigin.TOOLBOX,
         };
+        console.log('Inserting purchase into MongoDB:', purchase);
         await MongoService.insertPurchase(purchase);
         res.status(200).send({ status: 'ok' });
       } else {

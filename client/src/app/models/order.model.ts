@@ -40,6 +40,7 @@ export interface ItemOrder {
   player: string;
   daybreakOnline: boolean;
   authCertified: boolean;
+  kamadanChat: boolean;
   item: ShopItem;
   details: BasicItem;
   orderType: OrderType;

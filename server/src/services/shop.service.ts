@@ -10,6 +10,7 @@ import { OrderType, Shop, ShopItem, ShopPrice } from '../models/shop.model';
 import { TimeOrderCounts } from '../models/tree.model';
 import { AuctionService } from './auction.service';
 import { ItemService } from './item.service';
+import { KamadanService } from './kamadan.service';
 import { MessageService } from './message.service';
 import { MongoService } from './mongo.service';
 import { OverviewService } from './overview.service';
@@ -363,7 +364,8 @@ export class ShopService {
         delete this.activeShopMap[uuid];
       }
     }
-    if (applyUpdate) {
+    const timeSinceLastRefresh = Date.now() - this.lastShopRefresh;
+    if (applyUpdate || timeSinceLastRefresh > 2 * 60 * 1000) {
       this.onlineShops = Object.values(this.onlineShopMap);
       this.activeShops = Object.values(this.activeShopMap);
       console.log('Active shops: ');
@@ -476,6 +478,15 @@ export class ShopService {
           this.activeItemMap[item.name].push(item);
         });
     });
+    const kamadanOrders = KamadanService.getKamadanOrders();
+    kamadanOrders.forEach((order) => {
+      if (!this.activeItemMap[order.name]) {
+        this.activeItemMap[order.name] = [];
+      }
+      this.activeItemMap[order.name].push({
+        ...order,
+      });
+    });
     // update all socket threads
     if (this.io) {
       this.itemToRefresh.forEach((itemName) => {
@@ -568,21 +579,37 @@ export class ShopService {
     }
   }
 
+  private static applyRefreshOrder(order: ShopItem): void {
+    const item = ItemService.getItem(order.name);
+    if (item) {
+      this.upsertLastItem(order, item.category);
+      this.upsertLastItem(order, item.family);
+      this.upsertLastItem(order, 'all');
+    }
+  }
+
   private static refreshLastItems(): void {
     this.lastItemMap = {};
     const orderShops = this.activeShops.sort((a, b) => b.lastRefresh - a.lastRefresh);
+    const kamadanOrders = KamadanService.getKamadanOrders();
     orderShops.forEach((shop) => {
+      // hijack shop loop to insert item between shop time
+      while (kamadanOrders.length > 0 && kamadanOrders[kamadanOrders.length - 1].lastRefresh > shop.lastRefresh) {
+        const kamadanOrder = kamadanOrders.pop();
+        this.applyRefreshOrder(kamadanOrder);
+      }
+      //
       shop.items
         .filter((order) => !order.hidden)
         .forEach((order) => {
-          const item = ItemService.getItem(order.name);
-          if (item) {
-            this.upsertLastItem(order, item.category);
-            this.upsertLastItem(order, item.family);
-            this.upsertLastItem(order, 'all');
-          }
+          this.applyRefreshOrder(order);
         });
     });
+    // and insert the rest at the end
+    while (kamadanOrders.length > 0) {
+      const kamadanOrder = kamadanOrders.pop();
+      this.applyRefreshOrder(kamadanOrder);
+    }
   }
 
   private static upsertLastItem(order: ShopItem, family: string): void {

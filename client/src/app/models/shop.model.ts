@@ -79,6 +79,7 @@ export interface ShopItem {
   // copy from shop
   daybreakOnline: boolean;
   authCertified: boolean;
+  kamadanChat?: boolean;
   positives?: number;
   negatives?: number;
   lastRefresh?: number;

@@ -278,7 +278,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         ),
         orderType: order.orderType,
         listedTime: order.listedTime,
-        origin: PurchaseOrigin.SHOP,
+        origin: order.kamadanChat ? PurchaseOrigin.KAMADAN : PurchaseOrigin.SHOP,
         weaponDetails: order.weaponDetails,
         orderDetails: order.orderDetails
       } as Purchase);

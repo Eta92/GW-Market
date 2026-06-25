@@ -72,7 +72,8 @@ export class AuctionService {
         // auction.negatives = shop.reputation?.negative || 0;
         auction.shopId = shop.publicId;
       } else {
-        console.log('Shop not found for auction:', auction.uuid);
+        // perma loggin, auction trigger before shops
+        // console.log('Shop not found for auction:', auction.uuid);
       }
       if (!this.activeItemMap[auction.item.name]) {
         this.activeItemMap[auction.item.name] = [];
