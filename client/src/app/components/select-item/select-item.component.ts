@@ -8,12 +8,13 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { BasicItem } from '@app/models/item.model';
 import { ShopLink } from '@app/models/shop.model';
+import { DeviceService } from '@app/services/device.service';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
 import { Subscription, debounceTime } from 'rxjs';
@@ -21,7 +22,7 @@ import { Subscription, debounceTime } from 'rxjs';
 @Component({
   selector: 'app-select-item',
   templateUrl: './select-item.component.html',
-  styleUrls: ['./select-item.component.scss']
+  styleUrls: ['./select-item.component.scss'],
 })
 export class SelectItemComponent implements OnInit, OnDestroy {
   @Input() width = 600;
@@ -49,16 +50,17 @@ export class SelectItemComponent implements OnInit, OnDestroy {
   constructor(
     private itemService: ItemService,
     private storeService: StoreService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private deviceService: DeviceService
   ) {}
 
   ngOnInit(): void {
     this.itemChange = this.storeService.getSearchItems().subscribe((items: Array<BasicItem>) => {
       // merge server result with basic data
-      this.searchedItems = items.map(item => this.itemService.getItemBase(item.name));
+      this.searchedItems = items.map((item) => this.itemService.getItemBase(item.name));
       const toMatch = this.searchControl.value.toLowerCase();
       if (toMatch.length > 0) {
-        this.searchedItems.forEach(item => {
+        this.searchedItems.forEach((item) => {
           item.match = item.name.toLowerCase().indexOf(toMatch) + toMatch.length;
         });
       }
@@ -68,7 +70,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
       this.searchedShops = [...shops];
       const toMatch = this.searchControl.value.toLowerCase();
       if (toMatch.length > 0) {
-        this.searchedShops.forEach(shop => {
+        this.searchedShops.forEach((shop) => {
           shop.match = shop.name.toLowerCase().indexOf(toMatch) + toMatch.length;
         });
       }
@@ -90,13 +92,13 @@ export class SelectItemComponent implements OnInit, OnDestroy {
         this.searchedItems = [];
       }
     });
-    this.storeService.getOverlay().subscribe(show => {
+    this.storeService.getOverlay().subscribe((show) => {
       this.searchOpen = show;
       this.cdr.detectChanges();
     });
 
     // Auto-focus search on load
-    if (this.autoFocus) {
+    if (this.autoFocus && !this.deviceService.isMobile()) {
       setTimeout(() => {
         this.searchRef?.nativeElement?.focus();
       }, 100);

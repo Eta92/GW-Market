@@ -54,6 +54,12 @@ export class ItemDetailsComponent implements OnChanges {
     // Has pre-searing flag
     if (this.shopItem?.orderDetails?.pre) return true;
 
+    // Has gold details
+    if (this.shopItem?.orderDetails?.goldPrice) return true;
+
+    // Has not max
+    if (this.shopItem?.orderDetails?.notMax) return true;
+
     return false;
   }
 }

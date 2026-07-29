@@ -43,6 +43,7 @@
     "@types/express": "4.17.17",
     "@types/node": "18.15.11",
     "nodemon": "2.0.22",
+    "prettier": "3.9.5",
     "ts-node": "10.9.2",
     "typescript": "5.0.4"
   }

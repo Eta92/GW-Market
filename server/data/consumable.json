@@ -314,6 +314,11 @@
     "description": "These items are used to summon allies to assist the player",
     "items": [
       {
+        "name": "Ascalonian War Horn",
+        "summoned_ally": "2 Ascalonian guards",
+        "acquisition": "Rare drop from Maz's Chest in Forsaken Tunnels."
+      },
+      {
         "name": "Amber Summoning Stone",
         "summoned_ally": "Juggernaut",
         "acquisition": "Crafted by Aiiane in Urgoz's Warren."

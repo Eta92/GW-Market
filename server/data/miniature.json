@@ -698,6 +698,16 @@
       {
         "name": "Miniature Kanaxai",
         "stats": []
+      },
+      {
+        "name": "Miniature Ghost of Althea",
+        "stats": [],
+        "img": "Miniature Water Djinn"
+      },
+      {
+        "name": "Miniature Undead Prince",
+        "stats": [],
+        "img": "Miniature Prince Rurik"
       }
     ]
   }

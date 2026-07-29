@@ -411,7 +411,8 @@
     color: $gold-light;
   }
 
-  ::ng-deep app-order-row .order-row {
+  ::ng-deep .order-row {
+    opacity: 1;
     background: rgba(#2d2925, 0.8);
     border: 1px solid rgba($gold, 0.3);
 
@@ -426,7 +427,8 @@
 .time-bucket-mini.today-bucket {
   background: rgba($obsidian-light, 0.4);
 
-  ::ng-deep app-order-row .order-row {
+  ::ng-deep .order-row {
+    opacity: 0.8;
     background: rgba(#343029, 0.6);
     border: 1px solid rgba($gold, 0.18);
 
@@ -445,7 +447,8 @@
     color: rgba($gold, 0.75);
   }
 
-  ::ng-deep app-order-row .order-row {
+  ::ng-deep .order-row {
+    opacity: 0.6;
     background: rgba(#343029, 0.6);
     border: 1px solid rgba($gold, 0.15);
 
@@ -530,7 +533,7 @@
       color: rgba($gold, 1);
     }
 
-    ::ng-deep app-order-row .order-row {
+    ::ng-deep .order-row {
       background: rgba(#2d2925, 0.8);
       border: 1px solid rgba($gold, 0.3);
 
@@ -548,7 +551,7 @@
       color: rgba($gold, 0.8);
     }
 
-    ::ng-deep app-order-row .order-row {
+    ::ng-deep .order-row {
       background: rgba(#343029, 0.6);
       border: 1px solid rgba($gold, 0.18);
 
@@ -566,7 +569,7 @@
       color: rgba($gold, 0.6);
     }
 
-    ::ng-deep app-order-row .order-row {
+    ::ng-deep .order-row {
       background: rgba(#343029, 0.4);
       border: 1px solid rgba($gold, 0.15);
 

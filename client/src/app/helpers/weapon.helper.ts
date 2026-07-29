@@ -58,6 +58,8 @@ export class WeaponHelper {
     if (WeaponHelper.isWeapon(item) && shopItem?.weaponDetails) return true;
     if (WeaponHelper.isMiniature(item)) return true;
     if (shopItem?.orderDetails?.pre) return true;
+    if (shopItem?.orderDetails?.goldPrice) return true;
+    if (shopItem?.orderDetails?.notMax) return true;
     return false;
   }
 

@@ -16,5 +16,5 @@ server/node_modules
 server/promotion.txt
 server/.env
 skills-lock.json
-server/scripts/test-kamadan.ts
+server/scripts/not-indexed/*
 server/kamadan-log*

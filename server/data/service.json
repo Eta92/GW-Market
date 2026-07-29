@@ -151,6 +151,11 @@
         "img": "Map"
       },
       {
+        "name": "Ferry to Docks",
+        "description": "Kamadan → Consulate Docks. Quick shortcut to the docks.",
+        "img": "Town"
+      },
+      {
         "name": "Vabbi tour",
         "description": "Yohlon Heaven → Sunspear Sanctuary → The Kodash Bazaar → Moddok Crevice. The \"Vabbi Tour\" provides access to the Kodash Bazaar Vabbian armor crafter much earlier than otherwise, and also to skip a mission and continue at Moddok Crevice.",
         "img": "Map"
@@ -248,6 +253,12 @@
         "name": "Infusion",
         "description": "Bring you to the Ancient Seer to infuse your armor against the Mursaats.",
         "wiki": "Infusion"
+      },
+      {
+        "name": "Jingle Bear Capture",
+        "description": "Help you capture the Jingle Bear after completing the required quest.",
+        "wiki": "Jingle Bear",
+        "img": "Jingle_Bear"
       }
     ]
   },

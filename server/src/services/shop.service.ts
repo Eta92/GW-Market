@@ -726,8 +726,6 @@ export class ShopService {
     if (message && sender && apiKey === process.env.authApiKey) {
       const uuid = message.split('|')[0];
       const secret = message.split('|')[1];
-      // const uuid = params['uuid'];
-      // const secret = params['secret'];
       if (secret) {
         console.log('Certification request for shop ' + uuid + ' from ' + sender + ' with secret ' + secret);
       }

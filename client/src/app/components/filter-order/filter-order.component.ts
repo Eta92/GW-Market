@@ -5,6 +5,7 @@ import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-filter-order',
@@ -49,8 +50,9 @@ export class FilterOrderComponent implements OnInit {
     this.form.get('family').valueChanges.subscribe(() => {
       this.form.get('category').setValue(null);
     });
-    this.form.valueChanges.subscribe(() => {
-      this.updateFilter.emit(this.form.value as OrderFilter);
+    this.form.valueChanges.pipe(debounceTime(300)).subscribe(() => {
+      const rawFilter = this.form.value as OrderFilter;
+      this.updateFilter.emit(rawFilter);
     });
     this.itemService.getAvailableTree().subscribe((tree: AvailableTree) => {
       this.allItems = tree;
