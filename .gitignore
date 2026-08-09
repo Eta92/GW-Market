@@ -1,6 +1,7 @@
 .agents/
 .git-old
 .git-crash
+.github
 .history
 .vscode
 assets/data.json
@@ -15,6 +16,7 @@ server/src/services/kamadan-fail.service.ts
 server/node_modules
 server/promotion.txt
 server/.env
+graphify-out/*
 skills-lock.json
 server/scripts/not-indexed/*
 server/kamadan-log*

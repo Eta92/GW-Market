@@ -19,7 +19,7 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
@@ -58,16 +58,16 @@ export class ShopComponent implements OnInit, OnDestroy {
     exotic: null,
     core: null,
     prefix: null,
-    suffix: null
+    suffix: null,
   };
   public sortOrder: OrderSort = {
     sortBy: 'time',
-    sortOrder: 'desc'
+    sortOrder: 'desc',
   };
   public totalOrders = {
     sell: 0,
     buy: 0,
-    auctions: 0
+    auctions: 0,
   };
 
   public playerControl: UntypedFormControl = new UntypedFormControl('');
@@ -128,6 +128,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    this.cancelTimer();
     this.timerActive = false;
   }
 
@@ -135,15 +136,15 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.shopService
       .getPendingChanges()
       .pipe(takeUntil(this.destroy$))
-      .subscribe(pendingChanges => {
+      .subscribe((pendingChanges) => {
         this.pendingChanges = pendingChanges;
         this.scheduleDetect();
       });
-    this.activatedRoute.url.pipe(takeUntil(this.destroy$)).subscribe(urlSegments => {
-      this.showcase = urlSegments.some(segment => segment.path.toLowerCase() === 'showcase');
+    this.activatedRoute.url.pipe(takeUntil(this.destroy$)).subscribe((urlSegments) => {
+      this.showcase = urlSegments.some((segment) => segment.path.toLowerCase() === 'showcase');
       if (this.showcase) {
         // load showcase shop
-        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((params) => {
           const publicId = params['public'];
           this.storeService.requestSocket('getPublicShop', publicId);
           this.shopService
@@ -156,7 +157,7 @@ export class ShopComponent implements OnInit, OnDestroy {
           this.shopService
             .getActiveShop()
             .pipe(takeUntil(this.destroy$))
-            .subscribe(activeShop => {
+            .subscribe((activeShop) => {
               if (activeShop) {
                 this.myShop = activeShop;
                 this.cdr.detectChanges();
@@ -177,7 +178,7 @@ export class ShopComponent implements OnInit, OnDestroy {
             this.shopUpdate();
           });
         // auto switch to pro mode
-        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((params) => {
           this.pro = params['pro'];
         });
       }
@@ -185,8 +186,14 @@ export class ShopComponent implements OnInit, OnDestroy {
       this.shopService
         .getPersonalAuctions()
         .pipe(takeUntil(this.destroy$))
-        .subscribe(auctions => {
+        .subscribe((auctions) => {
           this.itemAuctions = auctions;
+          // Populate image cache for auction items (sell/buy orders are cached in updateItemList)
+          for (const auction of auctions) {
+            if (auction?.item?.name && !(auction.item.name in this.imageCache)) {
+              this.imageCache[auction.item.name] = this.itemService.getItemImage(auction.item.name) || '';
+            }
+          }
           this.scheduleDetect();
         });
       if (this.showcase) {
@@ -198,7 +205,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       this.shopService
         .getPurchases()
         .pipe(takeUntil(this.destroy$))
-        .subscribe(purchases => {
+        .subscribe((purchases) => {
           this.exportPurchasesCsv(purchases);
         });
     });
@@ -269,19 +276,19 @@ export class ShopComponent implements OnInit, OnDestroy {
         name: order.name,
         shop: this.shop.uuid,
         prices: order.prices.map(
-          p =>
+          (p) =>
             ({
               type: p.type,
               quantity: order.quantity,
               totalPrice: p.price,
-              unitPrice: Math.round(p.price / (order.quantity || 1))
+              unitPrice: Math.round(p.price / (order.quantity || 1)),
             }) as PurchasePrice
         ),
         orderType: order.orderType,
         listedTime: order.listedTime,
         origin: PurchaseOrigin.SHOP,
         weaponDetails: order.weaponDetails,
-        orderDetails: order.orderDetails
+        orderDetails: order.orderDetails,
       } as Purchase);
     } else {
       this.toastrService.warning('Confirm completion by clicking the check button again', 'Order validation initiated', { timeOut: 10000 });
@@ -294,7 +301,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       this.shopService.removeShopItem(this.shop.items.indexOf(order));
     } else {
       this.toastrService.warning('Confirm deletion by clicking the trash button again', 'Order removal initiated', {
-        timeOut: 10000
+        timeOut: 10000,
       });
       order.removed = true;
     }
@@ -307,23 +314,23 @@ export class ShopComponent implements OnInit, OnDestroy {
         name: order.name,
         shop: this.shop.uuid,
         prices: order.prices.map(
-          p =>
+          (p) =>
             ({
               type: p.type,
               quantity: 1,
               totalPrice: Math.round(p.price / (order.quantity || 1)),
-              unitPrice: Math.round(p.price / (order.quantity || 1))
+              unitPrice: Math.round(p.price / (order.quantity || 1)),
             }) as PurchasePrice
         ),
         orderType: order.orderType,
         listedTime: order.listedTime,
         origin: PurchaseOrigin.SHOP,
         weaponDetails: order.weaponDetails,
-        orderDetails: order.orderDetails
+        orderDetails: order.orderDetails,
       } as Purchase);
     } else {
       this.toastrService.warning('Confirm single completion by clicking the check button again', 'Single validation initiated', {
-        timeOut: 10000
+        timeOut: 10000,
       });
       order.single = true;
     }
@@ -337,7 +344,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         'Confirm auction completion by clicking the trash button again. Ensure the client has received the item before confirming.',
         'Auction completion initiated',
         {
-          timeOut: 10000
+          timeOut: 10000,
         }
       );
       auction.cloturate = true;
@@ -442,10 +449,10 @@ export class ShopComponent implements OnInit, OnDestroy {
     const now = new Date().toISOString().slice(0, 10);
     const priceLabels = ['Platinum', 'Ecto', 'Zkey', 'Armbraces', 'Black Dye'];
     const rows: string[] = [
-      'Date,Name,Quantity,Order Type,Origin,Price,Listed Time,Attribute,Requirement,Inscribable,Core,Prefix,Suffix,Dedicated,Pre-Ascalon,Gold value,Note'
+      'Date,Name,Quantity,Order Type,Origin,Price,Listed Time,Attribute,Requirement,Inscribable,Core,Prefix,Suffix,Dedicated,Pre-Ascalon,Gold value,Note',
     ];
     for (const p of purchases) {
-      const priceStr = p.prices?.map(p => `${priceLabels[p.type] ?? p.type}: ${p.totalPrice}`).join(' | ') ?? '';
+      const priceStr = p.prices?.map((p) => `${priceLabels[p.type] ?? p.type}: ${p.totalPrice}`).join(' | ') ?? '';
       const row = [
         p.date ? new Date(p.date).toISOString() : '',
         `"${(p.name ?? '').replace(/"/g, '""')}"`,
@@ -463,7 +470,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         p.orderDetails?.dedicated ?? '',
         p.orderDetails?.pre ?? '',
         p.orderDetails?.goldPrice ?? '',
-        p.orderDetails?.note ?? ''
+        p.orderDetails?.note ?? '',
       ].join(',');
       rows.push(row);
     }
@@ -477,14 +484,14 @@ export class ShopComponent implements OnInit, OnDestroy {
     const now = new Date().toISOString().slice(0, 10);
     const rows: string[] = ['Name,Order Type,Quantity,Price,Description,Listed Time'];
     for (const item of this.shop.items) {
-      const priceStr = item.prices?.map(p => `${priceLabels[p.type] ?? p.type}: ${p.price}`).join(' | ') ?? '';
+      const priceStr = item.prices?.map((p) => `${priceLabels[p.type] ?? p.type}: ${p.price}`).join(' | ') ?? '';
       const row = [
         `"${(item.name ?? '').replace(/"/g, '""')}"`,
         orderTypeLabels[item.orderType] ?? item.orderType,
         item.quantity ?? 1,
         `"${priceStr}"`,
         `"${(item.description ?? '').replace(/"/g, '""')}"`,
-        item.listedTime ? new Date(item.listedTime).toISOString() : ''
+        item.listedTime ? new Date(item.listedTime).toISOString() : '',
       ].join(',');
       rows.push(row);
     }
@@ -565,7 +572,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       localStorage.setItem('notifyOnOffline', 'true');
       new Notification('GW Market – Notifications enabled', {
         body: 'You will receive a notification when your shop goes offline.',
-        icon: '/assets/icons/manifest/icon-192x192.png'
+        icon: '/assets/icons/manifest/icon-192x192.png',
       });
     } else {
       this.toastrService.warning('Notifications are blocked. Please allow them in your browser settings.', 'Permission denied');
@@ -576,7 +583,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     if (this.notifyOnOffline && Notification.permission === 'granted') {
       new Notification('GW Market – Shop offline', {
         body: `Your shop (${this.shop?.player || 'Unknown'}) is no longer highlighted.`,
-        icon: '/assets/icons/manifest/icon-192x192.png'
+        icon: '/assets/icons/manifest/icon-192x192.png',
       });
     }
   }
@@ -605,6 +612,16 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   private timerActive = false;
   private timerLoop = 0;
+  private timerTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  /** Cancels any pending refreshTimer callback. */
+  private cancelTimer(): void {
+    if (this.timerTimeoutId !== null) {
+      clearTimeout(this.timerTimeoutId);
+      this.timerTimeoutId = null;
+    }
+  }
+
   refreshTimer(): void {
     if (this.showCandle && this.timeLeft > 0) {
       this.timerActive = true;
@@ -613,13 +630,15 @@ export class ShopComponent implements OnInit, OnDestroy {
         this.showCandle = false;
         this.timerActive = false;
         this.timeLeft = 0;
+        this.cancelTimer();
         this.sendOfflineNotification();
         this.scheduleDetect();
         return;
       }
       if (this.timerLoop === 0) {
         this.timerLoop = 1;
-        setTimeout(() => {
+        this.timerTimeoutId = setTimeout(() => {
+          this.timerTimeoutId = null;
           this.timerLoop = 0;
           this.refreshTimer();
         }, 1000);
@@ -653,7 +672,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       .createUrlTree([], {
         relativeTo: this.activatedRoute,
         queryParams: { pro: this.pro ? 'true' : null },
-        queryParamsHandling: 'merge'
+        queryParamsHandling: 'merge',
       })
       .toString();
     this.location.go(url);
@@ -703,7 +722,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     if (this.auctionMessage) {
       navigator.clipboard.writeText(this.auctionMessage).then(() => {
         this.toastrService.success('Auction message copied to clipboard', '', {
-          timeOut: 5000
+          timeOut: 5000,
         });
       });
     }
@@ -714,7 +733,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   updateItemList(): void {
     const categoryInheritance = this.itemService.getCategoryInheritance();
     if (!this.shop?.items) return;
-    const filteredItem = this.shop.items.filter(item => {
+    const filteredItem = this.shop.items.filter((item) => {
       if (this.orderFilter.name && !item.name.toLowerCase().includes(this.orderFilter.name.toLowerCase())) {
         return false;
       }
@@ -816,7 +835,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.totalOrders = {
       sell: totalSell,
       buy: totalBuy,
-      auctions: this.shop.auctions ? this.shop.auctions.length : 0
+      auctions: this.shop.auctions ? this.shop.auctions.length : 0,
     };
 
     // Split into sell/buy and build image cache in a single pass

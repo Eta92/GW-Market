@@ -146,27 +146,27 @@
 
         <!-- Action Buttons -->
         <div *ngIf="!showcase" class="sidebar-actions">
-          <button class="sidebar-action-btn col-span-2" [class.warning]="playerWarning" (click)="openPlayer()">
+          <button class="col-span-2 sidebar-action-btn" [class.warning]="playerWarning" (click)="openPlayer()">
             <i class="fa fa-user"></i>
             <span>Player Management</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="dataOpen = true">
+          <button class="col-span-2 sidebar-action-btn" (click)="dataOpen = true">
             <i class="fa fa-database"></i>
             <span>Import / Export</span>
           </button>
           <button
-            class="sidebar-action-btn col-span-2"
+            class="col-span-2 sidebar-action-btn"
             (click)="orderEditAll = true"
             *ngIf="Array.isArray(shop?.items) && shop.items.length > 0"
           >
             <i class="fa fa-pen"></i>
             <span>Edit All Orders</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="onDaybreakOpen()">
+          <button class="col-span-2 sidebar-action-btn" (click)="onDaybreakOpen()">
             <i class="fa fa-rotate"></i>
             <span>Dump From Daybreak</span>
           </button>
-          <button class="sidebar-action-btn col-span-2" (click)="onPublicOpen()">
+          <button class="col-span-2 sidebar-action-btn" (click)="onPublicOpen()">
             <i class="fa fa-link"></i>
             <span>Get Promote Link</span>
           </button>
@@ -349,7 +349,7 @@
       </div>
     </div>
 
-    <div class="order-detail-footer flex flex-col gap-2">
+    <div class="flex flex-col gap-2 order-detail-footer">
       <button class="detail-whisper-btn" (click)="loadDaybreakItems('inventory')">
         <i class="fa fa-person-hiking"></i>
         Import Inventory Items
@@ -459,7 +459,7 @@
       <div class="detail-seller-section">
         <div class="detail-seller-row">
           <div>
-            <span class="detail-seller-label -mt-1 mb-1 flex">Seller</span>
+            <span class="flex mb-1 -mt-1 detail-seller-label">Seller</span>
             <div class="detail-seller-badges">
               <!--span class="badge online" *ngIf="selectedAuction?.daybreakOnline">
                 <img src="/assets/img/online.png" /> Online
@@ -506,7 +506,7 @@
             </span>
             <span class="auction-history-time">{{ bid.time | formatLastUpdate }}</span>
             <span class="auction-history-time" [ngClass]="{ 'flex cursor-pointer underline': bid?.shopId }" (click)="goToShop(bid)"
-              >{{ bid?.bidder }} <i *ngIf="bid?.shopId" class="fa fa-up-right-from-square -mb-1 ml-1 mt-1 no-underline"></i
+              >{{ bid?.bidder }} <i *ngIf="bid?.shopId" class="mt-1 ml-1 -mb-1 no-underline fa fa-up-right-from-square"></i
             ></span>
           </div>
         </ng-container>
@@ -691,7 +691,7 @@
           </div>
           <span class="char-name">{{ shop.recruiter.name }}</span>
           <span class="char-last">{{ shop.recruiter.lastRefresh | formatLastUpdate }}</span>
-          <span class="char-points opacity-0">{{ shop.recruiter.points }}</span>
+          <span class="opacity-0 char-points">{{ shop.recruiter.points }}</span>
         </div>
       </div>
     </div>
