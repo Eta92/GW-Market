@@ -24,13 +24,13 @@ export type OverviewRange = 'all' | 'week' | 'day';
 const RANGE_MS: Record<OverviewRange, number | null> = {
   all: null,
   week: 7 * 24 * 60 * 60 * 1000,
-  day: 1 * 24 * 60 * 60 * 1000
+  day: 1 * 24 * 60 * 60 * 1000,
 };
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent implements OnInit {
   public overview: Overview;
@@ -80,7 +80,7 @@ export class OverviewComponent implements OnInit {
     const cutoff = RANGE_MS[this.range];
 
     // 1. Filter by time window
-    const filtered = cutoff ? data.filter(d => d.date >= now - cutoff) : data;
+    const filtered = cutoff ? data.filter((d) => d.date >= now - cutoff) : data;
 
     // 2. When range is 'day', keep hourly resolution; otherwise aggregate to daily buckets
     if (this.range === 'day') return filtered;
@@ -103,21 +103,23 @@ export class OverviewComponent implements OnInit {
     this.chartPurchase = this.buildChart([
       { name: 'Customer requests', color: '#d4a853', data: this.filterAndAggregate(o.customerHistory ?? []) },
       { name: 'Shops confirmations', color: '#60a5fa', data: this.filterAndAggregate(o.shopHistory ?? []) },
-      { name: 'Total', color: '#22c55e', data: this.filterAndAggregate(o.mergedHistory ?? []) }
+      { name: 'Total', color: '#22c55e', data: this.filterAndAggregate(o.mergedHistory ?? []) },
     ]);
 
     this.chartReputation = this.buildChart([
-      { name: 'Reputation', color: '#a78bfa', data: this.filterAndAggregate(o.reputationHistory ?? []) }
+      { name: 'Reputations', color: '#a78bfa', data: this.filterAndAggregate(o.reputationHistory ?? []) },
+      { name: 'Certifications', color: '#60a5fa', data: this.filterAndAggregate(o.certificationAllHistory ?? []) },
+      //{ name: 'Unique certifications', color: '#10b981', data: this.filterAndAggregate(o.certificationUniqueHistory ?? []) }
     ]);
 
     this.chartConnections = this.buildChart([
       { name: 'All market connections', color: '#d4a853', data: this.filterAndAggregate(o.connectionsAllHistory ?? []) },
-      { name: 'Unique market connections', color: '#60a5fa', data: this.filterAndAggregate(o.connectionsUniqueHistory ?? []) }
+      { name: 'Unique market connections', color: '#60a5fa', data: this.filterAndAggregate(o.connectionsUniqueHistory ?? []) },
     ]);
 
     this.chartRefreshes = this.buildChart([
       { name: 'All shop updates', color: '#22c55e', data: this.filterAndAggregate(o.refreshesAllHistory ?? []) },
-      { name: 'Unique shop updates', color: '#f97316', data: this.filterAndAggregate(o.refreshesUniqueHistory ?? []) }
+      { name: 'Unique shop updates', color: '#f97316', data: this.filterAndAggregate(o.refreshesUniqueHistory ?? []) },
     ]);
 
     this.buildRepartitions();
@@ -129,14 +131,14 @@ export class OverviewComponent implements OnInit {
       type: 'value' as const,
       show: false,
       splitLine: { show: false },
-      scale: true
+      scale: true,
     }));
 
     const builtSeries = series.map((s, i) => ({
       name: s.name,
       type: 'line' as const,
       yAxisIndex: i,
-      data: (s.data ?? []).map(d => [d.date, d.value]),
+      data: (s.data ?? []).map((d) => [d.date, d.value]),
       smooth: true,
       showSymbol: false,
       lineStyle: { color: s.color, width: 2 },
@@ -149,21 +151,21 @@ export class OverviewComponent implements OnInit {
           y2: 1,
           colorStops: [
             { offset: 0, color: s.color + '55' },
-            { offset: 1, color: s.color + '05' }
-          ]
-        }
+            { offset: 1, color: s.color + '05' },
+          ],
+        },
       },
       itemStyle: { color: s.color },
-      emphasis: { focus: 'series' as const }
+      emphasis: { focus: 'series' as const },
     }));
 
     return {
       backgroundColor: 'transparent',
       legend: {
-        data: series.map(s => s.name),
+        data: series.map((s) => s.name),
         textStyle: { color: '#e8dcc4', fontSize: 11 },
         top: 4,
-        inactiveColor: '#3a3430'
+        inactiveColor: '#3a3430',
       },
       tooltip: {
         trigger: 'axis',
@@ -178,13 +180,13 @@ export class OverviewComponent implements OnInit {
             month: 'short',
             year: 'numeric',
             hour: '2-digit',
-            minute: '2-digit'
+            minute: '2-digit',
           });
           const rows = params
             .map((p: any) => `<span style="color:${p.color}">${p.seriesName}:</span> <strong style="color:#f4e8c1">${p.value[1]}</strong>`)
             .join('<br/>');
           return `<div style="color:#d4a853;margin-bottom:4px">${date}</div>${rows}`;
-        }
+        },
       },
       grid: { left: 8, right: 8, top: 36, bottom: 28, containLabel: false },
       xAxis: {
@@ -193,12 +195,12 @@ export class OverviewComponent implements OnInit {
         axisLabel: {
           color: '#a08060',
           fontSize: 10,
-          formatter: (v: number): string => new Date(v).toLocaleDateString(undefined, { day: '2-digit', month: 'short' })
+          formatter: (v: number): string => new Date(v).toLocaleDateString(undefined, { day: '2-digit', month: 'short' }),
         },
-        splitLine: { lineStyle: { color: '#2a241f' } }
+        splitLine: { lineStyle: { color: '#2a241f' } },
       },
       yAxis: yAxes,
-      series: builtSeries
+      series: builtSeries,
     };
   }
 
@@ -209,27 +211,27 @@ export class OverviewComponent implements OnInit {
     this.repartitionType = this.buildPieChart([
       { value: o.repartitionTypeBuy, label: 'Buy', color: '#f97316' },
       { value: o.repartitionTypeSell, label: 'Sell', color: '#22c55e' },
-      { value: o.repartitionTypeAuction, label: 'Auction', color: '#7311d4' }
+      { value: o.repartitionTypeAuction, label: 'Auction', color: '#7311d4' },
     ]);
 
     this.repartitionOrigin = this.buildPieChart([
       { value: o.repartitionOriginMarket, label: 'Market', color: '#60a5fa' },
       { value: o.repartitionOriginToolBox, label: 'ToolBox', color: '#22c55e' },
-      { value: o.repartitionOriginKamdan, label: 'Kamdan', color: '#d4a853' }
+      { value: o.repartitionOriginKamdan, label: 'Kamdan', color: '#d4a853' },
     ]);
 
     this.repartitionRecent = this.buildPieChart([
       { value: o.repartitionRecentFree, label: 'None', color: '#888888' },
       { value: o.repartitionRecentCertified, label: 'Certified', color: '#60a5fa' },
       { value: o.repartitionRecentOnline, label: 'Online', color: '#22c55e' },
-      { value: o.repartitionRecentKamdan, label: 'Kamdan', color: '#d4a853' }
+      { value: o.repartitionRecentKamdan, label: 'Kamdan', color: '#d4a853' },
     ]);
 
     this.repartitionCurrency = this.buildPieChart([
       { value: o.repartitionCurrencyPlatinium, label: 'Plat', color: '#bbbbaa' },
       { value: o.repartitionCurrencyEcto, label: 'Ecto', color: '#60a5fa' },
       { value: o.repartitionCurrencyArmbrace, label: 'Arm', color: '#22c55e' },
-      { value: o.repartitionCurrencyBlackDye, label: 'B. Dye', color: '#222233' }
+      { value: o.repartitionCurrencyBlackDye, label: 'B. Dye', color: '#222233' },
     ]);
   }
 
@@ -242,7 +244,7 @@ export class OverviewComponent implements OnInit {
         borderColor: '#d4a853',
         borderWidth: 1,
         textStyle: { color: '#f4e8c1', fontSize: 12 },
-        formatter: (p: any) => `${p.name}: <strong>${Math.round(p.value)}</strong> (${p.percent?.toFixed(1)}%)`
+        formatter: (p: any) => `${p.name}: <strong>${Math.round(p.value)}</strong> (${p.percent?.toFixed(1)}%)`,
       },
       legend: {
         orient: 'horizontal',
@@ -251,7 +253,7 @@ export class OverviewComponent implements OnInit {
         inactiveColor: '#3a3430',
         itemWidth: 10,
         itemHeight: 8,
-        data: items.map(i => ({ name: i.label, itemStyle: { color: i.color } }))
+        data: items.map((i) => ({ name: i.label, itemStyle: { color: i.color } })),
       },
       series: [
         {
@@ -259,10 +261,10 @@ export class OverviewComponent implements OnInit {
           radius: ['38%', '68%'],
           center: ['50%', '38%'],
           minAngle: 5,
-          data: items.map(i => ({
+          data: items.map((i) => ({
             value: i.value === 0 ? 0.001 : i.value,
             name: i.label,
-            itemStyle: { color: i.color }
+            itemStyle: { color: i.color },
           })),
           label: { show: false },
           labelLine: { show: false },
@@ -270,11 +272,11 @@ export class OverviewComponent implements OnInit {
             itemStyle: {
               shadowBlur: 8,
               shadowOffsetX: 0,
-              shadowColor: 'rgba(0,0,0,0.4)'
-            }
-          }
-        }
-      ]
+              shadowColor: 'rgba(0,0,0,0.4)',
+            },
+          },
+        },
+      ],
     };
   }
 }

@@ -779,6 +779,7 @@ export class ShopService {
           this.io.to(updatingShop.uuid).emit('RefreshShop', { ...updatingShop, _id: undefined, lastIP: undefined });
           this.io.to(updatingShop.uuid).emit('RefreshPlayer', sender);
           delete this.shopCertificationPending[uuid];
+          OverviewService.logCertification(updatingShop.publicId);
         }
       }
     }

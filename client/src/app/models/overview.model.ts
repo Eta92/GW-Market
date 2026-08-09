@@ -13,6 +13,8 @@ export interface Overview {
   shopHistory: Array<OverviewData>;
   mergedHistory: Array<OverviewData>;
   reputationHistory: Array<OverviewData>;
+  certificationAllHistory: Array<OverviewData>;
+  certificationUniqueHistory: Array<OverviewData>;
   connectionsAllHistory: Array<OverviewData>;
   connectionsUniqueHistory: Array<OverviewData>;
   refreshesAllHistory: Array<OverviewData>;

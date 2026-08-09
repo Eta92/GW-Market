@@ -2,6 +2,7 @@ import { Server as SocketServer } from 'socket.io';
 import { Overview } from '../models/overview.model';
 import { PurchaseOrigin } from '../models/purchase.model';
 import { OrderType, Price, Shop } from '../models/shop.model';
+import { RawStatEntry, StatEntry, StatType } from '../models/stat.model';
 import { AuctionService } from './auction.service';
 import { KamadanService } from './kamadan.service';
 import { MongoService } from './mongo.service';
@@ -14,10 +15,13 @@ export class OverviewService {
 
   public static lastHourConnectionMap: Map<string, number> = new Map();
   public static lastHourRefreshMap: Map<string, number> = new Map();
-  public static connectionsAllByHour = new Map<number, number>();
-  public static connectionsUniqueByHour = new Map<number, number>();
-  public static refreshesAllByHour = new Map<number, number>();
-  public static refreshesUniqueByHour = new Map<number, number>();
+  public static lastHourCertificationMap: Map<string, number> = new Map();
+  public static connectionsAllByHour: Array<RawStatEntry> = [];
+  public static connectionsUniqueByHour: Array<RawStatEntry> = [];
+  public static refreshesAllByHour: Array<RawStatEntry> = [];
+  public static refreshesUniqueByHour: Array<RawStatEntry> = [];
+  public static certificationsAllByHour: Array<RawStatEntry> = [];
+  public static certificationsUniqueByHour: Array<RawStatEntry> = [];
 
   constructor() {}
 
@@ -48,6 +52,8 @@ export class OverviewService {
       shopHistory: [],
       mergedHistory: [],
       reputationHistory: [],
+      certificationAllHistory: [],
+      certificationUniqueHistory: [],
       connectionsAllHistory: [],
       connectionsUniqueHistory: [],
       refreshesAllHistory: [],
@@ -67,6 +73,21 @@ export class OverviewService {
       repartitionCurrencyArmbrace: 0,
       repartitionCurrencyBlackDye: 0,
     };
+    const allStats = await MongoService.getAllStats();
+    this.connectionsAllByHour = allStats.filter((s) => s.type === StatType.ConnexionTotal).map((s) => ({ date: s.date, value: s.value }));
+    this.connectionsUniqueByHour = allStats
+      .filter((s) => s.type === StatType.ConnexionUnique)
+      .map((s) => ({ date: s.date, value: s.value }));
+    this.refreshesAllByHour = allStats.filter((s) => s.type === StatType.ShopRefreshTotal).map((s) => ({ date: s.date, value: s.value }));
+    this.refreshesUniqueByHour = allStats
+      .filter((s) => s.type === StatType.ShopRefreshUnique)
+      .map((s) => ({ date: s.date, value: s.value }));
+    this.certificationsAllByHour = allStats
+      .filter((s) => s.type === StatType.CertificationTotal)
+      .map((s) => ({ date: s.date, value: s.value }));
+    this.certificationsUniqueByHour = allStats
+      .filter((s) => s.type === StatType.CertificationUnique)
+      .map((s) => ({ date: s.date, value: s.value }));
 
     // trigger recruit update reflexion to prepare stats
     ShopService.updateShopRecruits();
@@ -142,30 +163,69 @@ export class OverviewService {
     overview.leaderboardRecruit = overview.leaderboardRecruit.sort((a, b) => b.value - a.value).slice(0, 10);
     // connection and refresh history compute
     const hourTimestamp = Math.floor(Date.now() / 3_600_000) * 3_600_000;
-    this.connectionsAllByHour.set(
-      hourTimestamp,
-      Array.from(this.lastHourConnectionMap.values()).reduce((a, b) => a + b, 0)
+    this.connectionsAllByHour.push(
+      await this.saveStat(
+        {
+          date: hourTimestamp,
+          value: Array.from(this.lastHourConnectionMap.values()).reduce((a, b) => a + b, 0),
+        },
+        StatType.ConnexionTotal
+      )
     );
-    this.connectionsUniqueByHour.set(hourTimestamp, this.lastHourConnectionMap.size);
-    this.refreshesAllByHour.set(
-      hourTimestamp,
-      Array.from(this.lastHourRefreshMap.values()).reduce((a, b) => a + b, 0)
+    this.connectionsUniqueByHour.push(
+      await this.saveStat(
+        {
+          date: hourTimestamp,
+          value: this.lastHourConnectionMap.size,
+        },
+        StatType.ConnexionUnique
+      )
     );
-    this.refreshesUniqueByHour.set(hourTimestamp, this.lastHourRefreshMap.size);
-    overview.connectionsAllHistory = Array.from(this.connectionsAllByHour.entries())
-      .sort(([a], [b]) => a - b)
-      .map(([date, value]) => ({ date, value }));
-    overview.connectionsUniqueHistory = Array.from(this.connectionsUniqueByHour.entries())
-      .sort(([a], [b]) => a - b)
-      .map(([date, value]) => ({ date, value }));
-    overview.refreshesAllHistory = Array.from(this.refreshesAllByHour.entries())
-      .sort(([a], [b]) => a - b)
-      .map(([date, value]) => ({ date, value }));
-    overview.refreshesUniqueHistory = Array.from(this.refreshesUniqueByHour.entries())
-      .sort(([a], [b]) => a - b)
-      .map(([date, value]) => ({ date, value }));
+    this.refreshesAllByHour.push(
+      await this.saveStat(
+        {
+          date: hourTimestamp,
+          value: Array.from(this.lastHourRefreshMap.values()).reduce((a, b) => a + b, 0),
+        },
+        StatType.ShopRefreshTotal
+      )
+    );
+    this.refreshesUniqueByHour.push(
+      await this.saveStat(
+        {
+          date: hourTimestamp,
+          value: this.lastHourRefreshMap.size,
+        },
+        StatType.ShopRefreshUnique
+      )
+    );
+    this.certificationsAllByHour.push(
+      await this.saveStat(
+        {
+          date: hourTimestamp,
+          value: Array.from(this.lastHourCertificationMap.values()).reduce((a, b) => a + b, 0),
+        },
+        StatType.CertificationTotal
+      )
+    );
+    this.certificationsUniqueByHour.push(
+      await this.saveStat(
+        {
+          date: hourTimestamp,
+          value: this.lastHourCertificationMap.size,
+        },
+        StatType.CertificationUnique
+      )
+    );
+    overview.connectionsAllHistory = this.connectionsAllByHour;
+    overview.connectionsUniqueHistory = this.connectionsUniqueByHour;
+    overview.refreshesAllHistory = this.refreshesAllByHour;
+    overview.refreshesUniqueHistory = this.refreshesUniqueByHour;
+    overview.certificationAllHistory = this.certificationsAllByHour;
+    overview.certificationUniqueHistory = this.certificationsUniqueByHour;
     this.lastHourConnectionMap.clear();
     this.lastHourRefreshMap.clear();
+    this.lastHourCertificationMap.clear();
 
     console.log('weekly items : ' + overview.totalItemWeek);
     console.log('alltime data points : ' + overview.mergedHistory.length);
@@ -225,6 +285,16 @@ export class OverviewService {
     setTimeout(() => this.buildOverview(), msToNextHour + 10000);
   }
 
+  private static async saveStat(stat: RawStatEntry, type: StatType): Promise<RawStatEntry> {
+    const statEntry: StatEntry = {
+      type,
+      value: stat.value,
+      date: stat.date,
+    };
+    await MongoService.insertStat(statEntry);
+    return stat;
+  }
+
   public static getOverview(): Overview {
     return this.overviewData;
   }
@@ -235,5 +305,9 @@ export class OverviewService {
 
   public static logRefresh(publicId: string): void {
     this.lastHourRefreshMap.set(publicId, (this.lastHourRefreshMap.get(publicId) ?? 0) + 1);
+  }
+
+  public static logCertification(publicId: string): void {
+    this.lastHourCertificationMap.set(publicId, (this.lastHourCertificationMap.get(publicId) ?? 0) + 1);
   }
 }

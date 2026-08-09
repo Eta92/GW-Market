@@ -91,6 +91,25 @@ export class ApiService {
       }
     });
 
+    // Manual Stats Data Injection API
+    // app.post('/api/stats/:type', async function (req, res) {
+    //   const reqBody = req.body as Array<RawStatEntry>;
+    //   const { type } = req.params;
+    //   if (Array.isArray(reqBody)) {
+    //     for (const stat of reqBody) {
+    //       const statEntry: StatEntry = {
+    //         type: Number(type),
+    //         value: stat.value,
+    //         date: stat.date,
+    //       };
+    //       await MongoService.insertStat(statEntry);
+    //     }
+    //     res.status(200).send({ status: 'ok' });
+    //   } else {
+    //     res.status(400).send({ error: 'Invalid stat data' });
+    //   }
+    // });
+
     this.apiInit = true;
   }
 

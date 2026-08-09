@@ -5,6 +5,7 @@ import { BanEntry } from '../models/ban.model';
 import { Message } from '../models/message.model';
 import { Purchase, PurchaseOrigin } from '../models/purchase.model';
 import { Shop } from '../models/shop.model';
+import { StatEntry } from '../models/stat.model';
 
 export class MongoService {
   private static mongodburl = 'mongodb://localhost:27017';
@@ -16,6 +17,7 @@ export class MongoService {
   private static purchaseCollection: Collection<Purchase>;
   private static auctionCollection: Collection<Auction>;
   private static messageCollection: Collection<Message>;
+  private static statCollection: Collection<StatEntry>;
   private static banCollection: Collection<BanEntry>;
 
   public static init(): void {
@@ -29,6 +31,7 @@ export class MongoService {
         this.purchaseCollection = this.mongoDB.collection('purchases');
         this.auctionCollection = this.mongoDB.collection('auctions');
         this.messageCollection = this.mongoDB.collection('messages');
+        this.statCollection = this.mongoDB.collection('stats');
         this.banCollection = this.mongoDB.collection('bans');
 
         this.mongoInit = true;
@@ -245,6 +248,27 @@ export class MongoService {
     }
     const purchases = await this.purchaseCollection.find({ shop: shopId }).toArray();
     return purchases;
+  }
+
+  public static async insertStat(statData: StatEntry): Promise<void> {
+    if (!this.mongoInit) {
+      console.log('MongoDB not initialized');
+      return;
+    }
+    try {
+      await this.statCollection.insertOne(statData);
+    } catch (err) {
+      console.log('Error inserting stat:', err);
+    }
+  }
+
+  public static async getAllStats(): Promise<Array<StatEntry>> {
+    if (!this.mongoInit) {
+      console.log('MongoDB not initialized');
+      return [];
+    }
+    const stats = await this.statCollection.find({}).toArray();
+    return stats;
   }
 
   public static async getAllBans(): Promise<Array<BanEntry>> {
