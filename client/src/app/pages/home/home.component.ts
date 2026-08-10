@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   public init = false;
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     auctionDay: 0,
     sellWeek: 0,
     buyWeek: 0,
-    auctionWeek: 0
+    auctionWeek: 0,
   };
   public availableFamily: AvailableFamily;
   public availableCategory: AvailableCategory;
@@ -55,23 +55,66 @@ export class HomeComponent implements OnInit {
 
   // Toggle options for filter buttons
   public availableModeOptions: ToggleOption[] = [
-    { value: 'everything', label: 'All' },
-    { value: 'active', label: 'Active' },
-    { value: 'sold', label: 'Selling', icon: 'fa-arrow-up', styleClass: 'sell' },
-    { value: 'bought', label: 'Buying', icon: 'fa-arrow-down', styleClass: 'buy' },
-    { value: 'auction', label: 'Auction', icon: 'fa-gavel', styleClass: 'auction' }
+    { value: 'everything', label: 'All', description: 'Show all items regardless of order type or time posted' },
+    { value: 'active', label: 'Active', description: 'Only show items that have been updated within the period chosen on the right' },
+    {
+      value: 'sold',
+      label: 'Selling',
+      icon: 'fa-arrow-up',
+      styleClass: 'sell',
+      description: 'Only show items that are active and with order type WTS',
+    },
+    {
+      value: 'bought',
+      label: 'Buying',
+      icon: 'fa-arrow-down',
+      styleClass: 'buy',
+      description: 'Only show items that are active and with order type WTB',
+    },
+    {
+      value: 'auction',
+      label: 'Auction',
+      icon: 'fa-gavel',
+      styleClass: 'auction',
+      description: 'Only show items that are active and with order type Auction',
+    },
   ];
 
   public timeModeOptions: ToggleOption[] = [
-    { value: 'online', label: 'Live', icon: 'fa-circle', styleClass: 'online' },
-    { value: 'today', label: 'Today', icon: 'fa-sun', styleClass: 'today' },
-    { value: 'week', label: 'This week', icon: 'fa-calendar', styleClass: 'week' },
-    { value: 'combined', label: 'Combined', icon: 'fa-layer-group', styleClass: 'combined' }
+    {
+      value: 'online',
+      label: 'Recent',
+      icon: 'fa-circle',
+      styleClass: 'online',
+      description:
+        'Show statistics from online/highlighted shops.\n From base shops it means 15 minutes but this can be extended for trusted users.',
+    },
+    {
+      value: 'today',
+      label: 'Today',
+      icon: 'fa-sun',
+      styleClass: 'today',
+      description: 'Show statistics from shops that have been online/highlighted within 24 hours',
+    },
+    {
+      value: 'week',
+      label: 'This week',
+      icon: 'fa-calendar',
+      styleClass: 'week',
+      description: 'Show statistics from shops that have been online/highlighted within the last 7 days',
+    },
+    {
+      value: 'combined',
+      label: 'Combined',
+      icon: 'fa-layer-group',
+      styleClass: 'combined',
+      description: "Combine all statistics into a grid format.\n The time period is equivalent to 'This week' option.",
+    },
   ];
 
   public viewModeOptions: ToggleOption[] = [
-    { value: 'grid', label: 'grid', icon: 'fa-th-large' },
-    { value: 'list', label: 'list', icon: 'fa-list' }
+    { value: 'grid', label: 'Grid', icon: 'fa-th-large', description: 'Display items in a card grid layout' },
+    { value: 'list', label: 'List', icon: 'fa-list', description: 'Display items in an explorer-style list view' },
   ];
 
   @ViewChild('list') private listRef: ElementRef<HTMLElement>;
@@ -88,21 +131,21 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.queryFamily = params['family'];
       this.queryCategory = params['category'];
       this.queryFavorite = params['favorite'] === 'true';
-      this.itemService.getAvailableTree().subscribe(tree => {
+      this.itemService.getAvailableTree().subscribe((tree) => {
         this.availableTree = tree;
         this.autoExplore();
         this.cdr.detectChanges();
       });
     });
-    this.storeService.getLastItems().subscribe(items => {
+    this.storeService.getLastItems().subscribe((items) => {
       this.lastItems = items;
       this.cdr.detectChanges();
     });
-    this.storeService.getLastAuctions().subscribe(auctions => {
+    this.storeService.getLastAuctions().subscribe((auctions) => {
       this.lastAuctions = auctions;
       this.cdr.detectChanges();
     });
@@ -122,11 +165,11 @@ export class HomeComponent implements OnInit {
       this.storeService.requestSocket('getLastItemsByFavorite', this.favorites);
       this.createFavoriteTree();
     } else if (this.queryFamily) {
-      const family = this.availableTree.families.find(f => f.name === this.queryFamily);
+      const family = this.availableTree.families.find((f) => f.name === this.queryFamily);
       if (family) {
         this.goToFamily(family, false);
         if (this.queryCategory) {
-          const category = family.categories.find(c => c.name === this.queryCategory);
+          const category = family.categories.find((c) => c.name === this.queryCategory);
           if (category) {
             this.goToCategory(category, false);
             this.storeService.requestSocket('getLastItemsByFamily', category.name);
@@ -157,7 +200,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPreviewSources(previews: string[]): string[] {
-    return (previews || []).map(name => this.getPreviewSource(name));
+    return (previews || []).map((name) => this.getPreviewSource(name));
   }
 
   setAvailableMode(mode: string): void {
@@ -193,13 +236,13 @@ export class HomeComponent implements OnInit {
       case 'everything':
         return list;
       case 'active':
-        return list.filter(i => getSell(i) > 0 || getBuy(i) > 0 || getAuction(i) > 0);
+        return list.filter((i) => getSell(i) > 0 || getBuy(i) > 0 || getAuction(i) > 0);
       case 'sold':
-        return list.filter(i => getSell(i) > 0);
+        return list.filter((i) => getSell(i) > 0);
       case 'bought':
-        return list.filter(i => getBuy(i) > 0);
+        return list.filter((i) => getBuy(i) > 0);
       case 'auction':
-        return list.filter(i => getAuction(i) > 0);
+        return list.filter((i) => getAuction(i) > 0);
       default:
         return list;
     }
@@ -257,7 +300,7 @@ export class HomeComponent implements OnInit {
       auctionDay: item.auctionDay || 0,
       sellWeek: item.sellWeek || 0,
       buyWeek: item.buyWeek || 0,
-      auctionWeek: item.auctionWeek || 0
+      auctionWeek: item.auctionWeek || 0,
     };
   }
 
@@ -297,7 +340,7 @@ export class HomeComponent implements OnInit {
     const url = this.router
       .createUrlTree([], {
         relativeTo: this.activatedRoute,
-        queryParams: { family: this.availableFamily.name, category: this.availableCategory.name }
+        queryParams: { family: this.availableFamily.name, category: this.availableCategory.name },
       })
       .toString();
     this.location.go(url);
@@ -311,7 +354,7 @@ export class HomeComponent implements OnInit {
     const url = this.router.serializeUrl(
       this.router.createUrlTree([], {
         relativeTo: this.activatedRoute,
-        queryParams: { family: this.availableFamily.name, category: category.name }
+        queryParams: { family: this.availableFamily.name, category: category.name },
       })
     );
     window.open(url, '_blank');
@@ -334,15 +377,15 @@ export class HomeComponent implements OnInit {
 
   createFavoriteTree(): void {
     const items: Array<AvailableItem> = this.favorites
-      .map(name => {
+      .map((name) => {
         const base = this.itemService.getItemBase(name);
         const availableItem: AvailableItem = this.availableTree.families
-          .find(f => f.name === base.family)
-          ?.categories.find(c => c.name === base.category)
-          ?.items.find(i => i.name === name);
+          .find((f) => f.name === base.family)
+          ?.categories.find((c) => c.name === base.category)
+          ?.items.find((i) => i.name === name);
         return availableItem || null;
       })
-      .filter(item => item !== null) as Array<AvailableItem>;
+      .filter((item) => item !== null) as Array<AvailableItem>;
     const previews: string[] = this.favorites.slice(0, 4);
     this.availableFavorite = {
       name: 'Favorites',
@@ -356,7 +399,7 @@ export class HomeComponent implements OnInit {
       auctionDay: items.reduce((sum, i) => sum + (i.auctionDay || 0), 0),
       sellWeek: items.reduce((sum, i) => sum + (i.sellWeek || 0), 0),
       buyWeek: items.reduce((sum, i) => sum + (i.buyWeek || 0), 0),
-      auctionWeek: items.reduce((sum, i) => sum + (i.auctionWeek || 0), 0)
+      auctionWeek: items.reduce((sum, i) => sum + (i.auctionWeek || 0), 0),
     };
   }
 

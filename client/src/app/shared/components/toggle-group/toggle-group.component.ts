@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export interface ToggleOption {
   value: any;
   label: string;
+  description?: string; // Shown in custom tooltip
   icon?: string;
   activeIcon?: string;
   imgSrc?: string;

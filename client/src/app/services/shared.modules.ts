@@ -14,6 +14,7 @@ import { QtyInputComponent } from '@app/shared/components/qty-input/qty-input.co
 import { ReplyModalComponent } from '@app/shared/components/reply-modal/reply-modal.component';
 import { StatsDisplayComponent } from '@app/shared/components/stats-display/stats-display.component';
 import { ToggleGroupComponent } from '@app/shared/components/toggle-group/toggle-group.component';
+import { GwtTooltipDirective } from '@app/shared/directives/gwt-tooltip.directive';
 import { StopPropagationDirective } from '@app/shared/directives/stop-propagation.directive';
 import { UTILITY_PIPES } from '@app/shared/pipes/utility.pipes';
 import { HistoryModalComponent } from '@shared/components/history-modal/history-modal.component';
@@ -41,7 +42,8 @@ const SHARED_COMPONENTS = [
   RoutingDirective,
   MiddleclickDirective,
   StopPropagationDirective,
-  ...UTILITY_PIPES
+  GwtTooltipDirective,
+  ...UTILITY_PIPES,
 ];
 
 @NgModule({
@@ -52,8 +54,8 @@ const SHARED_COMPONENTS = [
     ReactiveFormsModule,
     PipeModule,
     ModalModule,
-    NgxEchartsModule.forRoot({ echarts: () => import('echarts') })
+    NgxEchartsModule.forRoot({ echarts: () => import('echarts') }),
   ],
-  exports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule, NgxEchartsModule, ...SHARED_COMPONENTS]
+  exports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule, NgxEchartsModule, GwtTooltipDirective, ...SHARED_COMPONENTS],
 })
 export class SharedModule {}

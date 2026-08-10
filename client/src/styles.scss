@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @import '../../assets/fontawesome/css/all.css';
-@import './app/shared/styles/variables.scss';
+@import './app/shared/styles/_variables.scss';
+@import './app/shared/styles/_tooltip.scss';
 
 // ============================================
 // CSS CUSTOM PROPERTIES

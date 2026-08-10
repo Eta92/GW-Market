@@ -8,7 +8,10 @@
       </a>
 
       <div class="search-group" *ngIf="showSearch">
-        <div class="search-wrapper">
+        <div
+          class="search-wrapper"
+          [gwtTooltip]="'Type to search for items or shops.\nDoes support some acronyms.\nUse the advanced search for more options.'"
+        >
           <app-select-item
             [autoFocus]="true"
             (selectItem)="onSelectItem($event)"
@@ -16,13 +19,22 @@
             [includeShop]="true"
           ></app-select-item>
         </div>
-        <button class="advanced-search-btn" (click)="goToSearch()" title="Advanced Search">
+        <button
+          class="advanced-search-btn"
+          (click)="goToSearch()"
+          [gwtTooltip]="'Go to the advanced search page.\nBest way to request across mutliple items matching the properties you need.'"
+        >
           <i class="fa fa-sliders-h"></i>
         </button>
       </div>
 
       <div class="header-actions">
-        <button class="relative overflow-hidden nav-btn msg-btn place-order-btn" (click)="openMessages()" *ngIf="messages?.length">
+        <button
+          class="relative overflow-hidden nav-btn msg-btn place-order-btn"
+          (click)="openMessages()"
+          *ngIf="messages?.length"
+          gwtTooltip="Open the message / notification side panel"
+        >
           <i class="z-10 scale-125 fa fa-envelope"></i>
           <div
             *ngIf="unreadMessages > 0"
@@ -31,15 +43,29 @@
             {{ unreadMessages }}
           </div>
         </button>
-        <button class="nav-btn place-order-btn" (click)="onPlaceOrder()">
+        <button
+          class="nav-btn place-order-btn"
+          (click)="onPlaceOrder()"
+          gwtTooltip="Open the new order modal to add a new item to your shop"
+        >
           <i class="fa fa-plus-circle"></i>
           <span>Place order</span>
         </button>
-        <button class="nav-btn" (click)="goToShop()" (appMiddle)="openToShop()">
+        <button
+          class="nav-btn"
+          (click)="goToShop()"
+          (appMiddle)="openToShop()"
+          [gwtTooltip]="'Go to your personal shop page.\n Best place to customize your orders, adjust prices, and confirm transactions.'"
+        >
           <i class="fa fa-store"></i>
           <span>My shop</span>
         </button>
-        <button class="relative overflow-hidden nav-btn online-btn" (click)="refreshShop()" *ngIf="shop?.lastRefresh">
+        <button
+          class="relative overflow-hidden nav-btn online-btn"
+          (click)="refreshShop()"
+          *ngIf="shop?.lastRefresh"
+          [gwtTooltip]="'Shortcut to highlight your shop.\n Also display a depleting jauge showing the remaining highlight time.'"
+        >
           <div class="absolute bottom-0 left-0 w-full online-bg" [style.height.%]="(timeLeft / ((15 + bonus) * 60 * 1000)) * 100"></div>
           <i class="z-10 fa fa-power-off hover:fa-sync"></i>
         </button>
@@ -74,17 +100,30 @@
 
     <!-- Search -->
     <div class="search-group" *ngIf="showSearch">
-      <div class="search-wrapper">
+      <div
+        class="search-wrapper"
+        [gwtTooltip]="'Type to search for items or shops.\nDoes support some acronyms.\nUse the advanced search for more options.'"
+      >
         <app-select-item (selectItem)="onSelectItem($event)" (selectShop)="onSelectShop($event)" [includeShop]="true"></app-select-item>
       </div>
-      <button class="advanced-search-btn" (click)="goToSearch()" title="Advanced Search">
+      <button
+        class="advanced-search-btn"
+        (click)="goToSearch()"
+        title="Advanced Search"
+        [gwtTooltip]="'Go to the advanced search page.\nBest way to request across multiple items matching the properties you need.'"
+      >
         <i class="fa fa-sliders-h"></i>
       </button>
     </div>
 
     <!-- Actions -->
     <div class="header-actions">
-      <button class="relative overflow-hidden nav-btn msg-btn place-order-btn" (click)="openMessages()" *ngIf="messages?.length">
+      <button
+        class="relative overflow-hidden nav-btn msg-btn place-order-btn"
+        (click)="openMessages()"
+        *ngIf="messages?.length"
+        [gwtTooltip]="'Open the message / notification side panel'"
+      >
         <i class="z-10 scale-125 fa fa-envelope"></i>
         <div
           *ngIf="unreadMessages > 0"
@@ -93,15 +132,29 @@
           {{ unreadMessages }}
         </div>
       </button>
-      <button class="nav-btn place-order-btn" (click)="onPlaceOrder()">
+      <button
+        class="nav-btn place-order-btn"
+        (click)="onPlaceOrder()"
+        [gwtTooltip]="'Open the new order modal to add a new item to your shop'"
+      >
         <i class="fa fa-plus"></i>
         <span>Place order</span>
       </button>
-      <button class="nav-btn" (click)="goToShop()" (appMiddle)="openToShop()">
+      <button
+        class="nav-btn"
+        (click)="goToShop()"
+        (appMiddle)="openToShop()"
+        [gwtTooltip]="'Go to your personal shop page.\n Best place to customize your orders, adjust prices, and confirm transactions.'"
+      >
         <i class="fa fa-store"></i>
         <span>My shop</span>
       </button>
-      <button class="relative overflow-hidden nav-btn online-btn" (click)="refreshShop()" *ngIf="shop?.lastRefresh">
+      <button
+        class="relative overflow-hidden nav-btn online-btn"
+        (click)="refreshShop()"
+        *ngIf="shop?.lastRefresh"
+        [gwtTooltip]="'Shortcut to highlight your shop.\n Also display a depleting jauge showing the remaining highlight time.'"
+      >
         <div class="absolute bottom-0 left-0 w-full online-bg" [style.height.%]="(timeLeft / ((15 + bonus) * 60 * 1000)) * 100"></div>
         <i class="z-10 fa fa-power-off hover:fa-sync"></i>
       </button>

@@ -1,0 +1,196 @@
+/* ============================================
+   GW MARKET - CUSTOM TOOLTIP COMPONENT
+   Dark fantasy styled tooltips matching the site theme
+   ============================================ */
+
+@import './variables';
+
+// ---- Tooltip Container ----
+.gwt-tooltip {
+  position: fixed;
+  z-index: $z-tooltip;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+
+  &.gwt-tooltip--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ---- Arrow ----
+.gwt-tooltip-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 12px;
+  height: 6px;
+  margin-left: -6px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+  }
+
+  // Default arrow pointing up (top position)
+  &::before {
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 6px;
+    background: transparent;
+    border: 6px solid transparent;
+    border-top-color: $gold-dark;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  &::after {
+    left: 1px;
+    top: 2px;
+    width: 10px;
+    height: 4px;
+    background: $obsidian !important;
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  }
+}
+
+// ---- Tooltip Body ----
+.gwt-tooltip-body {
+  position: relative;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, $obsidian 0%, darken($obsidian, 5%) 100%);
+  border: 1px solid $gold-dark;
+  border-radius: $radius-md;
+  color: $parchment-muted;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba($gold, 0.1);
+
+  // Gold glow on hover area
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, transparent 60%, rgba($gold, 0.3) 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  // Title styling (bold text via **)
+  b {
+    color: $gold-bright;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+  }
+
+  // Line breaks
+  br {
+    display: block;
+    content: '';
+    margin-top: 2px;
+  }
+
+  // Separator line between sections
+  hr,
+  .gwt-tooltip-sep {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba($gold, 0.3), transparent);
+    margin: 6px 0;
+  }
+
+  // Key-value pairs for structured data
+  .gwt-tooltip-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 2px 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba($gold, 0.1);
+    }
+
+    .gwt-tooltip-key {
+      color: $sepia-light;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .gwt-tooltip-val {
+      color: $parchment;
+      font-weight: 500;
+      text-align: right;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// ---- Position Variants ----
+
+// Bottom position - arrow points down
+.gwt-tooltip[data-position='bottom'] {
+  .gwt-tooltip-arrow {
+    top: 100%;
+    bottom: auto;
+
+    &::before {
+      border-top-color: transparent;
+      border-bottom-color: $gold-dark;
+      top: auto;
+      bottom: 0;
+    }
+
+    &::after {
+      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+    }
+  }
+}
+
+// Left position - arrow points left
+.gwt-tooltip[data-position='left'] {
+  .gwt-tooltip-arrow {
+    left: auto;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    margin-left: 0;
+    margin-right: -6px;
+  }
+}
+
+// Right position - arrow points right
+.gwt-tooltip[data-position='right'] {
+  .gwt-tooltip-arrow {
+    left: auto;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    margin-left: 0;
+    margin-right: -6px;
+  }
+}
+
+// ---- Utility Classes for Quick Use ----
+
+// Simple info tooltip (single line)
+.gwt-tooltip--simple .gwt-tooltip-body {
+  white-space: nowrap;
+}
+
+// Multi-line with sections
+.gwt-tooltip--rich .gwt-tooltip-body {
+  max-width: 360px;
+}
