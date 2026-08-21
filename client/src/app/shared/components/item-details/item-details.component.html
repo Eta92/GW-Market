@@ -10,18 +10,18 @@
     <span class="detail-badge exotic" *ngIf="wd.oldSchool"> <i class="fa fa-scroll"></i> OS. </span>
     <!-- Exotic Mods -->
     <ng-container *ngIf="shopItem?.weaponDetails?.extraMods?.length">
-      <span class="detail-badge exotic" *ngFor="let mod of shopItem.weaponDetails.extraMods" [title]="exoticModDescription(mod)">
+      <span class="detail-badge exotic" *ngFor="let mod of shopItem.weaponDetails.extraMods" [gwtTooltip]="getTooltipDescription(mod)">
         {{ mod }}
       </span>
     </ng-container>
     <!-- Normal Mods -->
-    <span class="detail-badge core" [title]="WeaponHelper.upgradeDescriptions[wd.core]" *ngIf="wd.core">
+    <span class="detail-badge core" [gwtTooltip]="getTooltipDescription(wd.core)" *ngIf="wd.core">
       {{ wd.core }}
     </span>
-    <span class="detail-badge mod prefix" [title]="WeaponHelper.upgradeDescriptions[wd.prefix]" *ngIf="wd.prefix">
+    <span class="detail-badge mod prefix" [gwtTooltip]="getTooltipDescription(wd.prefix)" *ngIf="wd.prefix">
       {{ wd.prefix }}
     </span>
-    <span class="detail-badge mod suffix" [title]="WeaponHelper.upgradeDescriptions[wd.suffix]" *ngIf="wd.suffix">
+    <span class="detail-badge mod suffix" [gwtTooltip]="getTooltipDescription(wd.suffix)" *ngIf="wd.suffix">
       {{ wd.suffix }}
     </span>
   </ng-container>

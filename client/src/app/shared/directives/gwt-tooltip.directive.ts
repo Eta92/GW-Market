@@ -11,6 +11,15 @@ export class GwtTooltipDirective implements AfterViewInit {
   @Input() gwtTooltipPosition: 'top' | 'bottom' | 'left' | 'right' = 'bottom';
   /** Show tooltip on click instead of hover (default: false) */
   @Input() gwtTooltipToggle: boolean = false;
+  /** Disable the tooltip */
+  @Input() set gwtTooltipDisabled(value: boolean) {
+    this._disabled = value;
+    if (value && GwtTooltipService.instance?.activeElement === this.host) {
+      GwtTooltipService.instance.hide();
+    }
+  }
+
+  private _disabled = false;
 
   /** CSS class applied when this element is actively showing a tooltip */
   @HostBinding('class.gwt-tooltip-active') get isActive(): boolean {
@@ -52,6 +61,7 @@ export class GwtTooltipDirective implements AfterViewInit {
 
   /** Called by the global service when mouse enters this element */
   handleMouseEnter(): void {
+    if (this._disabled) return; // Don't show if disabled
     if (this.gwtTooltipToggle) return; // click-only mode handled separately
     this.scheduleShow();
   }

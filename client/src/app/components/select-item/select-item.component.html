@@ -8,6 +8,7 @@
       type="text"
       [formControl]="searchControl"
       placeholder="Search items..."
+      (input)="onInputChange()"
       (keydown)="manualTargeting($event)"
       (click)="inputClick(); $event.stopPropagation()"
     />

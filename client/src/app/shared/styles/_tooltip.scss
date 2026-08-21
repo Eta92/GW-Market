@@ -27,9 +27,10 @@
   position: absolute;
   left: 50%;
   bottom: 100%;
-  width: 12px;
-  height: 6px;
-  margin-left: -6px;
+  width: 16px;
+  height: 8px;
+  margin-left: -8px;
+  z-index: 1;
 
   &::before,
   &::after {
@@ -41,10 +42,10 @@
   &::before {
     left: 0;
     top: 0;
-    width: 12px;
-    height: 6px;
+    width: 0;
+    height: 0;
     background: transparent;
-    border: 6px solid transparent;
+    border: 8px solid transparent;
     border-top-color: $gold-dark;
     border-bottom: 0;
     border-left: 0;
@@ -52,10 +53,10 @@
   }
 
   &::after {
-    left: 1px;
+    left: 2px;
     top: 2px;
-    width: 10px;
-    height: 4px;
+    width: 12px;
+    height: 6px;
     background: $obsidian !important;
     clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
   }
@@ -76,13 +77,13 @@
     0 4px 16px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba($gold, 0.1);
 
-  // Gold glow on hover area
+  // Gold glow on hover area - disabled to prevent visual interference with arrow
   &::before {
     content: '';
     position: absolute;
-    inset: -1px;
+    inset: 0;
     border-radius: inherit;
-    background: linear-gradient(45deg, transparent 60%, rgba($gold, 0.3) 100%);
+    background: transparent;
     pointer-events: none;
     z-index: -1;
   }
@@ -140,21 +141,24 @@
 
 // ---- Position Variants ----
 
-// Bottom position - arrow points down
+// Bottom position - arrow points up (toward element above tooltip)
 .gwt-tooltip[data-position='bottom'] {
   .gwt-tooltip-arrow {
-    top: 100%;
-    bottom: auto;
+    // Keep arrow at top of tooltip, pointing upward
+    bottom: 100%;
+    top: auto;
 
     &::before {
-      border-top-color: transparent;
-      border-bottom-color: $gold-dark;
-      top: auto;
-      bottom: 0;
+      // Arrow pointing up (default styling already correct)
+      border-top-color: $gold-dark;
+      border-bottom-color: transparent;
+      top: 0;
+      bottom: auto;
     }
 
     &::after {
-      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+      // Inner arrow pointing up
+      clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
     }
   }
 }

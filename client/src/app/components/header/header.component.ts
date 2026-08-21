@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   @Input() showSearch = true;
@@ -35,11 +35,12 @@ export class HeaderComponent implements OnInit {
   public unreadMessages = 0;
   public showOverlay = false;
   public changelogs: Array<ChangeLog> = [];
+  public isSearching = false;
 
   public readOption: 'all' | 'unread' = 'all';
   public readOptions: ToggleOption[] = [
     { value: 'all', label: 'All', icon: 'fa-envelope', styleClass: '' },
-    { value: 'unread', label: 'Unread', icon: 'fa-circle-exclamation', styleClass: '' }
+    { value: 'unread', label: 'Unread', icon: 'fa-circle-exclamation', styleClass: '' },
   ];
 
   public messageOption: 'all' | 'message' | 'reputation' | 'auction' = 'all';
@@ -47,7 +48,7 @@ export class HeaderComponent implements OnInit {
     { value: 'all', label: 'All', icon: 'fa-envelope', styleClass: '' },
     { value: 'message', label: 'DM', icon: 'fa-user', styleClass: '' },
     { value: 'reputation', label: 'Reputation', icon: 'fa-thumbs-up', styleClass: '' },
-    { value: 'auction', label: 'Auction', icon: 'fa-gavel', styleClass: '' }
+    { value: 'auction', label: 'Auction', icon: 'fa-gavel', styleClass: '' },
   ];
 
   constructor(
@@ -60,7 +61,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.shopService.getActiveShop().subscribe(shop => {
+    this.shopService.getActiveShop().subscribe((shop) => {
       this.shop = shop;
       if (this.shop && this.shop.lastRefresh && !this.timerActive) {
         this.bonus = UtilityHelper.bonusFromShop(this.shop);
@@ -68,32 +69,32 @@ export class HeaderComponent implements OnInit {
         this.refreshTimer();
       }
     });
-    this.messageService.getMessages().subscribe(messages => {
+    this.messageService.getMessages().subscribe((messages) => {
       this.messages = messages;
-      this.unreadMessages = messages.filter(message => !message.read).length;
+      this.unreadMessages = messages.filter((message) => !message.read).length;
       this.filterMessages();
       this.cdr.detectChanges();
     });
-    this.storeService.getOverlay().subscribe(overlay => {
+    this.storeService.getOverlay().subscribe((overlay) => {
       this.showOverlay = overlay;
       this.cdr.detectChanges();
     });
-    this.storeService.getChangeLogs().subscribe(changelogs => {
+    this.storeService.getChangeLogs().subscribe((changelogs) => {
       this.changelogs = changelogs;
       const lastlog = changelogs[0];
       const lastknownLog = localStorage.getItem('lastChangelog');
       if (lastlog && lastknownLog !== lastlog.date) {
-        this.toastrService.info(lastlog.features.map(f => '• ' + f).join('<br>'), 'Change log of the ' + lastlog.date, {
+        this.toastrService.info(lastlog.features.map((f) => '• ' + f).join('<br>'), 'Change log of the ' + lastlog.date, {
           timeOut: 60000,
           closeButton: true,
           enableHtml: true,
-          positionClass: 'toast-bottom-right'
+          positionClass: 'toast-bottom-right',
         });
         if (lastlog.warning) {
           this.toastrService.warning(lastlog.warning, 'Warning', {
             timeOut: 60000,
             closeButton: true,
-            positionClass: 'toast-bottom-right'
+            positionClass: 'toast-bottom-right',
           });
         }
         localStorage.setItem('lastChangelog', lastlog.date);
@@ -140,6 +141,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/shop/showcase'], { queryParams: { public: shop } });
   }
 
+  onSearchTyping(isTyping: boolean): void {
+    this.isSearching = isTyping;
+  }
+
   // order
 
   onPlaceOrder(): void {
@@ -162,6 +167,10 @@ export class HeaderComponent implements OnInit {
   // shop widget
 
   refreshShop(): void {
+    if (this.shop && Date.now() - this.shop.lastRefresh < 60 * 1000) {
+      this.toastrService.warning('Refreshing more than once a minute is a bit rude', 'Please be gentle with the server');
+      return;
+    }
     this.shopService.enableShop();
   }
 
@@ -201,7 +210,7 @@ export class HeaderComponent implements OnInit {
   private filterMessages(): void {
     this.filteredMessages = this.messages
       .sort((a, b) => b.time - a.time)
-      .filter(message => {
+      .filter((message) => {
         if (this.readOption === 'unread' && message.read) {
           return false;
         }
@@ -217,7 +226,7 @@ export class HeaderComponent implements OnInit {
             MessageType.NEGOTIATE,
             MessageType.NEGOTIATE_ACCEPT,
             MessageType.NEGOTIATE_REFUSE,
-            MessageType.NEGOTIATE_COUNTER
+            MessageType.NEGOTIATE_COUNTER,
           ].includes(message.type)
         ) {
           return false;
@@ -235,7 +244,7 @@ export class HeaderComponent implements OnInit {
             MessageType.AUCTION_LOST,
             MessageType.AUCTION_OUTBID,
             MessageType.AUCTION_END,
-            MessageType.AUCTION_FAIL
+            MessageType.AUCTION_FAIL,
           ].includes(message.type)
         ) {
           return false;

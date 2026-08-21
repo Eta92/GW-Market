@@ -8,7 +8,7 @@ import { ItemService } from '@app/services/item.service';
   selector: 'app-item-details',
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemDetailsComponent implements OnChanges {
   @Input() item: DetailItem;
@@ -29,10 +29,6 @@ export class ItemDetailsComponent implements OnChanges {
     if ((changes.item && this.item) || (changes.details && this.details) || (changes.center && this.center)) {
       this.cdr.detectChanges();
     }
-  }
-
-  exoticModDescription(name: string): string {
-    return this.itemService.getExoticUpgradeDescription(name);
   }
 
   get shopItem(): ShopItem | null {
@@ -61,5 +57,9 @@ export class ItemDetailsComponent implements OnChanges {
     if (this.shopItem?.orderDetails?.notMax) return true;
 
     return false;
+  }
+
+  getTooltipDescription(itemName: string): string {
+    return WeaponHelper.upgradeDescriptions[itemName] || '';
   }
 }

@@ -859,7 +859,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   reputationVote(vote: 'positive' | 'negative'): void {
     if (this.shopVote() === vote) {
       if (this.voteWarning) {
-        this.shopService.submitReputationVote(this.shop.player, vote);
+        this.shopService.submitReputationVote(this.shop.player, vote, true);
         this.voteWarning = false;
       } else {
         this.toastrService.warning(`Click again to remove your ${vote} vote for this shop`, 'Reputation removal initiated');

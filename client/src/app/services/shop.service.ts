@@ -44,7 +44,7 @@ export class ShopService {
     private socket: Socket,
     private router: Router
   ) {
-    this.utilService.getReady().subscribe(ready => {
+    this.utilService.getReady().subscribe((ready) => {
       if (ready && !this.init) {
         console.log('shop init');
         this.init = true;
@@ -79,7 +79,7 @@ export class ShopService {
           (a, b) =>
             (Date.now() - b.lastRefresh < this.TIME_WEEK ? 1 : 0) - (Date.now() - a.lastRefresh < this.TIME_WEEK ? 1 : 0) ||
             b.points - a.points
-        )
+        ),
         // [{
         //     name: 'test recruit',
         //     shopId: 'fkljhfer',
@@ -99,13 +99,13 @@ export class ShopService {
         //     lastRefresh: Date.now() - this.TIME_WEEK * 2
         //   }]
       };
-      activeShop.items.forEach(item => {
+      activeShop.items.forEach((item) => {
         item.item = this.itemService.getItemBase(item.name);
       });
       this.activeShopSubject.set(activeShop);
       this.saveShop();
       this.toastrService.success('', 'Shop updated completed', {
-        timeOut: 10000
+        timeOut: 10000,
       });
       this.daybreakStart();
     });
@@ -113,18 +113,18 @@ export class ShopService {
       this.activePlayer.set(player);
     });
     this.socket.on('PersonalAuctions', (auctions: Array<Auction>) => {
-      auctions.forEach(auction => {
+      auctions.forEach((auction) => {
         auction.item.item = this.itemService?.getItemBase(auction.item.name);
       });
       this.personalAuctionsSubject.set(auctions);
     });
     // rest of init
-    this.itemService.getReady().subscribe(ready => {
+    this.itemService.getReady().subscribe((ready) => {
       // load shop from cache
       const shopString = localStorage.getItem('personalShop');
       if (shopString) {
         const shop = JSON.parse(shopString) as Shop;
-        shop.items.forEach(item => {
+        shop.items.forEach((item) => {
           item.item = this.itemService.getItemBase(item.name);
         });
         this.activeShopSubject.set(shop);
@@ -136,14 +136,14 @@ export class ShopService {
       } else {
         const shop: Shop = {
           player: 'GWTrader',
-          items: []
+          items: [],
         };
         this.activeShopSubject.set(shop);
       }
       // refresh public shop item
       const publicShop = this.publicShopSubject.value;
       if (publicShop) {
-        publicShop.items.forEach(item => {
+        publicShop.items.forEach((item) => {
           item.item = this.itemService.getItemBase(item.name);
         });
         this.publicShopSubject.set(publicShop);
@@ -151,7 +151,7 @@ export class ShopService {
     });
     this.socket.on('GetPublicShop', (shop: Shop) => {
       const publicShop = { ...shop };
-      publicShop.items.forEach(item => {
+      publicShop.items.forEach((item) => {
         item.item = this.itemService.getItemBase(item.name);
       });
       this.publicShopSubject.set(publicShop);
@@ -167,7 +167,7 @@ export class ShopService {
     activeShop.items.push(item);
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your new item will be visible for customers on next shop update', 'Item added to your shop', {
-      timeOut: 10000
+      timeOut: 10000,
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -178,7 +178,7 @@ export class ShopService {
     activeShop.items[index] = item;
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Item updated', {
-      timeOut: 10000
+      timeOut: 10000,
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -189,7 +189,7 @@ export class ShopService {
     activeShop.items = activeShop.items.map((item, index) => ({ ...item, ...items[index] }));
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
-      timeOut: 10000
+      timeOut: 10000,
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -200,7 +200,7 @@ export class ShopService {
     activeShop.items = [...activeShop.items, ...items];
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
-      timeOut: 10000
+      timeOut: 10000,
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -211,7 +211,7 @@ export class ShopService {
     activeShop.items.splice(index, 1);
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('The item will be cleared from item lists on next shop update', 'Item removed from the shop', {
-      timeOut: 10000
+      timeOut: 10000,
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -223,14 +223,14 @@ export class ShopService {
     activeShop.items[index] = {
       ...targetItem,
       quantity: targetItem.quantity - 1,
-      prices: targetItem.prices.map(price => ({
+      prices: targetItem.prices.map((price) => ({
         ...price,
-        price: price.unit * (targetItem.quantity - 1)
-      }))
+        price: price.unit * (targetItem.quantity - 1),
+      })),
     };
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('The item will be cleared from item lists on next shop update', 'Item amount reduced from the shop', {
-      timeOut: 10000
+      timeOut: 10000,
     });
     this.pendingChangesSubject.set(++this.pendingChanges);
     this.saveShop();
@@ -244,7 +244,7 @@ export class ShopService {
       'Customer will be able to contact you ingame via this character on next shop update',
       'Shop player updated',
       {
-        timeOut: 10000
+        timeOut: 10000,
       }
     );
     this.pendingChangesSubject.set(++this.pendingChanges);
@@ -258,14 +258,14 @@ export class ShopService {
 
   exportShop(): void {
     const copyShop = UtilityHelper.copy(this.activeShopSubject.value);
-    copyShop.items.forEach(item => {
+    copyShop.items.forEach((item) => {
       delete item.item;
       delete item.completed;
       delete item.removed;
       delete item.single;
     });
     // stupid hotfix cause of name inside items
-    copyShop.items = copyShop.items.filter(item => typeof item !== 'string' && item.name);
+    copyShop.items = copyShop.items.filter((item) => typeof item !== 'string' && item.name);
     const jsonContent = JSON.stringify(copyShop);
     const startDate = DateTime.now();
     const newBlob = new Blob([jsonContent], { type: 'text/json;charset=utf-8;' });
@@ -294,7 +294,7 @@ export class ShopService {
     this.pendingChangesSubject.set(this.pendingChanges);
     const activeShop = UtilityHelper.copy(this.activeShopSubject.value);
     activeShop.daybreakOnline = this.daybreakOnline;
-    activeShop.items.forEach(item => {
+    activeShop.items.forEach((item) => {
       this.assignAttribute(item);
       delete item.item;
       delete item.completed;
@@ -325,15 +325,15 @@ export class ShopService {
     this.socket.emit('closeShop', activeShop.uuid);
   }
 
-  submitReputationVote(target: string, vote: 'positive' | 'negative'): void {
+  submitReputationVote(target: string, vote: 'positive' | 'negative', bypass = false): void {
     const activeShop = this.activeShopSubject.value;
     if (activeShop?.uuid && activeShop?.certified?.length > 0) {
-      if (vote === 'positive') {
+      if (vote === 'positive' || bypass) {
         this.socket.emit('submitReputationVote', {
           shop: activeShop.uuid,
           target: target,
           type: vote,
-          reason: ReputationReason.NONE
+          reason: ReputationReason.NONE,
         });
       } else {
         this.modalService
@@ -345,14 +345,14 @@ export class ShopService {
                 shop: activeShop.uuid,
                 target: target,
                 type: vote,
-                reason: res
+                reason: res,
               });
             }
           });
       }
     } else {
       this.toastrService.error('You need to have an active shop with certified characters to submit reputation votes.', '', {
-        timeOut: 15000
+        timeOut: 15000,
       });
     }
   }
@@ -373,7 +373,7 @@ export class ShopService {
         currency: item.prices[0].type,
         startingPrice: item.prices[0].price,
         buyoutPrice: item.prices[0].max,
-        endTime: new Date(item.endTime).getTime()
+        endTime: new Date(item.endTime).getTime(),
       } as Auction;
       this.socket.emit('createAuction', activeShop.uuid, auction);
     }
@@ -386,12 +386,12 @@ export class ShopService {
         this.socket.emit('bidAuction', { bidder: activeShop.uuid, auctionId: auction.uuid, amount });
       } else {
         this.toastrService.error('You must have a certified character to place bids', 'Shop Not Certified', {
-          timeOut: 10000
+          timeOut: 10000,
         });
       }
     } else {
       this.toastrService.error('You must have a working shop before placing bids', 'Shop Not Ready', {
-        timeOut: 10000
+        timeOut: 10000,
       });
     }
   }
@@ -459,7 +459,7 @@ export class ShopService {
     }
     this.daybreakLinked = true;
     this.http.get('http://localhost:5080/api/v1/rest/character-select').subscribe({
-      next: data => {
+      next: (data) => {
         const currentName = (data as any)?.currentCharacter?.name;
         if (currentName) {
           this.daybreakOnline = true;
@@ -478,11 +478,11 @@ export class ShopService {
           }
         }
       },
-      error: error => {
+      error: (error) => {
         this.daybreakOnline = false;
         console.log('failed to connect to daybreak api');
         this.daybreakMaxTry--;
-      }
+      },
     });
     if (this.daybreakMaxTry > 0) {
       setTimeout(() => {
@@ -494,7 +494,7 @@ export class ShopService {
   }
 
   private buildItemFromName(name: string, item: any): DaybreakItem {
-    const requirement = item.properties?.find(p => p.propertyType === 'Requirement');
+    const requirement = item.properties?.find((p) => p.propertyType === 'Requirement');
     return {
       name: name,
       quantity: item?.quantity || 0,
@@ -502,7 +502,7 @@ export class ShopService {
       requirement: requirement?.requirement || null,
       inscription: item?.inscribable || false,
       oldSchool: item ? !item.inscribable : false,
-      goldPrice: item?.value || null
+      goldPrice: item?.value || null,
     };
   }
 
@@ -510,11 +510,11 @@ export class ShopService {
     const prom = new Promise<Array<DaybreakItem>>((resolve, reject) => {
       const items = [];
       this.http.get('http://localhost:5080/api/v1/rest/inventory').subscribe({
-        next: data => {
+        next: (data) => {
           const allBags = (data as any)?.bags || [];
-          allBags.forEach(bag => {
+          allBags.forEach((bag) => {
             if ((bag?.bagType === 'Storage' && mode === 'stash') || (bag?.bagType === 'Inventory' && mode === 'inventory')) {
-              bag.items?.forEach(item => {
+              bag.items?.forEach((item) => {
                 const completeName = item?.decodedSingleName || item?.decodedCompleteName || item?.decodedName || '';
                 const parsedName =
                   completeName
@@ -535,7 +535,7 @@ export class ShopService {
 
           const groupedItems = items.reduce((acc, item) => {
             const existing = acc.find(
-              i =>
+              (i) =>
                 i.name === item.name &&
                 i.attribute === item.attribute &&
                 i.requirement === item.requirement &&
@@ -549,21 +549,21 @@ export class ShopService {
             return acc;
           }, [] as Array<DaybreakItem>);
           this.toastrService.success('Successfully fetched items from Daybreak API', 'Daybreak items loaded', {
-            timeOut: 10000
+            timeOut: 10000,
           });
           resolve(groupedItems);
         },
-        error: error => {
+        error: (error) => {
           console.log('failed to connect to daybreak api', error);
           this.toastrService.error(
             'Make sure your Daybreak Launcher is running and you have the API enabled.',
             'Failed to connect to Daybreak API.',
             {
-              timeOut: 15000
+              timeOut: 15000,
             }
           );
           reject(error);
-        }
+        },
       });
     });
     return prom;

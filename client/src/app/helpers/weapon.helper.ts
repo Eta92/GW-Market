@@ -6,7 +6,7 @@ const MARTIAL_INSCRIPTIONS = ['All weapon types Inscriptions', 'Martial weapons 
 const SPELLCASTING_INSCRIPTIONS = [
   'All weapon types Inscriptions',
   'Spellcasting weapons Inscriptions',
-  'All equippable items Inscriptions'
+  'All equippable items Inscriptions',
 ];
 const FOCUS_INSCRIPTIONS = ['Focus items or shields Inscriptions', 'Focus items Inscriptions', 'All equippable items Inscriptions'];
 const SHIELD_INSCRIPTIONS = ['Focus items or shields Inscriptions', 'All equippable items Inscriptions'];
@@ -23,7 +23,7 @@ const WEAPON_UPGRADE_CONFIG: Record<string, { core: string[]; prefix: string | n
   'Rare Staves': { core: SPELLCASTING_INSCRIPTIONS, prefix: 'Staff Head', suffix: 'Staff Wrapping' },
   'Rare Wands': { core: SPELLCASTING_INSCRIPTIONS, prefix: null, suffix: 'Wand Wrapping' },
   'Rare Focus Items': { core: FOCUS_INSCRIPTIONS, prefix: null, suffix: 'Focus Core' },
-  'Rare Shields': { core: SHIELD_INSCRIPTIONS, prefix: null, suffix: 'Shield Handle' }
+  'Rare Shields': { core: SHIELD_INSCRIPTIONS, prefix: null, suffix: 'Shield Handle' },
 };
 
 const ALL_UPGRADES = Object.values(WEAPON_UPGRADE_CONFIG).reduce(
@@ -63,12 +63,11 @@ export class WeaponHelper {
     return false;
   }
 
-  static loadUpgradeDescriptions(upgradeFamily: { [key: string]: Array<BasicItem> }): void {
-    for (const category in upgradeFamily) {
-      for (const item of upgradeFamily[category]) {
-        WeaponHelper.upgradeDescriptions[item.name] = item.enhancement + (item.condition ? ` ${item.condition}` : '');
-      }
+  static loadUpgradeDescriptions(upgradeFamily: Array<BasicItem>): void {
+    for (const item of upgradeFamily) {
+      WeaponHelper.upgradeDescriptions[item.name] = item.enhancement + (item.condition ? ` (${item.condition})` : '');
     }
+    console.log('Loaded upgrade descriptions:', WeaponHelper.upgradeDescriptions);
   }
 
   /**
@@ -97,10 +96,10 @@ export class WeaponHelper {
     }
 
     const getItemNames = (categoryName: string): Array<Upgrade> =>
-      upgradeFamily[categoryName]?.map(i => ({
+      upgradeFamily[categoryName]?.map((i) => ({
         value: i.name,
         description: i.enhancement + (i.condition ? ` ${i.condition}` : ''),
-        img: i.img
+        img: i.img,
       })) || [];
 
     const config = WEAPON_UPGRADE_CONFIG[category];
@@ -108,13 +107,13 @@ export class WeaponHelper {
       return {
         core: ALL_UPGRADES.core.flatMap(getItemNames),
         prefix: ALL_UPGRADES.prefix.flatMap(getItemNames),
-        suffix: ALL_UPGRADES.suffix.flatMap(getItemNames)
+        suffix: ALL_UPGRADES.suffix.flatMap(getItemNames),
       };
     } else {
       return {
         core: config.core.flatMap(getItemNames),
         prefix: config.prefix ? getItemNames(config.prefix) : [],
-        suffix: getItemNames(config.suffix)
+        suffix: getItemNames(config.suffix),
       };
     }
   }

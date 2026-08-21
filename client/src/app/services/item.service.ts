@@ -40,7 +40,7 @@ export class ItemService {
     private toastrService: ToastrService,
     private socket: Socket
   ) {
-    this.utilService.getReady().subscribe(ready => {
+    this.utilService.getReady().subscribe((ready) => {
       if (ready && !this.init) {
         console.log('item init');
         this.init = true;
@@ -51,12 +51,12 @@ export class ItemService {
 
   itemInit(): void {
     // json
-    this.http.get(this.itemJsonUrl).subscribe(data => {
+    this.http.get(this.itemJsonUrl).subscribe((data) => {
       this.itemJsonData = data as AvailableTree;
       this.loadAvailableTree();
     });
     // sockets
-    this.socket.on('GetAvailableOrders', data => {
+    this.socket.on('GetAvailableOrders', (data) => {
       this.availableOrders = data;
       this.loadAvailableTree();
     });
@@ -66,7 +66,7 @@ export class ItemService {
 
   loadInheritance(category: AvailableCategory, family: AvailableFamily): Array<string> {
     if (category.inherit) {
-      const inherited = family.categories.find(c => c.name === category.inherit);
+      const inherited = family.categories.find((c) => c.name === category.inherit);
       if (inherited) {
         const total = [category.inherit, ...this.loadInheritance(inherited, family)];
         this.upgradeInheritance[category.name] = total;
@@ -79,7 +79,7 @@ export class ItemService {
   loadRevertedInheritance(): void {
     for (const category in this.upgradeInheritance) {
       const parents = this.upgradeInheritance[category];
-      parents.forEach(parent => {
+      parents.forEach((parent) => {
         if (!this.revertedInheritance[parent]) {
           this.revertedInheritance[parent] = [];
         }
@@ -92,20 +92,26 @@ export class ItemService {
     if (this.itemJsonData) {
       this.itemUpgrades = {};
       const activeTree = UtilityHelper.copy(this.itemJsonData) as AvailableTree;
-      activeTree.families.forEach(family => {
-        family.categories.forEach(category => {
+      activeTree.families.forEach((family) => {
+        if (family.name === 'upgrade') {
+          const flatUpgrades = family.categories.reduce((acc, category) => {
+            return acc.concat(category.items);
+          }, []);
+          WeaponHelper.loadUpgradeDescriptions(flatUpgrades);
+        }
+        family.categories.forEach((category) => {
           this.loadInheritance(category, family);
           this.itemNameBase[category.name] = {
             name: category.name,
             category: category.name,
             family: family.name,
-            img: '../../../assets/items/' + family.name + '/' + category.name.replace(/ /g, '_') + '.png'
+            img: '../../../assets/items/' + family.name + '/' + category.name.replace(/ /g, '_') + '.png',
           };
-          category.items.forEach(item => {
+          category.items.forEach((item) => {
             const builtItem: any = {
-              name: item.name
+              name: item.name,
             };
-            Object.keys(ItemDetailMap).forEach(key => {
+            Object.keys(ItemDetailMap).forEach((key) => {
               if (item[key]) {
                 builtItem[key] = item[key];
               }
@@ -115,7 +121,6 @@ export class ItemService {
               : '../../../assets/items/' + family.name + '/' + item.name.replace(/ /g, '_') + '.png';
             this.itemNameBase[item.name] = builtItem as BasicItem;
             if (family.name === 'upgrade') {
-              WeaponHelper.upgradeDescriptions[item.name] = item.enhancement + (item.condition ? ` ${item.condition}` : '');
               if (!this.itemUpgrades[category.name]) {
                 this.itemUpgrades[category.name] = [];
               }
@@ -144,7 +149,7 @@ export class ItemService {
               item.auctionWeek = 0;
             }
           });
-          category.items = category.items.filter(i => !i.hidden);
+          category.items = category.items.filter((i) => !i.hidden);
           category.sellNow = category.items.reduce((sum, i) => sum + (i.sellNow || 0), 0);
           category.buyNow = category.items.reduce((sum, i) => sum + (i.buyNow || 0), 0);
           category.auctionNow = category.items.reduce((sum, i) => sum + (i.auctionNow || 0), 0);
@@ -167,7 +172,7 @@ export class ItemService {
                   name: iconName,
                   category: category.name,
                   family: family.name,
-                  img: '../../../assets/items/' + family.name + '/' + iconName + '.png'
+                  img: '../../../assets/items/' + family.name + '/' + iconName + '.png',
                 };
               }
               category.previews.push(iconName);
@@ -202,15 +207,17 @@ export class ItemService {
           }
         }
       });
-      activeTree.exoticUpgrades.forEach(upgrade => {
+      const upgradeArray = activeTree.exoticUpgrades.flatMap((upgrade) => upgrade);
+      WeaponHelper.loadUpgradeDescriptions(upgradeArray);
+      activeTree.exoticUpgrades.forEach((upgrade) => {
         this.exoticUpgrades[upgrade.name] = upgrade;
       });
       this.loadRevertedInheritance();
-      activeTree.families.forEach(family => {
-        family.categories.forEach(category => {
+      activeTree.families.forEach((family) => {
+        family.categories.forEach((category) => {
           const inheritances = this.upgradeInheritance[category.name] || [];
-          inheritances.forEach(inherit => {
-            const inheritedCategory = family.categories.find(c => c.name === inherit);
+          inheritances.forEach((inherit) => {
+            const inheritedCategory = family.categories.find((c) => c.name === inherit);
             if (inheritedCategory) {
               if (!category.inheritedItems) {
                 category.inheritedItems = [];
@@ -248,12 +255,6 @@ export class ItemService {
 
   getExoticUpgrades(): Observable<Array<BasicItem>> {
     return this.exoticUpgradeSubject.asObservable().pipe(debounceTime(0));
-  }
-
-  getExoticUpgradeDescription(name: string): string {
-    const u = this.exoticUpgrades[name];
-    if (!u) return name;
-    return [u.enhancement, u.condition].filter(Boolean).join(' / ');
   }
 
   resetItemWarnings(): void {

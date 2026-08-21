@@ -33,6 +33,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
 
   @Output() selectItem = new EventEmitter<BasicItem>();
   @Output() selectShop = new EventEmitter<string>();
+  @Output() typing = new EventEmitter<boolean>();
 
   public searchControl: UntypedFormControl = new UntypedFormControl('');
   public searchedItems: Array<BasicItem> = [];
@@ -78,6 +79,7 @@ export class SelectItemComponent implements OnInit, OnDestroy {
     });
 
     this.inputChange = this.searchControl.valueChanges.pipe(debounceTime(300)).subscribe((value: string) => {
+      this.typing.emit(value.length > 0);
       if (value.length > 2) {
         this.updatePanelState(true);
         this.manualTarget = 0;
@@ -147,6 +149,10 @@ export class SelectItemComponent implements OnInit, OnDestroy {
     if (this.searchedItems.length > 0) {
       this.updatePanelState(true);
     }
+  }
+
+  onInputChange(): void {
+    this.typing.emit(this.searchControl.value.length > 0);
   }
 
   onClick(item: BasicItem): void {
