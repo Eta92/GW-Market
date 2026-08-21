@@ -708,6 +708,38 @@
         "name": "Miniature Undead Prince",
         "stats": [],
         "img": "Miniature Prince Rurik"
+      },
+      {
+        "name": "Miniature Forest Griffon",
+        "stats": []
+      },
+      {
+        "name": "Miniature Wailing Lord",
+        "stats": []
+      },
+      {
+        "name": "Miniature Forgemaster",
+        "stats": []
+      },
+      {
+        "name": "Miniature Kazhad Dhuum",
+        "stats": [],
+        "img": "Miniature Madruk Dhuum"
+      },
+      {
+        "name": "Miniature Ghozer Dhuum",
+        "stats": [],
+        "img": "Miniature Madruk Dhuum"
+      },
+      {
+        "name": "Miniature Madruk Dhuum",
+        "stats": [],
+        "img": "Miniature Madruk Dhuum"
+      },
+      {
+        "name": "Miniature Thul Za Dhuum",
+        "stats": [],
+        "img": "Miniature Madruk Dhuum"
       }
     ]
   }

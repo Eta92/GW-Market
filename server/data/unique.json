@@ -48,16 +48,12 @@
       {
         "name": "Chor's Axe",
         "boss": true,
-        "stats": [
-          "Earth Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Earth Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Conviction (weapon)",
         "special": true,
-        "stats": [
-          "Lightning Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"
-        ]
+        "stats": ["Lightning Dmg: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
       },
       {
         "name": "Deldrimor Axe (unique)",
@@ -109,6 +105,11 @@
         ]
       },
       {
+        "name": "Little John",
+        "chest": true,
+        "stats": ["Chaos damage: 6-28 (Requires 9 Axe Mastery)\nEnchantments last 20% longer\nEnergy +5"]
+      },
+      {
         "name": "Mallyx's Reaver",
         "chest": true,
         "stats": [
@@ -119,9 +120,7 @@
         "name": "Morrob's Axe",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Cold Dmg: 7-20 (Requires 5 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +20"
-        ]
+        "stats": ["Cold Dmg: 7-20 (Requires 5 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +20"]
       },
       {
         "name": "Murakai's Reaver",
@@ -154,9 +153,7 @@
       {
         "name": "Shons' Reaver",
         "boss": true,
-        "stats": [
-          "Fire damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Fire damage: 6-28 (Requires 9 Axe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Tanzit's Cleaver",
@@ -384,9 +381,7 @@
       {
         "name": "Imperial Dragon Dagger",
         "endgame": true,
-        "stats": [
-          "Fire damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"
-        ]
+        "stats": ["Fire damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
       },
       {
         "name": "Jarimiya's Daggers",
@@ -419,9 +414,7 @@
       {
         "name": "Law and Order",
         "special": true,
-        "stats": [
-          "Cold damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"
-        ]
+        "stats": ["Cold damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
       },
       {
         "name": "Lou's Karambits",
@@ -447,9 +440,7 @@
       {
         "name": "Nihil's Daggers",
         "special": true,
-        "stats": [
-          "Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nEnergy +5\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Slashing damage: 7-17 (Requires 9 Dagger Mastery)\nEnergy +5\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Onata's Shards",
@@ -532,9 +523,7 @@
       {
         "name": "Ssaresh's Kris Daggers",
         "boss": true,
-        "stats": [
-          "Lightning damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (vs. Hexed foes)\nHealth +30"
-        ]
+        "stats": ["Lightning damage: 7-17 (Requires 9 Dagger Mastery)\nDamage +15% (vs. Hexed foes)\nHealth +30"]
       },
       {
         "name": "Stygian Daggers",
@@ -588,30 +577,22 @@
       {
         "name": "Ajamahn's Artifact",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance 10%)\nHealth +30"]
       },
       {
         "name": "Alitta's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Illusion Magic)\nHalves skill recharge of Illusion Magic spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Illusion Magic)\nHalves skill recharge of Illusion Magic spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Amiresh's Piety",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Protection Prayers)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Protection Prayers)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Antiquated Focus",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Armind's Focus",
@@ -623,16 +604,12 @@
       {
         "name": "Bauer's Intimidation",
         "endgame": true,
-        "stats": [
-          "Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (Chance: 20% while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (Chance: 20% while using skills)\nHealth +30"]
       },
       {
         "name": "Beacon of the Unseen",
         "endgame": true,
-        "stats": [
-          "Energy +12 (Requires 9 Channeling Magic)\nArmor +5 (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nArmor +5 (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Bizzr's Fury",
@@ -658,30 +635,22 @@
       {
         "name": "Bosun's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Water Magic)\nArmor +10 (vs. Cold damage)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nArmor +10 (vs. Cold damage)\nHealth +30"]
       },
       {
         "name": "Buhon's Prism",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Byzzr's Benediction",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Chan's Greed",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Chichor's Conundrum",
@@ -700,16 +669,12 @@
       {
         "name": "Cho's Vice",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Spawning Power)\nHealth +45 (while Enchanted)\nEnergy +15\nEnergy regeneration -1"
-        ]
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nHealth +45 (while Enchanted)\nEnergy +15\nEnergy regeneration -1"]
       },
       {
         "name": "Chung's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy regeneration -1\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy regeneration -1\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Claw of the Whispered",
@@ -721,16 +686,12 @@
       {
         "name": "Crystal Focus",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nHalves skill recharge of Water Magic spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Cyndr's Heart",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fire Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fire Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Deeproot's Sorrow",
@@ -742,24 +703,18 @@
       {
         "name": "Deldrimor Focus (unique)",
         "endgame": true,
-        "stats": [
-          "Energy +12 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Demented Artifact",
         "boss": true,
         "endgame": true,
-        "stats": [
-          "Energy +12 (Requires 9 Illusion Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Illusion Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Destructive Focus",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Curses)\nHalves skill recharge of Curses spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Curses)\nHalves skill recharge of Curses spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Droajam's Storm",
@@ -785,17 +740,13 @@
       {
         "name": "Fendi's Focus",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Death Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Feng's Focus",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Energy +7 (Requires 4 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +10"
-        ]
+        "stats": ["Energy +7 (Requires 4 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +10"]
       },
       {
         "name": "Flint's Artifact",
@@ -807,58 +758,42 @@
       {
         "name": "Focus of the Hierophant",
         "chest": true,
-        "stats": [
-          "Energy +12 (requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Focus of the Master",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of Soul Reaping spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of Soul Reaping spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Fondalz's Artifact",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Curses)\nCurses +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Curses)\nCurses +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Forgotten Fan",
         "special": true,
-        "stats": [
-          "Energy +12 (Requires 9 Illusion Magic)\nArmor +5\nEnergy -5\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Illusion Magic)\nArmor +5\nEnergy -5\nHealth +30"]
       },
       {
         "name": "Foulfist's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Death Magic)\nReduces Disease duration on you by 20% (Stacking)\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nReduces Disease duration on you by 20% (Stacking)\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Frozen Fan",
         "special": true,
-        "stats": [
-          "Energy +12 (Requires 9 Curses)\nArmor +5\nEnergy -5\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Curses)\nArmor +5\nEnergy -5\nHealth +30"]
       },
       {
         "name": "Galigord's Stone Scroll",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Earth Magic)\nEarth Magic +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Earth Magic)\nEarth Magic +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Ganshu's Record",
         "box": true,
-        "stats": [
-          "Energy +12 (Requires 9 Protection Prayers)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Protection Prayers)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"]
       },
       {
         "name": "Garbok's Chalice",
@@ -870,16 +805,12 @@
       {
         "name": "Gloomy Artifact",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Gloop's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Air Magic)\nHalves skill recharge of Air Magic spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Air Magic)\nHalves skill recharge of Air Magic spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Gordac's Hook Blood",
@@ -891,16 +822,12 @@
       {
         "name": "Gwen's Flute (unique)",
         "quest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Hajok's Prism",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Earth Magic)\nHalves skill recharge of Earth Magic spells (chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Earth Magic)\nHalves skill recharge of Earth Magic spells (chance: 20%)\nHealth +30"]
       },
       {
         "name": "Hamlen's Artifact",
@@ -919,37 +846,27 @@
       {
         "name": "Harmony",
         "special": true,
-        "stats": [
-          "Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Hautoh's Ambition",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Channeling Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Heart of the Kinslayer",
         "chest": true,
-        "stats": [
-          "Energy +12 (requires 9 Divine Favor)\nHalves skill recharge of Divine Favor spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (requires 9 Divine Favor)\nHalves skill recharge of Divine Favor spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Illyana's Mirror",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fast Casting)\nReduces Deep Wound duration on you by 20% (Stacking)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nReduces Deep Wound duration on you by 20% (Stacking)\nHealth +30"]
       },
       {
         "name": "Ilsundur's Focus",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Imperial Dragon Focus",
@@ -961,9 +878,7 @@
       {
         "name": "Incetol's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Healing Prayers)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Healing Prayers)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Ivor's Icon",
@@ -975,9 +890,7 @@
       {
         "name": "Jedeh's Artifact",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Communing)\nCommuning +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Communing)\nCommuning +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Joffs' Focus",
@@ -989,24 +902,18 @@
       {
         "name": "Josinq's Whisper",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Divine Favor)\nReduces Dazed duration on you by 20% (stacking)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nReduces Dazed duration on you by 20% (stacking)\nHealth +30"]
       },
       {
         "name": "Kalwameh's Focus",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Energy +6 (Requires 3 Healing Prayers)\nHealing Prayers +1 (Chance: 20%)\nHealth +15"
-        ]
+        "stats": ["Energy +6 (Requires 3 Healing Prayers)\nHealing Prayers +1 (Chance: 20%)\nHealth +15"]
       },
       {
         "name": "Kayin's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Channeling Magic)\nChanneling Magic +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nChanneling Magic +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Kaykitt's Focus",
@@ -1025,44 +932,32 @@
       {
         "name": "Kole's Gauntlet",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Soul Reaping)\nReduces Poison duration on you by 20%\nHealth + 30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nReduces Poison duration on you by 20%\nHealth + 30"]
       },
       {
         "name": "Konrru's Fervor",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (20% chance while using skills)\nEnergy +15\nEnergy regeneration -1"
-        ]
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nDeath Magic +1 (20% chance while using skills)\nEnergy +15\nEnergy regeneration -1"]
       },
       {
         "name": "Kormab's Prism",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fire Magic)\nHalves skill recharge of Fire Magic spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fire Magic)\nHalves skill recharge of Fire Magic spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Korr's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fire Magic)\nFire Magic +1 (Chance: 20%)\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fire Magic)\nFire Magic +1 (Chance: 20%)\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Korrub's Vision",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Domination Magic)\nDomination Magic +1 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Domination Magic)\nDomination Magic +1 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Korvald's Chakram",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Domination Magic)\nDomination Magic +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Domination Magic)\nDomination Magic +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Kurg's Focus",
@@ -1081,108 +976,78 @@
       {
         "name": "Lian's Lantern",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fire Magic)\nFire Magic +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fire Magic)\nFire Magic +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Lushivahr's Prism",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Air Magic)\nHalves skill recharge of Air Magic spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Air Magic)\nHalves skill recharge of Air Magic spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Makdeh's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Creation",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Divinity",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nHalves skill recharge of spells (10%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Inspiration",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Perpetuity",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Spite",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Marobeh's Chill",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Death Magic)\nReduces Dazed duration on you by 20%\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Death Magic)\nReduces Dazed duration on you by 20%\nHealth +30"]
       },
       {
         "name": "Mekir's Prism",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of Energy Storage spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of Energy Storage spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Miella's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Protection Prayers)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Protection Prayers)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Milius' Eye",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nReduces Dazed duration on you by 20% (Stacking)\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nReduces Dazed duration on you by 20% (Stacking)\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Modoss' Focus",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Energy +6 (Requires 3 Energy Storage)\nEnergy +12\nEnergy regeneration -1\nHealth +20"
-        ]
+        "stats": ["Energy +6 (Requires 3 Energy Storage)\nEnergy +12\nEnergy regeneration -1\nHealth +20"]
       },
       {
         "name": "Mohby's Artifact",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fast Casting)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Nehjab's Thirst",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Spawning Power)\nSpawning Power +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nSpawning Power +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Nehpek's Focus",
@@ -1194,72 +1059,52 @@
       {
         "name": "Neoli's Contagion",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Inspiration Magic)\nInspiration Magic +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nInspiration Magic +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Noss' Artifact",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Divine Favor)\nDivine Favor + 1 (20% chance while using skills)\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nDivine Favor + 1 (20% chance while using skills)\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Olunoss' Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fast Casting)\nFast Casting +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nFast Casting +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Oola's Focus",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Restoration Magic)\nHalves skill recharge of Restoration Magic spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Restoration Magic)\nHalves skill recharge of Restoration Magic spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Plaguebinder",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Curses)\nCurses +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Curses)\nCurses +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Prismatic Focus",
         "chest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of Energy Storage spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of Energy Storage spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Quansong's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Communing)\nCommuning +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Communing)\nCommuning +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Rien's Sacrifice",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Healing Prayers)\nHealing Prayers +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Healing Prayers)\nHealing Prayers +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Rose Focus",
         "quest": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fast Casting)\nHalves casting time of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nHalves casting time of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Rot's Putrescence",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth + 30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nHalves skill recharge of spells (Chance: 10%)\nHealth + 30"]
       },
       {
         "name": "Rual's Focus",
@@ -1271,16 +1116,12 @@
       {
         "name": "Sehden's Mark",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Soul Reaping)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Soul Reaping)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Shelboh's Gaze",
         "boss": true,
-        "stats": [
-          "Energy +12 (requires 9 Blood Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (requires 9 Blood Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Shen's Censure",
@@ -1292,30 +1133,22 @@
       {
         "name": "Snapjaw's Powerstone",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy Regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy Regeneration -1\nHealth +30"]
       },
       {
         "name": "Soulwhisper's Guardian",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Restoration Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Restoration Magic)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Sourbeak's Taint",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +60 (while Hexed)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +60 (while Hexed)"]
       },
       {
         "name": "Spiriteater",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Spawning Power)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Sseer's Wish",
@@ -1327,30 +1160,22 @@
       {
         "name": "Stormborn Artifact",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Water Magic)\nWater Magic +1 (20% chance while using skills)\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Water Magic)\nWater Magic +1 (20% chance while using skills)\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Straw Effigy (unique)",
         "endgame": true,
-        "stats": [
-          "Energy +12 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 <attribute>)\nHalves skill recharge of <attribute> spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Tarlok's Flagon",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nEnergy +15\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Tattered Fan",
         "special": true,
-        "stats": [
-          "Energy +12 (Requires 9 Channeling Magic)\nArmor +5\nEnergy -5\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nArmor +5\nEnergy -5\nHealth +30"]
       },
       {
         "name": "The Brainfreezer",
@@ -1377,9 +1202,7 @@
         "name": "The Lifedrinker",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Energy +7 (Requires 4 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +20"
-        ]
+        "stats": ["Energy +7 (Requires 4 Blood Magic)\nBlood Magic +1 (20% chance while using skills)\nHealth +20"]
       },
       {
         "name": "The Mindsquall",
@@ -1391,9 +1214,7 @@
       {
         "name": "The Pain Eater",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Channeling Magic)\nArmor +10 (vs. Slashing damage)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Channeling Magic)\nArmor +10 (vs. Slashing damage)\nHealth +30"]
       },
       {
         "name": "The People's Resolve",
@@ -1405,9 +1226,7 @@
       {
         "name": "The Purifier",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Inspiration Magic)\nReduces Dazed duration on you by 20% (Stacking)\nHealth +60 (while Hexed)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Inspiration Magic)\nReduces Dazed duration on you by 20% (Stacking)\nHealth +60 (while Hexed)"]
       },
       {
         "name": "The Rockmolder",
@@ -1419,30 +1238,22 @@
       {
         "name": "The Shadestone",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Blood Magic)\nHalves casting time of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Blood Magic)\nHalves casting time of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "The Skill Eater",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "The Skinflayer",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Smiting Prayers)\nSmiting Prayers +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Smiting Prayers)\nSmiting Prayers +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "The Soulstone",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Divine Favor)\nDivine Favor + 1 (20% chance while using skills)\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nDivine Favor + 1 (20% chance while using skills)\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "The Stonehart",
@@ -1454,16 +1265,12 @@
       {
         "name": "The Time Eater",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Fast Casting)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Fast Casting)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "The Windcatcher",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Villnar's Glove",
@@ -1482,16 +1289,12 @@
       {
         "name": "Wenslauss' Chalice",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Divine Favor)\nReduces Crippled duration on you by 20%\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Energy +12 (Requires 9 Divine Favor)\nReduces Crippled duration on you by 20%\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Whiteout's Focus",
         "boss": true,
-        "stats": [
-          "Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Energy +12 (Requires 9 Energy Storage)\nHalves skill recharge of spells (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Wroth's Icon",
@@ -1607,9 +1410,7 @@
       {
         "name": "Grabthar's Hammer",
         "boss": true,
-        "stats": [
-          "Earth damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Earth damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Grelk's Hammer",
@@ -1734,9 +1535,7 @@
       {
         "name": "The Ice Breaker",
         "special": true,
-        "stats": [
-          "Cold damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Cold damage: 19-35 (Requires 9 Hammer Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "The Righteous Hand",
@@ -1818,9 +1617,7 @@
       {
         "name": "Banana Scythe",
         "quest": true,
-        "stats": [
-          "Blunt Damage: 10-10"
-        ]
+        "stats": ["Blunt Damage: 10-10"]
       },
       {
         "name": "Brynn's Scythe",
@@ -1924,9 +1721,7 @@
       {
         "name": "Grenth's Grasp (scythe)",
         "boss": true,
-        "stats": [
-          "Cold damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30\nTwo-handed"
-        ]
+        "stats": ["Cold damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30\nTwo-handed"]
       },
       {
         "name": "Haioss' Blessing",
@@ -1996,9 +1791,7 @@
       {
         "name": "Mhedi's Vow",
         "boss": true,
-        "stats": [
-          "Slashing damage 9-41 (Requires 9 Scythe Mastery)\nEnergy +5\nEnergy gain on hit: 1\nEnergy regeneration: -1\nHealth +30"
-        ]
+        "stats": ["Slashing damage 9-41 (Requires 9 Scythe Mastery)\nEnergy +5\nEnergy gain on hit: 1\nEnergy regeneration: -1\nHealth +30"]
       },
       {
         "name": "Myish's Scythe",
@@ -2031,9 +1824,7 @@
       {
         "name": "Sehlon's Vow",
         "boss": true,
-        "stats": [
-          "Fire damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30\nTwo-handed"
-        ]
+        "stats": ["Fire damage: 9-41 (Requires 9 Scythe Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30\nTwo-handed"]
       },
       {
         "name": "Shezel's Reaper",
@@ -2121,177 +1912,137 @@
       {
         "name": "Aegis of Aaaaarrrrrrggghhh",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Demons)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Demons)\nHealth +30"]
       },
       {
         "name": "Aegis of Clarity",
         "special": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived physical damage -2 (while in a Stance)\nHealth +45 (while in a Stance)"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -2 (while in a Stance)\nHealth +45 (while in a Stance)"]
       },
       {
         "name": "Aegis of Terror",
         "special": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nArmor +10 (vs. Demons)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nArmor +10 (vs. Demons)\nHealth +30"]
       },
       {
         "name": "Aegis of the Condemned",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Arneh's Fury",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Blunt damage)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Blunt damage)\nHealth +30"]
       },
       {
         "name": "Arrahhsh's Aegis",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived physical damage -2 (while in a Stance)\nHealth +45 (while in a Stance)"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -2 (while in a Stance)\nHealth +45 (while in a Stance)"]
       },
       {
         "name": "Bartholos' Bulwark",
         "endgame": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Bastion of the Condemned",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Baubao's Shell",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -3 (while Hexed)\nHealth +60 (while Hexed)"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -3 (while Hexed)\nHealth +60 (while Hexed)"]
+      },
+      {
+        "name": "Beautiful Menzies",
+        "chest": true,
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nHealth +45 (while Enchanted)\nArmor +10 (vs. Fire damage)"]
       },
       {
         "name": "Bei Chi's Bulwark",
         "box": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nReduces Blind duration on you by 20%\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nReduces Blind duration on you by 20%\nHealth +30"]
       },
       {
         "name": "Briahn's Guidance",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nReceived Physical damage -2 (while Enchanted)\nHealth +45 (while Enchanted)"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived Physical damage -2 (while Enchanted)\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Chumab's Pride",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Blunt damage)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Blunt damage)\nHealth +30"]
       },
       {
         "name": "Churkeh's Defiance",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Motivation)\nReceived physical damage -3 (while Hexed)\nHealth +60 (while Hexed)"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -3 (while Hexed)\nHealth +60 (while Hexed)"]
       },
       {
         "name": "Cyndr's Aegis",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Deldrimor Shield (unique)",
         "endgame": true,
-        "stats": [
-          "Armor: 16 (Requires 9 <attribute>)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 <attribute>)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Destructive Shield",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"]
       },
       {
         "name": "Droknar's Command Shield",
         "endgame": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Droknar's Motivation Shield",
         "endgame": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Droknar's Strength Shield",
         "endgame": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Droknar's Tactics Shield",
         "endgame": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -5 (Chance: 20%)\nHealth +30"]
+      },
+      {
+        "name": "Elegant Menzies",
+        "chest": true,
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nHealth +45 (while Enchanted)\nArmor +10 (vs. Blunt damage)"]
       },
       {
         "name": "Enadiz's Defender",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReduces Crippled duration on you by 20% (Stacking)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReduces Crippled duration on you by 20% (Stacking)\nHealth +30"]
       },
       {
         "name": "Exalted Aegis (unique)",
         "endgame": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength, Tactics, Command or Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength, Tactics, Command or Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Eye of Argon",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nReduces Blind duration on you by 20% (Stacking)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nReduces Blind duration on you by 20% (Stacking)\nHealth +30"]
       },
       {
         "name": "Fanatical Devotion",
         "special": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nCommand +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nCommand +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Fenrir's Bastion",
         "boss": true,
-        "stats": [
-          "Armor 16 (Requires 9 Motivation)\nReceived physical damage -2 (while Enchanted)\nHealth +30"
-        ]
+        "stats": ["Armor 16 (Requires 9 Motivation)\nReceived physical damage -2 (while Enchanted)\nHealth +30"]
       },
       {
         "name": "Forgotten Shield",
@@ -2303,38 +2054,28 @@
       {
         "name": "Geoffer's Bulwark",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Piercing damage)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Piercing damage)\nHealth +30"]
       },
       {
         "name": "Grognar's Defender",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nHealth +45 (while in a Stance)\nReceived Physical damage -2 (while in a Stance)"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nHealth +45 (while in a Stance)\nReceived Physical damage -2 (while in a Stance)"]
       },
       {
         "name": "Hassin's Shell",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Armor: 8\nHealth +20"
-        ]
+        "stats": ["Armor: 8\nHealth +20"]
       },
       {
         "name": "Havok's Shield",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"]
       },
       {
         "name": "Hidesplitter's Shield",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"]
       },
       {
         "name": "Imperial Dragon Shield",
@@ -2346,101 +2087,78 @@
       {
         "name": "Jacqui's Aegis",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"]
       },
       {
         "name": "Keht's Aegis",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Slashing damage)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Slashing damage)\nHealth +30"]
       },
       {
         "name": "Kunan's Bastion",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Piercing damage)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Piercing damage)\nHealth +30"]
       },
       {
         "name": "Langmar's Defender",
         "endgame": true,
-        "stats": [
-          "Armor +16  (Requires 9 Tactics)\nTactics  +1 (Chance: 20% while using skills)\nHealth +30"
-        ]
+        "stats": ["Armor +16  (Requires 9 Tactics)\nTactics  +1 (Chance: 20% while using skills)\nHealth +30"]
       },
       {
         "name": "Longtooth's Shield",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Armor: 12 (Requires 7 Strength)\nHealth +30"
-        ]
+        "stats": ["Armor: 12 (Requires 7 Strength)\nHealth +30"]
       },
       {
         "name": "Malinon's Shield",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nHealth  +45 (while Enchanted)\nReceived Physical damage -2 (while Enchanted)"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nHealth  +45 (while Enchanted)\nReceived Physical damage -2 (while Enchanted)"]
       },
       {
         "name": "Mallyx's Courage",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Defense",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Motivation",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Supremacy",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Merki's Gaze",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while Enchanted)\nHealth +30"]
       },
       {
         "name": "Onwan's Aegis",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReduces Poison duration on you by 20%\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReduces Poison duration on you by 20%\nHealth +30"]
+      },
+      {
+        "name": "Raging Menzies",
+        "chest": true,
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nArmor +10 (vs. Piercing)\nHealth +45 (while Enchanted)"]
       },
       {
         "name": "Reefclaw's Refuge",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nStrength +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nStrength +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "Shagu's Anthem",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Sharptooth's Shield",
@@ -2452,93 +2170,67 @@
       {
         "name": "Shield of the Condemned",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Shield of the Hierophant",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Shield of the Kinslayer",
         "chest": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Strongroot's Shelter",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"]
       },
       {
         "name": "Stygian Aegis",
         "special": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Motivation)\nArmor +10 (vs. Demons)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Motivation)\nArmor +10 (vs. Demons)\nHealth +30"]
       },
       {
         "name": "Stygian Defender",
         "special": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Demons)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Command)\nArmor +10 (vs. Demons)\nHealth +30"]
       },
       {
         "name": "Sunreach's Shield",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Tanzit's Defender",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReduces Blind duration on you by 20%\nReceived physical damage -2 (while in a Stance)"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReduces Blind duration on you by 20%\nReceived physical damage -2 (while in a Stance)"]
       },
       {
         "name": "Tarnen's Shield",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nTactics +1 (20% chance while using skills)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nTactics +1 (20% chance while using skills)\nHealth +30"]
       },
       {
         "name": "The Interdictor",
         "special": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Tactics)\nReduces Blind duration on you by 20%\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Tactics)\nReduces Blind duration on you by 20%\nHealth +30"]
       },
       {
         "name": "Thorgall's Shield",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while Enchanted)\nReduces Weakness duration on you by 20%"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while Enchanted)\nReduces Weakness duration on you by 20%"]
       },
       {
         "name": "Victo's Bulwark",
         "boss": true,
-        "stats": [
-          "Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (Requires 9 Strength)\nReceived Physical damage -2 (while in a Stance)\nHealth +30"]
       },
       {
         "name": "Wandalz's Refuge",
         "boss": true,
-        "stats": [
-          "Armor: 16 (requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Armor: 16 (requires 9 Motivation)\nReceived physical damage -5 (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Xun Rao's Quill",
@@ -2585,9 +2277,7 @@
       {
         "name": "Bearer's Longbow",
         "boss": true,
-        "stats": [
-          "Earth damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Earth damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Benwah's Recurve Bow",
@@ -2606,9 +2296,7 @@
       {
         "name": "Boulderbeard's Shortbow",
         "boss": true,
-        "stats": [
-          "Lightning damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Lightning damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Bow of the Hierophant",
@@ -2789,9 +2477,7 @@
       {
         "name": "Forgerunner",
         "boss": true,
-        "stats": [
-          "Fire damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while in a Stance)\nHealth +30"
-        ]
+        "stats": ["Fire damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while in a Stance)\nHealth +30"]
       },
       {
         "name": "Forgotten Flatbow",
@@ -3070,9 +2756,7 @@
       {
         "name": "Tarnok's Longbow",
         "boss": true,
-        "stats": [
-          "Cold damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor +7 (vs. elemental damage)"
-        ]
+        "stats": ["Cold damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Health is above 50%)\nArmor +7 (vs. elemental damage)"]
       },
       {
         "name": "Tarnok's Recurve Bow",
@@ -3105,9 +2789,7 @@
       {
         "name": "Thornbeard's Horned Bow",
         "boss": true,
-        "stats": [
-          "Lightning damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Enchanted)\nArmor +7 (vs. physical damage)"
-        ]
+        "stats": ["Lightning damage: 15-28 (Requires 9 Marksmanship)\nDamage +15% (while Enchanted)\nArmor +7 (vs. physical damage)"]
       },
       {
         "name": "Tundoss' Shortbow",
@@ -3209,9 +2891,7 @@
       {
         "name": "Diligence",
         "special": true,
-        "stats": [
-          "Energy +5\nPiercing damage: 14-27 (Requires 9 Spear Mastery)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"
-        ]
+        "stats": ["Energy +5\nPiercing damage: 14-27 (Requires 9 Spear Mastery)\nEnergy gain on hit: 1\nEnergy regeneration -1\nHealth +30"]
       },
       {
         "name": "Droknar's Courage",
@@ -3258,9 +2938,7 @@
       {
         "name": "Imperial Dragon Spear",
         "endgame": true,
-        "stats": [
-          "Cold Dmg: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"
-        ]
+        "stats": ["Cold Dmg: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Enchanted)\nEnchantments last 20% longer"]
       },
       {
         "name": "Jadam's Spear",
@@ -3272,9 +2950,7 @@
       {
         "name": "Luluh's Spear",
         "boss": true,
-        "stats": [
-          "Fire damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Fire damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Mallyx's Cruelty",
@@ -3307,9 +2983,7 @@
       {
         "name": "Prayer of the Forgotten",
         "endgame": true,
-        "stats": [
-          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nEnergy +5\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"
-        ]
+        "stats": ["Piercing damage: 14-27 (Requires 9 Spear Mastery)\nEnergy +5\nDouble adrenaline on hit (Chance: 10%)\nHealth +30"]
       },
       {
         "name": "Righteous Fury",
@@ -3323,6 +2997,13 @@
         "boss": true,
         "stats": [
           "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nDamage +15% (while Health is above 50%)\nLengthens Dazed duration on foes by 33%\nHealth +30"
+        ]
+      },
+      {
+        "name": "Sharp Pointy Stick",
+        "endgame": true,
+        "stats": [
+          "Piercing damage: 14-27 (Requires 9 Spear Mastery)\nLengthens Dazed duration on foes 33% (Stacking)\nEnchantments last 20% longer\nEnergy +5"
         ]
       },
       {
@@ -3349,9 +3030,7 @@
       {
         "name": "Spirit of the Forgotten",
         "endgame": true,
-        "stats": [
-          "Lightning damage: 14-27 (Requires 9 Spear Mastery)\nEnchantments last 20% longer\nEnergy +5"
-        ]
+        "stats": ["Lightning damage: 14-27 (Requires 9 Spear Mastery)\nEnchantments last 20% longer\nEnergy +5"]
       },
       {
         "name": "Stygian Spear",
@@ -3536,6 +3215,13 @@
         ]
       },
       {
+        "name": "Curse of Thul Za",
+        "chest": true,
+        "stats": [
+          "Energy +10\nHoly damage: 11-22 (Requires 9 Protection Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Protection Prayers spells (Chance: 20%)\nHalves casting time of Protection Prayers spells (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
         "name": "Deldrimor Staff (unique)",
         "endgame": true,
         "stats": [
@@ -3673,6 +3359,13 @@
         "boss": true,
         "stats": [
           "Energy +10\nDark damage: 11-22 (Requires 9 Death Magic)\nHalves casting time of Death Magic spells (Chance: 20%)\nHalves skill recharge of spells (Chance: 20%)\nDeath Magic +1 (20% chance while using skills)\nEnergy +5"
+        ]
+      },
+      {
+        "name": "Ghozer's Key",
+        "chest": true,
+        "stats": [
+          "Energy +10\nChaos damage: 11-22 (Requires 9 Domination Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Domination Magic spells (Chance: 20%)\nHalves casting time of Domination Magic spells (Chance: 20%)\nEnchantments last 20% longer"
         ]
       },
       {
@@ -3830,6 +3523,13 @@
         ]
       },
       {
+        "name": "Kazhad's Fortune",
+        "chest": true,
+        "stats": [
+          "Energy +10\nEarth damage: 11-22 (Requires 9 Earth Magic)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Earth Magic spells (Chance: 20%)\nHalves casting time of Earth Magic spells (Chance: 20%)\nEnchantments last 20% longer"
+        ]
+      },
+      {
         "name": "Kenrii's Sorrow",
         "boss": true,
         "stats": [
@@ -3890,9 +3590,7 @@
         "name": "Lonolun's Staff",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Energy +10\nCold damage: 9-15 (Requires 5 Water Magic)\nHalves skill recharge of spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +10\nCold damage: 9-15 (Requires 5 Water Magic)\nHalves skill recharge of spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "Lord Glacius' Staff",
@@ -3906,6 +3604,13 @@
         "endgame": true,
         "stats": [
           "Energy +10\nHoly damage: 11-22 (Requires 9 Healing Prayers)\nHalves skill recharge of spells (Chance: 20%)\nHalves casting time of Healing Prayers spells (Chance: 20%)\nEnergy +5\nHealing Prayers +1 (Chance: 20% while using skills)"
+        ]
+      },
+      {
+        "name": "Madruk's Prophecy",
+        "chest": true,
+        "stats": [
+          "Energy +15\nChaos damage: 11-22 (Requires 9 Divine Favor)\nChaos damage: 11-22 (Requires 9 Fast Casting)\nChaos damage: 11-22 (Requires 9 Soul Reaping)\nChaos damage: 11-22 (Requires 9 Energy Storage)\nChaos damage: 11-22 (Requires 9 Spawning Power)\nHalves skill recharge of spells (Chance: 20%)\nEnchantments last 20% longer\nEnergy +5 (while Enchanted)"
         ]
       },
       {
@@ -4295,9 +4000,7 @@
         "name": "The Stormbringer",
         "boss": true,
         "lowlevel": true,
-        "stats": [
-          "Energy +10\nChaos damage: 6-9 (Requires 3 Energy Storage)\nHalves skill recharge of spells (Chance: 20%)\nHealth +30"
-        ]
+        "stats": ["Energy +10\nChaos damage: 6-9 (Requires 3 Energy Storage)\nHalves skill recharge of spells (Chance: 20%)\nHealth +30"]
       },
       {
         "name": "The Thundermaw",
@@ -4443,9 +4146,7 @@
       {
         "name": "Blade of the Hierophant",
         "chest": true,
-        "stats": [
-          "Fire damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Fire damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Cyndr's Edge",
@@ -4471,9 +4172,7 @@
       {
         "name": "Destructive Blade",
         "chest": true,
-        "stats": [
-          "Earth damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"
-        ]
+        "stats": ["Earth damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (while Health is above 50%)\nHealth +30"]
       },
       {
         "name": "Droknar's Sword",
@@ -4513,9 +4212,7 @@
       {
         "name": "Imperial Dragon Sword",
         "endgame": true,
-        "stats": [
-          "Lightning Dmg: 15-22 (Requires 9 Sword Mastery)\nDamage +15% (while Enchanted)\nHealth +30"
-        ]
+        "stats": ["Lightning Dmg: 15-22 (Requires 9 Sword Mastery)\nDamage +15% (while Enchanted)\nHealth +30"]
       },
       {
         "name": "Judgment",
@@ -4582,18 +4279,19 @@
         ]
       },
       {
+        "name": "Padraic",
+        "chest": true,
+        "stats": ["Chaos damage: 15-22 (Requires 9 Swordsmanship)\nEnchantments last 20% longer\nEnergy +5"]
+      },
+      {
         "name": "Quivering Blade (weapon)",
         "boss": true,
-        "stats": [
-          "Cold damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (vs. Hexed foes)\nHealth +30"
-        ]
+        "stats": ["Cold damage: 15-22 (Requires 9 Swordsmanship)\nDamage +15% (vs. Hexed foes)\nHealth +30"]
       },
       {
         "name": "Rajazan's Fervor",
         "boss": true,
-        "stats": [
-          "Cold damage: 15-22 (Requires 9 Swordsmanship)\nEnchantments last 20% longer\nEnergy +5"
-        ]
+        "stats": ["Cold damage: 15-22 (Requires 9 Swordsmanship)\nEnchantments last 20% longer\nEnergy +5"]
       },
       {
         "name": "Reaper's Blade",
@@ -5259,9 +4957,7 @@
       {
         "name": "Villnar's Claw",
         "boss": true,
-        "stats": [
-          "Cold damage: 11-22 (Requires 9 Curses)\nEnergy +5 (while Hexed)\nHalves casting time of Curses spells (Chance: 20%)"
-        ]
+        "stats": ["Cold damage: 11-22 (Requires 9 Curses)\nEnergy +5 (while Hexed)\nHalves casting time of Curses spells (Chance: 20%)"]
       },
       {
         "name": "Vokur's Cane",

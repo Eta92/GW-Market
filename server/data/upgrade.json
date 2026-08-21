@@ -1721,25 +1721,25 @@
       {
         "name": "Strength and Honor",
         "enhancement": "Damage +10...15%",
-        "condition": "(while Health is above 50%)",
+        "condition": "while Health is above 50%",
         "img": "All weapon types Inscriptions"
       },
       {
         "name": "Guided by Fate",
         "enhancement": "Damage +10...15%",
-        "condition": "(while Enchanted)",
+        "condition": "while Enchanted",
         "img": "All weapon types Inscriptions"
       },
       {
         "name": "Dance with Death",
         "enhancement": "Damage +10...15%",
-        "condition": "(while in a Stance)",
+        "condition": "while in a Stance",
         "img": "All weapon types Inscriptions"
       },
       {
         "name": "Too Much Information",
         "enhancement": "Damage +10...15%",
-        "condition": "(vs. Hexed foes)",
+        "condition": "vs. Hexed foes",
         "img": "All weapon types Inscriptions"
       },
       {
@@ -1757,19 +1757,19 @@
       {
         "name": "Vengeance is Mine",
         "enhancement": "Damage +10...20%",
-        "condition": "(while Health is below 50%)",
+        "condition": "while Health is below 50%",
         "img": "All weapon types Inscriptions"
       },
       {
         "name": "Don't Fear the Reaper",
         "enhancement": "Damage +10...20%",
-        "condition": "(while Hexed)",
+        "condition": "while Hexed",
         "img": "All weapon types Inscriptions"
       },
       {
         "name": "Don't Think Twice",
         "enhancement": "Halves casting time of spells",
-        "condition": "(Chance: 5...10%)",
+        "condition": "Chance: 5...10%",
         "img": "All weapon types Inscriptions"
       }
     ]
@@ -1787,7 +1787,7 @@
       {
         "name": "Let the Memory Live Again",
         "enhancement": "Halves skill recharge of spells",
-        "condition": "(Chance: 5...10%)",
+        "condition": "Chance: 5...10%",
         "img": "Martial weapons Inscriptions"
       }
     ]
@@ -1800,25 +1800,25 @@
       {
         "name": "Hale and Hearty",
         "enhancement": "Energy +1...5",
-        "condition": "(while Health is above 50%)",
+        "condition": "while Health is above 50%",
         "img": "Spellcasting weapons Inscriptions"
       },
       {
         "name": "Have Faith",
         "enhancement": "Energy +1...5",
-        "condition": "(while Enchanted)",
+        "condition": "while Enchanted",
         "img": "Spellcasting weapons Inscriptions"
       },
       {
         "name": "Don't call it a comeback!",
         "enhancement": "Energy +2...7",
-        "condition": "(while Health is below 50%)",
+        "condition": "while Health is below 50%",
         "img": "Spellcasting weapons Inscriptions"
       },
       {
         "name": "I am Sorrow.",
         "enhancement": "Energy +2...7",
-        "condition": "(while Hexed)",
+        "condition": "while Hexed",
         "img": "Spellcasting weapons Inscriptions"
       },
       {
@@ -1830,7 +1830,7 @@
       {
         "name": "Aptitude not Attitude",
         "enhancement": "Halves casting time of spells of item's attribute",
-        "condition": "(Chance: 10...20%)",
+        "condition": "Chance: 10...20%",
         "img": "Spellcasting weapons Inscriptions"
       }
     ]
@@ -1843,67 +1843,67 @@
       {
         "name": "Not the face!",
         "enhancement": "Armor +5...10",
-        "condition": "(vs. Blunt damage)",
+        "condition": "vs. Blunt damage",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Leaf on the Wind",
         "enhancement": "Armor +5...10",
-        "condition": "(vs. Cold damage)",
+        "condition": "vs. Cold damage",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Like a Rolling Stone",
         "enhancement": "Armor +5...10",
-        "condition": "(vs. Earth damage)",
+        "condition": "vs. Earth damage",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Sleep Now in the Fire",
         "enhancement": "Armor +5...10",
-        "condition": "(vs. Fire damage)",
+        "condition": "vs. Fire damage",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Riders on the Storm",
         "enhancement": "Armor +5...10",
-        "condition": "(vs. Lightning damage)",
+        "condition": "vs. Lightning damage",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Through Thick and Thin",
         "enhancement": "Armor +5...10",
-        "condition": "(vs. Piercing damage)",
+        "condition": "vs. Piercing damage",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "The Riddle of Steel",
         "enhancement": "Armor +5...10",
-        "condition": "(vs. Slashing damage)",
+        "condition": "vs. Slashing damage",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Sheltered by Faith",
         "enhancement": "Received physical damage -1...2",
-        "condition": "(while Enchanted)",
+        "condition": "while Enchanted",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Run For Your Life!",
         "enhancement": "Received physical damage -1...2",
-        "condition": "(while in a Stance)",
+        "condition": "while in a Stance",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Nothing to Fear",
         "enhancement": "Received physical damage -1...3",
-        "condition": "(while Hexed)",
+        "condition": "while Hexed",
         "img": "Focus items or shields Inscriptions"
       },
       {
         "name": "Luck of the Draw",
         "enhancement": "Received physical damage -4...5",
-        "condition": "(Chance: 10...20%)",
+        "condition": "Chance: 10...20%",
         "img": "Focus items or shields Inscriptions"
       },
       {
@@ -1949,7 +1949,7 @@
       {
         "name": "Master of My Domain",
         "enhancement": "Item's attribute +1",
-        "condition": "(Chance: 10...20%)",
+        "condition": "Chance: 10...20%",
         "img": "Focus items or shields Inscriptions"
       }
     ]
@@ -1962,37 +1962,37 @@
       {
         "name": "Hail to the King",
         "enhancement": "Armor +4...5",
-        "condition": "(while Health is above 50%)",
+        "condition": "while Health is above 50%",
         "img": "Focus items Inscriptions"
       },
       {
         "name": "Faith is My Shield",
         "enhancement": "Armor +4...5",
-        "condition": "(while Enchanted)",
+        "condition": "while Enchanted",
         "img": "Focus items Inscriptions"
       },
       {
         "name": "Might Makes Right",
         "enhancement": "Armor +4...5",
-        "condition": "(while attacking)",
+        "condition": "while attacking",
         "img": "Focus items Inscriptions"
       },
       {
         "name": "Knowing is Half the Battle.",
         "enhancement": "Armor +4...5",
-        "condition": "(while casting)",
+        "condition": "while casting",
         "img": "Focus items Inscriptions"
       },
       {
         "name": "Man for All Seasons",
         "enhancement": "Armor +4...5",
-        "condition": "(vs. Elemental damage)",
+        "condition": "vs. Elemental damage",
         "img": "Focus items Inscriptions"
       },
       {
         "name": "Survival of the Fittest",
         "enhancement": "Armor +4...5",
-        "condition": "(vs. Physical damage)",
+        "condition": "vs. Physical damage",
         "img": "Focus items Inscriptions"
       },
       {
@@ -2010,13 +2010,13 @@
       {
         "name": "Down But Not Out",
         "enhancement": "Armor +5...10",
-        "condition": "(while Health is below 50%)",
+        "condition": "while Health is below 50%",
         "img": "Focus items Inscriptions"
       },
       {
         "name": "Be Just and Fear Not",
         "enhancement": "Armor +5...10",
-        "condition": "(while hexed)",
+        "condition": "while Hexed",
         "img": "Focus items Inscriptions"
       },
       {
@@ -2028,13 +2028,13 @@
       {
         "name": "Serenity Now",
         "enhancement": "Halves skill recharge of spells",
-        "condition": "(Chance: 5...10%)",
+        "condition": "Chance: 5...10%",
         "img": "Focus items Inscriptions"
       },
       {
         "name": "Forget Me Not",
         "enhancement": "Halves skill recharge of spells of item's attribute",
-        "condition": "(Chance: 10...20%)",
+        "condition": "Chance: 10...20%",
         "img": "Focus items Inscriptions"
       }
     ]

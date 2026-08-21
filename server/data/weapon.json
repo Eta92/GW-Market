@@ -68,7 +68,8 @@
         "craftable": true
       },
       {
-        "name": "Cleaver (Canthan)"
+        "name": "Cleaver (Canthan)",
+        "OS only": true
       },
       {
         "name": "Cleaver (Tyrian)"
