@@ -103,7 +103,7 @@
         <app-toggle-group
           [options]="[
             { value: true, label: 'Not Max', icon: 'fa-angles-down' },
-            { value: false, label: 'Max', icon: 'fa-angles-up' }
+            { value: false, label: 'Max', icon: 'fa-angles-up' },
           ]"
           [value]="formOther.get('notMax')?.value"
           (valueChange)="formOther.patchValue({ notMax: $event })"
@@ -121,9 +121,23 @@
 
     <!-- auction end date -->
     <div class="details-row" *ngIf="isAuction">
-      <div class="form-group">
+      <div class="form-group" style="flex: 2" *ngIf="isNotMax">
+        <label>Maximum Stats</label>
+        <app-toggle-group
+          [options]="[
+            { value: true, label: 'Not Max', icon: 'fa-angles-down' },
+            { value: false, label: 'Max', icon: 'fa-angles-up' },
+          ]"
+          [value]="formOther.get('notMax')?.value"
+          (valueChange)="formOther.patchValue({ notMax: $event })"
+        ></app-toggle-group>
+      </div>
+      <div class="form-group" style="flex: 4">
         <label>Auction End Date</label>
-        <input type="datetime-local" class="form-input custom-datetime" formControlName="endTime" />
+        <input type="datetime-local" class="form-input custom-datetime" formControlName="endTime" [max]="maxEndTime" />
+        <small *ngIf="form.get('endTime')?.hasError('tooFar')" style="color: #e74c3c"
+          >Auction end time cannot exceed 4 weeks from now</small
+        >
       </div>
     </div>
 
@@ -137,10 +151,13 @@
       <div class="form-row">
         <div *ngIf="!isLocked" class="form-group" style="flex: 2">
           <label>Attribute</label>
-          <select class="form-select" formControlName="attribute">
-            <option [ngValue]="'any'">Any / Default</option>
-            <option *ngFor="let attr of attributes" [ngValue]="attr">{{ attr }}</option>
-          </select>
+          <app-attribute-dropdown
+            class="w-full h-11"
+            [options]="attributes"
+            [selectedValue]="formWeapon.get('attribute')?.value === 'any' ? null : formWeapon.get('attribute')?.value"
+            placeholder="Any / Default"
+            (valueChange)="formWeapon.patchValue({ attribute: $event })"
+          ></app-attribute-dropdown>
         </div>
         <div class="form-group" style="flex: 1">
           <label>Requirement</label>
@@ -176,7 +193,7 @@
             [options]="[
               { value: 'ins', label: 'Inscribable', icon: 'fa-pen-fancy' },
               { value: 'none', label: '', icon: 'fa-circle-question' },
-              { value: 'os', label: 'OldSchool', icon: 'fa-scroll' }
+              { value: 'os', label: 'OldSchool', icon: 'fa-scroll' },
             ]"
             [value]="getInscriptionValue()"
             (valueChange)="setInscriptionValue($event)"
@@ -243,7 +260,7 @@
           <app-toggle-group
             [options]="[
               { value: false, label: 'Undedicated' },
-              { value: true, label: 'Dedicated' }
+              { value: true, label: 'Dedicated' },
             ]"
             [value]="formOther.get('dedicated')?.value"
             (valueChange)="formOther.patchValue({ dedicated: $event })"
@@ -260,7 +277,7 @@
         <i class="fa" [class.fa-chevron-down]="!isAdvanced" [class.fa-chevron-up]="isAdvanced"></i>
       </div>
       <div class="advanced-content" *ngIf="isAdvanced">
-        <div class="form-row mt-2">
+        <div class="mt-2 form-row">
           <div class="form-group">
             <label>Vendor gold value</label>
             <input type="number" class="form-input" formControlName="goldPrice" min="0" placeholder="0" />
@@ -270,14 +287,14 @@
             <app-toggle-group
               [options]="[
                 { value: false, label: 'Normal' },
-                { value: true, label: 'Pre-Searing' }
+                { value: true, label: 'Pre-Searing' },
               ]"
               [value]="formOther.get('pre')?.value"
               (valueChange)="formOther.patchValue({ pre: $event })"
             ></app-toggle-group>
           </div>
         </div>
-        <div class="form-group mt-2">
+        <div class="mt-2 form-group">
           <label>Personal Note</label>
           <input type="text" class="form-input" formControlName="note" placeholder="Private note for this order (only visible to you)" />
         </div>
@@ -332,7 +349,7 @@
                 <!-- Price Inspector -->
                 <div
                   title="hover to get the current minimum prices"
-                  class="inspect -mb-2 px-2"
+                  class="px-2 -mb-2 inspect"
                   (mouseenter)="togglePriceInspector(true)"
                   (mouseleave)="togglePriceInspector(false)"
                 >

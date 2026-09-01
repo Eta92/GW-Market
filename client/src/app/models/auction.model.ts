@@ -14,6 +14,9 @@ export interface Auction {
   history?: Array<AuctionHistory>;
   // front only
   cloturate?: boolean;
+  // copy for shop
+  positives?: number;
+  negatives?: number;
 }
 
 export interface AuctionHistory {

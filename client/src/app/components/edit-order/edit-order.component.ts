@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
 import { BasicItem, Upgrade } from '@app/models/item.model';
 import { OrderType, Price, ShopItem } from '@app/models/shop.model';
@@ -16,7 +16,7 @@ import { Subscription, take } from 'rxjs';
 @Component({
   selector: 'app-edit-order',
   templateUrl: './edit-order.component.html',
-  styleUrls: ['./edit-order.component.scss']
+  styleUrls: ['./edit-order.component.scss'],
 })
 export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   @Input() preselect?: BasicItem;
@@ -52,12 +52,12 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   public weaponLists: { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } = {
     core: [],
     prefix: [],
-    suffix: []
+    suffix: [],
   };
 
   public visibilityOptions: ToggleOption[] = [
     { value: false, label: 'Visible', icon: 'fa-eye' },
-    { value: true, label: 'Hidden', icon: 'fa-eye-slash' }
+    { value: true, label: 'Hidden', icon: 'fa-eye-slash' },
   ];
 
   public exoticUpgrades: Array<BasicItem> = [];
@@ -76,12 +76,12 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this.forceInit();
-    this.itemService.getExoticUpgrades().subscribe(upgrades => {
+    this.itemService.getExoticUpgrades().subscribe((upgrades) => {
       this.exoticUpgrades = upgrades;
-      this.exoticUpgradeOptions = upgrades.map(u => ({
+      this.exoticUpgradeOptions = upgrades.map((u) => ({
         value: u.name,
         description: [u.enhancement, u.condition].filter(Boolean).join(' / '),
-        img: '../../../assets/items/upgrade/' + u.img.replace(/ /g, '_') + '.png'
+        img: '../../../assets/items/upgrade/' + u.img.replace(/ /g, '_') + '.png',
       }));
       this.generalUpgradeOptions = [...this.weaponLists.core, ...this.exoticUpgradeOptions];
       this.cdr.markForCheck();
@@ -95,8 +95,8 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
         type: [Price.PLAT],
         price: [0, [Validators.min(0), Validators.max(9999)]],
         unit: [0, [Validators.min(0), Validators.max(9999)]],
-        max: [null, [Validators.min(1), Validators.max(9999)]]
-      })
+        max: [null, [Validators.min(1), Validators.max(9999)]],
+      }),
     ]);
     this.form = this.fb.group({
       name: [this.preselect ? this.preselect.name : ''],
@@ -107,7 +107,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       description: [''],
       // auction only
       acknowledge: [false],
-      endTime: [formatDate(Date.now() + 7 * 24 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')]
+      endTime: [formatDate(Date.now() + 7 * 24 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US'), this.maxTimeValidator],
     });
     this.formWeapon = this.fb.group({
       attribute: ['any', Validators.required],
@@ -117,14 +117,14 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       core: [null],
       prefix: [null],
       suffix: [null],
-      extraMods: [[]]
+      extraMods: [[]],
     });
     this.formOther = this.fb.group({
       dedicated: [false],
       pre: [false],
       note: [''],
       goldPrice: [null, Validators.min(0)],
-      notMax: [false]
+      notMax: [false],
     });
     if (this.original) {
       this.loadOrder(this.original);
@@ -138,7 +138,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
           this.loadOrder(this.original);
         }
       });
-    this.form.get('orderType')?.valueChanges.subscribe(value => {
+    this.form.get('orderType')?.valueChanges.subscribe((value) => {
       this.isAuction = value === OrderType.AUCTION;
       if (this.isAuction) {
         while (this.getprices().controls.length > 1) {
@@ -146,7 +146,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
         }
       }
     });
-    this.formWeapon.get('oldSchool')?.valueChanges.subscribe(value => {
+    this.formWeapon.get('oldSchool')?.valueChanges.subscribe((value) => {
       this.isOldSchool = value;
       if (!this.loading) {
         if (this.isOldSchool) {
@@ -158,8 +158,8 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
           this.formWeapon.patchValue({ extraMods: this.extraModValues, core: null });
         } else {
           const previousMods = this.formWeapon.get('extraMods')?.value || [];
-          const compatibleMods = this.weaponLists.core.map(mod => mod.value);
-          const coreMods = previousMods.filter(mod => compatibleMods.includes(mod));
+          const compatibleMods = this.weaponLists.core.map((mod) => mod.value);
+          const coreMods = previousMods.filter((mod) => compatibleMods.includes(mod));
           const coreMod = coreMods.length > 0 ? coreMods[0] : null;
           this.formWeapon.patchValue({ core: coreMod, extraMods: [] });
         }
@@ -189,7 +189,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
           type: [Price.PLAT],
           price: [0, Validators.min(0)],
           unit: [0, Validators.min(0)],
-          max: [null, Validators.min(1)]
+          max: [null, Validators.min(1)],
         })
       );
     }
@@ -228,8 +228,8 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.isWeapon = WeaponHelper.isWeapon(item);
     this.isNotMax = WeaponHelper.isNotMax(item);
     this.isMiniature = WeaponHelper.isMiniature(item);
-    // Set weapon flag if applicable
-    if (this.isWeapon && this.allItems) {
+    // Populate weapon lists
+    if (this.isWeapon) {
       this.isLocked = LOCKED_WEAPON.includes(item.category);
       this.weaponLists = WeaponHelper.getItemList(item?.category, this.itemService.getUpgrades());
       this.generalUpgradeOptions = [...this.weaponLists.core, ...this.exoticUpgradeOptions];
@@ -308,22 +308,22 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   refreshBindPrices(): void {
-    this.bindPrices.forEach(sub => sub.unsubscribe());
+    this.bindPrices.forEach((sub) => sub.unsubscribe());
     this.bindPrices = [];
     this.getprices().controls.forEach((group, index) => {
-      const toUnit = group.get('price')?.valueChanges.subscribe(value => {
+      const toUnit = group.get('price')?.valueChanges.subscribe((value) => {
         const amount = this.form.get('quantity')?.value || 1;
         group.get('unit')?.setValue(value / amount, { emitEvent: false });
       });
       this.bindPrices.push(toUnit);
-      const toPrice = group.get('unit')?.valueChanges.subscribe(value => {
+      const toPrice = group.get('unit')?.valueChanges.subscribe((value) => {
         const amount = this.form.get('quantity')?.value || 1;
         group.get('price')?.setValue(value * amount, { emitEvent: false });
       });
       this.bindPrices.push(toPrice);
     });
-    const toAllPrices = this.form.get('quantity')?.valueChanges.subscribe(qty => {
-      this.getprices().controls.forEach(group => {
+    const toAllPrices = this.form.get('quantity')?.valueChanges.subscribe((qty) => {
+      this.getprices().controls.forEach((group) => {
         const unit = group.get('unit')?.value || 0;
         //const price = group.get('price')?.value || 0;
         group.get('price')?.setValue(Math.round(unit * qty), { emitEvent: false });
@@ -368,7 +368,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy(): void {
     this.resetForms();
-    this.bindPrices.forEach(sub => sub.unsubscribe());
+    this.bindPrices.forEach((sub) => sub.unsubscribe());
   }
 
   resetForms(): void {
@@ -382,7 +382,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       hidden: false,
       prices: [{ type: Price.PLAT, price: 0, unit: 0 }],
       quantity: 1,
-      description: ''
+      description: '',
     });
     this.item = undefined;
     this.formWeapon.reset({
@@ -393,7 +393,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       core: null,
       prefix: null,
       suffix: null,
-      extraMods: []
+      extraMods: [],
     });
     this.extraModValues = [];
     this.formOther.reset({
@@ -401,11 +401,24 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       pre: false,
       note: '',
       goldPrice: null,
-      notMax: false
+      notMax: false,
     });
     this.isWeapon = false;
     this.isOldSchool = false;
     this.isMiniature = false;
     this.isLocked = true;
   }
+
+  // Max auction end time is 4 weeks from now
+  get maxEndTime(): string {
+    return formatDate(Date.now() + 28 * 24 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US');
+  }
+  // time validator
+  private maxTimeValidator = (control: AbstractControl): ValidationErrors | null => {
+    const maxMs = Date.now() + 28 * 24 * 60 * 60 * 1000;
+    if (control.value && new Date(control.value).getTime() > maxMs) {
+      return { tooFar: true };
+    }
+    return null;
+  };
 }

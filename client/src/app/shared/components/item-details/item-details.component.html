@@ -43,7 +43,13 @@
   </span>
 
   <!-- Not Max -->
-  <span class="detail-badge not-max" *ngIf="shopItem?.orderDetails?.notMax"> <i class="fa fa-angles-down"></i>Not Max</span>
+  <span
+    class="detail-badge not-max"
+    [gwtTooltip]="'Weapons => lower weapon main stat \n Upgrades => lower upgrade value / chance'"
+    *ngIf="shopItem?.orderDetails?.notMax"
+  >
+    <i class="fa fa-angles-down"></i>Not Max</span
+  >
 
   <!-- Pre-Searing Flag -->
   <span class="detail-badge os" *ngIf="shopItem?.orderDetails?.pre"> <i class="fa fa-sun"></i> Pre-Searing </span>

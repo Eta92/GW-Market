@@ -13,6 +13,12 @@ export interface Auction {
   startTime: number;
   endTime: number;
   history: Array<AuctionHistory>;
+  // copy from shop
+  daybreakOnline?: boolean;
+  authCertified?: boolean;
+  kamadanChat?: boolean;
+  positives?: number;
+  negatives?: number;
 }
 
 export interface AuctionHistory {

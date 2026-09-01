@@ -149,6 +149,9 @@ export class ShopService {
     if (!OverviewService.overviewInit) {
       OverviewService.init();
     }
+
+    console.log('shop init done');
+    SyncHelper.initAuctions();
   }
 
   public static updateShopRecruits(): void {
@@ -229,18 +232,20 @@ export class ShopService {
       const shop: Shop = {
         uuid: rawShop.uuid,
         player: rawShop.player,
-        items: rawShop.items.map((item) => ({
-          ...item,
-          id: item.id || nanoid(10),
-          listedTime: item.listedTime || Date.now(),
-          player: undefined,
-          daybreakOnline: undefined,
-          authCertified: undefined,
-          positives: undefined,
-          negatives: undefined,
-          shopId: undefined,
-          lastRefresh: undefined,
-        })),
+        items: rawShop.items
+          .filter((item) => item.prices && item.prices.length > 0 && item.prices.every((p) => (p.type ?? -1) >= 0 && p.price >= 0))
+          .map((item) => ({
+            ...item,
+            id: item.id || nanoid(10),
+            listedTime: item.listedTime || Date.now(),
+            player: undefined,
+            daybreakOnline: undefined,
+            authCertified: undefined,
+            positives: undefined,
+            negatives: undefined,
+            shopId: undefined,
+            lastRefresh: undefined,
+          })),
         daybreakOnline: rawShop.daybreakOnline,
       };
       if (rawShop.recruiter?.shopId && !rawShop.recruiter.name) {
@@ -612,13 +617,17 @@ export class ShopService {
       // hijack shop loop to insert item between shop time
       while (kamadanOrders.length > 0 && kamadanOrders[kamadanOrders.length - 1].lastRefresh > shop.lastRefresh) {
         const kamadanOrder = kamadanOrders.pop();
-        this.applyRefreshOrder(kamadanOrder);
+        if (kamadanOrder.prices) {
+          this.applyRefreshOrder(kamadanOrder);
+        }
       }
       //
       shop.items
         .filter((order) => !order.hidden)
         .forEach((order) => {
-          this.applyRefreshOrder(order);
+          if (order.prices) {
+            this.applyRefreshOrder(order);
+          }
         });
     });
     // and insert the rest at the end
@@ -738,8 +747,10 @@ export class ShopService {
             pendingShop.certified = [];
           }
           if (this.certifiedPlayers[sender] && this.certifiedPlayers[sender] !== pendingShop.uuid) {
+            console.log('Player ' + sender + ' is already certified for another shop. Merging shops...');
             const olderShop = this.allShopMap[this.certifiedPlayers[sender]];
             if (olderShop) {
+              console.log('Older shop of player ' + sender + ' found with uuid ' + olderShop.uuid + '. Merging certified lists...');
               if (!olderShop.certified) {
                 olderShop.certified = [];
                 console.log('======== Impossible situation =========');
@@ -748,11 +759,13 @@ export class ShopService {
               const shopToDelete = pendingShop;
               updatingShop = { ...olderShop };
               if (shopToDelete.certified && updatingShop.certified) {
+                console.log('Merging certified lists of shops ' + updatingShop.uuid + ' and ' + shopToDelete.uuid);
                 updatingShop.certified = updatingShop.certified
                   .filter((p) => !shopToDelete.certified.includes(p))
                   .concat(shopToDelete.certified);
               }
               if (shopToDelete.items && updatingShop.items) {
+                console.log('Merging shop items ' + ' (' + updatingShop.items.length + ' vs ' + shopToDelete.items.length + ' items)');
                 const updatingIds = updatingShop.items.map((i) => i.id);
                 updatingShop.items = updatingShop.items.concat(shopToDelete.items.filter((i) => !updatingIds.includes(i.id)));
               }
@@ -778,6 +791,9 @@ export class ShopService {
           pendingCertification.socket.join(updatingShop.uuid);
           this.io.to(updatingShop.uuid).emit('RefreshShop', { ...updatingShop, _id: undefined, lastIP: undefined });
           this.io.to(updatingShop.uuid).emit('RefreshPlayer', sender);
+          // try duplicate to old socket, delete if not helping to resolve mobile certification
+          // pendingCertification.socket.emit('RefreshShop', { ...updatingShop, _id: undefined, lastIP: undefined });
+          // pendingCertification.socket.emit('RefreshPlayer', sender);
           delete this.shopCertificationPending[uuid];
           OverviewService.logCertification(updatingShop.publicId);
         }

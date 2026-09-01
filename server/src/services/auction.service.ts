@@ -1,5 +1,4 @@
 import { Server as SocketServer } from 'socket.io';
-import { SyncHelper } from '../helpers/sync.helper';
 import { Auction } from '../models/auction.model';
 import { MessageType } from '../models/message.model';
 import { OrderType } from '../models/shop.model';
@@ -21,10 +20,10 @@ export class AuctionService {
   public static init(io: SocketServer): void {
     this.io = io;
     this.auctionInit = true;
-    SyncHelper.initAuctions();
-    setInterval(() => {
-      this.refreshAuctions();
-    }, 1000);
+    // SyncHelper.initAuctions();
+    // setInterval(() => {
+    //   this.refreshAuctions();
+    // }, 1000);
   }
 
   public static initAuctions(auctions: Array<Auction>): void {
@@ -66,14 +65,14 @@ export class AuctionService {
     this.activeAuctions.forEach((auction) => {
       const shop = ShopService.allShopMap[ShopService.certifiedPlayers[auction.player]];
       if (shop) {
-        // auction.daybreakOnline = shop.daybreakOnline;
-        // auction.authCertified = shop.certified?.includes(item.player);
-        // auction.positives = shop.reputation?.positive || 0;
-        // auction.negatives = shop.reputation?.negative || 0;
+        auction.daybreakOnline = shop.daybreakOnline;
+        auction.authCertified = shop.certified?.includes(auction.player);
+        auction.positives = shop.reputation?.positive || 0;
+        auction.negatives = shop.reputation?.negative || 0;
         auction.shopId = shop.publicId;
       } else {
         // perma loggin, auction trigger before shops
-        // console.log('Shop not found for auction:', auction.uuid);
+        console.log('Shop not found for auction:', auction.uuid);
       }
       if (!this.activeItemMap[auction.item.name]) {
         this.activeItemMap[auction.item.name] = [];

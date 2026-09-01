@@ -12,7 +12,7 @@ export class SyncHelper {
     }
   }
   public static async initAuctions(): Promise<void> {
-    if (MongoService.mongoInit && AuctionService.auctionInit) {
+    if (MongoService.mongoInit && AuctionService.auctionInit && ShopService.shopInit) {
       const auctions = await MongoService.getAllAuctions();
       AuctionService.initAuctions(auctions);
     }

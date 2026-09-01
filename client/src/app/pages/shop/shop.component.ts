@@ -482,7 +482,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     const priceLabels = ['Platinum', 'Ecto', 'Zkey', 'Armbraces', 'Black Dye'];
     const orderTypeLabels = ['Sell', 'Buy', 'Auction'];
     const now = new Date().toISOString().slice(0, 10);
-    const rows: string[] = ['Name,Order Type,Quantity,Price,Description,Listed Time'];
+    const rows: string[] = ['Name,Order Type,Quantity,Price,Description,Listed Time,Note'];
     for (const item of this.shop.items) {
       const priceStr = item.prices?.map((p) => `${priceLabels[p.type] ?? p.type}: ${p.price}`).join(' | ') ?? '';
       const row = [
@@ -492,6 +492,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         `"${priceStr}"`,
         `"${(item.description ?? '').replace(/"/g, '""')}"`,
         item.listedTime ? new Date(item.listedTime).toISOString() : '',
+        item.orderDetails?.note ?? '',
       ].join(',');
       rows.push(row);
     }

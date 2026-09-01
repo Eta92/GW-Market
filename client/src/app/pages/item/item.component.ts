@@ -16,8 +16,8 @@ import { StoreService } from '@app/services/store.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
 import { ItemDetailMap } from '@app/shared/constants/item-detail.map';
 import { ToastrService } from 'ngx-toastr';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, combineLatest } from 'rxjs';
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
 
 // Filter types
 export type OrderTypeFilter = 'all' | 'sell' | 'buy' | 'auction';
@@ -27,7 +27,7 @@ export type ViewMode = 'combined' | 'separate';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit, OnDestroy {
   public item: BasicItem;
@@ -65,18 +65,18 @@ export class ItemComponent implements OnInit, OnDestroy {
   public orderTypeOptions: ToggleOption[] = [
     { value: 'all', label: 'All' },
     { value: 'sell', label: 'Sell', icon: 'fa-arrow-up', styleClass: 'sell' },
-    { value: 'buy', label: 'Buy', icon: 'fa-arrow-down', styleClass: 'buy' }
+    { value: 'buy', label: 'Buy', icon: 'fa-arrow-down', styleClass: 'buy' },
   ];
 
   public viewModeOptions: ToggleOption[] = [
     { value: 'separate', label: 'Separate', icon: 'fa-columns' },
-    { value: 'combined', label: 'Combined', icon: 'fa-list' }
+    { value: 'combined', label: 'Combined', icon: 'fa-list' },
   ];
 
   public messageTypeOptions: ToggleOption[] = [
     { value: 'meet-at', label: 'Time slot', icon: 'fa-clock' },
     { value: 'meet-over', label: 'Time window', icon: 'fa-hourglass-half' },
-    { value: 'negotiate', label: 'Negotiate', icon: 'fa-handshake' }
+    { value: 'negotiate', label: 'Negotiate', icon: 'fa-handshake' },
   ];
 
   private bundleFamilies = ['special', 'consumable', 'tome', 'rune', 'material'];
@@ -104,85 +104,87 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
+    this.route.params.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       this.name = params.name || '';
-      //const name = this.router.url.split('/').pop() || '';
       const decodedName = decodeURIComponent(this.name);
+
+      // Load item metadata FIRST, then chain orders/auctions behind it
       this.itemService
         .getReady()
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(ready => {
-          this.item = this.itemService?.getItemBase(decodedName);
-          this.focusBundle = this.bundleFamilies.includes(this.item?.family);
-          this.addDetails(this.item);
-          this.cdr.detectChanges();
-        });
-      this.storeService
-        .getItemOrders()
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((items: Array<ShopItem>) => {
+        .pipe(
+          takeUntil(this.destroy$),
+          tap(() => {
+            this.item = this.itemService?.getItemBase(decodedName);
+            this.focusBundle = this.bundleFamilies.includes(this.item?.family);
+            this.addDetails(this.item);
+            this.cdr.detectChanges();
+          }),
+          switchMap(() => combineLatest([this.storeService.getItemOrders(), this.storeService.getItemAuctions()]))
+        )
+        .subscribe(([items, auctions]) => {
+          // --- Orders ---
           this.allItems = items;
           this.allOrders.sellOrders = this.parseOrders(
-            items.filter(si => si.orderType === OrderType.SELL),
+            items.filter((si) => si.orderType === OrderType.SELL),
             true
           );
           this.allOrders.buyOrders = this.parseOrders(
-            items.filter(si => si.orderType === OrderType.BUY),
+            items.filter((si) => si.orderType === OrderType.BUY),
             false
           );
-          // Parse into new currency-based structure
           this.currencyOrders = this.parseOrdersByCurrency();
-          // Extract available currencies for filter
-          this.availableCurrencies = this.currencyOrders.currencies.map(c => ({
+
+          this.availableCurrencies = this.currencyOrders.currencies.map((c) => ({
             value: c.currency,
-            name: c.currencyName
+            name: c.currencyName,
           }));
-          // Build currency toggle options
           this.currencyOptions = [
             { value: 'all', label: 'All' },
-            ...this.currencyOrders.currencies.map(c => ({
+            ...this.currencyOrders.currencies.map((c) => ({
               value: c.currency,
               label: c.currencyName,
-              imgSrc: UtilityHelper.getCurrencySource(c.currency)
-            }))
+              imgSrc: UtilityHelper.getCurrencySource(c.currency),
+            })),
           ];
-          this.cdr.detectChanges();
-        });
-      this.storeService
-        .getItemAuctions()
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((auctions: Array<Auction>) => {
-          auctions.forEach(auction => {
+
+          // --- Auctions ---
+          auctions.forEach((auction) => {
             auction.item.item = this.itemService?.getItemBase(auction.item.name);
           });
           this.allAuctions = auctions;
           this.allOrders.auctions = this.parseAuctions(auctions);
           this.currencyOrders = this.parseOrdersByCurrency();
+
           if (this.selectedAuction) {
-            const auction = this.allAuctions.find(a => a.uuid === this.selectedAuction?.uuid);
+            const auction = this.allAuctions.find((a) => a.uuid === this.selectedAuction?.uuid);
             this.selectedAuction = auction;
           }
+
           this.cdr.detectChanges();
         });
+
       this.shopService
         .getActiveShop()
         .pipe(takeUntil(this.destroy$))
-        .subscribe(activeShop => {
+        .subscribe((activeShop) => {
           if (activeShop) {
             this.myShop = activeShop;
             this.cdr.detectChanges();
           }
         });
+
       this.auctionForm = this.fb.group({
         bidAmount: [null, [Validators.required, Validators.min(1)]],
-        acknowledge: [null, [Validators.required, Validators.requiredTrue]]
+        acknowledge: [null, [Validators.required, Validators.requiredTrue]],
       });
       this.messageForm = this.fb.group({
         from: [formatDate(Date.now() + 1 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')],
         to: [formatDate(Date.now() + 2 * 60 * 60 * 1000, 'yyyy-MM-ddTHH:mm', 'en-US')],
         negotiate: [0],
-        currency: [1]
+        currency: [1],
       });
+
+      // Request data from server
       this.storeService.setSearchedItemName(decodedName);
       this.storeService.requestSocket('getItemOrders', decodedName);
       this.storeService.requestSocket('trackItem', decodedName);
@@ -221,17 +223,17 @@ export class ItemComponent implements OnInit, OnDestroy {
   private relativePrice = UtilityHelper.relativePrice;
   parseOrders(items: Array<ShopItem>, sorting: boolean): Array<ItemPriceList> {
     const itemPriceLists: Array<ItemPriceList> = [];
-    items.forEach(item => {
-      item.prices.forEach(price => {
-        if (!itemPriceLists.find(il => il.price === price.type)) {
+    items.forEach((item) => {
+      item.prices.forEach((price) => {
+        if (!itemPriceLists.find((il) => il.price === price.type)) {
           itemPriceLists.push({ price: price.type, orders: [] });
         }
-        const itemPriceList = itemPriceLists.find(il => il.price === price.type);
+        const itemPriceList = itemPriceLists.find((il) => il.price === price.type);
         const time = this.getOrderTime(item);
-        if (!itemPriceList?.orders.find(tl => tl.time === time)) {
+        if (!itemPriceList?.orders.find((tl) => tl.time === time)) {
           itemPriceList?.orders.push({ time: time, orders: [] });
         }
-        const itemTimeList = itemPriceList?.orders.find(tl => tl.time === time);
+        const itemTimeList = itemPriceList?.orders.find((tl) => tl.time === time);
         const pgcd = UtilityHelper.egcd(price.price, item.quantity);
         itemTimeList?.orders.push({
           player: item.player,
@@ -250,15 +252,15 @@ export class ItemComponent implements OnInit, OnDestroy {
           quantity: item.quantity,
           listedTime: item.listedTime,
           div_price: Math.round(price.price / pgcd),
-          div_quantity: Math.round(item.quantity / pgcd)
+          div_quantity: Math.round(item.quantity / pgcd),
         });
       });
     });
-    itemPriceLists.forEach(il => {
+    itemPriceLists.forEach((il) => {
       il.orders.sort((a, b) => {
         return a.time - b.time;
       });
-      il.orders.forEach(tl => {
+      il.orders.forEach((tl) => {
         tl.orders.sort((a, b) => {
           return sorting
             ? this.relativePrice(a.price) / a.quantity - this.relativePrice(b.price) / b.quantity || b.lastRefresh - a.lastRefresh
@@ -271,38 +273,40 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   parseAuctions(auctions: Array<Auction>): Array<ItemPriceList> {
     const auctionPriceLists: Array<ItemPriceList> = [];
-    auctions.forEach(auction => {
+    auctions.forEach((auction) => {
       const time = this.getAuctionTime(auction);
-      if (!auctionPriceLists.find(il => il.price === auction.currency)) {
+      if (!auctionPriceLists.find((il) => il.price === auction.currency)) {
         auctionPriceLists.push({ price: auction.currency, orders: [] });
       }
-      const auctionPriceList = auctionPriceLists.find(il => il.price === auction.currency);
-      if (!auctionPriceList?.orders.find(tl => tl.time === time)) {
+      const auctionPriceList = auctionPriceLists.find((il) => il.price === auction.currency);
+      if (!auctionPriceList?.orders.find((tl) => tl.time === time)) {
         auctionPriceList?.orders.push({ time: time, orders: [] });
       }
-      const auctionTimeList = auctionPriceList?.orders.find(tl => tl.time === time);
+      const auctionTimeList = auctionPriceList?.orders.find((tl) => tl.time === time);
       auctionTimeList?.orders.push({
         player: auction.player,
         lastRefresh: auction.endTime,
         daybreakOnline: false,
         authCertified: true,
         kamadanChat: false,
+        positives: auction.positives,
+        negatives: auction.negatives,
         item: auction.item,
         details: this.item,
         orderType: OrderType.AUCTION,
         price: {
           type: auction.currency,
-          price: auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice
+          price: auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice,
         },
         description: auction.item.description,
-        quantity: 1
+        quantity: 1,
       });
     });
-    auctionPriceLists.forEach(il => {
+    auctionPriceLists.forEach((il) => {
       il.orders.sort((a, b) => {
         return a.time - b.time;
       });
-      il.orders.forEach(tl => {
+      il.orders.forEach((tl) => {
         tl.orders.sort((a, b) => b.lastRefresh - a.lastRefresh);
       });
     });
@@ -314,8 +318,8 @@ export class ItemComponent implements OnInit, OnDestroy {
     const auctions = this.allAuctions;
     const currencyMap = new Map<Price, CurrencyGroup>();
 
-    items.forEach(item => {
-      item.prices.forEach(price => {
+    items.forEach((item) => {
+      item.prices.forEach((price) => {
         // Get or create currency group
         if (!currencyMap.has(price.type)) {
           currencyMap.set(price.type, {
@@ -324,15 +328,15 @@ export class ItemComponent implements OnInit, OnDestroy {
             timeBuckets: [
               { time: Time.ONLINE, sellOrders: [], buyOrders: [], auctions: [] },
               { time: Time.TODAY, sellOrders: [], buyOrders: [], auctions: [] },
-              { time: Time.WEEK, sellOrders: [], buyOrders: [], auctions: [] }
+              { time: Time.WEEK, sellOrders: [], buyOrders: [], auctions: [] },
             ],
-            totalOrders: 0
+            totalOrders: 0,
           });
         }
 
         const currencyGroup = currencyMap.get(price.type)!;
         const time = this.getOrderTime(item);
-        const timeBucket = currencyGroup.timeBuckets.find(tb => tb.time === time)!;
+        const timeBucket = currencyGroup.timeBuckets.find((tb) => tb.time === time)!;
 
         const pgcd = UtilityHelper.egcd(price.price, item.quantity);
         const order: ItemOrder = {
@@ -352,7 +356,7 @@ export class ItemComponent implements OnInit, OnDestroy {
           quantity: item.quantity,
           listedTime: item.listedTime,
           div_price: Math.round(price.price / pgcd),
-          div_quantity: Math.round(item.quantity / pgcd)
+          div_quantity: Math.round(item.quantity / pgcd),
         };
 
         if (item.orderType === OrderType.SELL) {
@@ -364,7 +368,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       });
     });
 
-    auctions.forEach(auction => {
+    auctions.forEach((auction) => {
       // Get or create currency group
       if (!currencyMap.has(auction.currency)) {
         currencyMap.set(auction.currency, {
@@ -373,15 +377,15 @@ export class ItemComponent implements OnInit, OnDestroy {
           timeBuckets: [
             { time: Time.ONLINE, sellOrders: [], buyOrders: [], auctions: [] },
             { time: Time.TODAY, sellOrders: [], buyOrders: [], auctions: [] },
-            { time: Time.WEEK, sellOrders: [], buyOrders: [], auctions: [] }
+            { time: Time.WEEK, sellOrders: [], buyOrders: [], auctions: [] },
           ],
-          totalOrders: 0
+          totalOrders: 0,
         });
       }
 
       const currencyGroup = currencyMap.get(auction.currency)!;
       const time = this.getAuctionTime(auction);
-      const timeBucket = currencyGroup.timeBuckets.find(tb => tb.time === time)!;
+      const timeBucket = currencyGroup.timeBuckets.find((tb) => tb.time === time)!;
 
       const price = auction.history?.[auction.history.length - 1]?.bid || auction.startingPrice;
       const order: ItemOrder = {
@@ -390,8 +394,8 @@ export class ItemComponent implements OnInit, OnDestroy {
         daybreakOnline: false,
         authCertified: true,
         kamadanChat: false,
-        positives: 0,
-        negatives: 0,
+        positives: auction.positives,
+        negatives: auction.negatives,
         shopId: auction.shopId,
         lastRefresh: auction.endTime,
         item: auction.item as any,
@@ -402,15 +406,15 @@ export class ItemComponent implements OnInit, OnDestroy {
         description: auction.item.description,
         quantity: 1,
         div_price: price,
-        div_quantity: 1
+        div_quantity: 1,
       };
       timeBucket.auctions.push(order);
       currencyGroup.totalOrders++;
     });
 
     // Sort orders within each time bucket
-    currencyMap.forEach(currencyGroup => {
-      currencyGroup.timeBuckets.forEach(timeBucket => {
+    currencyMap.forEach((currencyGroup) => {
+      currencyGroup.timeBuckets.forEach((timeBucket) => {
         // Sell orders: lowest price first (best deal for buyer)
         timeBucket.sellOrders.sort(
           (a, b) => this.relativePrice(a.price) / a.quantity - this.relativePrice(b.price) / b.quantity || b.lastRefresh - a.lastRefresh
@@ -495,7 +499,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       if (selected.length === 1) {
         this.currencyFilter = 'all';
       } else {
-        this.currencyFilter = selected.filter(c => c !== currency);
+        this.currencyFilter = selected.filter((c) => c !== currency);
       }
     }
   }
@@ -516,7 +520,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       return this.currencyOrders.currencies;
     }
     const selectedCurrencies = this.currencyFilter as number[];
-    return this.currencyOrders.currencies.filter(c => selectedCurrencies.includes(c.currency));
+    return this.currencyOrders.currencies.filter((c) => selectedCurrencies.includes(c.currency));
   }
 
   showSellOrders(): boolean {
@@ -533,8 +537,8 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   getFilteredOrderCount(): number {
     let count = 0;
-    this.filteredCurrencies.forEach(currency => {
-      currency.timeBuckets.forEach(bucket => {
+    this.filteredCurrencies.forEach((currency) => {
+      currency.timeBuckets.forEach((bucket) => {
         if (this.showSellOrders()) count += bucket.sellOrders.length;
         if (this.showBuyOrders()) count += bucket.buyOrders.length;
         if (this.showAuctions()) count += bucket.auctions.length;
@@ -554,16 +558,16 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   getSellOrdersForCurrency(currency: CurrencyGroup): ItemOrder[] {
     const orders: ItemOrder[] = [];
-    currency.timeBuckets.forEach(bucket => {
-      bucket.sellOrders.forEach(order => orders.push({ ...order, _timeBucket: bucket.time } as any));
+    currency.timeBuckets.forEach((bucket) => {
+      bucket.sellOrders.forEach((order) => orders.push({ ...order, _timeBucket: bucket.time } as any));
     });
     return orders;
   }
 
   getBuyOrdersForCurrency(currency: CurrencyGroup): ItemOrder[] {
     const orders: ItemOrder[] = [];
-    currency.timeBuckets.forEach(bucket => {
-      bucket.buyOrders.forEach(order => orders.push({ ...order, _timeBucket: bucket.time } as any));
+    currency.timeBuckets.forEach((bucket) => {
+      bucket.buyOrders.forEach((order) => orders.push({ ...order, _timeBucket: bucket.time } as any));
     });
     return orders;
   }
@@ -571,71 +575,71 @@ export class ItemComponent implements OnInit, OnDestroy {
   // Get all sell orders across all filtered currencies, grouped by time
   getAllSellOrdersByTime(): { time: Time; orders: ItemOrder[] }[] {
     const timeMap = new Map<Time, ItemOrder[]>();
-    [Time.ONLINE, Time.TODAY, Time.WEEK].forEach(t => timeMap.set(t, []));
+    [Time.ONLINE, Time.TODAY, Time.WEEK].forEach((t) => timeMap.set(t, []));
 
-    this.filteredCurrencies.forEach(currency => {
-      currency.timeBuckets.forEach(bucket => {
-        bucket.sellOrders.forEach(order => {
+    this.filteredCurrencies.forEach((currency) => {
+      currency.timeBuckets.forEach((bucket) => {
+        bucket.sellOrders.forEach((order) => {
           timeMap.get(bucket.time)?.push(order);
         });
       });
     });
 
     // Sort orders within each time bucket by unit price (lowest first for sell)
-    timeMap.forEach(orders => {
+    timeMap.forEach((orders) => {
       orders.sort(
         (a, b) => this.relativePrice(a.price) / a.quantity - this.relativePrice(b.price) / b.quantity || b.lastRefresh - a.lastRefresh
       );
     });
 
     return [Time.ONLINE, Time.TODAY, Time.WEEK]
-      .map(time => ({ time, orders: timeMap.get(time) || [] }))
-      .filter(bucket => bucket.orders.length > 0);
+      .map((time) => ({ time, orders: timeMap.get(time) || [] }))
+      .filter((bucket) => bucket.orders.length > 0);
   }
 
   // Get all buy orders across all filtered currencies, grouped by time
   getAllBuyOrdersByTime(): { time: Time; orders: ItemOrder[] }[] {
     const timeMap = new Map<Time, ItemOrder[]>();
-    [Time.ONLINE, Time.TODAY, Time.WEEK].forEach(t => timeMap.set(t, []));
+    [Time.ONLINE, Time.TODAY, Time.WEEK].forEach((t) => timeMap.set(t, []));
 
-    this.filteredCurrencies.forEach(currency => {
-      currency.timeBuckets.forEach(bucket => {
-        bucket.buyOrders.forEach(order => {
+    this.filteredCurrencies.forEach((currency) => {
+      currency.timeBuckets.forEach((bucket) => {
+        bucket.buyOrders.forEach((order) => {
           timeMap.get(bucket.time)?.push(order);
         });
       });
     });
 
     // Sort orders within each time bucket by unit price (highest first for buy)
-    timeMap.forEach(orders => {
+    timeMap.forEach((orders) => {
       orders.sort((a, b) => b.price.price / b.quantity - a.price.price / a.quantity || b.lastRefresh - a.lastRefresh);
     });
 
     return [Time.ONLINE, Time.TODAY, Time.WEEK]
-      .map(time => ({ time, orders: timeMap.get(time) || [] }))
-      .filter(bucket => bucket.orders.length > 0);
+      .map((time) => ({ time, orders: timeMap.get(time) || [] }))
+      .filter((bucket) => bucket.orders.length > 0);
   }
 
   getAllAuctionsByTime(): { time: Time; auctions: ItemOrder[] }[] {
     const timeMap = new Map<Time, ItemOrder[]>();
-    [Time.ONLINE, Time.TODAY, Time.WEEK].forEach(t => timeMap.set(t, []));
+    [Time.ONLINE, Time.TODAY, Time.WEEK].forEach((t) => timeMap.set(t, []));
 
-    this.filteredCurrencies.forEach(currency => {
-      currency.timeBuckets.forEach(bucket => {
-        bucket.auctions.forEach(auction => {
+    this.filteredCurrencies.forEach((currency) => {
+      currency.timeBuckets.forEach((bucket) => {
+        bucket.auctions.forEach((auction) => {
           timeMap.get(bucket.time)?.push(auction);
         });
       });
     });
 
     // Sort auctions by time only
-    timeMap.forEach(auctions => {
+    timeMap.forEach((auctions) => {
       auctions.sort((a, b) => a.lastRefresh - b.lastRefresh);
     });
 
     return [Time.ONLINE, Time.TODAY, Time.WEEK]
-      .map(time => ({ time, auctions: timeMap.get(time) || [] }))
-      .filter(bucket => bucket.auctions.length > 0);
+      .map((time) => ({ time, auctions: timeMap.get(time) || [] }))
+      .filter((bucket) => bucket.auctions.length > 0);
   }
 
   getTotalSellOrders(): number {
@@ -655,7 +659,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   openAuctionDetail(order: ItemOrder): void {
-    const auction = this.allAuctions.find(a => a.uuid === order.auction);
+    const auction = this.allAuctions.find((a) => a.uuid === order.auction);
     this.selectedAuction = auction;
     this.auctionHistoryVisible = false;
     if (auction) {
@@ -685,14 +689,14 @@ export class ItemComponent implements OnInit, OnDestroy {
           type: order.price.type,
           quantity: order.quantity,
           totalPrice: order.price.price,
-          unitPrice: Math.round(order.price.price / (order.quantity || 1))
-        } as PurchasePrice
+          unitPrice: Math.round(order.price.price / (order.quantity || 1)),
+        } as PurchasePrice,
       ],
       orderType: order.orderType,
       listedTime: order.listedTime,
       origin: order.kamadanChat ? PurchaseOrigin.KAMADAN : PurchaseOrigin.CLIENT,
       weaponDetails: order.item.weaponDetails,
-      orderDetails: order.item.orderDetails
+      orderDetails: order.item.orderDetails,
     } as Purchase);
   }
 
@@ -713,7 +717,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       this.messageService.sendMessage(this.shopService.getShopUuid(), this.selectedWhisperOrder, this.messageType, formData);
     } else {
       this.toastrService.error('Please fill in all required fields before sending', 'Form Error', {
-        timeOut: 10000
+        timeOut: 10000,
       });
     }
     this.messagePopup = false;
@@ -746,7 +750,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     if (this.tradeMessage) {
       navigator.clipboard.writeText(this.tradeMessage).then(() => {
         this.toastrService.success('Private trade message copied to clipboard', '', {
-          timeOut: 5000
+          timeOut: 5000,
         });
       });
     }
@@ -814,8 +818,8 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   countOrders(priceLists: ItemPriceList[]): number {
     let count = 0;
-    priceLists.forEach(pl => {
-      pl.orders.forEach(tl => {
+    priceLists.forEach((pl) => {
+      pl.orders.forEach((tl) => {
         count += tl.orders.length;
       });
     });
@@ -833,7 +837,7 @@ export class ItemComponent implements OnInit, OnDestroy {
         this.shopService.bidAuction(auction, bidData.bidAmount);
       } else {
         this.toastrService.error('Your bid must be at least 1% higher rounded up than the current bid', 'Bid Amount Error', {
-          timeOut: 15000
+          timeOut: 15000,
         });
       }
     }
