@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { Upgrade } from '@app/models/item.model';
 import { Price } from '@app/models/shop.model';
+import { PROFESSION_COLOR_MAP } from '@shared/constants/weapon-attributes';
 
 export interface CurrencyOption {
   value: Price;
@@ -10,7 +11,7 @@ export interface CurrencyOption {
 @Component({
   selector: 'app-upgrade-dropdown',
   templateUrl: './upgrade-dropdown.component.html',
-  styleUrls: ['./upgrade-dropdown.component.scss']
+  styleUrls: ['./upgrade-dropdown.component.scss'],
 })
 export class UpgradeDropdownComponent {
   @Input() selectedUpgrade: string = '';
@@ -26,7 +27,7 @@ export class UpgradeDropdownComponent {
   }
 
   fullUpgrade(): Upgrade {
-    return this.upgradeOptions.find(upg => upg.value === this.selectedUpgrade);
+    return this.upgradeOptions.find((upg) => upg.value === this.selectedUpgrade);
   }
 
   toggleDropdown(event: Event): void {
@@ -39,5 +40,18 @@ export class UpgradeDropdownComponent {
     this.selectedUpgrade = upgrade?.value || '';
     this.upgradeChange.emit(upgrade?.value || '');
     this.isOpen = false;
+  }
+
+  getProfessionColor(name: string): string | null {
+    if (!name) {
+      return null;
+    }
+    const lower = name.toLowerCase();
+    for (const profession of Object.keys(PROFESSION_COLOR_MAP)) {
+      if (lower.includes(profession.toLowerCase())) {
+        return PROFESSION_COLOR_MAP[profession];
+      }
+    }
+    return null;
   }
 }

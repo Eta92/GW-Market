@@ -1,4 +1,4 @@
-<div class="search-container relative" #main>
+<div class="relative search-container" #main>
   <!-- Search Input -->
   <div class="search-input-wrapper">
     <i class="fa fa-search search-icon"></i>
@@ -24,7 +24,7 @@
       (click)="onClick(item)"
     >
       <div class="result-info">
-        <span class="result-name">
+        <span class="result-name" [class.profession-colored]="getProfessionColor(item.name)" [style.color]="getProfessionColor(item.name)">
           <b>{{ item.name.substring(0, item.match) }}</b
           >{{ item.name.substring(item.match) }}
         </span>

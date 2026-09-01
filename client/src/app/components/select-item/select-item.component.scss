@@ -138,6 +138,10 @@
   b {
     color: var(--gwt-gold-bright);
   }
+
+  &.profession-colored b {
+    color: inherit;
+  }
 }
 
 .result-image {

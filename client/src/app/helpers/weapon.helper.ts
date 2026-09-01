@@ -67,7 +67,6 @@ export class WeaponHelper {
     for (const item of upgradeFamily) {
       WeaponHelper.upgradeDescriptions[item.name] = item.enhancement + (item.condition ? ` (${item.condition})` : '');
     }
-    console.log('Loaded upgrade descriptions:', WeaponHelper.upgradeDescriptions);
   }
 
   /**

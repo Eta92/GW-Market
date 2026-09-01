@@ -31,10 +31,13 @@
 
   <!-- Weapon-specific Filters (Only for weapon family) -->
   <div class="filter-group weapon-filters" *ngIf="showAttributeFilter">
-    <select class="filter-select" formControlName="attribute">
-      <option [ngValue]="null">Attribute...</option>
-      <option *ngFor="let attribute of attributes" [ngValue]="attribute">{{ attribute }}</option>
-    </select>
+    <app-attribute-dropdown
+      class="w-40 h-9"
+      [options]="attributes"
+      [selectedValue]="form.get('attribute')?.value"
+      placeholder="Attribute..."
+      (valueChange)="onAttributeChange($event)"
+    ></app-attribute-dropdown>
   </div>
 
   <!-- Requirement Range (Only for weapon/unique families) -->

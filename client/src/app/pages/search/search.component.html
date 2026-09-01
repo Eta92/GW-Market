@@ -104,10 +104,13 @@
             <!-- Attribute -->
             <div class="sidebar-section">
               <label class="section-label">Attribute</label>
-              <select class="filter-select" formControlName="attribute">
-                <option [ngValue]="null">Any attribute...</option>
-                <option *ngFor="let attr of attributes" [ngValue]="attr">{{ attr }}</option>
-              </select>
+              <app-attribute-dropdown
+                class="flex w-full h-11"
+                [options]="attributes"
+                [selectedValue]="form.get('attribute')?.value === 'any' ? null : form.get('attribute')?.value"
+                placeholder="Any / Default"
+                (valueChange)="form.patchValue({ attribute: $event })"
+              ></app-attribute-dropdown>
             </div>
 
             <!-- Requirement -->

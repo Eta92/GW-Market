@@ -10,7 +10,7 @@ import { debounceTime } from 'rxjs';
 @Component({
   selector: 'app-filter-order',
   templateUrl: './filter-order.component.html',
-  styleUrls: ['./filter-order.component.scss']
+  styleUrls: ['./filter-order.component.scss'],
 })
 export class FilterOrderComponent implements OnInit {
   @Input() simple = false;
@@ -20,11 +20,15 @@ export class FilterOrderComponent implements OnInit {
   public allItems: AvailableTree;
   public attributes = WEAPON_ATTRIBUTES;
 
+  onAttributeChange(value: string | null): void {
+    this.form.get('attribute')?.setValue(value);
+  }
+
   public orderTypeOptions: ToggleOption[] = [
     { value: null, label: 'All' },
     { value: 'sell', label: 'Sell', icon: 'fa-arrow-up', styleClass: 'sell' },
     { value: 'buy', label: 'Buy', icon: 'fa-arrow-down', styleClass: 'buy' },
-    { value: 'auction', label: 'Auction', icon: 'fa-gavel', styleClass: 'auction' }
+    { value: 'auction', label: 'Auction', icon: 'fa-gavel', styleClass: 'auction' },
   ];
 
   constructor(
@@ -45,7 +49,7 @@ export class FilterOrderComponent implements OnInit {
       core: [null],
       exotic: [null],
       prefix: [null],
-      suffix: [null]
+      suffix: [null],
     });
     this.form.get('family').valueChanges.subscribe(() => {
       this.form.get('category').setValue(null);
@@ -60,7 +64,7 @@ export class FilterOrderComponent implements OnInit {
   }
 
   getFamilies(): Array<string> {
-    return this.allItems?.families.map(f => f.name) || [];
+    return this.allItems?.families.map((f) => f.name) || [];
   }
 
   // Contextual filter helpers
@@ -90,62 +94,62 @@ export class FilterOrderComponent implements OnInit {
 
   getCategories(): Array<string> {
     const familyName = this.form.get('family').value;
-    const family = this.allItems?.families.find(f => f.name === familyName);
-    return family ? family.categories.map(c => c.name) : [];
+    const family = this.allItems?.families.find((f) => f.name === familyName);
+    return family ? family.categories.map((c) => c.name) : [];
   }
 
   getCores(): Array<string> {
     if (!this.allItems) return [];
-    const upgrades = this.allItems.families.find(fam => fam.name === 'upgrade')?.categories;
+    const upgrades = this.allItems.families.find((fam) => fam.name === 'upgrade')?.categories;
     if (!upgrades) {
       return [];
     }
     return [
-      ...(upgrades.find(cat => cat.name === 'All equippable items Inscriptions')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'All weapon types Inscriptions')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Martial weapons Inscriptions')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Spellcasting weapons Inscriptions')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Focus items or shields Inscriptions')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Focus items Inscriptions')?.items.map(i => i.name) || [])
+      ...(upgrades.find((cat) => cat.name === 'All equippable items Inscriptions')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'All weapon types Inscriptions')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Martial weapons Inscriptions')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Spellcasting weapons Inscriptions')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Focus items or shields Inscriptions')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Focus items Inscriptions')?.items.map((i) => i.name) || []),
     ];
   }
 
   getPrefixes(): Array<string> {
     if (!this.allItems) return [];
-    const upgrades = this.allItems.families.find(fam => fam.name === 'upgrade')?.categories;
+    const upgrades = this.allItems.families.find((fam) => fam.name === 'upgrade')?.categories;
     if (!upgrades) {
       return [];
     }
     return [
-      ...(upgrades.find(cat => cat.name === 'Axe Haft')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Dagger Tang')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Hammer Haft')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Scythe Snathe')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Spearhead')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Staff Head')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Sword Hilt')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Bowstring')?.items.map(i => i.name) || [])
+      ...(upgrades.find((cat) => cat.name === 'Axe Haft')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Dagger Tang')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Hammer Haft')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Scythe Snathe')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Spearhead')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Staff Head')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Sword Hilt')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Bowstring')?.items.map((i) => i.name) || []),
     ];
   }
 
   getSuffixes(): Array<string> {
     if (!this.allItems) return [];
-    const upgrades = this.allItems.families.find(fam => fam.name === 'upgrade')?.categories;
+    const upgrades = this.allItems.families.find((fam) => fam.name === 'upgrade')?.categories;
     if (!upgrades) {
       return [];
     }
     return [
-      ...(upgrades.find(cat => cat.name === 'Axe Grip')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Dagger Handle')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Focus Core')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Hammer Grip')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Scythe Grip')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Shield Handle')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Spear Grip')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Staff Wrapping')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Sword Pommel')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Wand Wrapping')?.items.map(i => i.name) || []),
-      ...(upgrades.find(cat => cat.name === 'Bow Grip')?.items.map(i => i.name) || [])
+      ...(upgrades.find((cat) => cat.name === 'Axe Grip')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Dagger Handle')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Focus Core')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Hammer Grip')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Scythe Grip')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Shield Handle')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Spear Grip')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Staff Wrapping')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Sword Pommel')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Wand Wrapping')?.items.map((i) => i.name) || []),
+      ...(upgrades.find((cat) => cat.name === 'Bow Grip')?.items.map((i) => i.name) || []),
     ];
   }
 }

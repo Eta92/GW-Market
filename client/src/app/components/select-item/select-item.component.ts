@@ -17,6 +17,7 @@ import { ShopLink } from '@app/models/shop.model';
 import { DeviceService } from '@app/services/device.service';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
+import { PROFESSION_COLOR_MAP } from '@shared/constants/weapon-attributes';
 import { Subscription, debounceTime } from 'rxjs';
 
 @Component({
@@ -169,6 +170,19 @@ export class SelectItemComponent implements OnInit, OnDestroy {
 
   getImageSource(item: BasicItem): string {
     return UtilityHelper.getImage(item);
+  }
+
+  getProfessionColor(name: string): string | null {
+    if (!name) {
+      return null;
+    }
+    const lower = name.toLowerCase();
+    for (const profession of Object.keys(PROFESSION_COLOR_MAP)) {
+      if (lower.includes(profession.toLowerCase())) {
+        return PROFESSION_COLOR_MAP[profession];
+      }
+    }
+    return null;
   }
 
   close(): void {

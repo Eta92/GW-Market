@@ -21,7 +21,7 @@
     >
       <img [src]="upgrade.img" alt="" />
       <div class="upgrade-content">
-        <span class="upgrade-name text-no-overflow">{{ upgrade.value }}</span>
+        <span class="upgrade-name text-no-overflow" [style.color]="getProfessionColor(upgrade.value)">{{ upgrade.value }}</span>
         <span class="upgrade-description text-no-overflow">{{ upgrade.description }}</span>
       </div>
     </button>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PipeModule } from '@app/pipes/pipe.module';
+import { AttributeDropdownComponent } from '@app/shared/components/attribute-dropdown/attribute-dropdown.component';
 import { CurrencyDropdownComponent } from '@app/shared/components/currency-dropdown/currency-dropdown.component';
 import { ItemDetailsComponent } from '@app/shared/components/item-details/item-details.component';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
@@ -32,6 +33,7 @@ const SHARED_COMPONENTS = [
   StatsDisplayComponent,
   OrderRowComponent,
   PreviewCardComponent,
+  AttributeDropdownComponent,
   CurrencyDropdownComponent,
   UpgradeDropdownComponent,
   ItemDetailsComponent,
