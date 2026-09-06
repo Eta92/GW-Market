@@ -18,6 +18,7 @@
     "Scythe Mastery": ["Scythe Mastery"],
     "Wind Prayers": ["Wind Prayers"]
   },
+  // use for of th class mods and tomes
   "classes": {
     "Warrior": ["war", "guierrier", "Krieger", "wammo"],
     "Ranger": ["hunter", "huntress", "archer"],
@@ -33,7 +34,7 @@
   "attributes": {
     "Strength": ["Strength", "Str"],
     "Tactics": ["Tactics", "tacs", "tac", "tct"],
-    "Divine Favor": ["Divine Favor", "divine", "favor", "div", "df"],
+    "Divine Favor": ["Divine Favor", "divine", "favor", "div", "df", "divine favour", "favour"],
     "Healing Prayers": ["Healing Prayers", "healing", "prayers", "heal", "hp"],
     "Protection Prayers": ["Protection Prayers", "protection", "prayers", "prot", "pp"],
     "Smiting Prayers": ["Smiting Prayers", "smiting", "smithing", "smite", "smit"],
@@ -60,22 +61,44 @@
 
   "inscription": {
     "true": ["inscription", "insc.", "ins.", "insc", "ins"],
-    "false": ["old school", "oldschool", "old", "o.s.", "o.s", "os", "non-inscribable"]
+    "false": ["old school", "oldschool", "old", "o.s.", "o.s", "os", "non-inscribable"],
+    "Vampiric Strength": ["dual vamp", "double vamp", "dv", "15/-1", "15|-1", "15%/-1", "15%|-1"],
+    "Zealous Strength": ["dual zeal", "dual zealous", "dz"]
   },
   "items": {
     "weapons": [],
 
-    "Celestial Compass": ["compass"],
+   
     "Bone Dragon Staff": ["bds"],
     "Platinum Staff": ["plat staff", "pstaff"],
-    "Frog Scepter": ["froggy"],
-    "Obsidian Edge": ["obby edge", "obby", "obsidian sword", "obsidian blade"],
+    
+    "Frog Scepter": ["froggy", "froggies"],
+
+    "Celestial Compass": ["compass", "cc"],
+    
     "Voltaic Spear": ["voltaic", "volti", "volty", "vs"],
-    "Eternal Blade": ["eblade", "e-blade"],
+    
+    "Eternal Blade": ["eblade", "e-blade", "eternal sword"],
     "Elemental Sword": ["ele sword"],
-    "Vampiric Dragon Sword": ["vds"],
     "Fiery Dragon Sword": ["fds"],
-    "Draconic Aegis": ["drac shield", "drac aegis"],
+    "Vampiric Dragon Sword": ["vds"],
+    "Obsidian Edge": ["obby edge", "obby", "obsidian sword", "obsidian blade"],
+
+    "Demonic Aegis": ["demonic shield"],
+    "Draconic Aegis": ["drac shield", "drac aegis", "draconic shield", "drac. shield", "drac. aegis"],
+
+    // use for every search like tyrian axe / cleaver as well
+    "Sword": ["blade", "edge", "razor"],
+    "Axe": ["cleaver", "reaver", "hatchet"],
+    "Hammer": ["gavel", "maul"],
+    "Daggers": ["dirks", "chakrams", "fangs"],
+    "Spear": ["javelin", "spaer", "speer"],
+    "Staff": ["staves", "2hand", "2-hand", "2 hand"],
+    "Scepter": ["wand", "rod", "1hand", "1-hand", "1 hand"],
+    "Focus": ["artifact", "off-hand", "off hand"],
+    "Shield": ["aegis", "bastion", "bulwark", "buckler", "defender"],
+    "Unique": ["green", "greenie"],
+    "Rare": ["gold", "golden", "goldie"],
 
     "mods": [],
 
@@ -452,29 +475,43 @@
     "Measure for Measure": [],
     "Show me the money!": [],
 
+    "Wand Wrapping": ["wand wrap", "1hand wrap", "wrap for wand", "wrap for scepter", "wand grip"],
+    "Staff Wrapping": ["staff wrap", "2hand wrap", "wrap for staff", "staff grip"],
+    
     "consumables": [],
 
-    "Gift of the Traveler": ["nick gift", "gott", "got"],
+    "Gift of the Traveler": ["nick gift", "gott", "got", "gifts"],
     "Birthday Cupcake": ["cupcake", "cc"],
     "Chocolate Bunny": ["bunny", "rabbit"],
-    "Candy Apple": ["apple"],
-    "Candy Corn": ["corn"],
+    "Candy Apple": ["apple", "ca"],
+    "Candy Corn": ["corn", "cc"],
+    "Crème Brûlée": ["Creme Brule", "créme brule", "cream", "cream brulee", "brüllcreme"],
     "Green Rock Candy": ["green candy", "green rock", "grc", "gc"],
     "Blue Rock Candy": ["blue candy", "blue rock", "brc", "bc"],
     "Red Rock Candy": ["red candy", "red rock", "rrc", "rc"],
     "Delicious Cake": ["cake"],
-    "Pumpkin Cookie": ["cookie", "pc"],
+    "Pumpkin Cookie": ["cookie"],
     "Slice of Pumpkin Pie": ["pumpkin pie", "pie", "pp"],
-    "War Supplies": ["war sups", "war supps", "supps"],
+    "Keg of Aged Hunter'S Ale": ["keg", "barrel"],
+
+    "Party Beacon": ["beacon", "pbeacon"],
+    "Battle Isle Iced Tea": ["iced tea", "tea", "ice tea", "icetea"],
+    
+    "War Supplies": ["war sups", "war supps", "supps", "warsupps", "warsup"],
+    
     "Cons Set": ["cons", "consset", "conset"],
     "Essence of Celerity": ["essence", "BU", "essence of clarity"],
-    "Armor of Salvation": ["armor"],
+    "Armor of Salvation": ["conset armor", "con set armor"],
     "Grail of Might": ["grail"],
+    "Scroll of Resurrection": ["rezz scroll", "rez scroll", "res scroll", "ress scroll"],
+    "Tengu Support Flare": ["tengus", "flares", "tengu flare"],
     "Flame of Balthazar": ["balthazar flame", "flame", "fob"],
-    "Hero's Strongbox": ["herobox", "hero box"],
-    "Champion's Zaishen Strongbox": ["champion box", "champion's box"],
-    "Party Beacon": ["beacon", "pbeacon"],
-    "Battle Isle Iced Tea": ["iced tea", "tea"],
+    
+    "Hero's Strongbox": ["herobox", "hero box", "ha box"],
+    "Champion's Zaishen Strongbox": ["champion box", "champion's box", "gvg box"],
+    "Gladiator's Zaishen Strongbox": ["glad box", "glad strongboxes", "ra box"],
+    "Strategist's Zaishen Strongbox": ["strat box", "strategic box", "codex box"],
+   
 
     "special": [],
     "Armbrace": ["arm", "a"],
@@ -483,6 +520,8 @@
     "Silver Zaishen Coin": ["silver zcoin", "silver coin", "silver z coin", "szc"],
     "Gold Zaishen Coin": ["gold zcoin", "gold coin", "gold z coin", "gzc"],
     "Current Nick Set": ["nick weekly", "nick set", "nickset", "nicholas set", "nick", "nicholas"],
-    "Droknar's Key": ["drok key"]
+    "Hammer of Kathandrax": ["kath hammer", "hammer of kath", "kath. hammer"],
+    "Lockpick": ["lp", "lps", "pick"],
+    "Droknar's Key": ["drok key", "droks key", "droknars key"]
   }
 }
