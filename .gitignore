@@ -4,6 +4,7 @@
 .github
 .history
 .vscode
+.mcp.json
 assets/data.json
 client/.angular
 client/dist
@@ -20,3 +21,4 @@ graphify-out/*
 skills-lock.json
 server/scripts/not-indexed/*
 server/kamadan-log*
+CLAUDE.md

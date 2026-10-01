@@ -1,4 +1,4 @@
-import { OrderType, Price, ShopPrice } from './shop.model';
+import { OrderType, Price, ShopItem, ShopPrice } from './shop.model';
 
 export interface KamadanData {
   t: number;
@@ -40,4 +40,9 @@ export interface KamadanFailOrder {
   price: ShopPrice;
   raw: string;
   confidence: number;
+}
+
+export interface KamadanGoal {
+  message: string;
+  goal: Array<ShopItem>;
 }

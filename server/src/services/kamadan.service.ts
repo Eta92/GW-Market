@@ -28,18 +28,19 @@ export class KamadanService {
     for (const key in acronyms.inscription) {
       this.inscriptionTags[key] = acronyms.inscription[key].map((pattern: string) => new RegExp(`\\b${pattern}\\b`, 'gi'));
     }
-    this.acronymMap = {};
+    this.acronymMap = Object.create(null);
     for (const key in acronyms.items) {
       for (const pattern of acronyms.items[key]) {
         this.acronymMap[pattern.toLowerCase()] = key;
       }
     }
     if (itemMap) {
-      this.itemMap = {};
+      this.itemMap = Object.create(null);
       for (const key in itemMap) {
         this.itemMap[key.toLowerCase()] = key;
       }
     }
+    this.buildPhraseIndex();
     console.log('KamadanService initialized');
   }
 
@@ -116,12 +117,25 @@ export class KamadanService {
     'g'
   );
   // /(?:\d+\s*(?:e|a|k)?(=(\s*\d+)\s*(?:e|a|k)))|((?<!x)(\d+(?:\.\d+)?)\s*(?:e|a|k|plat)(?:(?:\s*(?:\/|:)\s*|\s+)(?:ea|each|stack)\b)?)/gi;
-  private static delimiters = ['||', '|', '//', 'and', ',', '-', ';', '/'];
+  private static delimiters = ['||', '|', '//', '::', '...', '\n', '\\', '~', 'and', ',', '-', ';', '/'];
+  // characters people type instead of a space - "Gifts_of_the_Traveler", "Flare*50",
+  // "hale&hearty". Splitting on them would shred the name, so they become spaces first.
+  private static spacers = /[_*&]/g;
   private static quantityRegex = new RegExp(
-    `x\\s*(\d+)|\\(\\s*x?\\s*(\d+)\\s*\\)|(\\d+)\\s*(?:${this.groupAcro})|(\\d+)\\s*x|(?<!\\d)(?<!q|r|\\+)(\\d+\\b)(?!%)`,
+    `x\\s*(\\d+)|\\(\\s*x?\\s*(\\d+)\\s*\\)|(\\d+)\\s*(?:${this.groupAcro})|(\\d+)\\s*x|(?<!\\d)(?<!q|r|\\+)(\\d+\\b)(?!%)`,
     'g'
   );
   // /x\s*(\d+)|\(\s*x?\s*(\d+)\s*\)|(\d+)\s*stacks?|(\d+)\s*sets?|(\d+)\s*x|(?<!\d)(?<!q|r|\+)(\d+\b)(?!%)/gi;
+  // a stack is 250 items; the mention applies to the whole chunk, as in
+  // "WTS stacks x2 Chitin Fragments, x4 Bolt of cloth" where only the first part says it
+  private static stackSize = 250;
+  private static stackRegex = /\b(?:stacks?|stks?)\b/i;
+  // a chunk that opens on the word applies it to every item that follows, as in
+  // "WTS stacks x2 Chitin Fragments, x4 Bolt of cloth"; anywhere else it only
+  // concerns the item it sits next to, as in "Lockpick Stks 1a :: Silv ZCoin 1e"
+  private static stackHeaderRegex = /^\s*(?:stacks?|stks?)\b/i;
+  // "25e/ea" and "35a/stack" price one unit of a group, not the whole lot
+  private static groupRegex = new RegExp(`\\b(?:${this.groupAcro})\\b`, 'i');
   private static requirementRegex = /(?:\breq|requirement|requires|reqs|r|q)\s*[:\-\=]?\s*(\d+)?/gi;
   private static fillerWords = [
     'for',
@@ -132,7 +146,10 @@ export class KamadanService {
     'stacks of',
     'stack',
     'stacks',
+    'stk of',
+    'stks of',
     'stk',
+    'stks',
     'set of',
     'sets of',
     'set',
@@ -166,8 +183,12 @@ export class KamadanService {
   ];
   public static attributeTags: { [key: string]: RegExp[] } = {};
   public static inscriptionTags: { [key: string]: RegExp[] } = {};
-  public static acronymMap: { [key: string]: string } = {};
-  public static itemMap: { [key: string]: string } = {};
+  // Object.create(null), not {}: these are looked up with text straight out of chat, and a
+  // plain object answers "constructor", "__proto__" or "toString" with something inherited.
+  // "WTS constructor 5e" then built an item whose name was a function, which JSON.stringify
+  // drops, so clients received a nameless item.
+  public static acronymMap: { [key: string]: string } = Object.create(null);
+  public static itemMap: { [key: string]: string } = Object.create(null);
 
   private static defaultPrice: KamadanPrice = { value: 0, type: Price.ECTO, start: 0, end: 0, content: '' };
 
@@ -191,6 +212,65 @@ export class KamadanService {
     });
   }
 
+  /** Every catalog name and acronym, grouped by how many words it has, so a fragment can be
+   *  scanned for the longest name it contains without walking the catalog. Built once, at init. */
+  private static phraseIndex: Array<Map<string, string>> = [];
+
+  private static normalize(text: string): string {
+    return text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  }
+
+  private static buildPhraseIndex(): void {
+    this.phraseIndex = [];
+    const add = (key: string, value: string) => {
+      const phrase = this.normalize(key);
+      // one to three letter acronyms ("e", "a", "gc") turn up inside ordinary words far
+      // too often to be worth hunting for in the middle of a sentence
+      if (phrase.length < 4) return;
+      const size = phrase.split(' ').length;
+      const bucket = this.phraseIndex[size] || (this.phraseIndex[size] = new Map<string, string>());
+      if (!bucket.has(phrase)) {
+        bucket.set(phrase, value);
+      }
+    };
+    for (const key in this.itemMap) add(key, this.itemMap[key]);
+    for (const key in this.acronymMap) add(key, this.acronymMap[key]);
+  }
+
+  /** The longest catalog name contained in the fragment, for when the fragment carries
+   *  leftovers the cleanup did not remove - "elit monk tome," or "froggy (pm offer)".
+   *  The exact lookups run first, so this only costs anything on a fragment that would
+   *  otherwise be thrown away. */
+  private static findContainedItem(content: string): string | null {
+    const words = this.normalize(content).split(' ').filter(Boolean);
+    if (!words.length) {
+      return null;
+    }
+    for (let size = Math.min(words.length, this.phraseIndex.length - 1); size > 0; size--) {
+      const bucket = this.phraseIndex[size];
+      if (!bucket) {
+        continue;
+      }
+      for (let i = 0; i + size <= words.length; i++) {
+        const phrase = words.slice(i, i + size).join(' ');
+        const hit = bucket.get(phrase) ?? (phrase.endsWith('s') ? bucket.get(phrase.slice(0, -1)) : undefined);
+        if (hit) {
+          return hit;
+        }
+      }
+    }
+    return null;
+  }
+
+  /** Two listings are the same offer when they share the player, the order type, the item
+   *  and - for weapons - the requirement and attribute that tell one apart from another.
+   *  Fields the message never stated collapse to an empty string, so a consumable keeps
+   *  the plain player + item identity it had before. */
+  private static identity(item: ShopItem): string {
+    const details = item.weaponDetails;
+    return [item.player, item.orderType, item.name, details?.requirement ?? '', details?.attribute ?? ''].join('|');
+  }
+
   private static handleMessage(data: KamadanData) {
     const results: Array<ShopItem> = [];
     if (!data.m || data.m.trim() === '') {
@@ -198,7 +278,7 @@ export class KamadanService {
       return;
     }
     // 1. Normalize
-    const normalized = data.m.toLowerCase().trim();
+    const normalized = data.m.toLowerCase().replace(this.spacers, ' ').replace(/[^\S\n]+/g, ' ').trim();
 
     // 2. Split by WTB / WTS boundaries (keep markers)
     const chunks = this.splitByTradeTypes(normalized);
@@ -219,6 +299,8 @@ export class KamadanService {
       this.findRequirement(chunk);
       this.findAttribute(chunk);
       this.findInscription(chunk);
+      // before clearText, which strips the "/" these lists are built on
+      this.expandVariants(chunk);
       this.clearText(chunk);
 
       //console.log(`Processing ${chunk.splits.length} intents for type ${OrderType[type]}`);
@@ -239,13 +321,11 @@ export class KamadanService {
           }
         }
         if (!match) {
+          match = this.findContainedItem(split.content);
+        }
+        if (!match) {
           this.logToFile(` ✘ No match found for item: ${split.content}\n`);
           continue;
-        }
-        const index = this.kamadanItems.findIndex((item) => item.name === match && item.player === data.s);
-        if (index !== -1) {
-          this.kamadanItems.splice(index, 1);
-          //console.log(`Removed existing item for player ${data.s} and item ${match}`);
         }
         this.logToFile(` ✔ Match found for item: ${split.content} -> ${match}\n`);
         const item = {
@@ -255,8 +335,9 @@ export class KamadanService {
           prices: chunk.prices[s]
             ? [
                 {
-                  price: chunk.prices[s]?.value || 0,
-                  type: chunk.prices[s]?.type || Price.ECTO,
+                  price: this.totalPrice(chunk.prices[s]),
+                  // ?? not ||: Price.PLAT is 0, which || would silently turn into ECTO
+                  type: chunk.prices[s]?.type ?? Price.ECTO,
                   quantity: chunk.prices[s]?.quantity || 1,
                 },
               ]
@@ -272,8 +353,8 @@ export class KamadanService {
             ? {
                 requirement: split.requirement,
                 attribute: split.attribute,
-                inscription: split.inscription,
-                oldSchool: split.oldSchool,
+                inscription: split.inscription ?? false,
+                oldSchool: split.oldSchool ?? false,
                 core: null,
                 prefix: null,
                 suffix: null,
@@ -290,6 +371,12 @@ export class KamadanService {
         // console.log(
         //   `Parsed item: \n   item = ${item.name}\n   prices = ${JSON.stringify(item.prices)}\n   quantity = ${item.quantity}\n   player = ${item.player} ${item.weaponDetails ? `\n   weaponDetails = ${JSON.stringify(item.weaponDetails)}` : ''} `
         // );
+        // a repost replaces the player's previous listing of the same offer
+        const index = this.kamadanItems.findIndex((existing) => this.identity(existing) === this.identity(item));
+        if (index !== -1) {
+          this.kamadanItems.splice(index, 1);
+          //console.log(`Removed existing item for player ${data.s} and item ${match}`);
+        }
         results.push(item);
       }
     }
@@ -346,58 +433,77 @@ export class KamadanService {
     return positions;
   }
 
-  private static getCurrencyType(content: string): Price {
-    const currencyMap: { [key in Price]: Array<string> } = {
-      [Price.ARM]: ['a', 'arm'],
-      [Price.BD]: ['bd', 'black'],
-      [Price.ECTO]: ['e', 'ecto'],
-      [Price.PLAT]: ['plat', 'platinum', 'k'],
-      [Price.ZKEY]: [],
-    };
+  // the currency is the token right after the number: scanning the whole string for
+  // substrings reads "35a/stack" as plat, because "stack" contains the plat keyword "k"
+  private static currencyRegex = /\d+(?:\.\d+)?\s*(platinum|plat|ecto|arm|black|bd|e|a|k)/i;
 
-    for (const [price, keywords] of Object.entries(currencyMap)) {
-      if (keywords.some((keyword) => content.includes(keyword))) {
-        return price as unknown as Price;
-      }
+  private static getCurrencyType(content: string): Price {
+    switch (this.currencyRegex.exec(content)?.[1]?.toLowerCase()) {
+      case 'a':
+      case 'arm':
+        return Price.ARM;
+      case 'bd':
+      case 'black':
+        return Price.BD;
+      case 'k':
+      case 'plat':
+      case 'platinum':
+        return Price.PLAT;
+      default:
+        return Price.ECTO;
     }
-    return Price.ECTO;
   }
 
   private static splitBetweenPrices(chunk: KamadanChunk): Array<KamadanSplit> {
     const splits: Array<KamadanSplit> = [];
+    // a price only earns a slot here if it got a split of its own; handleMessage pairs
+    // prices[s] with splits[s], so one that did not must not shift all the others along
+    const aligned: Array<KamadanPrice> = [];
     const prices = chunk.prices || [];
     let remainingTextIndex = 0;
     for (let i = 0; i < prices.length - 1; i++) {
       const start = prices[i].end;
       const end = prices[i + 1].start;
-      const target = chunk.text.slice(start, end).trim();
-      if (target) {
-        for (let d = 0; d < this.delimiters.length; d++) {
-          const delimiter = this.delimiters[d];
-          if (target.includes(delimiter)) {
-            splits.push({
-              start: remainingTextIndex,
-              end: target.indexOf(delimiter) + start,
-              content:
-                chunk.text.slice(remainingTextIndex, prices[i].start).trim() +
-                ' ' +
-                chunk.text.slice(prices[i].end, target.indexOf(delimiter) + start).trim(),
-            });
-            // the +1 seems wrong but does work
-            remainingTextIndex = target.indexOf(delimiter) + start + delimiter.length + 1;
-            break;
-          }
+      // deliberately not trimmed: indexOf has to line up with chunk.text. Trimming it
+      // shifted every index by the leading space, which is what the old "+1" patched up,
+      // at the cost of eating the first character of the next item.
+      const between = chunk.text.slice(start, end);
+      if (!between.trim()) {
+        continue;
+      }
+      for (let d = 0; d < this.delimiters.length; d++) {
+        const delimiter = this.delimiters[d];
+        const at = between.indexOf(delimiter);
+        if (at === -1) {
+          continue;
         }
+        const cut = start + at;
+        splits.push({
+          start: remainingTextIndex,
+          end: cut,
+          content: (
+            chunk.text.slice(remainingTextIndex, prices[i].start).trim() +
+            ' ' +
+            chunk.text.slice(prices[i].end, cut).trim()
+          ).trim(),
+        });
+        aligned.push(prices[i]);
+        remainingTextIndex = cut + delimiter.length;
+        break;
       }
     }
+    const last = prices[prices.length - 1];
     splits.push({
       start: remainingTextIndex,
       end: chunk.text.length,
-      content:
-        chunk.text.slice(remainingTextIndex, prices[prices.length - 1].start).trim() +
+      content: (
+        chunk.text.slice(remainingTextIndex, last.start).trim() +
         ' ' +
-        chunk.text.slice(prices[prices.length - 1].end).trim(),
+        chunk.text.slice(last.end).trim()
+      ).trim(),
     });
+    aligned.push(last);
+    chunk.prices = aligned;
     return splits;
   }
 
@@ -425,24 +531,49 @@ export class KamadanService {
   }
 
   private static findQuantity(chunk: KamadanChunk): void {
+    const chunkStacks = this.stackHeaderRegex.test(chunk.text);
     for (let s = 0; s < chunk.splits.length; s++) {
       const split = chunk.splits[s];
+      // the word can sit on the item ("Lockpick stk") or on the price ("35a/stack")
+      const perStack = chunkStacks || this.stackRegex.test(split.content) || this.stackRegex.test(chunk.prices?.[s]?.content ?? '');
+      let found = false;
       const matches = [...split.content.matchAll(this.quantityRegex)];
       for (const match of matches) {
         const quantity = parseInt(match[1] || match[2] || match[3] || match[4] || match[5] || match[6]);
         if (!isNaN(quantity)) {
-          if (!chunk.prices) {
-            chunk.prices = [];
-          }
-          if (!chunk.prices[s]) {
-            chunk.prices[s] = { ...this.defaultPrice };
-          }
-          chunk.prices[s].quantity = quantity;
+          found = true;
+          this.setQuantity(chunk, s, perStack ? quantity * this.stackSize : quantity);
           split.content = split.content.replace(match[0], '').trim();
           break; // Assuming only one quantity per split, exit after finding the first
         }
       }
+      // "Lockpick stk" carries no number: the word alone means a single stack
+      if (!found && perStack) {
+        this.setQuantity(chunk, s, this.stackSize);
+      }
     }
+  }
+
+  /** prices.price holds the total for the whole quantity - shop.service derives the unit
+   *  from it - so a figure quoted per each or per stack has to be scaled up first.
+   *  "25e/ea" with 93 armbraces is 2325; "2e/stack" with 4250 sweet points is 34. */
+  private static totalPrice(price: KamadanPrice): number {
+    const value = price.value || 0;
+    const quantity = price.quantity || 1;
+    if (this.stackRegex.test(price.content)) {
+      return quantity >= this.stackSize ? value * (quantity / this.stackSize) : value;
+    }
+    return this.groupRegex.test(price.content) ? value * quantity : value;
+  }
+
+  private static setQuantity(chunk: KamadanChunk, s: number, quantity: number): void {
+    if (!chunk.prices) {
+      chunk.prices = [];
+    }
+    if (!chunk.prices[s]) {
+      chunk.prices[s] = { ...this.defaultPrice };
+    }
+    chunk.prices[s].quantity = quantity;
   }
 
   private static findRequirement(chunk: KamadanChunk): void {
@@ -482,8 +613,8 @@ export class KamadanService {
   private static findInscription(chunk: KamadanChunk): void {
     for (let s = 0; s < chunk.splits.length; s++) {
       const split = chunk.splits[s];
-      split.inscription = false;
-      split.oldSchool = false;
+      // left undefined when the message says nothing, so hasWeaponDetails can tell
+      // "not inscribable" apart from "never mentioned"
       for (let t = 0; t < this.inscriptionTags['true'].length; t++) {
         const tag = this.inscriptionTags['true'][t];
         if (tag.test(split.content)) {
@@ -509,7 +640,66 @@ export class KamadanService {
       for (let f = 0; f < this.fillerWords.length; f++) {
         const filler = this.fillerWords[f].replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const regex = new RegExp(`\\b${filler}\\b`, 'gi');
-        split.content = split.content.replace(regex, '').trim();
+        // a space, not nothing: most filler words are punctuation sitting between two
+        // words, and deleting them welds "marksmanship/warding" into one dead token
+        split.content = split.content.replace(regex, ' ');
+      }
+      split.content = split.content.replace(/\s+/g, ' ').trim();
+    }
+  }
+
+  /** The exact lookups the item match uses, for testing a candidate fragment. */
+  private static resolveName(content: string): string | null {
+    const text = (content || '').trim();
+    if (!text) {
+      return null;
+    }
+    if (this.itemMap[text] || this.acronymMap[text]) {
+      return this.itemMap[text] || this.acronymMap[text];
+    }
+    const singular = /s$/.test(text) ? text.slice(0, -1) : null;
+    return singular ? this.itemMap[singular] || this.acronymMap[singular] || null : null;
+  }
+
+  /** "shocking/barbed/poisonous axe haft" is three hafts sharing a tail, and
+   *  "bow grip of marksmanship/warding" is two grips sharing a head. Each part gets
+   *  back the words it was leaning on, and inherits the weapon details of the whole. */
+  private static expandVariants(chunk: KamadanChunk): void {
+    for (let s = chunk.splits.length - 1; s >= 0; s--) {
+      const split = chunk.splits[s];
+      const parts = split.content
+        .split('/')
+        .map((part) => part.trim())
+        .filter(Boolean);
+      if (parts.length < 2 || this.resolveName(split.content)) {
+        continue;
+      }
+      const head = parts[0].split(/\s+/);
+      const tail = parts[parts.length - 1].split(/\s+/);
+      const variants = parts.map((part) => {
+        if (this.resolveName(part)) {
+          return part;
+        }
+        for (let take = tail.length - 1; take > 0; take--) {
+          const candidate = `${part} ${tail.slice(tail.length - take).join(' ')}`;
+          if (this.resolveName(candidate)) {
+            return candidate;
+          }
+        }
+        for (let take = head.length - 1; take > 0; take--) {
+          const candidate = `${head.slice(0, take).join(' ')} ${part}`;
+          if (this.resolveName(candidate)) {
+            return candidate;
+          }
+        }
+        return part;
+      });
+      const rebuilt = variants.map((content) => ({ ...split, content }));
+      chunk.splits.splice(s, 1, ...rebuilt);
+      // prices are paired with splits by index, so they have to grow in step
+      if (chunk.prices && chunk.prices.length > s) {
+        const price = chunk.prices[s];
+        chunk.prices.splice(s, 1, ...rebuilt.map(() => (price ? { ...price } : price)));
       }
     }
   }

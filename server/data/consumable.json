@@ -234,6 +234,11 @@
         "benefit": "Receive 1000 Balthazar faction when used"
       },
       {
+        "name": "Golden Flame of Balthazar",
+        "applies_to...": "User",
+        "benefit": "Receive 3000 Balthazar faction when used"
+      },
+      {
         "name": "Bird's Eye Compass",
         "applies_to...": "User",
         "benefit": "Expands your range of vision, allowing you to more efficiently uncover the surrounding area. Now a useful tool for explorers and mapmakers, this unique formation of mirrors was devised by a fellow attempting to overcome his fear of heights. This item can only be used in explorable areas."

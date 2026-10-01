@@ -76,6 +76,10 @@
     "Vampiric Dragon Sword": ["vds"],
     "Fiery Dragon Sword": ["fds"],
     "Draconic Aegis": ["drac shield", "drac aegis"],
+    "Storm Bow": ["stormbow", "storm bow"],
+    "Exalted Aegis": ["exalted"],
+    "Eternal Bow": ["eternal flatbow", "eternal longbow"],
+    "Bladed Shield": ["blade shield"],
 
     "mods": [],
 
@@ -257,7 +261,7 @@
     "Furious Scythe Snathe": [],
     "Sundering Scythe Snathe": [],
     "Vampiric Scythe Snathe": [],
-    "Zealous Scythe Snathe": [],
+    "Zealous Scythe Snathe": ["zealous scythe"],
     "Shield Handle of Fortitude": [],
     "Shield Handle of Devotion": [],
     "Shield Handle of Endurance": [],
@@ -342,7 +346,7 @@
     "Staff Wrapping of the Ranger": [],
     "Staff Wrapping of the Monk": [],
     "Staff Wrapping of the Necromancer": [],
-    "Staff Wrapping of the Mesmer": [],
+    "Staff Wrapping of the Mesmer": ["staff of mesmer"],
     "Staff Wrapping of the Elementalist": [],
     "Staff Wrapping of the Assassin": [],
     "Staff Wrapping of the Ritualist": [],
@@ -399,7 +403,16 @@
     "Wand Wrapping of the Ritualist": [],
     "Wand Wrapping of the Paragon": [],
     "Wand Wrapping of the Dervish": [],
-    "Strength and Honor": ["snh", "15^50", "strength&honour", "strength and honour", "strength&honor", "strength n honor"],
+    "Strength and Honor": [
+      "snh",
+      "15^50",
+      "strength&honour",
+      "strength and honour",
+      "strength&honor",
+      "strength n honor",
+      "strenght and honor",
+      "strength honor"
+    ],
     "Guided by Fate": ["Guided", "Guided by Faith", "15^ench", "15 while ench"],
     "Dance with Death": [],
     "Too Much Information": [],
@@ -456,7 +469,7 @@
 
     "Gift of the Traveler": ["nick gift", "gott", "got"],
     "Birthday Cupcake": ["cupcake", "cc"],
-    "Chocolate Bunny": ["bunny", "rabbit"],
+    "Chocolate Bunny": ["bunny", "choco bunny", "choco bunnies"],
     "Candy Apple": ["apple"],
     "Candy Corn": ["corn"],
     "Green Rock Candy": ["green candy", "green rock", "grc", "gc"],
@@ -471,10 +484,15 @@
     "Armor of Salvation": ["armor"],
     "Grail of Might": ["grail"],
     "Flame of Balthazar": ["balthazar flame", "flame", "fob"],
+    "Golden Flame of Balthazar": ["gold balthazar flame", "golden balthazar flame", "gflame", "gfob"],
     "Hero's Strongbox": ["herobox", "hero box"],
-    "Champion's Zaishen Strongbox": ["champion box", "champion's box"],
+    "Champion's Zaishen Strongbox": ["champion box", "champion's box", "champ strongbox"],
     "Party Beacon": ["beacon", "pbeacon"],
     "Battle Isle Iced Tea": ["iced tea", "tea"],
+    "Four-Leaf Clover": ["clover", "four leaf clover", "4 leaf clover"],
+    "Scroll of Resurrection": ["rezz scroll", "rez scroll", "res scroll", "rezz", "resurrection scroll"],
+    "Strategist's Zaishen Strongbox": ["strat strongbox", "strat box", "strategist's box"],
+    "Ascalonian War Horn": ["ascalonian warhorn", "cracked ascalonian warhorn", "warhorn"],
 
     "special": [],
     "Armbrace": ["arm", "a"],
@@ -482,7 +500,19 @@
     "Glob of Ectoplasm": ["ectoplasm", "ecto", "goe", "goo", "e"],
     "Silver Zaishen Coin": ["silver zcoin", "silver coin", "silver z coin", "szc"],
     "Gold Zaishen Coin": ["gold zcoin", "gold coin", "gold z coin", "gzc"],
-    "Current Nick Set": ["nick weekly", "nick set", "nickset", "nicholas set", "nick", "nicholas"],
-    "Droknar's Key": ["drok key"]
+    "Current Nick Set": ["nick weekly", "nick set", "nickset", "nicholas set", "nick", "nicholas", "nike set", "nike"],
+    "Droknar's Key": ["drok key"],
+
+    "Unid Gold": ["unid", "unids", "gold unid", "unid gold", "unident gold", "unident golds"],
+    "Miniature Panda": ["mini panda"],
+    "Titan Gemstone": ["titan", "titan gs"],
+    "Margonite Gemstone": ["margo", "margonite", "margo gs"],
+    "Everlasting Balthazar's Champion Tonic": ["el champ", "balth champ tonic"],
+    "Everlasting Yuletide Tonic": ["el yuletide tonic", "el yuletide"],
+
+    "other": [],
+    "Wood Plank": ["plank"],
+    "Obsidian Shard": ["obsid shard", "obby shard", "shard"],
+    "Elite Monk Tome": ["elit monk tome"]
   }
 }
