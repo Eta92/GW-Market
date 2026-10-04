@@ -13,6 +13,26 @@ export class ApiService {
       res.send(JSON.stringify(orders));
     });
 
+    // Global price snapshot for external websites, prepared in advance by ShopService
+    app.get('/api/prices', (req, res) => {
+      const prices = ShopService.getGlobalPrices();
+      res.set('Access-Control-Allow-Origin', '*');
+      if (!prices) {
+        res.set('Retry-After', '300');
+        res.status(503).send({ error: 'Prices are not ready yet, retry in a few minutes' });
+        return;
+      }
+      res.type('application/json');
+      res.set('Last-Modified', new Date(prices.generatedAt).toUTCString());
+      res.set('Vary', 'Accept-Encoding');
+      if (req.acceptsEncodings('gzip')) {
+        res.set('Content-Encoding', 'gzip');
+        res.send(prices.gzip);
+      } else {
+        res.send(prices.json);
+      }
+    });
+
     app.get('/api/shop/public/:publicId', (req, res) => {
       const { publicId } = req.params;
       const shop = ShopService.getPublicShop(publicId);

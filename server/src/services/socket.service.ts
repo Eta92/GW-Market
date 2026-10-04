@@ -74,7 +74,7 @@ export class SocketService {
         const results = ShopService.getItemOrders(search);
         socket.emit('GetItemOrders', results, search);
         const auctions = AuctionService.getItemAuctions(search);
-        socket.emit('GetItemAuctions', auctions);
+        socket.emit('GetItemAuctions', auctions, search);
       });
 
       socket.on('checkShopUpToDate', (uuid: string, lastRefresh: number) => {

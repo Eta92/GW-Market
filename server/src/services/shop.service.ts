@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import { Socket, Server as SocketServer } from 'socket.io';
+import { gzipSync } from 'zlib';
 import { SyncHelper } from '../helpers/sync.helper';
 import { UtilityHelper } from '../helpers/utility.helper';
 import { Auction } from '../models/auction.model';
@@ -19,6 +20,8 @@ import { OverviewService } from './overview.service';
 const TIME_ONLINE = 1000 * 60 * 15; // 15 minutes
 const TIME_TODAY = 1000 * 60 * 60 * 12; // 12 hours
 const TIME_WEEK = 1000 * 60 * 60 * 24 * 7; // 7 days
+const GLOBAL_PRICES_FIRST_DELAY = 1000 * 60 * 5; // 5 minutes after server start
+const GLOBAL_PRICES_INTERVAL = 1000 * 60 * 60 * 3; // 3 hours
 
 export class ShopService {
   public static shopInit = false;
@@ -42,6 +45,7 @@ export class ShopService {
   public static lastShopRefresh = 0;
   public static isShopRefreshing = false;
   public static io: SocketServer;
+  private static globalPrices: { json: string; gzip: Buffer; generatedAt: number } | null = null;
 
   // region INIT
 
@@ -52,6 +56,10 @@ export class ShopService {
     setInterval(() => {
       this.refreshShops();
     }, 1000);
+    setTimeout(() => {
+      this.buildGlobalPrices();
+      setInterval(() => this.buildGlobalPrices(), GLOBAL_PRICES_INTERVAL);
+    }, GLOBAL_PRICES_FIRST_DELAY);
   }
 
   public static getItemOrders(itemName: string): Array<ShopItem> {
@@ -107,6 +115,34 @@ export class ShopService {
       }
     });
     return inspection;
+  }
+
+  // ====================
+  // region GLOBAL PRICES
+  // ====================
+
+  private static buildGlobalPrices(): void {
+    const start = Date.now();
+    const items: { [key: string]: { sell: PriceInspection; buy: PriceInspection } } = {};
+    Object.keys(this.activeItemMap).forEach((itemName) => {
+      items[itemName] = {
+        sell: this.getItemPrices(itemName, OrderType.SELL),
+        buy: this.getItemPrices(itemName, OrderType.BUY),
+      };
+    });
+    const json = JSON.stringify({ generatedAt: Date.now(), items });
+    this.globalPrices = {
+      json,
+      gzip: gzipSync(json),
+      generatedAt: Date.now(),
+    };
+    console.log(
+      'Global prices cached: ' + Object.keys(items).length + ' items, ' + Math.round(json.length / 1024) + ' KB in ' + (Date.now() - start) + 'ms'
+    );
+  }
+
+  public static getGlobalPrices(): { json: string; gzip: Buffer; generatedAt: number } | null {
+    return this.globalPrices;
   }
 
   public static initShops(shops: Array<Shop>): void {
@@ -511,7 +547,7 @@ export class ShopService {
     // update all socket threads
     if (this.io) {
       this.itemToRefresh.forEach((itemName) => {
-        this.io.to(itemName).emit('GetItemOrders', this.activeItemMap[itemName], itemName);
+        this.io.to(itemName).emit('GetItemOrders', this.getItemOrders(itemName), itemName);
       });
     }
     this.refreshAvailableOrders();

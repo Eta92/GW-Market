@@ -615,6 +615,9 @@
       <img class="popup-img" [src]="item?.img" />
       <div class="popup-title">
         <h3>Send Message to Player</h3>
+        <p *ngIf="selectedWhisperOrder">
+          To <strong>{{ selectedWhisperOrder.player }}</strong> about {{ selectedWhisperOrder.item?.name }}
+        </p>
       </div>
       <button class="popup-close" (click)="messagePopup = false">
         <i class="fa fa-times"></i>

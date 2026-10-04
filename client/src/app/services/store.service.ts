@@ -55,8 +55,17 @@ export class StoreService {
         this.itemOrdersSubject.set(data);
       }
     });
-    this.socket.on('GetItemAuctions', (data: Array<Auction>) => {
-      this.itemAuctionsSubject.set(data);
+    this.socket.on('GetItemAuctions', (data: Array<Auction>, itemName: string) => {
+      if (itemName === this.searchedItemName) {
+        this.itemAuctionsSubject.set(data);
+      }
+    });
+    // the server forgets item rooms on reconnect, so join the tracked item again
+    this.socket.on('connect', () => {
+      if (this.searchedItemName) {
+        this.socket.emit('trackItem', this.searchedItemName);
+        this.socket.emit('getItemOrders', this.searchedItemName);
+      }
     });
     this.socket.on('GetLastItems', (data: Array<ShopItem>) => {
       this.lastItemsSubject.set(data);
@@ -109,8 +118,23 @@ export class StoreService {
     }
   }
 
-  setSearchedItemName(name: string): void {
+  trackItem(name: string): void {
+    if (this.searchedItemName && this.searchedItemName !== name) {
+      this.requestSocket('untrackItem', this.searchedItemName);
+    }
     this.searchedItemName = name;
+    // drop the previous item's offers so they never show under this item
+    this.itemOrdersSubject.set([]);
+    this.itemAuctionsSubject.set([]);
+    this.requestSocket('getItemOrders', name);
+    this.requestSocket('trackItem', name);
+  }
+
+  untrackItem(name: string): void {
+    if (this.searchedItemName === name) {
+      this.searchedItemName = '';
+    }
+    this.requestSocket('untrackItem', name);
   }
 
   setOverlay(value: boolean): void {

@@ -82,7 +82,7 @@ export class AuctionService {
     // update all socket threads
     if (this.io) {
       this.itemToRefresh.forEach((itemName) => {
-        this.io.to(itemName).emit('GetItemAuctions', this.activeItemMap[itemName]);
+        this.io.to(itemName).emit('GetItemAuctions', this.getItemAuctions(itemName), itemName);
       });
     }
     this.refreshLastAuctions();
@@ -146,7 +146,7 @@ export class AuctionService {
             // update all socket threads
             if (this.io) {
               const itemName = auction.item.name;
-              this.io.to(itemName).emit('GetItemAuctions', this.getItemAuctions(itemName));
+              this.io.to(itemName).emit('GetItemAuctions', this.getItemAuctions(itemName), itemName);
             }
           }
         }

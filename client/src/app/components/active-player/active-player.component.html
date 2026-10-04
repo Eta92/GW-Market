@@ -37,14 +37,14 @@
         <span>Character Certification</span>
       </div>
 
-      <div class="p-3 text-white bg-red-600 rounded-lg secret-display">
+      <!-- <div class="p-3 text-white bg-red-600 rounded-lg secret-display">
         <i class="fa fa-exclamation-triangle"></i>
         Character certification is currently disabled.<br />
         <span class="text-xs">Guild Wars update broke our current code and we need some time to repair it.</span>
-      </div>
+      </div> -->
 
       <!-- Certify Button -->
-      <!-- <button class="cert-btn" (click)="addPlayer()">
+      <button class="cert-btn" (click)="addPlayer()">
         <i class="fa fa-plus-circle"></i>
         <span>Certify a New Character</span>
       </button>
@@ -54,7 +54,7 @@
           <i class="fa fa-exclamation-triangle"></i>
           You have unsaved changes. Please update your shop first before certifying to avoid losing them.
         </span>
-      </div> -->
+      </div>
 
       <!-- Secret Code Display -->
       <div class="secret-display" *ngIf="secret">

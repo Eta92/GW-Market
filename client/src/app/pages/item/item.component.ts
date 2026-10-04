@@ -100,13 +100,21 @@ export class ItemComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-    this.storeService.requestSocket('untrackItem', this.name);
+    this.storeService.untrackItem(decodeURIComponent(this.name));
   }
 
   ngOnInit(): void {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       this.name = params.name || '';
       const decodedName = decodeURIComponent(this.name);
+
+      // Clear the previous item's offers and request this one from the server
+      this.storeService.trackItem(decodedName);
+      this.selectedOrder = null;
+      this.selectedAuction = null;
+      this.selectedWhisperOrder = null;
+      this.whisperPopup = false;
+      this.messagePopup = false;
 
       // Load item metadata FIRST, then chain orders/auctions behind it
       this.itemService
@@ -183,11 +191,6 @@ export class ItemComponent implements OnInit, OnDestroy {
         negotiate: [0],
         currency: [1],
       });
-
-      // Request data from server
-      this.storeService.setSearchedItemName(decodedName);
-      this.storeService.requestSocket('getItemOrders', decodedName);
-      this.storeService.requestSocket('trackItem', decodedName);
     });
   }
 
@@ -733,9 +736,9 @@ export class ItemComponent implements OnInit, OnDestroy {
 
     // Build the trade message with partial quantity
     if (order.orderType === OrderType.SELL) {
-      this.tradeMessage = `/w ${order.player}, Hi, I would like to buy your ${quantity} ${this.item.name} listed for ${totalPrice} ${UtilityHelper.priceToString(order.price.type)}. ${quantity > 1 ? 'Are they' : 'Is it'} still available?`;
+      this.tradeMessage = `/w ${order.player}, Hi, I would like to buy your ${quantity} ${order.item.name} listed for ${totalPrice} ${UtilityHelper.priceToString(order.price.type)}. ${quantity > 1 ? 'Are they' : 'Is it'} still available?`;
     } else {
-      this.tradeMessage = `/w ${order.player}, Hi, I would like to sell you my ${quantity} ${this.item.name} for ${totalPrice} ${UtilityHelper.priceToString(order.price.type)}. Are you still interested?`;
+      this.tradeMessage = `/w ${order.player}, Hi, I would like to sell you my ${quantity} ${order.item.name} for ${totalPrice} ${UtilityHelper.priceToString(order.price.type)}. Are you still interested?`;
     }
   }
 

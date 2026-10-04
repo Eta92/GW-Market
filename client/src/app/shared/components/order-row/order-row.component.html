@@ -80,7 +80,12 @@
           <button class="action-btn whisper-btn" (click)="onWhisper($event)" title="Contact {{ order.player }}">
             <i class="fa fa-comment"></i>
           </button>
-          <button class="action-btn whisper-btn" (click)="onMessage($event)" title="Message {{ order.player }}">
+          <button
+            class="action-btn whisper-btn"
+            *ngIf="order.shopId && !order.kamadanChat"
+            (click)="onMessage($event)"
+            title="Message {{ order.player }}"
+          >
             <i class="fa fa-envelope"></i>
           </button>
         </div>
