@@ -9,7 +9,7 @@ import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
-import { LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-attributes';
+import { BOW_ALL, BOW_TYPES, LOCKED_WEAPON, VARIABLE_ATTRIBUTE } from '@app/shared/constants/weapon-attributes';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, take } from 'rxjs';
 
@@ -49,6 +49,8 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
   public isLocked = true;
   public attributes = VARIABLE_ATTRIBUTE;
   public lockWeapons = LOCKED_WEAPON;
+  public bowTypes = BOW_TYPES;
+  public isBowAll = false;
   public weaponLists: { core: Array<Upgrade>; prefix: Array<Upgrade>; suffix: Array<Upgrade> } = {
     core: [],
     prefix: [],
@@ -118,6 +120,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       prefix: [null],
       suffix: [null],
       extraMods: [[]],
+      bowType: [null],
     });
     this.formOther = this.fb.group({
       dedicated: [false],
@@ -202,6 +205,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.isMiniature = WeaponHelper.isMiniature(order.item);
     if (this.isWeapon && this.allItems) {
       this.isLocked = LOCKED_WEAPON.includes(order.item.category);
+      this.isBowAll = order.item.bow === BOW_ALL;
       this.isOldSchool = order.weaponDetails ? order.weaponDetails.oldSchool : false;
       this.weaponLists = WeaponHelper.getItemList(order.item?.category, this.itemService.getUpgrades());
       this.generalUpgradeOptions = [...this.weaponLists.core, ...this.exoticUpgradeOptions];
@@ -213,7 +217,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
         this.extraModValues = this.extraModValues.map((v, i) => (i === 0 ? order.weaponDetails.core : v));
         order.weaponDetails.core = null;
       }
-      this.formWeapon.patchValue(order.weaponDetails || {});
+      this.formWeapon.patchValue({ bowType: null, ...(order.weaponDetails || {}) });
     }
     this.loading = false;
     this.cdr.markForCheck();
@@ -229,6 +233,10 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.isNotMax = WeaponHelper.isNotMax(item);
     this.isMiniature = WeaponHelper.isMiniature(item);
     // Populate weapon lists
+    this.isBowAll = item.bow === BOW_ALL;
+    if (!this.isBowAll) {
+      this.formWeapon?.patchValue({ bowType: null });
+    }
     if (this.isWeapon) {
       this.isLocked = LOCKED_WEAPON.includes(item.category);
       this.weaponLists = WeaponHelper.getItemList(item?.category, this.itemService.getUpgrades());
@@ -358,6 +366,14 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       if (this.isWeapon) {
         order.weaponDetails = this.formWeapon.value;
+        // fixed bow type comes from the item data, 'All' bows keep the user's pick (server applies the same rule)
+        const bow = this.item?.bow;
+        const bowType = bow === BOW_ALL ? order.weaponDetails.bowType : bow;
+        if (bowType) {
+          order.weaponDetails.bowType = bowType;
+        } else {
+          delete order.weaponDetails.bowType;
+        }
       }
       order.orderDetails = this.formOther.value;
       this.confirmOrder.emit(order);
@@ -394,6 +410,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
       prefix: null,
       suffix: null,
       extraMods: [],
+      bowType: null,
     });
     this.extraModValues = [];
     this.formOther.reset({
@@ -407,6 +424,7 @@ export class EditOrderComponent implements OnInit, OnChanges, OnDestroy {
     this.isOldSchool = false;
     this.isMiniature = false;
     this.isLocked = true;
+    this.isBowAll = false;
   }
 
   // Max auction end time is 4 weeks from now

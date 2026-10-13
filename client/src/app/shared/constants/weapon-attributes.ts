@@ -167,3 +167,7 @@ export const PROFESSION_COLOR_MAP: Record<string, string> = {
   Paragon: '#996600',
   Dervish: '#CCBBAA',
 };
+
+// "bow" values from weapon.json; BOW_ALL means the user picks one of BOW_TYPES
+export const BOW_TYPES = ['Longbow', 'Flatbow', 'Hornbow', 'Recurve Bow', 'Shortbow'];
+export const BOW_ALL = 'All';

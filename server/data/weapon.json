@@ -2655,355 +2655,461 @@
     "items": [
       {
         "name": "Any Rare LongBow",
-        "img": "Any Rare Bow"
+        "img": "Any Rare Bow",
+        "bow": "Longbow"
       },
       {
         "name": "Any Rare FlatBow",
-        "img": "Any Rare Bow"
+        "img": "Any Rare Bow",
+        "bow": "Flatbow"
       },
       {
         "name": "Any Rare HornBow",
-        "img": "Any Rare Bow"
+        "img": "Any Rare Bow",
+        "bow": "Hornbow"
       },
       {
         "name": "Any Rare RecurveBow",
-        "img": "Any Rare Bow"
+        "img": "Any Rare Bow",
+        "bow": "Recurve Bow"
       },
       {
         "name": "Any Rare ShortBow",
-        "img": "Any Rare Bow"
+        "img": "Any Rare Bow",
+        "bow": "Shortbow"
       },
       {
         "name": "Amber Longbow",
-        "OS only": true
+        "OS only": true,
+        "bow": "Longbow"
       },
       {
-        "name": "Ancient Flatbow"
+        "name": "Ancient Flatbow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Ancient Hornbow"
+        "name": "Ancient Hornbow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Ancient Longbow"
+        "name": "Ancient Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Ancient Recurve Bow"
+        "name": "Ancient Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Ancient Shortbow"
+        "name": "Ancient Shortbow",
+        "bow": "Shortbow"
       },
       {
         "name": "Ascalon Bow (Composite)",
-        "collector": true
+        "collector": true,
+        "bow": "All"
       },
       {
         "name": "Ascalon Bow (Wooden)",
-        "collector": true
+        "collector": true,
+        "bow": "All"
       },
       {
         "name": "Asuran Bow",
-        "craftable": true
+        "craftable": true,
+        "bow": "All"
       },
       {
-        "name": "Aureate Longbow"
+        "name": "Aureate Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Azure Recurve Bow"
+        "name": "Azure Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Azure Shortbow"
+        "name": "Azure Shortbow",
+        "bow": "Shortbow"
       },
       {
         "name": "Balthazar's Bow",
-        "craftable": true
+        "craftable": true,
+        "bow": "All"
       },
       {
-        "name": "Black Hawk's Lust"
+        "name": "Black Hawk's Lust",
+        "bow": "Flatbow"
       },
       {
-        "name": "Bladed Recurve Bow"
+        "name": "Bladed Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
         "name": "Bow of Purity",
-        "craftable": true
+        "craftable": true,
+        "bow": "All"
       },
       {
-        "name": "Bramble Flatbow"
+        "name": "Bramble Flatbow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Bramble Hornbow"
+        "name": "Bramble Hornbow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Bramble Longbow"
+        "name": "Bramble Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Bramble Recurve Bow"
+        "name": "Bramble Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Bramble Shortbow"
+        "name": "Bramble Shortbow",
+        "bow": "Shortbow"
       },
       {
-        "name": "Caged Shortbow"
+        "name": "Caged Shortbow",
+        "bow": "Shortbow"
       },
       {
-        "name": "Candy Cane Bow"
+        "name": "Candy Cane Bow",
+        "bow": "Longbow"
       },
       {
-        "name": "Celestial Longbow"
+        "name": "Celestial Longbow",
+        "bow": "Longbow"
       },
       {
         "name": "Charrslayer Bow",
-        "craftable": true
+        "craftable": true,
+        "bow": "All"
       },
       {
-        "name": "Composite Bow"
+        "name": "Composite Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Composite Shortbow"
+        "name": "Composite Shortbow",
+        "bow": "Shortbow"
       },
       {
-        "name": "Darksteel Longbow"
+        "name": "Darksteel Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Dead Bow"
+        "name": "Dead Bow",
+        "bow": "Recurve Bow"
       },
       {
         "name": "Deldrimor Flatbow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Flatbow"
       },
       {
         "name": "Deldrimor Hornbow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Hornbow"
       },
       {
         "name": "Deldrimor Longbow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Longbow"
       },
       {
         "name": "Deldrimor Recurve Bow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Recurve Bow"
       },
       {
         "name": "Deldrimor Shortbow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Shortbow"
       },
       {
         "name": "Destroyer Bow",
-        "craftable": true
+        "craftable": true,
+        "bow": "All"
       },
       {
-        "name": "Dragon Hornbow"
+        "name": "Dragon Hornbow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Dryad Bow"
+        "name": "Dryad Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Eternal Bow"
+        "name": "Eternal Bow",
+        "bow": "All"
       },
       {
-        "name": "Feathered Flatbow"
+        "name": "Feathered Flatbow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Feathered Longbow"
+        "name": "Feathered Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Flatbow (feathered)"
+        "name": "Flatbow (feathered)",
+        "bow": "Flatbow"
       },
       {
-        "name": "Flatbow (wooden)"
+        "name": "Flatbow (wooden)",
+        "bow": "Flatbow"
       },
       {
-        "name": "Forked Hornbow"
+        "name": "Forked Hornbow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Grinning Recurve Bow"
+        "name": "Grinning Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Half Moon"
+        "name": "Half Moon",
+        "bow": "Shortbow"
       },
       {
-        "name": "Hornbow (dragon)"
+        "name": "Hornbow (dragon)",
+        "bow": "Hornbow"
       },
       {
-        "name": "Hornbow (Mursaat)"
+        "name": "Hornbow (Mursaat)",
+        "bow": "Hornbow"
       },
       {
-        "name": "Hornbow (stoneshard)"
+        "name": "Hornbow (stoneshard)",
+        "bow": "Hornbow"
       },
       {
         "name": "Imperial Bow",
-        "craftable": true
+        "craftable": true,
+        "bow": "All"
       },
       {
-        "name": "Ironwing Flatbow"
+        "name": "Ironwing Flatbow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Ithas Bow"
+        "name": "Ithas Bow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Ivory Bow"
+        "name": "Ivory Bow",
+        "bow": "Hornbow"
       },
       {
         "name": "Jade Longbow",
-        "OS only": true
+        "OS only": true,
+        "bow": "Longbow"
       },
       {
         "name": "Longbow (Across the Wall)",
-        "quest": true
+        "quest": true,
+        "bow": "Longbow"
       },
       {
         "name": "Longbow (Blankets for the Settlers)",
-        "quest": true
+        "quest": true,
+        "bow": "Longbow"
       },
       {
-        "name": "Longbow (feathered)"
+        "name": "Longbow (feathered)",
+        "bow": "Longbow"
       },
       {
         "name": "Longbow (The Hunter's Horn)",
-        "quest": true
+        "quest": true,
+        "bow": "Longbow"
       },
       {
-        "name": "Longbow (wooden)"
+        "name": "Longbow (wooden)",
+        "bow": "Longbow"
       },
       {
-        "name": "Maplewood Longbow"
+        "name": "Maplewood Longbow",
+        "bow": "Longbow"
       },
       {
         "name": "Naga Longbow",
-        "OS only": true
+        "OS only": true,
+        "bow": "Longbow"
       },
       {
         "name": "Naga Shortbow",
-        "OS only": true
+        "OS only": true,
+        "bow": "Shortbow"
       },
       {
         "name": "Norn Bow",
-        "craftable": true
+        "craftable": true,
+        "bow": "All"
       },
       {
-        "name": "Oaken Recurve Bow"
+        "name": "Oaken Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
         "name": "Oppressor's Flatbow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Flatbow"
       },
       {
         "name": "Oppressor's Hornbow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Hornbow"
       },
       {
         "name": "Oppressor's Longbow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Longbow"
       },
       {
         "name": "Oppressor's Recurve Bow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Recurve Bow"
       },
       {
         "name": "Oppressor's Shortbow",
-        "craftable": true
+        "craftable": true,
+        "bow": "Shortbow"
       },
       {
         "name": "Plagueborn Hornbow",
-        "OS only": true
+        "OS only": true,
+        "bow": "Hornbow"
       },
       {
         "name": "Plagueborn Recurve Bow",
-        "OS only": true
+        "OS only": true,
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Platinum Longbow"
+        "name": "Platinum Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Recurve Bow (weapon)"
+        "name": "Recurve Bow (weapon)",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Scorpion Bow"
+        "name": "Scorpion Bow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Scorpion's Lust"
+        "name": "Scorpion's Lust",
+        "bow": "Flatbow"
       },
       {
-        "name": "Shadow Bow"
+        "name": "Shadow Bow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Shortbow (weapon)"
+        "name": "Shortbow (weapon)",
+        "bow": "Shortbow"
       },
       {
-        "name": "Silverwing Recurve Bow"
+        "name": "Silverwing Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Skull Flatbow"
+        "name": "Skull Flatbow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Skull Hornbow"
+        "name": "Skull Hornbow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Skull Longbow"
+        "name": "Skull Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Skull Recurve Bow"
+        "name": "Skull Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Skull Shortbow"
+        "name": "Skull Shortbow",
+        "bow": "Shortbow"
       },
       {
-        "name": "Spiked Recurve Bow"
+        "name": "Spiked Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Stoneshard Hornbow"
+        "name": "Stoneshard Hornbow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Storm Bow"
+        "name": "Storm Bow",
+        "bow": "Longbow"
       },
       {
-        "name": "Sturdy Recurve Bow"
+        "name": "Sturdy Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Tormented Flatbow"
+        "name": "Tormented Flatbow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Tormented Hornbow"
+        "name": "Tormented Hornbow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Tormented Longbow"
+        "name": "Tormented Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Tormented Recurve Bow"
+        "name": "Tormented Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Tormented Shortbow"
+        "name": "Tormented Shortbow",
+        "bow": "Shortbow"
       },
       {
-        "name": "Turtle Shell Longbow"
+        "name": "Turtle Shell Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Vabbian Flatbow"
+        "name": "Vabbian Flatbow",
+        "bow": "Flatbow"
       },
       {
-        "name": "Vabbian Hornbow"
+        "name": "Vabbian Hornbow",
+        "bow": "Hornbow"
       },
       {
-        "name": "Vabbian Longbow"
+        "name": "Vabbian Longbow",
+        "bow": "Longbow"
       },
       {
-        "name": "Vabbian Recurve Bow"
+        "name": "Vabbian Recurve Bow",
+        "bow": "Recurve Bow"
       },
       {
-        "name": "Vabbian Shortbow"
+        "name": "Vabbian Shortbow",
+        "bow": "Shortbow"
       },
       {
-        "name": "Wintergreen Bow"
+        "name": "Wintergreen Bow",
+        "bow": "Longbow"
       },
       {
-        "name": "Wooden Longbow"
+        "name": "Wooden Longbow",
+        "bow": "Longbow"
       },
       {
         "name": "Zehtuka's Shortbow",
-        "quest": true
+        "quest": true,
+        "bow": "Shortbow"
       },
       {
-        "name": "Zodiac Longbow"
+        "name": "Zodiac Longbow",
+        "bow": "Longbow"
       }
     ]
   }

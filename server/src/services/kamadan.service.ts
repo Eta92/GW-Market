@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 import WebSocket from 'ws';
 import { KamadanChunk, KamadanData, KamadanPosition, KamadanPrice, KamadanSplit } from '../models/kamadan.model';
 import { Item, OrderType, Price, ShopItem } from '../models/shop.model';
+import { ItemService } from './item.service';
 
 const fs = require('fs');
 
@@ -371,6 +372,7 @@ export class KamadanService {
         // console.log(
         //   `Parsed item: \n   item = ${item.name}\n   prices = ${JSON.stringify(item.prices)}\n   quantity = ${item.quantity}\n   player = ${item.player} ${item.weaponDetails ? `\n   weaponDetails = ${JSON.stringify(item.weaponDetails)}` : ''} `
         // );
+        ItemService.applyBowType(item);
         // a repost replaces the player's previous listing of the same offer
         const index = this.kamadanItems.findIndex((existing) => this.identity(existing) === this.identity(item));
         if (index !== -1) {

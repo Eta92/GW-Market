@@ -215,5 +215,10 @@
       "Change log section in about page, with automatic update popup to read from"
     ],
     "warning": "All OldSchool tags have been removed from items, they must be added back manually"
+  },
+  {
+    "date": "2026-10-13",
+    "features": ["Bow types added to visuals and search filters"],
+    "warning": "Update your shop to see the effects, and manually update your generic bows to set their type"
   }
 ]

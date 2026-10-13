@@ -21,6 +21,7 @@ export interface SearchFilter {
   exotic?: string; // Specific exotic mod name
   prefix?: string; // Specific prefix mod
   suffix?: string; // Specific suffix mod
+  bowType?: string; // Longbow, Flatbow, etc.
 
   // Pre-Searing filter
   preSearing?: boolean; // true = pre-searing only, false = post-searing only

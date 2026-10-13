@@ -186,7 +186,8 @@ export class ShopService {
 
   updateAllShopItems(items: Array<ShopItem>): void {
     const activeShop = this.activeShopSubject.value;
-    activeShop.items = activeShop.items.map((item, index) => ({ ...item, ...items[index] }));
+    // edit-many sends the complete final list (orders without price already removed)
+    activeShop.items = items;
     this.activeShopSubject.set(activeShop);
     this.toastrService.success('Your changes will be visible for customers on next shop update', 'Items updated', {
       timeOut: 10000,

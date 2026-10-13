@@ -7,6 +7,7 @@ export interface BasicItem {
   family: string;
   category: string;
   wiki?: string;
+  bow?: string;
   // for search only
   match?: number;
 }
@@ -44,6 +45,7 @@ export interface WeaponDetails {
   prefix: string;
   suffix: string;
   extraMods?: Array<string>;
+  bowType?: string;
 }
 
 export interface OrderDetails {

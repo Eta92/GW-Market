@@ -6,6 +6,7 @@ import { AvailableTree } from '@app/models/tree.model';
 import { InspectorService } from '@app/services/inspector.service';
 import { ItemService } from '@app/services/item.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
+import { BOW_ALL } from '@app/shared/constants/weapon-attributes';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, take } from 'rxjs';
 
@@ -209,12 +210,27 @@ export class EditManyComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   validateOrders(): void {
-    const orders = this.forms.value as Array<ShopItem>;
+    // the form only holds some fields: rebuild complete orders on top of the originals (rows match by index)
+    const orders = (this.forms.value as Array<ShopItem>).map((order, index) => {
+      const original = this.originals?.[index];
+      return original
+        ? {
+            ...original,
+            ...order,
+            weaponDetails: original.weaponDetails && { ...original.weaponDetails, ...order.weaponDetails }
+          }
+        : order;
+    });
     if (this.forms.invalid) {
       this.toastrService.warning('Please check up the value fields', 'Form is invalid');
     } else {
       orders.forEach((order, index) => {
         order.prices = order.prices.filter(p => p.price > 0);
+        // fixed bow type comes from the item data; 'All' bows keep their saved value (no field here)
+        const bow = this.itemService.getItemBase(order.name)?.bow;
+        if (order.weaponDetails && bow && bow !== BOW_ALL) {
+          order.weaponDetails.bowType = bow;
+        }
       });
       this.confirmOrders.emit(orders.filter(o => o.prices.length > 0 && (!this.daybreaks || o.import)));
       this.resetForms();

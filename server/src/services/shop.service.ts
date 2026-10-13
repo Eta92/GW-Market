@@ -284,6 +284,7 @@ export class ShopService {
           })),
         daybreakOnline: rawShop.daybreakOnline,
       };
+      shop.items.forEach((item) => ItemService.applyBowType(item));
       if (rawShop.recruiter?.shopId && !rawShop.recruiter.name) {
         const recruiterShop = this.allShopMap[this.publicShopMap[rawShop.recruiter.shopId]];
         if (recruiterShop && recruiterShop.uuid !== shop.uuid) {
@@ -351,6 +352,7 @@ export class ShopService {
     const shop = this.allShopMap[uuid];
     if (shop) {
       item.id = nanoid(10);
+      ItemService.applyBowType(item);
       shop.items.push(item);
       shop.lastRefresh = Date.now();
       this.itemToRefresh.add(item.name);
@@ -364,6 +366,7 @@ export class ShopService {
     if (shop) {
       const replaced = shop.items.some((i) => i.id === item.id);
       if (replaced) {
+        ItemService.applyBowType(item);
         shop.items = shop.items.map((i) => (i.id === item.id ? item : i));
         shop.lastRefresh = Date.now();
         this.itemToRefresh.add(item.name);

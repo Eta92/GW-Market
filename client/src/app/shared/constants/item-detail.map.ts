@@ -23,7 +23,8 @@ export const ItemDetailMap: Record<string, string> = {
   box: 'Box drop',
   endgame: 'Endgame reward',
   special: 'Special location',
-  lowlevel: 'Non-max item'
+  lowlevel: 'Non-max item',
+  bow: 'Bow Type'
 };
 
 /**

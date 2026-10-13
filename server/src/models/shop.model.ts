@@ -92,7 +92,12 @@ export interface WeaponDetails {
   prefix: string | null;
   suffix: string | null;
   extraMods?: Array<string>;
+  bowType?: string;
 }
+
+// "bow" values from weapon.json; 'All' means the user picks one of these
+export const BOW_TYPES = ['Longbow', 'Flatbow', 'Hornbow', 'Recurve Bow', 'Shortbow'];
+export const BOW_ALL = 'All';
 
 export interface ShopPrice {
   type: Price;
@@ -123,4 +128,5 @@ export interface Item {
   rarity: string;
   level: number;
   hidden?: boolean;
+  bow?: string;
 }

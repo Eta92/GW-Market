@@ -113,6 +113,7 @@ export interface SearchFilter {
   exotic?: string;
   prefix?: string;
   suffix?: string;
+  bowType?: string;
 
   // Pre-searing filter
   preSearing?: boolean;
@@ -171,6 +172,7 @@ export interface SearchResultOrder {
     core: string | null;
     prefix: string | null;
     suffix: string | null;
+    bowType?: string;
   };
   family: string;
   category: string;

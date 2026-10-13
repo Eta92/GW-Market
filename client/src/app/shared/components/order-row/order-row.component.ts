@@ -49,11 +49,5 @@ export class OrderRowComponent implements OnInit {
   onSubmitVote(event: Event, vote: 'positive' | 'negative'): void {
     event.stopPropagation();
     this.submitVote.emit({ order: this.order, vote });
-    // // fake the number incrementation
-    // if (vote === 'positive') {
-    //   this.order.positives = (this.order.positives || 0) + 1;
-    // } else {
-    //   this.order.negatives = (this.order.negatives || 0) + 1;
-    // }
   }
 }

@@ -10,7 +10,7 @@ import { AvailableTree } from '@app/models/tree.model';
 import { ItemService } from '@app/services/item.service';
 import { StoreService } from '@app/services/store.service';
 import { ToggleOption } from '@app/shared/components/toggle-group/toggle-group.component';
-import { WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
+import { BOW_TYPES, WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attributes';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 
@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public form: UntypedFormGroup;
   public allItems: AvailableTree;
   public attributes = WEAPON_ATTRIBUTES;
+  public bowTypes = BOW_TYPES;
 
   public searchResult: SearchResult | null = null;
   public loading = false;
@@ -172,6 +173,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       exotic: [null],
       prefix: [null],
       suffix: [null],
+      bowType: [null],
       preSearing: [null],
       miniDedicated: [null],
       currency: [null],
@@ -199,6 +201,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.form.get('exotic').setValue(null);
         this.form.get('prefix').setValue(null);
         this.form.get('suffix').setValue(null);
+        this.form.get('bowType').setValue(null);
         this.onSearch();
       }
     });
@@ -272,6 +275,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (f.exotic) filter.exotic = f.exotic;
     if (f.prefix) filter.prefix = f.prefix;
     if (f.suffix) filter.suffix = f.suffix;
+    if (f.bowType) filter.bowType = f.bowType;
     if (f.preSearing !== null) filter.preSearing = f.preSearing;
     if (f.miniDedicated !== null) filter.miniDedicated = f.miniDedicated;
     if (f.currency !== null) filter.currency = f.currency;
@@ -302,6 +306,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   get showWeaponFilters(): boolean {
     return this.isWeaponFamily || this.selectedFamily === 'unique';
+  }
+
+  get showBowFilter(): boolean {
+    return this.isWeaponFamily && this.form?.get('category')?.value === 'Rare Bows';
   }
 
   get showNotMaxFilters(): boolean {
@@ -437,6 +445,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (f.exotic) count++;
     if (f.prefix) count++;
     if (f.suffix) count++;
+    if (f.bowType) count++;
 
     return count;
   }

@@ -86,6 +86,15 @@
             </select>
           </div>
 
+          <!-- Bow Type (conditional) -->
+          <div class="sidebar-section" *ngIf="showBowFilter">
+            <label class="section-label">Bow Type</label>
+            <select class="filter-select" formControlName="bowType">
+              <option [ngValue]="null">All bow types...</option>
+              <option *ngFor="let bowType of bowTypes" [ngValue]="bowType">{{ bowType }}</option>
+            </select>
+          </div>
+
           <!-- Not Max (conditional) -->
           <div class="sidebar-section" *ngIf="showNotMaxFilters">
             <label class="checkbox-item">

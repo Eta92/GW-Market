@@ -163,6 +163,13 @@
           <label>Requirement</label>
           <input type="number" class="form-input" formControlName="requirement" min="0" max="13" />
         </div>
+        <div *ngIf="isBowAll" class="form-group" style="flex: 1">
+          <label>Bow Type</label>
+          <select class="form-select" formControlName="bowType">
+            <option [ngValue]="null">Unknown</option>
+            <option *ngFor="let bowType of bowTypes" [ngValue]="bowType">{{ bowType }}</option>
+          </select>
+        </div>
       </div>
 
       <div class="form-row">

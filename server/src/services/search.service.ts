@@ -210,6 +210,8 @@ export class SearchService {
     if (filter.exotic && (!wd || (wd.core !== filter.exotic && !wd.extraMods?.includes(filter.exotic)))) return false;
     if (filter.prefix && (!wd || wd.prefix !== filter.prefix)) return false;
     if (filter.suffix && (!wd || wd.suffix !== filter.suffix)) return false;
+    // read from weapon.json too, so orders saved before bowType existed still match
+    if (filter.bowType && ItemService.getBowType(order.name, wd) !== filter.bowType) return false;
 
     // Pre-Searing filter (check orderDetails.pre or item category)
     if (filter.preSearing !== undefined) {

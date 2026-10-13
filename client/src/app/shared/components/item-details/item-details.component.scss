@@ -81,6 +81,17 @@
   }
 
   // Gold Price badge
+  // Bow type badge
+  &.bow {
+    background: rgba(#6b8e23, 0.2);
+    color: rgba($parchment, 0.8);
+    border-color: rgba(#6b8e23, 0.4);
+
+    i {
+      color: #8fbc3a;
+    }
+  }
+
   &.gold {
     background: rgba($gold, 0.2);
     color: rgba($parchment, 0.8);

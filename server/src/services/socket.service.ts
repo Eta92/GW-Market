@@ -232,6 +232,7 @@ export class SocketService {
           exotic: typeof filter?.exotic === 'string' ? filter.exotic : undefined,
           prefix: typeof filter?.prefix === 'string' ? filter.prefix : undefined,
           suffix: typeof filter?.suffix === 'string' ? filter.suffix : undefined,
+          bowType: typeof filter?.bowType === 'string' ? filter.bowType : undefined,
           preSearing: typeof filter?.preSearing === 'boolean' ? filter.preSearing : undefined,
           miniDedicated: typeof filter?.miniDedicated === 'boolean' ? filter.miniDedicated : undefined,
           currency: [Price.PLAT, Price.ECTO, Price.ZKEY, Price.ARM, Price.BD].includes(filter?.currency) ? filter.currency : undefined,

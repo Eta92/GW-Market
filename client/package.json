@@ -15,10 +15,11 @@
     "pack": "npm run prod && npm run prerender"
   },
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "none",
     "tabWidth": 2,
     "semi": true,
     "singleQuote": true,
+    "arrowParens": "avoid",
     "printWidth": 140
   },
   "private": true,

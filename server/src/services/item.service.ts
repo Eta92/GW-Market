@@ -1,6 +1,6 @@
 import { Index } from 'flexsearch';
 import { ChangeLog } from '../models/changelog.model';
-import { Item } from '../models/shop.model';
+import { BOW_ALL, BOW_TYPES, Item, ShopItem, WeaponDetails } from '../models/shop.model';
 import { KamadanService } from './kamadan.service';
 
 const fs = require('fs');
@@ -268,6 +268,25 @@ export class ItemService {
       return this.allItemMap[name];
     } else {
       return null;
+    }
+  };
+
+  // bow type of an order: fixed by weapon.json, or the user's pick when the bow is 'All'
+  public static getBowType = (name: string, weaponDetails?: WeaponDetails): string | undefined => {
+    const bow = this.allItemMap[name]?.bow;
+    if (!bow) return undefined;
+    if (bow !== BOW_ALL) return bow;
+    return BOW_TYPES.includes(weaponDetails?.bowType) ? weaponDetails.bowType : undefined;
+  };
+
+  // set weaponDetails.bowType before saving an order
+  public static applyBowType = (order: ShopItem): void => {
+    if (!order?.weaponDetails) return;
+    const bowType = this.getBowType(order.name, order.weaponDetails);
+    if (bowType) {
+      order.weaponDetails.bowType = bowType;
+    } else {
+      delete order.weaponDetails.bowType;
     }
   };
 
