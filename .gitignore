@@ -21,4 +21,5 @@ graphify-out/*
 skills-lock.json
 server/scripts/not-indexed/*
 server/kamadan-log*
+server/backups
 CLAUDE.md

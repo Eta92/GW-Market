@@ -88,3 +88,13 @@ Before running scripts, install dependencies:
 npm install
 npm install socket.io-client  # Required for socket-order-emitter
 ```
+
+## Database backups
+
+The server writes a backup of the whole `GWTrade` database once a day to `server/backups/` (or the folder set in `backupDir` in `.env`). The 30 most recent backups are kept.
+
+Each backup is a `.zip` with one `<collection>.json` file per collection (mongoexport format). To restore with Studio 3T: unzip, then right-click the database > Import > JSON, and pick the files. Command line equivalent:
+
+```bash
+mongoimport --db=GWTrade --collection=shops --file=shops.json
+```

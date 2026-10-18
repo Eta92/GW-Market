@@ -1,5 +1,6 @@
 import { Collection, Db, MongoClient, ObjectId, WithId } from 'mongodb';
 import { SyncHelper } from '../helpers/sync.helper';
+import { BackupService } from './backup.service';
 import { Activity } from '../models/activity.model';
 import { Auction } from '../models/auction.model';
 import { BanEntry } from '../models/ban.model';
@@ -42,6 +43,7 @@ export class MongoService {
         SyncHelper.initShops();
         SyncHelper.initMessages();
         // SyncHelper.initBans();
+        BackupService.init(this.mongoDB);
         console.log('Mongo database is ready');
       })
       .catch((err) => {
