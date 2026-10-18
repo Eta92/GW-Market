@@ -6,6 +6,7 @@ import { Purchase } from '../models/purchase.model';
 import { ReputationReason } from '../models/reputation.model';
 import { SearchFilter, SearchResult } from '../models/search.model';
 import { OrderType, Price, Shop, ShopItem } from '../models/shop.model';
+import { ActivityService } from './activity.service';
 import { AuctionService } from './auction.service';
 //import { BanService } from './ban.service';
 import { ItemService } from './item.service';
@@ -110,6 +111,11 @@ export class SocketService {
       socket.on('getPublicShop', (publicId: string) => {
         const shop = ShopService.getPublicShop(publicId);
         socket.emit('GetPublicShop', shop);
+      });
+
+      socket.on('getActivityPrediction', async (publicId: string) => {
+        const prediction = await ActivityService.getPrediction(publicId);
+        socket.emit('GetActivityPrediction', prediction);
       });
 
       socket.on('askPlayerCertification', (uuid: string) => {

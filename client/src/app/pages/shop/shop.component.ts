@@ -4,6 +4,7 @@ import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityHelper } from '@app/helpers/utility.helper';
 import { WeaponHelper } from '@app/helpers/weapon.helper';
+import { ActivityMode, ActivityPrediction, PredictionHour } from '@app/models/activity.model';
 import { Auction, AuctionHistory } from '@app/models/auction.model';
 import { BasicItem, DaybreakItem } from '@app/models/item.model';
 import { OrderFilter, OrderSort } from '@app/models/order.model';
@@ -12,6 +13,7 @@ import { OrderType, Recruit, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
+import type { EChartsOption } from 'echarts';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -95,6 +97,14 @@ export class ShopComponent implements OnInit, OnDestroy {
   // Desktop notifications
   public notifyOnOffline = false;
 
+  // Activity prediction
+  public activityPrediction: ActivityPrediction = null;
+  public activityMode: ActivityMode = 'today';
+  public activityChart: EChartsOption = null;
+  public activityNotEnoughData = false;
+  public activityUnlocked = false;
+  private activityShopId: string = null;
+
   public OrderType = OrderType;
   public Array = Array;
 
@@ -153,6 +163,9 @@ export class ShopComponent implements OnInit, OnDestroy {
             .subscribe((shop: Shop) => {
               this.shop = shop;
               this.shopUpdate();
+              if (shop?.publicId === publicId) {
+                this.requestActivityPrediction(publicId);
+              }
             });
           this.shopService
             .getActiveShop()
@@ -201,6 +214,17 @@ export class ShopComponent implements OnInit, OnDestroy {
       } else {
         this.notifyOnOffline = localStorage.getItem('notifyOnOffline') === 'true';
       }
+      // listen for activity prediction (ignore the replayed one of a previous shop)
+      this.shopService
+        .getActivityPrediction()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(prediction => {
+          if (prediction?.shopId === this.activityShopId) {
+            this.activityPrediction = prediction;
+            this.activityNotEnoughData = !prediction.oldestActivity || Date.now() - prediction.oldestActivity < 7 * 24 * 60 * 60 * 1000;
+            this.buildActivityChart();
+          }
+        });
       // listen for purchases history
       this.shopService
         .getPurchases()
@@ -225,6 +249,112 @@ export class ShopComponent implements OnInit, OnDestroy {
       }
       this.scheduleDetect();
     }
+  }
+
+  // Activity prediction: request, mode switch and chart
+  private requestActivityPrediction(publicId: string): void {
+    if (!publicId || publicId === this.activityShopId) {
+      return;
+    }
+    this.activityShopId = publicId;
+    this.activityPrediction = null;
+    this.activityChart = null;
+    this.activityUnlocked = false;
+    if (this.shop?.displayActivity === false) {
+      return;
+    }
+    this.storeService.requestSocket('getActivityPrediction', publicId);
+  }
+
+  setActivityMode(mode: ActivityMode): void {
+    this.activityMode = mode;
+    this.buildActivityChart();
+  }
+
+  unlockActivity(): void {
+    this.activityUnlocked = true;
+    this.scheduleDetect();
+  }
+
+  // today: now + 23h, tomorrow: next 6am + 23h, week: now + 167h
+  private selectActivityHours(): Array<PredictionHour> {
+    const hours = this.activityPrediction?.hours || [];
+    if (this.activityMode === 'week') {
+      return hours;
+    }
+    let start = 0;
+    if (this.activityMode === 'tomorrow') {
+      start = hours.findIndex((h, i) => i > 0 && new Date(h.time).getHours() === 6);
+    }
+    return hours.slice(start, start + 24);
+  }
+
+  private buildActivityChart(): void {
+    const week = this.activityMode === 'week';
+    const color = '#d4a853';
+    const data = this.selectActivityHours().map(h => [h.time, Math.round(Math.min(h.prediction, 1) * 100)]);
+    this.activityChart = {
+      backgroundColor: 'transparent',
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: '#2a241f',
+        borderColor: color,
+        borderWidth: 1,
+        textStyle: { color: '#f4e8c1', fontSize: 12 },
+        axisPointer: { lineStyle: { color, opacity: 0.5 } },
+        // pinned to the top right corner of the chart
+        position: (point: any, params: any, dom: any, rect: any, size: any): Array<number> => [size.viewSize[0] - size.contentSize[0], 0],
+        formatter: (params: any): string => {
+          const date = new Date(params[0].value[0]).toLocaleString(undefined, {
+            weekday: 'short',
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+          return `<div style="color:${color};margin-bottom:4px">${date}</div><strong style="color:#f4e8c1">${params[0].value[1]}%</strong>`;
+        }
+      },
+      grid: { left: 4, right: 4, top: 8, bottom: 20, containLabel: false },
+      xAxis: {
+        type: 'time',
+        axisLine: { lineStyle: { color: '#3a3430' } },
+        // one label every 6 hours (every day in week mode)
+        minInterval: week ? 24 * 60 * 60 * 1000 : 6 * 60 * 60 * 1000,
+        maxInterval: week ? 24 * 60 * 60 * 1000 : 6 * 60 * 60 * 1000,
+        axisLabel: {
+          color: '#a08060',
+          fontSize: 9,
+          formatter: (v: number): string =>
+            week ? new Date(v).toLocaleDateString(undefined, { weekday: 'short' }) : String(new Date(v).getHours()).padStart(2, '0')
+        },
+        splitLine: { show: false }
+      },
+      yAxis: { type: 'value', show: false, min: 0, max: 100 },
+      series: [
+        {
+          name: 'Online chance',
+          type: 'line',
+          data,
+          smooth: true,
+          showSymbol: false,
+          lineStyle: { color, width: 2 },
+          areaStyle: {
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                { offset: 0, color: color + '55' },
+                { offset: 1, color: color + '05' }
+              ]
+            }
+          },
+          itemStyle: { color }
+        }
+      ]
+    };
+    this.scheduleDetect();
   }
 
   getImageSource(itemName: string): string {
@@ -547,6 +677,10 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   stopShop(): void {
     this.shopService.disableShop();
+  }
+
+  toggleDisplayActivity(): void {
+    this.shopService.updateDisplayActivity(this.shop?.displayActivity === false);
   }
 
   async toggleNotifyOnOffline(): Promise<void> {

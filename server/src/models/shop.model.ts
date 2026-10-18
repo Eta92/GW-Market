@@ -25,6 +25,7 @@ export interface Shop {
   notations?: { [key: string]: 'positive' | 'negative' };
   recruiter?: Recruit;
   recruits?: Array<Recruit>;
+  displayActivity?: boolean;
   // back only
   _id?: string;
 }

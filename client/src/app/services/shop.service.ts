@@ -7,6 +7,7 @@ import { UtilService } from './util.service';
 import { HttpClient } from '@angular/common/http';
 import { CurrentSubject } from '@app/helpers/current.subject';
 import { UtilityHelper } from '@app/helpers/utility.helper';
+import { ActivityPrediction } from '@app/models/activity.model';
 import { Auction } from '@app/models/auction.model';
 import { DaybreakItem } from '@app/models/item.model';
 import { Purchase } from '@app/models/purchase.model';
@@ -32,6 +33,7 @@ export class ShopService {
   private personalAuctionsSubject = new CurrentSubject<Array<Auction>>();
   private purchasesSubject = new CurrentSubject<Array<Purchase>>();
   private activePlayer = new CurrentSubject<string>();
+  private activityPredictionSubject = new CurrentSubject<ActivityPrediction>();
 
   private TIME_WEEK = 1000 * 60 * 60 * 24 * 7;
 
@@ -160,6 +162,9 @@ export class ShopService {
     this.socket.on('GetShopHistory', (purchases: Array<Purchase>) => {
       this.purchasesSubject.set(purchases);
     });
+    this.socket.on('GetActivityPrediction', (prediction: ActivityPrediction) => {
+      this.activityPredictionSubject.set(prediction);
+    });
   }
 
   addShopItem(item: ShopItem): void {
@@ -244,6 +249,21 @@ export class ShopService {
     this.toastrService.success(
       'Customer will be able to contact you ingame via this character on next shop update',
       'Shop player updated',
+      {
+        timeOut: 10000,
+      }
+    );
+    this.pendingChangesSubject.set(++this.pendingChanges);
+    this.saveShop();
+  }
+
+  updateDisplayActivity(displayActivity: boolean): void {
+    const activeShop = this.activeShopSubject.value;
+    activeShop.displayActivity = displayActivity;
+    this.activeShopSubject.set(activeShop);
+    this.toastrService.success(
+      displayActivity ? 'Customers will see when you are usually online' : 'Customers will no longer see when you are usually online',
+      'Applied on next shop update',
       {
         timeOut: 10000,
       }
@@ -427,6 +447,10 @@ export class ShopService {
 
   getPurchases(): Observable<Array<Purchase>> {
     return this.purchasesSubject.asObservable().pipe(debounceTime(0));
+  }
+
+  getActivityPrediction(): Observable<ActivityPrediction> {
+    return this.activityPredictionSubject.asObservable().pipe(debounceTime(0));
   }
 
   getActivePlayer(): Observable<string> {

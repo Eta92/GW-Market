@@ -14,7 +14,7 @@
     <aside class="shop-sidebar">
       <div class="sidebar-inner">
         <!-- Player Visual -->
-        <div class="player-visual" (click)="openPlayer()">
+        <!-- <div class="player-visual" (click)="openPlayer()">
           <div class="player-frame" [class.live]="showCandle">
             <div class="player-avatar">
               <i class="fa fa-user"></i>
@@ -23,7 +23,7 @@
               <span class="live-dot"></span>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Player Info -->
         <div class="player-info">
@@ -74,6 +74,14 @@
           <span class="notify-offline-label">Notify when your shop loses highlight</span>
         </label>
 
+        <!-- Activity Display Toggle -->
+        <label *ngIf="!showcase" class="notify-offline-toggle sm-hide" (click)="toggleDisplayActivity()">
+          <span class="notify-offline-checkbox" [class.checked]="shop?.displayActivity !== false">
+            <i class="fa" [class.fa-eye]="shop?.displayActivity !== false" [class.fa-eye-slash]="shop?.displayActivity === false"></i>
+          </span>
+          <span class="notify-offline-label">Show when you are usually online</span>
+        </label>
+
         <!-- Quick Stats -->
         <div class="sidebar-stats xs-hide">
           <div class="stat-row">
@@ -104,6 +112,29 @@
             <i class="fa fa-clock"></i>
             <span class="sidebar-last-seen-value">{{ shop.lastRefresh | formatLastUpdate }} ago</span>
           </div>
+        </div>
+
+        <!-- Activity Prediction -->
+        <div *ngIf="showcase && activityPrediction && shop?.displayActivity !== false" class="sidebar-activity xs-hide">
+          <div class="sidebar-activity-label">Online chance</div>
+          <div class="sidebar-activity-modes">
+            <button class="sidebar-activity-mode" [class.active]="activityMode === 'today'" (click)="setActivityMode('today')">
+              Today
+            </button>
+            <button class="sidebar-activity-mode" [class.active]="activityMode === 'tomorrow'" (click)="setActivityMode('tomorrow')">
+              J +1
+            </button>
+            <button class="sidebar-activity-mode" [class.active]="activityMode === 'week'" (click)="setActivityMode('week')">Week</button>
+          </div>
+          <div
+            *ngIf="activityNotEnoughData && !activityUnlocked"
+            class="sidebar-activity-empty"
+            (click)="unlockActivity()"
+            title="Show anyway"
+          >
+            Not enough data
+          </div>
+          <div *ngIf="!activityNotEnoughData || activityUnlocked" echarts [options]="activityChart" class="sidebar-activity-chart"></div>
         </div>
 
         <!-- Reputation (showcase only) -->

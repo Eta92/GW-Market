@@ -1,5 +1,6 @@
-import { Collection, Db, MongoClient } from 'mongodb';
+import { Collection, Db, MongoClient, ObjectId, WithId } from 'mongodb';
 import { SyncHelper } from '../helpers/sync.helper';
+import { Activity } from '../models/activity.model';
 import { Auction } from '../models/auction.model';
 import { BanEntry } from '../models/ban.model';
 import { Message } from '../models/message.model';
@@ -19,6 +20,7 @@ export class MongoService {
   private static messageCollection: Collection<Message>;
   private static statCollection: Collection<StatEntry>;
   private static banCollection: Collection<BanEntry>;
+  private static activityCollection: Collection<Activity>;
 
   public static init(): void {
     this.mongoClient = new MongoClient(this.mongodburl);
@@ -33,6 +35,8 @@ export class MongoService {
         this.messageCollection = this.mongoDB.collection('messages');
         this.statCollection = this.mongoDB.collection('stats');
         this.banCollection = this.mongoDB.collection('bans');
+        this.activityCollection = this.mongoDB.collection('activity');
+        this.activityCollection.createIndex({ shopId: 1 }).catch((err) => console.log('Error creating activity index:', err));
 
         this.mongoInit = true;
         SyncHelper.initShops();
@@ -65,6 +69,7 @@ export class MongoService {
             reputation: shopData.reputation,
             auctions: shopData.auctions,
             recruiter: shopData.recruiter,
+            displayActivity: shopData.displayActivity,
           },
         },
         { upsert: true }
@@ -289,5 +294,51 @@ export class MongoService {
     } catch (err) {
       console.log('Error inserting ban:', err);
     }
+  }
+
+  public static async getCurrentActivity(shopId: string): Promise<WithId<Activity> | null> {
+    if (!this.mongoInit) {
+      console.log('MongoDB not initialized');
+      return null;
+    }
+    try {
+      return await this.activityCollection.findOne({ shopId, endTime: { $gt: Date.now() } }, { sort: { startTime: -1 } });
+    } catch (err) {
+      console.log('Error getting current activity:', err);
+      return null;
+    }
+  }
+
+  public static async insertActivity(activityData: Activity): Promise<void> {
+    if (!this.mongoInit) {
+      console.log('MongoDB not initialized');
+      return;
+    }
+    try {
+      await this.activityCollection.insertOne(activityData);
+    } catch (err) {
+      console.log('Error inserting activity:', err);
+    }
+  }
+
+  public static async updateActivityEndTime(id: ObjectId, endTime: number): Promise<void> {
+    if (!this.mongoInit) {
+      console.log('MongoDB not initialized');
+      return;
+    }
+    try {
+      await this.activityCollection.updateOne({ _id: id }, { $set: { endTime } });
+    } catch (err) {
+      console.log('Error updating activity:', err);
+    }
+  }
+
+  public static async getActivities(shopId: string, from: number, to: number): Promise<Array<Activity>> {
+    if (!this.mongoInit) {
+      console.log('MongoDB not initialized');
+      return [];
+    }
+    const activities = await this.activityCollection.find({ shopId, startTime: { $lt: to }, endTime: { $gt: from } }).toArray();
+    return activities;
   }
 }

@@ -25,6 +25,7 @@ export interface Shop {
   auctions?: Array<string>;
   recruiter?: Recruit;
   recruits?: Array<Recruit>;
+  displayActivity?: boolean;
 }
 
 export interface Recruit {

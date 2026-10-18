@@ -9,6 +9,7 @@ import { MessageType } from '../models/message.model';
 import { ReputationReason } from '../models/reputation.model';
 import { OrderType, Shop, ShopItem, ShopPrice } from '../models/shop.model';
 import { TimeOrderCounts } from '../models/tree.model';
+import { ActivityService } from './activity.service';
 import { AuctionService } from './auction.service';
 import { ItemService } from './item.service';
 import { KamadanService } from './kamadan.service';
@@ -283,6 +284,7 @@ export class ShopService {
             lastRefresh: undefined,
           })),
         daybreakOnline: rawShop.daybreakOnline,
+        displayActivity: rawShop.displayActivity !== false,
       };
       shop.items.forEach((item) => ItemService.applyBowType(item));
       if (rawShop.recruiter?.shopId && !rawShop.recruiter.name) {
@@ -328,6 +330,7 @@ export class ShopService {
         this.publicShopMap[shopToSave.publicId] = shopToSave.uuid;
       }
       OverviewService.logRefresh(shopToSave.publicId);
+      ActivityService.logRefresh(shopToSave);
       shop.items.forEach((item) => this.itemToRefresh.add(item.name));
       return await this.completeShopSave(shopToSave, socket);
     }
@@ -394,6 +397,7 @@ export class ShopService {
   public static closeShop(uuid: string): void {
     const activeShop = this.activeShopMap[uuid];
     if (activeShop) {
+      ActivityService.logClose(activeShop.publicId);
       const bonus = UtilityHelper.bonusFromShop(activeShop);
       activeShop.lastRefresh = Date.now() - TIME_ONLINE - bonus * 60 * 1000;
     }
@@ -486,6 +490,7 @@ export class ShopService {
         auctions: shop.auctions,
         certified: shop.certified,
         reputation: shop.reputation,
+        displayActivity: shop.displayActivity !== false,
       };
       return limitedShop;
     }

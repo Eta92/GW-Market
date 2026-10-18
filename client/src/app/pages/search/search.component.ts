@@ -14,6 +14,38 @@ import { BOW_TYPES, WEAPON_ATTRIBUTES } from '@app/shared/constants/weapon-attri
 import { ToastrService } from 'ngx-toastr';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 
+const SEARCH_FORM_DEFAULTS = {
+  query: '',
+  orderType: null,
+  family: null,
+  category: null,
+  attribute: null,
+  reqMin: 0,
+  reqMax: 13,
+  inscription: null,
+  oldSchool: null,
+  core: null,
+  exotic: null,
+  prefix: null,
+  suffix: null,
+  bowType: null,
+  preSearing: null,
+  miniDedicated: null,
+  currency: null,
+  priceMin: null,
+  priceMax: null,
+  priceEachMin: null,
+  priceEachMax: null,
+  goldMin: null,
+  goldMax: null,
+  timeRange: 'all',
+  onlineOnly: false,
+  certifiedOnly: false,
+  maxOnly: false,
+  sortBy: 'time',
+  sortOrder: 'desc'
+};
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -100,42 +132,51 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initForm();
 
-    this.itemService.getAvailableTree().subscribe((tree: AvailableTree) => {
-      this.allItems = tree;
-      if (this.isWeapon) {
-        this.refreshWeaponUpgrades();
-      }
-      this.cdr.detectChanges();
-    });
-    this.itemService.getExoticUpgrades().subscribe(upgrades => {
-      this.exoticUpgrades = upgrades.map(u => ({
-        value: u.name,
-        description: [u.enhancement, u.condition].filter(Boolean).join(' / '),
-        img: '../../../assets/items/upgrade/' + u.img.replace(/ /g, '_') + '.png'
-      }));
-      this.cdr.detectChanges();
-    });
-
-    this.storeService.getSearchOrders().subscribe((result: SearchResult) => {
-      if (result) {
-        this.searchResult = result;
-        this.searchResult.orders.forEach(order => {
-          // generate a basic item to avoid waiting for item service to load
-          order.item = {
-            name: order.name,
-            family: order.family,
-            category: order.category,
-            img: ''
-          };
-        });
-        this.loading = false;
-        this.hasSearched = true;
+    this.itemService
+      .getAvailableTree()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((tree: AvailableTree) => {
+        this.allItems = tree;
+        if (this.isWeapon) {
+          this.refreshWeaponUpgrades();
+        }
         this.cdr.detectChanges();
-      }
-    });
+      });
+    this.itemService
+      .getExoticUpgrades()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(upgrades => {
+        this.exoticUpgrades = upgrades.map(u => ({
+          value: u.name,
+          description: [u.enhancement, u.condition].filter(Boolean).join(' / '),
+          img: '../../../assets/items/upgrade/' + u.img.replace(/ /g, '_') + '.png'
+        }));
+        this.cdr.detectChanges();
+      });
+
+    this.storeService
+      .getSearchOrders()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((result: SearchResult) => {
+        if (result) {
+          this.searchResult = result;
+          this.searchResult.orders.forEach(order => {
+            // generate a basic item to avoid waiting for item service to load
+            order.item = {
+              name: order.name,
+              family: order.family,
+              category: order.category,
+              img: ''
+            };
+          });
+          this.loading = false;
+          this.hasSearched = true;
+          this.cdr.detectChanges();
+        }
+      });
 
     // Check for query params
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
       if (params['q']) {
         this.form.patchValue({ query: params['q'] });
         this.onSearch();
@@ -144,9 +185,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     // Auto-search when filters/sort change (excluding query which needs button)
     this.form.valueChanges.pipe(debounceTime(300), takeUntil(this.destroy$)).subscribe(values => {
-      // Only auto-search if we've already searched once (not on initial load)
-      // and the change wasn't just the query field
-      if (this.hasSearched) {
+      // Auto-search once a search was made or at least one filter is active
+      // (typing in the query alone still needs the button for the first search)
+      if (this.hasSearched || this.activeFilterCount > 0) {
         this.onSearch();
       }
     });
@@ -159,37 +200,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   initForm(): void {
-    this.form = this.fb.group({
-      query: [''],
-      orderType: [null],
-      family: [null],
-      category: [null],
-      attribute: [null],
-      reqMin: [0],
-      reqMax: [13],
-      inscription: [null],
-      oldSchool: [null],
-      core: [null],
-      exotic: [null],
-      prefix: [null],
-      suffix: [null],
-      bowType: [null],
-      preSearing: [null],
-      miniDedicated: [null],
-      currency: [null],
-      priceMin: [null],
-      priceMax: [null],
-      priceEachMin: [null],
-      priceEachMax: [null],
-      goldMin: [null],
-      goldMax: [null],
-      timeRange: ['all'],
-      onlineOnly: [false],
-      certifiedOnly: [false],
-      maxOnly: [false],
-      sortBy: ['time'],
-      sortOrder: ['desc']
-    });
+    this.form = this.fb.group({ ...SEARCH_FORM_DEFAULTS });
     this.form.get('family').valueChanges.subscribe(value => {
       this.form.get('category').setValue(null);
       if (value !== 'weapon' && value !== 'unique') {
@@ -202,7 +213,6 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.form.get('prefix').setValue(null);
         this.form.get('suffix').setValue(null);
         this.form.get('bowType').setValue(null);
-        this.onSearch();
       }
     });
     this.form.valueChanges.subscribe(value => {
@@ -249,8 +259,13 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   onClear(): void {
+    // Reset the existing form instead of rebuilding it, so the valueChanges subscriptions stay attached.
+    // emitEvent: false avoids saving the cleared form and triggering a search from the listeners.
+    this.form.reset(SEARCH_FORM_DEFAULTS, { emitEvent: false });
     localStorage.removeItem('searchForm');
-    this.initForm();
+    this.isWeapon = false;
+    this.isNotMax = false;
+    this.isOldSchool = false;
     this.searchResult = null;
     this.hasSearched = false;
   }

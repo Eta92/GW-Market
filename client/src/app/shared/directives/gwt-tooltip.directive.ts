@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, HostBinding, Input, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostBinding, Input, NgZone, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[gwtTooltip]',
@@ -32,8 +32,11 @@ export class GwtTooltipDirective implements AfterViewInit {
 
   constructor(
     private el: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    zone: NgZone
   ) {
+    // The service is not created by Angular, so it gets the zone from the first directive
+    GwtTooltipService.instance.zone ??= zone;
     // Create bound handlers once in constructor so removeEventListener works
     this._mouseEnterHandler = () => this.handleMouseEnter();
     this._mouseLeaveHandler = () => this.handleMouseLeave();
@@ -69,7 +72,7 @@ export class GwtTooltipDirective implements AfterViewInit {
   /** Called by the global service when mouse leaves this element */
   handleMouseLeave(): void {
     const service = GwtTooltipService.instance!;
-    if (service.isClickToggled) return;
+    if (service.toggledElement === this.host) return;
     this.cancelAndHide();
   }
 
@@ -77,14 +80,11 @@ export class GwtTooltipDirective implements AfterViewInit {
     event.stopPropagation();
     if (!this.gwtTooltipToggle) return;
     const service = GwtTooltipService.instance!;
-    service.isClickToggled = !service.isClickToggled;
-    // Toggle the active element reference
-    if (service.isClickToggled) {
-      service.activeElement = this.host;
-      this.showImmediately();
-    } else {
-      service.activeElement = null;
+    if (service.toggledElement === this.host) {
       this.hideTooltip();
+    } else if (this.gwtTooltip) {
+      service.toggledElement = this.host;
+      this.showImmediately();
     }
   }
 
@@ -114,7 +114,7 @@ export class GwtTooltipDirective implements AfterViewInit {
     clearTimeout(this.showTimer);
     const service = GwtTooltipService.instance!;
     // Only hide if this element is still active (another element didn't take over)
-    if (service.activeElement === this.host && !service.isClickToggled) {
+    if (service.activeElement === this.host && service.toggledElement !== this.host) {
       service.hide();
     }
   }
@@ -136,12 +136,22 @@ class GwtTooltipService {
   private tooltipEl: HTMLElement | null = null;
   /** The directive element currently showing a tooltip */
   activeElement: Element | null = null;
-  isClickToggled = false;
+  /** The element whose tooltip was opened by a click (toggle mode) */
+  toggledElement: Element | null = null;
+  /** Set by the first directive, used to run the page listeners outside Angular */
+  zone: NgZone | null = null;
+
+  private listening = false;
 
   // ---- Show / Hide ----
 
   show(host: Element, content: string, position: 'top' | 'bottom' | 'left' | 'right'): void {
+    // Another element taking over ends the click-opened state
+    if (this.toggledElement !== host) {
+      this.toggledElement = null;
+    }
     this.activeElement = host;
+    this._startListening();
     const el = this._ensureTooltip();
     const html = this._renderContent(content);
     el.innerHTML = `<div class="gwt-tooltip-arrow"></div><div class="gwt-tooltip-body">${html}</div>`;
@@ -164,7 +174,65 @@ class GwtTooltipService {
     }
     this.tooltipEl = null;
     this.activeElement = null;
+    this.toggledElement = null;
+    this._stopListening();
   }
+
+  // ---- Page listeners (safety net when mouseleave never comes) ----
+  // Only attached while a tooltip is open, and outside Angular so mouse moves don't trigger change detection
+
+  private _startListening(): void {
+    if (this.listening) return;
+    this.listening = true;
+    const add = () => {
+      document.addEventListener('pointermove', this._onPointerMove, { passive: true });
+      document.addEventListener('pointerdown', this._onPointerDown, true);
+      document.addEventListener('scroll', this._onScroll, { capture: true, passive: true });
+      document.addEventListener('keydown', this._onKeyDown);
+      window.addEventListener('blur', this._onBlur);
+    };
+    if (this.zone) {
+      this.zone.runOutsideAngular(add);
+    } else {
+      add();
+    }
+  }
+
+  private _stopListening(): void {
+    if (!this.listening) return;
+    this.listening = false;
+    document.removeEventListener('pointermove', this._onPointerMove);
+    document.removeEventListener('pointerdown', this._onPointerDown, true);
+    document.removeEventListener('scroll', this._onScroll, true);
+    document.removeEventListener('keydown', this._onKeyDown);
+    window.removeEventListener('blur', this._onBlur);
+  }
+
+  /** Hover tooltip: hide when its element was removed or the cursor is no longer over it */
+  private _onPointerMove = (e: PointerEvent): void => {
+    const el = this.activeElement;
+    if (!el || this.toggledElement) return;
+    if (!el.isConnected || !el.contains(e.target as Node)) {
+      this.hide();
+    }
+  };
+
+  /** Click-opened tooltip: close on a press anywhere outside its element */
+  private _onPointerDown = (e: PointerEvent): void => {
+    if (this.toggledElement && !this.toggledElement.contains(e.target as Node)) {
+      this.hide();
+    }
+  };
+
+  private _onScroll = (): void => this.hide();
+
+  private _onKeyDown = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
+      this.hide();
+    }
+  };
+
+  private _onBlur = (): void => this.hide();
 
   // ---- Internal helpers ----
 
