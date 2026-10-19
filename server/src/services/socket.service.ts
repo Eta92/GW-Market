@@ -150,6 +150,10 @@ export class SocketService {
         }
       );
 
+      socket.on('removeReputationVote', (vote: { shop: string; target: string }) => {
+        ShopService.removeReputationVote(vote.shop, vote.target, socket);
+      });
+
       socket.on('logPurchase', (purchase: Purchase) => {
         purchase.date = Date.now();
         console.log('Logging purchase data:', purchase);

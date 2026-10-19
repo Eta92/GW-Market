@@ -16,11 +16,10 @@ export class OrderRowComponent implements OnInit {
   @Input() focusBundle = false;
   @Input() showWeaponDetails = false;
   @Input() vote: null | 'positive' | 'negative' = null;
-  @Input() voteWarning = false;
 
   @Output() rowClick = new EventEmitter<ItemOrder>();
   @Output() submitVote = new EventEmitter<{ order: ItemOrder; vote: 'positive' | 'negative' }>();
-  @Output() leaveVote = new EventEmitter<void>();
+  @Output() removeVote = new EventEmitter<ItemOrder>();
   @Output() whisperClick = new EventEmitter<ItemOrder>();
   @Output() messageClick = new EventEmitter<ItemOrder>();
 
@@ -65,5 +64,10 @@ export class OrderRowComponent implements OnInit {
   onSubmitVote(event: Event, vote: 'positive' | 'negative'): void {
     event.stopPropagation();
     this.submitVote.emit({ order: this.order, vote });
+  }
+
+  onRemoveVote(event: Event): void {
+    event.stopPropagation();
+    this.removeVote.emit(this.order);
   }
 }

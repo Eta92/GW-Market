@@ -79,7 +79,6 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   public orderWarning = false;
   public playerWarning = false;
-  public voteWarning = false;
 
   public playerOpen = false;
   public orderOpen = false;
@@ -1010,23 +1009,15 @@ export class ShopComponent implements OnInit, OnDestroy {
   }
 
   reputationVote(vote: 'positive' | 'negative'): void {
-    if (this.shopVote() === vote) {
-      if (vote === 'negative') {
-        if (this.voteWarning) {
-          this.shopService.submitReputationVote(this.shop.player, vote, true);
-          this.voteWarning = false;
-        } else {
-          this.toastrService.warning(`Click again to remove your ${vote} vote for this shop`, 'Reputation removal initiated');
-          this.voteWarning = true;
-        }
-      }
-    } else {
+    if (this.shopVote() !== vote) {
       this.shopService.submitReputationVote(this.shop.player, vote);
     }
   }
 
-  reputationLeave(): void {
-    this.voteWarning = false;
+  removeReputationVote(): void {
+    if (this.shopVote()) {
+      this.shopService.removeReputationVote(this.shop.player);
+    }
   }
 
   shopVote(): null | 'positive' | 'negative' {

@@ -49,7 +49,6 @@ export class ItemComponent implements OnInit, OnDestroy {
   public messageForm: FormGroup;
   public auctionForm: FormGroup;
   public auctionHistoryVisible = false;
-  public voteWarning = false;
 
   // Filters
   public orderTypeFilter: OrderTypeFilter = 'all';
@@ -851,23 +850,15 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   reputationVote(order: ItemOrder, vote: 'positive' | 'negative'): void {
-    if (this.itemVote(order) === vote) {
-      if (vote === 'negative') {
-        if (this.voteWarning) {
-          this.shopService.submitReputationVote(order.player, vote);
-          this.voteWarning = false;
-        } else {
-          this.toastrService.warning(`Click again to remove your ${vote} vote for this shop`, 'Reputation removal initiated');
-          this.voteWarning = true;
-        }
-      }
-    } else {
+    if (this.itemVote(order) !== vote) {
       this.shopService.submitReputationVote(order.player, vote);
     }
   }
 
-  reputationLeave(): void {
-    this.voteWarning = false;
+  removeReputationVote(order: ItemOrder): void {
+    if (this.itemVote(order)) {
+      this.shopService.removeReputationVote(order.player);
+    }
   }
 
   itemVote(order: ItemOrder): null | 'positive' | 'negative' {

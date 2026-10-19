@@ -7,7 +7,7 @@ import { Auction } from '../models/auction.model';
 import { PriceInspection } from '../models/inspection.model';
 import { MessageType } from '../models/message.model';
 import { ReputationReason } from '../models/reputation.model';
-import { OrderType, Shop, ShopItem, ShopPrice } from '../models/shop.model';
+import { OrderType, Shop, ShopItem, ShopPrice, ShopReputation } from '../models/shop.model';
 import { TimeOrderCounts } from '../models/tree.model';
 import { ActivityService } from './activity.service';
 import { AuctionService } from './auction.service';
@@ -869,73 +869,21 @@ export class ShopService {
       console.log('Invalid vote type received: ' + vote + ' from player ' + shop);
       return;
     }
-    const shopData = this.allShopMap[shop];
-    if (!shopData) {
-      socket.emit('ToasterError', 'Shop not found.');
+    const context = this.getVoteContext(shop, target, socket);
+    if (!context) {
       return;
     }
-    if (!shopData.reputation) {
-      shopData.reputation = {
-        positive: 0,
-        negative: 0,
-        usedPoints: 0,
-        history: [],
-        lastReset: Date.now(),
-      };
-    }
-    if (Date.now() - shopData.reputation.lastReset > 1000 * 60 * 60 * 24) {
-      shopData.reputation.usedPoints = 0;
-      shopData.reputation.lastReset = Date.now();
+    const { shopData, targetShop, existingIndex } = context;
+    const existingVote = existingIndex !== -1 ? targetShop.reputation!.history[existingIndex] : null;
+    if (existingVote?.type === vote) {
+      socket.emit('ToasterWarning', 'You already gave this vote.');
+      return;
     }
 
+    // check the daily points before changing anything (an old vote gives its points back)
     const maxPoints = (shopData.certified?.length || 0) * 3;
-
-    if (shopData.certified?.includes(target)) {
-      socket.emit('ToasterError', 'You cannot vote for yourself');
-      return;
-    }
-    const targetId = this.certifiedPlayers[target];
-    if (!targetId) {
-      socket.emit('ToasterError', 'The target player is not certified so cannot receive reputation votes.');
-      return;
-    }
-    const targetShop = this.allShopMap[targetId];
-    if (!targetShop) {
-      socket.emit('ToasterError', 'Fatal error shop not found, please contact the support.');
-      return;
-    }
-    if (!targetShop.reputation) {
-      targetShop.reputation = {
-        positive: 0,
-        negative: 0,
-        usedPoints: 0,
-        history: [],
-        lastReset: Date.now(),
-      };
-    }
-    const existingVoteIndex = targetShop.reputation.history.findIndex((h) => this.certifiedPlayers[h.from] === shopData.uuid);
-    const existingVote = existingVoteIndex !== -1 ? targetShop.reputation.history[existingVoteIndex] : null;
-    let revert = false;
-    if (existingVote) {
-      if (existingVote.type === vote) {
-        revert = true;
-        socket.emit('ToasterSuccess', 'Your previous vote has been removed.');
-      }
-      // revert previous vote
-      if (existingVote.type === 'positive') {
-        shopData.reputation.usedPoints -= 1;
-        targetShop.reputation.positive--;
-      } else {
-        shopData.reputation.usedPoints -= 3;
-        targetShop.reputation.negative--;
-      }
-      shopData.reputation.usedPoints = Math.max(0, shopData.reputation.usedPoints);
-    }
-
-    if (
-      (vote === 'positive' && shopData.reputation.usedPoints + 1 > maxPoints) ||
-      (vote === 'negative' && shopData.reputation.usedPoints + 3 > maxPoints)
-    ) {
+    const usedPoints = Math.max(0, shopData.reputation!.usedPoints - (existingVote ? this.voteCost(existingVote.type) : 0));
+    if (usedPoints + this.voteCost(vote) > maxPoints) {
       socket.emit(
         'ToasterWarning',
         'You have used all your reputation points for today. Please try again tomorrow or add more certified characters to your shop.'
@@ -943,57 +891,101 @@ export class ShopService {
       return;
     }
 
-    const newVote = {
-      date: Date.now(),
-      from: shopData.certified[0],
-      name: target,
-      type: vote,
-      reason: reason,
-    };
-    if (existingVoteIndex !== -1) {
-      if (revert) {
-        targetShop.reputation.history.splice(existingVoteIndex, 1);
-      } else {
-        // replace the old entry in-place to avoid duplicate history entries
-        targetShop.reputation.history[existingVoteIndex] = newVote;
-      }
-    } else {
-      targetShop.reputation.history.push(newVote);
+    if (existingVote) {
+      this.clearVote(shopData, targetShop, existingIndex);
     }
-    if (revert) {
-      MessageService.insertMessage(MessageType.REPUTATION_REVERT, shopData.publicId, targetShop.publicId, [
-        shopData.player,
-        shopData.publicId,
-      ]);
-    } else if (vote === 'positive') {
-      targetShop.reputation.positive++;
-      shopData.reputation.usedPoints += 1;
-      MessageService.insertMessage(MessageType.REPUTATION_UP, shopData.publicId, targetShop.publicId, [
-        shopData.player,
-        shopData.publicId,
-        UtilityHelper.reasonToText(reason),
-      ]);
-    } else {
-      targetShop.reputation.negative++;
-      shopData.reputation.usedPoints += 3;
-      MessageService.insertMessage(MessageType.REPUTATION_DOWN, shopData.publicId, targetShop.publicId, [
-        shopData.player,
-        shopData.publicId,
-        UtilityHelper.reasonToText(reason),
-      ]);
-    }
-    // upate reflexion
-    if (!shopData.notations) {
-      shopData.notations = {};
-    }
-    shopData.notations[targetShop.publicId || ''] = newVote.type;
-    // store reputation update in DB
+    targetShop.reputation![vote]++;
+    targetShop.reputation!.history.push({ date: Date.now(), from: shopData.certified[0], name: target, type: vote, reason });
+    shopData.reputation!.usedPoints = usedPoints + this.voteCost(vote);
+    shopData.notations![targetShop.publicId || ''] = vote;
+    MessageService.insertMessage(
+      vote === 'positive' ? MessageType.REPUTATION_UP : MessageType.REPUTATION_DOWN,
+      shopData.publicId,
+      targetShop.publicId,
+      [shopData.player, shopData.publicId, UtilityHelper.reasonToText(reason)]
+    );
     console.log('Reputation vote submitted from shop ' + shopData.player + ' to ' + targetShop.player + ' as ' + vote);
+    await this.completeVote(shopData, targetShop, socket, 'Your reputation vote has been submitted successfully. Refresh the page to see the effect.');
+  }
+
+  public static async removeReputationVote(shop: string, target: string, socket: any): Promise<void> {
+    const context = this.getVoteContext(shop, target, socket);
+    if (!context) {
+      return;
+    }
+    const { shopData, targetShop, existingIndex } = context;
+    if (existingIndex === -1) {
+      socket.emit('ToasterWarning', 'You have no vote to remove for this shop.');
+      return;
+    }
+    const existingVote = targetShop.reputation!.history[existingIndex];
+    shopData.reputation!.usedPoints = Math.max(0, shopData.reputation!.usedPoints - this.voteCost(existingVote.type));
+    this.clearVote(shopData, targetShop, existingIndex);
+    MessageService.insertMessage(MessageType.REPUTATION_REVERT, shopData.publicId, targetShop.publicId, [
+      shopData.player,
+      shopData.publicId,
+    ]);
+    console.log('Reputation vote removed from shop ' + shopData.player + ' to ' + targetShop.player);
+    await this.completeVote(shopData, targetShop, socket, 'Your previous vote has been removed.');
+  }
+
+  // checks shared by voting and removing a vote, returns null when the request is refused
+  private static getVoteContext(
+    shop: string,
+    target: string,
+    socket: any
+  ): { shopData: Shop; targetShop: Shop; existingIndex: number } | null {
+    const shopData = this.allShopMap[shop];
+    if (!shopData) {
+      socket.emit('ToasterError', 'Shop not found.');
+      return null;
+    }
+    if (shopData.certified?.includes(target)) {
+      socket.emit('ToasterError', 'You cannot vote for yourself');
+      return null;
+    }
+    const targetId = this.certifiedPlayers[target];
+    if (!targetId) {
+      socket.emit('ToasterError', 'The target player is not certified so cannot receive reputation votes.');
+      return null;
+    }
+    const targetShop = this.allShopMap[targetId];
+    if (!targetShop) {
+      socket.emit('ToasterError', 'Fatal error shop not found, please contact the support.');
+      return null;
+    }
+    shopData.reputation ??= this.emptyReputation();
+    targetShop.reputation ??= this.emptyReputation();
+    shopData.notations ??= {};
+    if (Date.now() - shopData.reputation.lastReset > 1000 * 60 * 60 * 24) {
+      shopData.reputation.usedPoints = 0;
+      shopData.reputation.lastReset = Date.now();
+    }
+    const existingIndex = targetShop.reputation.history.findIndex((h) => this.certifiedPlayers[h.from] === shopData.uuid);
+    return { shopData, targetShop, existingIndex };
+  }
+
+  // removes a vote from the target counts, its history and the voter notations (points are handled by the caller)
+  private static clearVote(shopData: Shop, targetShop: Shop, existingIndex: number): void {
+    const [existingVote] = targetShop.reputation!.history.splice(existingIndex, 1);
+    targetShop.reputation![existingVote.type]--;
+    delete shopData.notations![targetShop.publicId || ''];
+  }
+
+  private static async completeVote(shopData: Shop, targetShop: Shop, socket: any, success: string): Promise<void> {
     await MongoService.upsertShop(targetShop);
     await MongoService.upsertShop(shopData);
     this.io.to(shopData.uuid).emit('RefreshShop', { ...shopData, _id: undefined, lastIP: undefined });
-    socket.emit('ToasterSuccess', 'Your reputation vote has been submitted successfully. Refresh the page to see the effect.');
+    socket.emit('ToasterSuccess', success);
     this.refreshShops(true);
+  }
+
+  private static voteCost(vote: 'positive' | 'negative'): number {
+    return vote === 'positive' ? 1 : 3;
+  }
+
+  private static emptyReputation(): ShopReputation {
+    return { positive: 0, negative: 0, usedPoints: 0, history: [], lastReset: Date.now() };
   }
 
   // ==============

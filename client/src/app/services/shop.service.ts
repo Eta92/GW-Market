@@ -346,10 +346,10 @@ export class ShopService {
     this.socket.emit('closeShop', activeShop.uuid);
   }
 
-  submitReputationVote(target: string, vote: 'positive' | 'negative', bypass = false): void {
+  submitReputationVote(target: string, vote: 'positive' | 'negative'): void {
     const activeShop = this.activeShopSubject.value;
     if (activeShop?.uuid && activeShop?.certified?.length > 0) {
-      if (vote === 'positive' || bypass) {
+      if (vote === 'positive') {
         this.socket.emit('submitReputationVote', {
           shop: activeShop.uuid,
           target: target,
@@ -375,6 +375,13 @@ export class ShopService {
       this.toastrService.error('You need to have an active shop with certified characters to submit reputation votes.', '', {
         timeOut: 15000,
       });
+    }
+  }
+
+  removeReputationVote(target: string): void {
+    const activeShop = this.activeShopSubject.value;
+    if (activeShop?.uuid) {
+      this.socket.emit('removeReputationVote', { shop: activeShop.uuid, target });
     }
   }
 

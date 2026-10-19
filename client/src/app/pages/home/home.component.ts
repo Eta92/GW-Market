@@ -146,7 +146,9 @@ export class HomeComponent implements OnInit {
       this.cdr.detectChanges();
     });
     this.storeService.getLastAuctions().subscribe((auctions) => {
-      this.lastAuctions = auctions;
+      // only auctions closing within a week
+      const weekLimit = Date.now() + 7 * 24 * 60 * 60 * 1000;
+      this.lastAuctions = auctions.filter((auction) => auction.endTime < weekLimit);
       this.cdr.detectChanges();
     });
 

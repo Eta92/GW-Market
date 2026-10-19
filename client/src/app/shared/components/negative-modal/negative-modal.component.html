@@ -31,6 +31,10 @@
         <i class="fa fa-info-circle"></i>
         If you think the issue requires more than a downvote, please report it in the support discord.
       </div>
+      <div class="negative-information-row" *ngIf="selectedReason === ReputationReason.NO_RESPONSE">
+        <i class="fa fa-warning"></i>
+        <span>Be sure your ingame status is <b>ONLINE</b> before assuming people do not respond to you.</span>
+      </div>
     </div>
   </div>
 

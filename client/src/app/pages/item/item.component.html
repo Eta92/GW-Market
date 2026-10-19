@@ -117,10 +117,9 @@
                     [showWeaponDetails]="hasItemDetails(order)"
                     [focusBundle]="focusBundle"
                     [vote]="itemVote(order)"
-                    [voteWarning]="voteWarning"
                     (rowClick)="openOrderDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
-                    (leaveVote)="reputationLeave()"
+                    (removeVote)="removeReputationVote($event)"
                     (whisperClick)="whisper($event)"
                     (messageClick)="message($event)"
                   ></app-order-row>
@@ -157,10 +156,9 @@
                     [showWeaponDetails]="hasItemDetails(order)"
                     [focusBundle]="focusBundle"
                     [vote]="itemVote(order)"
-                    [voteWarning]="voteWarning"
                     (rowClick)="openOrderDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
-                    (leaveVote)="reputationLeave()"
+                    (removeVote)="removeReputationVote($event)"
                     (whisperClick)="whisper($event)"
                     (messageClick)="message($event)"
                   ></app-order-row>
@@ -197,10 +195,9 @@
                     [showWeaponDetails]="hasItemDetails(auction)"
                     [focusBundle]="focusBundle"
                     [vote]="itemVote(auction)"
-                    [voteWarning]="voteWarning"
                     (rowClick)="openAuctionDetail($event)"
                     (submitVote)="reputationVote($event.order, $event.vote)"
-                    (leaveVote)="reputationLeave()"
+                    (removeVote)="removeReputationVote($event)"
                     (whisperClick)="whisper($event)"
                     (messageClick)="message($event)"
                   ></app-order-row>
@@ -249,10 +246,9 @@
                       [showWeaponDetails]="hasItemDetails(order)"
                       [focusBundle]="focusBundle"
                       [vote]="itemVote(order)"
-                      [voteWarning]="voteWarning"
                       (rowClick)="openOrderDetail($event)"
                       (submitVote)="reputationVote($event.order, $event.vote)"
-                      (leaveVote)="reputationLeave()"
+                      (removeVote)="removeReputationVote($event)"
                       (whisperClick)="whisper($event)"
                       (messageClick)="message($event)"
                     ></app-order-row>
@@ -269,10 +265,9 @@
                       [showWeaponDetails]="hasItemDetails(order)"
                       [focusBundle]="focusBundle"
                       [vote]="itemVote(order)"
-                      [voteWarning]="voteWarning"
                       (rowClick)="openOrderDetail($event)"
                       (submitVote)="reputationVote($event.order, $event.vote)"
-                      (leaveVote)="reputationLeave()"
+                      (removeVote)="removeReputationVote($event)"
                       (whisperClick)="whisper($event)"
                       (messageClick)="message($event)"
                     ></app-order-row>
@@ -600,7 +595,8 @@
     </div>
 
     <textarea class="popup-textarea" #area (focus)="area.select()" readonly>{{ tradeMessage }}</textarea>
-    <span class="popup-warning">If you modify the preset message, make sure the change is clearly communicated to the shop owner.</span>
+    <div class="popup-warning">If you modify the preset message, make sure the change is clearly communicated to the shop owner.</div>
+    <div class="popup-warning">Ensure your ingame status is <b>ONLINE</b> before whispering.</div>
     <button class="confirm-btn" title="Copy to clipboard" (click)="copyMessage()">
       <i class="fa fa-copy"></i>
       Copy Trade Message
