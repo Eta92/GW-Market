@@ -29,5 +29,13 @@ export enum MessageType {
   NEGOTIATE_ACCEPT,
   NEGOTIATE_REFUSE,
   NEGOTIATE_COUNTER,
-  REPUTATION_REVERT
+  REPUTATION_REVERT,
+  ONLINE_ITEM,
+  ONLINE_SHOP
+}
+
+export interface Tracking {
+  senderName: string;
+  senderShop: string;
+  itemName?: string;
 }

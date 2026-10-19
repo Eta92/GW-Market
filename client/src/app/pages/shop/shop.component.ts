@@ -13,6 +13,7 @@ import { OrderType, Recruit, Shop, ShopItem } from '@app/models/shop.model';
 import { ItemService } from '@app/services/item.service';
 import { ShopService } from '@app/services/shop.service';
 import { StoreService } from '@app/services/store.service';
+import { TrackingService } from '@app/services/tracking.service';
 import type { EChartsOption } from 'echarts';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
@@ -132,6 +133,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     private shopService: ShopService,
     private storeService: StoreService,
     private toastrService: ToastrService,
+    private trackingService: TrackingService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -276,17 +278,24 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.scheduleDetect();
   }
 
-  // today: now + 23h, tomorrow: next 6am + 23h, week: now + 167h
+  // today: now + 23h, tomorrow: next 6am + 23h, week: same hours as tomorrow averaged over the 7 days
   private selectActivityHours(): Array<PredictionHour> {
     const hours = this.activityPrediction?.hours || [];
-    if (this.activityMode === 'week') {
-      return hours;
+    if (this.activityMode === 'today') {
+      return hours.slice(0, 24);
     }
-    let start = 0;
+    const start = hours.findIndex((h, i) => i > 0 && new Date(h.time).getHours() === 6);
+    const day = hours.slice(start, start + 24);
     if (this.activityMode === 'tomorrow') {
-      start = hours.findIndex((h, i) => i > 0 && new Date(h.time).getHours() === 6);
+      return day;
     }
-    return hours.slice(start, start + 24);
+    return day.map((h, i) => {
+      let total = 0;
+      for (let d = 0; d < 7; d++) {
+        total += Math.min(hours[(start + i + d * 24) % hours.length].prediction, 1);
+      }
+      return { time: h.time, prediction: total / 7 };
+    });
   }
 
   private buildActivityChart(): void {
@@ -306,7 +315,7 @@ export class ShopComponent implements OnInit, OnDestroy {
         position: (point: any, params: any, dom: any, rect: any, size: any): Array<number> => [size.viewSize[0] - size.contentSize[0], 0],
         formatter: (params: any): string => {
           const date = new Date(params[0].value[0]).toLocaleString(undefined, {
-            weekday: 'short',
+            weekday: week ? undefined : 'short',
             hour: '2-digit',
             minute: '2-digit'
           });
@@ -317,14 +326,13 @@ export class ShopComponent implements OnInit, OnDestroy {
       xAxis: {
         type: 'time',
         axisLine: { lineStyle: { color: '#3a3430' } },
-        // one label every 6 hours (every day in week mode)
-        minInterval: week ? 24 * 60 * 60 * 1000 : 6 * 60 * 60 * 1000,
-        maxInterval: week ? 24 * 60 * 60 * 1000 : 6 * 60 * 60 * 1000,
+        // one label every 6 hours
+        minInterval: 6 * 60 * 60 * 1000,
+        maxInterval: 6 * 60 * 60 * 1000,
         axisLabel: {
           color: '#a08060',
           fontSize: 9,
-          formatter: (v: number): string =>
-            week ? new Date(v).toLocaleDateString(undefined, { weekday: 'short' }) : String(new Date(v).getHours()).padStart(2, '0')
+          formatter: (v: number): string => String(new Date(v).getHours()).padStart(2, '0')
         },
         splitLine: { show: false }
       },
@@ -681,6 +689,16 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   toggleDisplayActivity(): void {
     this.shopService.updateDisplayActivity(this.shop?.displayActivity === false);
+  }
+
+  isShopTracked(): boolean {
+    return !!this.shop?.publicId && this.trackingService.isTracked(this.shop.publicId);
+  }
+
+  toggleTrackShop(): void {
+    if (this.shop?.publicId) {
+      this.trackingService.toggleTracking({ senderName: this.shop.player, senderShop: this.shop.publicId });
+    }
   }
 
   async toggleNotifyOnOffline(): Promise<void> {

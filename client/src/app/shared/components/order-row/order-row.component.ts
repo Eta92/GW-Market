@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ItemOrder } from '@app/models/order.model';
+import { TrackingService } from '@app/services/tracking.service';
 
 @Component({
   selector: 'app-order-row',
@@ -26,6 +27,8 @@ export class OrderRowComponent implements OnInit {
   public details = false;
   public isActive = false;
 
+  constructor(private trackingService: TrackingService) {}
+
   ngOnInit(): void {
     this.isActive = !this.order.lastRefresh || Date.now() - this.order.lastRefresh < 1000 * 60 * 15;
   }
@@ -44,6 +47,19 @@ export class OrderRowComponent implements OnInit {
   onMessage(event: Event): void {
     event.stopPropagation();
     this.messageClick.emit(this.order);
+  }
+
+  isTracked(): boolean {
+    return this.trackingService.isTracked(this.order.shopId, this.order.item.name);
+  }
+
+  onTrack(event: Event): void {
+    event.stopPropagation();
+    this.trackingService.toggleTracking({
+      senderName: this.order.player,
+      senderShop: this.order.shopId,
+      itemName: this.order.item.name
+    });
   }
 
   onSubmitVote(event: Event, vote: 'positive' | 'negative'): void {

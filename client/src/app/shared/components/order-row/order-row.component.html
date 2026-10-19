@@ -83,6 +83,15 @@
           <button
             class="action-btn whisper-btn"
             *ngIf="order.shopId && !order.kamadanChat"
+            [class.tracked]="isTracked()"
+            (click)="onTrack($event)"
+            [title]="isTracked() ? 'Stop tracking ' + order.player : 'Notify when ' + order.player + ' comes online'"
+          >
+            <i class="fa fa-bell"></i>
+          </button>
+          <button
+            class="action-btn whisper-btn"
+            *ngIf="order.shopId && !order.kamadanChat"
             (click)="onMessage($event)"
             title="Message {{ order.player }}"
           >

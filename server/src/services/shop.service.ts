@@ -138,7 +138,13 @@ export class ShopService {
       generatedAt: Date.now(),
     };
     console.log(
-      'Global prices cached: ' + Object.keys(items).length + ' items, ' + Math.round(json.length / 1024) + ' KB in ' + (Date.now() - start) + 'ms'
+      'Global prices cached: ' +
+        Object.keys(items).length +
+        ' items, ' +
+        Math.round(json.length / 1024) +
+        ' KB in ' +
+        (Date.now() - start) +
+        'ms'
     );
   }
 
@@ -243,6 +249,7 @@ export class ShopService {
     }
   }
 
+  // MAIN REFRESH SECTION
   public static async refreshShop(rawShop: Shop, socket: any): Promise<Shop | null> {
     const ip = socket.data.ip;
     if (rawShop) {
@@ -332,6 +339,7 @@ export class ShopService {
       OverviewService.logRefresh(shopToSave.publicId);
       ActivityService.logRefresh(shopToSave);
       shop.items.forEach((item) => this.itemToRefresh.add(item.name));
+      this.io.emit('OnlineShop', shopToSave.publicId);
       return await this.completeShopSave(shopToSave, socket);
     }
   }

@@ -74,6 +74,18 @@
           <span class="notify-offline-label">Notify when your shop loses highlight</span>
         </label>
 
+        <!-- Online Tracking Toggle (showcase only) -->
+        <label
+          *ngIf="showcase && shop?.publicId && shop.publicId !== myShop?.publicId"
+          class="notify-offline-toggle sm-hide"
+          (click)="toggleTrackShop()"
+        >
+          <span class="notify-offline-checkbox" [class.checked]="isShopTracked()">
+            <i class="fa" [class.fa-bell]="isShopTracked()" [class.fa-bell-slash]="!isShopTracked()"></i>
+          </span>
+          <span class="notify-offline-label">Notify when this shop comes online</span>
+        </label>
+
         <!-- Activity Display Toggle -->
         <label *ngIf="!showcase" class="notify-offline-toggle sm-hide" (click)="toggleDisplayActivity()">
           <span class="notify-offline-checkbox" [class.checked]="shop?.displayActivity !== false">

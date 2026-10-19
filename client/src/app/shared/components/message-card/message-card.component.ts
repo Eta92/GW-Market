@@ -59,6 +59,10 @@ export class MessageCardComponent {
         return 'Auction Failure';
       case MessageType.REPUTATION_REVERT:
         return 'Reputation Reverted';
+      case MessageType.ONLINE_ITEM:
+        return 'Item Available';
+      case MessageType.ONLINE_SHOP:
+        return 'Shop Online';
     }
     return '';
   }
@@ -233,6 +237,10 @@ export class MessageCardComponent {
         );
       case MessageType.REPUTATION_REVERT:
         return 'A previous reputation vote has been reverted, Your reputation has been updated accordingly.';
+      case MessageType.ONLINE_ITEM:
+        return 'The player ' + this.message.senderName + ' who sells ' + data[0] + ' is now online. Click to open the item page.';
+      case MessageType.ONLINE_SHOP:
+        return 'The player ' + this.message.senderName + ' is now online. Click to open their shop.';
     }
     return '';
   }
@@ -280,7 +288,9 @@ export class MessageCardComponent {
   }
 
   isItem(): boolean {
-    return ![MessageType.REPUTATION_UP, MessageType.REPUTATION_DOWN, MessageType.REPUTATION_REVERT].includes(this.message.type);
+    return ![MessageType.REPUTATION_UP, MessageType.REPUTATION_DOWN, MessageType.REPUTATION_REVERT, MessageType.ONLINE_SHOP].includes(
+      this.message.type
+    );
   }
 
   getImageSource(itemName: string): string {
