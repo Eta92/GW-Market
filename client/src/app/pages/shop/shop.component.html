@@ -58,12 +58,28 @@
             <span class="stat-label">Changes</span>
             <span class="stat-value">{{ pendingChanges }}</span>
           </div>
+          <button class="silent-refresh-btn" (click)="refreshShop(true)" title="Send your changes without highlighting the shop">
+            <i class="fa fa-cloud-upload-alt"></i>
+            <span class="silent-refresh-text">Silent Refresh</span>
+          </button>
         </div>
 
         <!-- Enable/Stop Toggle -->
-        <button *ngIf="!showcase" class="shop-toggle-btn" [class.active]="showCandle" (click)="showCandle ? stopShop() : refreshShop()">
-          <i class="fa" [class.fa-power-off]="!showCandle" [class.fa-stop]="showCandle"></i>
-          <span>{{ showCandle ? 'Stop Shop' : 'Update Shop' }}</span>
+        <button
+          *ngIf="!showcase"
+          class="shop-toggle-btn"
+          [class.with-subtitle]="!showCandle"
+          [class.active]="showCandle"
+          (click)="showCandle ? stopShop() : refreshShop()"
+        >
+          <span class="shop-toggle-title">
+            <i class="fa" [class.fa-power-off]="!showCandle" [class.fa-stop]="showCandle"></i>
+            <span>{{ showCandle ? 'Stop Shop' : 'Highlight Shop' }}</span>
+          </span>
+          <span class="shop-toggle-subtitle" *ngIf="!showCandle"
+            >Sync changes and <br />
+            set the shop active</span
+          >
         </button>
 
         <!-- Offline Notification Toggle -->
@@ -71,7 +87,7 @@
           <span class="notify-offline-checkbox" [class.checked]="notifyOnOffline">
             <i class="fa" [class.fa-bell]="notifyOnOffline" [class.fa-bell-slash]="!notifyOnOffline"></i>
           </span>
-          <span class="notify-offline-label">Notify when your shop loses highlight</span>
+          <span class="notify-offline-label">Notify when shop loses highlighting</span>
         </label>
 
         <!-- Online Tracking Toggle (showcase only) -->
@@ -162,12 +178,7 @@
               <span>{{ shop?.reputation?.positive || 0 }}</span>
               <i class="fa fa-thumbs-up"></i>
             </button>
-            <button
-              class="sidebar-vote-btn neutral"
-              (click)="removeReputationVote()"
-              [disabled]="!shopVote()"
-              title="Remove your vote"
-            >
+            <button class="sidebar-vote-btn neutral" (click)="removeReputationVote()" [disabled]="!shopVote()" title="Remove your vote">
               <i class="fa fa-equals"></i>
             </button>
             <button

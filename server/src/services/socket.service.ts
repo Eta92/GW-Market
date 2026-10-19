@@ -83,8 +83,8 @@ export class SocketService {
         ShopService.isShopUpToDate(uuid, lastRefresh, socket);
       });
 
-      socket.on('refreshShop', (shop: Shop) => {
-        ShopService.refreshShop(shop, socket);
+      socket.on('refreshShop', (shop: Shop, silent?: boolean) => {
+        ShopService.refreshShop(shop, socket, silent);
       });
 
       socket.on('closeShop', (uuid: string) => {

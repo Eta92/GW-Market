@@ -668,7 +668,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.clearShop = false;
   }
 
-  refreshShop(): void {
+  refreshShop(silent = false): void {
     if (this.shop.player === 'GWTrader') {
       this.toastrService.warning('Please first set a valid player name for your shop', 'Player invalid');
       this.playerWarning = true;
@@ -678,7 +678,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     } else if (Date.now() - this.shop.lastRefresh < 60 * 1000) {
       this.toastrService.warning('Refreshing more than once a minute is a bit rude', 'Please be gentle with the server');
     } else {
-      this.shopService.enableShop();
+      this.shopService.enableShop(silent);
     }
   }
 

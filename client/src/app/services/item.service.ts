@@ -172,7 +172,7 @@ export class ItemService {
                   name: iconName,
                   category: category.name,
                   family: family.name,
-                  img: '../../../assets/items/' + family.name + '/' + iconName + '.png'
+                  img: '../../../assets/items/' + family.name + '/' + iconName.replace(/ /g, '_') + '.png'
                 };
               }
               category.previews.push(iconName);

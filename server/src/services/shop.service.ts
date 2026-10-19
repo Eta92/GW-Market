@@ -250,7 +250,7 @@ export class ShopService {
   }
 
   // MAIN REFRESH SECTION
-  public static async refreshShop(rawShop: Shop, socket: any): Promise<Shop | null> {
+  public static async refreshShop(rawShop: Shop, socket: any, silent = false): Promise<Shop | null> {
     const ip = socket.data.ip;
     if (rawShop) {
       // control shop validity
@@ -329,7 +329,9 @@ export class ShopService {
       }
       // merge local and received shop data
       shop.lastIP = ip;
-      shop.lastRefresh = Date.now();
+      if (!silent) {
+        shop.lastRefresh = Date.now();
+      }
       const shopToSave = this.allShopMap[shop.uuid] ? { ...this.allShopMap[shop.uuid], ...shop } : shop;
       // (prepare public shop ids)
       if (!shopToSave.publicId) {
@@ -337,9 +339,11 @@ export class ShopService {
         this.publicShopMap[shopToSave.publicId] = shopToSave.uuid;
       }
       OverviewService.logRefresh(shopToSave.publicId);
-      ActivityService.logRefresh(shopToSave);
       shop.items.forEach((item) => this.itemToRefresh.add(item.name));
-      this.io.emit('OnlineShop', shopToSave.publicId);
+      if (!silent) {
+        this.io.emit('OnlineShop', shopToSave.publicId);
+        ActivityService.logRefresh(shopToSave);
+      }
       return await this.completeShopSave(shopToSave, socket);
     }
   }
@@ -905,7 +909,12 @@ export class ShopService {
       [shopData.player, shopData.publicId, UtilityHelper.reasonToText(reason)]
     );
     console.log('Reputation vote submitted from shop ' + shopData.player + ' to ' + targetShop.player + ' as ' + vote);
-    await this.completeVote(shopData, targetShop, socket, 'Your reputation vote has been submitted successfully. Refresh the page to see the effect.');
+    await this.completeVote(
+      shopData,
+      targetShop,
+      socket,
+      'Your reputation vote has been submitted successfully. Refresh the page to see the effect.'
+    );
   }
 
   public static async removeReputationVote(shop: string, target: string, socket: any): Promise<void> {

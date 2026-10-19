@@ -220,5 +220,14 @@
     "date": "2026-10-13",
     "features": ["Bow types added to visuals and search filters"],
     "warning": "Update your shop to see the effects, and manually update your generic bows to set their type"
+  },
+  {
+    "date": "2026-10-18",
+    "features": [
+      "Player activity tracking to display estimated online times",
+      "Ability to be notified when a item/shop of interest become online",
+      "Silent update button for shops to refresh without highlighting",
+      "New button to cancel previous vote"
+    ]
   }
 ]
